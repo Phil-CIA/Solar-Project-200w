@@ -1,5 +1,29 @@
 # Solar Learning Project — Concept Capture + Handoff (Rev 0)
 
+## Session Update - 2026-07-06
+
+Completed since initial concept capture:
+
+1. New repository initialized and pushed:
+  - `https://github.com/Phil-CIA/Solar-Project-200w`
+2. Base project scaffold created:
+  - `README.md`
+  - `.gitignore`
+  - `docs/README.md`
+  - `hardware/README.md`
+  - `firmware/README.md`
+3. Active KiCad project imported from:
+  - `C:/Users/forch/GitHub/Solar Project`
+4. Current KiCad source location in this repo:
+  - `hardware/kicad/solar-project/`
+  - `Solar Project.kicad_pro`
+  - `Solar Project.kicad_sch`
+  - `Solar Project.kicad_pcb`
+5. Transient KiCad artifacts were intentionally excluded from source control.
+
+Current continuation focus:
+- Build planning docs (`requirements`, `architecture`, `decisions`) before firmware scaffolding.
+
 ## 1) Project Intent
 This project is a **learning-first** build, not a cost-optimization build.  
 Goal: understand and eventually design at PCB level:

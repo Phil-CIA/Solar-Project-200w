@@ -1,0 +1,19 @@
+# Solar Project Quick Handoff (2026-07-06)
+
+- Session checkpoint: baseline setup complete.
+- Source of truth: `HANDOFF.md`
+- Active repo: `Solar-Project-200w`
+
+What is done:
+- Repository scaffold and initial readmes are in place.
+- KiCad project imported under `hardware/kicad/solar-project/`.
+- Concept/handoff and next-chat prompt updated to current state.
+
+Next session first move:
+1. Read `HANDOFF.md`.
+2. Create `docs/requirements.md`.
+3. Create `docs/architecture.md`.
+4. Create `docs/decisions-log.md`.
+
+Paste prompt:
+Continue from HANDOFF.md in Solar-Project-200w. Create requirements, architecture, and decisions-log docs from the current 200W concept baseline and make each requirement measurable and testable.

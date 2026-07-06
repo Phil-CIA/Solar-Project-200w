@@ -1,0 +1,55 @@
+# Solar Project New Chat Handoff
+
+## Session Closeout - 2026-07-06
+
+Project: Solar Project 200W
+Phase: Repository baseline + KiCad source import complete
+
+## Current Objective
+
+Move from concept capture to engineering planning artifacts:
+- measurable requirements
+- architecture definition
+- decision log
+
+## What Was Completed In This Stop Window
+
+1. Repository initialized and synced to GitHub:
+   - `https://github.com/Phil-CIA/Solar-Project-200w`
+2. Base structure created with starter docs/readmes.
+3. Correct KiCad source imported from:
+   - `C:/Users/forch/GitHub/Solar Project`
+4. Committed KiCad source files retained in repo:
+   - `.kicad_pro`, `.kicad_sch`, `.kicad_pcb`
+5. Transient KiCad local artifacts excluded.
+6. Concept and next-chat prompt files updated to match current baseline.
+
+## Verified State At Stop
+
+- `main` is tracking `origin/main`.
+- Working baseline is clean and reproducible.
+- KiCad project is available at:
+  - `hardware/kicad/solar-project/`
+
+## Next Session Actions (In Order)
+
+1. Create `docs/requirements.md` with measurable electrical and system constraints.
+2. Create `docs/architecture.md` with block-level power/control boundaries.
+3. Create `docs/decisions-log.md` with dated entries and unresolved items.
+4. Update `README.md` links to these planning docs.
+5. Build a first validation checklist tied to requirements.
+
+## Rules For Next Session
+
+1. Keep learning-first scope and staged bring-up approach.
+2. Avoid committing transient CAD local-state files.
+3. Keep assumptions explicit and dated in the decisions log.
+4. Prefer testable requirements over narrative-only statements.
+
+## First Action Next Session
+
+Read `HANDOFF.md`, then draft `docs/requirements.md` first.
+
+## Suggested Prompt For New Chat
+
+Continue in Solar-Project-200w from HANDOFF.md. Create docs/requirements.md, docs/architecture.md, and docs/decisions-log.md based on the current 200W concept and imported KiCad baseline, with measurable and testable requirements.
