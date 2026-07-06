@@ -1,0 +1,36 @@
+# OS
+.DS_Store
+Thumbs.db
+
+# IDE / Editor
+.vscode/
+.idea/
+*.code-workspace
+
+# Python
+__pycache__/
+*.py[cod]
+.venv/
+venv/
+
+# Node
+node_modules/
+
+# Build and output
+build/
+dist/
+out/
+*.log
+
+# KiCad and CAD generated artifacts (keep source files in version control)
+*.kicad_prl
+*.bak
+*.tmp
+*-backups/
+*.zip
+
+# Binary outputs
+*.bin
+*.hex
+*.elf
+*.map
