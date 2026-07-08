@@ -1,6 +1,6 @@
 # MPPT KiCad Implementation Checklist
 
-Last updated: 2026-07-06
+Last updated: 2026-07-08
 Owners: Phil + Copilot
 Purpose: provide a repeatable sequence for building the first MPPT schematic safely and traceably.
 
@@ -75,4 +75,4 @@ At each save-point:
 ## 10. Next Session First Action
 
 Fill this line before ending each session:
-- Next action: TBD
+- Next action: Open `hardware/kicad/solar-project/Solar Project.kicad_sch`, run ERC, then continue Sheet 2 cleanup by placing/connecting R1/C8 snubber placeholder from `MPPT_SW_NODE` to `PV_IN_NEG` and verify Sheet 1-2 net labels against `hardware/mppt/net-plan.md`.
