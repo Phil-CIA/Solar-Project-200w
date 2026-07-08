@@ -112,3 +112,5 @@ Control and logging nets:
 - 2026-07-08: Netlist regenerated from repository schematic and ERC run captured in `hardware/kicad/solar-project/ERC.rpt`.
 - Current ERC snapshot: 1 error (`Q1` gate input not driven on `CTRL_PWM_MAIN`) and 7 warnings (shared-net naming, local/global duplicate labels, and placeholder/invalid footprints for C4/C6/C7).
 - Next cleanup focus: resolve naming at shared return rail and assign valid capacitor footprints before pre-routing gate.
+- 2026-07-08: Sheet 3 kickoff unblocked for boundary-level work; first-pass battery interface map added at `hardware/mppt/sheet3-battery-interface-wiring-map.md`.
+- Sheet 3 scope for next pass: place battery connector and main-fuse boundary with `CHG_OUT_POS/NEG` to `BAT_BUS_POS/NEG` handoff while keeping Q-001-dependent ratings provisional.

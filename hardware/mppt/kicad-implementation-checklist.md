@@ -75,4 +75,4 @@ At each save-point:
 ## 10. Next Session First Action
 
 Fill this line before ending each session:
-- Next action: Resolve current ERC findings in `hardware/kicad/solar-project/ERC.rpt` by assigning a temporary gate-drive source or ERC exception for `CTRL_PWM_MAIN`, choosing one canonical name at the shared negative rail node (`PV_IN_NEG` or `CHG_OUT_NEG`), and replacing placeholder capacitor footprints for C4/C6/C7 with valid library footprints.
+- Next action: Resolve the current blocking ERC item in `hardware/kicad/solar-project/ERC.rpt` (`Q1` gate not driven), then start Sheet 3 by placing `J2` and `F2` and wiring `CHG_OUT_POS/NEG` to `BAT_BUS_POS/NEG` per `hardware/mppt/sheet3-battery-interface-wiring-map.md`.
