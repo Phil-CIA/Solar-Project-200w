@@ -1,35 +1,38 @@
 # Solar Project 200W - Handoff
 
-Latest active handoff: [docs/SOLAR_HANDOFF_2026-07-06.md](docs/SOLAR_HANDOFF_2026-07-06.md)
+Latest active handoff: [docs/SOLAR_HANDOFF_2026-07-08.md](docs/SOLAR_HANDOFF_2026-07-08.md)
 
-Session status: active in Solar-Project-200w for planning baseline and KiCad-backed architecture definition.
+Session status: Phase 1 planning-to-implementation transition complete. Rev 0 scope is locked for Sheet 2 execution.
 
 ## Current Objective At Stop
 
-Convert the concept baseline into engineering-ready planning documents before firmware or hardware implementation expansion.
+Start Sheet 2 symbol placement in KiCad for the Rev 0 asynchronous buck power stage.
 
 ## Verified State At Stop
 
-- Repository scaffold is present and pushed to remote main.
-- Active KiCad sources are committed in:
+- Rev boundary is explicitly documented:
+  - Rev 0: asynchronous buck baseline
+  - Rev 1: synchronous converter + dedicated gate-driver upgrade path
+- Sheet 2 execution docs are aligned to Rev 0 async implementation:
+  - `hardware/mppt/sheet2-component-picks.md`
+  - `hardware/mppt/buck-power-stage-wiring-map.md`
+  - `hardware/mppt/kicad-implementation-checklist.md`
+- Decision and kickoff docs reflect closed scope boundaries:
+  - `docs/decisions-log.md`
+  - `docs/phase-1-kickoff.md`
+- Active KiCad project remains under:
   - `hardware/kicad/solar-project/`
-- Core files verified:
-  - `Solar Project.kicad_pro`
-  - `Solar Project.kicad_sch`
-  - `Solar Project.kicad_pcb`
-- Prompt and concept handoff docs now reflect current baseline state.
 
 ## Next Session Priority Order
 
-1. Create `docs/requirements.md`.
-2. Create `docs/architecture.md`.
-3. Create `docs/decisions-log.md`.
-4. Link these docs from root `README.md`.
-5. Review requirement coverage against safety and testability.
+1. Place Sheet 2 symbols for the Rev 0 power stage (Q1, D3, L1, C4-C7, R1/C8).
+2. Connect Sheet 2 exactly per net map and placement intent.
+3. Add/verify ASSUME, DECISION, and VERIFY notes on the sheet.
+4. Run save-point protocol and record schematic progress.
 
 ## First Actions Next Session
 
-1. Read this file and `docs/SOLAR_HANDOFF_2026-07-06.md`.
-2. Draft requirements with measurable constraints.
-3. Draft architecture with power/control boundaries and assumptions.
-4. Capture unresolved items in decisions log with date and rationale.
+1. Read this file and `docs/SOLAR_HANDOFF_2026-07-08.md`.
+2. Open `hardware/kicad/solar-project/Solar Project.kicad_sch`.
+3. Place Q1, D3, and L1 first around `MPPT_SW_NODE`.
+4. Continue with C4/C5, C6/C7, and R1/C8 using the wiring map.

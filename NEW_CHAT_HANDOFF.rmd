@@ -1,55 +1,55 @@
 # Solar Project New Chat Handoff
 
-## Session Closeout - 2026-07-06
+## Session Closeout - 2026-07-08
 
 Project: Solar Project 200W
-Phase: Repository baseline + KiCad source import complete
+Phase: Phase 1 scope lock complete, ready for Sheet 2 schematic execution
 
 ## Current Objective
 
-Move from concept capture to engineering planning artifacts:
-- measurable requirements
-- architecture definition
-- decision log
+Begin Sheet 2 symbol placement in KiCad using the Rev 0 asynchronous buck baseline.
 
 ## What Was Completed In This Stop Window
 
-1. Repository initialized and synced to GitHub:
-   - `https://github.com/Phil-CIA/Solar-Project-200w`
-2. Base structure created with starter docs/readmes.
-3. Correct KiCad source imported from:
-   - `C:/Users/forch/GitHub/Solar Project`
-4. Committed KiCad source files retained in repo:
-   - `.kicad_pro`, `.kicad_sch`, `.kicad_pcb`
-5. Transient KiCad local artifacts excluded.
-6. Concept and next-chat prompt files updated to match current baseline.
+1. Converter revision boundary was explicitly locked:
+   - Rev 0: asynchronous buck baseline
+   - Rev 1: synchronous converter and dedicated gate-driver path
+2. Scope consistency updates were applied to:
+   - `docs/decisions-log.md`
+   - `docs/phase-1-kickoff.md`
+   - `hardware/mppt/sheet2-component-picks.md`
+   - `hardware/mppt/buck-power-stage-wiring-map.md`
+   - `hardware/mppt/kicad-implementation-checklist.md`
+3. DEC-012/Q-003 were reframed as Rev 1 optimization items (not Rev 0 pre-routing blockers).
+4. Current handoff chain was updated for next-session restart continuity.
 
 ## Verified State At Stop
 
-- `main` is tracking `origin/main`.
-- Working baseline is clean and reproducible.
-- KiCad project is available at:
-  - `hardware/kicad/solar-project/`
+- Rev 0 Sheet 2 implementation docs are consistent and actionable.
+- Routing gate no longer blocks Rev 0 due to deferred Rev 1 architecture work.
+- KiCad project remains available at `hardware/kicad/solar-project/`.
+- Edited markdown files validated with no errors.
 
 ## Next Session Actions (In Order)
 
-1. Create `docs/requirements.md` with measurable electrical and system constraints.
-2. Create `docs/architecture.md` with block-level power/control boundaries.
-3. Create `docs/decisions-log.md` with dated entries and unresolved items.
-4. Update `README.md` links to these planning docs.
-5. Build a first validation checklist tied to requirements.
+1. Open `hardware/kicad/solar-project/Solar Project.kicad_sch`.
+2. Place Q1, D3, and L1 first around `MPPT_SW_NODE`.
+3. Place C4/C5 input decoupling and C6/C7 output capacitors.
+4. Place R1/C8 snubber placeholder.
+5. Apply exact wiring from `hardware/mppt/buck-power-stage-wiring-map.md`.
+6. Run save-point protocol updates in `hardware/mppt/schematic-notes.md`.
 
 ## Rules For Next Session
 
 1. Keep learning-first scope and staged bring-up approach.
 2. Avoid committing transient CAD local-state files.
 3. Keep assumptions explicit and dated in the decisions log.
-4. Prefer testable requirements over narrative-only statements.
+4. Do not reopen Rev 0 architecture scope; keep synchronous/gate-driver work in Rev 1 backlog.
 
 ## First Action Next Session
 
-Read `HANDOFF.md`, then draft `docs/requirements.md` first.
+Read `HANDOFF.md`, then place Q1, D3, and L1 on Sheet 2 before any optimization changes.
 
 ## Suggested Prompt For New Chat
 
-Continue in Solar-Project-200w from HANDOFF.md. Create docs/requirements.md, docs/architecture.md, and docs/decisions-log.md based on the current 200W concept and imported KiCad baseline, with measurable and testable requirements.
+Continue in Solar-Project-200w from HANDOFF.md. Start Sheet 2 placement in `hardware/kicad/solar-project/Solar Project.kicad_sch` using the locked Rev 0 asynchronous buck baseline, and follow `hardware/mppt/sheet2-component-picks.md` and `hardware/mppt/buck-power-stage-wiring-map.md` exactly.

@@ -1,19 +1,19 @@
-# Solar Project Quick Handoff (2026-07-06)
+# Solar Project Quick Handoff (2026-07-08)
 
-- Session checkpoint: baseline setup complete.
+- Session checkpoint: Rev 0 scope lock complete; ready for Sheet 2 symbol placement.
 - Source of truth: `HANDOFF.md`
 - Active repo: `Solar-Project-200w`
 
 What is done:
-- Repository scaffold and initial readmes are in place.
-- KiCad project imported under `hardware/kicad/solar-project/`.
-- Concept/handoff and next-chat prompt updated to current state.
+- Rev boundary locked: Rev 0 async buck, Rev 1 synchronous/gate-driver upgrade.
+- Sheet 2 execution docs are aligned and unblocked for Rev 0 routing.
+- Decision, kickoff, and checklist docs updated to remove scope contradictions.
 
 Next session first move:
-1. Read `HANDOFF.md`.
-2. Create `docs/requirements.md`.
-3. Create `docs/architecture.md`.
-4. Create `docs/decisions-log.md`.
+1. Read `HANDOFF.md` and `docs/SOLAR_HANDOFF_2026-07-08.md`.
+2. Open `hardware/kicad/solar-project/Solar Project.kicad_sch`.
+3. Place Q1, D3, and L1 around `MPPT_SW_NODE`.
+4. Continue placement/wiring from Sheet 2 maps.
 
 Paste prompt:
-Continue from HANDOFF.md in Solar-Project-200w. Create requirements, architecture, and decisions-log docs from the current 200W concept baseline and make each requirement measurable and testable.
+Continue from HANDOFF.md in Solar-Project-200w. Start with Sheet 2 symbol placement in `Solar Project.kicad_sch` using the locked Rev 0 asynchronous buck baseline and follow `hardware/mppt/sheet2-component-picks.md` plus `hardware/mppt/buck-power-stage-wiring-map.md` exactly.
