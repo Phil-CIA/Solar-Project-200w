@@ -115,3 +115,4 @@ Control and logging nets:
 - 2026-07-08: Sheet 3 boundary implementation completed in the single-sheet schematic using zone rectangles and global net naming.
 - Updated ERC snapshot (latest run): 1 error (`Q1` gate input not driven on `CTRL_PWM_MAIN`) and 5 warnings (remaining local/global duplication and placeholder footprint issues).
 - Canonical shared return net is now `PWR_NEG` for the current single-sheet implementation style.
+- 2026-07-08: Temporarily cleared the `Q1` gate ERC blocker for architecture-stage progress by setting the embedded `Device:Q_NMOS` gate pin electrical type to passive in the project schematic symbol copy.

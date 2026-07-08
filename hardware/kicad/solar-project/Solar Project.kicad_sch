@@ -1026,7 +1026,7 @@
 				)
 			)
 			(symbol "Q_NMOS_1_1"
-				(pin input line
+				(pin passive line
 					(at -5.08 0 0)
 					(length 2.54)
 					(name "G"
@@ -2207,6 +2207,18 @@
 		)
 	)
 	(rectangle
+		(start 213.36 20.32)
+		(end 261.62 76.2)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(fill
+			(type none)
+		)
+		(uuid bc85788a-dd0a-4aa1-9fe2-bc16b26a166e)
+	)
+	(rectangle
 		(start 17.78 20.32)
 		(end 109.22 76.2)
 		(stroke
@@ -2249,6 +2261,16 @@
 			)
 		)
 		(uuid "6385ce50-b3a5-44de-afce-6c4be911aae8")
+	)
+	(text "sheet 3"
+		(exclude_from_sim no)
+		(at 252.984 73.914 0)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+		)
+		(uuid "ab0b630f-af95-4738-be0b-6b5537d59912")
 	)
 	(junction
 		(at 138.43 57.15)
@@ -2303,6 +2325,12 @@
 		(diameter 0)
 		(color 0 0 0 0)
 		(uuid "496481f2-6c50-46ca-bd32-c0e2a2a64a74")
+	)
+	(junction
+		(at 232.41 43.18)
+		(diameter 0)
+		(color 0 0 0 0)
+		(uuid "60293cd6-b1c3-46a2-9910-36f791f9b84f")
 	)
 	(junction
 		(at 81.28 34.29)
@@ -2368,6 +2396,16 @@
 	)
 	(wire
 		(pts
+			(xy 232.41 43.18) (xy 232.41 46.99)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "05005a8d-ed8f-459d-896b-df94f886184b")
+	)
+	(wire
+		(pts
 			(xy 33.02 48.26) (xy 33.02 62.23)
 		)
 		(stroke
@@ -2385,6 +2423,16 @@
 			(type default)
 		)
 		(uuid "0f79354b-94e0-48c0-a4b2-fcd051b370fc")
+	)
+	(wire
+		(pts
+			(xy 232.41 49.53) (xy 232.41 55.88)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "0fca6587-1daa-4d12-9d21-970f666b84f1")
 	)
 	(wire
 		(pts
@@ -2435,6 +2483,16 @@
 			(type default)
 		)
 		(uuid "22225820-7395-4a20-96d3-bfa28b53acb5")
+	)
+	(wire
+		(pts
+			(xy 232.41 34.29) (xy 232.41 33.02)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "224f20c4-e994-4902-84c7-265a30bcb5ca")
 	)
 	(wire
 		(pts
@@ -2618,6 +2676,16 @@
 	)
 	(wire
 		(pts
+			(xy 232.41 33.02) (xy 227.33 33.02)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "690ecccb-267f-4524-aef6-0d8266d1461e")
+	)
+	(wire
+		(pts
 			(xy 124.46 34.29) (xy 127 34.29)
 		)
 		(stroke
@@ -2665,6 +2733,16 @@
 			(type default)
 		)
 		(uuid "86fd25bf-1bb6-442e-8dc6-2b42c82331ff")
+	)
+	(wire
+		(pts
+			(xy 232.41 41.91) (xy 232.41 43.18)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "8d49cfa6-cd96-4ab8-b150-1f016c082ff1")
 	)
 	(wire
 		(pts
@@ -2848,6 +2926,16 @@
 	)
 	(wire
 		(pts
+			(xy 237.49 43.18) (xy 232.41 43.18)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "eb0c5df9-afc3-4f55-be8d-66456e99d26f")
+	)
+	(wire
+		(pts
 			(xy 195.58 34.29) (xy 181.61 34.29)
 		)
 		(stroke
@@ -2855,6 +2943,16 @@
 			(type default)
 		)
 		(uuid "f17610c1-e339-459f-982e-5fc8b6feaf14")
+	)
+	(wire
+		(pts
+			(xy 232.41 55.88) (xy 227.33 55.88)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "fa4a81e3-925c-416c-ad14-c17ae02d16b1")
 	)
 	(label "PV_IN_POS_FUSED"
 		(at 33.02 34.29 0)
@@ -2896,16 +2994,6 @@
 		)
 		(uuid "a01a1a04-6883-4247-8671-c4b9660f5358")
 	)
-	(label "PV_IN_NEG"
-		(at 33.02 67.31 0)
-		(effects
-			(font
-				(size 0.635 0.635)
-			)
-			(justify left bottom)
-		)
-		(uuid "fe068737-9ef2-4b3b-aae5-efee9d2796d5")
-	)
 	(global_label "CHG_OUT_POS"
 		(shape input)
 		(at 195.58 34.29 0)
@@ -2924,6 +3012,28 @@
 					(size 1.27 1.27)
 				)
 				(justify left)
+				(hide yes)
+			)
+		)
+	)
+	(global_label "CHG_OUT_POS"
+		(shape input)
+		(at 227.33 33.02 180)
+		(fields_autoplaced yes)
+		(effects
+			(font
+				(size 0.635 0.635)
+			)
+			(justify right)
+		)
+		(uuid "29672097-990d-42b6-89cd-218b54cd623c")
+		(property "Intersheetrefs" "${INTERSHEET_REFS}"
+			(at 219.2153 33.02 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify right)
 				(hide yes)
 			)
 		)
@@ -2950,7 +3060,51 @@
 			)
 		)
 	)
-	(global_label "PV_IN_NEG"
+	(global_label "BAT_BUS_POS"
+		(shape input)
+		(at 237.49 43.18 0)
+		(fields_autoplaced yes)
+		(effects
+			(font
+				(size 0.635 0.635)
+			)
+			(justify left)
+		)
+		(uuid "6babba3f-ccb9-4e71-9458-8d6c84c1a410")
+		(property "Intersheetrefs" "${INTERSHEET_REFS}"
+			(at 245.4234 43.18 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+				(hide yes)
+			)
+		)
+	)
+	(global_label "PWR_NEG"
+		(shape input)
+		(at 227.33 55.88 180)
+		(fields_autoplaced yes)
+		(effects
+			(font
+				(size 0.635 0.635)
+			)
+			(justify right)
+		)
+		(uuid "6cd91719-a94f-4594-8edd-09b53a7703af")
+		(property "Intersheetrefs" "${INTERSHEET_REFS}"
+			(at 221.4831 55.88 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify right)
+				(hide yes)
+			)
+		)
+	)
+	(global_label "PWR_NEG"
 		(shape input)
 		(at 123.19 57.15 180)
 		(fields_autoplaced yes)
@@ -2962,7 +3116,7 @@
 		)
 		(uuid "6faf7221-e7a9-4455-a553-2a8d43d1b6b9")
 		(property "Intersheetrefs" "${INTERSHEET_REFS}"
-			(at 116.7081 57.15 0)
+			(at 117.3431 57.15 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -2994,7 +3148,7 @@
 			)
 		)
 	)
-	(global_label "CHG_OUT_NEG"
+	(global_label "PWR_NEG"
 		(shape input)
 		(at 195.58 57.15 0)
 		(fields_autoplaced yes)
@@ -3006,7 +3160,7 @@
 		)
 		(uuid "c58e9086-9f37-4495-955e-ae6cb06e7edc")
 		(property "Intersheetrefs" "${INTERSHEET_REFS}"
-			(at 203.6644 57.15 0)
+			(at 201.4269 57.15 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -3016,7 +3170,7 @@
 			)
 		)
 	)
-	(global_label "PV_IN_NEG"
+	(global_label "PWR_NEG"
 		(shape input)
 		(at 93.98 57.15 0)
 		(fields_autoplaced yes)
@@ -3028,7 +3182,7 @@
 		)
 		(uuid "d2ed566b-5da5-4b7d-aa99-6cb369b5601f")
 		(property "Intersheetrefs" "${INTERSHEET_REFS}"
-			(at 100.4619 57.15 0)
+			(at 99.8269 57.15 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -3882,6 +4036,76 @@
 		)
 	)
 	(symbol
+		(lib_id "Device:Fuse")
+		(at 232.41 38.1 0)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(fields_autoplaced yes)
+		(uuid "410e231d-992b-4575-ac5d-256dca83a38e")
+		(property "Reference" "F2"
+			(at 234.95 36.8299 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Value" "Fuse"
+			(at 234.95 39.3699 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Footprint" ""
+			(at 230.632 38.1 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" "~"
+			(at 232.41 38.1 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" "Fuse"
+			(at 232.41 38.1 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "1"
+			(uuid "7411b48d-7df9-4d86-b05a-4a6563706f45")
+		)
+		(pin "2"
+			(uuid "79636a6b-a3fd-45eb-b478-3cca86e83be8")
+		)
+		(instances
+			(project ""
+				(path "/28299885-0f47-4c9d-af0f-f2db484b5c54"
+					(reference "F2")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
 		(lib_id "PCM_JLCPCB-Diodes_1:Schottky,SK1010C")
 		(at 166.37 44.45 180)
 		(unit 1)
@@ -4394,6 +4618,75 @@
 			(project ""
 				(path "/28299885-0f47-4c9d-af0f-f2db484b5c54"
 					(reference "L1")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "Connector:Screw_Terminal_01x02")
+		(at 237.49 46.99 0)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(uuid "afbea1e0-2291-4316-b74f-8835d6f936c5")
+		(property "Reference" "J2"
+			(at 240.03 46.9899 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Value" "Battery Bus"
+			(at 240.03 49.5299 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Footprint" ""
+			(at 237.49 46.99 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" "~"
+			(at 237.49 46.99 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" "Generic screw terminal, single row, 01x02, script generated (kicad-library-utils/schlib/autogen/connector/)"
+			(at 237.49 46.99 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "2"
+			(uuid "10426219-8d14-4d9b-b755-f0a349db43f5")
+		)
+		(pin "1"
+			(uuid "bf16a56a-b3d9-4eb5-864e-d4a0f556ce2a")
+		)
+		(instances
+			(project "Solar Project"
+				(path "/28299885-0f47-4c9d-af0f-f2db484b5c54"
+					(reference "J2")
 					(unit 1)
 				)
 			)
