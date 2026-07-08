@@ -75,4 +75,4 @@ At each save-point:
 ## 10. Next Session First Action
 
 Fill this line before ending each session:
-- Next action: Start Zone D (Sheet 4 intent) by placing `U_CTRL` placeholder ownership and the core global labels for sensing/control (`SENSE_PV_V`, `SENSE_PV_I`, `SENSE_BAT_V`, `SENSE_BAT_I`, `SENSE_TEMP_PWR`, `SENSE_TEMP_BOARD`, `UART_TX_LOG`, `UART_RX_CFG`, `CTRL_EN_CHG`, `FAULT_OCP`, `FAULT_OVP`) using `hardware/mppt/sheet4-sensing-control-wiring-map.md`.
+- Next action: Start Zone D by building the voltage and current measuring circuits first (`SENSE_PV_V`, `SENSE_PV_I`, `SENSE_BAT_V`, `SENSE_BAT_I`), then add thermal sense placeholders, and only after that place `U_CTRL`, logging, and fault/control placeholders from `hardware/mppt/sheet4-sensing-control-wiring-map.md`.

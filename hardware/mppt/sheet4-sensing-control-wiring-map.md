@@ -2,11 +2,11 @@
 
 Last updated: 2026-07-08
 Owners: Phil + Copilot
-Scope: define first-pass, implementation-ready zone plan for sensing and control I/O in the single-sheet KiCad schematic.
+Scope: define first-pass, implementation-ready zone plan for sensing and control I/O in the single-sheet KiCad schematic, starting with voltage and current measuring circuits.
 
 ## 1. Purpose
 
-Start Zone D (Sheet 4 intent) with stable net boundaries and placeholders without forcing DEC-005 closure.
+Start Zone D (Sheet 4 intent) with stable net boundaries and placeholders, beginning with voltage and current measuring circuits without forcing DEC-005 closure.
 
 ## 2. First-Pass Symbol Set
 
@@ -20,6 +20,17 @@ Start Zone D (Sheet 4 intent) with stable net boundaries and placeholders withou
 | TH_PWR | Power thermal sensor placeholder | NTC or sensor placeholder symbol | Bind to SENSE_TEMP_PWR |
 | TH_BOARD | Board thermal sensor placeholder | NTC or sensor placeholder symbol | Bind to SENSE_TEMP_BOARD |
 | J_LOG | Serial logging header | 1x03 or 1x04 header | Include TX, RX, and return reference |
+
+## 2.1 First Build Priority
+
+Start with the measurement circuits first:
+
+1. PV voltage sense path.
+2. PV current sense path.
+3. Battery voltage sense path.
+4. Battery current sense path.
+5. Thermal sense placeholders.
+6. Then connect U_CTRL, logging header, and control/fault placeholders.
 
 ## 3. Canonical Net Rules
 

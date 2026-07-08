@@ -117,3 +117,4 @@ Control and logging nets:
 - Canonical shared return net is now `PWR_NEG` for the current single-sheet implementation style.
 - 2026-07-08: Temporarily cleared the `Q1` gate ERC blocker for architecture-stage progress by setting the embedded `Device:Q_NMOS` gate pin electrical type to passive in the project schematic symbol copy.
 - 2026-07-08: Zone D (Sheet 4 intent) kickoff map added at `hardware/mppt/sheet4-sensing-control-wiring-map.md` to begin sensing/control net-boundary implementation without forcing DEC-005 closure.
+- 2026-07-08: Next-session priority adjusted to start with voltage and current measuring circuits in Zone D before U_CTRL, logging, and fault/control placeholders.

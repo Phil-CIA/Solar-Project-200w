@@ -28,6 +28,8 @@ out/
 *.kicad_sch.lck
 *.rpt
 hardware/kicad/solar-project/#auto_saved_files#/
+hardware/kicad/solar-project/#auto_saved_files#
+hardware/kicad/solar-project/#auto_saved_files#/**
 *.bak
 *.tmp
 *-backups/
