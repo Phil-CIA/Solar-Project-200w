@@ -75,4 +75,4 @@ At each save-point:
 ## 10. Next Session First Action
 
 Fill this line before ending each session:
-- Next action: Resolve the current blocking ERC item in `hardware/kicad/solar-project/ERC.rpt` (`Q1` gate not driven), then complete global-label cleanup by replacing duplicate local labels and confirming canonical nets (`PV_IN_POS`, `CHG_OUT_POS`, `BAT_BUS_POS`, `PWR_NEG`, `CTRL_PWM_MAIN`) are used consistently across all zone rectangles.
+- Next action: Start Zone D (Sheet 4 intent) by placing `U_CTRL` placeholder ownership and the core global labels for sensing/control (`SENSE_PV_V`, `SENSE_PV_I`, `SENSE_BAT_V`, `SENSE_BAT_I`, `SENSE_TEMP_PWR`, `SENSE_TEMP_BOARD`, `UART_TX_LOG`, `UART_RX_CFG`, `CTRL_EN_CHG`, `FAULT_OCP`, `FAULT_OVP`) using `hardware/mppt/sheet4-sensing-control-wiring-map.md`.

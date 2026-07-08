@@ -44,6 +44,7 @@ Decision policy: move fast, log every non-trivial choice, and defer only with a 
 
 ## Change Log
 
+- 2026-07-08: Added Sheet 4 sensing/control wiring map to start Zone D net-boundary implementation with placeholder control ownership while DEC-005 remains deferred.
 - 2026-07-08: Locked converter revision scope: Rev 0 asynchronous buck baseline; synchronous converter and gate-driver architecture deferred to Rev 1.
 - 2026-07-08: Reframed DEC-012/Q-003 as Rev 1 optimization items and removed them as Rev 0 pre-routing blockers.
 - 2026-07-07: Added Sheet 2 buck power-stage component picks (Q1, D3, L1, C4-C7, R1/C8) with starter electrical targets for immediate symbol placement.
