@@ -1,6 +1,6 @@
 # MPPT Schematic Notes (First Pass)
 
-Last updated: 2026-07-06
+Last updated: 2026-07-08
 Owners: Phil + Copilot
 Status: buck-oriented exploration scaffold for KiCad schematic partitioning.
 
@@ -102,3 +102,10 @@ Control and logging nets:
 - First partitioned schematic draft exists in KiCad.
 - Critical nets and notes are present and named consistently.
 - Deferred buck-implementation decisions are visible as annotations, not hidden assumptions.
+
+## 8. Save-Point Log
+
+- 2026-07-08: KiCad project source-path consolidation executed.
+- Authoritative path is now `hardware/kicad/solar-project/` inside this repository.
+- External duplicate at `C:/Users/forch/GitHub/Solar Project` was verified hash-identical for `.kicad_sch`, `.kicad_pcb`, and `.kicad_pro` before cleanup.
+- Netlist policy locked to generated-only; `*.net` added to repository ignore rules.
