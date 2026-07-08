@@ -2,17 +2,17 @@
 
 Last updated: 2026-07-08
 Owners: Phil + Copilot
-Status: buck-oriented exploration scaffold for KiCad schematic partitioning.
+Status: buck-oriented exploration scaffold for KiCad single-sheet zone partitioning.
 
 ## 1. Scope
 
 This file defines how to partition the first buck MPPT schematic draft so safety, sensing, and power paths are explicit before component lock.
 
-## 2. Sheet Partition Plan
+## 2. Zone Partition Plan (Single Sheet)
 
-Recommended initial KiCad sheet split:
+Recommended functional zoning within one KiCad schematic page:
 
-1. Sheet A - PV Input and Protection
+1. Zone A - PV Input and Protection
 - PV connector and polarity marking: 2-position pluggable terminal block
 - Reverse polarity strategy: series Schottky diode for first pass
 - Transient/surge suppression: 64 V TVS diode
@@ -25,19 +25,19 @@ Symbol order:
 4. D2 TVS diode
 5. C1/C2/C3 input capacitors
 
-2. Sheet B - MPPT Power Stage
+2. Zone B - MPPT Power Stage
 - High-side buck switch stage
 - Inductor energy-storage path
 - Freewheel diode or synchronous low-side path
 - Output filter boundary
 
-3. Sheet C - Battery Interface and Protection Handoff
+3. Zone C - Battery Interface and Protection Handoff
 - Charger output boundary
 - Battery connector boundary
 - Main fuse handoff note
 - Current-limit envelope note tied to Q-001/DEC-011
 
-4. Sheet D - Sensing and Control I/O
+4. Zone D - Sensing and Control I/O
 - PV voltage/current sensing points
 - Battery voltage/current sensing points
 - Thermal sensing points
@@ -49,12 +49,10 @@ Use stable, purpose-based net names from the first draft:
 
 Power domain nets:
 - PV_IN_POS
-- PV_IN_NEG
+- PWR_NEG
 - MPPT_SW_NODE
 - CHG_OUT_POS
-- CHG_OUT_NEG
 - BAT_BUS_POS
-- BAT_BUS_NEG
 
 Sense nets:
 - SENSE_PV_V
@@ -114,3 +112,6 @@ Control and logging nets:
 - Next cleanup focus: resolve naming at shared return rail and assign valid capacitor footprints before pre-routing gate.
 - 2026-07-08: Sheet 3 kickoff unblocked for boundary-level work; first-pass battery interface map added at `hardware/mppt/sheet3-battery-interface-wiring-map.md`.
 - Sheet 3 scope for next pass: place battery connector and main-fuse boundary with `CHG_OUT_POS/NEG` to `BAT_BUS_POS/NEG` handoff while keeping Q-001-dependent ratings provisional.
+- 2026-07-08: Sheet 3 boundary implementation completed in the single-sheet schematic using zone rectangles and global net naming.
+- Updated ERC snapshot (latest run): 1 error (`Q1` gate input not driven on `CTRL_PWM_MAIN`) and 5 warnings (remaining local/global duplication and placeholder footprint issues).
+- Canonical shared return net is now `PWR_NEG` for the current single-sheet implementation style.

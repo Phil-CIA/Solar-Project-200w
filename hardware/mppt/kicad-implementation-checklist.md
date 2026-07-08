@@ -75,4 +75,4 @@ At each save-point:
 ## 10. Next Session First Action
 
 Fill this line before ending each session:
-- Next action: Resolve the current blocking ERC item in `hardware/kicad/solar-project/ERC.rpt` (`Q1` gate not driven), then start Sheet 3 by placing `J2` and `F2` and wiring `CHG_OUT_POS/NEG` to `BAT_BUS_POS/NEG` per `hardware/mppt/sheet3-battery-interface-wiring-map.md`.
+- Next action: Resolve the current blocking ERC item in `hardware/kicad/solar-project/ERC.rpt` (`Q1` gate not driven), then complete global-label cleanup by replacing duplicate local labels and confirming canonical nets (`PV_IN_POS`, `CHG_OUT_POS`, `BAT_BUS_POS`, `PWR_NEG`, `CTRL_PWM_MAIN`) are used consistently across all zone rectangles.
