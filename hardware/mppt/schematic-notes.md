@@ -109,3 +109,6 @@ Control and logging nets:
 - Authoritative path is now `hardware/kicad/solar-project/` inside this repository.
 - External duplicate at `C:/Users/forch/GitHub/Solar Project` was verified hash-identical for `.kicad_sch`, `.kicad_pcb`, and `.kicad_pro` before cleanup.
 - Netlist policy locked to generated-only; `*.net` added to repository ignore rules.
+- 2026-07-08: Netlist regenerated from repository schematic and ERC run captured in `hardware/kicad/solar-project/ERC.rpt`.
+- Current ERC snapshot: 1 error (`Q1` gate input not driven on `CTRL_PWM_MAIN`) and 7 warnings (shared-net naming, local/global duplicate labels, and placeholder/invalid footprints for C4/C6/C7).
+- Next cleanup focus: resolve naming at shared return rail and assign valid capacitor footprints before pre-routing gate.

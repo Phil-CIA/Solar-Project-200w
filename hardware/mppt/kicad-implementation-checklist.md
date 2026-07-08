@@ -75,4 +75,4 @@ At each save-point:
 ## 10. Next Session First Action
 
 Fill this line before ending each session:
-- Next action: Open `hardware/kicad/solar-project/Solar Project.kicad_sch`, run ERC, then continue Sheet 2 cleanup by placing/connecting R1/C8 snubber placeholder from `MPPT_SW_NODE` to `PV_IN_NEG` and verify Sheet 1-2 net labels against `hardware/mppt/net-plan.md`.
+- Next action: Resolve current ERC findings in `hardware/kicad/solar-project/ERC.rpt` by assigning a temporary gate-drive source or ERC exception for `CTRL_PWM_MAIN`, choosing one canonical name at the shared negative rail node (`PV_IN_NEG` or `CHG_OUT_NEG`), and replacing placeholder capacitor footprints for C4/C6/C7 with valid library footprints.

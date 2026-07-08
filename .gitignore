@@ -25,6 +25,8 @@ out/
 # KiCad and CAD generated artifacts (keep source files in version control)
 *.kicad_prl
 *.net
+*.kicad_sch.lck
+*.rpt
 *.bak
 *.tmp
 *-backups/
