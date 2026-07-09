@@ -75,4 +75,4 @@ At each save-point:
 ## 10. Next Session First Action
 
 Fill this line before ending each session:
-- Next action: Start Zone D by building the voltage and current measuring circuits first (`SENSE_PV_V`, `SENSE_PV_I`, `SENSE_BAT_V`, `SENSE_BAT_I`), then add thermal sense placeholders, and only after that place `U_CTRL`, logging, and fault/control placeholders from `hardware/mppt/sheet4-sensing-control-wiring-map.md`.
+- Next action: **Zone D Phase 1 complete (2026-07-09)**. All measurement, thermal, logging, and control placeholder nets locked. Proceed to full single-sheet schematic ERC validation, then initiate Rev 0 board assembly and staged bring-up validation plan. DEC-005 (control IC selection) deferred to Rev 1 post-characterization planning.

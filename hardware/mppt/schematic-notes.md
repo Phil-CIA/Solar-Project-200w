@@ -118,3 +118,4 @@ Control and logging nets:
 - 2026-07-08: Temporarily cleared the `Q1` gate ERC blocker for architecture-stage progress by setting the embedded `Device:Q_NMOS` gate pin electrical type to passive in the project schematic symbol copy.
 - 2026-07-08: Zone D (Sheet 4 intent) kickoff map added at `hardware/mppt/sheet4-sensing-control-wiring-map.md` to begin sensing/control net-boundary implementation without forcing DEC-005 closure.
 - 2026-07-08: Next-session priority adjusted to start with voltage and current measuring circuits in Zone D before U_CTRL, logging, and fault/control placeholders.
+- 2026-07-09: **Zone D (Sheet 4) Phase 1 implementation COMPLETE** — All measurement circuits, thermal placeholders, logging header, and U_CTRL connector placed. All 16 canonical nets from net-plan.md present as global labels. ERC run with no errors (acceptable warnings for placeholder nets). Ready for full schematic validation and Rev 0 bring-up planning.
