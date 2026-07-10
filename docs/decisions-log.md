@@ -1,6 +1,6 @@
 # Solar Project 200W - Decisions Log
 
-Last updated: 2026-07-08
+Last updated: 2026-07-10
 Decision owners: Phil + Copilot
 Decision policy: move fast, log every non-trivial choice, and defer only with a target date.
 
@@ -25,7 +25,7 @@ Decision policy: move fast, log every non-trivial choice, and defer only with a 
 | DEC-002 | 2026-07-06 | Current phase scope | Complete planning docs before hardware or firmware implementation expansion. | Decided | Reduces rework and safety risk by clarifying constraints first. | Focuses effort on requirements, architecture, and decision clarity. | Phil + Copilot | 2026-07-06 |
 | DEC-003 | 2026-07-08 | MPPT topology and revision scope | Lock Rev 0 to asynchronous buck implementation; defer synchronous buck and dedicated gate-driver architecture to Rev 1 planning. | Decided | Keeps current schematic and routing work stable while preserving a clear upgrade path after bring-up data. | Unblocks Rev 0 Sheet 2 completion and routing; creates explicit Rev 1 efficiency backlog. | Phil + Copilot | 2026-07-08 |
 | DEC-004 | 2026-07-06 | Panel wiring strategy | Use two Renogy 100W panels in series as the Phase 1 design baseline. | Decided | Series reduces PV-side current, simplifies current handling, and aligns naturally with a buck-oriented charger path into a 4S LiFePO4 battery. | Establishes the working PV input envelope for MPPT design and protection sizing. | Phil + Copilot | 2026-07-06 |
-| DEC-005 | 2026-07-06 | Charger control approach | Control strategy deferred (analog power control + MCU supervision vs integrated digital controller). | Deferred | Need architecture and telemetry boundary definition first. | Impacts firmware scope, BOM, and complexity. | Phil + Copilot | 2026-07-13 |
+| DEC-005 | 2026-07-10 | Charger control approach | Select STM32G431 as Rev 0 baseline MCU for control/telemetry prototyping. Re-evaluate MCU choice at each revision; no production lock-in at this stage. | Decided | Prototype-first workflow, low unit volume (2 boards/rev), and rapid iteration priority outweigh strict cost optimization. | Unblocks concrete pin mapping, firmware scaffold, and migration from U_CTRL placeholder to MCU-defined interfaces. | Phil + Copilot | 2026-07-10 |
 | DEC-006 | 2026-07-06 | Telemetry baseline | Start with local serial logging and reserve wireless integration as future extension. | Decided | Keeps bring-up simple while preserving growth path. | Simplifies early firmware and test infrastructure. | Phil + Copilot | 2026-07-06 |
 | DEC-007 | 2026-07-06 | Safety-first gating | Require protection strategy coverage before design expansion (fusing, UVLO/OVP/OCP/OTP, reverse polarity, transient protection). | Decided | Safety constraints should be first-class requirements, not afterthoughts. | Guides requirements and architecture definitions immediately. | Phil + Copilot | 2026-07-06 |
 | DEC-008 | 2026-07-06 | Validation style | Use staged bench bring-up with current-limited progression and logged checkpoints. | Decided | Reduces risk during early integration and debugging. | Affects future test plan and bring-up checklist structure. | Phil + Copilot | 2026-07-06 |
@@ -44,6 +44,7 @@ Decision policy: move fast, log every non-trivial choice, and defer only with a 
 
 ## Change Log
 
+- 2026-07-10: Closed DEC-005 to STM32G431 for Rev 0 baseline control MCU with revision-flexible re-evaluation policy.
 - 2026-07-08: Added Sheet 4 sensing/control wiring map to start Zone D net-boundary implementation with placeholder control ownership while DEC-005 remains deferred.
 - 2026-07-08: Locked converter revision scope: Rev 0 asynchronous buck baseline; synchronous converter and gate-driver architecture deferred to Rev 1.
 - 2026-07-08: Reframed DEC-012/Q-003 as Rev 1 optimization items and removed them as Rev 0 pre-routing blockers.

@@ -1,18 +1,18 @@
 # Sheet 4 Sensing and Control Wiring Map
 
-Last updated: 2026-07-08
+Last updated: 2026-07-10
 Owners: Phil + Copilot
 Scope: define first-pass, implementation-ready zone plan for sensing and control I/O in the single-sheet KiCad schematic, starting with voltage and current measuring circuits.
 
 ## 1. Purpose
 
-Start Zone D (Sheet 4 intent) with stable net boundaries and placeholders, beginning with voltage and current measuring circuits without forcing DEC-005 closure.
+Start Zone D (Sheet 4 intent) with stable net boundaries and placeholders, beginning with voltage and current measuring circuits and now adding a provisional STM32G431 pin-map baseline.
 
 ## 2. First-Pass Symbol Set
 
 | Ref | Function | First-Pass Type | Notes |
 |---|---|---|---|
-| U_CTRL | Control placeholder block | Generic control symbol or hierarchical placeholder | Use as owner for control and telemetry nets while DEC-005 is deferred |
+| U_CTRL | Control placeholder block | Generic control symbol or hierarchical placeholder | Use as owner for control and telemetry nets; map signals to STM32G431 candidates in Section 8 |
 | TP_PV_V | PV voltage sense tap | Test point | Optional but recommended |
 | TP_PV_I | PV current sense tap | Test point | Optional but recommended |
 | TP_BAT_V | Battery voltage sense tap | Test point | Optional but recommended |
@@ -72,14 +72,14 @@ Control and sensing nets:
 
 Add these notes in Zone D:
 
-- ASSUME: U_CTRL is a placeholder owner until DEC-005 control partition is closed.
-- DECISION: DEC-005 remains deferred; only net/interface boundaries are being locked in this pass.
+- ASSUME: U_CTRL remains a schematic owner placeholder until exact STM32G431 package and footprint are locked.
+- DECISION: DEC-005 is now closed to STM32G431 for Rev 0, with revision-flexible re-evaluation allowed in future revs.
 - VERIFY: Sense divider scaling and ADC range compatibility must be checked before part lock.
 - VERIFY: Current-sense element placement and Kelvin routing strategy required before PCB routing.
 
 ## 6. Gate Constraints
 
-- DEC-005 is still deferred, so avoid committing to a final controller IC architecture.
+- DEC-005 is closed for Rev 0 baseline (STM32G431), but exact package/pin lock still requires variant verification.
 - Q-001 affects current-sense full-scale targets; keep current-sense component values provisional.
 - Maintain global-label consistency across all zones on the single-sheet schematic.
 
@@ -89,3 +89,29 @@ Add these notes in Zone D:
 - UART logging boundary is present with a return reference.
 - Thermal sense placeholders exist for both power-stage and board-level monitoring.
 - No duplicate local/global names on canonical nets.
+
+## 8. STM32G431 Rev 0 Interface Mapping (Provisional)
+
+Purpose:
+- Replace generic U_CTRL ownership with a concrete Rev 0 MCU interface direction.
+- Keep mapping provisional until exact package/footprint lock.
+
+| Zone D Net | STM32G431 Role | Candidate Pin |
+|---|---|---|
+| SENSE_PV_V | ADC | PA0 |
+| SENSE_PV_I | ADC | PA1 |
+| SENSE_BAT_V | ADC | PA4 |
+| SENSE_BAT_I | ADC | PA5 |
+| SENSE_TEMP_PWR | ADC | PA6 |
+| SENSE_TEMP_BOARD | ADC | PA7 |
+| CTRL_PWM_MAIN | TIM1 PWM | PA8 |
+| CTRL_EN_CHG | GPIO out | PB5 |
+| FAULT_OCP | GPIO in / EXTI | PB0 |
+| FAULT_OVP | GPIO in / EXTI | PB1 |
+| UART_TX_LOG | USART1_TX | PA9 |
+| UART_RX_CFG | USART1_RX | PA10 |
+
+Notes:
+- SWD and reset pins are mandatory and must remain reserved.
+- Final pin assignment can move if required by package availability or routing quality.
+- Mapping supports Rev 0 prototype bring-up and remains revision-flexible.
