@@ -1,38 +1,37 @@
 # Solar Project 200W - Handoff
 
-Latest active handoff: [docs/SOLAR_HANDOFF_2026-07-08.md](docs/SOLAR_HANDOFF_2026-07-08.md)
+Latest active handoff: [SOLAR_HANDOFF_2026-07-13.md](SOLAR_HANDOFF_2026-07-13.md)
 
-Session status: Phase 1 planning-to-implementation transition complete. Rev 0 scope is locked for Sheet 2 execution.
+Session status: Phase 1 implementation refinement. Rev 0 scope and STM32G431 controller baseline are locked; pre-routing blockers remain open.
 
 ## Current Objective At Stop
 
-Start Sheet 2 symbol placement in KiCad for the Rev 0 asynchronous buck power stage.
+Resolve pre-routing blockers in the schematic (sense-net collisions and fault-net ownership), then re-run ERC and capture clean status.
 
 ## Verified State At Stop
 
 - Rev boundary is explicitly documented:
   - Rev 0: asynchronous buck baseline
   - Rev 1: synchronous converter + dedicated gate-driver upgrade path
-- Sheet 2 execution docs are aligned to Rev 0 async implementation:
-  - `hardware/mppt/sheet2-component-picks.md`
-  - `hardware/mppt/buck-power-stage-wiring-map.md`
-  - `hardware/mppt/kicad-implementation-checklist.md`
-- Decision and kickoff docs reflect closed scope boundaries:
-  - `docs/decisions-log.md`
-  - `docs/phase-1-kickoff.md`
+- Controller baseline for Rev 0 is locked:
+  - DEC-005: STM32G431 selected
+- New local planning/validation artifacts are present for next step execution:
+  - `hardware/mppt/rev0-component-shortlist-2026-07-10.md`
+  - `hardware/mppt/pre-routing-blockers-2026-07-10.md`
 - Active KiCad project remains under:
   - `hardware/kicad/solar-project/`
 
 ## Next Session Priority Order
 
-1. Place Sheet 2 symbols for the Rev 0 power stage (Q1, D3, L1, C4-C7, R1/C8).
-2. Connect Sheet 2 exactly per net map and placement intent.
-3. Add/verify ASSUME, DECISION, and VERIFY notes on the sheet.
-4. Run save-point protocol and record schematic progress.
+1. Review `SOLAR_HANDOFF_2026-07-13.md` and confirm local file state.
+2. Resolve `SENSE_PV_I` and `SENSE_BAT_I` net-collision issues in schematic.
+3. Resolve `FAULT_OCP`/`FAULT_OVP` ownership and dangling-label handling.
+4. Re-run ERC and update `hardware/mppt/schematic-notes.md` with fresh results.
+5. Commit docs and schematic changes in separate commits.
 
 ## First Actions Next Session
 
-1. Read this file and `docs/SOLAR_HANDOFF_2026-07-08.md`.
-2. Open `hardware/kicad/solar-project/Solar Project.kicad_sch`.
-3. Place Q1, D3, and L1 first around `MPPT_SW_NODE`.
-4. Continue with C4/C5, C6/C7, and R1/C8 using the wiring map.
+1. Read this file and `SOLAR_HANDOFF_2026-07-13.md`.
+2. Run `git status --short` and verify modified/untracked files before edits.
+3. Open `hardware/kicad/solar-project/Solar Project.kicad_sch` and fix blocker nets first.
+4. Keep `_autosave-Solar Project.kicad_sch` out of commits.

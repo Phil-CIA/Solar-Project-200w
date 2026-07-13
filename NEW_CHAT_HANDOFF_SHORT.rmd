@@ -1,19 +1,23 @@
-# Solar Project Quick Handoff (2026-07-08)
+# Solar Project Quick Handoff (2026-07-13)
 
-- Session checkpoint: Rev 0 scope lock complete; ready for Sheet 2 symbol placement.
-- Source of truth: `HANDOFF.md`
-- Active repo: `Solar-Project-200w`
+- Session checkpoint: stale session closed with explicit blocker-first restart plan.
+- Source of truth: `HANDOFF.md` and `SOLAR_HANDOFF_2026-07-13.md`.
+- Active repo: `Solar-Project-200w`.
 
 What is done:
-- Rev boundary locked: Rev 0 async buck, Rev 1 synchronous/gate-driver upgrade.
-- Sheet 2 execution docs are aligned and unblocked for Rev 0 routing.
-- Decision, kickoff, and checklist docs updated to remove scope contradictions.
+- DEC-005 is closed: STM32G431 is the Rev 0 controller baseline.
+- Requirements validation notes and pre-routing blocker list were created.
+- Rev 0 component shortlist was created for the currently drawn blocks.
+
+Open state:
+- Local schematic and docs are modified but not committed.
+- KiCad autosave file is present and should not be committed.
 
 Next session first move:
-1. Read `HANDOFF.md` and `docs/SOLAR_HANDOFF_2026-07-08.md`.
-2. Open `hardware/kicad/solar-project/Solar Project.kicad_sch`.
-3. Place Q1, D3, and L1 around `MPPT_SW_NODE`.
-4. Continue placement/wiring from Sheet 2 maps.
+1. Read `HANDOFF.md` and `SOLAR_HANDOFF_2026-07-13.md`.
+2. Run `git status --short`.
+3. Fix current-sense net collisions and fault-net ownership in `Solar Project.kicad_sch`.
+4. Re-run ERC and update `hardware/mppt/schematic-notes.md`.
 
 Paste prompt:
-Continue from HANDOFF.md in Solar-Project-200w. Start with Sheet 2 symbol placement in `Solar Project.kicad_sch` using the locked Rev 0 asynchronous buck baseline and follow `hardware/mppt/sheet2-component-picks.md` plus `hardware/mppt/buck-power-stage-wiring-map.md` exactly.
+Continue from `SOLAR_HANDOFF_2026-07-13.md` in Solar-Project-200w. Start by clearing pre-routing blockers in `hardware/kicad/solar-project/Solar Project.kicad_sch` (`SENSE_PV_I`, `SENSE_BAT_I`, `FAULT_OCP`, `FAULT_OVP`), then run ERC and record results in `hardware/mppt/schematic-notes.md`. Keep docs and schematic commits separate and exclude KiCad autosave files.

@@ -1,55 +1,75 @@
 # Solar Project New Chat Handoff
 
-## Session Closeout - 2026-07-08
+## Session Closeout - 2026-07-13
 
 Project: Solar Project 200W
-Phase: Phase 1 scope lock complete, ready for Sheet 2 schematic execution
+Phase: Phase 1 implementation refinement with blocker-first pre-routing work
 
 ## Current Objective
 
-Begin Sheet 2 symbol placement in KiCad using the Rev 0 asynchronous buck baseline.
+Resume from stale local state safely, clear pre-routing blockers in schematic, and re-run ERC.
 
 ## What Was Completed In This Stop Window
 
-1. Converter revision boundary was explicitly locked:
-   - Rev 0: asynchronous buck baseline
-   - Rev 1: synchronous converter and dedicated gate-driver path
-2. Scope consistency updates were applied to:
+1. DEC-005 was closed: STM32G431 selected as Rev 0 controller baseline.
+2. STM32 mapping and pin-budget planning was documented:
+   - `docs/session-plan-2026-07-10.md`
+   - `hardware/mppt/sheet4-sensing-control-wiring-map.md`
    - `docs/decisions-log.md`
-   - `docs/phase-1-kickoff.md`
-   - `hardware/mppt/sheet2-component-picks.md`
-   - `hardware/mppt/buck-power-stage-wiring-map.md`
-   - `hardware/mppt/kicad-implementation-checklist.md`
-3. DEC-012/Q-003 were reframed as Rev 1 optimization items (not Rev 0 pre-routing blockers).
-4. Current handoff chain was updated for next-session restart continuity.
+   - `hardware/mppt/interface-assumptions.md`
+3. Requirements validation and pre-routing planning artifacts were created locally:
+   - `hardware/mppt/schematic-notes.md` (validation section update)
+   - `hardware/mppt/rev0-component-shortlist-2026-07-10.md`
+   - `hardware/mppt/pre-routing-blockers-2026-07-10.md`
+4. Handoff chain was refreshed for clean restart:
+   - `HANDOFF.md`
+   - `SOLAR_HANDOFF_2026-07-13.md`
+   - `NEXT_CHAT_PROMPT.md`
 
 ## Verified State At Stop
 
-- Rev 0 Sheet 2 implementation docs are consistent and actionable.
-- Routing gate no longer blocks Rev 0 due to deferred Rev 1 architecture work.
-- KiCad project remains available at `hardware/kicad/solar-project/`.
-- Edited markdown files validated with no errors.
+- Rev 0 architecture remains stable (asynchronous buck baseline).
+- STM32G431 baseline is now explicit for Rev 0 control planning.
+- Pre-routing gate is currently blocked by known net/connectivity issues.
+- Local working tree contains intentional uncommitted docs + schematic edits.
 
 ## Next Session Actions (In Order)
 
-1. Open `hardware/kicad/solar-project/Solar Project.kicad_sch`.
-2. Place Q1, D3, and L1 first around `MPPT_SW_NODE`.
-3. Place C4/C5 input decoupling and C6/C7 output capacitors.
-4. Place R1/C8 snubber placeholder.
-5. Apply exact wiring from `hardware/mppt/buck-power-stage-wiring-map.md`.
-6. Run save-point protocol updates in `hardware/mppt/schematic-notes.md`.
+1. Run `git status --short` and verify local state before making new edits.
+2. Exclude KiCad autosave artifact from commits.
+3. Open `hardware/kicad/solar-project/Solar Project.kicad_sch`.
+4. Fix current-sense net collisions:
+   - `SENSE_PV_I` vs `CHG_OUT_POS`
+   - `SENSE_BAT_I` vs `BAT_BUS_POS`
+5. Fix dangling fault-net ownership/termination:
+   - `FAULT_OCP`
+   - `FAULT_OVP`
+6. Re-run ERC and record dated results in `hardware/mppt/schematic-notes.md`.
+7. Commit docs and schematic updates in separate commits.
+
+## Local State At Stop
+
+- Modified:
+  - `docs/session-plan-2026-07-10.md`
+  - `hardware/kicad/solar-project/Solar Project.kicad_sch`
+  - `hardware/mppt/kicad-implementation-checklist.md`
+  - `hardware/mppt/schematic-notes.md`
+- Untracked:
+  - `hardware/mppt/pre-routing-blockers-2026-07-10.md`
+  - `hardware/mppt/rev0-component-shortlist-2026-07-10.md`
+  - `hardware/kicad/solar-project/_autosave-Solar Project.kicad_sch`
 
 ## Rules For Next Session
 
 1. Keep learning-first scope and staged bring-up approach.
-2. Avoid committing transient CAD local-state files.
-3. Keep assumptions explicit and dated in the decisions log.
+2. Avoid committing transient CAD local-state files, especially KiCad autosaves.
+3. Keep assumptions explicit and dated in the decisions log and schematic notes.
 4. Do not reopen Rev 0 architecture scope; keep synchronous/gate-driver work in Rev 1 backlog.
 
 ## First Action Next Session
 
-Read `HANDOFF.md`, then place Q1, D3, and L1 on Sheet 2 before any optimization changes.
+Read `HANDOFF.md` and `SOLAR_HANDOFF_2026-07-13.md`, then clear pre-routing blockers in the schematic before any new feature work.
 
 ## Suggested Prompt For New Chat
 
-Continue in Solar-Project-200w from HANDOFF.md. Start Sheet 2 placement in `hardware/kicad/solar-project/Solar Project.kicad_sch` using the locked Rev 0 asynchronous buck baseline, and follow `hardware/mppt/sheet2-component-picks.md` and `hardware/mppt/buck-power-stage-wiring-map.md` exactly.
+Continue in Solar-Project-200w from `SOLAR_HANDOFF_2026-07-13.md`. Start by clearing the pre-routing blockers in `hardware/kicad/solar-project/Solar Project.kicad_sch` (`SENSE_PV_I`, `SENSE_BAT_I`, `FAULT_OCP`, `FAULT_OVP`), run ERC, and update `hardware/mppt/schematic-notes.md` with a dated verification snapshot before starting any new scope.
