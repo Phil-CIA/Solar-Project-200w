@@ -14524,12 +14524,6 @@
 		(uuid "253dc53a-6e2d-4e14-bb25-e703411fa381")
 	)
 	(junction
-		(at 391.16 59.69)
-		(diameter 0)
-		(color 0 0 0 0)
-		(uuid "279f73c3-47eb-4296-b363-605b06de5e32")
-	)
-	(junction
 		(at 74.93 189.23)
 		(diameter 0)
 		(color 0 0 0 0)
@@ -14632,12 +14626,6 @@
 		(uuid "49dc78a1-0690-4f8a-8058-fc938485a3bf")
 	)
 	(junction
-		(at 87.63 184.15)
-		(diameter 0)
-		(color 0 0 0 0)
-		(uuid "4e45e9a1-9b33-41dd-8a57-66e18bed3b59")
-	)
-	(junction
 		(at 87.63 67.31)
 		(diameter 0)
 		(color 0 0 0 0)
@@ -14708,12 +14696,6 @@
 		(diameter 0)
 		(color 0 0 0 0)
 		(uuid "72a82dfb-329a-4944-8d67-c318ebe12204")
-	)
-	(junction
-		(at 74.93 207.01)
-		(diameter 0)
-		(color 0 0 0 0)
-		(uuid "7345af14-8118-4ae3-9f32-3a051d2a5e81")
 	)
 	(junction
 		(at 370.84 52.07)
@@ -15473,7 +15455,6 @@
 		)
 		(uuid "11ace6fe-5ccc-4f95-b20b-5bdb4cf7f1d9")
 	)
-
 	(wire
 		(pts
 			(xy 158.75 199.39) (xy 162.56 199.39)
@@ -15564,7 +15545,6 @@
 		)
 		(uuid "1c9f1ba4-cbc0-4c3f-b536-c92479ae25cc")
 	)
-
 	(wire
 		(pts
 			(xy 64.77 273.05) (xy 64.77 281.94)
@@ -16205,28 +16185,6 @@
 		)
 		(uuid "52cb5c42-52a2-4a41-9c12-72ccdb633d6e")
 	)
-	(global_label "PWR_NEG"
-		(shape input)
-		(at 93.98 219.71 270)
-		(fields_autoplaced yes)
-		(effects
-			(font
-				(size 0.635 0.635)
-			)
-			(justify left)
-		)
-		(uuid "a1b2c3d4-e5f6-7890-abcd-ef1234567890")
-		(property "Intersheetrefs" "${INTERSHEET_REFS}"
-			(at 93.98 219.71 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify left)
-				(hide yes)
-			)
-		)
-	)
 	(wire
 		(pts
 			(xy 46.99 33.02) (xy 46.99 38.1)
@@ -16359,16 +16317,6 @@
 	)
 	(wire
 		(pts
-			(xy 391.16 59.69) (xy 400.05 59.69)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "5d4a99c6-1c04-471b-afb8-28c70fd1606d")
-	)
-	(wire
-		(pts
 			(xy 72.39 300.99) (xy 74.93 300.99)
 		)
 		(stroke
@@ -16399,7 +16347,7 @@
 	)
 	(wire
 		(pts
-			(xy 381 59.69) (xy 391.16 59.69)
+			(xy 381 59.69) (xy 400.05 59.69)
 		)
 		(stroke
 			(width 0)
@@ -17519,36 +17467,6 @@
 	)
 	(wire
 		(pts
-			(xy 302.26 177.80) (xy 302.26 182.88)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "e1f2a3b4-c5d6-7890-abcd-ef1234567801")
-	)
-	(wire
-		(pts
-			(xy 302.26 182.88) (xy 309.88 182.88)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "e2f3a4b5-c6d7-8901-bcde-f01234567802")
-	)
-	(wire
-		(pts
-			(xy 309.88 182.88) (xy 309.88 187.96)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "e3f4a5b6-c7d8-9012-cdef-012345678803")
-	)
-	(wire
-		(pts
 			(xy 381 52.07) (xy 391.16 52.07)
 		)
 		(stroke
@@ -17757,7 +17675,6 @@
 		)
 		(uuid "d09f93f7-8b16-4200-a23a-8cdd3aa0de75")
 	)
-
 	(wire
 		(pts
 			(xy 72.39 292.1) (xy 64.77 292.1)
@@ -18010,6 +17927,16 @@
 	)
 	(wire
 		(pts
+			(xy 302.26 177.8) (xy 302.26 182.88)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "e1f2a3b4-c5d6-7890-abcd-ef1234567801")
+	)
+	(wire
+		(pts
 			(xy 30.48 33.02) (xy 46.99 33.02)
 		)
 		(stroke
@@ -18017,6 +17944,16 @@
 			(type default)
 		)
 		(uuid "e27c6c94-ae2d-442f-9036-860733e80d05")
+	)
+	(wire
+		(pts
+			(xy 302.26 182.88) (xy 309.88 182.88)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "e2f3a4b5-c6d7-8901-bcde-f01234567802")
 	)
 	(wire
 		(pts
@@ -18037,6 +17974,16 @@
 			(type default)
 		)
 		(uuid "e36566d2-dc83-40f1-9b11-aec95a6209be")
+	)
+	(wire
+		(pts
+			(xy 309.88 182.88) (xy 309.88 187.96)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "e3f4a5b6-c7d8-9012-cdef-012345678803")
 	)
 	(wire
 		(pts
@@ -18792,6 +18739,28 @@
 			)
 		)
 	)
+	(global_label "U6_FLT"
+		(shape input)
+		(at 102.87 219.71 180)
+		(fields_autoplaced yes)
+		(effects
+			(font
+				(size 0.635 0.635)
+			)
+			(justify right)
+		)
+		(uuid "305a31aa-4207-4027-b8d5-764f51cbf2bb")
+		(property "Intersheetrefs" "${INTERSHEET_REFS}"
+			(at 96.2278 219.71 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify right)
+				(hide yes)
+			)
+		)
+	)
 	(global_label "PWR_NEG"
 		(shape input)
 		(at 123.19 349.25 180)
@@ -19072,6 +19041,28 @@
 					(size 1.27 1.27)
 				)
 				(justify left)
+				(hide yes)
+			)
+		)
+	)
+	(global_label "PWR_NEG"
+		(shape input)
+		(at 102.87 207.01 180)
+		(fields_autoplaced yes)
+		(effects
+			(font
+				(size 0.635 0.635)
+			)
+			(justify right)
+		)
+		(uuid "56c13344-5a98-4189-b6b5-7f5e71996ab4")
+		(property "Intersheetrefs" "${INTERSHEET_REFS}"
+			(at 96.3378 207.01 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify right)
 				(hide yes)
 			)
 		)
@@ -19684,72 +19675,6 @@
 			)
 		)
 	)
-	(global_label "CHG_OUT_POS"
-		(shape input)
-		(at 294.64 182.88 180)
-		(fields_autoplaced yes)
-		(effects
-			(font
-				(size 0.635 0.635)
-			)
-			(justify right)
-		)
-		(uuid "f1a2b3c4-d5e6-7890-cdef-012345678810")
-		(property "Intersheetrefs" "${INTERSHEET_REFS}"
-			(at 287.7669 182.88 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify right)
-				(hide yes)
-			)
-		)
-	)
-	(global_label "VBUS"
-		(shape input)
-		(at 294.64 177.80 180)
-		(fields_autoplaced yes)
-		(effects
-			(font
-				(size 0.635 0.635)
-			)
-			(justify right)
-		)
-		(uuid "f2a3b4c5-d6e7-8901-cdef-012345678811")
-		(property "Intersheetrefs" "${INTERSHEET_REFS}"
-			(at 290.0564 177.80 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify right)
-				(hide yes)
-			)
-		)
-	)
-	(global_label "CTRL_SUPPLY_IN"
-		(shape input)
-		(at 320.04 187.96 0)
-		(fields_autoplaced yes)
-		(effects
-			(font
-				(size 0.635 0.635)
-			)
-			(justify left)
-		)
-		(uuid "f3a4b5c6-d7e8-9012-cdef-012345678812")
-		(property "Intersheetrefs" "${INTERSHEET_REFS}"
-			(at 327.2069 187.96 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify left)
-				(hide yes)
-			)
-		)
-	)
 	(global_label "_Undervoltage Feedback"
 		(shape input)
 		(at 166.37 43.18 0)
@@ -19904,72 +19829,6 @@
 			)
 		)
 	)
-	(global_label "U6_VCC2"
-		(shape input)
-		(at 102.87 184.15 180)
-		(fields_autoplaced yes)
-		(effects
-			(font
-				(size 0.635 0.635)
-			)
-			(justify right)
-		)
-		(uuid "dbf50c2e-a7f0-4797-bf58-21154c86bf4d")
-		(property "Intersheetrefs" "${INTERSHEET_REFS}"
-			(at 96.2478 184.15 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify right)
-				(hide yes)
-			)
-		)
-	)
-	(global_label "PWR_NEG"
-		(shape input)
-		(at 102.87 207.01 180)
-		(fields_autoplaced yes)
-		(effects
-			(font
-				(size 0.635 0.635)
-			)
-			(justify right)
-		)
-		(uuid "56c13344-5a98-4189-b6b5-7f5e71996ab4")
-		(property "Intersheetrefs" "${INTERSHEET_REFS}"
-			(at 96.3378 207.01 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify right)
-				(hide yes)
-			)
-		)
-	)
-	(global_label "U6_FLT"
-		(shape input)
-		(at 102.87 219.71 180)
-		(fields_autoplaced yes)
-		(effects
-			(font
-				(size 0.635 0.635)
-			)
-			(justify right)
-		)
-		(uuid "305a31aa-4207-4027-b8d5-764f51cbf2bb")
-		(property "Intersheetrefs" "${INTERSHEET_REFS}"
-			(at 96.2278 219.71 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify right)
-				(hide yes)
-			)
-		)
-	)
 	(global_label "PWR_NEG"
 		(shape input)
 		(at 77.47 300.99 0)
@@ -19983,6 +19842,28 @@
 		(uuid "a0ba9860-3215-4d1d-b5c6-cdc225b526ec")
 		(property "Intersheetrefs" "${INTERSHEET_REFS}"
 			(at 83.3169 300.99 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+				(hide yes)
+			)
+		)
+	)
+	(global_label "PWR_NEG"
+		(shape input)
+		(at 93.98 219.71 90)
+		(fields_autoplaced yes)
+		(effects
+			(font
+				(size 0.635 0.635)
+			)
+			(justify left)
+		)
+		(uuid "a1b2c3d4-e5f6-7890-abcd-ef1234567890")
+		(property "Intersheetrefs" "${INTERSHEET_REFS}"
+			(at 93.98 219.71 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -20574,6 +20455,28 @@
 			)
 		)
 	)
+	(global_label "U6_VCC2"
+		(shape input)
+		(at 102.87 184.15 180)
+		(fields_autoplaced yes)
+		(effects
+			(font
+				(size 0.635 0.635)
+			)
+			(justify right)
+		)
+		(uuid "dbf50c2e-a7f0-4797-bf58-21154c86bf4d")
+		(property "Intersheetrefs" "${INTERSHEET_REFS}"
+			(at 96.2478 184.15 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify right)
+				(hide yes)
+			)
+		)
+	)
 	(global_label "V_in_FB"
 		(shape input)
 		(at 154.94 43.18 0)
@@ -20706,6 +20609,28 @@
 			)
 		)
 	)
+	(global_label "CHG_OUT_POS"
+		(shape input)
+		(at 294.64 182.88 180)
+		(fields_autoplaced yes)
+		(effects
+			(font
+				(size 0.635 0.635)
+			)
+			(justify right)
+		)
+		(uuid "f1a2b3c4-d5e6-7890-cdef-012345678810")
+		(property "Intersheetrefs" "${INTERSHEET_REFS}"
+			(at 287.7669 182.88 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify right)
+				(hide yes)
+			)
+		)
+	)
 	(global_label "PWR_NEG"
 		(shape input)
 		(at 123.19 337.82 180)
@@ -20719,6 +20644,28 @@
 		(uuid "f2399b33-c143-4405-a273-8635bb8f2941")
 		(property "Intersheetrefs" "${INTERSHEET_REFS}"
 			(at 117.3431 337.82 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify right)
+				(hide yes)
+			)
+		)
+	)
+	(global_label "VBUS"
+		(shape input)
+		(at 294.64 177.8 180)
+		(fields_autoplaced yes)
+		(effects
+			(font
+				(size 0.635 0.635)
+			)
+			(justify right)
+		)
+		(uuid "f2a3b4c5-d6e7-8901-cdef-012345678811")
+		(property "Intersheetrefs" "${INTERSHEET_REFS}"
+			(at 290.0564 177.8 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -20761,6 +20708,28 @@
 		(uuid "f2c1e152-480b-4a8d-9767-b5184527765a")
 		(property "Intersheetrefs" "${INTERSHEET_REFS}"
 			(at 542.0288 276.86 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+				(hide yes)
+			)
+		)
+	)
+	(global_label "CTRL_SUPPLY_IN"
+		(shape input)
+		(at 320.04 187.96 0)
+		(fields_autoplaced yes)
+		(effects
+			(font
+				(size 0.635 0.635)
+			)
+			(justify left)
+		)
+		(uuid "f3a4b5c6-d7e8-9012-cdef-012345678812")
+		(property "Intersheetrefs" "${INTERSHEET_REFS}"
+			(at 327.2069 187.96 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -25621,112 +25590,6 @@
 		)
 	)
 	(symbol
-		(lib_id "Device:C")
-		(at 391.16 55.88 0)
-		(unit 1)
-		(exclude_from_sim no)
-		(in_bom yes)
-		(on_board yes)
-		(dnp no)
-		(fields_autoplaced yes)
-		(uuid "3d73e06f-543f-41fb-84f9-2798ac7c4b1d")
-		(property "Reference" "C30"
-			(at 394.97 55.245 0)
-			(effects
-				(font
-					(size 0.762 0.762)
-				)
-				(justify left)
-			)
-		)
-		(property "Value" "47uf"
-			(at 394.97 56.515 0)
-			(effects
-				(font
-					(size 0.762 0.762)
-				)
-				(justify left)
-			)
-		)
-		(property "Footprint" "Capacitor_THT:CP_Radial_D6.3mm_P2.50mm"
-			(at 392.1252 59.69 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Datasheet" "https://www.lcsc.com/datasheet/C122243.pdf?spm=wm.sxq.inf.ggs___wm.fly.bg.0.xh&lcsc_vid=EVEIA1dfFlIMBAdXEgVXUVVVTwRWBgBfE1lbBABSQFMxVlNeQ1JZVlVfTlVYUjsOAxUeFF5JWBYZEEoKFBINSQcJGk4NBhADEA4cHktXR1FZSQwSGg0%3D"
-			(at 391.16 55.88 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Description" "CAP ALUM POLY 47uF ±20% 50V TH  ESR=34mohms"
-			(at 391.16 55.88 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "LCSC" "C122243"
-			(at 391.16 55.88 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Average Rectified Current (Io)" ""
-			(at 391.16 55.88 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Diode Configuration" ""
-			(at 391.16 55.88 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Peak forward surge current" ""
-			(at 391.16 55.88 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(pin "2"
-			(uuid "596f42c4-b02a-47b9-abf5-e378653fc1bb")
-		)
-		(pin "1"
-			(uuid "6810a5d9-fc9a-4f26-bcfb-50e2408e90db")
-		)
-		(instances
-			(project "Solar Project"
-				(path "/28299885-0f47-4c9d-af0f-f2db484b5c54"
-					(reference "C30")
-					(unit 1)
-				)
-			)
-		)
-	)
-	(symbol
 		(lib_id "Device:R")
 		(at 166.37 38.1 0)
 		(unit 1)
@@ -28319,254 +28182,6 @@
 			(project ""
 				(path "/28299885-0f47-4c9d-af0f-f2db484b5c54"
 					(reference "U4")
-					(unit 1)
-				)
-			)
-		)
-	)
-	(symbol
-		(lib_id "PCM_JLCPCB-Resistors:0805,10Ω")
-		(at 323.85 50.8 90)
-		(unit 1)
-		(exclude_from_sim no)
-		(in_bom yes)
-		(on_board yes)
-		(dnp no)
-		(uuid "5a25e234-a795-4646-b37f-4f03b89ef244")
-		(property "Reference" "R34"
-			(at 323.85 48.514 90)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Value" "10Ω"
-			(at 323.85 50.8 90)
-			(do_not_autoplace yes)
-			(effects
-				(font
-					(size 0.8 0.8)
-				)
-			)
-		)
-		(property "Footprint" "PCM_JLCPCB:R_0805"
-			(at 323.85 52.578 90)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Datasheet" "https://www.lcsc.com/datasheet/lcsc_datasheet_2206010216_UNI-ROYAL-Uniroyal-Elec-0805W8F100JT5E_C17415.pdf"
-			(at 323.85 50.8 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Description" "125mW Thick Film Resistors 150V ±1% ±200ppm/°C 10Ω 0805 Chip Resistor - Surface Mount ROHS"
-			(at 323.85 50.8 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "LCSC" "C17415"
-			(at 323.85 50.8 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Stock" "3283689"
-			(at 323.85 50.8 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Price" "0.005USD"
-			(at 323.85 50.8 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Process" "SMT"
-			(at 323.85 50.8 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Minimum Qty" "20"
-			(at 323.85 50.8 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Attrition Qty" "6"
-			(at 323.85 50.8 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Class" "Basic Component"
-			(at 323.85 50.8 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Category" "Resistors,Chip Resistor - Surface Mount"
-			(at 323.85 50.8 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Manufacturer" "UNI-ROYAL(Uniroyal Elec)"
-			(at 323.85 50.8 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Part" "0805W8F100JT5E"
-			(at 323.85 50.8 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Resistance" "10Ω"
-			(at 323.85 50.8 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Power(Watts)" "125mW"
-			(at 323.85 50.8 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Type" "Thick Film Resistors"
-			(at 323.85 50.8 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Overload Voltage (Max)" "150V"
-			(at 323.85 50.8 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Operating Temperature Range" "-55°C~+155°C"
-			(at 323.85 50.8 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Tolerance" "±1%"
-			(at 323.85 50.8 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Temperature Coefficient" "±200ppm/°C"
-			(at 323.85 50.8 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Average Rectified Current (Io)" ""
-			(at 323.85 50.8 90)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Diode Configuration" ""
-			(at 323.85 50.8 90)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Peak forward surge current" ""
-			(at 323.85 50.8 90)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(pin "2"
-			(uuid "3ff51cd8-5afd-41dc-82d2-e74718350baf")
-		)
-		(pin "1"
-			(uuid "51d1b46e-fc40-45db-936e-d63afa4de57e")
-		)
-		(instances
-			(project ""
-				(path "/28299885-0f47-4c9d-af0f-f2db484b5c54"
-					(reference "R34")
 					(unit 1)
 				)
 			)
@@ -32883,214 +32498,6 @@
 		)
 	)
 	(symbol
-		(lib_id "PCM_JLCPCB-Diodes:Schottky,1N5819WS")
-		(at 298.45 182.88 90)
-		(unit 1)
-		(exclude_from_sim no)
-		(in_bom yes)
-		(on_board yes)
-		(dnp no)
-		(fields_autoplaced yes)
-		(uuid "d6a1b2c3-d4e5-6789-abcd-ef0123456789")
-		(property "Reference" "D6"
-			(at 298.7075 177.80 90)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Value" "1N5819WS"
-			(at 298.7075 180.34 90)
-			(effects
-				(font
-					(size 0.8 0.8)
-				)
-			)
-		)
-		(property "Footprint" "PCM_JLCPCB:D_SOD-323"
-			(at 298.45 184.658 90)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Datasheet" "https://www.lcsc.com/datasheet/lcsc_datasheet_2409300937_Guangdong-Hottech-1N5819WS_C191023.pdf"
-			(at 298.45 182.88 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Description" "40V 600mV@1A 1A SOD-323 Schottky Diodes ROHS"
-			(at 298.45 182.88 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "LCSC" "C191023"
-			(at 298.45 182.88 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Average Rectified Current (Io)" ""
-			(at 298.45 182.88 90)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Diode Configuration" ""
-			(at 298.45 182.88 90)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Peak forward surge current" ""
-			(at 298.45 182.88 90)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(pin "1"
-			(uuid "d6c1d2e3-f4a5-6789-bcde-f01234567890")
-		)
-		(pin "2"
-			(uuid "d6e1f2a3-b4c5-6789-cdef-012345678901")
-		)
-		(instances
-			(project ""
-				(path "/28299885-0f47-4c9d-af0f-f2db484b5c54"
-					(reference "D6")
-					(unit 1)
-				)
-			)
-		)
-	)
-	(symbol
-		(lib_id "PCM_JLCPCB-Diodes:Schottky,1N5819WS")
-		(at 298.45 177.80 90)
-		(unit 1)
-		(exclude_from_sim no)
-		(in_bom yes)
-		(on_board yes)
-		(dnp no)
-		(fields_autoplaced yes)
-		(uuid "d7a1b2c3-d4e5-6789-abcd-ef0123456789")
-		(property "Reference" "D7"
-			(at 298.7075 172.72 90)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Value" "1N5819WS"
-			(at 298.7075 175.26 90)
-			(effects
-				(font
-					(size 0.8 0.8)
-				)
-			)
-		)
-		(property "Footprint" "PCM_JLCPCB:D_SOD-323"
-			(at 298.45 179.578 90)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Datasheet" "https://www.lcsc.com/datasheet/lcsc_datasheet_2409300937_Guangdong-Hottech-1N5819WS_C191023.pdf"
-			(at 298.45 177.80 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Description" "40V 600mV@1A 1A SOD-323 Schottky Diodes ROHS"
-			(at 298.45 177.80 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "LCSC" "C191023"
-			(at 298.45 177.80 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Average Rectified Current (Io)" ""
-			(at 298.45 177.80 90)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Diode Configuration" ""
-			(at 298.45 177.80 90)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Peak forward surge current" ""
-			(at 298.45 177.80 90)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(pin "1"
-			(uuid "d7c1d2e3-f4a5-6789-bcde-f01234567890")
-		)
-		(pin "2"
-			(uuid "d7e1f2a3-b4c5-6789-cdef-012345678901")
-		)
-		(instances
-			(project ""
-				(path "/28299885-0f47-4c9d-af0f-f2db484b5c54"
-					(reference "D7")
-					(unit 1)
-				)
-			)
-		)
-	)
-	(symbol
 		(lib_id "PCM_JLCPCB-Interface:Transceiver, USB")
 		(at 157.48 325.12 0)
 		(unit 1)
@@ -35022,7 +34429,7 @@
 		(dnp no)
 		(uuid "b789ab44-6dd2-46a7-abfe-fe3acbea1aec")
 		(property "Reference" "R38"
-			(at 316.23 33.0199 0)
+			(at 315.214 34.798 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -37706,6 +37113,214 @@
 			(project ""
 				(path "/28299885-0f47-4c9d-af0f-f2db484b5c54"
 					(reference "L3")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "PCM_JLCPCB-Diodes:Schottky,1N5819WS")
+		(at 298.45 182.88 90)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(fields_autoplaced yes)
+		(uuid "d6a1b2c3-d4e5-6789-abcd-ef0123456789")
+		(property "Reference" "D6"
+			(at 298.7075 177.8 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Value" "1N5819WS"
+			(at 298.7075 180.34 90)
+			(effects
+				(font
+					(size 0.8 0.8)
+				)
+			)
+		)
+		(property "Footprint" "PCM_JLCPCB:D_SOD-323"
+			(at 298.45 184.658 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" "https://www.lcsc.com/datasheet/lcsc_datasheet_2409300937_Guangdong-Hottech-1N5819WS_C191023.pdf"
+			(at 298.45 182.88 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" "40V 600mV@1A 1A SOD-323 Schottky Diodes ROHS"
+			(at 298.45 182.88 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "LCSC" "C191023"
+			(at 298.45 182.88 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Average Rectified Current (Io)" ""
+			(at 298.45 182.88 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Diode Configuration" ""
+			(at 298.45 182.88 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Peak forward surge current" ""
+			(at 298.45 182.88 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "1"
+			(uuid "d6c1d2e3-f4a5-6789-bcde-f01234567890")
+		)
+		(pin "2"
+			(uuid "d6e1f2a3-b4c5-6789-cdef-012345678901")
+		)
+		(instances
+			(project ""
+				(path "/28299885-0f47-4c9d-af0f-f2db484b5c54"
+					(reference "D6")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "PCM_JLCPCB-Diodes:Schottky,1N5819WS")
+		(at 298.45 177.8 90)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(fields_autoplaced yes)
+		(uuid "d7a1b2c3-d4e5-6789-abcd-ef0123456789")
+		(property "Reference" "D7"
+			(at 298.7075 172.72 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Value" "1N5819WS"
+			(at 298.7075 175.26 90)
+			(effects
+				(font
+					(size 0.8 0.8)
+				)
+			)
+		)
+		(property "Footprint" "PCM_JLCPCB:D_SOD-323"
+			(at 298.45 179.578 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" "https://www.lcsc.com/datasheet/lcsc_datasheet_2409300937_Guangdong-Hottech-1N5819WS_C191023.pdf"
+			(at 298.45 177.8 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" "40V 600mV@1A 1A SOD-323 Schottky Diodes ROHS"
+			(at 298.45 177.8 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "LCSC" "C191023"
+			(at 298.45 177.8 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Average Rectified Current (Io)" ""
+			(at 298.45 177.8 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Diode Configuration" ""
+			(at 298.45 177.8 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Peak forward surge current" ""
+			(at 298.45 177.8 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "1"
+			(uuid "d7c1d2e3-f4a5-6789-bcde-f01234567890")
+		)
+		(pin "2"
+			(uuid "d7e1f2a3-b4c5-6789-cdef-012345678901")
+		)
+		(instances
+			(project ""
+				(path "/28299885-0f47-4c9d-af0f-f2db484b5c54"
+					(reference "D7")
 					(unit 1)
 				)
 			)
