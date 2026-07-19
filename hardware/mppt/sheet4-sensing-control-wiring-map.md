@@ -1,6 +1,6 @@
 # Sheet 4 Sensing and Control Wiring Map
 
-Last updated: 2026-07-10
+Last updated: 2026-07-14
 Owners: Phil + Copilot
 Scope: define first-pass, implementation-ready zone plan for sensing and control I/O in the single-sheet KiCad schematic, starting with voltage and current measuring circuits.
 
@@ -20,6 +20,8 @@ Start Zone D (Sheet 4 intent) with stable net boundaries and placeholders, begin
 | TH_PWR | Power thermal sensor placeholder | NTC or sensor placeholder symbol | Bind to SENSE_TEMP_PWR |
 | TH_BOARD | Board thermal sensor placeholder | NTC or sensor placeholder symbol | Bind to SENSE_TEMP_BOARD |
 | J_LOG | Serial logging header | 1x03 or 1x04 header | Include TX, RX, and return reference |
+| U_PWR_CTRL | Control-rail regulator block | Wide-input buck + optional post-filter stage | Own `CTRL_SUPPLY_IN` to `CTRL_3V3` conversion per DEC-013 |
+| J_USB_DBG | USB bench-power boundary | USB connector or 5V header placeholder | Bench fallback source for control rail when PV is absent |
 
 ## 2.1 First Build Priority
 
@@ -42,6 +44,10 @@ Power and boundary references:
 - CHG_OUT_POS
 - BAT_BUS_POS
 - PWR_NEG
+- CTRL_SUPPLY_IN
+- USB_5V_IN
+- CTRL_3V3
+- CTRL_3V3A
 
 Control and sensing nets:
 
@@ -67,6 +73,13 @@ Control and sensing nets:
 5. TP_PV_I and TP_BAT_I connect to SENSE_PV_I and SENSE_BAT_I placeholders (final current-shunt topology deferred).
 6. TH_PWR and TH_BOARD connect to SENSE_TEMP_PWR and SENSE_TEMP_BOARD.
 7. J_LOG provides UART_TX_LOG, UART_RX_CFG, and PWR_NEG reference.
+8. U_PWR_CTRL converts `CTRL_SUPPLY_IN` to `CTRL_3V3` and feeds MCU supply pins.
+9. `USB_5V_IN` enters only through protected bench-fallback path; no direct backfeed into USB boundary is allowed.
+
+Current schematic state note:
+- The drawn schematic presently uses U2 as the provisional `CTRL_3V3` owner.
+- U4 now references `CTRL_SUPPLY_IN` and represents the intended wide-input candidate path, but it is not yet wired as the active `CTRL_3V3` source.
+- Q-004 exists to decide which block becomes the actual Rev 0 control-rail owner.
 
 ## 5. Required On-Zone Notes
 
@@ -74,8 +87,10 @@ Add these notes in Zone D:
 
 - ASSUME: U_CTRL remains a schematic owner placeholder until exact STM32G431 package and footprint are locked.
 - DECISION: DEC-005 is now closed to STM32G431 for Rev 0, with revision-flexible re-evaluation allowed in future revs.
+- DECISION: DEC-013 fixes Rev 0 control-power architecture to single wide-input buck primary path with PV-first runtime behavior and protected USB bench fallback.
 - VERIFY: Sense divider scaling and ADC range compatibility must be checked before part lock.
 - VERIFY: Current-sense element placement and Kelvin routing strategy required before PCB routing.
+- VERIFY: Startup checks must pass for PV-only and USB-only bench modes before pre-routing gate closure.
 
 ## 6. Gate Constraints
 

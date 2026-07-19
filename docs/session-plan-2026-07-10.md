@@ -96,3 +96,10 @@ Decision context:
 - Confirm exact STM32G431 package variant and alternate-function compatibility.
 - Confirm ADC pin availability is unchanged after SWD/UART/debug reservations.
 - Confirm timer channel choice aligns with intended PWM frequency and control strategy.
+
+## 8. Execution Notes (Same Session)
+
+- Added Rev 0 component shortlist with margin and sourcing-risk fields: `hardware/mppt/rev0-component-shortlist-2026-07-10.md`.
+- Component shortlist now covers Q1, D3, L1, C4-C7, divider paths, and PV protection items (F1, D1, D2).
+- Added PCB pre-routing blocker queue from ERC/validation findings: `hardware/mppt/pre-routing-blockers-2026-07-10.md`.
+- Remaining blockers before hard lock: Q-001 closure, current-sense topology lock, and switching-frequency-driven L1/Q1/D3 thermal confirmation.

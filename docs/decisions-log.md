@@ -1,6 +1,6 @@
 # Solar Project 200W - Decisions Log
 
-Last updated: 2026-07-10
+Last updated: 2026-07-14
 Decision owners: Phil + Copilot
 Decision policy: move fast, log every non-trivial choice, and defer only with a target date.
 
@@ -33,6 +33,7 @@ Decision policy: move fast, log every non-trivial choice, and defer only with a 
 | DEC-010 | 2026-07-06 | Phase 1 execution mode | Use rapid decision closure with conservative fallback assumptions when blocker data is unavailable in-session. | Decided | Maintains momentum while preserving safety boundaries and traceability. | Prevents schedule stall during early implementation exploration. | Phil + Copilot | 2026-07-06 |
 | DEC-011 | 2026-07-06 | Temporary MPPT bounds | Apply temporary planning bounds: 15A continuous charge path assumption and dual panel-wiring envelope modeling until Q-001 and DEC-004 are closed. | Decided | Enables immediate schematic exploration while waiting for final battery and wiring constraints. | Allows Phase 1 design activity without unsafe implicit assumptions. | Phil + Copilot | 2026-07-06 |
 | DEC-012 | 2026-07-08 | PV reverse-path optimization | Keep series Schottky reverse-polarity path for Rev 0; evaluate ideal-diode MOSFET replacement in Rev 1. | Deferred | Rev 0 prioritizes simple bring-up and lower integration risk. | Ideal-diode footprint and topology changes move to Rev 1 efficiency optimization work. | Phil + Copilot | 2026-07-20 |
+| DEC-013 | 2026-07-14 | STM32G431 control-rail architecture (Rev 0) | Use a single wide-input buck as the primary control rail generator for `CTRL_3V3`, with PV-first runtime sourcing and protected USB bench fallback when PV is absent. Keep battery-domain assist optional through protected source OR-ing into the control-supply input boundary. | Decided | Satisfies required PV-only startup and USB-only bench bring-up without forcing a full dual-converter redesign. Keeps Rev 0 integration complexity bounded while preserving source-flexibility for bring-up and debug. | Unblocks explicit power-tree implementation for MCU VDD/VDDA, clarifies source-priority behavior, and enables targeted startup/noise verification before pre-routing gate closure. | Phil + Copilot | 2026-07-14 |
 
 ## Open Questions
 
@@ -41,9 +42,13 @@ Decision policy: move fast, log every non-trivial choice, and defer only with a 
 | Q-001 | 2026-07-06 | What is the confirmed continuous and peak charge/discharge current supported by the selected 12.8V LiFePO4 pack and BMS? | Sets hard current limits for charger and inverter operating envelopes. | Phil + Copilot | 2026-07-13 |
 | Q-002 | 2026-07-06 | What minimum instrumentation is available for bring-up (bench supply, DMM count, current probe, scope channels)? | Determines achievable verification depth in early test plans. | Phil + Copilot | 2026-07-13 |
 | Q-003 | 2026-07-08 | Should Rev 1 replace the Rev 0 series Schottky PV reverse-polarity stage with an ideal-diode MOSFET block? | Defines the next-revision efficiency path and required schematic/footprint migration work. | Phil + Copilot | 2026-07-20 |
+| Q-004 | 2026-07-14 | Closed 2026-07-14: use the wide-input U4 path as the actual Rev 0 `CTRL_3V3` owner, with battery-bus cutoff/UVLO criteria as the selection basis. Keep exact converter PN revision-flexible if footprint/risk constraints require substitution. | Removes owner ambiguity and aligns DEC-013 implementation to one control-rail source path with explicit startup/cutoff behavior targets. | Phil + Copilot | 2026-07-14 |
 
 ## Change Log
 
+- 2026-07-14: Closed Q-004 by selecting the U4 wide-input path as Rev 0 `CTRL_3V3` owner using battery-bus-native cutoff/UVLO criteria; exact converter PN remains revision-flexible within the same architecture class.
+- 2026-07-14: Added Q-004 to explicitly close the remaining converter-owner ambiguity inside DEC-013; current schematic has U2 as provisional `CTRL_3V3` owner while U4 now references `CTRL_SUPPLY_IN` as the intended wide-input path.
+- 2026-07-14: Closed DEC-013 for Rev 0 MCU supply path: wide-input buck primary control rail with PV-first runtime behavior and protected USB fallback for bench bring-up.
 - 2026-07-10: Closed DEC-005 to STM32G431 for Rev 0 baseline control MCU with revision-flexible re-evaluation policy.
 - 2026-07-08: Added Sheet 4 sensing/control wiring map to start Zone D net-boundary implementation with placeholder control ownership while DEC-005 remains deferred.
 - 2026-07-08: Locked converter revision scope: Rev 0 asynchronous buck baseline; synchronous converter and gate-driver architecture deferred to Rev 1.

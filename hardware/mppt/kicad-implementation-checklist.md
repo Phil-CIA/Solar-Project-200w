@@ -1,6 +1,6 @@
 # MPPT KiCad Implementation Checklist
 
-Last updated: 2026-07-08
+Last updated: 2026-07-14
 Owners: Phil + Copilot
 Purpose: provide a repeatable sequence for building the first MPPT schematic safely and traceably.
 
@@ -45,6 +45,16 @@ Rule:
 - [ ] Buck-specific parts are represented: switch, freewheel path, inductor, output capacitors, control placeholder.
 - [ ] Required sense points exist: PV V/I, BAT V/I, thermal points.
 - [ ] Serial logging boundary exists for bring-up telemetry.
+- [ ] Control-power boundary is explicit (`CTRL_SUPPLY_IN`, `CTRL_3V3`, optional `CTRL_3V3A`) and tied to DEC-013 intent.
+- [ ] USB bench fallback path is protected against reverse current when runtime rail is active.
+- [ ] Any intentionally unused pins touched in this pass are marked with explicit `no_connect` markers.
+- [ ] New active rails introduced in this pass include explicit power authority markers (power flag or clear power-output ownership).
+
+## 5.1 ERC Triage Rule During Implementation
+
+- [ ] Fix high-value ERC findings immediately: `multiple_net_names`, unconnected wire endpoints in active zones, and missing ownership on fault/control nets.
+- [ ] Defer low-value cleanup findings (footprint library noise, placeholder warnings) to end-of-phase cleanup unless they hide functional risk.
+- [ ] Record deferred ERC items with rationale in `hardware/mppt/schematic-notes.md`.
 
 ## 6. Save-Point Protocol
 
@@ -65,6 +75,8 @@ At each save-point:
 - [ ] Rev 0 reverse-polarity path is fixed to series Schottky and reflected in symbols/footprints.
 - [ ] Rev 0 Sheet 2 freewheel path is asynchronous and reflected in symbols/notes.
 - [ ] Any ideal-diode or synchronous upgrade is captured as Rev 1 backlog in docs/decisions-log.md.
+- [ ] DEC-013 startup behavior is validated: PV-only startup and USB-only startup both pass with no unintended backfeed.
+- [ ] Full ERC rabbit-hole pass is completed: all remaining findings are either fixed or explicitly waived with rationale.
 
 ## 9. Pre-Rev 1 Planning Gate
 
@@ -75,4 +87,4 @@ At each save-point:
 ## 10. Next Session First Action
 
 Fill this line before ending each session:
-- Next action: **Zone D Phase 1 complete (2026-07-09)**. All measurement, thermal, logging, and control placeholder nets locked. Proceed to full single-sheet schematic ERC validation, then initiate Rev 0 board assembly and staged bring-up validation plan. DEC-005 (control IC selection) deferred to Rev 1 post-characterization planning.
+- Next action: **Close Q-004 for DEC-013**. Decide whether U2 remains the Rev 0 `CTRL_3V3` owner or U4 is promoted to the actual wide-input control-supply path, then update the schematic and notes to match that single-owner choice.
