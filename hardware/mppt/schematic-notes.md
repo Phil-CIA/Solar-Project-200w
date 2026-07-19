@@ -1,8 +1,33 @@
 # MPPT Schematic Notes (First Pass)
 
-Last updated: 2026-07-19
+Last updated: 2026-07-19 session 3 (continuation)
 Owners: Phil + Copilot
-Status: buck-oriented exploration scaffold for KiCad single-sheet zone partitioning.
+Status: CTRL_SUPPLY_IN OR-ing complete; U6 (LM51772) all critical strap connections verified; 7 deferred power-authority ERC errors only.
+
+---
+
+## Session 2026-07-19 Summary (Continuation)
+
+**Primary Outcomes:**
+- ✅ CTRL_SUPPLY_IN net fully wired with three OR-ing Schottky diode sources:
+  - D4: BAT_BUS_POS → CTRL_SUPPLY_IN (pre-existing)
+  - D6: CHG_OUT_POS → CTRL_SUPPLY_IN (NEW - 1N5819WS at 298.45, 182.88, 90°)
+  - D7: VBUS → CTRL_SUPPLY_IN (NEW - 1N5819WS at 298.45, 177.80, 90°)
+- ✅ Netlist confirms all 4 nodes present in CTRL_SUPPLY_IN net (C15, D4, D6, D7, R13, U4)
+- ✅ ERC: 7 errors / 56 warnings (all 7 errors are deferred power-authority semantics)
+- ✅ Commit 7a78756: clean state with CTRL_SUPPLY_IN fully operational
+
+**Pending (Deferred to Component Placement):**
+- ⏳ C30: 100 nF VCC2 decoupling cap (U6 pin 29 → PGND) — needs manual placement + wiring in KiCad GUI
+- ⏳ R34: 10 kΩ FLT pull-up resistor (U6 pin 11 → CTRL_3V3) — needs manual placement + wiring in KiCad GUI
+
+**Technical Notes:**
+- U6_VCC2 net exists (code 78) but is dangling (only U6 pin 29). Decap addition pending actual board layout.
+- U6_FLT net exists (code 77) but is dangling (only U6 pin 11). Pull-up addition pending actual board layout.
+- Both components deferred because manual symbol insertion ran into KiCad net-matching complexity (components auto-connected to wrong signal nets during GUI placement). Easier path: add via component layer during footprint placement phase.
+- Architecture decision rationale retained: DEC-013 mandates wide-input U4 buck fed from three OR-ed sources for maximum Rev 0 flexibility (PV-first, battery fallback, USB bench debug).
+
+---
 
 ## 1. Scope
 
