@@ -1,14 +1,50 @@
-# Solar Project Handoff – 2026-07-19 Session 3 (Final)
+# Solar Project Handoff – 2026-07-19 Stop Point
 
-**Status:** ✅ **CTRL_SUPPLY_IN architecture complete and verified. U6 control straps finalized. Ready for component placement phase.**
+**Status:** Partial close. CTRL_SUPPLY_IN and U6 strap work remain complete, and exports were refreshed in a continuation pass. Task A (U6_VCC2 decoupler + U6_FLT pull-up) is still not complete in exported artifacts, and `V_in_ON` remains a legacy control-path hold.
 
-**Date:** 2026-07-19 Session 3 (continuation)  
+**Date:** 2026-07-19 session stop point  
 **Phase:** Phase 1 – Rev 0 Prototype Schematic Validation  
-**Outcome:** DEC-013 control supply (three-source OR-ing) fully implemented and netlist-verified
+**Outcome:** Safe canonical rename pass completed on the live schematic and docs; continuation re-export captured actual post-edit state and clarified remaining blockers.
+
+**Bench workstation note:** This handoff is the current closeout state to open on the bench machine; use the fresh export files and the remaining U6/U7/U8 follow-up notes as the starting point.
 
 ---
 
-## 1. Quick Reference: What's Done ✅
+## 1. Current Stop Point
+
+What changed after the earlier CTRL_SUPPLY_IN/U6 closure:
+
+- Safe canonical MCU/boundary renames were applied in the live schematic:
+  - `VBUS` -> `USB_5V_IN`
+  - `V_in_ADC` -> `SENSE_PV_V`
+  - `V_out _on` -> `CTRL_PWM_MAIN`
+  - `TXD` -> `UART_TX_LOG`
+  - `RXD` -> `UART_RX_CFG`
+- `V_in_ON` was intentionally left unchanged because it still lands in the legacy U2/Q2 path and is not yet safe to map to a canonical control or sense role.
+- The audited live STM32G431 map is now documented in `hardware/mppt/sheet4-sensing-control-wiring-map.md`.
+- `hardware/mppt/schematic-notes.md` was updated to record the rename pass and the reason `V_in_ON` remains.
+- During editing, the KiCad schematic header was briefly corrupted by a broad text patch and then repaired successfully from committed content.
+
+Current workspace state at stop:
+
+- Modified: `hardware/kicad/solar-project/Solar Project.kicad_sch`
+- Modified: `hardware/mppt/schematic-notes.md`
+- Modified: `hardware/mppt/sheet4-sensing-control-wiring-map.md`
+- Untracked autosave: `hardware/kicad/solar-project/_autosave-Solar Project.kicad_sch`
+
+Continuation update (post re-export):
+
+- `Solar Project.net` and `ERC.rpt` are now freshly exported (10:23 to 10:24 local).
+- Task A is still open in exported data: `U6_VCC2` and `U6_FLT` are still dangling one-node nets.
+- `R34` is not present in exported schematic/netlist.
+- Existing `C30` remains the 47uF output capacitor reference, so any VCC2 decoupler must use a new designator.
+- ERC changed from the prior 7-error baseline and now includes additional U7 (AHT20) unconnected pin errors.
+- U7 is now intentional as the board temperature sensor placeholder near the warmest representative board area.
+- U8 is now intentional as the OLED display module.
+
+---
+
+## 2. Quick Reference: What's Done ✅
 
 | Item | Status | Evidence |
 |------|--------|----------|
@@ -16,33 +52,32 @@
 | U6 control straps (RST/SYNC/DTRK) | ✅ Complete | Global labels at correct coords; netlist verified |
 | U6 gate-driver pins (HO/LO types) | ✅ Complete | Changed from `unspecified` to `output`; 4 ERC errors eliminated |
 | R32 pin 2 grounding | ✅ Complete | PWR_NEG label added; connection verified |
-| Schematic export | ✅ Fresh | Timestamps: sch 08:46:39, netlist 08:46:54, ERC 08:47:11 |
-| ERC status | ✅ Stable | 7 errors / 56 warnings (all deferred power-authority semantics) |
-| Git commits | ✅ Pushed locally | 3 commits ahead of origin/main |
+| Schematic export | ✅ Fresh continuation export | `Solar Project.net` (10:23) and `ERC.rpt` (10:24) now reflect current schematic state. |
+| ERC status | Regressed vs prior baseline | New export includes additional U7-related unconnected errors; no longer equivalent to prior 7-error baseline. |
+| Git commits | Dirty working tree | Prior CTRL_SUPPLY_IN commits remain local, but current rename-pass edits are not yet committed. |
 
 ---
 
-## 2. Latest Git Status
+## 3. Latest Git Status
 
 ```bash
-# Run this to verify:
-git log --oneline | head -5
+# Run this to verify current stop state:
+git status --short
 ```
 
 **Expected output:**
 ```
-7951f4c  docs: session 2026-07-19 summary - CTRL_SUPPLY_IN complete, VCC2/FLT deferred to placement phase
-7a78756  cleanup: revert C30/R34 temp components - maintain clean CTRL_SUPPLY_IN OR-ing wiring
-7c8a21a  schematic: wire CTRL_SUPPLY_IN - add D6/D7 OR-ing diodes, name net
-e74f4bc  schematic/docs: LM51772 U6 miswire cleanup, ERC 14->7 errors
-b888798  Add 2026-07-13 session handoff and restart prompts
+ M "hardware/kicad/solar-project/Solar Project.kicad_sch"
+ M hardware/mppt/schematic-notes.md
+ M hardware/mppt/sheet4-sensing-control-wiring-map.md
+?? "hardware/kicad/solar-project/_autosave-Solar Project.kicad_sch"
 ```
 
-**Ready to push?** Yes, all work committed locally.
+**Ready to push?** Not yet. The rename-pass changes are still uncommitted, and KiCad-generated artifacts need to be refreshed first.
 
 ---
 
-## 3. Critical Technical State
+## 4. Critical Technical State
 
 ### 3.1 CTRL_SUPPLY_IN Architecture (DEC-013)
 
@@ -80,7 +115,7 @@ USB 5V (bench mode) ────────[D7]──┘
 |-----|----------|-----|----------|--------|
 | 36 | VIN | PV_IN_POS | Main power input | ✅ |
 | 40 | BIAS | PV_IN_POS | Rev 0 strap; upgrade Rev 1 to VCC2 | ✅ |
-| 29 | VCC2 | U6_VCC2 (dangling) | Gate-driver supply placeholder | ⏳ needs C30 cap |
+| 29 | VCC2 | U6_VCC2 (dangling) | Gate-driver supply placeholder | ⏳ needs dedicated decoupler (do not reuse C30 ref) |
 | 11 | FLT | U6_FLT (dangling) | Fault open-collector output | ⏳ needs R34 pullup |
 | 38 | RST | CTRL_3V3 | Reset pull-high for normal operation | ✅ |
 | 3 | SYNC | PWR_NEG | Free-running oscillator (no sync) | ✅ |
@@ -111,9 +146,9 @@ USB 5V (bench mode) ────────[D7]──┘
 
 ## 4. Pending Work (Prioritized)
 
-### 4.1 🔴 CRITICAL – Add C30 and R34 (for next session)
+### 4.1 🔴 CRITICAL – Add VCC2 Decoupler + R34 (next pass)
 
-**C30 – VCC2 Decoupling Capacitor (100 nF, 0805)**
+**VCC2 decoupler (100 nF, 0805; use new reference, e.g., C44)**
 - Purpose: Stabilize U6 pin 29 gate-driver supply output
 - Placement: Adjacent to U6, coordinate ~(115, 181)
 - Connections:
@@ -131,14 +166,14 @@ USB 5V (bench mode) ────────[D7]──┘
 - Netlist status: Net code 77 (U6_FLT) exists but is dangling (only U6 pin 11)
 - **Next action:** Add via KiCad GUI → Place → Wire to labels
 
-**Why deferred:** Manual symbol insertion via text-edit in prior attempt caused auto-net misconnections (C30 routed to PWR_NEG, R34 routed to Q1 drain). Cleaner path: GUI placement with explicit wire routing gives user full control over net assignment.
+**Why still open after fresh export:** Existing `C30` is already assigned as a 47uF output capacitor on `V_out`; `R34` is not present; both `U6_VCC2` and `U6_FLT` remain dangling in the fresh netlist.
 
 ### 4.2 🟡 HIGH – Verify Ground/Power Rail Architecture
 
 **Checklist:**
-- [ ] Confirm PGND (U6 analog return) and PWR_NEG (main return) are intentionally same net (acceptable per DEC-010 for Rev 0)
-- [ ] Validate BAT_BUS_POS → F2 fuse → battery charging path is correct
-- [ ] Check U1 (STM32G431) all VDD/VDDA/VBAT/VREF+ tied to CTRL_3V3 (undriven error deferred; intentional)
+- [ ] Confirm PGND (U6 analog return) and PWR_NEG (main return) are intentionally same net (current export shows separate nets)
+- [x] Validate BAT_BUS_POS → F2 fuse → battery charging path is correct
+- [x] Check U1 (STM32G431) all VDD/VDDA/VBAT/VREF+ tied to CTRL_3V3 (undriven error deferred; intentional)
 
 ### 4.3 🟡 MEDIUM – Migration Checklist Calculations
 
@@ -218,15 +253,19 @@ ls -la "Solar Project.kicad_sch" "Solar Project.net" "ERC.rpt"
 **Pick one focus area (in priority order):**
 
 **Task A: Component Placement (CRITICAL)**
-- Add C30 (100 nF, 0805) VCC2 decap with explicit wiring to U6_VCC2 and PGND labels
+- Add dedicated VCC2 decap (100 nF, 0805; new ref such as C44) with explicit wiring to U6_VCC2 and PGND labels
 - Add R34 (10 kΩ, 0805) FLT pullup with explicit wiring to U6_FLT and CTRL_3V3 labels
 - Re-export netlist and verify both components on their respective nets
-- Commit: `git commit -m "schematic: add C30 VCC2 decap and R34 FLT pull-up with final wiring"`
+- Commit: `git commit -m "schematic: add U6_VCC2 decoupler and R34 FLT pull-up"`
 
 **Task B: Verify Power Paths (HIGH)**
-- Check all return paths converge to single PWR_NEG node
-- Validate U1 power connections (all VDD → CTRL_3V3, all VSS → PWR_NEG)
-- Confirm BAT_BUS_POS → F2 fuse → battery connector path is routed correctly
+- Resolve whether PGND should be explicitly tied to PWR_NEG or remain isolated-by-name for Rev 0
+- Keep U1 power connection verification as complete (all VDD-class rails on CTRL_3V3)
+- Keep BAT_BUS_POS → F2 → CHG_OUT_POS path verification as complete
+
+**Task E: Finish U7/U8 Bring-up (HIGH)**
+- Wire U7 as the board temperature sensor near the warmest representative board spot and confirm SENSE_TEMP_BOARD connectivity
+- Confirm U8 power and I2C wiring are intentional and leave the display connected only to the control bus and supply rails
 
 **Task C: Calculation Worksheet (MEDIUM)**
 - Fill migration checklist Section 4.2/4.3/4.4 with design values
@@ -250,9 +289,10 @@ Before opening KiCad:
 In KiCad:
 - Open `Solar Project.kicad_sch`
 - Schematic should load without errors (file now clean)
-- ERC should show same 7 errors / 56 warnings as baseline
+- ERC now differs from old baseline and includes additional U7 (AHT20) unconnected-pin errors; clear/confirm U7 intent before using ERC count as a gate metric
+- U8 display connectivity should remain on I2C CLK/DATA plus CTRL_3V3 and GND; no extra control wiring is expected
 
-For C30/R34 placement (if Task A):
+For VCC2 decoupler/R34 placement (if Task A):
 - **Do NOT use text-edit** — use KiCad GUI drag-and-place
 - **Do use explicit wire connections** to global labels (U6_VCC2, PGND, U6_FLT, CTRL_3V3)
 - **Re-export netlist immediately after** and verify nodes appear in correct nets
@@ -271,8 +311,8 @@ For C30/R34 placement (if Task A):
 
 ## 10. Success Criteria for Next Session
 
-✅ **Task A Complete:** C30 and R34 appear in fresh netlist on correct nets (U6_VCC2 and U6_FLT respectively)  
-✅ **Task B Complete:** All power paths verified; no new ERC errors introduced  
+✅ **Task A Complete:** Dedicated VCC2 decoupler (new ref) and R34 appear in fresh netlist on correct nets (`U6_VCC2` and `U6_FLT` respectively)  
+✅ **Task B Complete:** PGND/PWR_NEG policy is explicitly decided and documented; battery and U1 rail checks remain verified  
 ✅ **Task C Complete:** Migration checklist Section 4 filled with design values and rationale  
 ✅ **Task D (optional):** PWR_FLAGS added; ERC shows 3 errors / 56 warnings
 
@@ -280,4 +320,4 @@ For C30/R34 placement (if Task A):
 
 **Created:** 2026-07-19 Session 3 Completion  
 **Next Review:** 2026-07-20 or later session  
-**Next Handoff Trigger:** After C30/R34 placement + verification OR after major topology change
+**Next Handoff Trigger:** After VCC2 decoupler + R34 placement verification and U7/U8 bring-up confirmation OR after major topology change

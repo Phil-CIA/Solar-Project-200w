@@ -135,27 +135,36 @@ Use datasheet equations for the selected part and record calculated values.
 
 | Item | Target | Calculated | Implemented | PASS/FAIL |
 |---|---:|---:|---:|---|
-| UVLO rising threshold | Define per selected controller startup policy | TBD | TBD | OPEN |
-| UVLO falling threshold | Define per selected controller brownout policy | TBD | TBD | OPEN |
-| Hysteresis width | Enough to prevent chatter near threshold | TBD | TBD | OPEN |
-| EN pull-up/down network | Recompute per selected datasheet equations | TBD | TBD | OPEN |
+| UVLO rising threshold | 11.0V to 11.5V (Rev 0 keep converter off below weak-panel region) | 11.2V using R23=1.00M and R24=121k with EN threshold assumed 1.21V | Current schematic still uses R23=75k and R24=21.5k; update pending | PARTIAL |
+| UVLO falling threshold | 10.0V to 10.6V | 10.4V target after adding hysteresis resistor (bench trim expected) | Not yet implemented in schematic | OPEN |
+| Hysteresis width | 0.7V to 1.0V | 0.8V target from EN hysteresis injection path | Not yet implemented in schematic | OPEN |
+| EN pull-up/down network | High-value divider to reduce standby loss at high VIN | Divider current ~= 90uA at 100V with 1.121M total (1.00M + 121k) | Current divider is low-value legacy set (75k/21.5k); migrate during next value pass | PARTIAL |
+
+Assumptions and notes:
+- UVLO numbers above are Rev 0 starting targets for LM51772 bench bring-up, not final production limits.
+- The 1.00M/121k divider aligns with the low-Iq guidance for wide-input operation and is intentionally conservative for early hardware protection.
+- Falling threshold and hysteresis are marked OPEN until the exact datasheet hysteresis equation is applied and bench-verified.
 
 ### 4.3 Power-stage timing and control values
 
 | Item | Old Value | New Value | Reason for Change | PASS/FAIL |
 |---|---:|---:|---|---|
-| Switching frequency setting components | TBD | TBD | Both support 100kHz to 2.2MHz class; keep or retune for EMI/efficiency target | PARTIAL |
-| Soft-start capacitor | TBD | TBD | Startup profile update | OPEN |
-| Slope compensation related values | TBD | TBD | Stability requirement | OPEN |
-| Current limit scaling | TBD | TBD | Both support programmable monitor/limit; verify transfer and scaling details | PARTIAL |
+| Switching frequency setting components | R28=51.7k (current schematic, RT pin) | Keep R28=51.7k for first Rev 0 bring-up pass | Preserves known-good WEBENCH starting point while migration risk is isolated to control-rail and naming changes | PARTIAL |
+| Soft-start capacitor | C26=33nF (current schematic) | C26=100nF target | Extend startup ramp toward ~100ms class startup to reduce inrush stress during first hardware tests | OPEN |
+| Slope compensation related values | Existing network tied to MODE/ILIMCOMP_ISET (R29/R32/C29 net context) | Keep existing slope path for first power-up; tune only if subharmonic behavior appears | Avoids coupled loop changes before baseline startup is verified | PARTIAL |
+| Current limit scaling | R32=100k, R33=6.49k (current schematic values) | Keep initial values; adjust after measured current-limit threshold test | Migration changes controller family variant; threshold transfer must be validated on bench data | PARTIAL |
 
 ### 4.4 Compensation and stability
 
 | Item | Old Value | New Value | Verification Method | PASS/FAIL |
 |---|---:|---:|---|---|
-| Loop compensation network | TBD | TBD | Recompute plus bench step response | TBD |
-| Crossover target | TBD | TBD | Bode or transient validation | TBD |
-| Phase margin target | TBD | TBD | Measurement or simulation | TBD |
+| Loop compensation network | Existing Rev 0 seed network (R31/C24/C25 around COMP) | Keep seed values for first power-up, then retune using measured transients | Start with load-step test and confirm no sustained ringing before value changes | PARTIAL |
+| Crossover target | Not documented | 50kHz conservative target | FRA/Bode injection if available; otherwise infer from load-step response and settling | OPEN |
+| Phase margin target | Not documented | >=55 degrees (prefer 60 degrees) | Verify from measured Bode where possible, otherwise use transient damping as proxy | OPEN |
+
+Stability workflow note:
+- Do not tune compensation in the same edit pass as UVLO and soft-start changes unless startup behavior is already stable.
+- Recommended order: (1) UVLO and startup validation, (2) current-limit sanity check, (3) compensation tuning to 50kHz crossover target.
 
 ## 5. Layout and Footprint Verification
 

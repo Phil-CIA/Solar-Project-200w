@@ -18,7 +18,8 @@ Start Zone D (Sheet 4 intent) with stable net boundaries and placeholders, begin
 | TP_BAT_V | Battery voltage sense tap | Test point | Optional but recommended |
 | TP_BAT_I | Battery current sense tap | Test point | Optional but recommended |
 | TH_PWR | Power thermal sensor placeholder | NTC or sensor placeholder symbol | Bind to SENSE_TEMP_PWR |
-| TH_BOARD | Board thermal sensor placeholder | NTC or sensor placeholder symbol | Bind to SENSE_TEMP_BOARD |
+| TH_BOARD | Board thermal sensor placeholder | NTC or sensor placeholder symbol | Bind to SENSE_TEMP_BOARD; U7 is the current board-temp device placeholder |
+| U8 | Display module | 0.96in OLED I2C module | Connect to I2C CLK/DATA, CTRL_3V3, and GND |
 | J_LOG | Serial logging header | 1x03 or 1x04 header | Include TX, RX, and return reference |
 | U_PWR_CTRL | Control-rail regulator block | Wide-input buck + optional post-filter stage | Own `CTRL_SUPPLY_IN` to `CTRL_3V3` conversion per DEC-013 |
 | J_USB_DBG | USB bench-power boundary | USB connector or 5V header placeholder | Bench fallback source for control rail when PV is absent |
@@ -105,28 +106,38 @@ Add these notes in Zone D:
 - Thermal sense placeholders exist for both power-stage and board-level monitoring.
 - No duplicate local/global names on canonical nets.
 
-## 8. STM32G431 Rev 0 Interface Mapping (Provisional)
+## 8. STM32G431 Rev 0 Interface Mapping (Audited 2026-07-19)
 
 Purpose:
-- Replace generic U_CTRL ownership with a concrete Rev 0 MCU interface direction.
-- Keep mapping provisional until exact package/footprint lock.
+- Replace the earlier first-pass budget with the live U1 wiring audit from the current schematic.
+- Normalize MCU-facing nets to canonical names where the function is unambiguous.
 
-| Zone D Net | STM32G431 Role | Candidate Pin |
-|---|---|---|
-| SENSE_PV_V | ADC | PA0 |
-| SENSE_PV_I | ADC | PA1 |
-| SENSE_BAT_V | ADC | PA4 |
-| SENSE_BAT_I | ADC | PA5 |
-| SENSE_TEMP_PWR | ADC | PA6 |
-| SENSE_TEMP_BOARD | ADC | PA7 |
-| CTRL_PWM_MAIN | TIM1 PWM | PA8 |
-| CTRL_EN_CHG | GPIO out | PB5 |
-| FAULT_OCP | GPIO in / EXTI | PB0 |
-| FAULT_OVP | GPIO in / EXTI | PB1 |
-| UART_TX_LOG | USART1_TX | PA9 |
-| UART_RX_CFG | USART1_RX | PA10 |
+| Status | Zone D Net | STM32G431 Role | Live Pin | Notes |
+|---|---|---|---|---|
+| Canonicalized | SENSE_PV_V | ADC | PA4 | Live schematic renamed from `V_in_ADC`; sourced from the PV divider on `/PV_IN_POS_FUSED`. |
+| Legacy hold (role clarified) | V_in_ON | GPIO output to legacy gate-control path | PA5 | Confirmed as control-only path (PA5 -> R41 -> Q2 gate net), not an ADC channel. Keep name unchanged until the U2/Q2 legacy path is either removed or intentionally retained. |
+| Canonical | SENSE_TEMP_PWR | ADC | PA6 | Power-stage thermal input. |
+| Canonical | SENSE_TEMP_BOARD | ADC | PA7 | Board thermal input. |
+| Canonicalized | CTRL_PWM_MAIN | TIM1 PWM / gate-drive command | PA8 | Live schematic renamed from `V_out _on`; this is the MCU-side gate-drive command path. |
+| Canonicalized | UART_TX_LOG | USART1_TX | PA9 | Bridge-side label canonicalized from `TXD`. |
+| Canonicalized | UART_RX_CFG | USART1_RX | PA10 | Bridge-side label canonicalized from `RXD`. |
+| Canonical | FAULT_OCP | GPIO in / EXTI | PB0 | Over-current fault input. |
+| Canonical | FAULT_OVP | GPIO in / EXTI | PB1 | Over-voltage fault input. |
+| Canonical | CTRL_EN_CHG | GPIO out | PB5 | Charger enable control. |
+| Canonical | I2C DATA | I2C SDA | PB6 | Used for LM51772 configuration/control in the current schematic. |
+| Canonical | I2C CLK | I2C SCL | PB7 | Used for LM51772 configuration/control in the current schematic. |
+
+Reserved pins:
+- PA13: SWDIO
+- PA14: SWCLK
+- PG10/~RST: hardware reset
+
+Deferred pin-allocation items:
+- PA0, PA1, PA2, and PA3 are still free in the live schematic and are the best candidates for the missing canonical measurement channels (`SENSE_BAT_V`, `SENSE_PV_I`, `SENSE_BAT_I`) once those sensing front ends are finalized.
+- PC13 is the preferred landing point for `U6_FLT` once the pull-up is added.
+- U7 is currently intended as the board temperature sensor, placed near the warmest representative board spot, and should be tied to `SENSE_TEMP_BOARD`.
+- U8 is the display module and should remain on the I2C control bus with the control rail and ground return.
 
 Notes:
-- SWD and reset pins are mandatory and must remain reserved.
-- Final pin assignment can move if required by package availability or routing quality.
-- Mapping supports Rev 0 prototype bring-up and remains revision-flexible.
+- This audited table supersedes the older provisional pin budget as the practical Rev 0 reference.
+- Canonical cleanup is intentionally limited to MCU-facing and boundary-facing nets in this pass. U6-local helper nets such as `_OUTPUT Feedback`, `_Undervoltage Feedback`, `_CSA_2`, and `_CSB_2` still need a separate cleanup decision if you want them renamed too.
