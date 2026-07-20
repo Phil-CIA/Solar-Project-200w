@@ -10,6 +10,7 @@ Purpose: provide a repeatable sequence for building the first MPPT schematic saf
 - [ ] Open and review hardware/mppt/schematic-notes.md.
 - [ ] Open and review hardware/mppt/buck-schematic-parts.md.
 - [ ] Open and review hardware/mppt/net-plan.md.
+- [ ] Open and review docs/session-plan-2026-07-20.md.
 - [ ] Confirm current temporary bounds and open items in docs/phase-1-kickoff.md.
 - [ ] Confirm decision status for DEC-003 and DEC-005 in docs/decisions-log.md.
 
@@ -87,4 +88,43 @@ At each save-point:
 ## 10. Next Session First Action
 
 Fill this line before ending each session:
-- Next action: **Close Q-004 for DEC-013**. Decide whether U2 remains the Rev 0 `CTRL_3V3` owner or U4 is promoted to the actual wide-input control-supply path, then update the schematic and notes to match that single-owner choice.
+- Next action: **Classify the legacy function backlog**. Review `CTRL_PWM_MAIN`, `CTRL_EN_CHG`, `FAULT_OCP`, `FAULT_OVP`, `V_in_ON`, and the U2/U6 helper nets, then decide which ones stay in hardware, which ones are firmware-only, and which ones are deleted.
+
+## 11. 2026-07-20 Execution Block
+
+Use this block for the current cleanup sequence until the legacy backlog is cleared.
+
+### 11.1 Session 1 - Sheet 2 Cleanup
+
+- [ ] Review `hardware/mppt/buck-power-stage-wiring-map.md`.
+- [ ] Confirm `CTRL_PWM_MAIN` is the only controller-drive input still needed on Sheet 2.
+- [ ] Keep the asynchronous Rev 0 freewheel path.
+- [ ] Remove any stale labels or notes that only supported the older MOSFET-only concept.
+
+Stop condition:
+- Sheet 2 no longer implies a legacy control path competing with the LM51772 path.
+
+### 11.2 Session 2 - Control And Fault Ownership
+
+- [ ] Review `hardware/mppt/sheet4-sensing-control-wiring-map.md` and `hardware/mppt/net-plan.md`.
+- [ ] Review the default ownership matrix in `docs/session-plan-2026-07-20.md`.
+- [ ] Record the likely outcome for each item before editing anything.
+- [ ] Keep `CTRL_EN_CHG` unless the schematic proves the MCU no longer needs it.
+- [ ] Keep `FAULT_OCP` and `FAULT_OVP` as hardware protection signals.
+- [ ] Delete `V_in_ON` unless the legacy `U2/Q2` branch is intentionally retained.
+- [ ] Mark the `U2/Q2` branch as legacy or delete it if it no longer serves a real control purpose.
+
+Stop condition:
+- Every control/fault net has a clear owner and the old prototype glue is no longer ambiguous.
+
+### 11.3 Session 3 - U6 Helper Nets And ERC
+
+- [ ] Review `hardware/mppt/lm851772-lm51772-migration-checklist.md`.
+- [ ] Confirm whether U6 is still active before editing any helper nets.
+- [ ] Keep `U6_VCC2` and `U6_FLT` active, and close them with real passives if U6 is still active.
+- [ ] Keep `U6_SYNC`, `U6_DTRK`, and `U6_RST` only if they still serve an intentional strap role.
+- [ ] Re-export ERC and netlist after the cleanup pass.
+- [ ] Record the updated state in `hardware/mppt/schematic-notes.md`.
+
+Stop condition:
+- Any surviving helper net has a documented hardware reason to exist.

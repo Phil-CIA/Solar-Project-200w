@@ -46,6 +46,10 @@ Decision policy: move fast, log every non-trivial choice, and defer only with a 
 
 ## Change Log
 
+- 2026-07-20: Added legacy cleanup backlog defaults and session sequencing for the LM51772-era schematic cleanup pass; current working outcome is to keep `CTRL_PWM_MAIN`, `CTRL_EN_CHG`, `FAULT_OCP`, and `FAULT_OVP`, delete `V_in_ON` unless the Q2 legacy branch is intentionally retained, and treat U2 control-owner role as delete/deprecate.
+- 2026-07-20: Refined control/fault ownership cleanup defaults: `CTRL_EN_CHG` remains a hardware-backed MCU enable line, `FAULT_OCP` and `FAULT_OVP` remain hardware protection signals with optional firmware mirroring, and `V_in_ON` defaults to delete unless the legacy `U2/Q2` branch is intentionally preserved.
+- 2026-07-20: Added U6 helper-net cleanup defaults: treat U6 as active in the current Rev 0 notes, close `U6_VCC2` with a real decoupler and `U6_FLT` with a pull-up, and keep `U6_SYNC`, `U6_DTRK`, and `U6_RST` only if they remain intentional straps.
+- 2026-07-20: Verified the U6 helper-net pass against the live schematic. The FLT helper path and VCC2 helper rail already exist in the schematic, so no additional wiring edit was needed in this batch; keep the current arrangement and document any future strap changes separately.
 - 2026-07-14: Closed Q-004 by selecting the U4 wide-input path as Rev 0 `CTRL_3V3` owner using battery-bus-native cutoff/UVLO criteria; exact converter PN remains revision-flexible within the same architecture class.
 - 2026-07-14: Added Q-004 to explicitly close the remaining converter-owner ambiguity inside DEC-013; current schematic has U2 as provisional `CTRL_3V3` owner while U4 now references `CTRL_SUPPLY_IN` as the intended wide-input path.
 - 2026-07-14: Closed DEC-013 for Rev 0 MCU supply path: wide-input buck primary control rail with PV-first runtime behavior and protected USB fallback for bench bring-up.

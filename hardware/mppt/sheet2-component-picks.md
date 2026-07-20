@@ -32,7 +32,12 @@ Scope: choose first-pass components for Sheet 2 only (power stage), so symbols c
 - `MPPT_SW_NODE`
 - `CHG_OUT_POS`
 - `CHG_OUT_NEG`
-- `CTRL_PWM_MAIN` (or `GATE_Q1` if separated later)
+- `CTRL_PWM_MAIN`
+
+## 4. Cleanup Note
+
+- Rev 0 Sheet 2 uses `CTRL_PWM_MAIN` directly for Q1 drive.
+- Do not carry forward any alternate gate label from the older control concept unless a future revision explicitly separates it.
 
 ## 4. Notes Before Part Lock
 

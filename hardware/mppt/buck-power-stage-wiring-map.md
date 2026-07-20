@@ -6,7 +6,7 @@ Purpose: define exact first-pass symbol connectivity for the buck conversion sta
 
 ## 1. Symbols
 
-- Q1: High-side buck MOSFET
+- Q1: High-side buck switch MOSFET
 - D3: Freewheel diode (asynchronous first pass)
 - L1: Buck inductor
 - C4: Buck input decoupling capacitor #1
@@ -30,6 +30,10 @@ Use these nets on Sheet 2:
 Control and measurement placeholders for this sheet:
 - CTRL_PWM_MAIN
 - SENSE_PV_I
+
+Controller-drive rule for this sheet:
+- `CTRL_PWM_MAIN` is the only live controller drive input for Q1 in Rev 0.
+- Do not reintroduce any old MOSFET-era gate-control label or alternate drive net on this sheet.
 
 ## 3. Connectivity Map
 
@@ -71,6 +75,7 @@ Control and measurement placeholders for this sheet:
 
 - ASSUME: asynchronous buck for first pass (freewheel diode path)
 - DECISION: Rev 0 remains asynchronous; synchronous implementation is a Rev 1 architecture change.
+- DECISION: `CTRL_PWM_MAIN` is the only controller drive path for Q1 in Rev 0.
 - VERIFY: Q1 voltage class covers worst-case cold Voc margin
 - VERIFY: freewheel diode reverse-voltage and current margin are sufficient
 - VERIFY: switch loop and output loop are compact and obvious
