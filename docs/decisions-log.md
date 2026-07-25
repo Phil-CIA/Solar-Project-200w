@@ -1,6 +1,6 @@
 # Solar Project 200W - Decisions Log
 
-Last updated: 2026-07-14
+Last updated: 2026-07-20
 Decision owners: Phil + Copilot
 Decision policy: move fast, log every non-trivial choice, and defer only with a target date.
 

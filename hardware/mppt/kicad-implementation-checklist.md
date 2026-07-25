@@ -1,6 +1,6 @@
 # MPPT KiCad Implementation Checklist
 
-Last updated: 2026-07-14
+Last updated: 2026-07-21
 Owners: Phil + Copilot
 Purpose: provide a repeatable sequence for building the first MPPT schematic safely and traceably.
 
@@ -10,6 +10,7 @@ Purpose: provide a repeatable sequence for building the first MPPT schematic saf
 - [ ] Open and review hardware/mppt/schematic-notes.md.
 - [ ] Open and review hardware/mppt/buck-schematic-parts.md.
 - [ ] Open and review hardware/mppt/net-plan.md.
+- [ ] Open and review hardware/mppt/stm32-support-implementation-checklist.md.
 - [ ] Open and review docs/session-plan-2026-07-20.md.
 - [ ] Confirm current temporary bounds and open items in docs/phase-1-kickoff.md.
 - [ ] Confirm decision status for DEC-003 and DEC-005 in docs/decisions-log.md.
@@ -71,6 +72,16 @@ At each save-point:
 - [ ] No hidden safety-critical assumptions remain unannotated.
 - [ ] Next session first action is captured at bottom of this file.
 
+## 7.1 STM32 Support Components Gate
+
+Close this gate before board-placement freeze:
+
+- [ ] External reset path is complete: `MCU_RST_N` pull-up, reset switch to `PWR_NEG`, and header/debug access retained.
+- [ ] External HSE crystal path is complete: crystal on `MCU_HSE_IN`/`MCU_HSE_OUT` with two load capacitors to `PWR_NEG` placed close to MCU.
+- [ ] SWD bring-up access is complete and labeled (`PA13`, `PA14`, reset).
+- [ ] BOOT path behavior is explicitly documented (`PB8-BOOT0` default state and recovery method).
+- [ ] Navigation pad is complete and documented: `BTN_UP_N`, `BTN_DN_N`, `BTN_LT_N`, `BTN_RT_N`, `BTN_ENT_N`.
+
 ## 8. Pre-PCB Routing Gate
 
 - [ ] Rev 0 reverse-polarity path is fixed to series Schottky and reflected in symbols/footprints.
@@ -78,6 +89,18 @@ At each save-point:
 - [ ] Any ideal-diode or synchronous upgrade is captured as Rev 1 backlog in docs/decisions-log.md.
 - [ ] DEC-013 startup behavior is validated: PV-only startup and USB-only startup both pass with no unintended backfeed.
 - [ ] Full ERC rabbit-hole pass is completed: all remaining findings are either fixed or explicitly waived with rationale.
+
+## 8.1 ERC Clearance Routing Gate (Mandatory)
+
+Treat ERC closure as the formal gate to start board routing.
+
+- [ ] Latest exported `hardware/kicad/solar-project/ERC.rpt` shows **0 unwaived errors**.
+- [ ] Any accepted residual ERC finding has an explicit waiver note in `hardware/mppt/schematic-notes.md` with: message class, location/symbol, why electrical intent is acceptable, and owner/date.
+- [ ] No unresolved ERC finding remains in a safety-critical path (power authority, protection trip path, gate-drive path, or MCU fault landing path).
+- [ ] If a finding is waived due to symbol semantics only (not wiring/electrical behavior), keep the existing electrical connection and document the rationale instead of forcing risky library-pin edits.
+
+Routing start rule:
+- Do not begin PCB routing until all four checks above are true.
 
 ## 9. Pre-Rev 1 Planning Gate
 

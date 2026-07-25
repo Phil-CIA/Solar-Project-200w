@@ -37,10 +37,18 @@ Purpose: keep schematic net naming consistent and traceable from day one.
 | CTRL_PWM_MAIN | Control | Out | Main PWM drive/control command | REQ-CHG-001 |
 | GATE_Q1 | Control | Out | Gate drive net to buck high-side MOSFET | REQ-CHG-001 |
 | CTRL_EN_CHG | Control | Out | Charger enable/disable control | REQ-SAF-003 |
+| BTN_UP_N | Control (UI) | In | Navigation button input (up), active-low | REQ-TEL-003 |
+| BTN_DN_N | Control (UI) | In | Navigation button input (down), active-low | REQ-TEL-003 |
+| BTN_LT_N | Control (UI) | In | Navigation button input (left), active-low | REQ-TEL-003 |
+| BTN_RT_N | Control (UI) | In | Navigation button input (right), active-low | REQ-TEL-003 |
+| BTN_ENT_N | Control (UI) | In | Navigation button input (enter/center), active-low | REQ-TEL-003 |
 | FAULT_OCP | Protection | Out | Over-current fault signal | REQ-SAF-003 |
 | FAULT_OVP | Protection | Out | Over-voltage fault signal | REQ-SAF-003 |
 | UART_TX_LOG | Telemetry | Out | Serial logging transmitter | REQ-TEL-001 |
 | UART_RX_CFG | Telemetry | In | Serial configuration/command receiver | REQ-TEL-001 |
+| MCU_RST_N | Control | In | STM32 external reset net from button/debug path, active-low | REQ-SAF-006 |
+| MCU_HSE_IN | Clock | In | STM32 external high-speed crystal input | REQ-VAL-003 |
+| MCU_HSE_OUT | Clock | Out | STM32 external high-speed crystal output | REQ-VAL-003 |
 
 ## 3. Notes
 

@@ -1,6 +1,6 @@
 # Sheet 4 Sensing and Control Wiring Map
 
-Last updated: 2026-07-14
+Last updated: 2026-07-20
 Owners: Phil + Copilot
 Scope: define first-pass, implementation-ready zone plan for sensing and control I/O in the single-sheet KiCad schematic, starting with voltage and current measuring circuits.
 
@@ -20,6 +20,11 @@ Start Zone D (Sheet 4 intent) with stable net boundaries and placeholders, begin
 | TH_PWR | Power thermal sensor placeholder | NTC or sensor placeholder symbol | Bind to SENSE_TEMP_PWR |
 | TH_BOARD | Board thermal sensor placeholder | NTC or sensor placeholder symbol | Bind to SENSE_TEMP_BOARD; U7 is the current board-temp device placeholder |
 | U8 | Display module | 0.96in OLED I2C module | Connect to I2C CLK/DATA, CTRL_3V3, and GND |
+| SW1-SW5 | Navigation button pad | 5x tactile switch | Up/down/left/right/enter user input pad |
+| R54-R58 | Navigation pull resistors | 10k resistor set | Pull button nets to CTRL_3V3 for active-low behavior |
+| SW_RST | STM32 reset button | Tactile switch | Momentary pull of reset net low for recovery/debug |
+| Y1 | STM32 HSE crystal | 2-pin crystal | External high-speed reference for deterministic timing |
+| CxH1/CxH2 | HSE load capacitors | Capacitor pair | Crystal load capacitors to PWR_NEG near MCU pins |
 | J_LOG | Serial logging header | 1x03 or 1x04 header | Include TX, RX, and return reference |
 | U_PWR_CTRL | Control-rail regulator block | Wide-input buck + optional post-filter stage | Own `CTRL_SUPPLY_IN` to `CTRL_3V3` conversion per DEC-013 |
 | J_USB_DBG | USB bench-power boundary | USB connector or 5V header placeholder | Bench fallback source for control rail when PV is absent |
@@ -64,6 +69,14 @@ Control and sensing nets:
 - SENSE_TEMP_BOARD
 - UART_TX_LOG
 - UART_RX_CFG
+- BTN_UP_N
+- BTN_DN_N
+- BTN_LT_N
+- BTN_RT_N
+- BTN_ENT_N
+- MCU_RST_N
+- MCU_HSE_IN
+- MCU_HSE_OUT
 
 ## 4. Minimal Connection Intent
 
@@ -76,6 +89,9 @@ Control and sensing nets:
 7. J_LOG provides UART_TX_LOG, UART_RX_CFG, and PWR_NEG reference.
 8. U_PWR_CTRL converts `CTRL_SUPPLY_IN` to `CTRL_3V3` and feeds MCU supply pins.
 9. `USB_5V_IN` enters only through protected bench-fallback path; no direct backfeed into USB boundary is allowed.
+10. Navigation buttons are active-low: each `BTN_*_N` net is pulled up to `CTRL_3V3` and closes to `PWR_NEG` on press.
+11. `MCU_RST_N` is pulled up to `CTRL_3V3` and is momentarily shorted to `PWR_NEG` by reset switch.
+12. `MCU_HSE_IN` / `MCU_HSE_OUT` are a short, local crystal loop with matched load-cap grounding to `PWR_NEG`.
 
 Current schematic state note:
 - The drawn schematic presently uses U2 as the provisional `CTRL_3V3` owner.
@@ -121,8 +137,8 @@ Purpose:
 | Canonicalized | CTRL_PWM_MAIN | TIM1 PWM / gate-drive command | PA8 | Live schematic renamed from `V_out _on`; this is the MCU-side gate-drive command path. |
 | Canonicalized | UART_TX_LOG | USART1_TX | PA9 | Bridge-side label canonicalized from `TXD`. |
 | Canonicalized | UART_RX_CFG | USART1_RX | PA10 | Bridge-side label canonicalized from `RXD`. |
-| Canonical | FAULT_OCP | GPIO in / EXTI | PB0 | Over-current fault input. |
-| Canonical | FAULT_OVP | GPIO in / EXTI | PB1 | Over-voltage fault input. |
+| Canonical (verified 2026-07-21) | FAULT_OCP | GPIO in / EXTI | PB0 | Confirmed in fresh netlist export: `FAULT_OCP` now includes U1 PB0. |
+| Canonical (verified 2026-07-21) | FAULT_OVP | GPIO in / EXTI | PB1 | Confirmed in fresh netlist export: `FAULT_OVP` now includes U1 PB1. |
 | Canonical | CTRL_EN_CHG | GPIO out | PB5 | Charger enable control. |
 | Canonical | I2C DATA | I2C SDA | PB6 | Used for LM51772 configuration/control in the current schematic. |
 | Canonical | I2C CLK | I2C SCL | PB7 | Used for LM51772 configuration/control in the current schematic. |
@@ -135,9 +151,12 @@ Reserved pins:
 Deferred pin-allocation items:
 - PA0, PA1, PA2, and PA3 are still free in the live schematic and are the best candidates for the missing canonical measurement channels (`SENSE_BAT_V`, `SENSE_PV_I`, `SENSE_BAT_I`) once those sensing front ends are finalized.
 - PC13 is the preferred landing point for `U6_FLT` once the pull-up is added.
+- PF0-OSC_IN and PF1-OSC_OUT are reserved for the external HSE crystal network (`MCU_HSE_IN`, `MCU_HSE_OUT`) in the current STM32 support implementation checklist.
+- PG10/~RST is reserved for the external reset net (`MCU_RST_N`) and should include push-button access plus debug-header access.
 - U7 is currently intended as the board temperature sensor, placed near the warmest representative board spot, and should be tied to `SENSE_TEMP_BOARD`.
 - U8 is the display module and should remain on the I2C control bus with the control rail and ground return.
 
 Notes:
 - This audited table supersedes the older provisional pin budget as the practical Rev 0 reference.
 - Canonical cleanup is intentionally limited to MCU-facing and boundary-facing nets in this pass. U6-local helper nets such as `_OUTPUT Feedback`, `_Undervoltage Feedback`, `_CSA_2`, and `_CSB_2` still need a separate cleanup decision if you want them renamed too.
+- Historical note: the 2026-07-20 recovery handoff still showed `PB0` and `PB1` as `no_connect`; this was closed by the 2026-07-21 netlist export.

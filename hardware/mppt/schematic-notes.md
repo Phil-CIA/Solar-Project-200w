@@ -1,6 +1,6 @@
 # MPPT Schematic Notes (First Pass)
 
-Last updated: 2026-07-19 session 3 (continuation)
+Last updated: 2026-07-21
 Owners: Phil + Copilot
 Status: CTRL_SUPPLY_IN OR-ing complete; U6 (LM51772) all critical strap connections verified; 7 deferred power-authority ERC errors only.
 
@@ -180,7 +180,20 @@ Control and logging nets:
 - 2026-07-20: Sheet 2 cleanup started. `CTRL_PWM_MAIN` is now recorded as the only live controller-drive input for Q1 in Rev 0; old MOSFET-era alternate gate-drive wording is being removed from the Sheet 2 docs rather than preserved.
 - 2026-07-20: Session 2 defaults recorded. `CTRL_EN_CHG` stays unless the schematic proves it is unused; `FAULT_OCP` and `FAULT_OVP` stay as hardware protection signals; `V_in_ON` and the `U2/Q2` branch default to delete/legacy unless intentionally retained.
 - 2026-07-20: Session 3 defaults recorded. U6 is still treated as active in the current notes, so `U6_VCC2` should be closed with a real decoupler and `U6_FLT` should be closed with a pull-up; `U6_SYNC`, `U6_DTRK`, and `U6_RST` remain keep-only-if-intentional straps.
-- 2026-07-20: U6 helper-net verification completed against the live schematic. `R34` is already present at the FLT path, the VCC2 helper rail is already represented by the existing local decoupling capacitor, and ERC currently reports no errors on the schematic file; no additional schematic wiring changes were required in this pass.
+- 2026-07-20: U6 helper-net verification completed against the live schematic. `R34` is already present at the FLT path, the VCC2 helper rail is already represented by the existing local decoupling capacitor, and the latest on-disk ERC artifact (`hardware/kicad/solar-project/ERC.rpt`, 2026-07-20 export) reports 4 errors / 9 warnings overall; no additional helper-net-specific hard errors were introduced in this pass.
+- 2026-07-20: Current-measurement roles clarified and simplified from the live schematic/netlist. `R16` remains the active 4-terminal 1 mOhm controller shunt tied to `ISNSP`/`ISNSN`. The separate `R20` 10 mOhm battery/output-path shunt and its placeholder labels `BAT_I_POS` / `BAT_I_NEG` were intentionally removed after deciding Rev 0 does not need a second output-current measurement path.
+- 2026-07-21: Protection-block readiness check completed against the current on-disk netlist (`hardware/kicad/solar-project/Solar Project.net`). `FAULT_OCP` and `FAULT_OVP` are present as comparator output nets but still do not land on STM32 pins yet; `PB0` and `PB1` remain explicit unconnected nets in the export. `U6_FLT` is present as its own net and remains separate from comparator-fault nets, which is acceptable for Rev 0 diagnostics.
+- 2026-07-21: OCP/OVP implementation targets for next schematic pass are now explicit. OCP path currently has placeholder divider parts (`R49`, `R50`) between `OCP_MEAS` and `OCP_SENSE`; preferred Rev 0 action is direct compare (`OCP_MEAS` to comparator input) unless a deliberate filter is added. OVP path still has placeholder divider parts (`R20`, `R47`) while `OVP_REF` is active from `R21=102k` and `R48=10k` (about 0.295 V from `CTRL_3V3`), so the battery-trip threshold cannot be trusted until `R20`/`R47` are assigned intentional values.
+- 2026-07-21: First focused schematic action remains: wire `FAULT_OCP -> PB0` and `FAULT_OVP -> PB1`, then re-export ERC/netlist and confirm those pins are no longer in unconnected nets before changing threshold component values.
+- 2026-07-21 (verification): Closed. Fresh netlist export timestamp `2026-07-21T03:24:15-0500` shows `FAULT_OCP` contains U1 `PB0` and `FAULT_OVP` contains U1 `PB1`; corresponding unconnected PB0/PB1 nets are no longer present. ERC remained stable at 4 errors / 9 warnings with no new hard findings from this fault-landing change.
+- 2026-07-21 (larger bite, verification): Fresh exports show OVP divider values are now intentional (`R20 = 499k`, `R47 = 10k`) and fault-net landings remain correct (`FAULT_OCP -> PB0`, `FAULT_OVP -> PB1`). ERC improved slightly to **4 errors / 8 warnings** (12 total messages) with no new hard-error classes.
+- 2026-07-21 (larger bite, remaining item): OCP path is partially simplified but not fully closed. `R49` is now `0 ohm` between `OCP_MEAS` and `OCP_SENSE`, but `R50` is still populated at `10k` and still ties `OCP_SENSE` toward return. Next pass should either mark `R50` as DNI/open (preferred for direct-compare intent) or replace with an explicitly designed filter network.
+- 2026-07-21 (power-authority bite, verification): Fresh ERC export (`2026-07-21T04:03:28-0500`) dropped the hard-error set from 4 to 1 and warnings from 8 to 5. Cleared classes include prior `U4 VIN` and `D3` power-authority findings. Remaining hard error is one `pin_to_pin` conflict: `U6` pin 29 (`VCC2`, output) tied to power flag `#FLG06`.
+- 2026-07-21 (next hard-error target): Remove the power-output authority marker from the `U6_VCC2` helper net (`#FLG06`) rather than changing `U6 VCC2` functional wiring. Re-run ERC to confirm 0 hard errors before touching any additional warning cleanup.
+- 2026-07-21 (policy): ERC clearance is now a mandatory gate before PCB routing starts. The routing gate requires 0 unwaived ERC errors in the latest exported report; any accepted residual finding must be explicitly waived in this file with class, location, rationale, and owner/date.
+- 2026-07-21 (post-ERC sequence lock): With hard-error reduction complete enough for this pass, next work follows the handoff ownership branch rather than additional warning cleanup.
+- 2026-07-21 (ownership decision block): `V_in_ON` is treated as legacy control glue and defaults to delete unless the U2/Q2 branch is explicitly retained for a documented hardware reason. `U2/Q2` legacy control-owner role defaults to deprecate/remove in favor of the active Rev 0 control path.
+- 2026-07-21 (protection behavior block): Keep `FAULT_OCP`, `FAULT_OVP`, and `U6_FLT` as distinct diagnosis/status nets. Next design decision is whether to add a hardware shutdown-OR path (example net: `CHG_KILL_N`) now or defer with a documented rationale; this must be recorded before routing starts.
 
 ## 9. Requirements Validation Sweep (2026-07-10)
 
@@ -247,3 +260,36 @@ Verification checklist additions for DEC-013:
 
 Constraint note:
 - DEC-013 does not close current-sense collision or fault-net ownership blockers; those remain mandatory pre-routing gate fixes.
+
+## 11. Quick Ownership Worksheet (2026-07-21)
+
+Purpose:
+- Close the post-ERC ownership branch quickly without reopening settled architecture.
+
+Current evidence snapshot:
+1. `V_in_ON` currently lands only from `U1 PA5` through `R41` into the `Q2` gate branch.
+2. `FAULT_OCP` and `FAULT_OVP` are landed to MCU inputs (`PB0`, `PB1`).
+3. `U6_FLT` is landed to MCU input `PC13`.
+
+Decision A - `V_in_ON` fate:
+- Option A1 (default): Delete now with the legacy `U2/Q2` branch.
+- Option A2: Keep only if a concrete hardware role is documented that cannot be provided by the active control path.
+- Selected: A2 (conditional keep)
+- Reason: Keep `V_in_ON` as a reserved firmware hook for future input-protection behavior tied to `Q2`, while treating it as non-primary in the current Rev 0 control path.
+
+Decision B - `U2/Q2` legacy branch status:
+- Option B1 (default): Deprecate/remove from active Rev 0 ownership.
+- Option B2: Retain temporarily as a quarantined legacy block with explicit "do not route" note.
+- Selected: B2 (temporary quarantine)
+- Reason: Retain the branch as a non-primary reserved input-protection option for future use; do not let this branch define the active Rev 0 owner path.
+
+Decision C - hardware shutdown path from comparator faults:
+- Option C1 (default for safety): Add a shared hardware kill path now (example net name: `CHG_KILL_N`) driven by comparator faults so protection still acts without firmware.
+- Option C2: Defer shared kill path and keep only status nets (`FAULT_OCP`, `FAULT_OVP`, `U6_FLT`) for this revision, with explicit waiver rationale before routing.
+- Selected: C2
+- Reason: Defer shared kill-path implementation for this revision and keep comparator/controller fault lines as distinct status nets while ownership and bring-up behavior are stabilized.
+
+Exit check for this worksheet:
+1. All three Selected fields filled.
+2. Rationale lines completed with one sentence each.
+3. Next action copied into `HANDOFF.md` before session close.

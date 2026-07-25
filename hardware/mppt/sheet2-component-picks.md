@@ -1,6 +1,6 @@
 # Sheet 2 Component Picks (Buck Power Stage)
 
-Last updated: 2026-07-07
+Last updated: 2026-07-20
 Owners: Phil + Copilot
 Scope: choose first-pass components for Sheet 2 only (power stage), so symbols can be placed now.
 
@@ -21,17 +21,16 @@ Scope: choose first-pass components for Sheet 2 only (power stage), so symbols c
 ## 2. Symbol Placement Sequence
 
 1. Place Q1, D3, L1 first and connect `MPPT_SW_NODE` path.
-2. Place C4/C5 next and connect to `PV_IN_POS` and `PV_IN_NEG`.
-3. Place C6/C7 on `CHG_OUT_POS` and `CHG_OUT_NEG`.
-4. Place R1/C8 snubber placeholder from `MPPT_SW_NODE` to `PV_IN_NEG`.
+2. Place C4/C5 next and connect to `PV_IN_POS` and `PWR_NEG`.
+3. Place C6/C7 on `CHG_OUT_POS` and `PWR_NEG`.
+4. Place R1/C8 snubber placeholder from `MPPT_SW_NODE` to `PWR_NEG`.
 
 ## 3. Nets To Use
 
 - `PV_IN_POS`
-- `PV_IN_NEG`
+- `PWR_NEG`
 - `MPPT_SW_NODE`
 - `CHG_OUT_POS`
-- `CHG_OUT_NEG`
 - `CTRL_PWM_MAIN`
 
 ## 4. Cleanup Note
