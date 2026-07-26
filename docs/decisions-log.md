@@ -34,6 +34,7 @@ Decision policy: move fast, log every non-trivial choice, and defer only with a 
 | DEC-011 | 2026-07-06 | Temporary MPPT bounds | Apply temporary planning bounds: 15A continuous charge path assumption and dual panel-wiring envelope modeling until Q-001 and DEC-004 are closed. | Decided | Enables immediate schematic exploration while waiting for final battery and wiring constraints. | Allows Phase 1 design activity without unsafe implicit assumptions. | Phil + Copilot | 2026-07-06 |
 | DEC-012 | 2026-07-08 | PV reverse-path optimization | Keep series Schottky reverse-polarity path for Rev 0; evaluate ideal-diode MOSFET replacement in Rev 1. | Deferred | Rev 0 prioritizes simple bring-up and lower integration risk. | Ideal-diode footprint and topology changes move to Rev 1 efficiency optimization work. | Phil + Copilot | 2026-07-20 |
 | DEC-013 | 2026-07-14 | STM32G431 control-rail architecture (Rev 0) | Use a single wide-input buck as the primary control rail generator for `CTRL_3V3`, with PV-first runtime sourcing and protected USB bench fallback when PV is absent. Keep battery-domain assist optional through protected source OR-ing into the control-supply input boundary. | Decided | Satisfies required PV-only startup and USB-only bench bring-up without forcing a full dual-converter redesign. Keeps Rev 0 integration complexity bounded while preserving source-flexibility for bring-up and debug. | Unblocks explicit power-tree implementation for MCU VDD/VDDA, clarifies source-priority behavior, and enables targeted startup/noise verification before pre-routing gate closure. | Phil + Copilot | 2026-07-14 |
+| DEC-014 | 2026-07-26 | Rev 0 MCU continuity swap | Select `STM32F411CEU6` as the Rev 0 MCU replacement for in-stock continuity, with `STM32F401CEU6` as the immediate backup and `STM32G431CBT6` as the family-continuity fallback. | Decided | The original `STM32G431CBU6` is out of stock, but the reduced Rev 0 control scope still fits the F4 family well enough to keep the current UFQFPN-48 footprint and avoid a package reroute. | Preserves build continuity and limits board-level churn while accepting a firmware migration from G4 to F4. | Phil + Copilot | 2026-07-26 |
 
 ## Open Questions
 
@@ -61,7 +62,7 @@ Decision policy: move fast, log every non-trivial choice, and defer only with a 
 - 2026-07-07: Added Sheet 2 buck power-stage wiring map and extended net plan with implementation nets for protected input and gate-drive path.
 - 2026-07-07: Added PV input wiring map with explicit net-by-net symbol connectivity for Sheet 1 implementation.
 - 2026-07-07: Added DEC-012/Q-003 to track ideal-diode upgrade work.
-- 2026-07-07: Chosen first-pass PV input stage parts: 2-pin terminal block, 10 A fuse, series Schottky reverse protection, 64 V TVS, and 100 V input capacitors.
+- 2026-07-07: Chosen first-pass PV input stage parts: 2-pin terminal block, 10 A fuse, series Schottky reverse protection, 64 V TVS, and 63 V input capacitors.
 - 2026-07-07: Added buck symbol placement checklist to drive the first KiCad schematic draw order.
 - 2026-07-06: Added GitHub reference review notes for MPPT layout and schematic study, with usage constraints to avoid blind copying.
 - 2026-07-06: Added buck topology decision notes and explicit low-irradiance/headroom checks before fully closing DEC-003.

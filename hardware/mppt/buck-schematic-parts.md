@@ -9,9 +9,9 @@ Purpose: identify the functional parts and support circuits that need to appear 
 Required functional parts:
 - PV input connector: 2-position pluggable terminal block, 5.08 mm pitch, 300 V / 16 A class
 - Input fuse: 10 A slow-blow fuse or fuse holder placeholder
-- Reverse polarity protection element: series Schottky rectifier, 100 V / 10 A class
-- TVS or surge suppression device: 64 V TVS diode, SMBJ/SMCJ class
-- Input filter capacitor bank: 2 x 10 uF / 100 V X7R plus 100 nF / 100 V
+- Reverse polarity protection element: series Schottky rectifier, 60 V / 10 A class
+- TVS or surge suppression device: 48 V to 54 V TVS diode, SMBJ/SMCJ class
+- Input filter capacitor bank: 2 x 10 uF / 63 V X7R plus 100 nF / 63 V
 - Optional common-mode or differential filtering placeholder if EMI mitigation is needed later
 
 Placement note:

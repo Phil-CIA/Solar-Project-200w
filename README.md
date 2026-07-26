@@ -19,8 +19,10 @@ Initial workspace for the 200W solar project.
 4. Add hardware toolchain details in `hardware/README.md`.
 
 ## Status
-- Repository initialized
-- Base folders created
+- Rev 0 MPPT hardware design is actively progressing
+- The MCU continuity swap is documented and reflected in the active KiCad schematic and PCB files
+- PCB and components are on order with a solder paste stencil included
+- Current focus is on design closure, procurement follow-through, and documentation upkeep
 
 ## Documentation
 - [Handoff](HANDOFF.md)

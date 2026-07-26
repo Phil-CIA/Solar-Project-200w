@@ -4,6 +4,45 @@ Last updated: 2026-07-21
 Owners: Phil + Copilot
 Status: CTRL_SUPPLY_IN OR-ing complete; U6 (LM51772) all critical strap connections verified; 7 deferred power-authority ERC errors only.
 
+## Rev 0 MCU continuity update (2026-07-26)
+
+- Preferred replacement: `STM32F411CEU6` for Rev 0 continuity. This keeps the existing UFQFPN-48 footprint class and preserves the current MCU net map for SWD, UART, I2C, fault inputs, and button lines.
+- Immediate backup: `STM32F401CEU6`.
+- Risk note: this change accepts a firmware migration from the G4 family to the F4 family while avoiding a package-class change and board reroute.
+
+## BOM Review Snapshot (2026-07-25)
+
+This review is based on the live KiCad schematic/netlist, not a separate export BOM file.
+
+### Acceptable For Rev 0
+
+- U4 LM5163 control rail path: acceptable for the documented control-supply architecture.
+- U6 LM51772 controller block: acceptable as the active charger controller, pending the existing helper-net and ERC cleanup policy.
+- D4/D6/D7 1N5819WS OR-ing diodes: acceptable for the protected control-supply boundary.
+- D2 SMBJ60CA TVS: acceptable for the PV boundary protection intent.
+
+### Acceptable With Caveat
+
+- M1/M2/M3/M4 IPZ40N04S5L4R8ATMA1: the 40 V MOSFETs are acceptable under the 25.6 V TI Vds estimate and the U2 overvoltage shutdown assumption. Keep the transient and layout review intact, but do not force a 60 V-class swap just for margin.
+- L2 (HC3-1R0-R, 1uH) in the MPPT switch path has verified high current capability (about 78 A Irms / 78 A Isat from Eaton product data), so current rating is not the blocker; remaining work is value/ripple and control-loop tuning confirmation.
+
+### Not Acceptable Yet
+
+- F1 now uses a holder-matched placeholder (`Fuse_TD_10A_5x25_63VDC_MIN`): footprint is present, but the exact fuse part is not locked. Active rule is holder-first: choose a 5x25 fuse element with >=63 VDC rating to match the installed holder footprint.
+- Bussmann MDL preference is parked for this revision because the active holder is 5x25.
+
+### Legacy / Not Part Of The Charger BOM Decision
+
+- D1 1SMA4742A is part of the legacy U2 control path, not the PV boundary, so it should not be judged as the PV reverse-polarity element.
+- L3 is part of the control-rail path and is not the main Sheet 2 MPPT energy-storage inductor target.
+
+### Follow-Up Needed
+
+1. Keep the 40 V MOSFET set unless a later transient or thermal review shows a real need to change it.
+2. Confirm the 1uH inductor value against ripple/control-loop targets and adjust value only if control or thermal data requires it.
+3. Lock the exact 5x25 fuse part number after confirming >=63 VDC rating and time-delay behavior against startup/inrush.
+4. Keep the control-rail parts as-is unless a later review shows an electrical or thermal reason to revise them.
+
 ---
 
 ## Session 2026-07-19 Summary (Continuation)
@@ -41,7 +80,7 @@ Recommended functional zoning within one KiCad schematic page:
 - PV connector and polarity marking: 2-position pluggable terminal block
 - Reverse polarity strategy: series Schottky diode for first pass
 - Transient/surge suppression: 64 V TVS diode
-- Input filter boundary: 100 V capacitor bank close to connector and diode
+- Input filter boundary: 63 V capacitor bank close to connector and diode
 
 Symbol order:
 1. J1 connector

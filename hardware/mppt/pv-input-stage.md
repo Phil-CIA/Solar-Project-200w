@@ -10,9 +10,9 @@ Purpose: define the first schematic symbols to place at the PV input boundary fo
 |---|---|---|
 | PV input connector | 2-position pluggable terminal block, 5.08 mm pitch, 300 V / 16 A class | Use a generic KiCad terminal block symbol and an equivalent footprint from the library set. This is the board-side entry point for the panel harness. |
 | Input fuse | 10 A slow-blow fuse in holder or inline fuse placeholder | Current is only about 5.3 A at STC, so this gives headroom while still protecting the harness and input stage. |
-| Reverse polarity protection | Series Schottky rectifier, 100 V / 10 A class | Chosen for simplicity in the first schematic pass. It is acceptable for a learning prototype even though it adds some loss. |
+| Reverse polarity protection | Series Schottky rectifier, 60 V / 10 A class | Chosen for simplicity in the first schematic pass. It is acceptable for a learning prototype even though it adds some loss. |
 | Transient suppression | 64 V TVS diode, SMBJ/SMCJ class | Keep the standoff above normal PV operating voltage while providing surge suppression. |
-| Input filtering | 2 x 10 uF / 100 V X7R plus 100 nF / 100 V ceramic | Place close to the connector / protection boundary. |
+| Input filtering | 2 x 10 uF / 63 V X7R plus 100 nF / 63 V ceramic | Place close to the connector / protection boundary. |
 
 ## 2. Placement Order On Sheet 1
 

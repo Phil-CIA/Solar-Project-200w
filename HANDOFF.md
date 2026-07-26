@@ -1,8 +1,8 @@
 # Solar Project 200W - Handoff
 
-Latest active handoff: [SOLAR_HANDOFF_2026-07-25.md](SOLAR_HANDOFF_2026-07-25.md)
+Latest active handoff: [SOLAR_HANDOFF_2026-07-26.md](SOLAR_HANDOFF_2026-07-26.md)
 
-Session status: **PCB routed and DRC-clean**. Schematic was extended with STM32 support hardware, navigation buttons, and crystal network. The next step is a review pass, then commit and push.
+Session status: **Session closed for handoff.** Fuse holder-policy alignment is complete for first build; next session pivots to finding an in-stock replacement for STM32G431CBU6.
 
 ## Current Objective At Stop
 

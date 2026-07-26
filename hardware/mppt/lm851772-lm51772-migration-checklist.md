@@ -127,7 +127,7 @@ Complete all fields before schematic lock.
 | PV reconnect threshold | 54V to 56V (LM851772 start point) | 46V to 47V (LM51772 start point) | Hysteresis stability | PREFILLED |
 | Input TVS standoff voltage | >= max normal PV input and below unwanted clamp region | >= max normal PV input and below unwanted clamp region | Normal max VIN below standoff | OPEN |
 | Input TVS clamp level | Keep clamp comfortably below controller absolute max | Keep clamp comfortably below controller absolute max | Clamp below absolute max with margin | OPEN |
-| High-side disconnect FET Vds rating | Sized for PV worst-case plus transient margin; 100V class is common in this project envelope | Sized for PV worst-case plus transient margin; 100V class is common in this project envelope | Worst-case PV + transient | PARTIAL |
+| High-side disconnect FET Vds rating | Sized for PV worst-case plus transient margin; 60V class is a better fit for the stated 50V ceiling | Sized for PV worst-case plus transient margin; 60V class is a better fit for the stated 50V ceiling | Worst-case PV + transient | PARTIAL |
 
 ### 4.2 UVLO/EN divider values
 
@@ -138,7 +138,7 @@ Use datasheet equations for the selected part and record calculated values.
 | UVLO rising threshold | 11.0V to 11.5V (Rev 0 keep converter off below weak-panel region) | 11.2V using R23=1.00M and R24=121k with EN threshold assumed 1.21V | Current schematic still uses R23=75k and R24=21.5k; update pending | PARTIAL |
 | UVLO falling threshold | 10.0V to 10.6V | 10.4V target after adding hysteresis resistor (bench trim expected) | Not yet implemented in schematic | OPEN |
 | Hysteresis width | 0.7V to 1.0V | 0.8V target from EN hysteresis injection path | Not yet implemented in schematic | OPEN |
-| EN pull-up/down network | High-value divider to reduce standby loss at high VIN | Divider current ~= 90uA at 100V with 1.121M total (1.00M + 121k) | Current divider is low-value legacy set (75k/21.5k); migrate during next value pass | PARTIAL |
+| EN pull-up/down network | High-value divider to reduce standby loss at high VIN | Divider current ~= 45uA at 50V with 1.121M total (1.00M + 121k) | Current divider is low-value legacy set (75k/21.5k); migrate during next value pass | PARTIAL |
 
 Assumptions and notes:
 - UVLO numbers above are Rev 0 starting targets for LM51772 bench bring-up, not final production limits.

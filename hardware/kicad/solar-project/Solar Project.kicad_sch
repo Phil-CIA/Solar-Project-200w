@@ -32453,10 +32453,6 @@
 		(uuid "89bf79bc-2bfc-4e8f-ad6d-923f80af9628")
 	)
 	(no_connect
-		(at 289.56 190.5)
-		(uuid "89d2bbf1-4b06-4762-a2bf-df4f6bf8f7dd")
-	)
-	(no_connect
 		(at 289.56 210.82)
 		(uuid "8b35db7c-6f13-46f9-b839-3a25779877f8")
 	)
@@ -38942,6 +38938,28 @@
 			)
 		)
 	)
+	(global_label "PWR_NEG"
+		(shape input)
+		(at 289.56 190.5 0)
+		(fields_autoplaced yes)
+		(effects
+			(font
+				(size 0.635 0.635)
+			)
+			(justify left)
+		)
+		(uuid "a72008f8-506a-40ee-a714-38122edf5010")
+		(property "Intersheetrefs" "${INTERSHEET_REFS}"
+			(at 295.4069 190.5 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+				(hide yes)
+			)
+		)
+	)
 	(global_label "TXD"
 		(shape tri_state)
 		(at 243.84 203.2 180)
@@ -43049,7 +43067,6 @@
 		(in_bom yes)
 		(on_board yes)
 		(dnp no)
-		(fields_autoplaced yes)
 		(uuid "198960ae-07e2-4352-bf45-3afdce5d8176")
 		(property "Reference" "F1"
 			(at 48.26 78.7399 0)
@@ -43060,11 +43077,11 @@
 				(justify left)
 			)
 		)
-		(property "Value" "10 amp"
-			(at 48.26 81.2799 0)
+		(property "Value" "Fuse_TD_10A_5x25_63VDC_MIN"
+			(at 35.052 79.502 0)
 			(effects
 				(font
-					(size 1.27 1.27)
+					(size 0.8 0.8)
 				)
 				(justify left)
 			)
@@ -43078,7 +43095,7 @@
 				(hide yes)
 			)
 		)
-		(property "Datasheet" "~"
+		(property "Datasheet" "https://www.lcsc.com/datasheet/C142864.pdf?spm=wm.sxq.inf.ggs&lcsc_vid=EVEIA1dfFlIMBAdXEgVXUVVVTwRWBgBfE1lbBABSQFMxVlNeQ1hXX1RUTlVdVTsOAxUeFF5JWBYZEEoKFBINSQcJGk4NBhADEA4cHktXRVJADxALGw%3D%3D"
 			(at 45.72 80.01 0)
 			(effects
 				(font
@@ -43087,7 +43104,7 @@
 				(hide yes)
 			)
 		)
-		(property "Description" "Fuse"
+		(property "Description" "TBD: 5x25mm time-delay fuse, 10A class, 63VDC minimum"
 			(at 45.72 80.01 0)
 			(effects
 				(font
@@ -43132,7 +43149,7 @@
 				(hide yes)
 			)
 		)
-		(property "Part - USA" ""
+		(property "Part - USA" "TBD"
 			(at 45.72 80.01 0)
 			(effects
 				(font
@@ -47505,7 +47522,7 @@
 				(hide yes)
 			)
 		)
-		(property "Datasheet" "~"
+		(property "Datasheet" "https://www.lcsc.com/datasheet/C142864.pdf?spm=wm.sxq.inf.ggs&lcsc_vid=EVEIA1dfFlIMBAdXEgVXUVVVTwRWBgBfE1lbBABSQFMxVlNeQ1hXX1RUTlVdVTsOAxUeFF5JWBYZEEoKFBINSQcJGk4NBhADEA4cHktXRVJADxALGw%3D%3D"
 			(at 414.02 60.96 0)
 			(effects
 				(font
@@ -47551,6 +47568,15 @@
 			)
 		)
 		(property "Part - USA" ""
+			(at 414.02 60.96 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "LCSC" "C142864"
 			(at 414.02 60.96 0)
 			(effects
 				(font
@@ -50880,9 +50906,9 @@
 		(at 153.67 71.12 0)
 		(unit 1)
 		(exclude_from_sim no)
-		(in_bom yes)
+		(in_bom no)
 		(on_board yes)
-		(dnp no)
+		(dnp yes)
 		(fields_autoplaced yes)
 		(uuid "57d1ddef-52ca-4822-93d3-fdf797cd7144")
 		(property "Reference" "TP4"
@@ -51611,7 +51637,7 @@
 				(hide yes)
 			)
 		)
-		(property "Datasheet" ""
+		(property "Datasheet" "https://www.lcsc.com/datasheet/C3020560.pdf?spm=wm.sxq.inf.ggs___wm.ssy.em.0.tz&lcsc_vid=EVEIA1dfFlIMBAdXEgVXUVVVTwRWBgBfE1lbBABSQFMxVlNeQ1hXUVFWQlBdVDsOAxUeFF5JWBYZEEoKFBINSQcJGk4dAgUUFAk%3D"
 			(at 63.5 334.01 0)
 			(effects
 				(font
@@ -51670,6 +51696,15 @@
 			)
 		)
 		(property "Part - USA" ""
+			(at 63.5 334.01 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "LCSC" "C3020560"
 			(at 63.5 334.01 0)
 			(effects
 				(font
@@ -51884,7 +51919,7 @@
 				(hide yes)
 			)
 		)
-		(property "Datasheet" ""
+		(property "Datasheet" "https://www.lcsc.com/datasheet/C5248080.pdf?spm=wm.sxq.inf.ggs___wm.fly.bg.0.xh&lcsc_vid=EVEIA1dfFlIMBAdXEgVXUVVVTwRWBgBfE1lbBABSQFMxVlNeQlFeUV1eQllaVDsOAxUeFF5JWBYZEEoKFBINSQcJGk4eFQsCAgIaSgADAwAHC0slRVZbUFxTR08GEwkK"
 			(at 382.27 346.71 0)
 			(effects
 				(font
@@ -51903,6 +51938,15 @@
 			)
 		)
 		(property "Part - USA" ""
+			(at 382.27 334.01 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "LCSC" "C5248080"
 			(at 382.27 334.01 0)
 			(effects
 				(font
@@ -52735,7 +52779,7 @@
 				)
 			)
 		)
-		(property "Value" "STM32G431CBU6"
+		(property "Value" "STM32F411CEU6"
 			(at 266.7 160.02 0)
 			(effects
 				(font
@@ -52743,7 +52787,7 @@
 				)
 			)
 		)
-		(property "Footprint" "Package_DFN_QFN:QFN-48-1EP_6x6mm_P0.4mm_EP4.4x4.4mm_ThermalVias"
+		(property "Footprint" "Package_DFN_QFN:QFN-48-1EP_7x7mm_P0.5mm_EP5.6x5.6mm"
 			(at 266.7 203.2 0)
 			(effects
 				(font
@@ -52753,7 +52797,7 @@
 				(hide yes)
 			)
 		)
-		(property "Datasheet" ""
+		(property "Datasheet" "https://www.lcsc.com/datasheet/C529356.pdf?spm=wm.sxq.inf.ggs___wm.fly.bg.0.xh&lcsc_vid=EVEIA1dfFlIMBAdXEgVXUVVVTwRWBgBfE1lbBABSQFMxVlNeQ1hXXlxeRlNZXjsOAxUeFF5JWBYZEEoKFBINSQcJGk4eFQsCAgIaSgADAwAHC0slRVhdUFJUQk8GEwkK"
 			(at 266.7 203.2 0)
 			(effects
 				(font
@@ -52762,7 +52806,7 @@
 				(hide yes)
 			)
 		)
-		(property "Description" ""
+		(property "Description" "Arm Cortex-M4 32-bit MCU+FPU, 170 MHz / 213 DMIPS, up to 128 KB Flash, 32 KB SRAM, rich analog, math accelerator"
 			(at 266.7 203.2 0)
 			(effects
 				(font
@@ -52811,7 +52855,7 @@
 				(hide yes)
 			)
 		)
-		(property "Check_prices" "https://www.snapeda.com/parts/STM32G431CBU6/STMicroelectronics/view-part/?ref=eda"
+		(property "Check_prices" "https://www.snapeda.com/parts/STM32F411CEU6/STMicroelectronics/view-part/?ref=eda"
 			(at 266.7 203.2 0)
 			(effects
 				(font
@@ -52841,7 +52885,7 @@
 				(hide yes)
 			)
 		)
-		(property "SnapEDA_Link" "https://www.snapeda.com/parts/STM32G431CBU6/STMicroelectronics/view-part/?ref=snap"
+		(property "SnapEDA_Link" "https://www.snapeda.com/parts/STM32F411CEU6/STMicroelectronics/view-part/?ref=snap"
 			(at 266.7 203.2 0)
 			(effects
 				(font
@@ -52851,7 +52895,7 @@
 				(hide yes)
 			)
 		)
-		(property "MP" "STM32G431CBU6"
+		(property "MP" "STM32F411CEU6"
 			(at 266.7 203.2 0)
 			(effects
 				(font
@@ -52861,7 +52905,7 @@
 				(hide yes)
 			)
 		)
-		(property "Purchase-URL" "https://www.snapeda.com/api/url_track_click_mouser/?unipart_id=3657449&manufacturer=STMicroelectronics&part_name=STM32G431CBU6&search_term=stm32g431"
+		(property "Purchase-URL" "https://www.snapeda.com/api/url_track_click_mouser/?manufacturer=STMicroelectronics&part_name=STM32F411CEU6&search_term=stm32f411"
 			(at 266.7 203.2 0)
 			(effects
 				(font
@@ -52929,6 +52973,15 @@
 			)
 		)
 		(property "Part - USA" ""
+			(at 266.7 203.2 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "LCSC" "C529356"
 			(at 266.7 203.2 0)
 			(effects
 				(font
@@ -54793,7 +54846,7 @@
 				(hide yes)
 			)
 		)
-		(property "Datasheet" "~"
+		(property "Datasheet" "https://www.lcsc.com/datasheet/C8439.pdf?spm=wm.sxq.inf.ggs___wm.fly.bg.6.xh&lcsc_vid=EVEIA1dfFlIMBAdXEgVXUVVVTwRWBgBfE1lbBABSQFMxVlNeQ1hXUFVURlFZUjsOAxUeFF5JWBYZEEoKFBINSQcJGk4NBhADEA4cHktXQFVADxALGw%3D%3D"
 			(at 40.64 90.17 0)
 			(effects
 				(font
@@ -54839,6 +54892,15 @@
 			)
 		)
 		(property "Part - USA" ""
+			(at 40.64 90.17 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "LCSC" "C8439"
 			(at 40.64 90.17 0)
 			(effects
 				(font
@@ -59284,9 +59346,9 @@
 		(at 318.77 57.15 0)
 		(unit 1)
 		(exclude_from_sim no)
-		(in_bom yes)
+		(in_bom no)
 		(on_board yes)
-		(dnp no)
+		(dnp yes)
 		(fields_autoplaced yes)
 		(uuid "9451a89d-a728-4213-9a4b-a7699d5eedb1")
 		(property "Reference" "TP1"
@@ -62723,7 +62785,7 @@
 				(hide yes)
 			)
 		)
-		(property "Datasheet" "~"
+		(property "Datasheet" "https://www.lcsc.com/datasheet/C8439.pdf?spm=wm.sxq.inf.ggs___wm.fly.bg.6.xh&lcsc_vid=EVEIA1dfFlIMBAdXEgVXUVVVTwRWBgBfE1lbBABSQFMxVlNeQ1hXUFVURlFZUjsOAxUeFF5JWBYZEEoKFBINSQcJGk4NBhADEA4cHktXQFVADxALGw%3D%3D"
 			(at 419.1 91.44 0)
 			(effects
 				(font
@@ -62769,6 +62831,15 @@
 			)
 		)
 		(property "Part - USA" ""
+			(at 419.1 91.44 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "LCSC" "C8439"
 			(at 419.1 91.44 0)
 			(effects
 				(font
@@ -69351,9 +69422,9 @@
 		(at 153.67 93.98 0)
 		(unit 1)
 		(exclude_from_sim no)
-		(in_bom yes)
+		(in_bom no)
 		(on_board yes)
-		(dnp no)
+		(dnp yes)
 		(fields_autoplaced yes)
 		(uuid "ec005c79-2af7-40f0-b284-8be810656dd8")
 		(property "Reference" "TP5"
@@ -69428,9 +69499,9 @@
 		(at 270.51 71.12 0)
 		(unit 1)
 		(exclude_from_sim no)
-		(in_bom yes)
+		(in_bom no)
 		(on_board yes)
-		(dnp no)
+		(dnp yes)
 		(fields_autoplaced yes)
 		(uuid "ef9930f4-acd7-458b-aa8c-cfba3dc81765")
 		(property "Reference" "TP3"
@@ -69601,7 +69672,7 @@
 				(justify left)
 			)
 		)
-		(property "Footprint" "Connector_JST:JST_PH_B3B-PH-K_1x03_P2.00mm_Vertical"
+		(property "Footprint" "Connector_PinHeader_2.54mm:PinHeader_1x03_P2.54mm_Vertical"
 			(at 453.39 321.31 0)
 			(effects
 				(font
@@ -69610,7 +69681,7 @@
 				(hide yes)
 			)
 		)
-		(property "Datasheet" "~"
+		(property "Datasheet" "https://www.lcsc.com/datasheet/C2937625.pdf?spm=wm.sxq.inf.ggs___wm.fly.bg.0.xh&lcsc_vid=EVEIA1dfFlIMBAdXEgVXUVVVTwRWBgBfE1lbBABSQFMxVlNeQ1hXXldVQ1VdVjsOAxUeFF5JWBYZEEoKFBINSQcJGk4NBhADEA4cHktRTlNADxALGw%3D%3D"
 			(at 453.39 321.31 0)
 			(effects
 				(font
@@ -69629,6 +69700,15 @@
 			)
 		)
 		(property "Part - USA" ""
+			(at 453.39 321.31 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "LCSC" "C2937625"
 			(at 453.39 321.31 0)
 			(effects
 				(font
@@ -69806,7 +69886,7 @@
 				(hide yes)
 			)
 		)
-		(property "Datasheet" ""
+		(property "Datasheet" "https://www.lcsc.com/datasheet/C2757850.pdf?spm=wm.sxq.inf.ggs___wm.fly.bg.0.cbh&lcsc_vid=EVEIA1dfFlIMBAdXEgVXUVVVTwRWBgBfE1lbBABSQFMxVlNeQlFeUVxTRFZZVzsOAxUeFF5JWBYZEEoKFBINSQcJGk4dAgUUFAk%3D"
 			(at 255.27 369.57 0)
 			(effects
 				(font
@@ -69945,6 +70025,15 @@
 			)
 		)
 		(property "Part - USA" ""
+			(at 255.27 369.57 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "LCSC" "C2757850"
 			(at 255.27 369.57 0)
 			(effects
 				(font
@@ -70673,7 +70762,7 @@
 				(hide yes)
 			)
 		)
-		(property "Datasheet" "~"
+		(property "Datasheet" "~https://www.lcsc.com/datasheet/C41417361.pdf?spm=wm.sxq.inf.ggs___wm.fly.bg.1.xh&lcsc_vid=EVEIA1dfFlIMBAdXEgVXUVVVTwRWBgBfE1lbBABSQFMxVlNeQ1hXX1BTQlBXVDsOAxUeFF5JWBYZEEoKFBINSQcJGk4eFQsCAgIaSgADAwAHC0slRlVcX1JSWQkaCgg%3D"
 			(at 266.7 254 0)
 			(effects
 				(font
@@ -70692,6 +70781,15 @@
 			)
 		)
 		(property "Part - USA" ""
+			(at 266.7 254 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "LCSC" "C41417361"
 			(at 266.7 254 0)
 			(effects
 				(font
