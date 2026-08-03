@@ -1,0 +1,38 @@
+* B0 include-only variant for LTspice integration harness
+* Schematic-backed assumptions from the current KiCad design:
+* - PV entry fuse path uses F1 (10A class fuse)
+* - PV protection uses D2 (SMBJ60CA bidirectional TVS) plus D1 (1SMA4742A clamp)
+
+.param B0_VIN=36
+.param VCTRL=3.3
+.param RFUSE=10m
+.param RPATH=2m
+.param RTRACE=10m
+.param RLOAD=30
+
+R_GNDREF_B0 PWR_NEG 0 1u
+
+V_PV PV_IN_POS_RAW PWR_NEG DC {B0_VIN}
+V_CTRL V_in_ON PWR_NEG DC {VCTRL}
+
+R_F1 PV_IN_POS_RAW PV_IN_POS_FUSED {RFUSE}
+D_TVS PV_IN_POS_FUSED PWR_NEG DTVS60
+
+R_Q4PATH PV_IN_POS_FUSED PV_IN_POS {RPATH + RTRACE}
+D_Q4BODY PV_IN_POS PV_IN_POS_FUSED DQ4BODY
+D_ZCLAMP Q4_G PV_IN_POS_FUSED DZ12
+
+R40 Q2_G PWR_NEG 100k
+R41 V_in_ON Q2_G 10k
+R43 PV_IN_POS_FUSED Q2_D 100k
+R42 Q2_D Q4_G 100k
+R_Q2DRV Q2_D Q2_G 1Meg
+
+R35 PV_IN_POS_FUSED V_in_ADC 180k
+R36 V_in_ADC PWR_NEG 10k
+R_LOAD PV_IN_POS PWR_NEG {RLOAD}
+
+.model NMOS_DRV NMOS (VTO=1.6 KP=0.2m RD=0.2 RS=0.2)
+.model DQ4BODY D (IS=1e-14 RS=5m N=1.05 CJO=100p)
+.model DZ12 D (IS=1e-14 BV=12 IBV=1m CJO=100p)
+.model DTVS60 D (IS=1e-14 BV=73.7 IBV=1m RS=0.05 CJO=700p)

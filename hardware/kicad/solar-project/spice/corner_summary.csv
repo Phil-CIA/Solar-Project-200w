@@ -1,0 +1,6 @@
+"deck","status","vout_avg","iin_avg","iout_avg","pin_avg","pout_avg","eff_pct","req_chg_001","req_chg_003","bat_trip","ocp_trip","notes"
+"00_block_b0_pv_input.cir","ok","","","","","","","","","","","log: logs/00_block_b0_pv_input.cir.log"
+"01_block_b1_power_stage.cir","ok","1.38821e+01","-1.05642e+01","1.54246e+01","2.53541e+02","2.14125e+02","8.44538e+01","PASS","FAIL","","","log: logs/01_block_b1_power_stage.cir.log; warn=iin_avg_negative"
+"02_block_b2_battery_boundary.cir","ok","","","","","","","","","","","log: logs/02_block_b2_battery_boundary.cir.log"
+"04_block_b4_fault_network.cir","ok","","","","","","","","","1.49973e+01","8.91892e-01","log: logs/04_block_b4_fault_network.cir.log"
+"90_system_integration_harness.cir","ok","1.41295e+01","-3.65149e+02","","","","","","","","","log: logs/90_system_integration_harness.cir.log"

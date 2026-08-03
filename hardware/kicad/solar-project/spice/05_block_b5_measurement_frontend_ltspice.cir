@@ -1,0 +1,23 @@
+* B5 - Measurement front ends for ADC-facing nets
+* LTspice export from 05_block_b5_measurement_frontend.cir
+
+.param VIN=36
+
+* Ensure global reference node is tied to LTspice node 0
+R_GNDREF_B5 PWR_NEG 0 1u
+
+V_PV PV_IN_POS_FUSED PWR_NEG DC {VIN}
+
+* Placeholder divider and filter for SENSE_PV_V
+R_TOP_PV PV_IN_POS_FUSED SENSE_PV_V 180k
+R_BOT_PV SENSE_PV_V PWR_NEG 10k
+C_FILT_PV SENSE_PV_V PWR_NEG 10n
+
+* Placeholder load representing ADC input leakage/sample path
+R_ADC_PV SENSE_PV_V PWR_NEG 1MEG
+
+.op
+.dc V_PV 8 60 1
+.print dc V(SENSE_PV_V)
+
+.end

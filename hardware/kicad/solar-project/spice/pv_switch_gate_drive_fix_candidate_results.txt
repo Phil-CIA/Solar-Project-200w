@@ -1,0 +1,18 @@
+PV switch gate-drive candidate fix summary
+========================================
+Model: PMOS Q4 pass element with Q2 pull-down control and 12V Vgs clamp
+
+OFF state (V_in_ON = 0 V):
+- VIN=12 V -> V(gate)=12.000000 V, V(source)=12.000000 V, Vgs=-0.000001 V, Vout=0.000000 V
+- VIN=24 V -> V(gate)=24.000000 V, V(source)=24.000000 V, Vgs=-0.000002 V, Vout=0.000000 V
+- VIN=36 V -> V(gate)=36.738080 V, V(source)=36.000000 V, Vgs=0.738077 V, Vout=0.000000 V
+- VIN=50 V -> V(gate)=50.738080 V, V(source)=50.000000 V, Vgs=0.738077 V, Vout=0.000000 V
+
+ON state (V_in_ON = 3.3 V):
+- VIN=12 V -> V(gate)=0.128232 V, V(source)=12.000000 V, Vgs=-11.871800 V, Vout=11.576870 V
+- VIN=24 V -> V(gate)=12.006720 V, V(source)=24.000000 V, Vgs=-11.993300 V, Vout=23.145300 V
+- VIN=36 V -> V(gate)=23.949230 V, V(source)=36.000000 V, Vgs=-12.050800 V, Vout=34.694760 V
+- VIN=50 V -> V(gate)=37.914670 V, V(source)=50.000000 V, Vgs=-12.085300 V, Vout=48.138970 V
+
+Conclusion:
+This candidate topology establishes meaningful Vgs behavior: OFF keeps Vgs near 0 V, and ON drives Vgs negative with zener-limited magnitude at higher VIN.

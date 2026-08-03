@@ -1,0 +1,45 @@
+* System-level harness for staged integration (LTspice export)
+* Converted from 90_system_integration_harness.cir
+
+* Partial integration: B0 + B1 + B2
+
+.include 00_block_b0_pv_input_ltspice_inc.cir
+.include 01_block_b1_power_stage_ltspice_inc.cir
+.include 02_block_b2_battery_boundary_ltspice_inc.cir
+* .include 03_block_b3_control_rail_ltspice.cir
+* .include 04_block_b4_fault_network_ltspice.cir
+* .include 05_block_b5_measurement_frontend_ltspice.cir
+
+* Keep this harness focused on integration transients and corner sweeps.
+
+.temp 25
+
+.tran 50n 4m
+
+* Key observability points from the original harness
+* Node meanings for this staged harness:
+* PV_IN_POS_RAW = raw PV receiver node before fuse/TVS
+* PV_IN_POS_FUSED = protected PV node after fuse/TVS
+* PV_IN_POS = simplified converter input rail
+* V_out = simplified buck output node
+* CHG_OUT_POS = charger-side boundary before the battery fuse
+* BAT_BUS_POS = battery terminal / pack bus node
+* SW_1 / SW_2 = internal switching nodes of the simplified power stage
+.print tran V(PV_IN_POS_RAW) V(PV_IN_POS_FUSED) V(PV_IN_POS)
+.print tran V(V_out) V(CHG_OUT_POS) V(BAT_BUS_POS)
+.print tran V(SW_1) V(SW_2)
+.print tran I(V_CHG_PROBE)
+
+* End-of-run checks for quick automation
+* Target-analysis note: for the current 12.8V LiFePO4-style battery assumption, the simplified model should stay in the 12A charging band if the power-stage and loss assumptions remain in bounds.
+.meas tran VOUT_FINAL FIND V(V_out) AT=4m
+.meas tran BAT_FINAL FIND V(BAT_BUS_POS) AT=4m
+.meas tran ICHG_FINAL FIND I(V_CHG_PROBE) AT=4m
+
+* Lightweight corner sweep notes for the next validation pass:
+* 1) PV input variation: VIN from 30V to 36V
+* 2) Battery load variation: pack leakage and ESR changes
+* 3) Check that the simplified model remains in a plausible charging band rather than collapsing to an obvious failure mode
+* Current baseline interpretation: the simplified model now yields a stable charging-like response around 14.6V output, 13.95V battery bus, and ~14A charge current, so it is suitable for concept-level sanity checking but not yet hardware proof.
+
+.end

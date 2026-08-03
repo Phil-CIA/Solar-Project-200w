@@ -1,0 +1,61 @@
+* B0 - PV input, fuse, TVS, reverse path, and gate-control slice
+* Derived from Solar Project.net nets:
+* /PV_IN_POS_RAW -> F1 -> /PV_IN_POS_FUSED -> Q4(PMOS) -> PV_IN_POS
+* Q4 gate network: Q2 + R40/R41/R42/R43 + D1 zener clamp
+
+.param VIN=24
+.param VCTRL=0
+.param RFUSE=15m
+.param RPATH=5m
+.param RLOAD=30
+
+* PV boundary source
+V_PV PV_IN_POS_RAW PWR_NEG DC {VIN}
+
+* MCU gate-control surrogate (V_in_ON net in hardware)
+V_CTRL V_in_ON PWR_NEG DC {VCTRL}
+
+* F1 first-pass model
+R_F1 PV_IN_POS_RAW PV_IN_POS_FUSED {RFUSE}
+
+* D2 TVS at fused PV rail (SMBJ60CA placeholder model)
+D_TVS PV_IN_POS_FUSED PWR_NEG DTVS60
+
+* Q4 PMOS pass element: S=/PV_IN_POS_FUSED, D=PV_IN_POS, G=Q4_G
+M_Q4 PV_IN_POS Q4_G PV_IN_POS_FUSED PV_IN_POS_FUSED PMOS_PASS
+R_Q4PATH PV_IN_POS_FUSED PV_IN_POS {RPATH}
+
+* D1 zener clamp between Q4 gate and fused source rail
+* This limits |Vgs(Q4)| during pull-down events.
+D_ZCLAMP Q4_G PV_IN_POS_FUSED DZ12
+
+* Q2 gate-pull network as implemented in schematic
+R40 Q2_G PWR_NEG 100k
+R41 V_in_ON Q2_G 10
+R43 PV_IN_POS_FUSED Q2_D 100k
+R42 Q2_D Q4_G 10
+M_Q2 Q2_D Q2_G PWR_NEG PWR_NEG NMOS_DRV
+
+* Sense-divider branch present on fused node
+R35 PV_IN_POS_FUSED V_in_ADC 180k
+R36 V_in_ADC PWR_NEG 10k
+
+* Downstream loading placeholder on PV_IN_POS
+R_LOAD PV_IN_POS PWR_NEG {RLOAD}
+
+* Device models (first-pass behavioral approximations)
+.model NMOS_DRV NMOS (VTO=1.6 KP=0.8m RD=0.2 RS=0.2)
+.model PMOS_PASS PMOS (VTO=-2.5 KP=2m RD=0.01 RS=0.01)
+.model DZ12 D (IS=1e-14 BV=12 IBV=1m CJO=100p)
+.model DTVS60 D (IS=1e-14 BV=73.7 IBV=1m RS=0.05 CJO=700p)
+
+.control
+op
+print v(PV_IN_POS_RAW) v(PV_IN_POS_FUSED) v(PV_IN_POS)
+print v(Q4_G) v(PV_IN_POS_FUSED,Q4_G)
+print v(V_in_ADC)
+dc V_PV 8 60 1
+print v(PV_IN_POS) v(PV_IN_POS_FUSED,Q4_G)
+.endc
+
+.end

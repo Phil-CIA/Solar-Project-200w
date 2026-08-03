@@ -1,0 +1,22 @@
+* B5 - Measurement front ends for ADC-facing nets
+* Populate divider/filter details for SENSE_PV_V, SENSE_BAT_V, and current-sense channels.
+
+.param VIN=36
+
+V_PV PV_IN_POS_FUSED PWR_NEG DC {VIN}
+
+* Placeholder divider and filter for SENSE_PV_V
+R_TOP_PV PV_IN_POS_FUSED SENSE_PV_V 180k
+R_BOT_PV SENSE_PV_V PWR_NEG 10k
+C_FILT_PV SENSE_PV_V PWR_NEG 10n
+
+* Placeholder load representing ADC input leakage/sample path
+R_ADC_PV SENSE_PV_V PWR_NEG 1MEG
+
+.control
+op
+dc VIN 8 60 1
+print v(SENSE_PV_V)
+.endc
+
+.end

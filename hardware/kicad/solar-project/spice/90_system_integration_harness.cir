@@ -1,0 +1,30 @@
+* System-level harness for staged integration
+* Include block decks after each block is populated and validated stand-alone.
+
+* Partial integration: B0 + B1 + B2
+.param VIN=36
+.param VCTRL=3.3
+.param USE_INTERNAL_SRC=0
+.param USE_INTERNAL_CHG=0
+
+.include 00_block_b0_pv_input.cir
+.include 01_block_b1_power_stage.cir
+.include 02_block_b2_battery_boundary.cir
+* .include 03_block_b3_control_rail.cir
+* .include 04_block_b4_fault_network.cir
+* .include 05_block_b5_measurement_frontend.cir
+
+* Start with one block include, then add others incrementally.
+* Keep this harness focused on integration transients and corner sweeps.
+
+.control
+op
+tran 50n 4m
+set wr_singlescale
+set wr_vecnames
+wrdata waveforms/90_system_integration_harness_tran.csv time v(PV_IN_POS_RAW) v(PV_IN_POS_FUSED) v(PV_IN_POS) v(V_out) v(CHG_OUT_POS) v(BAT_BUS_POS) v(SW_1) v(SW_2)
+print v(PV_IN_POS_RAW) v(PV_IN_POS_FUSED) v(PV_IN_POS)
+print v(V_out) v(CHG_OUT_POS) v(BAT_BUS_POS)
+.endc
+
+.end

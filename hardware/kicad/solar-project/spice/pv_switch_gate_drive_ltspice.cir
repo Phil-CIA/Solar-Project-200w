@@ -1,0 +1,25 @@
+* PV-input NMOS switch gate-drive validation
+* LTspice-friendly netlist for the same topology used in the KiCad-derived analysis
+
+.param VIN=12
+.param VCTRL=0
+
+V1 PVHI 0 DC {VIN}
+V3 CTRL3V3 0 DC 3.3
+V4 VCTRL 0 DC {VCTRL}
+
+R40 CTRL3V3 Q2G 100k
+R41 VCTRL Q2G 10
+R43 PVHI Q2D 100k
+R42 Q2D U2GATE 10
+
+M2 Q2D Q2G 0 0 NMOS2
+D1 U2GATE U2SRC DZ
+RSRC PVHI U2SRC 1Meg
+
+.model NMOS2 NMOS (VTO=1.6 KP=0.6M RD=0.1 RS=0.1)
+.model DZ D (IS=1e-15 BV=12 IBV=1e-3 CJO=100p VJ=0.7)
+
+.op
+.save V(Q2G) V(Q2D) V(U2GATE) V(U2SRC) V(U2GATE,U2SRC)
+.end

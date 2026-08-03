@@ -1,0 +1,23 @@
+PV gate-drive stress-check summary
+================================
+Model: netlist-faithful Q4 PMOS path with Q2 pull-down and D1 clamp
+
+Voltage stress corners (Rload = 1k):
+- OFF, VIN=12 V -> Vgs(Q4)=-0.000001 V, Vds(Q4)=12.000000 V, Vds(Q2)=12.000000 V, Vout=0.000000 V
+- ON, VIN=12 V -> Vgs(Q4)=-11.871800 V, Vds(Q4)=0.423127 V, Vds(Q2)=0.128162 V, Vout=11.576870 V
+- OFF, VIN=24 V -> Vgs(Q4)=-0.000002 V, Vds(Q4)=24.000000 V, Vds(Q2)=24.000000 V, Vout=0.000000 V
+- ON, VIN=24 V -> Vgs(Q4)=-11.993300 V, Vds(Q4)=0.854702 V, Vds(Q2)=11.999250 V, Vout=23.145300 V
+- OFF, VIN=36 V -> Vgs(Q4)=0.738077 V, Vds(Q4)=36.000000 V, Vds(Q2)=36.738000 V, Vout=0.000000 V
+- ON, VIN=36 V -> Vgs(Q4)=-12.050800 V, Vds(Q4)=1.305239 V, Vds(Q2)=23.941770 V, Vout=34.694760 V
+- OFF, VIN=50 V -> Vgs(Q4)=0.738077 V, Vds(Q4)=50.000000 V, Vds(Q2)=50.738000 V, Vout=0.000000 V
+- ON, VIN=50 V -> Vgs(Q4)=-12.085300 V, Vds(Q4)=1.861029 V, Vds(Q2)=37.907210 V, Vout=48.138970 V
+
+ON-state conduction corners at VIN=50 V (resistive loads):
+- Rload=50.00 ohm -> Iload~0.135 A, Vgs(Q4)=-11.993400 V, Vdrop(Q4)=43.255950 V, P(Q4)~5.834408 W
+- Rload=16.70 ohm -> Iload~0.135 A, Vgs(Q4)=-11.993400 V, Vdrop(Q4)=47.747490 V, P(Q4)~6.440233 W
+- Rload=10.00 ohm -> Iload~0.135 A, Vgs(Q4)=-11.993400 V, Vdrop(Q4)=48.651190 V, P(Q4)~6.562126 W
+- Rload=6.25 ohm -> Iload~0.135 A, Vgs(Q4)=-11.993400 V, Vdrop(Q4)=49.156990 V, P(Q4)~6.630347 W
+
+Interpretation notes:
+- Vds(Q2) in OFF state approximates the small-transistor voltage stress envelope.
+- P(Q4) values are model-based first-pass estimates and should be replaced with datasheet-level Rds(on) curves for final sizing.

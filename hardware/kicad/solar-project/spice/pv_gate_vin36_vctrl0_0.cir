@@ -1,0 +1,29 @@
+* PV switch gate drive, vin=36V, vctrl=0V
+Vpv pv_in 0 DC 36
+Vctrl ctrl_in 0 DC 0
+V3 ctrl3v3 0 DC 3.3
+
+R40 ctrl3v3 q2g 100k
+R41 ctrl_in q2g 10
+R43 pv_in q2d 100k
+R42 q2d u2gate 10
+
+M2 q2d q2g 0 0 NMOS2
+D1 u2gate u2src DZ
+Rsrc u2src 0 1Meg
+
+.model NMOS2 NMOS (VTO=1.6 KP=0.5M RD=0.1 RS=0.1)
+.model DZ D (IS=1e-15 BV=12 IBV=1e-3 CJO=20p VJ=0.7)
+
+.op
+.control
+run
+print "VIN=" 36
+print "VCTRL=" 0
+print "V(q2g)=" v(q2g)
+print "V(q2d)=" v(q2d)
+print "V(u2gate)=" v(u2gate)
+print "V(u2src)=" v(u2src)
+print "Vgs=" v(u2gate,u2src)
+.endc
+.end

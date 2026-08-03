@@ -14,6 +14,7 @@ Purpose: lock a practical Rev 0 candidate set for currently drawn schematic bloc
 
 | Ref / Function | Candidate (Rev 0) | Minimum Rating Target | Margin Check Basis | Package / Footprint Class | Sourcing Risk | Status |
 |---|---|---|---|---|---|---|
+| Q4 PV-input high-side switch | HSBA0119 P-channel MOSFET (LCSC C53244070) | Vds >= 100 V, |Vgs|max >= 20 V, low Rds(on) class | Selected for the revised PMOS input-switch path; datasheet summary indicates -100 V Vds, +/-20 V Vgs, and about 23 mOhm typ Rds(on), which materially improves conduction margin versus prior 40-86 mOhm options | PRPAK5x6 power MOSFET class | Medium | **Selected** |
 | Q1 high-side switch | N-channel MOSFET, 40 V class, low Rds(on), >= 30 A class | Vds >= 40 V, Id >= 30 A | TI calculator points to about 25.6 V Vds and U2 shuts down on overvoltage, so 40 V class is sufficient without paying for unused headroom | TO-220 or D2PAK class (final pick during footprint lock) | Medium | Shortlisted |
 | D3 freewheel diode (asynchronous path) | Schottky diode, 40 V to 60 V class, >= 10 A average, surge-capable | Vr >= 40 V, If(avg) >= 10 A | Voltage headroom on switch-node events, current class aligned to Rev 0 asynchronous path | TO-220AC / DPAK power diode class | Medium | Shortlisted |
 | L1 buck inductor (live schematic ref: L2) | Shielded inductor, currently HC3-1R0-R (1uH), low DCR, high-current class | Isat >= 15 A, Irms >= design ripple current | Live schematic `L2` maps to HC3-1R0-R; vendor data indicates about 78 A Irms / 78 A Isat and about 0.42 mΩ DCR, so current class is acceptable. Remaining check is value/ripple/control-loop fit. | Through-hole drum or SMD shielded power inductor class | Medium | Shortlisted |
@@ -34,6 +35,12 @@ Purpose: lock a practical Rev 0 candidate set for currently drawn schematic bloc
 3. Confirm resistor divider absolute values against final ADC front-end filtering and sample timing.
 4. Close Q-001 to finalize current-sense element class and any fuse-current refinements.
 5. Lock the exact 5x25 fuse element part number with final blow characteristic + voltage rating for the selected holder footprint.
+
+## 3.2 Q4 Lock Note (2026-07-28)
+
+- Q4 for the PMOS-style PV input switch path is now locked to HSBA0119 (LCSC C53244070).
+- Selection basis used in-session: Vds -100 V class, Vgs +/-20 V class, and Rds(on),typ about 23 mOhm.
+- Follow-up still required: confirm worst-case (not typical-only) hot Rds(on) and thermal rise against intended sustained current envelope.
 
 ### 3.1 F1 Holder-Matched Rule (Locked)
 

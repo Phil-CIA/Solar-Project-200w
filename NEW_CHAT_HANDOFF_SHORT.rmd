@@ -1,23 +1,23 @@
-# Solar Project Quick Handoff (2026-07-13)
+# Solar Project Quick Handoff (2026-08-03)
 
-- Session checkpoint: stale session closed with explicit blocker-first restart plan.
-- Source of truth: `HANDOFF.md` and `SOLAR_HANDOFF_2026-07-13.md`.
-- Active repo: `Solar-Project-200w`.
+Session checkpoint:
+- The SPICE harness for the MPPT charger power path is now stable and more schematic-informed than the earlier placeholder model.
+- The current baseline uses a 12.8 V battery-like boundary and a simplified power-stage abstraction with added loss/parasitic terms.
+- Latest verified LTspice result: VOUT ≈ 15.43 V, BAT bus ≈ 11.04 V, ICHG ≈ -12 A.
 
-What is done:
-- DEC-005 is closed: STM32G431 is the Rev 0 controller baseline.
-- Requirements validation notes and pre-routing blocker list were created.
-- Rev 0 component shortlist was created for the currently drawn blocks.
+What is verified:
+- The B0/B1/B2 integration harness runs and produces a plausible charging-like operating point.
+- The model now reflects the effect of hot-state losses and series-path resistance more realistically than the initial idealized version.
+- The output-voltage behavior remains tied to the control assumption rather than being treated as a fixed result.
 
 Open state:
-- Local schematic and docs are modified but not committed.
-- KiCad autosave file is present and should not be committed.
+- The current work is a pause point; no further SPICE edits are needed unless the next session wants deeper thermal/control refinement.
+- The next session can choose whether to keep the present baseline as-is or move to KiCad-side validation and documentation.
 
-Next session first move:
-1. Read `HANDOFF.md` and `SOLAR_HANDOFF_2026-07-13.md`.
-2. Run `git status --short`.
-3. Fix current-sense net collisions and fault-net ownership in `Solar Project.kicad_sch`.
-4. Re-run ERC and update `hardware/mppt/schematic-notes.md`.
+First move next session:
+1. Read [HANDOFF.md](HANDOFF.md) and this file.
+2. Review [hardware/kicad/solar-project/spice/90_system_integration_harness_ltspice.log](hardware/kicad/solar-project/spice/90_system_integration_harness_ltspice.log) for the verified baseline.
+3. Decide whether to continue with SPICE refinement or shift to schematic/documentation validation.
 
 Paste prompt:
-Continue from `SOLAR_HANDOFF_2026-07-13.md` in Solar-Project-200w. Start by clearing pre-routing blockers in `hardware/kicad/solar-project/Solar Project.kicad_sch` (`SENSE_PV_I`, `SENSE_BAT_I`, `FAULT_OCP`, `FAULT_OVP`), then run ERC and record results in `hardware/mppt/schematic-notes.md`. Keep docs and schematic commits separate and exclude KiCad autosave files.
+Continue in Solar-Project-200w from the current SPICE sanity-check baseline. The B0/B1/B2 harness is stable and the latest verified result is VOUT ≈ 15.43 V, BAT ≈ 11.04 V, ICHG ≈ -12 A. Keep the current 12.8 V battery assumption unless a new decision calls for a change, and decide whether to continue with thermal/control refinement or shift to KiCad/documentation validation.

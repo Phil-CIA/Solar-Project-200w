@@ -1,0 +1,43 @@
+* B2 - Output boundary and battery interface
+* Net alignment from Solar Project.net:
+* CHG_OUT_POS -> F2 -> BAT_BUS_POS, with battery boundary at J3.
+
+.param VCHG=14.2
+.param USE_INTERNAL_CHG=1
+.param R_FEED_ON=1m
+.param R_FEED_OFF=1G
+.param RFUSE=20m
+
+.param VBAT_OCV=12.8
+.param RBAT_ESR=35m
+.param RBAT_POL=0.35
+.param CBAT_POL=2
+
+.param RPACK_LEAK=3k
+
+* Optional local charger source for stand-alone runs.
+V_CHG_INT CHG_SRC PWR_NEG DC {VCHG}
+R_CHG_FEED CHG_SRC CHG_OUT_POS {R_FEED_ON + (R_FEED_OFF-R_FEED_ON)*(1-USE_INTERNAL_CHG)}
+
+* F2 first-pass series model.
+R_F2 CHG_OUT_POS BAT_BUS_POS {RFUSE}
+
+* Battery equivalent:
+* OCV source + ESR + one polarization branch.
+R_GNDREF_B2 PWR_NEG 0 1u
+V_BAT_OCV BAT_OCV PWR_NEG DC {VBAT_OCV}
+R_BAT_ESR BAT_BUS_POS BAT_POL {RBAT_ESR}
+R_BAT_POL BAT_POL BAT_OCV {RBAT_POL}
+C_BAT_POL BAT_POL BAT_OCV {CBAT_POL}
+
+* Small pack leakage/load placeholder at boundary.
+R_PACK_LEAK BAT_BUS_POS PWR_NEG {RPACK_LEAK}
+
+.control
+op
+dc V_BAT_OCV 10 14.6 0.2
+print v(CHG_OUT_POS) v(BAT_BUS_POS) i(V_CHG_INT)
+tran 100u 200m
+.endc
+
+.end

@@ -1,0 +1,58 @@
+PV switch gate-drive validation summary
+====================================
+Model: simple ngspice operating-point netlist derived from the local KiCad netlist connectivity for U2/Q2/R40-R43/D1.
+
+OFF state (V_in_ON = 0 V):
+- VIN=12 V -> V(u2gate)=10.96339425797760 V, V(u2src)=10.96329059751311 V, Vgs≈0.00010 V
+- VIN=24 V -> V(u2gate)=21.87649074164537 V, V(u2src)=21.87627839093858 V, Vgs≈0.00021 V
+- VIN=36 V -> V(u2gate)=32.79441562565801 V, V(u2src)=32.79409506754851 V, Vgs≈0.00032 V
+- VIN=50 V -> V(u2gate)=45.52170482816488 V, V(u2src)=45.52125699910328 V, Vgs≈0.00045 V
+
+ON state (V_in_ON = 3.3 V):
+- VIN=12 V -> V(u2gate)=0.1457310114341216 V, V(u2src)=0.1457310114298757 V, Vgs≈4.25e-12 V
+- VIN=24 V -> V(u2gate)=0.3064038914621996 V, V(u2src)=0.3064038900783437 V, Vgs≈1.38e-09 V
+- VIN=36 V -> V(u2gate)=0.4877900800646996 V, V(u2src)=0.4877897098115725 V, Vgs≈3.70e-07 V
+- VIN=50 V -> V(u2gate)=0.7406615552775604 V, V(u2src)=0.7406591411465211 V, Vgs≈2.41e-06 V
+
+Conclusion:
+The gate-drive network does not establish a meaningful gate-source voltage across the switch. In both control states, Vgs remains essentially zero over the full 12-50 V input range, so the gate-drive scheme is not valid as a switch-drive method for this topology.
+
+
+Candidate fix A (2026-07-28): PMOS-style high-side pass with NMOS pull-down + Vgs zener clamp
+==============================================================================================
+Model intent: evaluate a revised gate-drive topology where OFF pulls gate to source and ON actively pulls gate low, while clamping |Vgs| near 12 V.
+
+OFF state (V_in_ON = 0 V):
+- VIN=12 V -> V(gate)=12.000000 V, V(source)=12.000000 V, Vgs=-0.000001 V, Vout=0.000000 V
+- VIN=24 V -> V(gate)=24.000000 V, V(source)=24.000000 V, Vgs=-0.000002 V, Vout=0.000000 V
+- VIN=36 V -> V(gate)=36.738080 V, V(source)=36.000000 V, Vgs=0.738077 V, Vout=0.000000 V
+- VIN=50 V -> V(gate)=50.738080 V, V(source)=50.000000 V, Vgs=0.738077 V, Vout=0.000000 V
+
+ON state (V_in_ON = 3.3 V):
+- VIN=12 V -> V(gate)=0.128211 V, V(source)=12.000000 V, Vgs=-11.871800 V, Vout=11.576870 V
+- VIN=24 V -> V(gate)=12.006710 V, V(source)=24.000000 V, Vgs=-11.993300 V, Vout=23.145300 V
+- VIN=36 V -> V(gate)=23.949230 V, V(source)=36.000000 V, Vgs=-12.050800 V, Vout=34.694760 V
+- VIN=50 V -> V(gate)=37.914660 V, V(source)=50.000000 V, Vgs=-12.085300 V, Vout=48.138970 V
+
+Candidate-fix conclusion:
+This topology produces a real gate-source control window. OFF remains near Vgs ~0 V, and ON drives a strong negative Vgs with clamp-limited magnitude around -12 V at higher VIN.
+
+
+Candidate fix B (2026-07-28): netlist-faithful Q4 PMOS implementation
+=====================================================================
+Model intent: mirror the updated schematic wiring with Q4 (PMOS high-side pass), Q2 pull-down driver, R40 pull-down on Q2 gate, R43 source pull-up, and D1 gate-source zener clamp.
+
+OFF state (V_in_ON = 0 V):
+- VIN=12 V -> V(gate)=12.000000 V, V(source)=12.000000 V, Vgs=-0.000001 V, Vout=0.000000 V
+- VIN=24 V -> V(gate)=24.000000 V, V(source)=24.000000 V, Vgs=-0.000002 V, Vout=0.000000 V
+- VIN=36 V -> V(gate)=36.738080 V, V(source)=36.000000 V, Vgs=0.738077 V, Vout=0.000000 V
+- VIN=50 V -> V(gate)=50.738080 V, V(source)=50.000000 V, Vgs=0.738077 V, Vout=0.000000 V
+
+ON state (V_in_ON = 3.3 V):
+- VIN=12 V -> V(gate)=0.128232 V, V(source)=12.000000 V, Vgs=-11.871800 V, Vout=11.576870 V
+- VIN=24 V -> V(gate)=12.006720 V, V(source)=24.000000 V, Vgs=-11.993300 V, Vout=23.145300 V
+- VIN=36 V -> V(gate)=23.949230 V, V(source)=36.000000 V, Vgs=-12.050800 V, Vout=34.694760 V
+- VIN=50 V -> V(gate)=37.914670 V, V(source)=50.000000 V, Vgs=-12.085300 V, Vout=48.138970 V
+
+Candidate-fix-B conclusion:
+The edited Q4 implementation reproduces the desired behavior: OFF state keeps Vgs near 0 V with output off, and ON state drives a strong negative Vgs limited near -12 V while passing input to output.

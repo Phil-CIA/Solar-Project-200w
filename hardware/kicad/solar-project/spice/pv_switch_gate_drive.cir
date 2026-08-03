@@ -1,0 +1,26 @@
+* PV-input NMOS switch gate-drive validation
+* Derived from the local KiCad netlist connectivity around U2, Q2, D1, R40-R43
+
+.param VIN=12
+.param VCTRL=0
+
+V1 pv_hi 0 DC {VIN}
+V3 ctrl3v3 0 DC 3.3
+V4 vctrl 0 DC {VCTRL}
+
+R40 ctrl3v3 q2g 100k
+R41 vctrl q2g 10
+R43 pv_hi q2d 100k
+R42 q2d u2gate 10
+
+M2 q2d q2g 0 0 NMOS2
+
+D1 u2gate u2src DZ
+Rsrc pv_hi u2src 1Meg
+
+.model NMOS2 NMOS (VTO=1.6 KP=0.6M RD=0.1 RS=0.1)
+.model DZ D (IS=1e-15 BV=12 IBV=1e-3 CJO=100p VJ=0.7)
+
+.op
+.print V(q2g) V(q2d) V(u2gate) V(u2src) V(u2gate,u2src)
+.end

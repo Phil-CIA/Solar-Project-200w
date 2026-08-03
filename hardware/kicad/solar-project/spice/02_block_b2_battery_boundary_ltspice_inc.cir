@@ -1,0 +1,33 @@
+* B2 include-only variant for LTspice integration harness
+* Schematic-backed assumptions from the current KiCad design:
+* - Battery-side fuse path uses F2 in series with the charger output
+* - Battery boundary uses a 4S LiFePO4-like OCV/ESR branch around the intended 14.2V charge target
+
+.param B2_VCHG=14.2
+.param B2_IHEAT_LIMIT=12
+.param B2_USE_INTERNAL_CHG=1
+.param B2_R_FEED_ON=80m
+.param B2_R_FEED_OFF=1G
+.param B2_RFUSE=20m
+.param B2_R_TRACE=10m
+
+.param B2_VBAT_OCV=12.8
+.param B2_RBAT_ESR=120m
+.param B2_RBAT_POL=0.35
+.param B2_CBAT_POL=2
+.param B2_RPACK_LEAK=800
+
+I_CHG_INT CHG_SRC PWR_NEG DC {B2_IHEAT_LIMIT}
+V_CHG_PROBE CHG_SRC CHG_FEED_NODE DC 0
+R_CHG_FEED CHG_FEED_NODE CHG_OUT_POS {B2_R_FEED_ON + (B2_R_FEED_OFF-B2_R_FEED_ON)*(1-B2_USE_INTERNAL_CHG)}
+R_CHG_SRC_REF CHG_SRC PWR_NEG 1Meg
+
+R_F2 CHG_OUT_POS BAT_BUS_POS {B2_RFUSE + B2_R_TRACE}
+
+R_GNDREF_B2 PWR_NEG 0 1u
+V_BAT_OCV BAT_OCV PWR_NEG DC {B2_VBAT_OCV}
+R_BAT_ESR BAT_BUS_POS BAT_POL {B2_RBAT_ESR}
+R_BAT_POL BAT_POL BAT_OCV {B2_RBAT_POL}
+C_BAT_POL BAT_POL BAT_OCV {B2_CBAT_POL}
+
+R_PACK_LEAK BAT_BUS_POS PWR_NEG {B2_RPACK_LEAK}

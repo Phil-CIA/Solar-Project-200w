@@ -1,0 +1,64 @@
+* B4 - Fault threshold and comparator network (OVP/OCP)
+* Derived from Solar Project.net nets and values:
+* OVP: R20=499k (BAT_BUS_POS->OVP_SENSE), R47=10k (OVP_SENSE->PWR_NEG)
+* OVP ref: R21=102k (CTRL_3V3->OVP_REF), R48=10k (OVP_REF->PWR_NEG)
+* OCP: R49=0 (OCP_MEAS->OCP_SENSE), R50=10k (OCP_SENSE->PWR_NEG)
+* OCP ref: R51=2.7k (CTRL_3V3->OCP_REF), R52=1k (OCP_REF->PWR_NEG)
+* Pullups: R19=10k for FAULT_OVP, R53=10k for FAULT_OCP.
+
+.param USE_INTERNAL_3V3=1
+.param USE_INTERNAL_STIM=1
+.param V3V3=3.3
+.param VBAT_IN=14.4
+.param VOCP_IN=0.15
+.param R_FEED_ON=1m
+.param R_FEED_OFF=1G
+
+* Optional local supplies/stimuli for stand-alone runs.
+V_GNDREF PWR_NEG 0 0
+V_3V3_INT V3V3_INT PWR_NEG DC {V3V3}
+R_3V3_FEED V3V3_INT CTRL_3V3 {R_FEED_ON + (R_FEED_OFF-R_FEED_ON)*(1-USE_INTERNAL_3V3)}
+
+V_BAT_STIM BAT_STIM PWR_NEG DC {VBAT_IN}
+R_BAT_FEED BAT_STIM BAT_BUS_POS {R_FEED_ON + (R_FEED_OFF-R_FEED_ON)*(1-USE_INTERNAL_STIM)}
+
+V_OCP_STIM OCP_STIM PWR_NEG DC {VOCP_IN}
+R_OCP_FEED OCP_STIM OCP_MEAS {R_FEED_ON + (R_FEED_OFF-R_FEED_ON)*(1-USE_INTERNAL_STIM)}
+
+* OVP and OCP sense networks
+R20 BAT_BUS_POS OVP_SENSE 499k
+R47 OVP_SENSE PWR_NEG 10k
+
+R49 OCP_MEAS OCP_SENSE 1m
+R50 OCP_SENSE PWR_NEG 10k
+
+* Reference networks from CTRL_3V3
+R21 CTRL_3V3 OVP_REF 102k
+R48 OVP_REF PWR_NEG 10k
+
+R51 CTRL_3V3 OCP_REF 2.7k
+R52 OCP_REF PWR_NEG 1k
+
+* LMV393-like open-collector behavior (idealized):
+* Comparator pulls output low when (+) exceeds (-).
+.model SWOC SW(RON=5 ROFF=1e12 VT=0 VH=1m)
+S_OVP FAULT_OVP PWR_NEG OVP_SENSE OVP_REF SWOC
+S_OCP FAULT_OCP PWR_NEG OCP_SENSE OCP_REF SWOC
+
+* Output pullups present in hardware
+R19 CTRL_3V3 FAULT_OVP 10k
+R53 CTRL_3V3 FAULT_OCP 10k
+
+.control
+op
+print v(OVP_SENSE) v(OVP_REF) v(FAULT_OVP)
+print v(OCP_SENSE) v(OCP_REF) v(FAULT_OCP)
+dc V_BAT_STIM 8 30 0.5
+print v(OVP_SENSE) v(FAULT_OVP)
+meas dc BAT_TRIP when v(OVP_SENSE)=v(OVP_REF)
+dc V_OCP_STIM 0 1.2 0.005
+print v(OCP_SENSE) v(FAULT_OCP)
+meas dc OCP_TRIP when v(OCP_SENSE)=v(OCP_REF)
+.endc
+
+.end

@@ -1,0 +1,72 @@
+* B1 include-only variant for LTspice integration harness
+* Schematic-backed assumptions from the current KiCad design:
+* - Main power-stage inductor uses L2 (1uH, ~0.42mΩ DCR)
+* - Output capacitor bank is represented with a 220uF-equivalent bulk branch
+* - MOSFET stage is abstracted at the plant level rather than modeled as a full LM51772 switch gate network
+* - Duty cycle is treated as the control knob that the LM51772 would adjust to regulate output voltage
+
+.param B1_VIN=36
+.param B1_USE_INTERNAL_SRC=0
+.param B1_R_FEED_ON=1m
+.param B1_R_FEED_OFF=1G
+.param B1_FSW=100k
+.param B1_DUTY=0.72
+.param B1_DEAD=20n
+.param B1_LVAL=1u
+.param B1_L_DCR=0.42m
+.param B1_RSHUNT=0.35m
+.param B1_RPWR_PATH=20m
+.param B1_ROUTLINK=20m
+.param B1_RTRACE=10m
+.param B1_RDS_ON_ROOM=20m
+.param B1_RDS_ON_HOT=40m
+.param B1_RDS_ON_TC=0.004
+.param B1_DIODE_RS=20m
+.param B1_DIODE_TC=0.004
+.param B1_COUT_EQ=220u
+.param B1_COUT_ESR=20m
+.param B1_RLOAD=0.7
+
+R_GNDREF_B1 PWR_NEG 0 1u
+V_IN_INT VIN_SRC PWR_NEG DC {B1_VIN}
+R_IN_FEED VIN_SRC PV_IN_POS {B1_R_FEED_ON + (B1_R_FEED_OFF-B1_R_FEED_ON)*(1-B1_USE_INTERNAL_SRC)}
+
+V_HO1 HO1 PWR_NEG PULSE(0 10 0 20n 20n {(B1_DUTY/B1_FSW)-B1_DEAD} {1/B1_FSW})
+V_LO1 LO1 PWR_NEG PULSE(10 0 0 20n 20n {(B1_DUTY/B1_FSW)-B1_DEAD} {1/B1_FSW})
+V_HO2 HO2 PWR_NEG DC 10
+V_LO2 LO2 PWR_NEG DC 0
+
+.model SWNMOS SW(RON={B1_RDS_ON_HOT*(1+B1_RDS_ON_TC*(temp-25))} ROFF=100MEG VT=4 VH=0.3)
+.model DBODY D(IS=1e-12 RS={B1_DIODE_RS*(1+B1_DIODE_TC*(temp-25))} CJO=250p TT=40n)
+
+S_HS1 PV_IN_POS SW_1 HO1 PWR_NEG SWNMOS
+D_HS1 SW_1 PV_IN_POS DBODY
+S_LS1 SW_1 PWR_NEG LO1 PWR_NEG SWNMOS
+D_LS1 PWR_NEG SW_1 DBODY
+
+R22 SW_1 CSB_2 {B1_RSHUNT}
+L2 CSB_2 L2_INT {B1_LVAL}
+R_L2 L2_INT SW_2 {B1_L_DCR}
+
+S_HS2 V_out SW_2 HO2 PWR_NEG SWNMOS
+D_HS2 SW_2 V_out DBODY
+S_LS2 SW_2 PWR_NEG LO2 PWR_NEG SWNMOS
+D_LS2 PWR_NEG SW_2 DBODY
+
+R_COUT V_out VOUT_CAP {B1_COUT_ESR}
+COUT VOUT_CAP PWR_NEG {B1_COUT_EQ}
+RLOAD V_out PWR_NEG {B1_RLOAD}
+R_PWR_PATH V_out CHG_OUT_POS {B1_RPWR_PATH + B1_RTRACE + B1_ROUTLINK}
+C_CHG CHG_OUT_POS PWR_NEG 22u
+
+R_LEAK_SW1 SW_1 PWR_NEG 50MEG
+R_LEAK_SW2 SW_2 PWR_NEG 50MEG
+R_LEAK_VOUT V_out PWR_NEG 50MEG
+C_SW1 SW_1 PWR_NEG 100p
+C_SW2 SW_2 PWR_NEG 100p
+
+CIN_EQ PV_IN_POS PWR_NEG 50u
+R18 PV_IN_POS V_in_FB 66.5k
+R17 V_in_FB PWR_NEG 5.62k
+
+.options method=gear reltol=1e-4

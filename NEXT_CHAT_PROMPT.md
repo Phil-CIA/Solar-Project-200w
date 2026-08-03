@@ -1,44 +1,31 @@
-Continue the Solar Project 200W repository from the latest handoff.
+Continue the Solar Project 200W repository from the latest SPICE handoff.
 
 ## Current priority
 
-Find and select an in-stock replacement for `STM32G431CBU6` for Rev 0 continuity.
+Close the SPICE capability-profile story while preserving the baseline PV-limited profile.
 
 ## State to assume
 
-- Fuse policy is aligned for first build:
-   - F1 schematic value is `Fuse_TD_10A_5x25_63VDC_MIN`
-   - Holder rule is locked: 5x25 time-delay class with `>=63 VDC`
-- LM51772 migration context remains valid; do not reopen it unless the MCU swap requires interface changes.
-- Working tree has active local edits; avoid destructive cleanup.
-- Preliminary MCU stock sweep already done from ST eStore:
-   - Out of stock: `STM32G431CBU6`, `STM32G441CBU6`, `STM32G474CEU6`
-   - In stock (package-compatible vanilla F4 path): `STM32F411CEU6`, `STM32F401CEU6`
-   - In stock (LQFP alternates): `STM32G431CBT6`, `STM32G441CBT6`
+- Automation is working for sweep, logs, CSV summary, and waveform dashboard.
+- Latest handoff: [SOLAR_HANDOFF_2026-07-30.md](SOLAR_HANDOFF_2026-07-30.md).
+- B1 currently shows req_chg_001 PASS and req_chg_003 FAIL in [hardware/kicad/solar-project/spice/corner_summary.csv](hardware/kicad/solar-project/spice/corner_summary.csv).
+- Working tree is dirty; avoid destructive cleanup.
 
 ## What to do first
 
-1. Read `SOLAR_HANDOFF_2026-07-26.md`.
-2. Run `git status --short` and confirm baseline.
-3. Audit the live U1 net/peripheral usage from schematic/netlist.
-4. Produce a shortlist of 2 to 4 in-stock MCU alternatives.
+1. Read [HANDOFF.md](HANDOFF.md) and [SOLAR_HANDOFF_2026-07-30.md](SOLAR_HANDOFF_2026-07-30.md).
+2. Run git status --short and confirm baseline.
+3. Run [hardware/kicad/solar-project/spice/run_spice_corner_sweeps.ps1](hardware/kicad/solar-project/spice/run_spice_corner_sweeps.ps1) with GeneratePlots false for a quick health check.
+4. Verify [hardware/kicad/solar-project/spice/corner_summary.csv](hardware/kicad/solar-project/spice/corner_summary.csv) and [hardware/kicad/solar-project/spice/plots/index.html](hardware/kicad/solar-project/spice/plots/index.html).
 
-## Selection criteria
+## Session deliverables
 
-1. Satisfy reduced functional needs first (ADC coverage, control GPIO/timer, I2C, UART, SWD).
-2. Package/pin compatibility is preferred but not mandatory.
-3. Immediate distributor stock.
-4. Lowest combined schematic/PCB reroute + firmware migration effort.
+1. Add and validate a dedicated 20A capability stress profile.
+2. Clarify or correct B1 input-current sign convention and warning semantics.
+3. Keep requirement reporting explicit per profile in summary outputs.
 
-## Output expected from next session
+## Constraints
 
-1. Preferred MCU replacement + one backup option.
-2. Explicit risk summary (hardware changes needed, firmware delta, sourcing confidence).
-3. If approved, apply U1 part update plus decision/doc updates in one pass.
-
-## Current recommendation to validate first
-
-1. Preferred: `STM32F411CEU6` (vanilla F4, in stock, UFQFPN-48 package-compatible).
-2. Backup: `STM32F401CEU6`.
-3. Family-continuity fallback: `STM32G431CBT6` if firmware migration risk dominates.
+1. Keep autosave and lock artifacts out of commits.
+2. Do not regress current sweep, parsing, and plot generation flow.
 

@@ -1,0 +1,82 @@
+* B1 - LM51772-style 4-switch power-stage abstraction (first pass)
+* LTspice export from 01_block_b1_power_stage.cir
+
+.param B1_VIN=24
+.param B1_USE_INTERNAL_SRC=1
+.param B1_R_FEED_ON=1m
+.param B1_R_FEED_OFF=1G
+.param B1_FSW=100k
+.param B1_DUTY=0.61
+.param B1_DEAD=40n
+.param B1_LVAL=1u
+.param B1_L_DCR=5m
+.param B1_RSHUNT=1m
+.param B1_COUT_EQ=220u
+.param B1_COUT_ESR=25m
+.param B1_RLOAD=0.9
+
+* Optional local source for stand-alone runs.
+R_GNDREF_B1 PWR_NEG 0 1u
+V_IN_INT VIN_SRC PWR_NEG DC {B1_VIN}
+R_IN_FEED VIN_SRC PV_IN_POS {B1_R_FEED_ON + (B1_R_FEED_OFF-B1_R_FEED_ON)*(1-B1_USE_INTERNAL_SRC)}
+
+* Left bridge (PV side) gate commands, complementary with dead-time
+V_HO1 HO1 PWR_NEG PULSE(0 10 0 20n 20n {(B1_DUTY/B1_FSW)-B1_DEAD} {1/B1_FSW})
+V_LO1 LO1 PWR_NEG PULSE(10 0 0 20n 20n {(B1_DUTY/B1_FSW)-B1_DEAD} {1/B1_FSW})
+
+* Right bridge in buck-oriented operating mode: HS held ON, LS OFF
+V_HO2 HO2 PWR_NEG DC 10
+V_LO2 LO2 PWR_NEG DC 0
+
+* Switch models for M1/M2/M4/M3 abstraction
+.model SWNMOS SW(RON=20m ROFF=100MEG VT=4 VH=0.3)
+.model DBODY D(IS=1e-12 RS=5m CJO=250p TT=40n)
+
+* M1 equivalent: PV_IN_POS -> SW_1
+S_HS1 PV_IN_POS SW_1 HO1 PWR_NEG SWNMOS
+D_HS1 SW_1 PV_IN_POS DBODY
+
+* M2 equivalent: SW_1 -> PWR_NEG
+S_LS1 SW_1 PWR_NEG LO1 PWR_NEG SWNMOS
+D_LS1 PWR_NEG SW_1 DBODY
+
+* R22 shunt and L2 inductor path between switching nodes
+R22 SW_1 CSB_2 {B1_RSHUNT}
+L2 CSB_2 L2_INT {B1_LVAL}
+R_L2 L2_INT SW_2 {B1_L_DCR}
+
+* M4 equivalent: V_out -> SW_2 (high-side of right bridge)
+S_HS2 V_out SW_2 HO2 PWR_NEG SWNMOS
+D_HS2 SW_2 V_out DBODY
+
+* M3 equivalent: SW_2 -> PWR_NEG
+S_LS2 SW_2 PWR_NEG LO2 PWR_NEG SWNMOS
+D_LS2 PWR_NEG SW_2 DBODY
+
+* Output network and boundary handoff
+R_COUT V_out VOUT_CAP {B1_COUT_ESR}
+COUT VOUT_CAP PWR_NEG {B1_COUT_EQ}
+RLOAD V_out PWR_NEG {B1_RLOAD}
+R_OUTLINK V_out CHG_OUT_POS 5m
+C_CHG CHG_OUT_POS PWR_NEG 22u
+
+* Numerical damping helpers for switched-node convergence
+R_LEAK_SW1 SW_1 PWR_NEG 50MEG
+R_LEAK_SW2 SW_2 PWR_NEG 50MEG
+R_LEAK_VOUT V_out PWR_NEG 50MEG
+C_SW1 SW_1 PWR_NEG 100p
+C_SW2 SW_2 PWR_NEG 100p
+
+* PV-side equivalent decoupling and VIN-FB divider observability
+CIN_EQ PV_IN_POS PWR_NEG 50u
+R18 PV_IN_POS V_in_FB 66.5k
+R17 V_in_FB PWR_NEG 5.62k
+
+.options method=gear reltol=1e-4
+
+.tran 50n 3m
+.meas tran Vout_avg AVG V(V_out) FROM=1.5m TO=3m
+.meas tran Iin_avg AVG I(V_IN_INT) FROM=1.5m TO=3m
+.print tran V(V_out) V(CHG_OUT_POS) V(SW_1) V(SW_2)
+
+.end

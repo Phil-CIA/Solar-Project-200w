@@ -1,0 +1,19 @@
+* probe
+Vpv pv_in 0 DC 12
+V3 3v3 0 DC 3.3
+Vctrl ctrl_in 0 DC 0
+R40 3v3 q2g 100k
+R41 ctrl_in q2g 10
+R43 pv_in q2d 100k
+R42 q2d u2gate 10
+M2 q2d q2g 0 0 NMOS2
+Rsrc u2gate 0 1Meg
+.model NMOS2 NMOS (VTO=1.6 KP=0.5M RD=0.1 RS=0.1)
+.control
+op
+print v(q2g)
+print v(q2d)
+print v(u2gate)
+print v(u2gate,0)
+.endc
+.end

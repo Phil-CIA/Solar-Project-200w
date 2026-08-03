@@ -278,6 +278,46 @@ Decision baseline:
 - Rev 0 control power uses a single wide-input buck as the primary `CTRL_3V3` generator.
 - Runtime source priority is PV-first.
 - Battery-domain assist may feed the same control-supply boundary through protected OR-ing.
+
+## 11. PV-input gate-drive blocker update (2026-07-28)
+
+- Baseline validation remains failed for the current U2/Q2/R40-R43/D1 topology: prior ngspice sweep showed Vgs approximately 0 V in both OFF and ON states across VIN = 12 V to 50 V.
+- Candidate fix A was tested in `hardware/kicad/solar-project/spice/run_pv_gate_drive_fix_candidate.py` using a PMOS-style high-side pass model with NMOS pull-down gate control and a 12 V gate-source zener clamp.
+- Candidate sweep result:
+  - OFF state: Vgs stayed near 0 V (or slightly positive at high VIN), and Vout stayed near 0 V.
+  - ON state: Vgs moved to about -11.87 V to -12.09 V across VIN = 12 V to 50 V, with Vout tracking high as expected for an enabled pass switch.
+- Evidence file: `hardware/kicad/solar-project/spice/pv_switch_gate_drive_results.txt` (Candidate fix A section).
+- Next implementation task: map this control concept onto the actual U2 part pin semantics in the KiCad schematic before declaring closure, since the candidate deck uses a simplified pass-device model.
+
+### Follow-up verification (same day)
+
+- The schematic was updated to a discrete PMOS path (`Q4`) and rechecked with a netlist-faithful SPICE deck (`run_pv_gate_drive_fix_candidate.py`, updated for Q4/R40-R43/Q2/D1 wiring).
+- Candidate fix B in `hardware/kicad/solar-project/spice/pv_switch_gate_drive_results.txt` confirms behavior remains valid after the real netlist mapping:
+  - OFF: Vgs approximately 0 V and output effectively off.
+  - ON: Vgs about -11.87 V to -12.09 V over VIN = 12 V to 50 V, with output tracking input.
+- Remaining engineering checks are device-stress and margin checks (Q4 VDS/thermal and Q2 VDS/transient margin), not gate-drive-function correctness.
+
+### Q4 part selection lock (2026-07-28)
+
+- Selected Q4 device for the PMOS input-switch path: HSBA0119 (LCSC C53244070).
+- Selection rationale captured in-session: 100 V VDS class and +/-20 V VGS class satisfy the validated gate-drive envelope, and 23 mOhm typical RDS(on) is preferable to the prior 40 mOhm and 86 mOhm candidates for lower conduction loss.
+- Remaining check before procurement lock: validate worst-case hot RDS(on) and package thermal rise at intended sustained current.
+
+### Q4 thermal sanity table (first-pass)
+
+Assumption set:
+- RDS(on),typ = 23 mOhm from part summary.
+- Hot multiplier range for quick sizing: 1.6x to 2.0x.
+
+| Load current | P @ typ RDS(on) | P @ 1.6x hot | P @ 2.0x hot |
+|---|---:|---:|---:|
+| 5 A | 0.575 W | 0.920 W | 1.150 W |
+| 8 A | 1.472 W | 2.355 W | 2.944 W |
+| 10 A | 2.300 W | 3.680 W | 4.600 W |
+
+Interpretation:
+- Device selection is suitable for Rev 0, but sustained high-current operation still requires board-level thermal verification.
+- Use worst-case (not typical-only) datasheet RDS(on) and package thermal data for final procurement lock.
 - USB is retained as protected bench fallback when PV is absent.
 
 Implementation intent:

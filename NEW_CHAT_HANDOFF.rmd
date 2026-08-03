@@ -1,75 +1,53 @@
 # Solar Project New Chat Handoff
 
-## Session Closeout - 2026-07-13
+## Session Closeout - 2026-08-03
 
 Project: Solar Project 200W
-Phase: Phase 1 implementation refinement with blocker-first pre-routing work
+Phase: MPPT charger sanity-checking and model grounding
 
 ## Current Objective
 
-Resume from stale local state safely, clear pre-routing blockers in schematic, and re-run ERC.
+Pause after the current SPICE sanity-check milestone and preserve the verified state for the next session.
 
 ## What Was Completed In This Stop Window
 
-1. DEC-005 was closed: STM32G431 selected as Rev 0 controller baseline.
-2. STM32 mapping and pin-budget planning was documented:
-   - `docs/session-plan-2026-07-10.md`
-   - `hardware/mppt/sheet4-sensing-control-wiring-map.md`
-   - `docs/decisions-log.md`
-   - `hardware/mppt/interface-assumptions.md`
-3. Requirements validation and pre-routing planning artifacts were created locally:
-   - `hardware/mppt/schematic-notes.md` (validation section update)
-   - `hardware/mppt/rev0-component-shortlist-2026-07-10.md`
-   - `hardware/mppt/pre-routing-blockers-2026-07-10.md`
-4. Handoff chain was refreshed for clean restart:
-   - `HANDOFF.md`
-   - `SOLAR_HANDOFF_2026-07-13.md`
-   - `NEXT_CHAT_PROMPT.md`
+1. The staged LTspice harness for the B0/B1/B2 power path was made more schematic-informed and stable.
+2. The model now includes more realistic loss and parasitic terms than the initial idealized version.
+3. The current verified operating point under the 12.8 V battery-like assumption is:
+   - VOUT ≈ 15.43 V
+   - BAT bus ≈ 11.04 V
+   - ICHG ≈ -12 A
+4. The handoff files were refreshed to preserve the current baseline and stop point.
 
 ## Verified State At Stop
 
-- Rev 0 architecture remains stable (asynchronous buck baseline).
-- STM32G431 baseline is now explicit for Rev 0 control planning.
-- Pre-routing gate is currently blocked by known net/connectivity issues.
-- Local working tree contains intentional uncommitted docs + schematic edits.
+- The power-path harness is stable and produces a plausible charging-like operating point.
+- The battery boundary is anchored to the current 12.8 V assumption.
+- The output-voltage behavior is still treated as control-dependent rather than fixed.
+- The main remaining concern from the model is thermal/loss margin rather than basic topology feasibility.
 
 ## Next Session Actions (In Order)
 
-1. Run `git status --short` and verify local state before making new edits.
-2. Exclude KiCad autosave artifact from commits.
-3. Open `hardware/kicad/solar-project/Solar Project.kicad_sch`.
-4. Fix current-sense net collisions:
-   - `SENSE_PV_I` vs `CHG_OUT_POS`
-   - `SENSE_BAT_I` vs `BAT_BUS_POS`
-5. Fix dangling fault-net ownership/termination:
-   - `FAULT_OCP`
-   - `FAULT_OVP`
-6. Re-run ERC and record dated results in `hardware/mppt/schematic-notes.md`.
-7. Commit docs and schematic updates in separate commits.
+1. Review [HANDOFF.md](HANDOFF.md) and this file.
+2. Re-open [hardware/kicad/solar-project/spice/90_system_integration_harness_ltspice.log](hardware/kicad/solar-project/spice/90_system_integration_harness_ltspice.log) for the current baseline.
+3. Decide whether to continue with SPICE refinement or move to KiCad/documentation validation.
+4. If continuing with SPICE, keep the current 12.8 V assumption unless a new decision calls for a change.
 
 ## Local State At Stop
 
-- Modified:
-  - `docs/session-plan-2026-07-10.md`
-  - `hardware/kicad/solar-project/Solar Project.kicad_sch`
-  - `hardware/mppt/kicad-implementation-checklist.md`
-  - `hardware/mppt/schematic-notes.md`
-- Untracked:
-  - `hardware/mppt/pre-routing-blockers-2026-07-10.md`
-  - `hardware/mppt/rev0-component-shortlist-2026-07-10.md`
-  - `hardware/kicad/solar-project/_autosave-Solar Project.kicad_sch`
+- Modified SPICE files under [hardware/kicad/solar-project/spice](hardware/kicad/solar-project/spice)
+- Updated handoff files in the repository root
 
 ## Rules For Next Session
 
-1. Keep learning-first scope and staged bring-up approach.
-2. Avoid committing transient CAD local-state files, especially KiCad autosaves.
-3. Keep assumptions explicit and dated in the decisions log and schematic notes.
-4. Do not reopen Rev 0 architecture scope; keep synchronous/gate-driver work in Rev 1 backlog.
+1. Preserve the current verified baseline unless a clear reason is given to change it.
+2. Keep assumptions explicit and dated.
+3. Do not expand the model scope without a clear design question to answer.
 
 ## First Action Next Session
 
-Read `HANDOFF.md` and `SOLAR_HANDOFF_2026-07-13.md`, then clear pre-routing blockers in the schematic before any new feature work.
+Read [HANDOFF.md](HANDOFF.md) and this file, then decide whether to continue refining the SPICE model or shift to schematic/documentation validation.
 
 ## Suggested Prompt For New Chat
 
-Continue in Solar-Project-200w from `SOLAR_HANDOFF_2026-07-13.md`. Start by clearing the pre-routing blockers in `hardware/kicad/solar-project/Solar Project.kicad_sch` (`SENSE_PV_I`, `SENSE_BAT_I`, `FAULT_OCP`, `FAULT_OVP`), run ERC, and update `hardware/mppt/schematic-notes.md` with a dated verification snapshot before starting any new scope.
+Continue in Solar-Project-200w from the current SPICE sanity-check baseline. The B0/B1/B2 harness is stable and the latest verified result is VOUT ≈ 15.43 V, BAT ≈ 11.04 V, ICHG ≈ -12 A. Keep the current 12.8 V battery assumption unless a new decision calls for a change, and decide whether to continue with thermal/control refinement or shift to KiCad/documentation validation.

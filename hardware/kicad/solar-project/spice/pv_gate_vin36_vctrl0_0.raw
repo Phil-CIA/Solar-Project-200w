@@ -1,0 +1,29 @@
+Title: * pv switch gate drive, vin=36v, vctrl=0v
+Date: Tue Jul 28 08:26:13  2026
+Command: ngspice-46, Build Mar 29 2026   14:56:48
+Plotname: Operating Point
+Flags: real
+No. Variables: 10
+No. Points: 1       
+Variables:
+	0	v(pv_in)	voltage
+	1	v(ctrl_in)	voltage
+	2	v(ctrl3v3)	voltage
+	3	v(q2g)	voltage
+	4	v(q2d)	voltage
+	5	v(u2gate)	voltage
+	6	v(u2src)	voltage
+	7	i(v3)	current
+	8	i(vctrl)	current
+	9	i(vpv)	current
+Values:
+0		3.600000000000000e+01
+	0.000000000000000e+00
+	3.300000000000000e+00
+	3.299670032996701e-04
+	3.279441562565801e+01
+	3.279409506754851e+01
+	3.205581095067332e+01
+	-3.299670032996701e-05
+	3.299670032996701e-05
+	-3.205584374341988e-05

@@ -1,0 +1,21 @@
+* B3 - Control rail supply path to CTRL_3V3
+* Populate with chosen regulator path and UVLO/protection network.
+
+.param VCTRLIN=18
+
+V_CTRLIN CTRL_SUPPLY_IN PWR_NEG DC {VCTRLIN}
+
+* Placeholder ideal regulator model
+E_REG CTRL_3V3 PWR_NEG VALUE={ if(v(CTRL_SUPPLY_IN,PWR_NEG)>4.0, 3.3, 0) }
+R_REG_OUT CTRL_3V3 PWR_NEG 1k
+
+* Optional USB bench fallback source placeholder
+V_USB USB_5V_IN PWR_NEG DC 5
+R_USB_ISO USB_5V_IN CTRL_SUPPLY_IN 10MEG
+
+.control
+dc VCTRLIN 0 60 0.5
+print v(CTRL_3V3) v(CTRL_SUPPLY_IN)
+.endc
+
+.end
