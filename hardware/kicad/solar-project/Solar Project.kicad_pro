@@ -449,7 +449,7 @@
       "no_connect_dangling": "warning",
       "pin_not_connected": "error",
       "pin_not_driven": "error",
-      "pin_to_pin": "warning",
+      "pin_to_pin": "error",
       "power_pin_not_driven": "error",
       "same_local_global_label": "warning",
       "similar_label_and_power": "warning",
@@ -1195,6 +1195,54 @@
           "group_by": false,
           "label": "Insulation Resistance",
           "name": "Insulation Resistance",
+          "show": false
+        },
+        {
+          "group_by": false,
+          "label": "Voltage - DC Reverse(Vr)",
+          "name": "Voltage - DC Reverse(Vr)",
+          "show": false
+        },
+        {
+          "group_by": false,
+          "label": "Sim.Name",
+          "name": "Sim.Name",
+          "show": false
+        },
+        {
+          "group_by": false,
+          "label": "Sim.Type",
+          "name": "Sim.Type",
+          "show": false
+        },
+        {
+          "group_by": false,
+          "label": "Sim.Pins",
+          "name": "Sim.Pins",
+          "show": false
+        },
+        {
+          "group_by": false,
+          "label": "Sim.Device",
+          "name": "Sim.Device",
+          "show": false
+        },
+        {
+          "group_by": false,
+          "label": "Voltage - Forward(Vf@If)",
+          "name": "Voltage - Forward(Vf@If)",
+          "show": false
+        },
+        {
+          "group_by": false,
+          "label": "Current - Rectified",
+          "name": "Current - Rectified",
+          "show": false
+        },
+        {
+          "group_by": false,
+          "label": "Sim.Library",
+          "name": "Sim.Library",
           "show": false
         }
       ],
