@@ -1,31 +1,36 @@
-Continue the Solar Project 200W repository from the latest SPICE handoff.
+Continue the Solar Project 200W repository from the latest handoff and continue Rev One board planning.
 
 ## Current priority
 
-Close the SPICE capability-profile story while preserving the baseline PV-limited profile.
+Define Rev One circuit-board deltas from the now-validated Rev 0 input-protection baseline while keeping Rev 1 as the active schematic lineage.
 
 ## State to assume
 
-- Automation is working for sweep, logs, CSV summary, and waveform dashboard.
-- Latest handoff: [SOLAR_HANDOFF_2026-07-30.md](SOLAR_HANDOFF_2026-07-30.md).
-- B1 currently shows req_chg_001 PASS and req_chg_003 FAIL in [hardware/kicad/solar-project/spice/corner_summary.csv](hardware/kicad/solar-project/spice/corner_summary.csv).
-- Working tree is dirty; avoid destructive cleanup.
+- LM74502H input-protection wiring is verified and ERC-clean.
+- Back-to-back N-MOS high-side reverse-protection path is retained.
+- One deferred item remains: C52 voltage-rating margin review.
+- Rev 1 schematic and board copies exist in-tree alongside recovered Rev 0 copies.
+- Working tree may contain local edits; avoid destructive cleanup.
 
 ## What to do first
 
-1. Read [HANDOFF.md](HANDOFF.md) and [SOLAR_HANDOFF_2026-07-30.md](SOLAR_HANDOFF_2026-07-30.md).
-2. Run git status --short and confirm baseline.
-3. Run [hardware/kicad/solar-project/spice/run_spice_corner_sweeps.ps1](hardware/kicad/solar-project/spice/run_spice_corner_sweeps.ps1) with GeneratePlots false for a quick health check.
-4. Verify [hardware/kicad/solar-project/spice/corner_summary.csv](hardware/kicad/solar-project/spice/corner_summary.csv) and [hardware/kicad/solar-project/spice/plots/index.html](hardware/kicad/solar-project/spice/plots/index.html).
+1. Read HANDOFF.md and SOLAR_HANDOFF_2026-08-04.md.
+2. Run git status --short and capture baseline.
+3. Export fresh netlist/ERC/DRC evidence before new edits.
+4. Build a Rev One delta table by schematic sheet and note owner/intent for each change.
 
 ## Session deliverables
 
-1. Add and validate a dedicated 20A capability stress profile.
-2. Clarify or correct B1 input-current sign convention and warning semantics.
-3. Keep requirement reporting explicit per profile in summary outputs.
+1. Rev One scoped change list (must-have vs optional).
+2. Updated schematic notes and wiring-map references for approved deltas.
+3. ERC/DRC closure checklist for Rev One release.
+4. Next commit plan split into:
+   - commit A: schematic/netlist changes
+   - commit B: notes/handoff/checklist updates
+5. Explicit revision labeling in the active schematic title block and archive copies.
 
 ## Constraints
 
 1. Keep autosave and lock artifacts out of commits.
-2. Do not regress current sweep, parsing, and plot generation flow.
+2. Keep Rev One scope disciplined; do not reopen unrelated architecture tracks without explicit decision logging.
 

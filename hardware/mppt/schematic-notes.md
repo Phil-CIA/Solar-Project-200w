@@ -1,8 +1,22 @@
 # MPPT Schematic Notes (First Pass)
 
-Last updated: 2026-07-21
+Last updated: 2026-08-04
 Owners: Phil + Copilot
 Status: CTRL_SUPPLY_IN OR-ing complete; U6 (LM51772) all critical strap connections verified; 7 deferred power-authority ERC errors only.
+
+## Rev One kickoff linkage update (2026-08-04)
+
+- Active schematic lineage is now treated as Rev 1 for ongoing board work.
+- Recovered Rev 0 baseline files are in the KiCad project folder for side-by-side comparison during Rev 1 deltas.
+- Rev One delta plan and commit split are tracked in docs/rev-one-delta-plan-2026-08-04.md.
+- Rev One ERC/DRC release gate checklist is tracked in docs/test/rev-one-erc-drc-closure-checklist.md.
+
+Approved wiring-map references for Rev One pass:
+
+- hardware/mppt/pv-input-wiring-map.md
+- hardware/mppt/buck-power-stage-wiring-map.md
+- hardware/mppt/sheet3-battery-interface-wiring-map.md
+- hardware/mppt/sheet4-sensing-control-wiring-map.md
 
 ## Rev 0 MCU continuity update (2026-07-26)
 
