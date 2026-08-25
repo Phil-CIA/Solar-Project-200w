@@ -26,6 +26,7 @@ out/
 *.kicad_prl
 *.net
 *.kicad_sch.lck
+~*.lck
 *.rpt
 hardware/kicad/solar-project/#auto_saved_files#/
 hardware/kicad/solar-project/#auto_saved_files#

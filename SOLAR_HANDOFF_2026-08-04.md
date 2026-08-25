@@ -4,6 +4,15 @@
 
 Rev 1 is now the active schematic lineage for board work, and Rev 0 input-protection closure is complete enough to transition focus to Rev One board planning.
 
+## Rev One changes started
+
+The following Rev One work has already been started and is recorded in the repository:
+
+- Canonical schematic title block relabeled to Rev 1.
+- Rev 0 schematic and board restored into explicit archive files.
+- Rev 1 schematic and board archive files created.
+- Rev One delta plan and ERC/DRC closure checklist added under docs/.
+
 ## What is locked from this session
 
 1. Rev 1 schematic and board copies are present alongside recovered Rev 0 copies for comparison and release planning.

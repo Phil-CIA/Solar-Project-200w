@@ -1,6 +1,6 @@
 # Solar Project 200W - Decisions Log
 
-Last updated: 2026-07-20
+Last updated: 2026-08-08
 Decision owners: Phil + Copilot
 Decision policy: move fast, log every non-trivial choice, and defer only with a target date.
 
@@ -35,6 +35,7 @@ Decision policy: move fast, log every non-trivial choice, and defer only with a 
 | DEC-012 | 2026-07-08 | PV reverse-path optimization | Keep series Schottky reverse-polarity path for Rev 0; evaluate ideal-diode MOSFET replacement in Rev 1. | Deferred | Rev 0 prioritizes simple bring-up and lower integration risk. | Ideal-diode footprint and topology changes move to Rev 1 efficiency optimization work. | Phil + Copilot | 2026-07-20 |
 | DEC-013 | 2026-07-14 | STM32G431 control-rail architecture (Rev 0) | Use a single wide-input buck as the primary control rail generator for `CTRL_3V3`, with PV-first runtime sourcing and protected USB bench fallback when PV is absent. Keep battery-domain assist optional through protected source OR-ing into the control-supply input boundary. | Decided | Satisfies required PV-only startup and USB-only bench bring-up without forcing a full dual-converter redesign. Keeps Rev 0 integration complexity bounded while preserving source-flexibility for bring-up and debug. | Unblocks explicit power-tree implementation for MCU VDD/VDDA, clarifies source-priority behavior, and enables targeted startup/noise verification before pre-routing gate closure. | Phil + Copilot | 2026-07-14 |
 | DEC-014 | 2026-07-26 | Rev 0 MCU continuity swap | Select `STM32F411CEU6` as the Rev 0 MCU replacement for in-stock continuity, with `STM32F401CEU6` as the immediate backup and `STM32G431CBT6` as the family-continuity fallback. | Decided | The original `STM32G431CBU6` is out of stock, but the reduced Rev 0 control scope still fits the F4 family well enough to keep the current UFQFPN-48 footprint and avoid a package reroute. | Preserves build continuity and limits board-level churn while accepting a firmware migration from G4 to F4. | Phil + Copilot | 2026-07-26 |
+| DEC-015 | 2026-08-08 | Rev 1 Wi-Fi architecture | Use a 5 V-powered ESP32-C3 development module as a network coprocessor. Keep all charging and safety authority in the STM32; connect the processors through a versioned, CRC-protected framed UART protocol. | Decided | Separating network services from real-time charger control prevents Wi-Fi or ESP32 failures from affecting safe operation while retaining provisioning, telemetry, and remote-access capability. | Adds `CTRL_5V` ESP32 power, UART TX/RX with optional RTS/CTS, ESP32-owned Wi-Fi/NVS/MQTT/OTA, and an explicit remote-command validation boundary at the STM32. | Phil + Copilot | 2026-08-08 |
 
 ## Open Questions
 
@@ -47,6 +48,7 @@ Decision policy: move fast, log every non-trivial choice, and defer only with a 
 
 ## Change Log
 
+- 2026-08-08: Added DEC-015 and the Wi-Fi coprocessor architecture. The ESP32-C3 development module is powered from `CTRL_5V`; the STM32 remains the charger and safety owner.
 - 2026-07-20: Added legacy cleanup backlog defaults and session sequencing for the LM51772-era schematic cleanup pass; current working outcome is to keep `CTRL_PWM_MAIN`, `CTRL_EN_CHG`, `FAULT_OCP`, and `FAULT_OVP`, delete `V_in_ON` unless the Q2 legacy branch is intentionally retained, and treat U2 control-owner role as delete/deprecate.
 - 2026-07-20: Refined control/fault ownership cleanup defaults: `CTRL_EN_CHG` remains a hardware-backed MCU enable line, `FAULT_OCP` and `FAULT_OVP` remain hardware protection signals with optional firmware mirroring, and `V_in_ON` defaults to delete unless the legacy `U2/Q2` branch is intentionally preserved.
 - 2026-07-20: Added U6 helper-net cleanup defaults: treat U6 as active in the current Rev 0 notes, close `U6_VCC2` with a real decoupler and `U6_FLT` with a pull-up, and keep `U6_SYNC`, `U6_DTRK`, and `U6_RST` only if they remain intentional straps.

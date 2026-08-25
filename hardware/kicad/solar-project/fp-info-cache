@@ -1,4 +1,4 @@
-28354352481687834
+28359710257412760
 1My_Parts_ Connectors
 AMPHENOL_SPI HDR
 
@@ -196,6 +196,13 @@ inmp441
 6
 6
 1My_Parts_ MPUs
+ESP32 C3 mini
+
+
+0
+0
+0
+1My_Parts_ MPUs
 ESP32-C6-DevKit-Amazon
 2.4 GHz Wi-Fi and Bluetooth module https://docs.espressif.com/projects/esp-dev-kits/en/latest/esp32c3/esp32-c3-devkitm-1/index.html
 esp32 esp32-c3 riscv risc-v wifi bluetooth ble
@@ -230,6 +237,20 @@ Untitled
 0
 18
 14
+1My_Parts_ MPUs
+Untitled_1
+
+
+0
+0
+0
+1My_Parts_ MPUs
+Untitled_2
+
+
+0
+0
+0
 1My_Parts_ Passive
 5mm LOGO
 

@@ -1,53 +1,54 @@
 # Solar Project New Chat Handoff
 
-## Session Closeout - 2026-08-03
+## Session Closeout - 2026-08-08
 
 Project: Solar Project 200W
-Phase: MPPT charger sanity-checking and model grounding
+Phase: Rev 1 Wi-Fi coprocessor integration and pre-routing verification
 
 ## Current Objective
 
-Pause after the current SPICE sanity-check milestone and preserve the verified state for the next session.
+Close this session with the Wi-Fi ownership and interface architecture captured, then verify the hardware boundary before PCB routing.
 
 ## What Was Completed In This Stop Window
 
-1. The staged LTspice harness for the B0/B1/B2 power path was made more schematic-informed and stable.
-2. The model now includes more realistic loss and parasitic terms than the initial idealized version.
-3. The current verified operating point under the 12.8 V battery-like assumption is:
-   - VOUT ≈ 15.43 V
-   - BAT bus ≈ 11.04 V
-   - ICHG ≈ -12 A
-4. The handoff files were refreshed to preserve the current baseline and stop point.
+1. Accepted the ESP32-C3 development module as a 5 V-powered network coprocessor.
+2. Kept the STM32 as the sole owner of charging, PWM, protection, limits, and faults.
+3. Accepted UART TX/RX with optional RTS/CTS as the processor interface.
+4. Defined the initial framed-UART, Wi-Fi provisioning, MQTT, and OTA boundaries in DEC-015 and docs/wifi-coprocessor-architecture.md.
+5. Reviewed the schematic arrangement without making a schematic edit.
 
 ## Verified State At Stop
 
-- The power-path harness is stable and produces a plausible charging-like operating point.
-- The battery boundary is anchored to the current 12.8 V assumption.
-- The output-voltage behavior is still treated as control-dependent rather than fixed.
-- The main remaining concern from the model is thermal/loss margin rather than basic topology feasibility.
+- ESP32 module power is intentionally `CTRL_5V` into its `5V` pin.
+- Its exposed `3.3V` pin is unused; U5 separately generates `CTRL_3V3`.
+- The checked-in ERC report shows 0 errors and 0 warnings but predates the latest schematic edits.
+- D10 direction, the 5 V current budget, antenna keepout, reset/boot control, and C52 margin still require closure.
 
 ## Next Session Actions (In Order)
 
-1. Review [HANDOFF.md](HANDOFF.md) and this file.
-2. Re-open [hardware/kicad/solar-project/spice/90_system_integration_harness_ltspice.log](hardware/kicad/solar-project/spice/90_system_integration_harness_ltspice.log) for the current baseline.
-3. Decide whether to continue with SPICE refinement or move to KiCad/documentation validation.
-4. If continuing with SPICE, keep the current 12.8 V assumption unless a new decision calls for a change.
+1. Review HANDOFF.md, SOLAR_HANDOFF_2026-08-08.md, and docs/wifi-coprocessor-architecture.md.
+2. Capture git status and export fresh ERC from the Rev 1 schematic.
+3. Verify D10 polarity and calculate the USB/`CTRL_5V` current budget.
+4. Confirm STM32-to-ESP32 UART crossing, GPIO mapping, RTS/CTS, and reset/boot requirements.
+5. Add antenna keepout and supply checks to the PCB closure checklist.
+6. Define the initial UART packet fields and MQTT telemetry schema.
 
 ## Local State At Stop
 
-- Modified SPICE files under [hardware/kicad/solar-project/spice](hardware/kicad/solar-project/spice)
-- Updated handoff files in the repository root
+- Existing uncommitted schematic and handoff edits remain in the working tree.
+- No schematic file was changed during this documentation closeout.
 
 ## Rules For Next Session
 
-1. Preserve the current verified baseline unless a clear reason is given to change it.
-2. Keep assumptions explicit and dated.
-3. Do not expand the model scope without a clear design question to answer.
+1. Preserve the STM32 safety boundary in DEC-015.
+2. Do not make charging depend on ESP32 or network availability.
+3. Preserve existing local changes and avoid destructive cleanup.
+4. Keep KiCad lock, autosave, and cache artifacts out of commits.
 
 ## First Action Next Session
 
-Read [HANDOFF.md](HANDOFF.md) and this file, then decide whether to continue refining the SPICE model or shift to schematic/documentation validation.
+Read HANDOFF.md and SOLAR_HANDOFF_2026-08-08.md, then regenerate ERC before editing schematic content.
 
 ## Suggested Prompt For New Chat
 
-Continue in Solar-Project-200w from the current SPICE sanity-check baseline. The B0/B1/B2 harness is stable and the latest verified result is VOUT ≈ 15.43 V, BAT ≈ 11.04 V, ICHG ≈ -12 A. Keep the current 12.8 V battery assumption unless a new decision calls for a change, and decide whether to continue with thermal/control refinement or shift to KiCad/documentation validation.
+Continue in Solar-Project-200w from SOLAR_HANDOFF_2026-08-08.md. Preserve DEC-015: STM32 owns charger safety and the 5 V-powered ESP32-C3 development module is a network coprocessor. Regenerate ERC, verify D10 and the CTRL_5V budget, confirm UART/RTS/CTS/reset mapping and antenna keepout, then define the initial framed-UART and MQTT telemetry schemas.
