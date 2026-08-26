@@ -1,6 +1,6 @@
 # MPPT KiCad Implementation Checklist
 
-Last updated: 2026-07-21
+Last updated: 2026-08-26
 Owners: Phil + Copilot
 Purpose: provide a repeatable sequence for building the first MPPT schematic safely and traceably.
 
@@ -82,6 +82,24 @@ Close this gate before board-placement freeze:
 - [ ] BOOT path behavior is explicitly documented (`PB8-BOOT0` default state and recovery method).
 - [ ] Navigation pad is complete and documented: `BTN_UP_N`, `BTN_DN_N`, `BTN_LT_N`, `BTN_RT_N`, `BTN_ENT_N`.
 
+## 7.2 Part Substitution Gate (Mandatory)
+
+Run this gate whenever a component is swapped for a different part number, including in-stock continuity swaps within the same family and package.
+
+Rule: **the same package never implies the same pinout.** Editing the `Value`, `MP`, or datasheet fields does not change the pin mapping used for routing.
+
+- [ ] Replace the schematic **symbol** itself, not just the text fields. Confirm the symbol `lib_id` matches the part actually being fitted.
+- [ ] Verify the new symbol's pin map against the manufacturer datasheet or a trusted library (for example KiCad's official `MCU_ST_*` symbols), pin number by pin number.
+- [ ] Explicitly re-check every power and boot pin: `VDD`, `VSS`, `VDDA`, `VSSA`, `VREF`, `VBAT`, `VCAP`, `BOOT0`, `BOOT1`, and the exposed pad.
+- [ ] Confirm no supply net lands on a ground pin and no ground net lands on a supply pin. This is the failure mode that produced the DEC-018 Rev 0 board loss.
+- [ ] Re-check required support passives for the new part (for example `VCAP` stabilization capacitors) and add them if the previous part did not need them.
+- [ ] Re-check debug and programming pins (`SWDIO`, `SWCLK`, reset) against the new pinout.
+- [ ] Re-export the netlist and run ERC after the symbol swap; do not rely on the pre-swap netlist.
+- [ ] Record the substitution and the completed pin-map verification in `docs/decisions-log.md`.
+
+Stop condition:
+- The fitted part's datasheet pinout and the routed netlist agree on every power, ground, boot, and debug pin.
+
 ## 8. Pre-PCB Routing Gate
 
 - [ ] Rev 0 reverse-polarity path is fixed to series Schottky and reflected in symbols/footprints.
@@ -89,6 +107,7 @@ Close this gate before board-placement freeze:
 - [ ] Any ideal-diode or synchronous upgrade is captured as Rev 1 backlog in docs/decisions-log.md.
 - [ ] DEC-013 startup behavior is validated: PV-only startup and USB-only startup both pass with no unintended backfeed.
 - [ ] Full ERC rabbit-hole pass is completed: all remaining findings are either fixed or explicitly waived with rationale.
+- [ ] If any part was substituted since the last routing pass, the Section 7.2 Part Substitution Gate is closed.
 
 ## 8.1 ERC Clearance Routing Gate (Mandatory)
 

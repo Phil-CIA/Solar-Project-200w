@@ -1,15 +1,16 @@
 # Solar Project 200W - Handoff
 
-Latest active handoff: [SOLAR_HANDOFF_2026-08-08.md](SOLAR_HANDOFF_2026-08-08.md)
+Latest active handoff: [SOLAR_HANDOFF_2026-08-26.md](SOLAR_HANDOFF_2026-08-26.md)
 
 ## Current status
 
-- Rev 1 is the active schematic lineage for board work.
-- An ESP32-C3 development module has been added as a 5 V-powered Wi-Fi coprocessor.
-- STM32 retains all charger, PWM, protection, limit, and fault authority.
-- UART TX/RX is the interprocessor data path; RTS/CTS remains optional.
-- The Wi-Fi/protocol baseline is recorded in docs/wifi-coprocessor-architecture.md and DEC-015.
-- The checked-in ERC report is clean but dated 2026-08-04; regenerate it against the current schematic.
+- Rev 0 boards are built but not yet powered. Bring-up is blocked pending replacement MCUs.
+- Root cause of the U1 `CTRL_3V3` short is confirmed (DEC-018): the board was routed against the `STM32G431CBU6` symbol while `STM32F411CEU6` parts were fitted, causing hard supply-pin conflicts through the die.
+- Two `STM32G473CEU6` are on order to recover the existing Rev 0 boards; verified pin-identical to the routed G4 map.
+- Rev 1 will carry a properly implemented `STM32F411` migration (DEC-020).
+- Rev 0 I2C is swapped at the MCU (DEC-019); use software bit-banged I2C.
+- M1-M4 are unpopulated due to a separate footprint mismatch; inverter/AC testing remains blocked.
+- A mandatory Part Substitution Gate now exists in the KiCad implementation checklist.
 
 ## Locked Baselines
 
@@ -21,27 +22,32 @@ Latest active handoff: [SOLAR_HANDOFF_2026-08-08.md](SOLAR_HANDOFF_2026-08-08.md
 
 ## Next session objective
 
-Freeze and verify the STM32-to-ESP32 integration before PCB routing:
-1. Run fresh ERC on the Rev 1 schematic.
-2. Verify D10 polarity and the complete `CTRL_5V`/USB current budget.
-3. Confirm UART pin mapping, TX/RX crossing, and whether RTS/CTS is enabled.
-4. Decide whether STM32-controlled ESP32 reset/boot signals are required.
-5. Define the first UART packet and MQTT telemetry schemas.
-6. Add ESP32 antenna keepout checks to the PCB closure checklist.
+Pick the track that matches parts availability:
+
+**Track A - Rev 0 recovery (parts arrived):** fit one `STM32G473CEU6`, verify `CTRL_3V3`-to-`PWR_NEG` is high before power, then run Stage A/B of the Rev 0 bring-up addendum.
+
+**Track B - Rev 1 design (parts delayed):** replace the MCU symbol with KiCad's official `STM32F411CEUx`, re-assign all nets under the Part Substitution Gate, fix the I2C assignment, and correct the M1-M4 footprint.
+
+Full detail: [SOLAR_HANDOFF_2026-08-26.md](SOLAR_HANDOFF_2026-08-26.md)
 
 ## Primary evidence files
 
-- [hardware/kicad/solar-project/Solar Project.kicad_sch](hardware/kicad/solar-project/Solar%20Project.kicad_sch)
+- [hardware/kicad/solar-project/REVISION-INDEX.md](hardware/kicad/solar-project/REVISION-INDEX.md)
 - [hardware/kicad/solar-project/Solar Project Rev1.kicad_sch](hardware/kicad/solar-project/Solar%20Project%20Rev1.kicad_sch)
 - [hardware/kicad/solar-project/Solar Project Rev0.kicad_sch](hardware/kicad/solar-project/Solar%20Project%20Rev0.kicad_sch)
-- [hardware/kicad/solar-project/Solar Project.net](hardware/kicad/solar-project/Solar%20Project.net)
 - [hardware/kicad/solar-project/ERC.rpt](hardware/kicad/solar-project/ERC.rpt)
+- [docs/test/rev0-bringup-addendum.md](docs/test/rev0-bringup-addendum.md)
+- [docs/test/bringup-checklist.md](docs/test/bringup-checklist.md)
+- [hardware/mppt/kicad-implementation-checklist.md](hardware/mppt/kicad-implementation-checklist.md)
 - [hardware/mppt/schematic-notes.md](hardware/mppt/schematic-notes.md)
 - [docs/rev-one-delta-plan-2026-08-04.md](docs/rev-one-delta-plan-2026-08-04.md)
 - [docs/test/rev-one-erc-drc-closure-checklist.md](docs/test/rev-one-erc-drc-closure-checklist.md)
 - [docs/wifi-coprocessor-architecture.md](docs/wifi-coprocessor-architecture.md)
+- [SOLAR_HANDOFF_2026-08-26.md](SOLAR_HANDOFF_2026-08-26.md)
 - [SOLAR_HANDOFF_2026-08-08.md](SOLAR_HANDOFF_2026-08-08.md)
-- [SOLAR_HANDOFF_2026-08-04.md](SOLAR_HANDOFF_2026-08-04.md)
+
+Note: the as-manufactured Rev 0 design files live outside this repository at
+`C:\Users\forch\OneDrive\JLCPCB files\Solar Charger\Solar Project Rev0 - Manufactured First Build`.
 
 ## Note
 
