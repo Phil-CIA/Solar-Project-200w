@@ -18,9 +18,11 @@ node_modules/
 
 # Build and output
 build/
+**/build/
 dist/
 out/
 *.log
+.tools/
 
 # KiCad and CAD generated artifacts (keep source files in version control)
 *.kicad_prl
