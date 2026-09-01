@@ -84,3 +84,50 @@ Per the datasheet, `MODE` is a **digital logic input** ("pulled low = power save
 3. Re-check current-limit behavior (already-cautious H3 static test) is not being affected by this shared node before increasing test voltage/current further.
 
 This finding is independent of the already-fixed I2C address strap and should be treated as a second, separate hardware defect to resolve before trusting `MODE`-dependent behavior (PSM vs. forced PWM) or the `ISET` current-limit threshold.
+
+### Confirmed by physical inspection (2026-09-01): it is a real trace short, not a labeling artifact
+
+The bench board was checked with a meter: `MODE` (U6 pin 7) is genuinely shorted to `ILIMCOMP/ISET` (U6 pin 16) by a physical PCB trace, not just a schematic/netlist naming coincidence. Cutting that trace and evaluating what to do with the now-isolated `ILIMCOMP/ISET` pin is the next open question, covered below.
+
+### If the `MODE`/`ISET` trace is cut and `ILIMCOMP/ISET` is left floating: do not do this
+
+`ILIMCOMP/ISET` (pin 16) is an active analog node, not a passive or logic pin — internally a transconductance amplifier (`gm(ISET)`, ~1.1 mS typical) sources a current out of this pin proportional to the sensed `ISNSP`-`ISNSN` differential, and the external network on this pin converts that current into the voltage the ILIM loop regulates to (`V(ISET)` = (V_ISNSP - V_ISNSN) x gm(ISET) x R(ISET)`, typical threshold ~1 V). The datasheet's own absolute-maximum table lists `COMP, ILIMCOMP/ISET, CDC to AGND` as a rated pin, i.e. it always expects a defined DC operating point.
+
+Leaving it floating after the cut would very likely have the pin rise toward the ILIM threshold almost immediately (nothing sinks the internal gm current to ground), which the comparator can read as a persistent current-limit condition — causing chattering, foldback, or failure to regulate to the output setpoint even at light load. A floating high-impedance node next to the switching/gate-drive traces is also more exposed to noise pickup than a properly terminated one, which is exactly what the datasheet's own layout guidance (Section 9.9.1.3) warns against for this class of sensitive analog pin.
+
+TI provides exactly one documented way to safely disable this function: **tie `ILIMCOMP/ISET` directly to `VCC2`, or through a pull-up resistor < 50 kOhm to `VCC2`** ("Directly connect the ILIMCOMP to VCC2 or with a pullup resistor < 50 kOhm... configuration gets latched at start-up... do this before the device gets enabled"). This matches the TI WEBENCH reference design behavior for both the LM51772-Q1 and LM851772-Q1 (see comparison below) — neither WEBENCH export includes an ISET resistor in its BOM, i.e. WEBENCH's default topology ties `ILIMCOMP/ISET`/`ILIMCOMP` straight to `VCC2` to disable current limiting rather than leaving it floating or undefined.
+
+**Recommended path after the cut:**
+- If active current limiting via `ISET` is wanted (this project already added `R32` = 100 kOhm from `ILIMCOMP_ISET` to `PWR_NEG`/AGND for this purpose, beyond the WEBENCH default): keep `R32` as the pin's only connection now that `MODE` is isolated, and add the datasheet-recommended parallel filter capacitor if not already present.
+- If current limiting is not needed yet for continued bring-up: tie the pin directly to `VCC2` (or a <50 kOhm pull-up to `VCC2`) instead, matching the WEBENCH-documented disable configuration, and set this before `EN`/`EN_CONV` is asserted since the configuration latches at converter start-up.
+- Either way, **do not leave the pin floating.**
+
+## Cross-Check Against TI WEBENCH Reference Schematics (2026-09-01)
+
+Per a follow-up request to compare this project's schematic against the other schematics already checked into the repo (`docs/WBDesignLM51772.pdf` and `docs/WBDesignLM851772.pdf`, the auto-generated TI WEBENCH design reports this project's U6 network was originally derived from), the actual reference schematic pages were rendered and visually traced pin-by-pin, not just BOM text.
+
+### Config-strap resistor value comparison
+
+| Project net (U6 pin) | Project value / return | LM51772-Q1 WEBENCH value | LM851772-Q1 WEBENCH value | Note |
+|---|---|---|---|---|
+| `RT` (pin 12) | `R28` = 51.7 kOhm to `PGND` | `Rt` = 51.0 kOhm | `Rt` = **51.7 kOhm** | Project's `R28` value matches the **LM851772** WEBENCH export exactly, not the LM51772 one — strong evidence `R28` is an unmigrated leftover from the original LM851772-based design, not recalculated for LM51772. |
+| `CFG2` (pin 8) | `R29` = 20.5 kOhm to `PGND` | `Rcfg2` = 20.5 kOhm | not present (no CFG2 resistor in LM851772 BOM) | Exact match to LM51772 WEBENCH; unchanged from the WEBENCH export. |
+| `CDC` (pin 10) | `R30` = 40.2 kOhm to `PGND` | `Rcdc` = 40.2 kOhm | `Rcdc` = 40.2 kOhm | Exact match to both; unchanged from the WEBENCH export. |
+| `ILIMCOMP/ISET` (pin 16) | `R32` = 100 kOhm to `PWR_NEG` (AGND) | **not in BOM** — pin tied directly to `VCC2` (traced visually; no resistor component) | **not in BOM** — same VCC2-tie disable pattern (`ILIMCOMP` pin, no resistor) | Project added a resistor here that neither WEBENCH reference uses; this is a deliberate customization to enable real ISET current limiting rather than the WEBENCH default of disabling the block via VCC2. Legitimate design choice on its own, but it must not share a node with `MODE` (see finding above). |
+| `ADDR/SLOPE (CFG1)` (pin 9) | `R33` = 6.49 kOhm to `PGND` | `Rcfg1` = 6.49 kOhm | `Rcfg` (single `ADDR_CFG1` pin) = 2.67 kOhm | Project's `R33` is an exact, unchanged copy of the LM51772 WEBENCH `Rcfg1` slope-select value — confirms this was inherited verbatim from the auto-generated design and never reconsidered for I2C enablement. The LM851772 uses a different, simpler single-purpose address pin with its own 2.67 kOhm value, consistent with the migration checklist's note that `ADDR_SLOPE_CFG1` and `ADDR_CFG1` are functionally different pins. |
+
+### I2C strapping comparison
+
+The **LM851772-Q1 WEBENCH reference** enables true I2C by default: it places `Rpull1`/`Rpull2` = 5.6 kOhm pull-ups from `SCL`/`SDA` to a labeled `I2C_VCC` net, with only a single `Rcfg` = 2.67 kOhm on `ADDR_CFG1` for address selection (no CFG3/CFG4 dual-use pins on that part).
+
+The **LM51772-Q1 WEBENCH reference**, by contrast, does **not** enable I2C: `SDA_CFG3` and `SCL_CFG4` are strapped through `Rcfg3` = 5.11 kOhm and `Rcfg4` = 1.91 kOhm (both present in this project's schematic as well, unchanged), and `ADDR_SLOPE_CFG1` carries the slope-select resistor `Rcfg1` = 6.49 kOhm — the same non-I2C, resistor-strapped topology this project inherited as `R33`. This confirms the root cause already logged above was not a project-introduced mistake in isolation; it is the literal, un-modified WEBENCH default for this specific part, and nobody revisited it when I2C control of U6 became a project goal.
+
+### Ground-reference comparison
+
+The WEBENCH reference schematics draw all of `RT`/`CFG2`/`CDC`/`ADDR-SLOPE`/`COMP`/`SS_ATRK` config and compensation resistors returning to one common ground symbol at the bottom of the sheet (WEBENCH does not visually separate `AGND` from `PGND` in its auto-generated art, even though the datasheet's own text calls for `AGND` specifically for `RT`/`CDC`/`ADDR-SLOPE`). This project's actual KiCad netlist, by contrast, explicitly routes `R28`/`R29`/`R30`/`R33` to a distinct `PGND` net rather than the `PWR_NEG` net used for U6's own `AGND` pin (17) and most of the rest of the board's ground returns — a real divergence introduced during this project's schematic capture, not present in either WEBENCH source. This matches and reinforces the earlier (same-day) ground-domain finding recorded above and in the migration checklist, and is now corroborated by comparison against both original reference designs rather than by datasheet text alone.
+
+### Net-new items from this comparison
+
+1. `R28` (RT = 51.7 kOhm) should be reconsidered against the LM51772-specific WEBENCH value (51.0 kOhm) rather than left at the inherited LM851772 value, even though the two are close; confirm which switching frequency is actually intended for this design before relying on `R28` long-term.
+2. `R32` (ILIMCOMP/ISET = 100 kOhm to AGND) is a deliberate project addition beyond both WEBENCH references' default (VCC2-tie disable); this is fine as a design intent but must be re-verified in isolation once the `MODE` short is cut, per the floating-pin guidance above.
+3. No new discrepancy was found for `R29` (CFG2) or `R30` (CDC) — both are unchanged, exact copies of the LM51772 WEBENCH values.
