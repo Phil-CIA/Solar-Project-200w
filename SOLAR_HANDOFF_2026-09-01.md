@@ -38,3 +38,49 @@ To restore I2C communication with U6, the `ADDR_SLOPE_CFG1` net must be a direct
 ## Non-Negotiable Safety (unchanged)
 
 Continue to follow the safety limits in `SOLAR_HANDOFF_2026-08-31.md` and `docs/test/rev0-low-energy-comm-control-test.md`: PV/battery/charger output/inverter/AC/loads stay disconnected; `PA8`/`PB5`/`PA5` stay low; verify ST-LINK/target identity before every flash; use software I2C on `PB6`/`PB7` only.
+
+## Update (2026-09-01, later same day): Bench-Only Rework, Schematic Not Yet Updated
+
+The `R33 -> 0 Ohm` bodge and the `PGND`-to-`AGND` jumper described above have been performed **only on the physical bench board**. The KiCad source files (`Solar Project Rev0.kicad_sch`/`.kicad_pcb`, `Solar Project Rev1.kicad_sch`/`.kicad_pcb`) still show the original `R33 = 6.49k` value and still show `PGND` (net 19) and `PWR_NEG`/`AGND` as separate, unconnected nets. Treat the schematic as **out of sync with the bench hardware** until it is explicitly edited. This is expected/acceptable for a bench bodge, but do not assume the checked-in design files reflect the current board state.
+
+**Action item (open):** update `R33` to `0` (or DNP + wire link) in the KiCad schematic, and add either a dedicated `PGND`-`AGND` link (e.g., a 0 Ohm resistor or ferrite bead at a single point near U6, per datasheet Section 9.9.1.3 guidance) once the bench result confirms this is the desired production topology, or roll it into the Rev 1 delta plan instead of Rev 0 as-built docs.
+
+### Follow-up Finding: PGND/AGND Ground-Domain Mismatch Affects More Than Just R33
+
+Re-checking all U6 config-strap resistors against the datasheet's stated return node (Section 7.3, pin descriptions) found that the `PGND`-vs-`AGND` split was not unique to `R33`/`ADDR_SLOPE_CFG1`. The datasheet requires:
+
+- `RT` (pin 12, frequency set): resistor to `AGND`.
+- `CDC` (pin 10, cable-drop/current-monitor gain): resistor to `AGND` (or tie to ground if unused).
+- `ADDR/SLOPE (CFG1)` (pin 9): resistor to `AGND` for slope select, or direct short to `GND`/`VCC2` for I2C address.
+- `CFG2` (pin 8): resistor to `GND` (datasheet text says "GND", less strict than the others).
+- `ILIMCOMP/ISET` (pin 16): compensation/setpoint node, `R32` return.
+
+Netlist evidence (`hardware/kicad/solar-project/report.txt`):
+
+| Resistor | U6 net | Returns to | Datasheet wants |
+|---|---|---|---|
+| `R28` (RT) | `Net-(U6-RT)` | `PGND` | `AGND` |
+| `R29` (CFG2) | `Net-(U6-CFG2)` | `PGND` | `GND` (either acceptable) |
+| `R30` (CDC) | `Net-(U6-CDC)` | `PGND` | `AGND` |
+| `R32` (ILIMCOMP/ISET) | `Net-(U6-ILIMCOMP_ISET)` | `PWR_NEG` (= U6 pin 17 `AGND`) | `AGND` - **correct** |
+| `R33` (ADDR/SLOPE CFG1) | `Net-(U6-ADDR_SLOPE_CFG1)` | `PGND` | `AGND` (for slope) / direct short (for I2C) |
+
+`PGND` (net 19, U6 pin 28 only) and `PWR_NEG` (the system ground used for U6 `AGND` pin 17, the STM32 `GND`, and nearly every other ground return on the board) are **two separate KiCad nets with no direct tie between them anywhere else in the design** — they were only expected to meet through the power path (source/drain returns of the switching FETs), not as a clean single-point analog reference. So `R28`, `R29`, `R30`, and `R33` were all referencing the noisier power-ground island instead of the clean analog ground the datasheet specifies for these threshold-sensing config pins, even before the I2C-specific finding.
+
+**Practical implication:** your bench `PGND`-to-`AGND` jumper does not just fix the I2C address strap — it is effectively the single-point ground tie the datasheet calls for in Section 9.9.1.3 ("connect these ground nodes at any place close to one of the ground pins of the IC"), and it corrects the reference node for all four affected config resistors at once. This is a reasonable bench validation step, but it should be captured as an intentional Rev 1 layout decision (a deliberate, short, single-point `PGND`-`AGND` link near U6) rather than a permanent direct tie-everywhere, to preserve the noise-isolation intent of separate ground pours during switching operation.
+
+### New Finding: `MODE` Pin Shorted to `ILIMCOMP/ISET` Node
+
+Checking all U6 pin-to-net connections in `report.txt` for unexpected sharing (excluding the intentionally-common `PWR_NEG` ground net and the intentional `VIN`/`BIAS` tie at `PV_IN_POS`) found exactly one anomaly:
+
+- `U6` pin 7 (`MODE`) and `U6` pin 16 (`ILIMCOMP/ISET`) are **both on the same net**, `Net-(U6-ILIMCOMP_ISET)`, alongside `R32` (100 kOhm to `PWR_NEG`/`AGND`).
+
+Per the datasheet, `MODE` is a **digital logic input** ("pulled low = power save mode; pulled high = forced PWM/CCM... Do not leave this pin floating") and must not be tied to the `ILIMCOMP/ISET` analog setpoint/compensation node. As wired, `MODE` is not a clean logic level — its state is whatever voltage the `ISET` divider/compensation node settles to, and `MODE` additionally loads that analog node, which can also disturb the current-limit setpoint or comparator compensation. This is a genuine schematic/net wiring defect distinct from the `ADDR_SLOPE_CFG1` finding, and it exists in both `Solar Project Rev0.kicad_pcb` and (need to verify) Rev 1.
+
+**Action item (open, not yet fixed on bench or in schematic):**
+
+1. On the schematic, separate `MODE` (pin 7) onto its own net with a direct strap to `GND` (PSM, low-power default) or `VCC2`/`CTRL_3V3`-derived logic high (forced PWM/CCM), per the desired default operating mode — do not leave it sharing a node with `ILIMCOMP/ISET`.
+2. On the bench board, verify with a meter whether `MODE` (U6 pin 7) is truly shorted to `ISET` (U6 pin 16)/`R32` via a trace, or whether this is purely a schematic/netlist labeling artifact from CAD editing. If a real trace short exists, this needs a cut-and-jumper bodge similar to the `R33` rework before `MODE` will behave as a clean digital input.
+3. Re-check current-limit behavior (already-cautious H3 static test) is not being affected by this shared node before increasing test voltage/current further.
+
+This finding is independent of the already-fixed I2C address strap and should be treated as a second, separate hardware defect to resolve before trusting `MODE`-dependent behavior (PSM vs. forced PWM) or the `ISET` current-limit threshold.
