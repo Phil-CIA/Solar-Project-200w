@@ -47,6 +47,9 @@
 
 #define PROBE_MAGIC 0x53523030UL
 
+#define LM51772_ADDRESS 0x6AU
+#define LM51772_STATUS_BYTE 0x78U
+
 struct bringup_probe {
     uint32_t magic;
     uint32_t version;
@@ -72,6 +75,7 @@ static uint32_t stability_errors;
 static int32_t last_temperature_tenths;
 static uint32_t last_humidity_tenths;
 static uint8_t last_aht20_status;
+static bool automatic_i2c_enabled = true;
 
 static void delay_cycles(volatile uint32_t cycles)
 {
@@ -319,7 +323,14 @@ static void help(void)
     uart_line("  ?            help");
     uart_line("  status       print faults and output latch states");
     uart_line("  fault        print FAULT_OCP/PB0 and FAULT_OVP/PB1");
+    uart_line("  i2c quiet    stop automatic AHT20/OLED bus traffic");
+    uart_line("  i2c resume   resume automatic AHT20/OLED bus traffic");
     uart_line("  i2cscan      software I2C scan on PB6=data, PB7=clock");
+    uart_line("  i2cscan full report ACK/NACK for every address 0x08-0x77");
+    uart_line("  i2cscan unknown repeat  scan 4x, excluding 0x38 and 0x3C");
+    uart_line("  u6 probe     address-only probe of LM51772 at 0x6A");
+    uart_line("  u6 probe repeat  send 16 address-only probes at 10 ms intervals");
+    uart_line("  u6 status    read LM51772 STATUS_BYTE without clearing it");
     uart_line("  aht20        read temperature and humidity");
     uart_line("  oled test    initialize SSD1306 and draw checkerboard");
     uart_line("  clock HH:MM:SS  set dashboard time of day");
@@ -440,6 +451,55 @@ static bool i2c_read(uint8_t address, uint8_t *data, size_t count)
 
     i2c_stop();
     return true;
+}
+
+static bool i2c_read_register(uint8_t address, uint8_t register_address, uint8_t *value)
+{
+    i2c_start();
+    if (!i2c_write_byte((uint8_t)(address << 1U)) || !i2c_write_byte(register_address)) {
+        i2c_stop();
+        return false;
+    }
+
+    i2c_start();
+    if (!i2c_write_byte((uint8_t)((address << 1U) | 1U))) {
+        i2c_stop();
+        return false;
+    }
+
+    *value = i2c_read_byte(false);
+    i2c_stop();
+    return true;
+}
+
+static void lm51772_status(void)
+{
+    uint8_t value;
+
+    if (!i2c_read_register(LM51772_ADDRESS, LM51772_STATUS_BYTE, &value)) {
+        uart_line("U6 STATUS_BYTE read failed at I2C address 0x6A");
+        return;
+    }
+
+    uart_write("U6 STATUS_BYTE=0x");
+    write_hex_byte(value);
+    uart_write(" BUSY=");
+    uart_putc((value & 0x80U) != 0U ? '1' : '0');
+    uart_write(" OFF=");
+    uart_putc((value & 0x40U) != 0U ? '1' : '0');
+    uart_write(" VOUT=");
+    uart_putc((value & 0x20U) != 0U ? '1' : '0');
+    uart_write(" IOUT=");
+    uart_putc((value & 0x10U) != 0U ? '1' : '0');
+    uart_write(" INPUT=");
+    uart_putc((value & 0x08U) != 0U ? '1' : '0');
+    uart_write(" TEMP=");
+    uart_putc((value & 0x04U) != 0U ? '1' : '0');
+    uart_write(" CML=");
+    uart_putc((value & 0x02U) != 0U ? '1' : '0');
+    uart_write(" OTHER=");
+    uart_putc((value & 0x01U) != 0U ? '1' : '0');
+    uart_write("\r\n");
 }
 
 static bool aht20_measure(void)
@@ -713,20 +773,22 @@ static bool set_clock(const char *text)
     return true;
 }
 
-static void i2c_scan(void)
+static void i2c_scan(bool report_all)
 {
     uint8_t found = 0U;
 
-    uart_line("I2C scan start");
+    uart_line(report_all ? "I2C full scan start 0x08-0x77" : "I2C scan start");
     for (uint8_t address = 0x08U; address <= 0x77U; address++) {
         i2c_start();
         const bool acked = i2c_write_byte((uint8_t)(address << 1U));
         i2c_stop();
 
-        if (acked) {
-            uart_write("I2C device 0x");
+        if (report_all || acked) {
+            uart_write("I2C 0x");
             write_hex_byte(address);
-            uart_write("\r\n");
+            uart_line(acked ? " ACK" : " NACK");
+        }
+        if (acked) {
             found++;
         }
     }
@@ -739,6 +801,72 @@ static void i2c_scan(void)
     uart_write("\r\n");
 }
 
+static void i2c_scan_unknown_repeat(void)
+{
+    uint16_t acknowledged = 0U;
+
+    automatic_i2c_enabled = false;
+    uart_line("I2C unknown scan start: 4 sweeps, excluding 0x38 and 0x3C");
+    for (uint8_t sweep = 0U; sweep < 4U; sweep++) {
+        for (uint8_t address = 0x08U; address <= 0x77U; address++) {
+            if (address == 0x38U || address == 0x3CU) {
+                continue;
+            }
+
+            i2c_start();
+            const bool acked = i2c_write_byte((uint8_t)(address << 1U));
+            i2c_stop();
+            if (acked) {
+                uart_write("Unexpected I2C ACK sweep=");
+                write_uint((uint32_t)sweep + 1U);
+                uart_write(" address=0x");
+                write_hex_byte(address);
+                uart_write("\r\n");
+                acknowledged++;
+            }
+        }
+    }
+
+    uart_write("I2C unknown scan done probes=440 ACKs=");
+    write_uint(acknowledged);
+    uart_write("\r\n");
+}
+
+static bool lm51772_probe_once(void)
+{
+    i2c_start();
+    const bool acked = i2c_write_byte(LM51772_ADDRESS << 1U);
+    i2c_stop();
+    return acked;
+}
+
+static void lm51772_probe(void)
+{
+    const bool acked = lm51772_probe_once();
+    uart_line(acked ? "U6 0x6A ACK" : "U6 0x6A NACK");
+}
+
+static void lm51772_probe_repeat(void)
+{
+    uint8_t acknowledged = 0U;
+
+    for (uint8_t probe = 0U; probe < 16U; probe++) {
+        if (lm51772_probe_once()) {
+            acknowledged++;
+        }
+        if (probe < 15U) {
+            const uint32_t gap_start = DWT_CYCCNT;
+            wait_cycles(gap_start, 160000U);
+        }
+    }
+
+    uart_write("U6 repeated probes=16 ACKs=");
+    write_uint(acknowledged);
+    uart_write(" NACKs=");
+    write_uint(16U - acknowledged);
+    uart_write("\r\n");
+}
+
 static void command(const char *text)
 {
     if (streq(text, "?") || streq(text, "help")) {
@@ -747,9 +875,33 @@ static void command(const char *text)
     } else if (streq(text, "status") || streq(text, "fault")) {
         g_probe.last_command = 0x53544154UL;
         status();
+    } else if (streq(text, "i2c quiet")) {
+        g_probe.last_command = 0x49325154UL;
+        automatic_i2c_enabled = false;
+        gpio_high(GPIOB_BASE, PIN_6 | PIN_7);
+        uart_line("Automatic I2C traffic stopped");
+    } else if (streq(text, "i2c resume")) {
+        g_probe.last_command = 0x49325253UL;
+        automatic_i2c_enabled = true;
+        uart_line("Automatic I2C traffic resumed");
     } else if (streq(text, "i2cscan")) {
         g_probe.last_command = 0x493243UL;
-        i2c_scan();
+        i2c_scan(false);
+    } else if (streq(text, "i2cscan full")) {
+        g_probe.last_command = 0x49324655UL;
+        i2c_scan(true);
+    } else if (streq(text, "i2cscan unknown repeat")) {
+        g_probe.last_command = 0x4932554EUL;
+        i2c_scan_unknown_repeat();
+    } else if (streq(text, "u6 probe")) {
+        g_probe.last_command = 0x55365052UL;
+        lm51772_probe();
+    } else if (streq(text, "u6 probe repeat")) {
+        g_probe.last_command = 0x55365250UL;
+        lm51772_probe_repeat();
+    } else if (streq(text, "u6 status")) {
+        g_probe.last_command = 0x55365354UL;
+        lm51772_status();
     } else if (streq(text, "aht20")) {
         g_probe.last_command = 0x41485432UL;
         aht20_read();
@@ -841,7 +993,8 @@ int main(void)
             wall_seconds = (wall_seconds + 1U) % 86400U;
         }
 
-        if ((uptime_seconds % 10U) == 0U && uptime_seconds != last_sample_second) {
+        if (automatic_i2c_enabled &&
+            (uptime_seconds % 10U) == 0U && uptime_seconds != last_sample_second) {
             if (aht20_measure()) {
                 sample_count++;
             } else {
@@ -849,7 +1002,7 @@ int main(void)
             }
             last_sample_second = uptime_seconds;
         }
-        if (uptime_seconds != last_display_second) {
+        if (automatic_i2c_enabled && uptime_seconds != last_display_second) {
             if (!oled_dashboard()) {
                 stability_errors++;
             }
