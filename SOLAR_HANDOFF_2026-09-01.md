@@ -131,3 +131,19 @@ The WEBENCH reference schematics draw all of `RT`/`CFG2`/`CDC`/`ADDR-SLOPE`/`COM
 1. `R28` (RT = 51.7 kOhm) should be reconsidered against the LM51772-specific WEBENCH value (51.0 kOhm) rather than left at the inherited LM851772 value, even though the two are close; confirm which switching frequency is actually intended for this design before relying on `R28` long-term.
 2. `R32` (ILIMCOMP/ISET = 100 kOhm to AGND) is a deliberate project addition beyond both WEBENCH references' default (VCC2-tie disable); this is fine as a design intent but must be re-verified in isolation once the `MODE` short is cut, per the floating-pin guidance above.
 3. No new discrepancy was found for `R29` (CFG2) or `R30` (CDC) — both are unchanged, exact copies of the LM51772 WEBENCH values.
+
+## Open Issue for Next Revision (logged 2026-09-01): MODE pin left permanently low after ILIMCOMP/ISET trace cut
+
+**Note:** no GitHub Issue could be filed automatically for this (no issue-creation tool available in this environment); logging here and in the migration checklist so it is not lost, and it should be transcribed into an actual GitHub Issue by a maintainer.
+
+Cutting the `MODE`/`ILIMCOMP_ISET` shorted trace on the bench (per the "Confirmed by physical inspection" finding above) isolates `MODE` (U6 pin 7) onto its own now-open node, with only the existing `R32` = 100 kOhm to `PWR_NEG` (AGND) remaining if `R32` stays where it is. `MODE` is a simple CMOS-level logic input (`VIL` max 0.4 V, `VIH` min 1.3 V, no divider/multi-level decode like `ADDR_SLOPE_CFG1`), so 100 kOhm to AGND reliably reads as a clean, valid logic low — this is electrically safe, not a defect.
+
+However, this **hard-configures `MODE` = permanently low = Power Save Mode (PSM) always enabled** (Section 7.3.2: MODE low → PSM active, reduced switching activity, maximized light-load efficiency; MODE high → PSM disabled, forced CCM/PWM). That is a real functional behavior change worth an explicit decision, not an incidental side effect to leave undocumented:
+
+- If always-on PSM (max light-load efficiency, but PSM's reduced/pulsed switching behavior at low loads) is the desired behavior going forward, no further action is needed beyond leaving the cut as-is.
+- If forced PWM/CCM is instead wanted (e.g., for steadier switching frequency, lower output ripple, or EMI/noise reasons), `MODE` needs its own dedicated strap to a logic high (e.g., `VCC2` or a `CTRL_3V3`-derived source through a proper pull-up), separate from `R32`/`ISET`, in the Rev 2 schematic.
+
+**Rev 2 action item:**
+1. Decide the intended default `MODE` state (PSM vs. forced PWM/CCM) for production.
+2. Add `MODE` (pin 7) as its own net in the schematic, with a dedicated strap resistor/direct tie reflecting that decision — do not let it inherit whatever `R32`/`ISET` is wired to, even though today's 100 kOhm-to-AGND happens to produce a valid (if possibly unintended) logic low.
+3. Update `hardware/mppt/lm851772-lm51772-migration-checklist.md` Section 3/4.3 rows once resolved.
