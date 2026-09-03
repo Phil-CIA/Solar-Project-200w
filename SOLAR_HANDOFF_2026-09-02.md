@@ -34,6 +34,24 @@ One address-only `u6 probe` returned `U6 0x6A NACK`. A logic-analyzer capture co
 
 The replacement package therefore receives the correct address transaction at its physical pins but does not acknowledge it. This independently closes firmware scanning, address encoding, bus routing, analyzer channel assignment, and a one-off damaged original U6 as explanations.
 
+## New Observation (post-session, unverified timing)
+
+On replacement U6, PV source current was seen flashing/fluctuating between approximately 3 mA and 4 mA immediately after power-up, before any I2C transaction. The operator's recollection is that current dropped to near-zero at or around the time of the first I2C write/probe attempt, though exact timing relative to the transaction is not confirmed.
+
+Current has not recovered since:
+
+- PV was power-cycled (fully removed and reapplied) after the drop.
+- Current remained low after the power cycle.
+- Current reading at time of this note: approximately 1.3 mA.
+
+This is significant because a power cycle should clear a simple internal fault-latch condition if U6's bias/LDO shutdown were caused only by an I2C-triggered internal fault. Persistence through a power cycle suggests either:
+
+1. A genuine persistent fault-latch requiring an explicit register-level clear (which is intentionally not being attempted per the stop-state rules), or
+2. A hardware-level change coincident with the rework/probe session (e.g., a disturbed connection, solder joint, or component condition) that reduced quiescent current draw independent of I2C activity, or
+3. A measurement/test-point change (source, cabling, or current-limit setting) that is unrelated to U6 internal state.
+
+This has not yet been reconciled with the RST/AGND/PGND/exposed-pad measurement plan below. Both should be pursued together: confirm whether current draw at ~3-4 mA vs ~1.3 mA correlates with any voltage change at pins 38/17/28/exposed pad, and whether the timing of the current drop can be pinned down more precisely (e.g., against firmware log timestamps or scope/analyzer capture, if available) before ruling in or out an internal fault latch.
+
 ## Leading Diagnosis
 
 The common cause is now a persistent board-level startup, reset, ground/reference, configuration-latch, or package-pad condition. The next powered operation must be voltage/reference measurements only, before any further I2C command.
