@@ -241,6 +241,8 @@ Bounded H3 static result: pass for thermal stability and inactive gate outputs a
 
 FLT diagnostic prerequisite update: R33=6.49 kOhm was replaced by zero ohms. Because R33 returned to an isolated `PGND` net, an additional jumper was installed from R31 pad 2 (`PGND`) to R32 pad 2 (`PWR_NEG`). The resistor signal pads remain intact. At the bounded powered point, U6 pin 9 then measured 0.0001 V relative to PWR_NEG, confirming a valid low address strap, while all MCU safety outputs remained low and the board stayed cool and stable. A powered `i2cscan` still found only `0x38` and `0x3C`; U6 did not acknowledge at `0x6A`. H3 remains blocked at U6's local SDA/SCL attachment, fitted-device identity, or soldering boundary. Do not access `CLEAR_FAULTS` register `0x03` or infer a fault value from the missing acknowledgement.
 
+H3 fault-isolation update 2026-09-04: subsequent correction established that the original zero-ohm rework was R28, not R33. After restoring R28=51.7 kOhm and actually fitting R33=0 ohms, U6 ACKed at `0x6A`. Two 6.49 V cold starts returned read-only `STATUS_BYTE=0x58`, including latched `IOUT`. The R26/R27/C20 network passed unpowered checks; powered values were `CSA=3.2041 V`, `CSB=3.2043 V`, and approximately `0.1 mV` across C20, excluding sustained DC overcurrent. A fully discharged 5.0 V cold start held `EN_UVLO=1.0241 V`, drew less than 1 mA, and returned read-only `STATUS_BYTE=0x48` through verified ST-LINK/SWD and PB6/PB7: `OFF=1 IOUT=0 INPUT=1`. Thus `IOUT` latches only when the 6.49 V point crosses UVLO and U6 attempts startup with M1-M4 absent. This is consistent with the intentionally incomplete power stage, not an active DC current fault. H3 static characterization is complete at the bounded points, but H3 does not authorize switching; U2/U5 bypasses and any later converter-power stage require a separate reviewed entry plan.
+
 ### H3A - Required D8 Isolation Rework Gate
 
 PCB evidence: D8 pad 2 is at KiCad coordinate `(214.90, 127.27)`. Its only copper departure is a 0.20 mm F.Cu trace running left to `(182.77, 127.27)` before reaching the VCC2 via network. Cutting this dedicated branch is preferred over heating and lifting a pad on the 1.6 mm LED.
@@ -392,14 +394,14 @@ At normal closeout:
 
 | Stage | Result | Evidence / key measurements |
 |---|---|---|
-| H0 Safe idle | Pass / Fail / Blocked |  |
-| H1 USB debug | Pass / Fail / Bypassed / Blocked |  |
+| H0 Safe idle | Pass | PA5, PA8, and PB5 forced low and verified throughout bring-up |
+| H1 USB debug | Pass | CP210x `USB\VID_10C4&PID_EA60\0001` on COM5; bidirectional 115200 8N1 command path verified |
 | H2 Reset / BOOT0 | Pass | 5/5 cold-power and 5/5 S1 reset cycles; final COM5 status valid with all control outputs low |
-| H3 U6 static / VCC2 | Pass / Fail / Blocked |  |
+| H3 U6 static / VCC2 | Pass, constrained | Stable bounded rails and inactive gate outputs; U6 ACK at `0x6A`; `IOUT` isolated to attempted startup with M1-M4 absent. U2/U5 bypasses prohibit power-stage operation. |
 | H4 D8 heartbeat | Pass | Fixed-cycle 800 kHz RGB heartbeat visually confirmed; brightness and cadence accepted; safe control outputs verified |
-| H5 I2C electrical | Pass / Fail / Blocked |  |
-| H6 AHT20 | Pass / Fail / Blocked |  |
-| H7 SSD1306 | Pass / Fail / Blocked |  |
-| H8 Integrated run | Pass / Fail / Not attempted |  |
+| H5 I2C electrical | Pass | PB6/PB7 open-drain bus found only expected `0x38` and `0x3C`; no stuck bus |
+| H6 AHT20 | Pass | Calibrated, not-busy status and plausible temperature/humidity readings |
+| H7 SSD1306 | Pass | Full checkerboard transfer completed without NACK; AHT20 remained functional afterward |
+| H8 Integrated run | Pass | More than 6 hours uptime, 1543 successful samples, zero recorded errors, normal OLED/heartbeat, no reset or active control output |
 
 Next authorized stage after this document: none. U6 converter switching, charger-path energization, battery connection, real PV connection, and inverter/AC work each require a separate reviewed entry plan.

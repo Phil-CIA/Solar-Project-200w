@@ -8,7 +8,7 @@ Use this addendum with the general safety practices in `bringup-checklist.md`. I
 
 ## Board Limitation
 
-M1, M2, M3, and M4 are not fitted because their intended `IPZ40N` TDSON-8 footprint does not match the available devices. The Rev 0 schematic places these MOSFETs on the two gate-drive pairs `HO1`/`LO1` and `HO2`/`LO2`.
+M1, M2, M3, and M4 were originally left unfitted because the available devices did not match the intended `IPZ40N` package. On 2026-09-04, the replacement lot was positively identified as ten Infineon `BSC030N04NSGATMA1` devices. Infineon specifies `PG-TDSON-8-1` / SuperSO8 5x6, which matches the manufactured Rev 0 land pattern and its pads 1-3 source, pad 4 gate, and exposed drain mapping. The replacement is approved for controlled unpowered installation under `rev0-m1-m4-installation-plan-2026-09-04.md`; it is not yet approved for power or switching. The Rev 0 schematic places these MOSFETs on the two gate-drive pairs `HO1`/`LO1` and `HO2`/`LO2`.
 
 Consequences:
 
@@ -16,7 +16,7 @@ Consequences:
 - Do not apply battery power, DC-link power, or any source intended to energize the inverter bridge.
 - Do not connect an AC load, transformer, or inverter output.
 - Do not attempt open-loop, closed-loop, or software-controlled inverter switching.
-- Do not fit substitute MOSFETs with flying leads or improvised adapters. Correct footprint/device selection belongs in a documented revision or approved rework plan.
+- Do not fit any other substitute MOSFET with flying leads or improvised adapters. Only the documented `BSC030N04NSGATMA1` substitution is approved, and only under the installation plan.
 
 This limitation does not, by itself, prove that the separate charger/control sections are unusable. Their tests remain separately gated by fitted parts, schematic review, and controlled source/sink capability.
 
@@ -70,7 +70,7 @@ Do not attempt this stage until a reviewer documents that the charger power path
 | Item | Record |
 |---|---|
 | Board identifier and photographs |  |
-| M1-M4 status | Unpopulated due to footprint mismatch |
+| M1-M4 status | `BSC030N04NSGATMA1` approved for installation; record each fitted position and passive result |
 | Bench supply model, voltage, and current limit |  |
 | `VBUS` and `CTRL_3V3` readings |  |
 | Firmware revision and SWD result |  |
@@ -81,4 +81,4 @@ Do not attempt this stage until a reviewer documents that the charger power path
 
 ## Closeout
 
-Log the M1-M4 footprint mismatch as a Rev 0 hardware limitation and as a Rev 1 corrective-action input. Do not clear the inverter/AC block until a board with the correct switching footprint and a separate high-energy test plan is available.
+Retain the original M1-M4 footprint-selection failure as a Rev 0 traceability item. The verified `BSC030N04NSGATMA1` substitution resolves physical fitment for this recovered board but does not clear the switching or inverter/AC block. Those blocks require successful passive installation checks and separate reviewed power-stage test plans.

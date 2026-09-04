@@ -4,6 +4,8 @@
 
 PV is off. The replacement U6 is installed. Do not repeat I2C scans, replace U6 again, write LM51772 registers, or access `CLEAR_FAULTS` at `0x03`.
 
+> **Correction recorded 2026-09-03:** The earlier zero-ohm rework was performed on R28 (`RT`), not R33 (`ADDR_SLOPE_CFG1`). R29 (`CFG2`) remained at its intended 20.5 kOhm. R33 remained 6.49 kOhm and therefore disabled I2C during every NACK result documented below. After R33 was actually changed to zero ohms, one address-only `u6 probe` returned `U6 0x6A ACK`. The prior board-level I2C-failure diagnosis is withdrawn. See the final correction section for the updated state.
+
 The board remains modified for low-energy bench diagnosis:
 
 - F1, U2, and U5 protection functions are bypassed.
@@ -81,6 +83,34 @@ Then reassess startup sampling of pin 5 `SDA_CFG3` and pin 6 `SCL_CFG4`, includi
 - `docs/test/rev0-hardware-bringup-execution-plan-2026-08-30.md`: gate status and acceptance criteria.
 - `firmware/bringup/baremetal/stm32g4_rev0_stage1.c`: active diagnostic firmware.
 - `NEXT_CHAT_PROMPT.md`: compact continuation prompt.
+
+## Correction and First Valid ACK (2026-09-03)
+
+Physical rework review established that R28, not R33, had previously been changed to zero ohms. This reference-designator error invalidates the premise used for the original-device and replacement-device I2C diagnosis:
+
+- R28 connects U6 pin 12 `RT` to `PGND` and is intended to be 51.7 kOhm, not zero ohms.
+- R29 connects U6 pin 8 `CFG2` to `PGND` and remains at its intended 20.5 kOhm value.
+- R33 connects U6 pin 9 `ADDR_SLOPE_CFG1` to `PGND`.
+- The still-fitted R33 value was 6.49 kOhm, selecting Table 7-4 row 8 with I2C disabled.
+- R33 was subsequently changed to zero ohms, selecting I2C address `0x6A` after configuration latching.
+
+At the bounded powered point, static measurements relative to `PWR_NEG` were `nRST=3.29 V`, `AGND=0.0 V`, `PGND=0.0 V`, accessible exposed-pad copper `=0.0 V`, `VCC2=4.96 V`, `VCC1=5.06 V`, and `EN_UVLO=1.43 V`. The source current was below the bench supply display resolution and no more than approximately 1.3 mA.
+
+One CR-terminated `u6 probe` command was sent through verified `COM5`. Firmware returned `U6 0x6A ACK`. This was an address-only transaction; no register address was sent, no register was read or written, and `CLEAR_FAULTS` was not accessed.
+
+The earlier pin-level NACK captures are now expected behavior for the I2C-disabled 6.49 kOhm R33 configuration. They do not indicate a defective original U6, defective replacement U6, bad bus routing, reset failure, or exposed-pad failure. The LM51772 communication blocker is provisionally closed pending one controlled repeat after a documented power cycle. `FLT` remains unresolved, and no register access is yet authorized.
+
+Before that repeat, restore R28 from the accidental zero-ohm link to its intended 51.7 kOhm `RT` value with every source removed and all rails discharged. Leave R29 at 20.5 kOhm, keep R33 at zero ohms for address `0x6A`, and retain the PGND-to-PWR_NEG jumper. Verify R28, R29, R33, and the ground jumper unpowered. If one address-only probe ACKs after a complete cold power cycle, the next bounded diagnostic is the existing read-only `u6 status` command for `STATUS_BYTE` register `0x78`; continue to prohibit all register writes and any access to `CLEAR_FAULTS` at `0x03`.
+
+R28 was restored to 51.7 kOhm, R29 was verified at 20.5 kOhm, and R33 was verified at zero ohms. With PV applied at the existing bounded point, COM5 reported `PA8_PWM=0 PB5_EN=0 PA5_LEGACY=0`. The first probe command produced no captured UART text, but a non-I2C status query immediately proved UART remained responsive and safety outputs remained low. One controlled repeat with a longer receive window returned `U6 0x6A ACK`.
+
+The authorized read-only `u6 status` command then returned `U6 STATUS_BYTE=0x58 BUSY=0 OFF=1 VOUT=0 IOUT=1 INPUT=1 TEMP=0 CML=0 OTHER=0`. TI defines `OFF` as output below power-good or converter disabled, `IOUT` as latched peak-current-limit detection, and `INPUT` as latched VDET/UVLO-below-threshold detection. No register was written and `CLEAR_FAULTS` was not accessed. Communication is now closed as a blocker. Switch PV off before further work. Do not clear faults or authorize switching; determine next whether `IOUT` repeats after a clean power cycle with R28 restored and M1-M4 still absent.
+
+PV was then fully power-cycled with R28 restored. COM5 again reported `PA8_PWM=0 PB5_EN=0 PA5_LEGACY=0`. A second read-only `u6 status` returned the identical `STATUS_BYTE=0x58`, proving that `IOUT` relatches in the corrected configuration rather than persisting from the zero-ohm RT state. TI exposes no more detailed latched IOUT status register; `USB_PD_STATUS_0` at `0x21` reports only instantaneous constant-current operation. Remove PV and inspect the R26/R27/C20 `CSA`/`CSB` network unpowered before considering a static differential measurement. Do not clear faults or attempt switching.
+
+Follow-up 2026-09-04: the R26/R27/C20 network passed unpowered checks. At the 6.49 V bounded point, `CSA=3.2041 V`, `CSB=3.2043 V`, and the direct reading across C20 was approximately `0.1 mV`. The balanced DC inputs rule out a sustained peak-current comparator condition. After a full discharge, PV was set to 5.0 V / 20 mA; source current was less than 1 mA and `EN_UVLO=1.0241 V`, below the rising threshold. MCU status remained `OCP=1 OVP=0 PA8_PWM=0 PB5_EN=0 PA5_LEGACY=0`.
+
+COM5 then stopped accepting text commands. A read-only SWD diagnostic was bound to the verified ST-LINK serial `B55B5A1A0000000020AFF501`; target voltage was 3.246 V and STM32 Device ID readback was `0x469`. The MCU was halted to avoid I2C contention, PB6/PB7 state was saved, and a single software-I2C read of U6 register `0x78` returned `STATUS_BYTE=0x48`: `OFF=1 IOUT=0 INPUT=1`, with all other summary bits zero. PB6/PB7 state was restored and the MCU resumed. No flash, LM51772 register, or option byte was written, and register `0x03` was not accessed. This discriminates the earlier `0x58`: `IOUT` is latched when the 6.49 V test crosses UVLO and U6 attempts startup with M1-M4 absent, not during inhibited 5.0 V power-up and not from a sustained DC sense differential. Do not advance to switching; the bypassed U2/U5 protection paths and incomplete power stage require a separate reviewed entry plan.
 
 ## Worktree Note
 
