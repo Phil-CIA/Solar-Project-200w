@@ -2,21 +2,31 @@
 
 ## Stop State
 
-The board is disconnected from the PV bench source, which was confirmed bled to ≤0.12 V at all measured nodes after the FP2 abort. **The USB and ST-LINK connection state at the very end of the 2026-09-04 session was not confirmed** — the board owner declined to complete the decisive USB-removal test before stopping. Before any action this session, physically verify USB and ST-LINK are disconnected, then re-measure `VCC2` (U6 pin 29) and `LO1`/`LO2`-to-`PWR_NEG` at rest. Do not reconnect PV, a battery, an output source/load, a panel, an inverter, or AC. Do not command gate drive or switching.
+The board owner has left the bench. Before leaving, turn the PV bench-source output off, disconnect the PV positive lead, and allow the board to discharge. Do not leave the board energized unattended. The final discharged-node readings were not recorded during this session; before the next energized work, verify `PV_IN_POS_RAW`, `PV_IN_POS`, `CHG_OUT_POS`, `SW_1`, `SW_2`, `VCC1`, and `VCC2` are below 0.1 V relative to `PWR_NEG`.
 
-This is not a fresh start: FP0 and FP1 of the staged first-power plan passed on 2026-09-04. FP2 was attempted, hit a real stop condition, and was aborted correctly. **FP2 is not resolved and must not be re-attempted until the open finding below is closed.**
+FP0 and FP1 passed on 2026-09-04. FP2's former gate-voltage stop criterion is now treated as a criterion mismatch: the observation that `LO1`/`LO2` tracked the LM51772 internal `VCC2` rail does not, by itself, establish external backfeed or unsafe switching. FP2 is not formally reclassified in the original plan, but it is no longer the active blocker for the controlled FP4 characterization.
 
-## Open Safety Finding (Blocking) - Live `VCC2`/`LO1` Rail After Power Removal
+## Current Blocking Finding - FP4 Startup Retry / Current Limit
 
-During the FP2 abort sequence, with the PV source disconnected and bled to ≤0.12 V, `HO1`/`HO2` correctly read 0 V, but `LO1`/`LO2`-to-`PWR_NEG` still read **4.77 V**. This is not a floating/capacitively-coupled artifact: a 10 kΩ load only pulled it to 4.11 V (a true high-impedance node would collapse toward 0 V under that load). Direct measurement at U6 `VCC2` (pin 29) showed the identical behavior (4.77 V → 4.11 V under the same 10 kΩ load), confirming `LO1` rides directly on `VCC2`.
+FP4 was attempted today with USB/JTAG and the controlled PV source present. At about 6.0 V input, U6 began switching; its approximate 610 kHz switching cycles appeared in packets separated by about 200 ms. A two-probe DS1054 math measurement (`CH1=HO1`, `CH2=SW_1`, both grounds at `PWR_NEG`, `Math=CH1-CH2`) showed a centered approximately 5-10 Vpp `HO1-SW_1` waveform during packets. This is a reasonable low-voltage characterization substitute, but not a calibrated differential-probe overshoot measurement.
 
-Root cause is **not confirmed**. The leading hypothesis, not yet tested: the board's own bench history (`docs/test/rev0-low-energy-session-2026-08-30.md`, 2026-08-31 rework entry) documents a residual, never-fully-isolated **~300 kΩ path from D8 pad 2 to U6 pin 29 (`VCC2`)** left over from the D8-to-`VCC2` rework; D8 now sits on USB `VBUS`. If USB remains connected, `VBUS` could be backfeeding `VCC2` through that residual path. The decisive test — fully removing USB and ST-LINK and confirming `VCC2` collapses toward 0 V — was **not completed** in the prior session.
+With the original 200 ohm preload connected, `CHG_OUT_POS` was approximately 0.986 V and the PV source limited at about 229 mA when raised above 6.0 V. Replacing the preload with 1 kohm did not establish regulation: `CHG_OUT_POS` rose only to 1.36 V at `PV_IN_POS_RAW=5.98 V` and approximately 266 mA input. The source current is substantially greater than the output power can explain; do not raise the current limit as a next step.
 
-A secondary theory floated during the session (that this is an intentional LM51772 "fail-safe" behavior to discharge the SW nodes) was checked against the datasheet and is **not supported**: Section 7.3.9 "Output Voltage Discharge" is a register-controlled internal circuit that discharges `VOUT` via the output capacitor node, not something documented as actively driving the `LO1`/`LO2` external gate pins. Do not reuse that theory without new evidence.
+The most complete powered snapshot, taken during the retry behavior, was:
 
-**This finding blocks FP2 re-attempt, FP4, and FP3 until either:**
-(a) `VCC2` is confirmed to fully collapse to near 0 V with USB and ST-LINK both physically disconnected, ruling out an external backfeed, or
-(b) the actual backfeed/retention path is identified and closed.
+| Net / observation | Result |
+|---|---|
+| `PV_IN_POS_RAW` | 5.9767 V |
+| `PV_IN_POS` | 5.961 V |
+| `VCC1` | 5.0679 V |
+| `VCC2` | 4.9250 V |
+| `SW_1` (DMM DC) | 0.07 V |
+| `LO1` (DMM DC) | 0.02 V |
+| Switching cadence | approximately 610 kHz cycles in approximately 200 ms-separated packets |
+
+The roughly 16 mV difference between `PV_IN_POS_RAW` and `PV_IN_POS` rules out the previously observed input-front-end voltage drop as the immediate cause at this point. The result is consistent with a start/stop/retry condition, but its cause is not yet determined. FP4 has **not passed** because the converter did not regulate toward the confirmed 12.83 V target and the supply current-limited.
+
+The requested next discriminator, not completed before leaving the bench, is a read-only capture of U6 `STATUS_BYTE` (`0x78`) and `FLT` voltage while the retry behavior is active. `firmware/scripts/rev0-openocd-u6-status.ps1` reads only `0x78`, restores GPIOB, and resumes the MCU; it must be preceded by exact ST-LINK/target identity verification. Never write `CLEAR_FAULTS` (`0x03`).
 
 ## Current Board Configuration
 
@@ -35,8 +45,8 @@ The full plan lives at `docs/test/rev0-first-power-plan-2026-09-04.md` (FP0 thro
 |---|---|
 | FP0 (unpowered passive recheck) | **PASSED** (Section 13.1) |
 | FP1 (USB-only control power, safe-state proof) | **PASSED** (Sections 5.1, 5.2) — SWD identity confirmed, `status` matched across cold boot + 2 resets, all four gates 0 V |
-| FP2 (below-UVLO PV static) | **Attempted, ABORTED, unresolved** (Section 5.3) — see the blocking finding above |
-| FP4 (first switching) | Not attempted; still requires the F1/U2/U5 waiver decision plus FP2 resolution |
+| FP2 (below-UVLO PV static) | Attempted and aborted under a gate-voltage criterion now considered inapplicable to `LOx` tracking `VCC2`; no further external-backfeed conclusion was established |
+| FP4 (first switching) | **Attempted, not passed** — switching/retry packets began near 6.0 V; source limited before output regulation |
 | FP3 (post-FP4 static, optional) | Not attempted |
 
 ## Control and Debug State
@@ -52,19 +62,20 @@ The full plan lives at `docs/test/rev0-first-power-plan-2026-09-04.md` (FP0 thro
 - Verify the exact ST-LINK serial, Device ID `0x469`, target family, and 512 KB NVM before every SWD operation. Stop on any mismatch; never switch COM ports opportunistically.
 - Keep `PA8`, `PB5`, and legacy `PA5` low. Never drive `PB11` (tied to `PWR_NEG` on Rev 0).
 - Do not connect a real panel, battery, inverter, AC wiring, or an uncontrolled load.
-- Do not reuse the FP2 5.0 V/20 mA point as if it already passed — it did not; it aborted.
+- Do not increase the PV source current limit above the approximately 200 mA FP4 bound while the retry/current-limit cause remains unknown.
 - Do not command PWM, enable gate drive, or probe a high-side gate with a ground-referenced oscilloscope lead.
 - Stop for current limiting, unexpected current rise, rail collapse, heating, odor, unstable reset, unexpected gate voltage, or any active control output.
 
 ## Next Session Objective
 
-1. Physically confirm USB and ST-LINK are disconnected, then measure `VCC2` (U6 pin 29) and `LO1`/`LO2`-to-`PWR_NEG` at rest. If they read near 0 V with everything disconnected, reconnect USB only (no ST-LINK) and re-measure to isolate whether USB/`VBUS` alone reproduces the live rail via the documented D8-to-`VCC2` residual path.
-2. If the backfeed is confirmed, decide on a remedy (e.g., true isolation of the residual D8-to-`VCC2` path) before any FP2 re-attempt. If `VCC2` fully collapses with everything removed and does not reappear with USB-only power, FP2 may be re-attempted with this evidence recorded.
-3. Only after FP2 passes cleanly: resolve the still-open F1/U2/U5 bypass waiver decision (Section 3 of the plan) before FP4 can be authorized.
+1. Confirm the board is fully discharged, then restore only the existing controlled setup: exact USB/COM5 and approved ST-LINK, isolated PV at approximately 5.98 V with a 200 mA limit, and the 1 kohm passive preload. Do not exceed 30 s energized.
+2. Before the read, run `firmware/scripts/rev0-openocd-identify.ps1`; proceed only if ST-LINK `B55B5A1A0000000020AFF501`, Device ID `0x469`, STM32G47x/G48x/G414 family, 512 KB NVM, and a plausible target voltage match.
+3. While the retry packets are present, record `FLT` to `PWR_NEG` and run `firmware/scripts/rev0-openocd-u6-status.ps1`. Record the returned `STATUS_BYTE`, whether the source is current-limiting, `CHG_OUT_POS`, and input current; turn source off immediately afterward and discharge.
+4. Interpret the fault/state evidence before changing the source current limit, load, or hardware. Do not run FP3.
 
 ## Relevant Files
 
-- `docs/test/rev0-first-power-plan-2026-09-04.md`: the staged FP0-FP4 plan and all bench results to date (FP0/FP1 passed, FP2 aborted/unresolved).
+- `docs/test/rev0-first-power-plan-2026-09-04.md`: staged FP0-FP4 plan; its FP2 and FP4 gating text predates today's observations and needs review before another energized run.
 - `docs/test/rev0-low-energy-session-2026-08-30.md`: source of the documented D8-to-`VCC2` residual-path measurement.
 - `docs/lm51772-datasheet.pdf`: local copy; use `pypdf` for text extraction (TI's web viewer is unreadable via available tools — do not retry fetching it).
 - `SOLAR_HANDOFF_2026-09-04.md`: prior handoff, useful for M1-M4 installation history.

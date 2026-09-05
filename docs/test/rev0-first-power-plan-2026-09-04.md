@@ -83,6 +83,29 @@ Root cause is **not confirmed**. The board's own bench history (`docs/test/rev0-
 
 **Disposition:** FP2 is not passed. This finding blocks FP2 re-attempt, FP4, and FP3 until resolved: either (a) confirm `VCC2` fully collapses to near 0 V with USB and ST-LINK both physically disconnected, or (b) identify and close the actual backfeed path. A live gate-driver bias rail with real source impedance, present even with PV fully removed, is not an accepted precondition for any further powered stage on this plan.
 
+### 5.4 FP4 Startup Attempt (2026-09-05) - NOT PASSED
+
+The board owner determined that the earlier `LO1`/`LO2` observation tracks U6's internal `VCC2` driver domain and does not, by itself, establish external backfeed or unsafe switching. This interpretation is recorded as a working characterization decision; it does not establish a cause for the prior rail observation.
+
+FP4 was then attempted with a Rigol DS1054 using two 10x probes with both ground clips at `PWR_NEG`: CH1 at `HO1`, CH2 at `SW_1`, and math CH1-CH2 for the high-side gate-source observation. At approximately 6.0 V input, switching began. The math trace showed a centered approximately 5-10 Vpp waveform in approximately 610 kHz cycle packets separated by approximately 200 ms. This arrangement is suitable only for the low-voltage first observation; it is not a differential-probe-quality measurement of switching-node overshoot.
+
+With the original 200 ohm preload fitted, `CHG_OUT_POS` was approximately 0.986 V and the source entered current limit at approximately 229 mA when raised above 6.0 V. The preload was changed to 1 kohm without increasing the intended current-limit bound; `CHG_OUT_POS` then rose only to 1.36 V at approximately 266 mA input. The powered retry-state measurements were:
+
+| Net / observation | Result |
+|---|---|
+| `PV_IN_POS_RAW` | 5.9767 V |
+| `PV_IN_POS` | 5.961 V |
+| `VCC1` | 5.0679 V |
+| `VCC2` | 4.9250 V |
+| `SW_1` (DMM DC) | 0.07 V |
+| `LO1` (DMM DC) | 0.02 V |
+| `CHG_OUT_POS` with 200 ohm preload | approximately 0.986 V |
+| `CHG_OUT_POS` with 1 kohm preload | approximately 1.36 V |
+
+The `PV_IN_POS_RAW` to `PV_IN_POS` difference was only approximately 16 mV, so the known input-front-end voltage drop is not the immediate cause at this operating point. The converter did not reach the confirmed approximately 12.83 V regulation target and the input source current-limited. **FP4 did not pass.** Do not increase the source-current limit while the retry/current-limit cause is unknown.
+
+The planned follow-up is a brief, read-only state capture at approximately 5.98 V with the 1 kohm preload and a source limit no higher than 200 mA: record `FLT` to `PWR_NEG`, the source current-limit state, input current, and `CHG_OUT_POS`, then run `firmware/scripts/rev0-openocd-identify.ps1` followed by `firmware/scripts/rev0-openocd-u6-status.ps1`. Proceed only on the approved ST-LINK serial and expected target identity. The status script reads only U6 `STATUS_BYTE` at `0x78`, restores GPIOB state, and resumes the MCU. Never write `CLEAR_FAULTS` at `0x03`. Turn the source off and discharge immediately after this capture.
+
 ## 6. Item 6 - Oscilloscope Strategy
 
 - Static stages (FP1-FP2, and FP3 if later performed): DMM measurements suffice; a ground-referenced scope probe is permitted only on `PWR_NEG`-referenced nets (`CTRL_3V3`, `VBUS`, `EN_UVLO`, `LO1`, `LO2`, `PV_IN_POS`).
@@ -204,8 +227,8 @@ On any stop condition, in order:
 |---|---|---|
 | FP0 | Plan reviewed and signed | **Yes - passed 2026-09-04 (Section 13.1)** |
 | FP1 | FP0 pass recorded | **Yes - passed 2026-09-04 (Section 5.2)** |
-| FP2 | FP1 pass recorded | **Attempted, ABORTED, unresolved (Section 5.3) - do not re-attempt until `VCC2` backfeed finding is closed** |
-| FP4 | FP2 pass + bypass disposition waiver (Section 3) + differential probe available + preload value signed (Section 11.1, resolved) | **No - requires separate authorization session** |
+| FP2 | FP1 pass recorded | Attempted and aborted under a gate-voltage criterion now considered inapplicable to `LOx` tracking `VCC2`; retain as incomplete in Section 5.3 |
+| FP4 | FP2 review + bypass disposition waiver (Section 3) + bounded high-side measurement + preload value signed (Section 11.1, resolved) | **Attempted, not passed (Section 5.4)** - retry/current-limit characterization pending; do not increase source current |
 | FP3 (optional, post-FP4) | FP4 pass recorded + EN_UVLO hold-low method approved | No - review pending |
 
 ## 16. Rev 1 Corrections Reaffirmed (not blocking FP0-FP2)
