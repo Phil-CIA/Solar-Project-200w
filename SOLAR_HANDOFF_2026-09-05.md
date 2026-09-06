@@ -2,7 +2,7 @@
 
 ## Stop State
 
-The board owner has left the bench. Before leaving, turn the PV bench-source output off, disconnect the PV positive lead, and allow the board to discharge. Do not leave the board energized unattended. The final discharged-node readings were not recorded during this session; before the next energized work, verify `PV_IN_POS_RAW`, `PV_IN_POS`, `CHG_OUT_POS`, `SW_1`, `SW_2`, `VCC1`, and `VCC2` are below 0.1 V relative to `PWR_NEG`.
+The board is paused for SWD communication troubleshooting. Keep PV off and disconnected while resolving this; do not leave the board energized unattended. Before later PV work, verify `PV_IN_POS_RAW`, `PV_IN_POS`, `CHG_OUT_POS`, `SW_1`, `SW_2`, `VCC1`, and `VCC2` are below 0.1 V relative to `PWR_NEG`.
 
 FP0 and FP1 passed on 2026-09-04. FP2's former gate-voltage stop criterion is now treated as a criterion mismatch: the observation that `LO1`/`LO2` tracked the LM51772 internal `VCC2` rail does not, by itself, establish external backfeed or unsafe switching. FP2 is not formally reclassified in the original plan, but it is no longer the active blocker for the controlled FP4 characterization.
 
@@ -27,6 +27,20 @@ The most complete powered snapshot, taken during the retry behavior, was:
 The roughly 16 mV difference between `PV_IN_POS_RAW` and `PV_IN_POS` rules out the previously observed input-front-end voltage drop as the immediate cause at this point. The result is consistent with a start/stop/retry condition, but its cause is not yet determined. FP4 has **not passed** because the converter did not regulate toward the confirmed 12.83 V target and the supply current-limited.
 
 The requested next discriminator, not completed before leaving the bench, is a read-only capture of U6 `STATUS_BYTE` (`0x78`) and `FLT` voltage while the retry behavior is active. `firmware/scripts/rev0-openocd-u6-status.ps1` reads only `0x78`, restores GPIOB, and resumes the MCU; it must be preceded by exact ST-LINK/target identity verification. Never write `CLEAR_FAULTS` (`0x03`).
+
+## Current Blocking Finding - SWD Target Communication
+
+On 2026-09-06, STM32CubeProgrammer `--list` found exactly one ST-LINK, serial `B55B5A1A0000000020AFF501` (firmware `V2J37S7`), and the onboard CP2102 on COM5. A subsequent **read-only**, serial-bound connection command,
+
+```powershell
+& 'C:\Program Files\STMicroelectronics\STM32Cube\STM32CubeProgrammer\bin\STM32_Programmer_CLI.exe' -c port=SWD sn=B55B5A1A0000000020AFF501 mode=UR freq=4000
+```
+
+reported ST-LINK target voltage `3.23 V`, followed by `Unable to get core ID` and `No STM32 target found`. The expected Device ID `0x469`, STM32G47x/G48x/G414 family, and 512 KB NVM were consequently **not** confirmed. No flash, option byte, RAM, or LM51772 register write occurred. Do not select another ST-LINK, COM port, or target as a workaround.
+
+The active bare-metal stage-1 firmware source has an unflashed OLED enhancement in `firmware/bringup/baremetal/stm32g4_rev0_stage1.c`. It was built successfully on 2026-09-06 (`text=7364`, `data=4`, `bss=1160`) and would display a cached U6 `STATUS_BYTE` as `U6 xx Nnnn`, polling U6 read-only every two seconds. Do not flash it until SWD identity has again passed exactly.
+
+First SWD recovery checks, with PV disconnected, are physical and local: confirm `CTRL_3V3` at the MCU supply, common `PWR_NEG` continuity between board and ST-LINK, `NRST` released high, and continuity/no shorts on STM32 `PA13`/SWDIO and `PA14`/SWCLK. The observed 3.23 V is VTref evidence only; it does not prove that the MCU core is powered, out of reset, or responding. After these checks, repeat only the exact serial-bound read-only command above. Stop and record the result if the required identity still does not return.
 
 ## Current Board Configuration
 
@@ -68,10 +82,10 @@ The full plan lives at `docs/test/rev0-first-power-plan-2026-09-04.md` (FP0 thro
 
 ## Next Session Objective
 
-1. Confirm the board is fully discharged, then restore only the existing controlled setup: exact USB/COM5 and approved ST-LINK, isolated PV at approximately 5.98 V with a 200 mA limit, and the 1 kohm passive preload. Do not exceed 30 s energized.
-2. Before the read, run `firmware/scripts/rev0-openocd-identify.ps1`; proceed only if ST-LINK `B55B5A1A0000000020AFF501`, Device ID `0x469`, STM32G47x/G48x/G414 family, 512 KB NVM, and a plausible target voltage match.
-3. While the retry packets are present, record `FLT` to `PWR_NEG` and run `firmware/scripts/rev0-openocd-u6-status.ps1`. Record the returned `STATUS_BYTE`, whether the source is current-limiting, `CHG_OUT_POS`, and input current; turn source off immediately afterward and discharge.
-4. Interpret the fault/state evidence before changing the source current limit, load, or hardware. Do not run FP3.
+1. Keep PV off/disconnected. Restore USB control power and the approved ST-LINK connection only as needed for the SWD recovery checks. Confirm the board's `CTRL_3V3`, common `PWR_NEG`, released `NRST`, `PA13`/SWDIO, and `PA14`/SWCLK physical conditions.
+2. Run the exact serial-bound, read-only STM32CubeProgrammer connection documented above. Proceed only if it reports ST-LINK `B55B5A1A0000000020AFF501`, Device ID `0x469`, STM32G47x/G48x/G414 family, 512 KB NVM, and plausible target voltage. Stop on any mismatch or absent core ID.
+3. Once identity passes, flash and verify the already-built OLED-status image only after recording the successful identity output. Verify that the OLED shows `U6 xx Nnnn` and that safe outputs remain low. Do not combine firmware flashing with PV work.
+4. After SWD/OLED verification is complete, resume the bounded approximately 5.98 V / 200 mA / 1 kohm-preload FP4 retry observation for no more than 30 seconds. Record `FLT`, `STATUS_BYTE`, source-current-limit state, input current, and `CHG_OUT_POS`; then turn source off and discharge. Do not run FP3 or increase the current limit.
 
 ## Relevant Files
 
@@ -80,6 +94,7 @@ The full plan lives at `docs/test/rev0-first-power-plan-2026-09-04.md` (FP0 thro
 - `docs/lm51772-datasheet.pdf`: local copy; use `pypdf` for text extraction (TI's web viewer is unreadable via available tools — do not retry fetching it).
 - `SOLAR_HANDOFF_2026-09-04.md`: prior handoff, useful for M1-M4 installation history.
 - `NEXT_CHAT_PROMPT.md`: compact prompt for the new session.
+- `firmware/bringup/baremetal/stm32g4_rev0_stage1.c`: built but unflashed OLED U6-status display update.
 
 ## Worktree State at Handoff
 

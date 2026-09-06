@@ -23,7 +23,7 @@ The bare-metal stage-1 image avoids STM32Cube/HAL dependencies and can be built 
 ./firmware/bringup/baremetal/build.ps1
 ```
 
-Stage 1 provides UART diagnostics, safe output state, fault input reads, open-drain software I2C, AHT20 measurements, SSD1306 output, and the D8 RGB heartbeat. Its automatic dashboard shows software wall time, reset-relative uptime, sensor data, successful samples, and I2C/display errors. ADC remains a placeholder for a later calibrated acquisition pass.
+Stage 1 provides UART diagnostics, safe output state, fault input reads, open-drain software I2C, AHT20 measurements, SSD1306 output, and the D8 RGB heartbeat. Its automatic dashboard shows software wall time, reset-relative uptime, sensor data, and the cached LM51772 `STATUS_BYTE` with a read-failure count (`U6 xx Nnnn`). The U6 status poll is read-only and runs every two seconds while automatic I2C traffic is enabled. ADC remains a placeholder for a later calibrated acquisition pass.
 
 ## Rev 0 SWD-Only Checks
 

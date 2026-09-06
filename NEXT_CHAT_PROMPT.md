@@ -1,8 +1,12 @@
 Continue the Solar Project 200W Rev 0 bring-up from `SOLAR_HANDOFF_2026-09-05.md`. Read that handoff before proposing or performing any hardware operation.
 
-Current stop state: FP4 was attempted. At about 6.0 V, LM51772 switching began in approximately 610 kHz bursts spaced about 200 ms apart, but `CHG_OUT_POS` only reached 0.986 V with a 200 ohm preload and 1.36 V with a 1 kohm preload. The source reached approximately 229-266 mA current limiting; FP4 did not regulate and is not passed. Do not increase the current limit.
+Current stop state: SWD communication is blocked. On 2026-09-06, the approved ST-LINK `B55B5A1A0000000020AFF501` was detected and reported 3.23 V VTref, but serial-bound, read-only STM32CubeProgrammer connection failed with `Unable to get core ID` / `No STM32 target found`. Device ID `0x469`, STM32G47x/G48x/G414 family, and 512 KB NVM were not confirmed; no flash or register write occurred. Do not choose another probe, target, or COM port.
 
-The immediate next measurement is read-only: after confirming the board is discharged, recreate the bounded approximately 5.98 V / 200 mA / 1 kohm-preload setup for no more than 30 seconds. Verify the exact approved ST-LINK first, then record U6 `STATUS_BYTE` using `firmware/scripts/rev0-openocd-u6-status.ps1`, `FLT` to `PWR_NEG`, source-current-limit state, input current, and `CHG_OUT_POS`; turn source off and discharge immediately afterward. Never write LM51772 `CLEAR_FAULTS` at `0x03`.
+With PV off/disconnected, verify at the board: MCU `CTRL_3V3`, common `PWR_NEG` to ST-LINK, `NRST` released high, and STM32 `PA13`/SWDIO and `PA14`/SWCLK continuity/no shorts. Then repeat only the exact approved serial-bound read-only connection. Do not flash unless the exact identity succeeds.
+
+An OLED U6-status screen was added and built but not flashed: `firmware/bringup/baremetal/stm32g4_rev0_stage1.c` built successfully (`text=7364`, `data=4`, `bss=1160`). Once SWD identity is restored, flash/verify it with PV still disconnected, then confirm the OLED row `U6 xx Nnnn`; it performs a read-only U6 `STATUS_BYTE` poll every two seconds and does not access `CLEAR_FAULTS`.
+
+FP4 remains not passed: at about 6.0 V, LM51772 switching began in approximately 610 kHz bursts spaced about 200 ms apart, but `CHG_OUT_POS` only reached 0.986 V with a 200 ohm preload and 1.36 V with a 1 kohm preload. The source reached approximately 229-266 mA current limiting. Do not increase the current limit. Only after SWD/OLED recovery, recreate the bounded approximately 5.98 V / 200 mA / 1 kohm-preload setup for no more than 30 seconds and collect `FLT`, `STATUS_BYTE`, source-current-limit state, input current, and `CHG_OUT_POS`; then turn source off and discharge.
 
 `LO1`/`LO2` tracking U6 `VCC2` during the prior below-UVLO observation is treated as an internal LM51772 driver-domain behavior, not proof of external backfeed. Do not re-open that theory without new evidence.
 

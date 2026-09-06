@@ -75,6 +75,8 @@ static uint32_t stability_errors;
 static int32_t last_temperature_tenths;
 static uint32_t last_humidity_tenths;
 static uint8_t last_aht20_status;
+static uint8_t last_lm51772_status;
+static uint32_t lm51772_status_failures;
 static bool automatic_i2c_enabled = true;
 
 static void delay_cycles(volatile uint32_t cycles)
@@ -472,11 +474,20 @@ static bool i2c_read_register(uint8_t address, uint8_t register_address, uint8_t
     return true;
 }
 
+static bool lm51772_read_status(uint8_t *value)
+{
+    if (!i2c_read_register(LM51772_ADDRESS, LM51772_STATUS_BYTE, value)) {
+        return false;
+    }
+
+    return true;
+}
+
 static void lm51772_status(void)
 {
     uint8_t value;
 
-    if (!i2c_read_register(LM51772_ADDRESS, LM51772_STATUS_BYTE, &value)) {
+    if (!lm51772_read_status(&value)) {
         uart_line("U6 STATUS_BYTE read failed at I2C address 0x6A");
         return;
     }
@@ -674,7 +685,7 @@ static bool oled_dashboard(void)
     char time_line[] = "TIME 00:00:00";
     char uptime_line[] = "UP 000:00:00";
     char sensor_line[] = "T 00.0C H000.0%";
-    char health_line[] = "N00000 E000";
+    char health_line[] = "U6 00 N0000";
     const uint32_t hours = (wall_seconds / 3600U) % 24U;
     const uint32_t minutes = (wall_seconds / 60U) % 60U;
     const uint32_t seconds = wall_seconds % 60U;
@@ -705,12 +716,12 @@ static bool oled_dashboard(void)
     sensor_line[11] = (char)('0' + ((last_humidity_tenths / 10U) % 10U));
     sensor_line[13] = (char)('0' + (last_humidity_tenths % 10U));
 
-    for (uint32_t place = 0U, divisor = 10000U; place < 5U; place++, divisor /= 10U) {
-        health_line[1U + place] = (char)('0' + ((sample_count / divisor) % 10U));
+    static const char hex[] = "0123456789ABCDEF";
+    health_line[3] = hex[(last_lm51772_status >> 4U) & 0x0FU];
+    health_line[4] = hex[last_lm51772_status & 0x0FU];
+    for (uint32_t place = 0U, divisor = 1000U; place < 4U; place++, divisor /= 10U) {
+        health_line[7U + place] = (char)('0' + ((lm51772_status_failures / divisor) % 10U));
     }
-    health_line[8] = (char)('0' + ((stability_errors / 100U) % 10U));
-    health_line[9] = (char)('0' + ((stability_errors / 10U) % 10U));
-    health_line[10] = (char)('0' + (stability_errors % 10U));
 
     oled_clear();
     oled_text(0U, 0U, time_line);
@@ -949,6 +960,7 @@ int main(void)
     uint32_t time_last_cycle;
     uint32_t second_cycle_accumulator = 0U;
     uint32_t last_sample_second = 0xFFFFFFFFU;
+    uint32_t last_lm51772_status_second = 0xFFFFFFFFU;
     uint32_t last_display_second = 0xFFFFFFFFU;
     bool d8_on = false;
     uint8_t d8_color = 0U;
@@ -1001,6 +1013,13 @@ int main(void)
                 stability_errors++;
             }
             last_sample_second = uptime_seconds;
+        }
+        if (automatic_i2c_enabled &&
+            (uptime_seconds % 2U) == 0U && uptime_seconds != last_lm51772_status_second) {
+            if (!lm51772_read_status(&last_lm51772_status)) {
+                lm51772_status_failures++;
+            }
+            last_lm51772_status_second = uptime_seconds;
         }
         if (automatic_i2c_enabled && uptime_seconds != last_display_second) {
             if (!oled_dashboard()) {
