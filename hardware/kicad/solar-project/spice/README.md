@@ -108,6 +108,8 @@ Current runner deck set:
 
 `03_startup_current_limit.cir` is a separate behavioral transient deck for the Rev 0 bring-up question: can a nominal 6 V source with an approximately 200 mA current ceiling build current in the 1 uH inductor during a soft-start duty ramp? It uses a 610 kHz switching period, a configurable soft-start interval, the 1 kOhm preload, and a 30 ohm source resistance as a first-order approximation of the bench supply current limit.
 
+The LTspice-compatible copy is `03_startup_current_limit_ltspice.cir`. It removes ngspice `.control` commands and uses LTspice `.meas`/`.save` directives.
+
 This deck is not an LM51772 vendor model and does not prove the controller's exact soft-start or current-limit behavior. Its useful outputs are `IIN_PEAK`, `IIN_AVG`, `IL_PEAK`, `IL_AVG`, and `VOUT_FINAL`. Vary `TSS`, `DUTY_END`, `LVAL`, and `RSOURCE` one at a time when comparing the model to the bench capture.
 
 Run it from this directory with:
