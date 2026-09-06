@@ -1,0 +1,77 @@
+* Startup-current experiment for the Rev 0 LM51772-style power stage.
+* This is a behavioral envelope model, not an LM51772 vendor macromodel.
+* It tests whether a 200 mA source can build inductor current during soft-start.
+
+.param VIN=6
+.param FSW=610k
+.param TSS=100u
+.param DUTY_START=0.05
+.param DUTY_END=0.55
+.param LVAL=1u
+.param L_DCR=5m
+.param RSOURCE=30
+.param COUT=220u
+.param COUT_ESR=25m
+.param RLOAD=1k
+.param GATE_HIGH=10
+.param DEAD=40n
+
+* A 30 ohm source resistance limits the ideal 6 V source to about 200 mA
+* at a hard short. This approximates the bench supply current ceiling.
+V_PV PV_SOURCE PWR_NEG DC {VIN}
+R_SOURCE PV_SOURCE PV_IN_POS {RSOURCE}
+CIN PV_IN_POS PWR_NEG 50u
+
+* Four-switch bridge envelope. M1 is pulse-controlled; M2 is complementary.
+* The opposite leg is held in the buck-boost transfer state for this experiment.
+B_HO1 HO1 PWR_NEG V={if(mod(time, 1/FSW) < (1/FSW)*(DUTY_START + (DUTY_END-DUTY_START)*min(time/TSS, 1)), GATE_HIGH, 0)}
+B_LO1 LO1 PWR_NEG V={if(mod(time, 1/FSW) < (1/FSW)*(1 - DUTY_START - (DUTY_END-DUTY_START)*min(time/TSS, 1) - DEAD*FSW), GATE_HIGH, 0)}
+V_HO2 HO2 PWR_NEG DC {GATE_HIGH}
+V_LO2 LO2 PWR_NEG DC 0
+
+.model SWNMOS SW(RON=20m ROFF=100MEG VT=4 VH=0.3)
+.model DBODY D(IS=1e-12 RS=5m CJO=250p TT=40n)
+
+S_HS1 PV_IN_POS SW_1 HO1 PWR_NEG SWNMOS
+D_HS1 SW_1 PV_IN_POS DBODY
+S_LS1 SW_1 PWR_NEG LO1 PWR_NEG SWNMOS
+D_LS1 PWR_NEG SW_1 DBODY
+
+R22 SW_1 CSB_2 1m
+L2 CSB_2 L2_INT {LVAL}
+R_L2 L2_INT SW_2 {L_DCR}
+
+S_HS2 V_OUT SW_2 HO2 PWR_NEG SWNMOS
+D_HS2 SW_2 V_OUT DBODY
+S_LS2 SW_2 PWR_NEG LO2 PWR_NEG SWNMOS
+D_LS2 PWR_NEG SW_2 DBODY
+
+R_COUT V_OUT VOUT_CAP {COUT_ESR}
+C_OUT VOUT_CAP PWR_NEG {COUT}
+R_LOAD V_OUT PWR_NEG {RLOAD}
+R_OUTLINK V_OUT CHG_OUT_POS 5m
+C_CHG CHG_OUT_POS PWR_NEG 22u
+
+R_LEAK_SW1 SW_1 PWR_NEG 50MEG
+R_LEAK_SW2 SW_2 PWR_NEG 50MEG
+R_LEAK_VOUT V_OUT PWR_NEG 50MEG
+C_SW1 SW_1 PWR_NEG 100p
+C_SW2 SW_2 PWR_NEG 100p
+
+.options method=gear reltol=1e-4 maxord=2
+
+.control
+set filetype=ascii
+tran 20n 2m
+set wr_singlescale
+set wr_vecnames
+wrdata waveforms/03_startup_current_limit_tran.csv time v(PV_IN_POS) i(V_PV) i(L2) v(L2_INT) v(V_OUT) v(CHG_OUT_POS) v(SW_1) v(SW_2) v(HO1) v(LO1)
+meas tran VOUT_FINAL FIND v(CHG_OUT_POS) AT=2m
+meas tran IIN_PEAK MAX abs(i(V_PV)) FROM=0 TO=2m
+meas tran IL_PEAK MAX abs(i(L2)) FROM=0 TO=2m
+meas tran IIN_AVG AVG abs(i(V_PV)) FROM=1.5m TO=2m
+meas tran IL_AVG AVG abs(i(L2)) FROM=1.5m TO=2m
+print v(CHG_OUT_POS) v(PV_IN_POS) i(V_PV) i(L2)
+.endc
+
+.end

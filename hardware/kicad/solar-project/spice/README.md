@@ -103,3 +103,15 @@ Current runner deck set:
 - `90_system_integration_harness.cir`
 
 `04_block_b4_fault_network.cir` now reports measured threshold points as `BAT_TRIP` and `OCP_TRIP` in the run log, and the runner parses those into the summary CSV when available.
+
+## Startup-current experiment
+
+`03_startup_current_limit.cir` is a separate behavioral transient deck for the Rev 0 bring-up question: can a nominal 6 V source with an approximately 200 mA current ceiling build current in the 1 uH inductor during a soft-start duty ramp? It uses a 610 kHz switching period, a configurable soft-start interval, the 1 kOhm preload, and a 30 ohm source resistance as a first-order approximation of the bench supply current limit.
+
+This deck is not an LM51772 vendor model and does not prove the controller's exact soft-start or current-limit behavior. Its useful outputs are `IIN_PEAK`, `IIN_AVG`, `IL_PEAK`, `IL_AVG`, and `VOUT_FINAL`. Vary `TSS`, `DUTY_END`, `LVAL`, and `RSOURCE` one at a time when comparing the model to the bench capture.
+
+Run it from this directory with:
+
+```powershell
+ngspice -b -o logs/03_startup_current_limit.log 03_startup_current_limit.cir
+```
