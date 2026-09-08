@@ -2,7 +2,9 @@
 
 ## Stop State
 
-Stop the bench session here. PV output must be off and disconnected; USB/ST-LINK may remain connected only for low-energy control work. Do not raise PV voltage or source current, do not clear LM51772 faults, and do not leave the board energized unattended.
+Stop the bench session here. PV output must be off and disconnected; USB/ST-LINK may remain connected only for low-energy control work. Do not raise PV voltage or source current, and do not leave the board energized unattended.
+
+The board owner has waived the previous hold on ordinary LM51772 I2C reads and controlled configuration writes for the next integration session because the present failure mode is brief UVLO dropout rather than an observed destructive overcurrent event. This waiver does not authorize `CLEAR_FAULTS` at `0x03`, arbitrary register writes, or a higher-energy bench test. Every write must name the register, old value, new value, expected effect, and rollback/power-cycle condition before execution.
 
 The current authoritative design artifact is `hardware/kicad/solar-project/Solar Project Rev0 - Manufactured First Build.net`, exported 2026-09-07 04:36:50 from `Solar Project Rev0 - Manufactured First Build.kicad_sch`. The older July `Solar Project.net` and older Rev0 PCB snapshot are stale for the MODE/ILIMCOMP rework and must not be used to diagnose the manufactured board.
 
@@ -105,7 +107,7 @@ Do not use the previous SPICE output as a hardware prediction until this capacit
 3. Correct the LTspice model to approximately 1100 uF output capacitance before more simulation conclusions.
 4. At the next controlled bench point, use CH1=`EN_UVLO`, CH2=`SS_ATRK`, CH3=`PV_IN_POS` and capture only the first threshold-crossing packet. Record voltage minima and event order, not just waveform appearance.
 5. Decide whether PV input droop precedes EN_UVLO dropout. If PV is stable while EN_UVLO falls, inspect the EN divider/transient path. If PV falls first, inspect source/input delivery and local input energy.
-6. Do not increase PV current limit, do not alter the preload or hardware, and never write LM51772 `CLEAR_FAULTS` at `0x03`.
+6. Use the I2C path for structured LM51772 integration: read back the relevant configuration/status registers first, then make only named, reversible configuration writes. Do not increase PV current limit, alter the preload or hardware, or write LM51772 `CLEAR_FAULTS` at `0x03`.
 
 ## Hardware and Identity Limits
 

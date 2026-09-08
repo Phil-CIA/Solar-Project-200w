@@ -6,11 +6,11 @@ With PV off/disconnected, verify at the board: MCU `CTRL_3V3`, common `PWR_NEG` 
 
 The authoritative current design artifact is `hardware/kicad/solar-project/Solar Project Rev0 - Manufactured First Build.net`, exported 2026-09-07 04:36:50. It confirms separate MODE and ILIMCOMP nets, each pulled to U6 VCC2 through its own 100 kOhm resistor (`R32` and `R65`). Do not use the stale July `Solar Project.net` for diagnosis.
 
-The OLED U6-status firmware was built and flashed previously after exact target verification; it displays the cached read-only U6 status and poll-failure count. Never write LM51772 `CLEAR_FAULTS`.
+The OLED U6-status firmware was built and flashed previously after exact target verification; it displays the cached U6 status and poll-failure count. Ordinary LM51772 I2C reads and named, reversible configuration writes are now authorized for the next integration session. Before each write, record the register, old value, new value, expected effect, and rollback/power-cycle condition. Never write LM51772 `CLEAR_FAULTS` at `0x03`.
 
 FP4 remains not passed. Earlier runs showed packeted switching and source limiting without regulation. The prior SPICE model used about 242 uF output capacitance, but the manufactured Rev 0 output bank is approximately 1100 uF, so correct the model before drawing further startup-current conclusions.
 
-Next session: keep PV off, update the LTspice model to approximately 1100 uF, then use the low-energy CH1=`EN_UVLO`, CH2=`SS_ATRK`, CH3=`PV_IN_POS` capture at the first startup threshold to determine whether PV droop precedes EN_UVLO dropout. Do not increase the current limit or alter hardware.
+Next session: keep PV off, update the LTspice model to approximately 1100 uF, then use the I2C bus to read back the controller configuration/status baseline. Follow with only named, reversible configuration integration writes if needed, and verify each write by readback. Do not increase the current limit or alter hardware. The low-energy CH1=`EN_UVLO`, CH2=`SS_ATRK`, CH3=`PV_IN_POS` capture remains the bench check for whether PV droop precedes EN_UVLO dropout.
 
 `LO1`/`LO2` tracking U6 `VCC2` during the prior below-UVLO observation is treated as an internal LM51772 driver-domain behavior, not proof of external backfeed. Do not re-open that theory without new evidence.
 
