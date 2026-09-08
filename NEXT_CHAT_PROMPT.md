@@ -1,12 +1,16 @@
-Continue the Solar Project 200W Rev 0 bring-up from `SOLAR_HANDOFF_2026-09-05.md`. Read that handoff before proposing or performing any hardware operation.
+Continue the Solar Project 200W Rev 0 bring-up from `SOLAR_HANDOFF_2026-09-08.md`. Read that handoff before proposing or performing any hardware operation.
 
-Current stop state: SWD communication is blocked. On 2026-09-06, the approved ST-LINK `B55B5A1A0000000020AFF501` was detected and reported 3.23 V VTref, but serial-bound, read-only STM32CubeProgrammer connection failed with `Unable to get core ID` / `No STM32 target found`. Device ID `0x469`, STM32G47x/G48x/G414 family, and 512 KB NVM were not confirmed; no flash or register write occurred. Do not choose another probe, target, or COM port.
+Current stop state: the bench session is paused for handoff. The key finding is UVLO dropout at startup: near `PV_IN_POS=5.99 V`, `EN_UVLO` reaches about `1.27 V`, switching begins, `EN_UVLO` falls first, `PV_IN_POS` follows, `SS_ATRK` does not visibly ramp, and switching stops after about `80 us`. `STATUS_BYTE` remains `0x48`; no `0x58` IOUT status was observed. Keep PV off/disconnected until the next session.
 
 With PV off/disconnected, verify at the board: MCU `CTRL_3V3`, common `PWR_NEG` to ST-LINK, `NRST` released high, and STM32 `PA13`/SWDIO and `PA14`/SWCLK continuity/no shorts. Then repeat only the exact approved serial-bound read-only connection. Do not flash unless the exact identity succeeds.
 
-An OLED U6-status screen was added and built but not flashed: `firmware/bringup/baremetal/stm32g4_rev0_stage1.c` built successfully (`text=7364`, `data=4`, `bss=1160`). Once SWD identity is restored, flash/verify it with PV still disconnected, then confirm the OLED row `U6 xx Nnnn`; it performs a read-only U6 `STATUS_BYTE` poll every two seconds and does not access `CLEAR_FAULTS`.
+The authoritative current design artifact is `hardware/kicad/solar-project/Solar Project Rev0 - Manufactured First Build.net`, exported 2026-09-07 04:36:50. It confirms separate MODE and ILIMCOMP nets, each pulled to U6 VCC2 through its own 100 kOhm resistor (`R32` and `R65`). Do not use the stale July `Solar Project.net` for diagnosis.
 
-FP4 remains not passed: at about 6.0 V, LM51772 switching began in approximately 610 kHz bursts spaced about 200 ms apart, but `CHG_OUT_POS` only reached 0.986 V with a 200 ohm preload and 1.36 V with a 1 kohm preload. The source reached approximately 229-266 mA current limiting. Do not increase the current limit. Only after SWD/OLED recovery, recreate the bounded approximately 5.98 V / 200 mA / 1 kohm-preload setup for no more than 30 seconds and collect `FLT`, `STATUS_BYTE`, source-current-limit state, input current, and `CHG_OUT_POS`; then turn source off and discharge.
+The OLED U6-status firmware was built and flashed previously after exact target verification; it displays the cached read-only U6 status and poll-failure count. Never write LM51772 `CLEAR_FAULTS`.
+
+FP4 remains not passed. Earlier runs showed packeted switching and source limiting without regulation. The prior SPICE model used about 242 uF output capacitance, but the manufactured Rev 0 output bank is approximately 1100 uF, so correct the model before drawing further startup-current conclusions.
+
+Next session: keep PV off, update the LTspice model to approximately 1100 uF, then use the low-energy CH1=`EN_UVLO`, CH2=`SS_ATRK`, CH3=`PV_IN_POS` capture at the first startup threshold to determine whether PV droop precedes EN_UVLO dropout. Do not increase the current limit or alter hardware.
 
 `LO1`/`LO2` tracking U6 `VCC2` during the prior below-UVLO observation is treated as an internal LM51772 driver-domain behavior, not proof of external backfeed. Do not re-open that theory without new evidence.
 
