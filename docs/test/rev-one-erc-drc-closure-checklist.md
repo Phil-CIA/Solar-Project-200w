@@ -23,6 +23,7 @@ Owners: Phil + Copilot
 - [ ] LM74502H wiring remains intact: VS on V_out_sense, OV divider R37/R66/R67, EN_UVLO pull-down R38.
 - [ ] Back-to-back N-MOS reverse-protection path remains unchanged.
 - [ ] C52 working-voltage decision is recorded (keep or raise) before freeze.
+- [ ] U6 AGND (pin 17), PGND (pin 28), and exposed GND thermal pad are tied to the same `PWR_NEG` DC reference; separate PCB routing regions may be used later, but no schematic DC isolation is permitted.
 
 ## Layout Rule Closure
 

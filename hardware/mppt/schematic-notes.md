@@ -4,6 +4,10 @@ Last updated: 2026-08-04
 Owners: Phil + Copilot
 Status: CTRL_SUPPLY_IN OR-ing complete; U6 (LM51772) all critical strap connections verified; 7 deferred power-authority ERC errors only.
 
+## Rev 1 U6 Ground Return Decision (2026-09-09)
+
+The LM51772 datasheet requires U6 AGND (pin 17), PGND (pin 28), and the exposed GND thermal pad to remain within the specified common potential. Rev 1 shall therefore connect these domains to the same `PWR_NEG` DC reference. They may use separate high-current and quiet routing regions in the PCB later, but they must not remain electrically isolated nets in the schematic. The current ERC warnings on U6 AGND and GND identify this unresolved return-domain correction; they are not to be waived.
+
 ## Rev One kickoff linkage update (2026-08-04)
 
 - Active schematic lineage is now treated as Rev 1 for ongoing board work.

@@ -259,7 +259,7 @@
       "internal_id": "",
       "mfg": "",
       "mpn": "",
-      "sch_revision": ""
+      "sch_revision": "Rev 1"
     },
     "layer_pairs": [],
     "layer_presets": [],
@@ -1287,6 +1287,12 @@
           "label": "Sim.Library",
           "name": "Sim.Library",
           "show": false
+        },
+        {
+          "group_by": false,
+          "label": "SNAPEDA_PN",
+          "name": "SNAPEDA_PN",
+          "show": false
         }
       ],
       "filter_string": "",
@@ -1342,16 +1348,16 @@
       {
         "filename": "Solar Project Rev1.kicad_sch",
         "name": "Solar Project Rev1",
-        "uuid": "00000000-0000-0000-0000-000000000000"
+        "uuid": "28299885-0f47-4c9d-af0f-f2db484b5c54"
       }
     ],
-    "used_designators": "",
+    "used_designators": "C3,C8,C21,C30-31,C33-35,M1,TP6-11,R46",
     "variants": []
   },
   "sheets": [
     [
       "28299885-0f47-4c9d-af0f-f2db484b5c54",
-      "Root"
+      "Solar Project Rev1"
     ]
   ],
   "text_variables": {},
