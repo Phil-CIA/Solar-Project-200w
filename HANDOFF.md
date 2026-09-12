@@ -1,32 +1,28 @@
 # Solar Project 200W - Handoff
 
-Latest active handoff: [SOLAR_HANDOFF_2026-09-10.md](SOLAR_HANDOFF_2026-09-10.md)
+Latest active handoff: [SOLAR_HANDOFF_2026-09-12.md](SOLAR_HANDOFF_2026-09-12.md)
 
 ## Current status
 
-- Rev 0 first switching did not pass; U6 entered short UVLO dropout/retry bursts before a visible `SS_ATRK` ramp.
-- Preserve the Rev 0 bench stop state in `SOLAR_HANDOFF_2026-09-08.md`; no hardware work was performed in the September 9 design session.
-- Rev 1 is now a targeted Rev 0 reconfiguration, not a clean-sheet redesign (DEC-024).
-- DEC-023 sets 125 W continuous output, 150 W maximum PV operation, 8 A to 10 A nominal charging, and an approximately 12 A hardware protection ceiling.
-- DEC-025 through DEC-029 define battery-first startup, positive converter inhibit, PV qualification, controlled current ramp, MPPT hierarchy, and weak-source recovery.
-- The manufactured Rev 0 netlist confirms `V_out -> R16 -> BAT_BUS_POS`; it also shows both F2 pins on `BAT_BUS_POS`, bypassing the intended fuse boundary.
+- Gate 2 & Gate 3 are complete: Schematic corrections, footprint verification, and full BOM alignment are closed with **0 ERC Errors**.
+- All 172 components in `Solar Project Rev1.kicad_sch` are verified against physical packages and mapped to authoritative LCSC part numbers in `hardware/kicad/solar-project/bom/Rev1_BOM.csv`.
+- Netlist `Solar Project Rev1.net` is synchronized.
+- Ready for **Gate 4 (PCB Layout Sync & Routing)**.
 
 ## Locked Baselines
 
 - Retain one LM51772 four-switch conversion stage and rerate it for Rev 1.
-- LM74502H plus back-to-back N-MOS input protection remains retained.
+- LM74502H plus back-to-back N-MOS input protection (BSC040N10NS5) remains retained.
 - Protected battery power is the normal runtime control source and startup prerequisite.
-- STM32 retains charger supervision, safety policy, and telemetry ownership.
-- USB service power must not independently authorize power-stage switching.
-- ESP32 module power is `CTRL_5V` into its `5V` pin; its exposed `3.3V` pin is unused.
-- ESP32 owns networking, provisioning, telemetry transport, and its own OTA only.
-- C52 voltage-rating margin remains an open pre-freeze item.
+- STM32G431CBU6 retains charger supervision, safety policy, and telemetry ownership.
+- Hardware inhibit Q7 (2N7002K) positively clamps `EN_UVLO` low during startup/boot.
+- 4-pad Kelvin shunts (R16, R22) are wired for pure differential current sensing.
 
 ## Next session objective
 
-Continue the converter rebaseline from the 2026-09-10 handoff. First confirm the open KiCad schematic has been saved, then review the paired R3/R18 change for the 14.6 V output target. Follow with Q4 gate control, capacitor evidence, shunt Kelvin mapping, F2, and fresh ERC/DRC.
+Synchronize the PCB layout (`Solar Project Rev1.kicad_pcb`) from the verified schematic (`F8`), verify component footprints on the layout canvas, and begin power-stage component placement and routing.
 
-Full detail: [SOLAR_HANDOFF_2026-09-10.md](SOLAR_HANDOFF_2026-09-10.md)
+Full detail: [SOLAR_HANDOFF_2026-09-12.md](SOLAR_HANDOFF_2026-09-12.md)
 
 ## Primary evidence files
 

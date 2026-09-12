@@ -1,22 +1,18 @@
-Continue the Solar Project Rev 1 converter rebaseline from `SOLAR_HANDOFF_2026-09-10.md`. Read it and `docs/rev-one-component-derating-review.md` before proposing schematic changes.
+Continue the Solar Project 200W (Rev 1) from `SOLAR_HANDOFF_2026-09-12.md`. Read it along with `docs/decisions-log.md`, `docs/rev-one-implementation-plan.md`, `docs/rev-one-bom.md`, and `docs/rev-one-bench-learning-matrix.md`.
 
-Rev 1 is a targeted reconfiguration of Rev 0, not a clean-sheet redesign. Retain one LM51772 four-switch stage, the LM74502H PV protection concept, sensing functions, R16 output-current-shunt function, and STM32 supervisory architecture unless analysis proves a change necessary.
+### Current State:
+- **Gate 2 & Gate 3 (Schematic Corrections, Footprint Verification & BOM Alignment):** Completed with **0 ERC Errors** on `Solar Project Rev1.kicad_sch`.
+- All 172 components are physically verified and mapped to their authoritative LCSC part numbers in [hardware/kicad/solar-project/bom/Rev1_BOM.csv](hardware/kicad/solar-project/bom/Rev1_BOM.csv).
+- Battery-First architecture confirmed; hardware inhibit Q7 (2N7002K) installed on LM51772 EN_UVLO; 4-pad Kelvin shunts (R16, R22) wired; 14.6 V feedback dividers (R3, R18 = 76.8k) updated; STM32G431CBU6 package aligned to UFQFPN-48.
 
-The accepted envelope is 125 W continuous charger output, 150 W maximum PV operating power, 8 A to 10 A nominal charge current, approximately 12 A hardware protection, and at least 20 A BMS charge capability.
-
-The current converter basis is 20 V qualified PV input, provisional 48 V maximum, 14.6 V intended charge output, 12 A hardware ceiling, 3.3 uH MMPC1206-3R3MT L2, CSD18540Q5B M1-M4, 2N7002K Q2/Q3, three 47 uF input capacitors with 3.8 A RMS each, and matched larger 1 mOhm R16/R22 shunts.
-
-The OLED U6-status firmware was built and flashed previously after exact target verification; it displays the cached U6 status and poll-failure count. Ordinary LM51772 I2C reads and named, reversible configuration writes are now authorized for the next integration session. Before each write, record the register, old value, new value, expected effect, and rollback/power-cycle condition. Never write LM51772 `CLEAR_FAULTS` at `0x03`.
-First confirm the user has saved the open schematic. Then review the proposed paired R3/R18 = 76.8 kOhm update for 14.6 V, using R25/R17 = 5.62 kOhm, without overwriting unsaved work. After that, close Q4 gate control, output-capacitor, R16/R22 Kelvin, F2, and ERC/DRC items. Do not replace the converter topology.
-
-Use DEC-023 through DEC-029 as the controlling decisions. Do not edit KiCad until the power-and-control path and acceptance checks are agreed.
-
-Next session: keep PV off, update the LTspice model to approximately 1100 uF, then use the I2C bus to read back the controller configuration/status baseline. Follow with only named, reversible configuration integration writes if needed, and verify each write by readback. Do not increase the current limit or alter hardware. The low-energy CH1=`EN_UVLO`, CH2=`SS_ATRK`, CH3=`PV_IN_POS` capture remains the bench check for whether PV droop precedes EN_UVLO dropout.
-
-`LO1`/`LO2` tracking U6 `VCC2` during the prior below-UVLO observation is treated as an internal LM51772 driver-domain behavior, not proof of external backfeed. Do not re-open that theory without new evidence.
-
-U6 R28=51.7 kOhm, R29=20.5 kOhm, R33=0 ohm confirmed undisturbed. VOUT setpoint is confirmed at approximately 12.83 V (R3=66.5k/R25=5.62k, V_ref=1.00V). Keep `PA8`, `PB5`, and `PA5` low; never drive `PB11`. No real panel, battery, inverter, AC, or uncontrolled load.
-
-Use only ST-LINK serial `B55B5A1A0000000020AFF501`, Device ID `0x469`, and the exact CP210x `USB\VID_10C4&PID_EA60\0001` on COM5. Stop on any identity mismatch; do not select another COM port.
-If any Rev 0 bench work is proposed, first reread `SOLAR_HANDOFF_2026-09-08.md` and preserve all safety, identity, probing, and no-`CLEAR_FAULTS` restrictions. PV remains off and disconnected at handoff.
+### Focus for This Session: PCB Layout Synchronization & Routing (Gate 4)
+1. **Synchronize PCB Layout:**
+   - Open `Solar Project Rev1.kicad_pcb` in KiCad PCB Editor.
+   - Run **Update PCB from Schematic (`F8`)** to import the verified netlist and all 172 footprints onto the board.
+   - Confirm zero unresolved footprint errors or missing net connections.
+2. **Component Placement & Floorplanning:**
+   - Place and optimize the high-current Buck-Boost power stage: Input protection FETs (Q5/Q6) $\rightarrow$ Switching bridge (M1–M4) $\rightarrow$ Main inductor (L2) $\rightarrow$ Output Kelvin shunt (R16) $\rightarrow$ Battery fuse (F2).
+   - Establish clean separation between high-current switching loops and sensitive analog/Kelvin sense signals.
+3. **DRC Validation:**
+   - Set 4-layer stackup design rules and run PCB DRC.
 

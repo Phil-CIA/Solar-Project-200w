@@ -34,3 +34,4 @@ Use these when working MPPT implementation details:
 - Mark unresolved items with owner and target date.
 - Do not treat deferred ERC and power-authority findings as closed until explicitly waived.
 - Preserve traceability between requirements, decisions, and validation evidence.
+- Follow the [Datasheet Handling SOP](datasheets/datasheet-sop.md) for all datasheet, reference manual, and PDF artifacts.

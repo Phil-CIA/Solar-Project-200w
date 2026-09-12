@@ -58,16 +58,16 @@ Selected provisional part: `MMPC1206-3R3MT`.
 - Keep provisional pending thermal, core-loss, and final PV-envelope validation.
 
 ### Input capacitors
-Current netlist places C19, C21, and C30 across `PV_IN_POS` to `PWR_NEG`.
+Current netlist places C19, C21, C30, and C31 across `PV_IN_POS` to `PWR_NEG`.
 
-- Each is 47 uF and rated for 3.8 A RMS per the user-provided part data.
-- Combined ripple-current rating: 11.4 A RMS.
-- This exceeds the workbook result of about 8.56 A RMS by about 33%.
-- C7 is 2.2 uF and C8 is 100 nF on the same input node.
-- Current bulk input total is about 94 uF nominal plus ceramics.
+- Each is 47 uF and rated for 2.6 A RMS per the datasheet.
+- Combined ripple-current rating: 10.4 A RMS.
+- This exceeds the workbook result of about 8.56 A RMS by about 21.5%.
+- C7 is 1 uF, while C8 and C28 are 100 nF on the same input node.
+- Current bulk input total is 188 uF nominal plus ceramics.
 
 ### Output capacitors
-Current C3 is 100 uF on `V_out`; C33-C35 are 2.2 uF local/output-side ceramics. C18 remains 560 uF in the current netlist. The output bank is not yet fully dispositioned. Do not delete or reduce additional output capacitance until startup inrush, effective capacitance, ESR, transient response, and loop stability are reviewed.
+Current C18 is 560 uF, C3 is 100 uF, C34-C35 are 2.2 uF local/output-side ceramics, and C33 is 100 nF, all on `V_out`. The current nominal output bank is approximately 664.4 uF, not 1.3 mF. C3 is rated 25 V and C34-C35 are rated 50 V; C18 voltage, ripple-current, and ESR data still need confirmation. The output bank is not yet fully dispositioned. Do not delete or reduce additional output capacitance until startup inrush, effective capacitance, ESR, transient response, and loop stability are reviewed.
 
 ### M1-M4 bridge MOSFETs
 Current netlist confirms all four are now `CSD18540Q5B`:
@@ -131,8 +131,10 @@ The user keeps the KiCad schematic open and may have unsaved edits. Do not overw
 4. Verify C19/C21/C30 exact datasheet voltage, ESR, ripple-current, and thermal sharing data.
 5. Resolve output-capacitor bank: C3/C18/C33-C35 plus any retained bulk, with inrush and loop-stability evidence.
 6. Complete R16/R22 Kelvin pad mapping and sense polarity against the WSK2512 datasheet.
-7. Review F2 true series placement and fuse curve; current documentation still lists this as HOLD.
-8. Export fresh ERC/DRC only after the user confirms the schematic is saved and the next edit batch is agreed.
+7. Rework F2: replace the current nonstandard/unwanted fuse-clip footprint with the required standard clips, then select the matching fuse and verify true series placement, fuse curve, rating, interrupt capability, and holder thermal/contact limits.
+8. Compare final battery/BMS connector options used in comparable designs; J3's current Phoenix terminal block is prototype-only until that interface decision is made.
+9. Rework Q5/Q6: replace the current 60 V CSD18563Q5A pair with a matched 100 V N-channel pair for the provisional 48 V PV ceiling, or formally reduce the PV maximum and recalculate all transient margins.
+10. Export fresh ERC/DRC only after the user confirms the schematic is saved and the next edit batch is agreed.
 
 ## Recommended first move
 

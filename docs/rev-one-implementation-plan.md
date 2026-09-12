@@ -98,19 +98,20 @@ Required correction groups:
    - Confirm whether a separate main battery fuse is required by the system safety boundary; do not repurpose F2 without a decision.
 
 2. **Startup and control authority**
-   - Make protected battery power the normal control-domain source.
-   - Keep USB service power isolated from converter authorization and backfeed.
-   - Add a hardware-safe default-off inhibit for U6 during MCU reset, MCU unpowered state, invalid battery, USB-only service, and PV qualification.
-   - Keep hardware UVLO as independent protection, not as the normal start command.
+   - Make protected battery power the normal control-domain source (DEC-025).
+   - Implement dual USB architecture (DEC-032): isolated host COM port vs reverse-blocked Aux 5V bench power port.
+   - Add a hardware-safe default-off inhibit (`CTRL_EN_CHG`) for U6 during MCU reset, MCU unpowered state, invalid battery, USB-only service, and PV qualification (DEC-026).
+   - Keep hardware UVLO as independent protection, not as the normal start command (DEC-027, DEC-028, DEC-030).
 
 3. **Controlled startup**
    - Configure and read back a low initial LM51772 current limit before release.
    - Define battery-relative PV qualification.
    - Define a PV operating floor above hardware UVLO.
-   - Define bounded current/power ramp, backoff, stop, and delayed retry.
+   - Define bounded current/power ramp, backoff, stop, and delayed retry (DEC-029).
 
-4. **Ratings and values**
-   - Recalculate output capacitance, ESR, compensation, ripple current, inrush, thermal limits, and affected component ratings.
+4. **Ratings, testability, and values**
+   - Recalculate output capacitance, ESR, compensation, ripple current, inrush, thermal limits, and affected component ratings (DEC-023).
+   - Add dedicated test points and switch-node ground spring pads (DEC-031).
    - Resolve C52 working-voltage margin.
    - Correct only confirmed MCU, I2C, BOOT0, D8, footprint, and net-label defects.
 

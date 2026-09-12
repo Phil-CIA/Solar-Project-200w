@@ -7,6 +7,11 @@ Thumbs.db
 .idea/
 *.code-workspace
 
+# Office / Temporary
+~$*
+*(1).*
+* (1).*
+
 # Python
 __pycache__/
 *.py[cod]
@@ -34,9 +39,20 @@ hardware/kicad/solar-project/#auto_saved_files#/
 hardware/kicad/solar-project/#auto_saved_files#
 hardware/kicad/solar-project/#auto_saved_files#/**
 *.bak
+*.kicad_sch-bak
+*.kicad_pcb-bak
 *.tmp
 *-backups/
 *.zip
+hardware/kicad/solar-project/*-pre-*
+hardware/kicad/solar-project/.kicad_sch
+hardware/kicad/solar-project/GitHub_300w*
+/KiCad/
+hardware/kicad/solar-project/KiCad/
+
+# SPICE raw simulation outputs
+*.raw
+*.op.raw
 
 # Binary outputs
 *.bin

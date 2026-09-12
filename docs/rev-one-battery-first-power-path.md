@@ -30,6 +30,13 @@ Therefore the first schematic modification pass must document and verify the exi
 
 The four-pad R16 has Kelvin/sense pads. Rev 1 must preserve the 1 mOhm current-shunt function while ensuring that the two high-current terminals, not the Kelvin pads, carry the battery charging current.
 
+## Rev 0 Bench Lessons Learned (Root Cause of PV Startup Failure)
+
+Rev 0 bench testing at ~6 V input (FP4) revealed that attempting autonomous startup directly from a current-limited input into uncharged output capacitors (~1.1 mF) fails:
+- **Energy Deficit:** Transferring energy into 0 V output capacitors collapses the input capacitor bank and input voltage below the hardware UVLO threshold (~5.4 V falling) within 50–80 us.
+- **UVLO Bursting:** The converter repeatedly cycled in brief bursts without `SS_ATRK` ramping or reaching steady regulation.
+- **Battery-First Resolution:** When a 4S LiFePO4 battery is connected first, the output capacitor bank (`V_out`) is passively precharged to the battery resting voltage (~12.8–13.4 V). When the converter starts, it operates across an incremental voltage delta ($\Delta V = 14.6\text{ V} - V_{\text{bat}}$) rather than a full 0 V short-circuit step.
+
 ## Intended Rev 1 Power Path
 
 The positive path shall be:
@@ -40,7 +47,7 @@ Battery connector positive
     -> battery reverse-polarity / ideal-diode protection as allocated by the retained protection design
     -> protected BAT_BUS_POS
         -> battery bus output connector and distribution branches
-        -> battery-domain control-power converter
+        -> battery-domain control-power converter (U5)
         -> battery voltage/current/temperature and fault sensing
         -> R16 battery-side high-current terminal
     <- R16 converter-side high-current terminal
@@ -50,7 +57,29 @@ Battery connector positive
 
 The negative return remains the common battery/converter return unless the protection review explicitly allocates a different return element. The output capacitors remain on `V_out`, so a connected and correctly protected battery can establish the converter output bus through R16. This battery connection is a prerequisite for converter operation, not permission for U6 to switch.
 
-Control power shall be derived from protected `BAT_BUS_POS` into the normal battery-powered control domain. USB may power an isolated service/debug branch, but USB alone shall not power or release the converter gate-drive/start path. The STM32 owns qualification and charger policy; U6 retains the fast electrical regulation loops.
+Control power shall be derived from protected `BAT_BUS_POS` into the normal battery-powered control domain. 
+
+## Dual USB Architecture (DEC-032)
+
+To prevent ground loops, backfeed into converter bias rails, and PC damage:
+1. **USB Port 1 (Telemetry / COM Only):**
+   - Connected to CP2102N UART bridge.
+   - Powered exclusively by host PC VBUS.
+   - Signal lines (TX/RX) isolated / level-shifted to STM32.
+   - Zero connection to internal power or gate-drive rails.
+2. **USB Port 2 (Aux 5V Power Only):**
+   - Type-C power sink (with CC pulldowns) or dedicated bench 5 V input.
+   - Powers `CTRL_5V` / `CTRL_3V3` buck/LDO tree for bench firmware development without battery.
+   - Reverse-blocked to prevent backfeeding high-voltage buses.
+   - Firmware interlock permanently inhibits LM51772 switching while powered from Aux USB.
+
+## Test Points and Measurement Pads (DEC-031)
+
+To ensure safe, repeatable bench measurements without risk of probe slips or inductive lead artifacts:
+1. **High-Speed Switch Nodes:** `SW1` and `SW2` test pads with adjacent local `PGND` pads for low-inductance oscilloscope ground springs; `U14_GATE` and `SRC` test points.
+2. **Analog / Controller Diagnostics:** SMD loop / pad test points for `EN_UVLO`, `SS_ATRK`, `COMP`, `ILIMCOMP`, `VCC1`, `VCC2`, `FLT`, and `MODE`.
+3. **Power Rails & Shunts:** Dedicated Kelvin test points across R16 and R22, plus clip-friendly pads on `PV_IN_POS_FUSED`, `PV_IN_POS`, `V_out`, `BAT_BUS_POS`, `CHG_OUT_POS`, and `PWR_NEG`.
+4. **Digital / MCU Signals:** `BOOT0` (with 10 kOhm pull-down), `NRST`, `CTRL_EN_CHG`, `I2C1_SCL`, `I2C1_SDA`, `UART_TX`, `UART_RX`, `CTRL_3V3`, `CTRL_3V3A`, and `CTRL_5V`.
 
 ## Required Rev 1 Schematic Deltas
 
