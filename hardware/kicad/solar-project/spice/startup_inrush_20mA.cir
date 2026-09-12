@@ -1,0 +1,69 @@
+* Startup inrush model for Solar Project Rev0
+* Behavioral system-level model; not an LM51772 silicon macromodel.
+* Purpose: determine whether the PV source can charge the real capacitor bank.
+
+.param VPV_SET=6.49
+.param IPV_MAX=20m
+.param CIN=530u
+.param COUT=1400u
+.param LVAL=1u
+.param L_DCR=420m
+.param VOUT_SET=6.49
+.param TSS=1s
+.param EFF=0.80
+.param RPV_LEAK=10Meg
+.param RLOAD=1Meg
+
+* Current-limited PV source: 20 mA available to both CIN and converter.
+* The converter draws current from PV; when demand exceeds 20 mA, PV collapses.
+B_PV 0 PV I={IPV_MAX}
+R_PV_LEAK PV 0 {RPV_LEAK}
+CIN_EQ PV 0 {CIN} IC=0
+
+* Output capacitor bank and the manufactured-build inductor loss.
+L_MAIN SW VOUT_INT {LVAL} IC=0
+R_LMAIN VOUT_INT VOUT {L_DCR}
+COUT_EQ VOUT 0 {COUT} IC=0
+R_LOAD VOUT 0 {RLOAD}
+
+* Soft-start voltage target. TSS is intentionally parameterized because
+* the 33 nF capacitor requires the LM51772 model/datasheet charge current
+* to calculate the actual silicon ramp. The default one-second value is a
+* conservative startup target, not a proposed final Css value.
+B_SS SS 0 V={min(VOUT_SET, VOUT_SET*time/TSS)}
+
+* Required capacitor current for the soft-start ramp.
+B_I_CAP 0 I_CAP I={COUT*VOUT_SET/TSS}
+
+* Available output charging power from the current-limited PV source.
+* This abstraction includes converter efficiency and prevents ideal-source
+* behavior from hiding the supply current-limit problem.
+B_PAV 0 P_AV I={EFF*max(V(PV),0)*IPV_MAX}
+
+* Output charging current is limited by both soft-start and available power.
+B_CHARGE 0 VOUT I={u(V(SS)-V(VOUT))*min(COUT*VOUT_SET/TSS,V(P_AV)/max(V(VOUT),0.1))}
+
+* Corresponding converter input demand. This is the current drawn from PV.
+* A zero-volt source is inserted so ngspice can report i(V_IIN).
+V_IIN PV PV_CONV 0
+B_CONVERTER PV_CONV 0 I={u(V(SS)-V(VOUT))*max(0,V(VOUT)*min(COUT*VOUT_SET/TSS,V(P_AV)/max(V(VOUT),0.1))/max(EFF*max(V(PV),0.1),0.1))}
+
+* Keep the unused state nodes numerically defined.
+R_STATE1 I_CAP 0 1G
+R_STATE2 P_AV 0 1G
+R_STATE3 SS 0 1G
+
+.control
+set noaskquit
+tran 1m 2s uic
+set wr_singlescale
+set wr_vecnames
+wrdata startup_inrush_20mA.csv time v(PV) v(VOUT) v(SS) i(V_IIN)
+meas tran VOUT_1S FIND v(VOUT) AT=1s
+meas tran VOUT_END FIND v(VOUT) AT=2s
+meas tran VPV_MIN MIN v(PV) FROM=0 TO=2s
+meas tran IIN_MAX MAX i(V_IIN) FROM=0 TO=2s
+print VOUT_1S VOUT_END VPV_MIN IIN_MAX
+.endc
+
+.end
