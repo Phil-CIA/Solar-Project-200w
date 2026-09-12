@@ -1293,6 +1293,12 @@
           "label": "SNAPEDA_PN",
           "name": "SNAPEDA_PN",
           "show": false
+        },
+        {
+          "group_by": false,
+          "label": "PN",
+          "name": "PN",
+          "show": false
         }
       ],
       "filter_string": "",
@@ -1351,7 +1357,7 @@
         "uuid": "28299885-0f47-4c9d-af0f-f2db484b5c54"
       }
     ],
-    "used_designators": "C3,C8,C21,C30-31,C33-35,M1,TP6-11,R46",
+    "used_designators": "C3,C8,C21,C30-31,C33-35,M1,TP6-18,R46,R68-74,#FLG8,J6,Q7",
     "variants": []
   },
   "sheets": [
