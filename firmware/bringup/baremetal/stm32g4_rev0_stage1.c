@@ -48,7 +48,12 @@
 #define PROBE_MAGIC 0x53523030UL
 
 #define LM51772_ADDRESS 0x6AU
+#define LM51772_ILIM_THRESHOLD 0x0AU
+#define LM51772_VOUT_TARGET1_LSB 0x0CU
+#define LM51772_VOUT_TARGET1_MSB 0x0DU
+#define LM51772_USB_PD_STATUS_0 0x21U
 #define LM51772_STATUS_BYTE 0x78U
+#define LM51772_MFR_SPECIFIC_D8 0xD8U
 
 struct bringup_probe {
     uint32_t magic;
@@ -333,6 +338,8 @@ static void help(void)
     uart_line("  u6 probe     address-only probe of LM51772 at 0x6A");
     uart_line("  u6 probe repeat  send 16 address-only probes at 10 ms intervals");
     uart_line("  u6 status    read LM51772 STATUS_BYTE without clearing it");
+    uart_line("  u6 baseline  read approved LM51772 status/configuration bytes");
+    uart_line("  u6 screen    show approved LM51772 baseline on SSD1306");
     uart_line("  aht20        read temperature and humidity");
     uart_line("  oled test    initialize SSD1306 and draw checkerboard");
     uart_line("  clock HH:MM:SS  set dashboard time of day");
@@ -481,6 +488,52 @@ static bool lm51772_read_status(uint8_t *value)
     }
 
     return true;
+}
+
+static void lm51772_baseline(void)
+{
+    static const uint8_t registers[] = {
+        LM51772_USB_PD_STATUS_0,
+        LM51772_STATUS_BYTE,
+        LM51772_ILIM_THRESHOLD,
+        LM51772_VOUT_TARGET1_LSB,
+        LM51772_VOUT_TARGET1_MSB,
+        LM51772_MFR_SPECIFIC_D8
+    };
+    static const char *const names[] = {
+        "USB_PD_STATUS_0",
+        "STATUS_BYTE",
+        "ILIM_THRESHOLD",
+        "VOUT_TARGET1_LSB",
+        "VOUT_TARGET1_MSB",
+        "MFR_SPECIFIC_D8"
+    };
+
+    automatic_i2c_enabled = false;
+    gpio_high(GPIOB_BASE, PIN_6 | PIN_7);
+    uart_line("Automatic I2C traffic stopped");
+    uart_line("U6 read-only baseline start");
+
+    for (size_t index = 0U; index < sizeof(registers); index++) {
+        uint8_t value;
+
+        if (!i2c_read_register(LM51772_ADDRESS, registers[index], &value)) {
+            uart_write("U6 baseline failed at register 0x");
+            write_hex_byte(registers[index]);
+            uart_line("");
+            return;
+        }
+
+        uart_write("U6 READ 0x");
+        write_hex_byte(registers[index]);
+        uart_write(" ");
+        uart_write(names[index]);
+        uart_write("=0x");
+        write_hex_byte(value);
+        uart_write("\r\n");
+    }
+
+    uart_line("U6 read-only baseline complete");
 }
 
 static void lm51772_status(void)
@@ -740,6 +793,67 @@ static bool oled_dashboard(void)
     return true;
 }
 
+static bool oled_u6_screen(void)
+{
+    static const uint8_t address[] = {0x21U, 0x00U, 0x7FU, 0x22U, 0x00U, 0x07U};
+    static const char hex[] = "0123456789ABCDEF";
+    char line_status[] = "PD21=00 ST78=00";
+    char line_config[] = "IL0A=00 VO0C=00";
+    char line_target[] = "VO0D=00  READ";
+    uint8_t usb_pd_status;
+    uint8_t status_byte;
+    uint8_t ilim_threshold;
+    uint8_t vout_lsb;
+    uint8_t vout_msb;
+
+    automatic_i2c_enabled = false;
+    gpio_high(GPIOB_BASE, PIN_6 | PIN_7);
+    if (!i2c_read_register(LM51772_ADDRESS, LM51772_USB_PD_STATUS_0, &usb_pd_status) ||
+        !i2c_read_register(LM51772_ADDRESS, LM51772_STATUS_BYTE, &status_byte) ||
+        !i2c_read_register(LM51772_ADDRESS, LM51772_ILIM_THRESHOLD, &ilim_threshold) ||
+        !i2c_read_register(LM51772_ADDRESS, LM51772_VOUT_TARGET1_LSB, &vout_lsb) ||
+        !i2c_read_register(LM51772_ADDRESS, LM51772_VOUT_TARGET1_MSB, &vout_msb)) {
+        oled_clear();
+        oled_text(0U, 0U, "U6 READ FAILED");
+        oled_text(0U, 14U, "CHECK UART/PV");
+        if (!ssd1306_write(0x00U, address, sizeof(address))) {
+            return false;
+        }
+        for (size_t offset = 0U; offset < sizeof(oled_buffer); offset += 16U) {
+            if (!ssd1306_write(0x40U, &oled_buffer[offset], 16U)) {
+                return false;
+            }
+        }
+        return true;
+    }
+
+    line_status[5] = hex[(usb_pd_status >> 4U) & 0x0FU];
+    line_status[6] = hex[usb_pd_status & 0x0FU];
+    line_status[13] = hex[(status_byte >> 4U) & 0x0FU];
+    line_status[14] = hex[status_byte & 0x0FU];
+    line_config[5] = hex[(ilim_threshold >> 4U) & 0x0FU];
+    line_config[6] = hex[ilim_threshold & 0x0FU];
+    line_config[13] = hex[(vout_lsb >> 4U) & 0x0FU];
+    line_config[14] = hex[vout_lsb & 0x0FU];
+    line_target[5] = hex[(vout_msb >> 4U) & 0x0FU];
+    line_target[6] = hex[vout_msb & 0x0FU];
+
+    oled_clear();
+    oled_text(0U, 0U, "U6 READ ONLY");
+    oled_text(0U, 14U, line_status);
+    oled_text(0U, 28U, line_config);
+    oled_text(0U, 42U, line_target);
+    if (!ssd1306_write(0x00U, address, sizeof(address))) {
+        return false;
+    }
+    for (size_t offset = 0U; offset < sizeof(oled_buffer); offset += 16U) {
+        if (!ssd1306_write(0x40U, &oled_buffer[offset], 16U)) {
+            return false;
+        }
+    }
+    return true;
+}
+
 static void ssd1306_test(void)
 {
     static const uint8_t address[] = {0x21U, 0x00U, 0x7FU, 0x22U, 0x00U, 0x07U};
@@ -913,6 +1027,12 @@ static void command(const char *text)
     } else if (streq(text, "u6 status")) {
         g_probe.last_command = 0x55365354UL;
         lm51772_status();
+    } else if (streq(text, "u6 baseline")) {
+        g_probe.last_command = 0x5536424CUL;
+        lm51772_baseline();
+    } else if (streq(text, "u6 screen")) {
+        g_probe.last_command = 0x55365343UL;
+        uart_line(oled_u6_screen() ? "U6 SSD1306 screen updated" : "U6 SSD1306 screen failed");
     } else if (streq(text, "aht20")) {
         g_probe.last_command = 0x41485432UL;
         aht20_read();
