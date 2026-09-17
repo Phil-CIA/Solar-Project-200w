@@ -37,8 +37,7 @@ Responsibilities:
 
 Boundary assumptions:
 - Final panel wiring strategy (series vs parallel) is deferred (DEC-004).
-- Provisional nominal/qualified PV operating point is `20 V` for Rev 1 converter sizing and normal MPPT operation (DEC-030).
-- LM51772 hardware UVLO remains approximately `6 V` as an independent protection boundary; it is not the normal MPPT operating point.
+- Input voltage/current envelope will be finalized when panel model is locked.
 
 Requirement mapping:
 - REQ-PV-001, REQ-PV-002, REQ-SAF-004.
@@ -51,7 +50,6 @@ Responsibilities:
 - Target 8A to 10A nominal battery charge current with an approximately 12A hardware protection ceiling.
 - Use one LM51772 conversion stage with battery-qualified, source-aware startup.
 - Coordinate soft-start, input-voltage regulation, and hardware UVLO so demand is reduced before source collapse.
-- Hold the normal source-protection floor above hardware UVLO; use `20 V` as the provisional nominal/qualified operating reference until the panel model is locked.
 - Use only the output capacitance justified by stability and transient validation.
 
 Boundary assumptions:
@@ -75,12 +73,14 @@ Responsibilities:
 - Host 12.8V LiFePO4 storage domain with BMS-constrained operating envelope.
 - Require at least 20A BMS charge-current capability so normal charger current limiting remains below the BMS trip boundary.
 - Provide primary battery fuse near battery positive terminal.
+- Provide an independent battery-pack temperature input (`J8`, I2C bus tap for a remote sensor module) so charge-cutoff logic does not rely solely on BMS-reported temperature (DEC-061).
 
 Boundary assumptions:
 - Continuous/peak BMS limits pending closure of Q-001.
+- No BMS communication link (UART/CAN/SMBus or discrete permissive/fault input) exists in Rev 1; this is an explicit scope boundary, deferred to Rev 2 (DEC-062), not an unresolved gap.
 
 Requirement mapping:
-- REQ-BAT-001, REQ-BAT-002, REQ-SAF-001.
+- REQ-BAT-001, REQ-BAT-002, REQ-BAT-003, REQ-SAF-001.
 
 ### 3.4 DC Distribution Stage
 
@@ -135,13 +135,14 @@ Minimum strategy for Phase 0 architecture allocation:
 | IF-CHG-BAT-01 | Charger -> Battery | Power | Charge current capability, charge profile limits | Depends on DEC-003/DEC-005 |
 | IF-BAT-DIST-01 | Battery -> Distribution | Power | Main fuse boundary, branch protection | Depends on Q-001 |
 | IF-DIST-INV-01 | Distribution -> Inverter | Power | High current DC feed, startup current behavior | Inverter phase detail later |
-| IF-SENSE-CTRL-01 | Plant -> Control | Telemetry | PV V/I, battery V/I, thermal channels | Baseline for REQ-TEL-002 |
+| IF-SENSE-CTRL-01 | Plant -> Control | Telemetry | PV V/I, battery V/I, thermal channels (board-ambient `U7`, battery-pack via `J8`/I2C) | Baseline for REQ-TEL-002; DEC-061 |
 | IF-CTRL-LOG-01 | Control -> Host | Telemetry | Local serial logs for bring-up and diagnostics | Defined by DEC-006 |
 
 ## 6. Deferred Architectural Decisions
 
 - Q-001: Confirm BMS current envelope.
 - Q-002: Confirm instrumentation capability for validation depth.
+- BMS communication link (UART/CAN/SMBus or discrete permissive/fault input): deferred to Rev 2 (DEC-062).
 
 ## 7. Phase 0 Architecture Exit Criteria
 

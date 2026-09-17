@@ -1,3 +1,91 @@
 # Datasheet Manifest
 # Managed according to docs/datasheets/datasheet-sop.md
-datasheets: []
+datasheets:
+  - id: ti-lm74502h
+    vendor: Texas Instruments
+    path: hardware/kicad/solar-project/lm74502.pdf
+    revision: "SNOSDESA, revised May 2022 (confirmed 2026-09-16 via browser PDF viewer screenshots)"
+    source_url: https://www.ti.com/lit/ds/symlink/lm74502.pdf
+    sha256: 4BADD940619090052B7260A88D7E32788F201D67CE97913B059AE6B1ED2D8BAD
+    last_verified: "2026-09-17"
+    notes: Confirmed text-extractable with `pypdf` using `extraction_mode="layout"` (2026-09-17) - the plain-text extraction mode used on 2026-09-16 lost column alignment on multi-row tables (e.g. merged the base-LM74502 vs. LM74502H GATE peak-source-current rows), so prefer `layout` mode and verify against the base-vs-H variant split before trusting a pulled value. Confirmed GATE to SRC abs max 0-15V, VCAP to VS abs max -0.3-15V, VS operating 4-60V, LM74502H GATE peak source current 3-11mA (NOT the base-part 40/60/77uA row), GATE peak sink current 2370mA (~2.37A) via 0.4-2 Ohm discharge switch, charge pump turn-on/off voltage 10.3-13V/11-13.9V, and TI's own text stating the charge pump drives the gate to "approximately 13V" by design.
+  - id: ichjc-1sma4728a-thru-4764a
+    vendor: Zhuhai Hongjiacheng Technology (ICHJC)
+    path: hardware/kicad/solar-project/1sma4742a-zener-series.pdf
+    revision: "Rev1.0 / Rev:2.0 (footer shows both markings; family datasheet covers 1SMA4728A-1SMA4764A)"
+    source_url: https://datasheet.lcsc.com/datasheet/pdf/a72ce228d184d0b9907d60e0119da8a3.pdf?productCode=C19077480
+    sha256: A029B6256B4D07A89D62C6BBBA43187942035AEC4D41AEC14BBDC52C7321D108
+    last_verified: "2026-09-17"
+    notes: Covers D1/D5 `1SMA4742A`. Text-extracted successfully with pypdf. Confirmed 1SMA4742A row (p.2/4) - Vz 11.4/12.0/12.6 V (min/nom/max), IZT=21 mA, ZZT=9.0 Ohm @ IZT, IR=5 uA @ VR=9V, IZM=79 mA. Pd=1000 mW @ Tc=75C. No zener-mode pulse-power/surge-energy (IFSM) rating is given anywhere in this datasheet - only steady-state Pd and a forward-direction (non-zener) pulse curve - so clamp pulse-energy stress must still be confirmed by bench measurement (U14-3), not assumed safe from this datasheet alone.
+  - id: panasonic-20svpf560m
+    vendor: Panasonic
+    path: hardware/kicad/solar-project/c264031-panasonic-20svpf560m.pdf
+    revision: unknown (2-page LCSC-hosted reseller copy; no revision code found in extracted text)
+    source_url: https://datasheet.lcsc.com/datasheet/pdf/b08e600c32ed0241240ae991496ab4b8.pdf?productCode=C264031
+    sha256: A75D3CEA387F93975C8E6D63B1AB0797C7590FCE5AE3F813F3F9AA897A1797D7
+    last_verified: "2026-09-17"
+    notes: Covers C18 (560uF output bulk cap, `CP_Elec_10x12.6`). PDF required `cryptography` package for pypdf to decrypt (installed 2026-09-17). Text extraction is GARBLED for the CJK-heavy tables (embedded font has no usable ToUnicode CMap) - only isolated Latin/numeric fragments are reliable (e.g. voltage-rating column showing 16-25V/16-50V bands by case code). Use the LCSC parametric summary instead for confirmed values - Voltage Rating 20V, ESR 12 mOhm, Ripple Current 270mA@120Hz, Lifetime 5000hrs@105C, -55 to 105C. The 120Hz ripple-current rating's high-frequency (600kHz switching) multiplier is NOT confirmed from this file - this is an open item (see DEC-039 / rev-one-component-derating-review.md). Get a clean-text copy (official Panasonic site or a different reseller mirror) before closing the output-cap-bank ripple-current row.
+  - id: jierr-ph25v100m6x7
+    vendor: JIERR (Zhuhai Jieerrui / similar)
+    path: hardware/kicad/solar-project/c49232871-jierr-ph25v100m6x7.pdf
+    revision: unknown (no revision code found in extracted text; 4-page PH-series family datasheet)
+    source_url: https://datasheet.lcsc.com/datasheet/pdf/04d28d4ff71d04901718f0483cfeb046.pdf?productCode=C49232871
+    sha256: 0FCB9B37C2D89113F983E2EF43EC2573E4D1DC81B4782AFE1CE45596925B4070
+    last_verified: "2026-09-17"
+    notes: Covers C3 (100uF output bulk cap, `CP_Radial_D6.3mm_P2.50mm`). Text-extracted cleanly with pypdf `extraction_mode="layout"`. Confirmed exact part row `PH25V100M6X7` (p.3/4) - ESR=30 mOhm @100kHz (CORRECTS the LCSC parametric-page value of 16 mOhm, which does not match the manufacturer's own table for this exact part), Rated Ripple Current=1100 mA @125C/100kHz, Leakage=500uA. Ripple-current-vs-frequency multiplier table (p.2/4) - 120Hz-1kHz: 0.05x, 1kHz-10kHz: 0.3x, 10kHz-100kHz: 0.7x, 100kHz-300kHz: 1.0x; the 1100mA rating is already quoted at the 100kHz (1.0x) reference point, so it should be a reasonable (not datasheet-proven above 300kHz) basis for our approximately 600kHz switching frequency.
+  - id: hongjiacheng-smbj-series
+    vendor: Zhuhai Hongjiacheng Technology
+    path: hardware/kicad/solar-project/c19077593-hongjiacheng-smbj60ca.pdf
+    revision: unknown (no revision code found in extracted text; SMB/DO-214AA family datasheet covering SMBJ3.3A/CA through SMBJ440A/CA)
+    source_url: https://wmsc.lcsc.com/wmsc/upload/file/pdf/v2/lcsc/2312280935_hongjiacheng-SMBJ60CA_C19077593.pdf
+    sha256: 3A3B185EE9F21932D5B2C70F5EB21F5F680C3BEF1C2E5D2741A7B849BF1D2E39
+    last_verified: "2026-09-17"
+    notes: Covers D2 (installed part). Text-extracted cleanly with pypdf `extraction_mode="layout"`. **DEC-057 correction:** the p.3 family table confirms the installed `SMBJ60CA` (LCSC `C19077593`) row is `Vrwm`=60V, `Vbr` min/max=66.7/73.7V, `VC`(clamp)=96.8V @ `Ipp`=6.20A - this CORRECTS DEC-042's originally-cited numbers (Vrwm=64V, Vbr min=78.6V, VC=103V @ Ipp=5.83A), which actually match the adjacent `SMBJ64A`/`SMBJ64CA` row one line below in this same table - an apparent row-transcription error in the earlier session, not a real part-identity mismatch (the BOM's own LCSC description field, "96.8V 73.7V ... 60V", already matched the correct SMBJ60CA row all along). Also confirms the `SMBJ48A`/`SMBJ48CA` row (DEC-057 replacement candidate): `Vrwm`=48V, `Vbr` min/max=53.3/58.9V, `VC`=77.4V @ `Ipp`=7.75A.
+  - id: metallions-mmpc1206-3r3mt
+    vendor: MetalLions
+    path: hardware/kicad/solar-project/c49308530-metallions-mmpc1206-3r3mt.pdf
+    revision: unknown (no revision code found in extracted text; 7-page MMPC1206-series family datasheet)
+    source_url: https://datasheet.lcsc.com/datasheet/pdf/79ce852349ffeae3ab118540ccdc51c2.pdf?productCode=C49308530
+    sha256: B7364F2D812ACB8EAF07DB45271301540898DBE92C0B7B2F81E4277FA61DF443
+    last_verified: "2026-09-17"
+    notes: Covers L2 power inductor. Text-extracted cleanly with pypdf `extraction_mode="layout"`. Confirmed exact part row `MMPC1206-3R3MT` (p.2/7) - Inductance 3.30uH +/-20%, Irms(typ)=17.0A, Isat(typ)=35.0A, DCR typ=5.80 mOhm / max=7.10 mOhm. Operating temp -40 to +125C including self-temp rise. Irms/Isat are listed as "Typ" only - no guaranteed min/max column - treat as a nominal reference, not a guaranteed floor, until confirmed by bench thermal-rise measurement. The "Typical Performance Curves" (including any core-loss-vs-frequency data) are embedded raster images, not extractable as text - core loss at the ~600kHz switching frequency is NOT available from this extraction.
+  - id: hs-semi-hsba0119
+    vendor: hs-semi
+    path: hardware/kicad/solar-project/c53244070-hssemi-hsba0119.pdf
+    revision: "Ver3.0 (footer marking)"
+    source_url: https://www.lcsc.com/datasheet/C53244070.pdf
+    sha256: F8912929E0F0C0CFDCDB07981B39A327E6F366993F1B01843A031A6F2D59D3CD
+    last_verified: "2026-09-17"
+    notes: Covers Q4 (PV-side ideal-diode/input-enable PMOS switch, `PRPAK-8(5x6)`). Text-extracted cleanly via `fetch_webpage`. Confirmed VDS=-100V, VGS=+/-20V, ID@Tc=25C=-33A, ID@Tc=100C=-22A, IDM(pulsed)=-135A, EAS(single-pulse avalanche, 100% guaranteed)=78mJ, PD@Tc=25C=68W, RthJC=1.8C/W, RDS(on)typ=23mOhm. Used in DEC-041 (Q4/D1 PV ideal-diode switch margin review).
+  - id: infineon-bsc040n10ns5
+    vendor: Infineon
+    path: hardware/kicad/solar-project/c534334-infineon-bsc040n10ns5.pdf
+    revision: "Rev.2.3, 2019-10-31"
+    source_url: https://datasheet.lcsc.com/datasheet/pdf/1a2627ab2d51cc3fd2af46427da2a524.pdf?productCode=C534334
+    sha256: D947DBA74D9075548AB81836AF9755F38651C38B83EBFC907883773ACA26A151
+    last_verified: "2026-09-17"
+    notes: Covers Q5/Q6 output switch/reverse-flow pair (`TDSON-8-1`/`SuperSO8`). Text-extracted with pypdf `extraction_mode="layout"` (contains harmless "Multiple definitions in dictionary" warnings and some rotated-text pages, but the electrical-characteristics table on p.4 extracted cleanly). Confirmed VDS=100V, RDS(on)max=4.0mOhm, ID=100A, Qg(0-10V)=58nC, Ciss=4100(typ)/5300(max)pF, Coss=630(typ)/820(max)pF, Crss=28(typ)/49(max)pF (all @VGS=0V, VDS=50V, f=1MHz). Ciss used in DEC-042 (D2/C52 finding) to check the U14 LM74502H VCAP charge-pump capacitor (C52) sizing against TI's own `CVCAP >= 10 x Ciss` guidance for the shared Q5+Q6 gate load.
+  - id: shengyang-sh476m100f1150
+    vendor: SHENGYANG
+    path: hardware/kicad/solar-project/c44606514-shengyang-sh476m100f1150.pdf
+    revision: unknown (no revision code found in extracted text; 2-page family datasheet, table is a dense generic part-number list)
+    source_url: https://datasheet.lcsc.com/datasheet/pdf/0bb146e1fde052e1968bd1c7e524714b.pdf?productCode=C44606514
+    sha256: 0E2F0A0A2B0FF37680800C71CA097380D8674E378D7600FFB5AC74984ED2DF5B
+    last_verified: "2026-09-17"
+    notes: Covers C19/C21/C30/C31 (PV-side input bulk aluminum-polymer capacitors, `C_Radial_D8.0mm_H7.0mm_P3.50mm`/`CP_Radial_D8.0mm_P3.50mm`). Text-extracted cleanly with pypdf `extraction_mode="layout"`, though the table is CJK-labeled (column headers WV/CAP/LC/DF/ESR/SIZE/纹波=ripple). Confirmed exact part row `SH476M100F1150` - WV(rated voltage)=100V, CAP=47uF, ESR=28 mOhm, Ripple=3800mA (3.8A) @100kHz (matches the LCSC parametric-page summary). Used in DEC-043 to correct a prior session's assumed 2.6A/cap ripple-current figure (actual manufacturer rating is higher/more favorable at 3.8A/cap).
+  - id: yezhan-dslr-shunt
+    vendor: Shenzhen Yezhan Electronics
+    path: hardware/kicad/solar-project/c41382682-yezhan-dslr-shunt.pdf
+    revision: unknown (no revision code found in extracted text; 9-page DSLR-series family datasheet, bilingual CN/EN)
+    source_url: https://datasheet.lcsc.com/datasheet/pdf/fe6999f98bcef072d9153478eaf1d170.pdf?productCode=C41382682
+    sha256: AE45C4CB169BFAEBC0CBFA50C48925F92E6B6F870F9477BA733DCD2BEA8620E6
+    last_verified: "2026-09-17"
+    notes: Covers R16/R22 (0.001 ohm 4-terminal Kelvin shunts, `R_Shunt_Vishay_WSK2512_6332Metric_T2.66mm` footprint - actual manufacturer is Yezhan, "Vishay" in the footprint name is package-family naming only, not the fitted brand). Text-extracted cleanly with pypdf `extraction_mode="layout"`. Confirmed 2512-size, 1mOhm row is the Karma-alloy (`K`) variant (`M` alloy only offers 0.3/0.5mOhm at this size): TCR=+/-100ppm/C, Rthi=10C/W, P70C(rated power at 70C ambient)=5W, tolerance options +/-5/2/1/0.5%. A power-derating-vs-ambient-temperature curve and a pulse-power-vs-time curve both exist (p.4) but are graphical only (no extractable numeric pulse-energy value for our exact `K-3-1F` variant - adjacent curves for `K-3-2F`/`K-3-5F`/`M-3-1F`/`M-3-0.3F` are labeled, ours is not). Used in DEC-044 (R16 output shunt thermal margin).
+  - id: renogy-rsp100dct
+    vendor: Renogy
+    path: N/A (Amazon product listing, not a PDF - no stable archivable file; source_url is the live citation)
+    revision: "ASIN B0H4Z6ZJ2D, accessed 2026-09-17"
+    source_url: https://www.amazon.com/dp/B0H4Z6ZJ2D
+    sha256: N/A
+    last_verified: "2026-09-17"
+    notes: Covers the PV panel (model `RSP100DCT`, "Renogy Bifacial Solar Panel 100W N-Type, 16BB 25% High-Efficiency"), 2x in series per the system baseline (DEC-003/DEC-004). Phil supplied a screenshot of the Specifications table (2026-09-17, DEC-049) confirming: P=100W, Vmp=23.6V, Imp=4.24A, **Voc=28.5V**, Isc=4.45A, max system voltage=600VDC, max series fuse=25A, operating temp range -40C to +85C. This CORRECTS an earlier session's wrong figures (Voc=22.79V) which were misattributed to a different/generic "Renogy Amazon listing" without confirming the exact ASIN/model - always cite the exact product page URL and model, not just "Renogy Amazon page." Fetched the live page directly (2026-09-17) and additionally found a temperature coefficient of **-0.29%/C** (labeled as the panel's power tempco) in the marketing bullet text, used in DEC-050 to compute a non-arbitrary cold-Voc estimate. No formal manufacturer PDF datasheet was found/linked from this listing - this is a web-page citation, not an archived PDF; the `path`/`sha256` fields are N/A for that reason, which deviates from the normal SOP `path` requirement and should be revisited if a formal Renogy PDF datasheet for `RSP100DCT` is later located.

@@ -2,8 +2,8 @@
 
 **Project:** Solar Project 200W MPPT & Battery-First Power Controller  
 **Hardware Revision:** Rev 1.0  
-**Status:** Synchronized with `Solar Project Rev1.kicad_sch` and `Solar Project Rev1.net`  
-**Total Component Count:** 172 Parts (163 with verified LCSC / JLCPCB Part Numbers)  
+**Status:** Synchronized with `Solar Project Rev1.kicad_sch` and `Solar Project Rev1.net`; C7, C52, and D2 catalog numbers confirmed 2026-09-17 (DEC-058) - C7=YAGEO CC1206KKX7R0BB225 (`C577211`, 2.2uF/100V/X7R/1206), C52=Samsung CL21B224KBFNNNE (`C5378`, 220nF/50V/X7R/0805), D2=Littelfuse SMBJ48CA (`C151264`, Vrwm=48V/VC=77.4V@Ipp=7.8A/DO-214AA) - all three datasheet-verified as exact matches to the DEC-055/056/057 targets. New connector `J8` added 2026-09-17 (DEC-061, Track C battery temperature sensing) - remote I2C sensor part number still open.  
+**Total Component Count:** 173 Parts (161 with verified LCSC / JLCPCB Part Numbers, 3 newly split/added TBD)  
 
 ---
 
@@ -12,10 +12,12 @@
 | Item | Designator | Qty | Value | Package / Footprint | LCSC Part # | Description |
 | :---: | :--- | :---: | :--- | :--- | :--- | :--- |
 | 1 | `10mm1, 10mm2` | 2 |  | `10mm LOGO` | — |  |
-| 2 | `C1, C8, C12, C22, C28, C33, C44, C45, C46, C47, C48, C51, C52, C54, C57` | 15 | 100nF | `C_0805` | **C28233** | 100V 100nF X7R ±10% 0805 Multilayer Ceramic Capacitors MLCC - SMD/SMT ROHS |
+| 2 | `C1, C8, C12, C22, C28, C33, C44, C45, C46, C47, C48, C51, C54, C57` | 14 | 100nF | `C_0805` | **C28233** | 100V 100nF X7R ±10% 0805 Multilayer Ceramic Capacitors MLCC - SMD/SMT ROHS |
+| 2a | `C52` | 1 | 220nF, 50V, X7R | `C_0805` | **C5378** | Samsung Electro-Mechanics CL21B224KBFNNNE. Bump from 100nF - LM74502H's own `CVCAP>=10x Ciss` guidance needs ~106nF at Q5/Q6's worst-case (max) `Ciss` for the shared gate load; 100nF clears typ-Ciss with ~22% headroom but falls ~6% short of max-Ciss (DEC-042). Voltage rating comfortable (chip-side VCAP-VS abs max is 15V) - confirmed 2026-09-17 (DEC-058) |
 | 3 | `C2, C55, C56` | 3 | 1uF | `C_0805` | **C28323** | 50V 1uF X7R ±10% 0805 Multilayer Ceramic Capacitors MLCC - SMD/SMT ROHS |
 | 4 | `C3` | 1 | 100uF | `CP_Radial_D6.3mm_P2.50mm` | **C49232871** | Unpolarized capacitor |
-| 5 | `C7, C15, C34, C35` | 4 | 2.2uF | `C_1206` | **C50254** | 50V 2.2uF X7R ±10% 1206 Multilayer Ceramic Capacitors MLCC - SMD/SMT ROHS |
+| 5 | `C15, C34, C35` | 3 | 2.2uF | `C_1206` | **C50254** | 50V 2.2uF X7R ±10% 1206 Multilayer Ceramic Capacitors MLCC - SMD/SMT ROHS |
+| 5a | `C7` | 1 | 2.2uF, 100V, X7R | `C_1206` | **C577211** | YAGEO CC1206KKX7R0BB225. 100V-rated replacement for the 50V `C50254` part - C7 sits on `PV_IN_POS`, whose real operating voltage (up to 57V at STC under 2S, or 28.5V/~34V cold under the DEC-051 2P baseline) exceeds the 50V rating fitted here (DEC-049). Split out of the shared 50V line; confirmed 2026-09-17 (DEC-058) |
 | 6 | `C9, C13` | 2 | 2.2nF | `C_0805` | **C28260** | 50V 2.2nF C0G ±5% 0805 Multilayer Ceramic Capacitors MLCC - SMD/SMT ROHS |
 | 7 | `C10` | 1 | 47pF | `C_0805` | **C14857** | 50V 47pF C0G ±5% 0805 Multilayer Ceramic Capacitors MLCC - SMD/SMT ROHS |
 | 8 | `C14, C53` | 2 | 100uF | `C_1206` | **C15008** | 6.3V 100uF X5R ±20% 1206 Multilayer Ceramic Capacitors MLCC - SMD/SMT ROHS |
@@ -30,7 +32,7 @@
 | 17 | `C31` | 1 | 47uF | `CP_Radial_D8.0mm_P3.50mm` | **C44606514** | Unpolarized capacitor |
 | 18 | `C49, C50` | 2 | 33pF | `C_0805` | **C1798** | 50V 33pF NP0 ±5% 0805 Multilayer Ceramic Capacitors MLCC - SMD/SMT ROHS |
 | 19 | `D1, D5` | 2 | 1SMA4742A | `D_DO-214AC(SMA)` | **C19077480** | Independent Type 11.4V~12.6V 1W 12V SMA(DO-214AC) Zener Diodes ROHS |
-| 20 | `D2` | 1 | SMBJ60CA | `D_SMB` | **C19077593** | 6.2A 600W 96.8V 73.7V Bidirectional 60V SMB ESD and Surge Protection (TVS/ESD) ROHS |
+| 20 | `D2` | 1 | SMBJ48CA (replaces `SMBJ60CA`) | `D_SMB` | **C151264** | Littelfuse SMBJ48CA. 100V-VDS-margin-corrected TVS: `Vrwm`=48V, `Vbr`=53.3-58.9V, `VC`(clamp)=77.4V @ `Ipp`=7.8A, DO-214AA - replaces the installed `SMBJ60CA` (`Vrwm`=60V, `VC`=96.8V @ `Ipp`=6.20A, only ~3.2% clamp margin vs Q4's 100V VDS) for more comfortable clamp-voltage margin; confirmed 2026-09-17 (DEC-058) |
 | 21 | `D3` | 1 | USBLC6-2SC6 | `SOT-23-6` | **C7519** | Very low capacitance ESD protection diode, 2 data-line, SOT-23-6 |
 | 22 | `D4, D6, D7, D10` | 4 | 1N5819WS | `D_SOD-323` | **C191023** | 40V 600mV@1A 1A SOD-323 Schottky Diodes ROHS |
 | 23 | `D8` | 1 | WS2812B | `LED-SMD_4P-L1.6-W1.5_XL-1615RGBC-WS2812B` | **C5349954** | 1615 RGB LEDs(Built-in IC) ROHS |
@@ -42,6 +44,7 @@
 | 29 | `J4` | 1 | Conn_01x04 | `PinHeader_1x04_P2.54mm_Vertical_SMD_Pin1Right` | **C41417361** | Generic connector, single row, 01x04, script generated (kicad-library-utils/schlib/autogen/connector/) |
 | 30 | `J5` | 1 | Conn_01x03_Socket | `PinHeader_1x03_P2.54mm_Vertical` | **C2937625** | Generic connector, single row, 01x03, script generated |
 | 31 | `J6` | 1 | 20021121-00010C4LF | `PinHeader_2x5_P1.27mm` | — |  |
+| 31a | `J8` | 1 | Conn_01x04 | `PinHeader_1x04_P2.54mm_Vertical` | — | DEC-061: new remote battery-pack I2C temperature-sensor probe header, taps existing `I2C CLK`/`I2C DATA`/`CTRL_3V3`/`PWR_NEG` nets (pin1=`I2C CLK`, pin2=`PWR_NEG`, pin3=`CTRL_3V3`, pin4=`I2C DATA`). Exact remote sensor module part/address and mating cable/connector still open |
 | 32 | `L2` | 1 | L | `L_APV_APH1240` | **C49308530** | Inductor |
 | 33 | `L3` | 1 | L | `L_KOHERelec_MDA7030` | **C49333024** | Inductor |
 | 34 | `M1, M2, M3, M4` | 4 | CSD18540Q5B | `TDSON-8-1` | **C86513** | 100A Id, 60V Vds, NexFET N-Channel Power MOSFET, 2.2mOhm Ron, 41nC Qg(typ), SON8 5x6mm |
@@ -71,9 +74,9 @@
 | 58 | `R25` | 1 | 5.62k | `R_0805` | **C2933470** | Resistor  RES 5.62kΩ ±1% 125mW 0805 |
 | 59 | `R28` | 1 | 51.7k | `R_0805` | **C119851** | Resistor |
 | 60 | `R29` | 1 | 20.5k | `R_0805` | **C119842** | Resistor |
-| 61 | `R30` | 1 | 40.2k | `R_0805` | **C119848** | Resistor |
+| 61 | `R30` | 1 | 0Ω | `R_0805` | **C17888** | Resistor - CDC pin grounded to disable cable-drop-compensation/current-monitor feature for bring-up (DEC-060); consolidated into row 63's 0Ω group |
 | 62 | `R31` | 1 | 2.43k | `R_0805` | **C119853** | Resistor |
-| 63 | `R33, R49, R63, R64` | 4 | 0Ω | `R_0805` | **C17888** | 125mW Thick Film Resistors 150V ±800ppm/°C ±1% 0Ω 0805 Chip Resistor - Surface Mount ROHS |
+| 63 | `R30, R33, R49, R63, R64` | 5 | 0Ω | `R_0805` | **C17888** | 125mW Thick Film Resistors 150V ±800ppm/°C ±1% 0Ω 0805 Chip Resistor - Surface Mount ROHS |
 | 64 | `R35` | 1 | 180kΩ | `R_0805` | **C17497** | 125mW Thick Film Resistors 150V ±100ppm/°C ±1% 180kΩ 0805 Chip Resistor - Surface Mount ROHS |
 | 65 | `R37, R66` | 2 | 2.2MΩ | `R_0805` | **C17539** | 125mW Thick Film Resistors 150V ±100ppm/°C ±1% 2.2MΩ 0805 Chip Resistor - Surface Mount ROHS |
 | 66 | `R42, R52` | 2 | 1kΩ | `R_0805` | **C17513** | 125mW Thick Film Resistors 150V ±100ppm/°C ±1% 1kΩ 0805 Chip Resistor - Surface Mount ROHS |

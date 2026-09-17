@@ -15,7 +15,6 @@ Each requirement includes:
 ## 2. System Baseline
 
 - PV input compatibility: existing 2x100W series array, with harvested power limited by the charger.
-- PV operating-point baseline: use `20 V` as the provisional nominal/qualified minimum PV operating point for converter sizing and normal MPPT operation; this is not the hardware UVLO threshold.
 - Battery class: 12.8V LiFePO4 (4S), 40Ah nominal.
 - Charger output rating: 125W continuous, 150W maximum operating power.
 - Charge-current target: 8A to 10A nominal, with an approximately 12A hardware protection ceiling.
@@ -28,7 +27,6 @@ Each requirement includes:
 |---|---|---|---|---|
 | REQ-PV-001 | Charger input hardware shall tolerate the connected PV array while control limits harvested power. | Support the existing 2x100W series array `Voc`/`Isc` envelope; limit maximum PV operating power to 150W. | Panel cold-`Voc`/`Isc` review + protection derating + power-limit test. | DEC-023, DEC-024, DEC-028 |
 | REQ-PV-002 | PV operating window shall include module maximum power region during normal conditions. | PV MPP tracking region shall be documented and covered by charger input range. | Architecture and charger input-range review against selected panel datasheets. | Concept + DEC-003/DEC-004 |
-| REQ-PV-003 | Normal MPPT operation shall remain above the source-protection floor. | Use `20 V` as the provisional nominal/qualified PV operating point; progressively reduce demand below this region and stop before source collapse. Retain approximately `6 V` LM51772 hardware UVLO as an independent last-resort protection boundary, not as the normal operating target. | PV source sweep with input-voltage regulation, backoff, stop, and restart hysteresis capture. | DEC-030 |
 | REQ-CHG-001 | Charger shall deliver 125W continuously at the defined thermal design point. | 125W continuous output without thermal or protection shutdown. | Rated-power thermal soak and component derating review. | DEC-023, DEC-024 |
 | REQ-CHG-002 | Charger shall limit maximum operating power and charge current. | 150W maximum PV operating power; 8A to 10A nominal charge target; approximately 12A hardware protection ceiling pending tolerance analysis. | Power/current limit tests across battery voltage range + protection tolerance analysis. | DEC-023, DEC-027, DEC-028 |
 | REQ-CHG-003 | Expected charge current shall be documented across the battery range. | At 150W input and 93% assumed efficiency: approximately 9.6A at 14.6V and 10.9A at 12.8V; commanded current remains within configured limits. | Calculation plus bench comparison using measured efficiency. | DEC-023, DEC-028 |
@@ -36,6 +34,7 @@ Each requirement includes:
 | REQ-CHG-005 | Rev 1 output capacitance shall be justified by converter stability and transient requirements. | Do not carry the Rev 0 approximately 1.1mF to 1.2mF bank forward without analysis and measurement. | Loop/stability analysis + startup and load-transient tests using fitted capacitance and ESR. | DEC-024, DEC-025 |
 | REQ-BAT-001 | Battery nominal chemistry and stack shall remain LiFePO4 4S for Phase 0/1 planning. | 12.8V nominal, 40Ah class. | BOM and requirements consistency check. | Concept baseline |
 | REQ-BAT-002 | Battery charge/discharge operational limits shall be constrained by the selected BMS datasheet. | BMS charge-current capability shall be at least 20A; continuous and peak charge/discharge limits shall be captured before hardware lock. | Datasheet extraction checklist + charger/BMS coordination review. | Q-001 + DEC-023 + DEC-025 |
+| REQ-BAT-003 | Rev 1 shall not implement a BMS communication link (UART/CAN/SMBus or a discrete permissive/fault input); charge/discharge coordination with the pack relies solely on the current-capability assumption in REQ-BAT-002. | No BMS-side comms or fault-signal wiring exists in Rev 1; feature explicitly deferred, not silently missing. | Requirements/architecture text review against the as-built schematic. | DEC-062 |
 | REQ-INV-001 | Inverter power envelope shall target 300W continuous output class. | 300W continuous target at defined ambient and cooling assumptions. | Architecture power budget and thermal assumption review. | Concept baseline |
 | REQ-INV-002 | Inverter input current expectation shall be documented for 300W target operation. | I_in estimate and design margin documented at battery voltage range. | Calculation worksheet with efficiency assumption. | Concept baseline |
 
@@ -44,7 +43,7 @@ Each requirement includes:
 | ID | Requirement | Target / Limit | Verification Method | Source |
 |---|---|---|---|---|
 | REQ-TEL-001 | Initial telemetry baseline shall support local serial logging for bring-up. | UART/serial logging path defined for charger and battery observability. | Architecture interface review + firmware signal list placeholder. | DEC-006 |
-| REQ-TEL-002 | Core electrical observability shall include panel, battery, and thermal signals. | At minimum: PV voltage/current, battery voltage/current, key temperature points. | Signal map review against architecture boundary definitions. | Concept + DEC-007 |
+| REQ-TEL-002 | Core electrical observability shall include panel, battery, and thermal signals. | At minimum: PV voltage/current, battery voltage/current, board-ambient temperature (`U7` AHT20), and a dedicated battery-pack temperature input independent of BMS-reported temperature (`J8` I2C bus tap for a remote sensor module, DEC-061). | Signal map review against architecture boundary definitions. | Concept + DEC-007 + DEC-061 |
 | REQ-TEL-003 | Telemetry extension shall be designed as optional and non-blocking for first bring-up. | Wireless or extended interfaces deferred without blocking core path. | Decisions-log review of deferred scope. | DEC-006 |
 
 ## 5. Safety and Protection Requirements
@@ -71,6 +70,7 @@ Each requirement includes:
 - Confirm battery/BMS continuous and peak current limits (Q-001).
 - Confirm available test instrumentation capability (Q-002).
 - Finalize PV wiring strategy and MPPT topology coupling (DEC-003, DEC-004).
+- Select the remote battery-pack I2C temperature-sensor part/address and mating cable for `J8`, and rebuild the BOM entry (DEC-061), before Gate 4 PCB commit.
 
 ## 8. Definition of Done (Phase 0 Requirements)
 
@@ -92,6 +92,7 @@ Each requirement includes:
 | REQ-CHG-005 | 3.2 MPPT Charger Stage | DEC-024, DEC-025 |
 | REQ-BAT-001 | 3.3 Battery and Protection Stage, IF-BAT-DIST-01 | Q-001 |
 | REQ-BAT-002 | 3.3 Battery and Protection Stage, IF-BAT-DIST-01 | Q-001, DEC-023, DEC-025 |
+| REQ-BAT-003 | 3.3 Battery and Protection Stage, IF-BAT-DIST-01 | DEC-062 |
 | REQ-INV-001 | 3.5 Inverter Stage, IF-DIST-INV-01 | DEC-002 |
 | REQ-INV-002 | 3.5 Inverter Stage, IF-DIST-INV-01 | Q-001 |
 | REQ-TEL-001 | 3.6 Monitoring/Telemetry/Control, IF-CTRL-LOG-01 | DEC-006 |
