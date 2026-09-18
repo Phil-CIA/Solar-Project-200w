@@ -17652,17 +17652,6 @@
 					)
 				)
 			)
-			(property "LCSC " ""
-				(at 0 0 90)
-				(show_name no)
-				(do_not_autoplace no)
-				(hide yes)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-				)
-			)
 			(property "Power Dissipation (Pd)" ""
 				(at 0 0 90)
 				(show_name no)
@@ -44060,17 +44049,6 @@
 				)
 			)
 		)
-		(property "LCSC " ""
-			(at 154.94 359.41 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
 		(property "Power Dissipation (Pd)" ""
 			(at 154.94 359.41 0)
 			(hide yes)
@@ -44570,17 +44548,6 @@
 				)
 			)
 		)
-		(property "LCSC " ""
-			(at 500.38 177.8 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
 		(property "Power Dissipation (Pd)" ""
 			(at 500.38 177.8 0)
 			(hide yes)
@@ -45069,17 +45036,6 @@
 			)
 		)
 		(property "Input Capacitance (Ciss@Vds)" ""
-			(at 377.19 166.37 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "LCSC " ""
 			(at 377.19 166.37 0)
 			(hide yes)
 			(show_name no)
@@ -45622,17 +45578,6 @@
 				)
 			)
 		)
-		(property "LCSC " ""
-			(at 439.42 187.96 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
 		(property "Power Dissipation (Pd)" ""
 			(at 439.42 187.96 0)
 			(hide yes)
@@ -45934,17 +45879,6 @@
 			)
 		)
 		(property "Input Capacitance (Ciss@Vds)" ""
-			(at 453.39 321.31 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "LCSC " ""
 			(at 453.39 321.31 0)
 			(hide yes)
 			(show_name no)
@@ -46272,17 +46206,6 @@
 			)
 		)
 		(property "Input Capacitance (Ciss@Vds)" ""
-			(at 224.79 247.65 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "LCSC " ""
 			(at 224.79 247.65 0)
 			(hide yes)
 			(show_name no)
@@ -46776,17 +46699,6 @@
 			)
 		)
 		(property "Input Capacitance (Ciss@Vds)" ""
-			(at 109.22 85.09 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "LCSC " ""
 			(at 109.22 85.09 0)
 			(hide yes)
 			(show_name no)
@@ -47565,17 +47477,6 @@
 				)
 			)
 		)
-		(property "LCSC " ""
-			(at 361.95 62.23 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
 		(property "Power Dissipation (Pd)" ""
 			(at 361.95 62.23 0)
 			(hide yes)
@@ -48046,17 +47947,6 @@
 			)
 		)
 		(property "Input Capacitance (Ciss@Vds)" ""
-			(at 434.34 250.19 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "LCSC " ""
 			(at 434.34 250.19 0)
 			(hide yes)
 			(show_name no)
@@ -48598,17 +48488,6 @@
 			)
 		)
 		(property "Input Capacitance (Ciss@Vds)" ""
-			(at 304.8 80.01 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "LCSC " ""
 			(at 304.8 80.01 0)
 			(hide yes)
 			(show_name no)
@@ -49342,17 +49221,6 @@
 				)
 			)
 		)
-		(property "LCSC " ""
-			(at 190.5 194.31 90)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
 		(property "Power Dissipation (Pd)" ""
 			(at 190.5 194.31 90)
 			(hide yes)
@@ -49715,17 +49583,6 @@
 				)
 			)
 		)
-		(property "LCSC " ""
-			(at 152.4 71.12 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
 		(property "Power Dissipation (Pd)" ""
 			(at 152.4 71.12 0)
 			(hide yes)
@@ -50072,17 +49929,6 @@
 				)
 			)
 		)
-		(property "LCSC " ""
-			(at 471.17 113.03 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
 		(property "Power Dissipation (Pd)" ""
 			(at 471.17 113.03 0)
 			(hide yes)
@@ -50418,17 +50264,6 @@
 			)
 		)
 		(property "Input Capacitance (Ciss@Vds)" ""
-			(at 364.49 198.12 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "LCSC " ""
 			(at 364.49 198.12 0)
 			(hide yes)
 			(show_name no)
@@ -50808,17 +50643,6 @@
 			)
 		)
 		(property "Input Capacitance (Ciss@Vds)" ""
-			(at 45.72 64.77 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "LCSC " ""
 			(at 45.72 64.77 0)
 			(hide yes)
 			(show_name no)
@@ -51280,17 +51104,6 @@
 			)
 		)
 		(property "Input Capacitance (Ciss@Vds)" ""
-			(at 157.48 80.01 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "LCSC " ""
 			(at 157.48 80.01 0)
 			(hide yes)
 			(show_name no)
@@ -51822,17 +51635,6 @@
 				)
 			)
 		)
-		(property "LCSC " ""
-			(at 500.38 219.71 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
 		(property "Power Dissipation (Pd)" ""
 			(at 500.38 219.71 0)
 			(hide yes)
@@ -52333,17 +52135,6 @@
 				)
 			)
 		)
-		(property "LCSC " ""
-			(at 427.99 176.53 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
 		(property "Power Dissipation (Pd)" ""
 			(at 427.99 176.53 0)
 			(hide yes)
@@ -52756,17 +52547,6 @@
 				)
 			)
 		)
-		(property "LCSC " ""
-			(at 175.26 105.41 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
 		(property "Power Dissipation (Pd)" ""
 			(at 175.26 105.41 0)
 			(hide yes)
@@ -53076,17 +52856,6 @@
 			)
 		)
 		(property "Input Capacitance (Ciss@Vds)" ""
-			(at 241.3 88.9 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "LCSC " ""
 			(at 241.3 88.9 0)
 			(hide yes)
 			(show_name no)
@@ -53419,17 +53188,6 @@
 			)
 		)
 		(property "Input Capacitance (Ciss@Vds)" ""
-			(at 35.56 254 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "LCSC " ""
 			(at 35.56 254 0)
 			(hide yes)
 			(show_name no)
@@ -53972,17 +53730,6 @@
 				)
 			)
 		)
-		(property "LCSC " ""
-			(at 175.26 365.76 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
 		(property "Power Dissipation (Pd)" ""
 			(at 175.26 365.76 0)
 			(hide yes)
@@ -54440,17 +54187,6 @@
 			)
 		)
 		(property "Input Capacitance (Ciss@Vds)" ""
-			(at 43.18 179.07 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "LCSC " ""
 			(at 43.18 179.07 0)
 			(hide yes)
 			(show_name no)
@@ -54992,17 +54728,6 @@
 				)
 			)
 		)
-		(property "LCSC " ""
-			(at 92.71 254 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
 		(property "Power Dissipation (Pd)" ""
 			(at 92.71 254 0)
 			(hide yes)
@@ -55500,17 +55225,6 @@
 				)
 			)
 		)
-		(property "LCSC " ""
-			(at 504.19 173.99 90)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
 		(property "Power Dissipation (Pd)" ""
 			(at 504.19 173.99 90)
 			(hide yes)
@@ -55813,17 +55527,6 @@
 			)
 		)
 		(property "Input Capacitance (Ciss@Vds)" ""
-			(at 170.18 74.93 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "LCSC " ""
 			(at 170.18 74.93 0)
 			(hide yes)
 			(show_name no)
@@ -56279,17 +55982,6 @@
 			)
 		)
 		(property "Input Capacitance (Ciss@Vds)" ""
-			(at 450.85 215.9 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "LCSC " ""
 			(at 450.85 215.9 0)
 			(hide yes)
 			(show_name no)
@@ -56877,17 +56569,6 @@
 				)
 			)
 		)
-		(property "LCSC " ""
-			(at 289.56 306.07 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
 		(property "Power Dissipation (Pd)" ""
 			(at 289.56 306.07 0)
 			(hide yes)
@@ -57425,17 +57106,6 @@
 				)
 			)
 		)
-		(property "LCSC " ""
-			(at 90.17 109.22 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
 		(property "Power Dissipation (Pd)" ""
 			(at 90.17 109.22 0)
 			(hide yes)
@@ -57934,17 +57604,6 @@
 				)
 			)
 		)
-		(property "LCSC " ""
-			(at 295.91 238.76 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
 		(property "Power Dissipation (Pd)" ""
 			(at 295.91 238.76 0)
 			(hide yes)
@@ -58291,17 +57950,6 @@
 			)
 		)
 		(property "Input Capacitance (Ciss@Vds)" ""
-			(at 101.6 254 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "LCSC " ""
 			(at 101.6 254 0)
 			(hide yes)
 			(show_name no)
@@ -58843,17 +58491,6 @@
 				)
 			)
 		)
-		(property "LCSC " ""
-			(at 190.5 217.17 90)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
 		(property "Power Dissipation (Pd)" ""
 			(at 190.5 217.17 90)
 			(hide yes)
@@ -59166,17 +58803,6 @@
 			)
 		)
 		(property "Input Capacitance (Ciss@Vds)" ""
-			(at 364.49 171.45 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "LCSC " ""
 			(at 364.49 171.45 0)
 			(hide yes)
 			(show_name no)
@@ -59516,17 +59142,6 @@
 			)
 		)
 		(property "Input Capacitance (Ciss@Vds)" ""
-			(at 327.66 71.12 90)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "LCSC " ""
 			(at 327.66 71.12 90)
 			(hide yes)
 			(show_name no)
@@ -60041,17 +59656,6 @@
 				)
 			)
 		)
-		(property "LCSC " ""
-			(at 435.61 335.28 90)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
 		(property "Power Dissipation (Pd)" ""
 			(at 435.61 335.28 90)
 			(hide yes)
@@ -60358,17 +59962,6 @@
 			)
 		)
 		(property "Input Capacitance (Ciss@Vds)" ""
-			(at 195.58 88.9 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "LCSC " ""
 			(at 195.58 88.9 0)
 			(hide yes)
 			(show_name no)
@@ -60877,17 +60470,6 @@
 			)
 		)
 		(property "Input Capacitance (Ciss@Vds)" ""
-			(at 439.42 339.09 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "LCSC " ""
 			(at 439.42 339.09 0)
 			(hide yes)
 			(show_name no)
@@ -61475,17 +61057,6 @@
 				)
 			)
 		)
-		(property "LCSC " ""
-			(at 231.14 306.07 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
 		(property "Power Dissipation (Pd)" ""
 			(at 231.14 306.07 0)
 			(hide yes)
@@ -61872,17 +61443,6 @@
 			)
 		)
 		(property "Input Capacitance (Ciss@Vds)" ""
-			(at 130.81 80.01 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "LCSC " ""
 			(at 130.81 80.01 0)
 			(hide yes)
 			(show_name no)
@@ -62424,17 +61984,6 @@
 				)
 			)
 		)
-		(property "LCSC " ""
-			(at 181.61 69.85 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
 		(property "Power Dissipation (Pd)" ""
 			(at 181.61 69.85 0)
 			(hide yes)
@@ -62922,17 +62471,6 @@
 				)
 			)
 		)
-		(property "LCSC " ""
-			(at 172.72 171.45 90)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
 		(property "Power Dissipation (Pd)" ""
 			(at 172.72 171.45 90)
 			(hide yes)
@@ -63292,17 +62830,6 @@
 				)
 			)
 		)
-		(property "LCSC " ""
-			(at 417.83 78.74 90)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
 		(property "Power Dissipation (Pd)" ""
 			(at 417.83 78.74 90)
 			(hide yes)
@@ -63611,17 +63138,6 @@
 			)
 		)
 		(property "Input Capacitance (Ciss@Vds)" ""
-			(at 115.57 80.01 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "LCSC " ""
 			(at 115.57 80.01 0)
 			(hide yes)
 			(show_name no)
@@ -64179,17 +63695,6 @@
 				)
 			)
 		)
-		(property "LCSC " ""
-			(at 521.97 177.8 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
 		(property "Power Dissipation (Pd)" ""
 			(at 521.97 177.8 0)
 			(hide yes)
@@ -64689,17 +64194,6 @@
 				)
 			)
 		)
-		(property "LCSC " ""
-			(at 241.3 321.31 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
 		(property "Power Dissipation (Pd)" ""
 			(at 241.3 321.31 0)
 			(hide yes)
@@ -65012,17 +64506,6 @@
 				)
 			)
 		)
-		(property "LCSC " ""
-			(at 139.7 80.01 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
 		(property "Power Dissipation (Pd)" ""
 			(at 139.7 80.01 0)
 			(hide yes)
@@ -65324,17 +64807,6 @@
 			)
 		)
 		(property "Input Capacitance (Ciss@Vds)" ""
-			(at 109.22 73.66 90)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "LCSC " ""
 			(at 109.22 73.66 90)
 			(hide yes)
 			(show_name no)
@@ -65853,17 +65325,6 @@
 				)
 			)
 		)
-		(property "LCSC " ""
-			(at 303.53 185.42 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
 		(property "Power Dissipation (Pd)" ""
 			(at 303.53 185.42 0)
 			(hide yes)
@@ -66362,17 +65823,6 @@
 				)
 			)
 		)
-		(property "LCSC " ""
-			(at 171.45 199.39 90)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
 		(property "Power Dissipation (Pd)" ""
 			(at 171.45 199.39 90)
 			(hide yes)
@@ -66830,17 +66280,6 @@
 			)
 		)
 		(property "Input Capacitance (Ciss@Vds)" ""
-			(at 69.85 180.34 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "LCSC " ""
 			(at 69.85 180.34 0)
 			(hide yes)
 			(show_name no)
@@ -67317,17 +66756,6 @@
 			)
 		)
 		(property "Input Capacitance (Ciss@Vds)" ""
-			(at 125.73 336.55 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "LCSC " ""
 			(at 125.73 336.55 0)
 			(hide yes)
 			(show_name no)
@@ -67847,17 +67275,6 @@
 				)
 			)
 		)
-		(property "LCSC " ""
-			(at 478.79 168.91 90)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
 		(property "Power Dissipation (Pd)" ""
 			(at 478.79 168.91 90)
 			(hide yes)
@@ -68336,17 +67753,6 @@
 			)
 		)
 		(property "Input Capacitance (Ciss@Vds)" ""
-			(at 397.51 82.55 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "LCSC " ""
 			(at 397.51 82.55 0)
 			(hide yes)
 			(show_name no)
@@ -68856,17 +68262,6 @@
 				)
 			)
 		)
-		(property "LCSC " ""
-			(at 344.17 179.07 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
 		(property "Power Dissipation (Pd)" ""
 			(at 344.17 179.07 0)
 			(hide yes)
@@ -69279,17 +68674,6 @@
 				)
 			)
 		)
-		(property "LCSC " ""
-			(at 95.25 105.41 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
 		(property "Power Dissipation (Pd)" ""
 			(at 95.25 105.41 0)
 			(hide yes)
@@ -69638,17 +69022,6 @@
 			)
 		)
 		(property "Input Capacitance (Ciss@Vds)" ""
-			(at 462.28 176.53 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "LCSC " ""
 			(at 462.28 176.53 0)
 			(hide yes)
 			(show_name no)
@@ -70232,17 +69605,6 @@
 				)
 			)
 		)
-		(property "LCSC " ""
-			(at 382.27 72.39 90)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
 		(property "Power Dissipation (Pd)" ""
 			(at 382.27 72.39 90)
 			(hide yes)
@@ -70604,17 +69966,6 @@
 			)
 		)
 		(property "Input Capacitance (Ciss@Vds)" ""
-			(at 81.28 334.01 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "LCSC " ""
 			(at 81.28 334.01 0)
 			(hide yes)
 			(show_name no)
@@ -71021,17 +70372,6 @@
 				)
 			)
 		)
-		(property "LCSC " ""
-			(at 172.72 214.63 90)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
 		(property "Power Dissipation (Pd)" ""
 			(at 172.72 214.63 90)
 			(hide yes)
@@ -71335,17 +70675,6 @@
 			)
 		)
 		(property "Input Capacitance (Ciss@Vds)" ""
-			(at 351.79 76.2 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "LCSC " ""
 			(at 351.79 76.2 0)
 			(hide yes)
 			(show_name no)
@@ -71689,17 +71018,6 @@
 				)
 			)
 		)
-		(property "LCSC " ""
-			(at 382.27 59.69 90)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
 		(property "Power Dissipation (Pd)" ""
 			(at 382.27 59.69 90)
 			(hide yes)
@@ -72033,17 +71351,6 @@
 				)
 			)
 		)
-		(property "LCSC " ""
-			(at 382.27 334.01 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
 		(property "Power Dissipation (Pd)" ""
 			(at 382.27 334.01 0)
 			(hide yes)
@@ -72367,17 +71674,6 @@
 			)
 		)
 		(property "Input Capacitance (Ciss@Vds)" ""
-			(at 195.58 67.31 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "LCSC " ""
 			(at 195.58 67.31 0)
 			(hide yes)
 			(show_name no)
@@ -72895,17 +72191,6 @@
 				)
 			)
 		)
-		(property "LCSC " ""
-			(at 62.23 177.8 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
 		(property "Power Dissipation (Pd)" ""
 			(at 62.23 177.8 0)
 			(hide yes)
@@ -73395,17 +72680,6 @@
 			)
 		)
 		(property "Input Capacitance (Ciss@Vds)" ""
-			(at 90.17 200.66 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "LCSC " ""
 			(at 90.17 200.66 0)
 			(hide yes)
 			(show_name no)
@@ -74071,17 +73345,6 @@
 				)
 			)
 		)
-		(property "LCSC " ""
-			(at 167.64 101.6 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
 		(property "Power Dissipation (Pd)" ""
 			(at 167.64 101.6 0)
 			(hide yes)
@@ -74434,17 +73697,6 @@
 			)
 		)
 		(property "Input Capacitance (Ciss@Vds)" ""
-			(at 149.86 93.98 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "LCSC " ""
 			(at 149.86 93.98 0)
 			(hide yes)
 			(show_name no)
@@ -75027,17 +74279,6 @@
 				)
 			)
 		)
-		(property "LCSC " ""
-			(at 500.38 212.09 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
 		(property "Power Dissipation (Pd)" ""
 			(at 500.38 212.09 0)
 			(hide yes)
@@ -75342,17 +74583,6 @@
 			)
 		)
 		(property "Input Capacitance (Ciss@Vds)" ""
-			(at 353.06 59.69 90)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "LCSC " ""
 			(at 353.06 59.69 90)
 			(hide yes)
 			(show_name no)
@@ -75952,17 +75182,6 @@
 			)
 		)
 		(property "Input Capacitance (Ciss@Vds)" ""
-			(at 266.7 203.2 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "LCSC " ""
 			(at 266.7 203.2 0)
 			(hide yes)
 			(show_name no)
@@ -76613,17 +75832,6 @@
 				)
 			)
 		)
-		(property "LCSC " ""
-			(at 299.72 299.72 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
 		(property "Power Dissipation (Pd)" ""
 			(at 299.72 299.72 0)
 			(hide yes)
@@ -77201,17 +76409,6 @@
 				)
 			)
 		)
-		(property "LCSC " ""
-			(at 259.08 306.07 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
 		(property "Power Dissipation (Pd)" ""
 			(at 259.08 306.07 0)
 			(hide yes)
@@ -77749,17 +76946,6 @@
 				)
 			)
 		)
-		(property "LCSC " ""
-			(at 190.5 208.28 90)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
 		(property "Power Dissipation (Pd)" ""
 			(at 190.5 208.28 90)
 			(hide yes)
@@ -78281,17 +77467,6 @@
 			)
 		)
 		(property "Input Capacitance (Ciss@Vds)" ""
-			(at 190.5 201.93 90)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "LCSC " ""
 			(at 190.5 201.93 90)
 			(hide yes)
 			(show_name no)
@@ -78834,17 +78009,6 @@
 				)
 			)
 		)
-		(property "LCSC " ""
-			(at 68.58 90.17 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
 		(property "Power Dissipation (Pd)" ""
 			(at 68.58 90.17 0)
 			(hide yes)
@@ -79334,17 +78498,6 @@
 			)
 		)
 		(property "Input Capacitance (Ciss@Vds)" ""
-			(at 336.55 189.23 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "LCSC " ""
 			(at 336.55 189.23 0)
 			(hide yes)
 			(show_name no)
@@ -79933,17 +79086,6 @@
 				)
 			)
 		)
-		(property "LCSC " ""
-			(at 97.79 91.44 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
 		(property "Power Dissipation (Pd)" ""
 			(at 97.79 91.44 0)
 			(hide yes)
@@ -80288,17 +79430,6 @@
 			)
 		)
 		(property "Input Capacitance (Ciss@Vds)" ""
-			(at 487.68 173.99 90)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "LCSC " ""
 			(at 487.68 173.99 90)
 			(hide yes)
 			(show_name no)
@@ -80666,17 +79797,6 @@
 				)
 			)
 		)
-		(property "LCSC " ""
-			(at 40.64 90.17 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
 		(property "Power Dissipation (Pd)" ""
 			(at 40.64 90.17 0)
 			(hide yes)
@@ -80983,17 +80103,6 @@
 			)
 		)
 		(property "Input Capacitance (Ciss@Vds)" ""
-			(at 240.03 67.31 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "LCSC " ""
 			(at 240.03 67.31 0)
 			(hide yes)
 			(show_name no)
@@ -81790,17 +80899,6 @@
 				)
 			)
 		)
-		(property "LCSC " ""
-			(at 52.07 179.07 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
 		(property "Power Dissipation (Pd)" ""
 			(at 52.07 179.07 0)
 			(hide yes)
@@ -82147,17 +81245,6 @@
 			)
 		)
 		(property "Input Capacitance (Ciss@Vds)" ""
-			(at 279.4 80.01 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "LCSC " ""
 			(at 279.4 80.01 0)
 			(hide yes)
 			(show_name no)
@@ -82699,17 +81786,6 @@
 				)
 			)
 		)
-		(property "LCSC " ""
-			(at 167.64 109.22 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
 		(property "Power Dissipation (Pd)" ""
 			(at 167.64 109.22 0)
 			(hide yes)
@@ -83054,17 +82130,6 @@
 			)
 		)
 		(property "Input Capacitance (Ciss@Vds)" ""
-			(at 72.39 254 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "LCSC " ""
 			(at 72.39 254 0)
 			(hide yes)
 			(show_name no)
@@ -83606,17 +82671,6 @@
 				)
 			)
 		)
-		(property "LCSC " ""
-			(at 182.88 189.23 90)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
 		(property "Power Dissipation (Pd)" ""
 			(at 182.88 189.23 90)
 			(hide yes)
@@ -84138,17 +83192,6 @@
 			)
 		)
 		(property "Input Capacitance (Ciss@Vds)" ""
-			(at 182.88 181.61 90)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "LCSC " ""
 			(at 182.88 181.61 90)
 			(hide yes)
 			(show_name no)
@@ -84725,17 +83768,6 @@
 				)
 			)
 		)
-		(property "LCSC " ""
-			(at 397.51 90.17 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
 		(property "Power Dissipation (Pd)" ""
 			(at 397.51 90.17 0)
 			(hide yes)
@@ -85268,17 +84300,6 @@
 				)
 			)
 		)
-		(property "LCSC " ""
-			(at 439.42 180.34 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
 		(property "Power Dissipation (Pd)" ""
 			(at 439.42 180.34 0)
 			(hide yes)
@@ -85736,17 +84757,6 @@
 			)
 		)
 		(property "Input Capacitance (Ciss@Vds)" ""
-			(at 386.08 179.07 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "LCSC " ""
 			(at 386.08 179.07 0)
 			(hide yes)
 			(show_name no)
@@ -86278,17 +85288,6 @@
 				)
 			)
 		)
-		(property "LCSC " ""
-			(at 514.35 180.34 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
 		(property "Power Dissipation (Pd)" ""
 			(at 514.35 180.34 0)
 			(hide yes)
@@ -86645,17 +85644,6 @@
 				)
 			)
 		)
-		(property "LCSC " ""
-			(at 83.82 254 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
 		(property "Power Dissipation (Pd)" ""
 			(at 83.82 254 0)
 			(hide yes)
@@ -87000,17 +85988,6 @@
 			)
 		)
 		(property "Input Capacitance (Ciss@Vds)" ""
-			(at 59.69 254 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "LCSC " ""
 			(at 59.69 254 0)
 			(hide yes)
 			(show_name no)
@@ -87487,17 +86464,6 @@
 				)
 			)
 		)
-		(property "LCSC " ""
-			(at 454.66 237.49 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
 		(property "Power Dissipation (Pd)" ""
 			(at 454.66 237.49 0)
 			(hide yes)
@@ -87842,17 +86808,6 @@
 			)
 		)
 		(property "Input Capacitance (Ciss@Vds)" ""
-			(at 226.06 74.93 90)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "LCSC " ""
 			(at 226.06 74.93 90)
 			(hide yes)
 			(show_name no)
@@ -88464,17 +87419,6 @@
 				)
 			)
 		)
-		(property "LCSC " ""
-			(at 297.18 247.65 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
 		(property "Power Dissipation (Pd)" ""
 			(at 297.18 247.65 0)
 			(hide yes)
@@ -88819,17 +87763,6 @@
 			)
 		)
 		(property "Input Capacitance (Ciss@Vds)" ""
-			(at 177.8 185.42 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "LCSC " ""
 			(at 177.8 185.42 0)
 			(hide yes)
 			(show_name no)
@@ -89339,17 +88272,6 @@
 				)
 			)
 		)
-		(property "LCSC " ""
-			(at 269.24 321.31 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
 		(property "Power Dissipation (Pd)" ""
 			(at 269.24 321.31 0)
 			(hide yes)
@@ -89839,17 +88761,6 @@
 			)
 		)
 		(property "Input Capacitance (Ciss@Vds)" ""
-			(at 344.17 189.23 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "LCSC " ""
 			(at 344.17 189.23 0)
 			(hide yes)
 			(show_name no)
@@ -90403,17 +89314,6 @@
 				)
 			)
 		)
-		(property "LCSC " ""
-			(at 116.84 317.5 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
 		(property "Power Dissipation (Pd)" ""
 			(at 116.84 317.5 0)
 			(hide yes)
@@ -90890,17 +89790,6 @@
 			)
 		)
 		(property "Input Capacitance (Ciss@Vds)" ""
-			(at 424.18 168.91 90)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "LCSC " ""
 			(at 424.18 168.91 90)
 			(hide yes)
 			(show_name no)
@@ -91410,17 +90299,6 @@
 				)
 			)
 		)
-		(property "LCSC " ""
-			(at 180.34 339.09 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
 		(property "Power Dissipation (Pd)" ""
 			(at 180.34 339.09 0)
 			(hide yes)
@@ -91816,17 +90694,6 @@
 			)
 		)
 		(property "Input Capacitance (Ciss@Vds)" ""
-			(at 339.09 57.15 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "LCSC " ""
 			(at 339.09 57.15 0)
 			(hide yes)
 			(show_name no)
@@ -92301,17 +91168,6 @@
 				)
 			)
 		)
-		(property "LCSC " ""
-			(at 292.1 248.92 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
 		(property "Power Dissipation (Pd)" ""
 			(at 292.1 248.92 0)
 			(hide yes)
@@ -92625,17 +91481,6 @@
 			)
 		)
 		(property "Input Capacitance (Ciss@Vds)" ""
-			(at 336.55 162.56 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "LCSC " ""
 			(at 336.55 162.56 0)
 			(hide yes)
 			(show_name no)
@@ -93103,17 +91948,6 @@
 			)
 		)
 		(property "Input Capacitance (Ciss@Vds)" ""
-			(at 278.13 369.57 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "LCSC " ""
 			(at 278.13 369.57 0)
 			(hide yes)
 			(show_name no)
@@ -93622,17 +92456,6 @@
 				)
 			)
 		)
-		(property "LCSC " ""
-			(at 514.35 172.72 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
 		(property "Power Dissipation (Pd)" ""
 			(at 514.35 172.72 0)
 			(hide yes)
@@ -94123,17 +92946,6 @@
 			)
 		)
 		(property "Input Capacitance (Ciss@Vds)" ""
-			(at 147.32 347.98 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "LCSC " ""
 			(at 147.32 347.98 0)
 			(hide yes)
 			(show_name no)
@@ -94721,17 +93533,6 @@
 				)
 			)
 		)
-		(property "LCSC " ""
-			(at 231.14 327.66 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
 		(property "Power Dissipation (Pd)" ""
 			(at 231.14 327.66 0)
 			(hide yes)
@@ -95082,17 +93883,6 @@
 			)
 		)
 		(property "Input Capacitance (Ciss@Vds)" ""
-			(at 46.99 254 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "LCSC " ""
 			(at 46.99 254 0)
 			(hide yes)
 			(show_name no)
@@ -95680,17 +94470,6 @@
 				)
 			)
 		)
-		(property "LCSC " ""
-			(at 241.3 299.72 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
 		(property "Power Dissipation (Pd)" ""
 			(at 241.3 299.72 0)
 			(hide yes)
@@ -96155,17 +94934,6 @@
 				)
 			)
 		)
-		(property "LCSC " ""
-			(at 297.18 222.25 90)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
 		(property "Power Dissipation (Pd)" ""
 			(at 297.18 222.25 90)
 			(hide yes)
@@ -96577,17 +95345,6 @@
 				)
 			)
 		)
-		(property "LCSC " ""
-			(at 344.17 162.56 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
 		(property "Power Dissipation (Pd)" ""
 			(at 344.17 162.56 0)
 			(hide yes)
@@ -96934,17 +95691,6 @@
 			)
 		)
 		(property "Input Capacitance (Ciss@Vds)" ""
-			(at 46.99 262.89 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "LCSC " ""
 			(at 46.99 262.89 0)
 			(hide yes)
 			(show_name no)
@@ -97491,17 +96237,6 @@
 			)
 		)
 		(property "Input Capacitance (Ciss@Vds)" ""
-			(at 483.87 214.63 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "LCSC " ""
 			(at 483.87 214.63 0)
 			(hide yes)
 			(show_name no)
@@ -98089,17 +96824,6 @@
 				)
 			)
 		)
-		(property "LCSC " ""
-			(at 259.08 327.66 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
 		(property "Power Dissipation (Pd)" ""
 			(at 259.08 327.66 0)
 			(hide yes)
@@ -98408,17 +97132,6 @@
 			)
 		)
 		(property "Input Capacitance (Ciss@Vds)" ""
-			(at 288.29 80.01 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "LCSC " ""
 			(at 288.29 80.01 0)
 			(hide yes)
 			(show_name no)
@@ -98774,17 +97487,6 @@
 			)
 		)
 		(property "Input Capacitance (Ciss@Vds)" ""
-			(at 214.63 74.93 90)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "LCSC " ""
 			(at 214.63 74.93 90)
 			(hide yes)
 			(show_name no)
@@ -99333,17 +98035,6 @@
 				)
 			)
 		)
-		(property "LCSC " ""
-			(at 449.58 185.42 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
 		(property "Power Dissipation (Pd)" ""
 			(at 449.58 185.42 0)
 			(hide yes)
@@ -99842,17 +98533,6 @@
 				)
 			)
 		)
-		(property "LCSC " ""
-			(at 181.61 88.9 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
 		(property "Power Dissipation (Pd)" ""
 			(at 181.61 88.9 0)
 			(hide yes)
@@ -100210,17 +98890,6 @@
 				)
 			)
 		)
-		(property "LCSC " ""
-			(at 422.91 82.55 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
 		(property "Power Dissipation (Pd)" ""
 			(at 422.91 82.55 0)
 			(hide yes)
@@ -100535,17 +99204,6 @@
 			)
 		)
 		(property "Input Capacitance (Ciss@Vds)" ""
-			(at 346.71 386.08 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "LCSC " ""
 			(at 346.71 386.08 0)
 			(hide yes)
 			(show_name no)
@@ -100962,17 +99620,6 @@
 				)
 			)
 		)
-		(property "LCSC " ""
-			(at 445.77 335.28 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
 		(property "Power Dissipation (Pd)" ""
 			(at 445.77 335.28 0)
 			(hide yes)
@@ -101287,17 +99934,6 @@
 			)
 		)
 		(property "Input Capacitance (Ciss@Vds)" ""
-			(at 104.14 209.55 90)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "LCSC " ""
 			(at 104.14 209.55 90)
 			(hide yes)
 			(show_name no)
@@ -101807,17 +100443,6 @@
 				)
 			)
 		)
-		(property "LCSC " ""
-			(at 269.24 299.72 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
 		(property "Power Dissipation (Pd)" ""
 			(at 269.24 299.72 0)
 			(hide yes)
@@ -102132,17 +100757,6 @@
 			)
 		)
 		(property "Input Capacitance (Ciss@Vds)" ""
-			(at 224.79 226.06 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "LCSC " ""
 			(at 224.79 226.06 0)
 			(hide yes)
 			(show_name no)
@@ -102691,17 +101305,6 @@
 				)
 			)
 		)
-		(property "LCSC " ""
-			(at 68.58 74.93 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
 		(property "Power Dissipation (Pd)" ""
 			(at 68.58 74.93 0)
 			(hide yes)
@@ -103179,17 +101782,6 @@
 			)
 		)
 		(property "Input Capacitance (Ciss@Vds)" ""
-			(at 172.72 179.07 90)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "LCSC " ""
 			(at 172.72 179.07 90)
 			(hide yes)
 			(show_name no)
@@ -103731,17 +102323,6 @@
 				)
 			)
 		)
-		(property "LCSC " ""
-			(at 481.33 187.96 90)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
 		(property "Power Dissipation (Pd)" ""
 			(at 481.33 187.96 90)
 			(hide yes)
@@ -104088,17 +102669,6 @@
 			)
 		)
 		(property "Input Capacitance (Ciss@Vds)" ""
-			(at 170.18 88.9 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "LCSC " ""
 			(at 170.18 88.9 0)
 			(hide yes)
 			(show_name no)
@@ -104598,17 +103168,6 @@
 			)
 		)
 		(property "Input Capacitance (Ciss@Vds)" ""
-			(at 344.17 205.74 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "LCSC " ""
 			(at 344.17 205.74 0)
 			(hide yes)
 			(show_name no)
@@ -105150,17 +103709,6 @@
 				)
 			)
 		)
-		(property "LCSC " ""
-			(at 102.87 186.69 90)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
 		(property "Power Dissipation (Pd)" ""
 			(at 102.87 186.69 90)
 			(hide yes)
@@ -105615,17 +104163,6 @@
 			)
 		)
 		(property "Input Capacitance (Ciss@Vds)" ""
-			(at 297.18 232.41 90)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "LCSC " ""
 			(at 297.18 232.41 90)
 			(hide yes)
 			(show_name no)
@@ -106134,17 +104671,6 @@
 				)
 			)
 		)
-		(property "LCSC " ""
-			(at 299.72 185.42 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
 		(property "Power Dissipation (Pd)" ""
 			(at 299.72 185.42 0)
 			(hide yes)
@@ -106590,17 +105116,6 @@
 			)
 		)
 		(property "Input Capacitance (Ciss@Vds)" ""
-			(at 105.41 78.74 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "LCSC " ""
 			(at 105.41 78.74 0)
 			(hide yes)
 			(show_name no)
@@ -107088,17 +105603,6 @@
 			)
 		)
 		(property "Input Capacitance (Ciss@Vds)" ""
-			(at 345.44 90.17 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "LCSC " ""
 			(at 345.44 90.17 0)
 			(hide yes)
 			(show_name no)
@@ -107640,17 +106144,6 @@
 				)
 			)
 		)
-		(property "LCSC " ""
-			(at 499.11 187.96 90)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
 		(property "Power Dissipation (Pd)" ""
 			(at 499.11 187.96 90)
 			(hide yes)
@@ -107998,17 +106491,6 @@
 			)
 		)
 		(property "Input Capacitance (Ciss@Vds)" ""
-			(at 110.49 158.75 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "LCSC " ""
 			(at 110.49 158.75 0)
 			(hide yes)
 			(show_name no)
@@ -108667,17 +107149,6 @@
 				)
 			)
 		)
-		(property "LCSC " ""
-			(at 491.49 187.96 90)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
 		(property "Power Dissipation (Pd)" ""
 			(at 491.49 187.96 90)
 			(hide yes)
@@ -108980,17 +107451,6 @@
 			)
 		)
 		(property "Input Capacitance (Ciss@Vds)" ""
-			(at 121.92 80.01 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "LCSC " ""
 			(at 121.92 80.01 0)
 			(hide yes)
 			(show_name no)
@@ -109353,17 +107813,6 @@
 			)
 		)
 		(property "Input Capacitance (Ciss@Vds)" ""
-			(at 495.3 208.28 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "LCSC " ""
 			(at 495.3 208.28 0)
 			(hide yes)
 			(show_name no)
@@ -109827,17 +108276,6 @@
 			)
 		)
 		(property "Input Capacitance (Ciss@Vds)" ""
-			(at 491.49 214.63 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "LCSC " ""
 			(at 491.49 214.63 0)
 			(hide yes)
 			(show_name no)
@@ -110315,17 +108753,6 @@
 				)
 			)
 		)
-		(property "LCSC " ""
-			(at 378.46 229.87 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
 		(property "Power Dissipation (Pd)" ""
 			(at 378.46 229.87 0)
 			(hide yes)
@@ -110671,17 +109098,6 @@
 			)
 		)
 		(property "Input Capacitance (Ciss@Vds)" ""
-			(at 490.22 168.91 90)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "LCSC " ""
 			(at 490.22 168.91 90)
 			(hide yes)
 			(show_name no)
@@ -111178,17 +109594,6 @@
 				)
 			)
 		)
-		(property "LCSC " ""
-			(at 424.18 163.83 90)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
 		(property "Power Dissipation (Pd)" ""
 			(at 424.18 163.83 90)
 			(hide yes)
@@ -111666,17 +110071,6 @@
 			)
 		)
 		(property "Input Capacitance (Ciss@Vds)" ""
-			(at 424.18 158.75 90)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "LCSC " ""
 			(at 424.18 158.75 90)
 			(hide yes)
 			(show_name no)
@@ -112176,17 +110570,6 @@
 			)
 		)
 		(property "Input Capacitance (Ciss@Vds)" ""
-			(at 336.55 179.07 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "LCSC " ""
 			(at 336.55 179.07 0)
 			(hide yes)
 			(show_name no)
@@ -112953,17 +111336,6 @@
 				)
 			)
 		)
-		(property "LCSC " ""
-			(at 96.52 209.55 90)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
 		(property "Power Dissipation (Pd)" ""
 			(at 96.52 209.55 90)
 			(hide yes)
@@ -113454,17 +111826,6 @@
 			)
 		)
 		(property "Input Capacitance (Ciss@Vds)" ""
-			(at 147.32 359.41 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "LCSC " ""
 			(at 147.32 359.41 0)
 			(hide yes)
 			(show_name no)
@@ -114053,17 +112414,6 @@
 				)
 			)
 		)
-		(property "LCSC " ""
-			(at 90.17 99.06 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
 		(property "Power Dissipation (Pd)" ""
 			(at 90.17 99.06 0)
 			(hide yes)
@@ -114552,17 +112902,6 @@
 			)
 		)
 		(property "Input Capacitance (Ciss@Vds)" ""
-			(at 181.61 81.28 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "LCSC " ""
 			(at 181.61 81.28 0)
 			(hide yes)
 			(show_name no)
@@ -115073,17 +113412,6 @@
 				)
 			)
 		)
-		(property "LCSC " ""
-			(at 297.18 80.01 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
 		(property "Power Dissipation (Pd)" ""
 			(at 297.18 80.01 0)
 			(hide yes)
@@ -115436,17 +113764,6 @@
 			)
 		)
 		(property "Input Capacitance (Ciss@Vds)" ""
-			(at 516.89 168.91 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "LCSC " ""
 			(at 516.89 168.91 0)
 			(hide yes)
 			(show_name no)
@@ -115931,17 +114248,6 @@
 			)
 		)
 		(property "Input Capacitance (Ciss@Vds)" ""
-			(at 424.18 208.28 90)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "LCSC " ""
 			(at 424.18 208.28 90)
 			(hide yes)
 			(show_name no)
@@ -116455,17 +114761,6 @@
 			)
 		)
 		(property "Input Capacitance (Ciss@Vds)" ""
-			(at 293.37 227.33 90)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "LCSC " ""
 			(at 293.37 227.33 90)
 			(hide yes)
 			(show_name no)
@@ -117018,17 +115313,6 @@
 				)
 			)
 		)
-		(property "LCSC " ""
-			(at 114.3 317.5 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
 		(property "Power Dissipation (Pd)" ""
 			(at 114.3 317.5 0)
 			(hide yes)
@@ -117330,17 +115614,6 @@
 			)
 		)
 		(property "Input Capacitance (Ciss@Vds)" ""
-			(at 464.82 210.82 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "LCSC " ""
 			(at 464.82 210.82 0)
 			(hide yes)
 			(show_name no)
@@ -117822,17 +116095,6 @@
 				)
 			)
 		)
-		(property "LCSC " ""
-			(at 477.52 214.63 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
 		(property "Power Dissipation (Pd)" ""
 			(at 477.52 214.63 0)
 			(hide yes)
@@ -118147,17 +116409,6 @@
 			)
 		)
 		(property "Input Capacitance (Ciss@Vds)" ""
-			(at 346.71 377.19 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "LCSC " ""
 			(at 346.71 377.19 0)
 			(hide yes)
 			(show_name no)
@@ -118650,17 +116901,6 @@
 				)
 			)
 		)
-		(property "LCSC " ""
-			(at 397.51 74.93 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
 		(property "Power Dissipation (Pd)" ""
 			(at 397.51 74.93 0)
 			(hide yes)
@@ -119118,17 +117358,6 @@
 			)
 		)
 		(property "Input Capacitance (Ciss@Vds)" ""
-			(at 255.27 369.57 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "LCSC " ""
 			(at 255.27 369.57 0)
 			(hide yes)
 			(show_name no)
@@ -119638,17 +117867,6 @@
 				)
 			)
 		)
-		(property "LCSC " ""
-			(at 372.11 62.23 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
 		(property "Power Dissipation (Pd)" ""
 			(at 372.11 62.23 0)
 			(hide yes)
@@ -120116,17 +118334,6 @@
 				)
 			)
 		)
-		(property "LCSC " ""
-			(at 83.82 180.34 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
 		(property "Power Dissipation (Pd)" ""
 			(at 83.82 180.34 0)
 			(hide yes)
@@ -120429,17 +118636,6 @@
 			)
 		)
 		(property "Input Capacitance (Ciss@Vds)" ""
-			(at 265.43 76.2 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "LCSC " ""
 			(at 265.43 76.2 0)
 			(hide yes)
 			(show_name no)
@@ -120949,17 +119145,6 @@
 				)
 			)
 		)
-		(property "LCSC " ""
-			(at 312.42 80.01 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
 		(property "Power Dissipation (Pd)" ""
 			(at 312.42 80.01 0)
 			(hide yes)
@@ -121458,17 +119643,6 @@
 				)
 			)
 		)
-		(property "LCSC " ""
-			(at 377.19 193.04 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
 		(property "Power Dissipation (Pd)" ""
 			(at 377.19 193.04 0)
 			(hide yes)
@@ -121783,17 +119957,6 @@
 			)
 		)
 		(property "Input Capacitance (Ciss@Vds)" ""
-			(at 266.7 254 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "LCSC " ""
 			(at 266.7 254 0)
 			(hide yes)
 			(show_name no)
@@ -122341,17 +120504,6 @@
 				)
 			)
 		)
-		(property "LCSC " ""
-			(at 495.3 173.99 90)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
 		(property "Power Dissipation (Pd)" ""
 			(at 495.3 173.99 90)
 			(hide yes)
@@ -122884,17 +121036,6 @@
 				)
 			)
 		)
-		(property "LCSC " ""
-			(at 439.42 172.72 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
 		(property "Power Dissipation (Pd)" ""
 			(at 439.42 172.72 0)
 			(hide yes)
@@ -123209,17 +121350,6 @@
 			)
 		)
 		(property "Input Capacitance (Ciss@Vds)" ""
-			(at 392.43 177.8 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "LCSC " ""
 			(at 392.43 177.8 0)
 			(hide yes)
 			(show_name no)
@@ -123553,17 +121683,6 @@
 			)
 		)
 		(property "Input Capacitance (Ciss@Vds)" ""
-			(at 265.43 86.36 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "LCSC " ""
 			(at 265.43 86.36 0)
 			(hide yes)
 			(show_name no)
@@ -124063,17 +122182,6 @@
 			)
 		)
 		(property "Input Capacitance (Ciss@Vds)" ""
-			(at 336.55 205.74 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "LCSC " ""
 			(at 336.55 205.74 0)
 			(hide yes)
 			(show_name no)

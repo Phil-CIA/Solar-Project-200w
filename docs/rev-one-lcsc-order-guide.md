@@ -68,3 +68,46 @@ The critical power stage, FETs, shunts, and auxiliary silicon are **100% In Stoc
 1. **Proceed with the 65 In-Stock Items ($64.70 USD):** Place the order for all matched MOSFETs, shunts, inductors, connectors, and passives.
 2. **For MCU `U1` & Controller `U6`:** Use the `STM32G473CEU6` chips in hand or order `STM32G431CBU6` and `LM51772` directly from TI.com/Mouser.
 3. **For standard 0805 resistors:** Swap the 11 backordered/unmatched resistor part numbers to active Uniroyal/Yageo 0805 1% alternatives directly in the LCSC cart.
+
+---
+
+## 4. 2026-09-17 Current BOM Reconciliation Addendum
+
+This addendum supersedes the 2026-09-14 snapshot for purchasing purposes. The current authority is `docs/rev-one-bom.md`, which now differs from the old quote in several material ways:
+
+- `D2` is no longer the old `SMBJ60CA` / `C19077593`; the current BOM is `SMBJ48CA` / `C151264`, and live LCSC stock was verified at 8,705.
+- `R30` is no longer a 40.2 kOhm sourcing problem; it is now a 0 Ohm CDC-disable strap (`C17888`) per DEC-060, so the old order-guide row is obsolete.
+- `U1` sourcing was resolved after the old quote: keep `STM32G431CBU6` in the BOM and source it from Mouser/DigiKey rather than treating LCSC status as the deciding input.
+- `J8` is a genuinely new line item added after the old quote. It has never been through an LCSC quote and needs a part selection first; current direction is an off-the-shelf breakout-module solution on the remote I2C temperature-sensor header.
+
+### 4.1 Passive Re-check Against the Current BOM
+
+No BOM changes were made in this pass. The table below records live status for the exact current-BOM LCSC numbers and, where needed, a same-spec alternate for user approval.
+
+| Designator | Current BOM target | Current BOM LCSC | Live status of current BOM code | Same-spec alternate found in stock | Result |
+| :--- | :--- | :--- | :--- | :--- | :--- |
+| `C20` | 180 pF, 0805, C0G, 50 V | `C1794` | Resolves to Samsung 15 pF C0G 0805 and is not available now; not the BOM part | `CC0805JRNPO9BN181` (`C113826`), YAGEO, 25,750 in stock; also `0805CG181J500NT` (`C501859`), FH, 2,550 in stock | Open for BOM substitution approval |
+| `R20` | 499 kOhm, 0805, 1% | `C119857` | Current code could not be verified as a valid live match for the BOM row | `0805W8F4993T5E`, UNI-ROYAL, 64,700 in stock | Open for BOM substitution approval |
+| `R28` | 51.7 kOhm, 0805, 1% | `C119851` | HTTP 404 / no current live match | No same-spec in-stock 0805 1% exact-value replacement found in this pass. Closest exact-value hit was `RT0603DRE0751K7L`, 0603, +/-0.5%, 4,900 in stock, which is not package-compatible | Still unresolved |
+| `R29` | 20.5 kOhm, 0805, 1% | `C119842` | HTTP 404 / no current live match | `ERJ6ENF2052V` (`C2092167`), PANASONIC, 4,300 in stock | Open for BOM substitution approval |
+| `R31` | 2.43 kOhm, 0805, 1% | `C119853` | Resolves to a through-hole 200 Ohm carbon-film resistor; not the BOM part | `0805W8F2431T5E`, UNI-ROYAL, 5,000 in stock | Open for BOM substitution approval |
+| `R7, R10, R61` | 20 kOhm, 0805, 1% | `C17523` | Resolves to 2.37 kOhm and is out of stock; not the BOM part | `0805W8F2002T5E`, UNI-ROYAL, 2,296,400 in stock | Open for BOM substitution approval |
+| `R14` | 330 kOhm, 0805, 1% | `C17651` | Resolves to 38.3 Ohm and is out of stock; not the BOM part | `0805W8F3303T5E`, UNI-ROYAL, 104,100 in stock | Open for BOM substitution approval |
+| `R15` | 2 kOhm, 0805, 1% | `C17537` | Resolves to 20.5 kOhm and is out of stock; not the BOM part | `0805W8F2001T5E` (`C17604`), UNI-ROYAL, 4,708,600 in stock | Open for BOM substitution approval |
+| `R23` | 75 kOhm, 0805, 1% | `C17743` | Resolves to 523 Ohm and is out of stock; not the BOM part | `0805W8F7502T5E`, UNI-ROYAL, 709,200 in stock | Open for BOM substitution approval |
+| `R24, R62` | 5.1 kOhm, 0805, 1% | `C17700` | Resolves to 442 Ohm and is out of stock; not the BOM part | `0805W8F5101T5E`, UNI-ROYAL, 2,665,400 in stock | Open for BOM substitution approval |
+| `R51` | 2.7 kOhm, 0805, 1% | `C17546` | Resolves to 21.5 Ohm and is out of stock; not the BOM part | `0805W8F2701T5E`, UNI-ROYAL, 1,710,800 in stock | Open for BOM substitution approval |
+
+### 4.2 Section 2 Cross-Check Against the Current BOM
+
+The old Section 2 silicon/power-stage list is still substantially valid against the current BOM after the 2026-09-17 decisions, with one important identity correction:
+
+- Still matches current BOM and was live-verified in stock in this pass: `M1-M4 C86513`, `Q5/Q6 C534334`, `Q4 C53244070`, `R16/R22 C41382682`, `U3 C6568`, `U4 C2873264`, `U9 C7984`, `U10 C129346`, `U14 C5219202`, `L2 C49308530`.
+- `D2` does not match the old Section 2 line anymore. The old guide still shows `SMBJ60CA` / `C19077593`; the current BOM correctly uses `SMBJ48CA` / `C151264`.
+- `J2` was separately resolved after the old quote and is no longer a backorder-driven action item; current BOM still uses `C3020560`, and Task 3 already confirmed live availability.
+
+### 4.3 What Still Needs User Approval or Follow-Up
+
+1. Approve any desired BOM substitutions for the 10 passive rows with valid same-spec alternates found above.
+2. Leave `R28` open for a future sourcing pass unless a verified 51.7 kOhm, 0805, 1% live LCSC part is found.
+3. Select the actual `J8` remote temperature-sensor module/header BOM item next; this line is new, not merely stale.

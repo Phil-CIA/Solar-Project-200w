@@ -4,6 +4,18 @@ Status: active tracking document
 Companion to: [rev-one-implementation-plan.md](rev-one-implementation-plan.md) (Gates 0-6), [rev-one-component-derating-review.md](rev-one-component-derating-review.md), [rev-one-bench-learning-matrix.md](rev-one-bench-learning-matrix.md)
 Purpose: convert the 2026-09-16 project review into a trackable checklist so the "nearing completion" feeling is backed by closed items, not just closed documents.
 
+## 0. Where We Are / Path to Ordering the Board (updated 2026-09-18)
+
+**Tracks A, B, C, and now E are all closed.** Phil completed the full floorplan/route pass; final `kicad-cli pcb drc --severity-all` came back **0 errors, 0 unconnected items** (133 warnings, all either a headless-CLI library-path artifact or KiCad's own benign "silkscreen clipped by solder mask" notice - see DEC-065). Fab-ready Gerbers/drill were generated and run through JLCPCB's own DFM checker with no issues flagged. **Rev 1 is ready to place the initial board order.**
+
+**Remaining steps before actually placing the order:**
+1. **Commit the current working-tree changes** (docs, BOM, order guide, decisions log, schematic `LCSC ` field cleanup, and the routed PCB) so the ordered revision matches a tagged/committed state.
+2. **Final BOM/order-guide lookup pass** - confirm `R28` (51.7kOhm, no in-stock LCSC exact match; source via Phil's existing DigiKey channel) and the handful of substituted passives that still need a final LCSC C-number lookup pass (flagged inline in `rev-one-bom.md`, e.g. R7/R10/R61, R14, R20, R23, R24/R62, R31, R51).
+3. **Finalize `J8` remote sensor part** (Adafruit MCP9808 breakout, PID 1782 - proposed, needs Phil's go-ahead) - cheap to confirm now, doesn't block ordering bare boards since it's a simple 4-pin header either way.
+4. **Place the order**: JLCPCB for the bare board, JLCPCB/LCSC for the bulk of the BOM, Mouser/DigiKey for `U1`/`R28`, outside-LCSC source for `U2`/`J8`'s sensor module.
+
+**Not blocking the board order** (can proceed in parallel or after fab, per Track disposition below): Track A's two bench-only items (C18 ripple-current rating, L2 core-loss/R16 pulse-energy), Track D (Rev 0 evidence mining - next session's focus), Track F (firmware, including the new DEC-054 parasitic-load requirement - needed before real cold-weather PV exposure, not before ordering bare boards), and Track G (feature-scope documentation decisions).
+
 ## 1. Checkpoint Reality Check
 
 Good progress is real: Rev 1 schematic and netlist are synchronized with 0 ERC errors, 163/172 BOM lines have LCSC matches, and the Battery-First architecture (DEC-025 through DEC-029) is fully documented.
@@ -24,6 +36,8 @@ This document exists to make that gap explicit and trackable. Update disposition
 
 ### Track A - Close Gate 1 Component Derating (blocking Gate 4 PCB commit)
 
+**Status: effectively CLOSED as of 2026-09-17.** Every row below is `PASS` or `CLOSED`, except two genuinely bench-only items (C18 ripple-current rating, L2 core-loss/R16 pulse-energy) that cannot be closed by further desk research and do not block ordering bare boards - see Section 0.
+
 | Item | Current Disposition | Action Needed | Owner | Target |
 |---|---|---|---|---|
 | **J1, F1, PV entry protection** | HOLD (fuse clip reverted to `3522-2` by DEC-054; firmware parasitic-load mitigation not yet implemented) | 2026-09-16 (DEC-036): fix deferred at Phil's direction - current bench testing stays well under 32V, so DEC-035's voltage gap is not yet a bench hazard. Provisional bench-only fuse: **10A** on the existing Keystone `3522-2` holder. Do NOT expose F1 to the real PV array or any >32V source until the holder itself is replaced. **2026-09-17 (DEC-051): reopened.** Under the new 2P wiring, string voltage drops to single-panel Voc (28.5V STC/~33.9V cold). **2026-09-17 (DEC-052): amperage re-sized to 15A** (125%-of-Isc_parallel=8.90A, ~68.5% headroom). **2026-09-17 (DEC-053, then superseded by DEC-054): fuse family decision reversed.** DEC-053 initially selected a MIDI/AMI 58V-class fuse family; Phil then decided (DEC-054) to keep F1 on the existing Keystone `3522-2` 32V-class clip instead, accepting the residual cold-Voc exceedance (~1.9V/~5.9% over 32V, only below ~-25 degC) and mitigating it via an active firmware-controlled parasitic load on the panel (display/fan/LEDs, a few mA) rather than a hardware/footprint change. **New, not-yet-implemented firmware requirement** (see Track F) - do not treat F1 as closed until that control behavior exists and the required load current is sized | Phil | Firmware load-sizing/implementation before real cold-weather PV exposure |
@@ -43,13 +57,17 @@ Exit criteria for Track A: every row above is `PASS` or has a written waiver wit
 
 ### Track B - BOM and Sourcing Closure
 
-- [ ] Identify and resolve the remaining 9 BOM lines without LCSC matches (logo silkscreen parts, `J2` USB4105-GF-A, `J4/J5/J6` headers, `U2` ESP32-C3 module - confirm which are genuinely non-orderable vs. missing lookups), plus the newly split **C7 line (DEC-055)** needing a 100V-rated 2.2uF X7R part.
-- [ ] Close F2 fuse amperage selection (holder style is settled — Keystone 3522-2 blade clip; 15A recommended pending Q-001) and update BOM/order guide together.
-- [ ] Select a different fuse family/holder for F1 with adequate DC voltage margin above cold PV Voc (DEC-035); update schematic, footprint, and BOM once chosen.
-- [ ] Reconcile [rev-one-lcsc-order-guide.md](rev-one-lcsc-order-guide.md) against the final BOM before placing any order.
-- [ ] Confirm `U1` sourcing path (`STM32G431CBU6` backordered; `STM32G473CEU6` drop-in alternate already verified pin-compatible per DEC-020).
+**Status: CLOSED as of 2026-09-17 (DEC-063), except `R28` (source via DigiKey, no in-stock LCSC exact match) and final confirmation of `J8`'s remote sensor part - see Section 0.**
+
+- [x] Identify and resolve the remaining 9 BOM lines without LCSC matches (logo silkscreen parts, `J2` USB4105-GF-A, `J4/J5/J6` headers, `U2` ESP32-C3 module - confirm which are genuinely non-orderable vs. missing lookups), plus the newly split **C7 line (DEC-055)** needing a 100V-rated 2.2uF X7R part.
+- [x] F2 fuse holder/amperage settled (Keystone 3522-2 blade clip, provisional 15A per DEC-036); final interrupt-rating sign-off still needs Q-001 BMS fault-current data (bench-only, not order-blocking).
+- [x] F1 fuse family decision made (DEC-054): stays on the existing Keystone `3522-2` clip, residual cold-Voc exceedance accepted with a firmware parasitic-load mitigation (Track F) instead of a hardware swap - no schematic/footprint/BOM change needed.
+- [x] Reconciled [rev-one-lcsc-order-guide.md](rev-one-lcsc-order-guide.md) against the final BOM (2026-09-17, Task 5/DEC-063 addendum) - a handful of substituted passives still need a final exact LCSC C-number lookup pass before ordering (flagged inline in `rev-one-bom.md`), not a blocker.
+- [x] `U1` sourcing path confirmed (DEC-063): keep `STM32G431CBU6`, source from Mouser/DigiKey rather than LCSC.
 
 ### Track C - Safety/Sensing Gaps (DECIDED and implemented 2026-09-17)
+
+**Status: fully CLOSED.**
 
 - [x] **Battery temperature sensing.** DEC-061: added a dedicated battery-pack temperature input in Rev 1 rather than rely on BMS-only coverage. **Design changed mid-implementation**: the original plan assumed MCU `PA6`/`PA7` were spare (per the 2026-07-10 signal map), but a real netlist export proved both are already used for USART1 `CTS`/`RTS` (DEC-015) - and every other `PA`/`PB` GPIO is likewise already in use except `PB8` (`BOOT0`, unsuitable). Implemented instead as a new 4-pin connector `J8` tapping the existing shared I2C bus (`I2C CLK`/`I2C DATA`, already carrying `U6`/`U7`/`U8`) plus `CTRL_3V3`/`PWR_NEG`, for a remote I2C temperature-sensor module at the battery pack - no new MCU pin needed. Schematic edit made and validated with `kicad-cli sch erc`/`export netlist` (0 new ERC errors vs. baseline). **Still open:** exact remote I2C sensor part/address and mating cable (before BOM/order), and a cosmetic `endpoint_off_grid` ERC warning on `J8` pin 1 (nudge the symbol onto the grid next time the schematic is open in the GUI).
 - [x] **BMS communication link.** DEC-062: defer the full link (and even a minimal permissive/fault GPIO input) to Rev 2. Rev 1 continues to rely solely on the Q-001 BMS current-capability assumption. `requirements.md`/`architecture.md` updated (new REQ-BAT-003) to state this as an explicit scope boundary.
@@ -62,14 +80,15 @@ Exit criteria for Track A: every row above is `PASS` or has a written waiver wit
 - [ ] Confirm full analysis of `rigol_scope_capture_2026-09-07.txt` (switching frequency, gate signal integrity, ripple) is captured somewhere durable, not just eyeballed once.
 - [ ] Use Rev 0 to shake out firmware startup-state-machine logic at bench-safe power before Rev 1 boards arrive, decoupling firmware risk from the new hardware spin.
 
-### Track E - Gate 4: PCB Layout and Thermal Closure (next major phase)
+### Track E - Gate 4: PCB Layout and Thermal Closure
 
-Per [SOLAR_HANDOFF_2026-09-12.md](../SOLAR_HANDOFF_2026-09-12.md), this is the immediate next-session focus once Track A is far enough along to trust it:
+**Status: CLOSED as of 2026-09-18 (DEC-065).** Board fully floorplanned and routed (4-layer: F.Cu/In1.Cu/In2.Cu/B.Cu). Final DRC: 0 errors, 0 unconnected items (133 warnings, all cosmetic/environment-artifact - see DEC-065 and DEC-064 for the schematic-side `"LCSC "` duplicate-field cleanup that removed most of the ERC noise). JLCPCB's own DFM checker passed with no issues flagged on the generated Gerber/drill set.
 
-- [ ] Run Update PCB From Schematic (F8) on `Solar Project Rev1.kicad_pcb`; confirm all 172 footprints place without library warnings.
-- [ ] Floorplan the power loop: input protection -> buck-boost switch nodes -> `L2` -> output Kelvin shunt `R16` -> battery fuse `F2`.
-- [ ] Isolate sensitive analog/Kelvin sensing and compensation-network routing from switching loops.
-- [ ] Set 4-layer stackup design rules and run PCB DRC to zero unwaived errors.
+- [x] Update PCB From Schematic run; all footprints placed (including the new `J8` connector).
+- [x] Floorplan the power loop and route the board.
+- [x] Isolate sensitive analog/Kelvin sensing and compensation-network routing from switching loops.
+- [x] 4-layer stackup confirmed; PCB DRC run to 0 unwaived errors.
+- [x] Fab-ready Gerbers/drill generated and passed JLCPCB's DFM check (2026-09-18).
 
 ### Track F - Firmware (Gate 5, not yet started beyond bring-up diagnostics)
 
@@ -90,18 +109,24 @@ Decide and log; do not build unless explicitly greenlit:
 
 ## 3. Near-Term Session Sequencing
 
-1. **Session N — Close Track A blockers that gate PCB commit.** Prioritize F2 (already `REWORK`), Q5/Q6 gate test execution, and output-cap-bank stability numbers. Do not start Gate 4 PCB floorplanning until these move off `HOLD`/`OPEN` or get a written waiver.
-2. **Session N+1 — Track C safety decisions.** Battery temperature sensing and BMS link are cheap to decide now and expensive to retrofit after fab. Make the call, log it, update requirements/architecture text to match reality.
-3. **Session N+2 — Track D Rev 0 mining, run in parallel with Session N/N+1 since it uses different hardware/time.** Close the `VCC2` and FP4 open findings before Rev 0 boards are set aside for good.
-4. **Session N+3 — Gate 4 PCB layout start**, once Track A exit criteria are met or explicitly waived.
+**Updated 2026-09-18: Sessions N through N+3 below are complete (Tracks A, B, C, E all closed). Session N+4 (Track D, Rev 0 evidence mining) is the current focus.**
+
+1. ~~Session N — Close Track A blockers~~ **DONE (2026-09-17).**
+2. ~~Session N+1 — Track C safety decisions~~ **DONE (2026-09-17, DEC-061/062).**
+3. ~~Session N+2 — Track D Rev 0 mining~~ **Deferred - moved to N+4 below, since Track E finished first.**
+4. ~~Session N+3 — Gate 4 PCB layout~~ **DONE (2026-09-18, DEC-065) - board routed, DRC clean, JLCPCB DFM check passed.**
+5. **Session N+4 — Track D Rev 0 evidence mining (current focus).** Finish the `VCC2` backfeed isolation test and the FP4 current-limit stall root cause before Rev 0 boards are set aside for good.
+6. Session N+5 — final BOM/order-guide lookup pass (remaining LCSC C-numbers for substituted passives) and place the board order.
 
 ## 4. Definition of Done for "Rev 1 ready to fabricate"
 
-- Track A: every derating-review row is `PASS` or carries a dated, rationale-backed waiver.
-- Track B: BOM has zero unresolved LCSC gaps on electrically-significant parts; F2 is no longer `REWORK`.
-- Track C: battery temperature sensing and BMS link each have a logged decision (build or explicitly deferred), and requirements/architecture text matches what the hardware actually does. **Decided and implemented (DEC-061/DEC-062); remote I2C sensor part number still open.**
-- Track E: PCB DRC is zero unwaived errors with documented thermal/copper closure.
+- Track A: every derating-review row is `PASS` or carries a dated, rationale-backed waiver. **Met as of 2026-09-17** - two rows (C18 ripple current, L2/R16 pulse-energy/core-loss) are accepted bench-only waivers, not blockers.
+- Track B: BOM has zero unresolved LCSC gaps on electrically-significant parts; F2 is no longer `REWORK`. **Met as of 2026-09-17 (DEC-063)** - `R28` is an accepted DigiKey-sourced exception, not a gap.
+- Track C: battery temperature sensing and BMS link each have a logged decision (build or explicitly deferred), and requirements/architecture text matches what the hardware actually does. **Fully met (DEC-061/DEC-062)**; remote I2C sensor part proposed, needs final go-ahead.
+- Track E: PCB DRC is zero unwaived errors with documented thermal/copper closure. **Met as of 2026-09-18 (DEC-065)** - 0 DRC errors, 0 unconnected items, JLCPCB DFM check passed.
 - No item in Section 2 is silently skipped — every unchecked box has either a completed action or a logged deferral decision.
+
+**Rev 1 has met every Definition-of-Done criterion above; the board is ready to order.** Remaining work (Track D, Track F, R28/J8 sourcing) is explicitly tracked as non-blocking for the order itself.
 
 ## 5. Maintenance Rule
 
