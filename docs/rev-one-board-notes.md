@@ -38,6 +38,8 @@ The supplied front photo shows the display, ESP32-style development board, main 
 - The BOM names U1 `STM32G431CBU6`, U2 `ESP32_C3_mini`, and U14 `LM74502HDDFR`. Those are design identities, not independently confirmed chip markings. Confirm the MCU target before flashing.
 - No powered behavior, firmware compatibility, shorts check, or charging performance has been established in this session.
 
+Phil confirms the board has **never been powered**. Available supply: generic **30 V / 10 A bench supply with adjustable CC/CV**. Those are its capabilities, not first-power settings; do not apply 30 V or use a 10 A current limit for control-power bring-up.
+
 ## BOM Differences Worth Keeping Visible
 
 Use the supplied manufacturing BOM as the working assembly reference, not the stale procurement master CSV. Do not silently replace the master CSV or claim the physical parts were checked.
@@ -54,4 +56,4 @@ Use the supplied manufacturing BOM as the working assembly reference, not the st
 
 ## Next Step
 
-Reconcile the low-energy bring-up instructions under [#4](https://github.com/Phil-CIA/Solar-Project-200w/issues/4). Ask only for information needed for the next action: whether the board has already been powered, the available current-limited supply/programmer, and any known assembly changes. No need to reconstruct every purchase or produce additional photos unless a specific uncertainty needs one.
+Reconcile the low-energy bring-up instructions under [#4](https://github.com/Phil-CIA/Solar-Project-200w/issues/4). The immediate physical step is an unpowered shorts/polarity check, not connecting PV or a battery. The supply and never-powered state are now known; do not repeatedly ask for them. Confirm the connection lead and conservative voltage/current settings before the later first energization, and identify the programmer/MCU before flashing. No need to reconstruct every purchase or produce additional photos unless a specific uncertainty needs one.

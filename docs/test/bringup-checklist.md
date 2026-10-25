@@ -1,8 +1,20 @@
 # Solar Project 200W - Rev 1 Bench Bring-Up Plan
 
-Last updated: 2026-08-24
-Status: first-board procedure; high-energy stages require the listed gates
+Last updated: 2026-10-25 (current checkpoint added; older stages still need reconciliation)
+Status: unpowered checks can proceed; powered-stage instructions below are historical drafts pending #4 reconciliation
 Purpose: safely establish that the fabricated Rev 1 board can be powered, programmed, observed, and progressively exercised without bypassing its protection boundaries.
+
+## Current Hobby Bring-Up Checkpoint
+
+Phil's Rev 1 board is assembled and has never been powered. He has a generic 30 V / 10 A CC/CV bench supply. Use short notes and relevant readings, not mandatory photo sets or formal lab records; see [board notes](../rev-one-board-notes.md) and the [current working plan](../rev-one-closure-plan-2026-09-16.md#6-assembled-board-execution-and-issue-1-closure).
+
+**Next physical step: unpowered only.** With the bench supply, USB, programmer, PV, battery and loads disconnected, inspect for obvious bridges/reversed parts and use a multimeter to check the power rails to `PWR_NEG` for an unexpected persistent near-short. Capacitors can give changing readings; do not use one continuity beep as a pass/fail threshold. Record only an unexpected result and any readings useful for diagnosing it. A resistance check does not prove correct assembly.
+
+The current schematic export traces J2 `VBUS` through D10 to `CTRL_5V`, then U5 to `CTRL_3V3`; TP15 is return, TP18 is `CTRL_5V`, and TP17 is `CTRL_3V3`. Verify these locations/labels on the actual board before probing. J2 is the main-board USB connector, not the USB connector on the ESP32 development board. Do not assume the older proposed dual-USB isolation architecture was physically implemented.
+
+Before energizing, settle the actual supply-to-J2 connection and conservative voltage/current settings. Do not use the 30 V / 10 A capability as a setting, connect a computer as the first source, bypass a fuse, or inject power onto a convenient test point. No powered check has been completed.
+
+The August stages below remain references while [#4](https://github.com/Phil-CIA/Solar-Project-200w/issues/4) is reconciled. In particular, Stage E's Q1/D3/L1/minimum-duty wording does not describe the retained LM51772/M1-M4/L2 design, and the 200 W release wording is obsolete: the current design target is 125 W continuous output with at most 150 W PV operating power. Do not execute those historical switching instructions.
 
 This procedure supersedes the Phase 0 planning checklist. It applies to the Rev 1 board only. Record completed rows, instrument settings, firmware revision, and photographs in a dated bench log before advancing a stage.
 

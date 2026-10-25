@@ -29,7 +29,7 @@ Current checkpoint: 2026-10-25. Start with [Rev 1 board notes](docs/rev-one-boar
 
 ## Next session objective
 
-Continue [#4](https://github.com/Phil-CIA/Solar-Project-200w/issues/4): reconcile the board-specific low-energy bring-up instructions. First establish whether this board has already been powered and which current-limited supply/programmer are available. Ask only for information needed for the next action.
+Continue [#4](https://github.com/Phil-CIA/Solar-Project-200w/issues/4): reconcile the board-specific low-energy bring-up instructions. Phil confirms the board has never been powered and has a generic 30 V / 10 A CC/CV bench supply. Start with unpowered shorts/polarity checks; those supply ratings are not first-power settings. Confirm only the lead/settings and programmer information needed for the next action, not another evidence dossier.
 
 Do not run Rev 0 flash/control scripts on Rev 1 without checking the fitted MCU and pin map. Keep basic shorts/polarity checks, current limiting and default-off control; reduce paperwork, not power-up precautions.
 
