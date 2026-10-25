@@ -1,6 +1,12 @@
 # Solar Project KiCad Revision Index
 
-Last updated: 2026-08-24
+Last updated: 2026-10-25
+
+## Assembled Rev 1 Working Baseline
+
+Phil identified the saved `Solar Charger\Rev 1` manufacturing folder and supplied both-side photos. Its PCB and all 14 loose fabrication files match the repository copies in `fab-output-2026-09-18`; the schematic matches after removing 176 empty `LCSC ` metadata properties. See [Rev 1 board notes](../../../docs/rev-one-board-notes.md) for the local source location, BOM differences and limits of that comparison.
+
+Use the repository Rev 1 files for continued development without overwriting the saved manufacturing package. The saved BOM is an assembly reference, not proof of each fitted part; the procurement master CSV is not an as-built record.
 
 ## Rev 0 - Manufactured First Build
 
@@ -25,7 +31,7 @@ The active Rev 1 design set is in this directory:
 - `Solar Project Rev1.kicad_pcb`
 - `Solar Project Rev1.net`
 
-Open `Solar Project Rev1.kicad_pro` when working on Rev 1. The Rev 1 schematic is the active source of truth; its local uncommitted changes must be preserved.
+Open `Solar Project Rev1.kicad_pro` when working on Rev 1. The Rev 1 schematic is the active development source; preserve any local uncommitted changes. Distinguish future edits from the identified manufactured baseline.
 
 ## Historical Artifacts
 

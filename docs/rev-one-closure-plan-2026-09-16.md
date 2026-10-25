@@ -10,7 +10,7 @@ Phil reports that the Rev 1 PCB build is complete. This establishes assembly com
 
 The actionable backlog is [issue #1](https://github.com/Phil-CIA/Solar-Project-200w/issues/1) and its child issues. [Section 6](#6-assembled-board-execution-and-issue-1-closure) defines the current execution sequence and closure gates. Historical `OPEN`/`HOLD` entries require reconciliation against the actual board; they are not newly confirmed Rev 1 defects. Accepted design decisions remain in force unless new evidence requires review.
 
-The first deliverable is an identified as-built board and an applicable safe bring-up procedure, not immediate charging. This planning update does not authorize energization, flashing an unverified target, or closing the tracker.
+The first deliverable is a useful board baseline and applicable safe bring-up instructions, not immediate charging. Phil supplied the manufacturing folder and both-side photos; findings are in [Rev 1 board notes](rev-one-board-notes.md). Phil also clarified that this is a hobby project: use a practical "good enough" standard, not a professional lab documentation process. This update does not establish electrical readiness.
 
 ## 0. Where We Are / Path to Ordering the Board (updated 2026-09-18)
 
@@ -144,51 +144,50 @@ Update this file directly as tracks close instead of creating a new dated plan d
 
 ### Ownership and Tracking
 
-GitHub issues own task status and acceptance checklists; this section owns sequencing and tracker-level completion criteria. Link evidence and dispositions back to the relevant issue and existing engineering document instead of creating a competing task list.
+GitHub issues own task status; this section gives the working order. Record useful results in an issue or the existing board notes rather than maintaining duplicate checklists.
 
-Phil supplies or confirms physical-board identity, fitted parts, available instruments, pack/BMS information, bench measurements, scope decisions, and release acceptance. Repository and firmware work can proceed independently only where those inputs are not prerequisites. Do not assign calendar completion dates before bench availability and missing inputs are known; record an owner and target date or review trigger in each issue when scheduling it.
+**Hobby-project standard, directed by Phil on 2026-10-25:** short notes, available photos, and checks relevant to the next step are enough. Do not require a full fitted-parts audit, formal sign-offs, calibration certificates, a requirement-by-requirement dossier, scheduled reviews, or a scope capture for every operation. Ask for missing information only when it changes the next action. Phil chooses which optional records to provide. Unknowns stay unknown rather than becoming paperwork blockers or assumed passes.
+
+This reduces documentation, not electrical precautions: verify the target before flashing, check for shorts/polarity problems before power, use current-limited staged bring-up, and confirm relevant protection and component limits before charging or increasing power. Do not claim full-power or outdoor operation works without actually trying it under suitable conditions.
 
 Maintain the accepted baseline: LM51772 four-switch conversion, STM32 safety authority, two 100 W panels in parallel (DEC-051), 125 W continuous output, 150 W maximum PV operating power, 8-10 A nominal charge target, and approximately 12 A hardware protection pending tolerance verification. Battery-first operation and USB-only inhibit remain mandatory. ESP32 is a coprocessor; BMS communications remain deferred to Rev 2 (DEC-062).
 
-### Execution Sequence and Exit Evidence
+### Practical Work Order
 
-| Stage | Issues | Prerequisites and work | Exit evidence |
+| Stage | Issues | Work | Good enough to move on |
 |---|---|---|---|
-| A - Establish the physical baseline | [#3](https://github.com/Phil-CIA/Solar-Project-200w/issues/3) | Record board/assembly identity, both-side photographs, fitted MCU/modules, substitutions, rework, fuse ratings, and the manufacturing source revision. Reconcile procurement and layout history rather than repeating completed work. | As-built BOM and board record linked to the exact schematic/PCB/fab package and matching ERC/DRC/waivers; unknown provenance explicitly identified and resolved before relying on it. |
-| B - Reconcile documentation and bench readiness | [#2](https://github.com/Phil-CIA/Solar-Project-200w/issues/2), [#4](https://github.com/Phil-CIA/Solar-Project-200w/issues/4) | Documentation/workflow cleanup can start alongside A. Final electrical procedures require A. Correct obsolete series-PV, component, power-limit and F2 descriptions; confirm instruments, source/sink limits, probe topology, battery/BMS envelope and protection boundaries. | Discoverable active docs, issue templates and contribution/build workflow; approved board-specific staged procedure with explicit stop conditions. Real-battery and real-PV permissions remain separate gates. |
-| C - Establish safe control and observability | [#5](https://github.com/Phil-CIA/Solar-Project-200w/issues/5), [#6](https://github.com/Phil-CIA/Solar-Project-200w/issues/6) | A and the applicable low-energy procedure from B precede flashing/powered checks. Verify target/pin map and safe-state firmware first, then calibrate electrical sensing and the actual J8 pack sensor. Add reproducible build checks and targeted tests with the supported target. | Build/flash instructions and artifact hash; reset/power-loss/USB-only inhibit captures; calibrated channels, units, polarity, uncertainty and explicit invalid/stale-sensor handling. |
-| D - Close protection and cold-PV gates | [#9](https://github.com/Phil-CIA/Solar-Project-200w/issues/9), [#7](https://github.com/Phil-CIA/Solar-Project-200w/issues/7) | A and B precede isolated U14 checks; software-controlled checks also need #5. Cold-Voc analysis can proceed alongside C, but active-load implementation needs verified topology/control. Do not expose components outside their verified ratings to test the mitigation. | U14 default-off, gate/clamp/timing and reverse-flow evidence before power-path release. For DEC-054, sized and demonstrated PV-side loading, including unavailable-control cases, or an explicit operating restriction and decision returned to Phil. |
-| E - Implement controlled charging | [#8](https://github.com/Phil-CIA/Solar-Project-200w/issues/8) | A-C and the applicable #9 protection results precede controlled switching. Implement battery/PV qualification, current-limit readback, bounded ramp, MPPT/charge profile, fault handling and weak-source retry under approved emulator/sink conditions. | State-transition tests and strong/weak-source startup captures; verified local current/power limits and safe responses to reset, invalid readings, missing battery and controller communication failures. |
-| F - Qualify component stress and performance | [#10](https://github.com/Phil-CIA/Solar-Project-200w/issues/10) | A-E applicable gates passed before increasing energy. Define thermal point, soak duration, tolerances and pass/fail thresholds before measuring. #7 must close for real cold-weather PV exposure, not necessarily for rated-emulator testing within verified limits. | Output-capacitor ripple/inrush/overshoot and stability results; L2/R16/power-path stress and thermal evidence; protection tolerance results; 125 W continuous output with no more than 150 W PV operating power in the qualified envelope. |
-| G - Complete or explicitly defer extensions | [#11](https://github.com/Phil-CIA/Solar-Project-200w/issues/11), [#12](https://github.com/Phil-CIA/Solar-Project-200w/issues/12) | Scope decisions can start immediately. Telemetry needs A and safe, valid local measurements; remote start stays disabled until E and its safety gates pass. Networking does not block core local validation. | Tested framed telemetry and network/reset isolation, or Phil-approved dated deferral; explicit dispositions for SOC/history, load/LVD, extra buses, packaging and other deferred features. |
+| A - Know which board we have | [#3](https://github.com/Phil-CIA/Solar-Project-200w/issues/3) | Identify the manufacturing files, use the photos Phil supplies, and note meaningful differences. | Working design identified and important unknowns written down. See [board notes](rev-one-board-notes.md); no full assembly audit required. |
+| B - Make the repo and next bench step usable | [#2](https://github.com/Phil-CIA/Solar-Project-200w/issues/2), [#4](https://github.com/Phil-CIA/Solar-Project-200w/issues/4) | Fix stale entry-point docs and prepare a short, board-specific power-up sequence. | Clear connections, supply settings, expected rails and stop conditions for the next test. Check actual pack/fuse limits before using a real battery. |
+| C - Get safe firmware and useful readings | [#5](https://github.com/Phil-CIA/Solar-Project-200w/issues/5), [#6](https://github.com/Phil-CIA/Solar-Project-200w/issues/6) | Verify MCU/pins, build/flash, default-off behavior, serial output and sensing. | Firmware runs on the right target without unwanted switching; readings agree reasonably with available reference measurements, and missing sensors are reported. |
+| D - Check the protection that matters | [#9](https://github.com/Phil-CIA/Solar-Project-200w/issues/9), [#7](https://github.com/Phil-CIA/Solar-Project-200w/issues/7) | Check U14/Q5/Q6 behavior before charging. Resolve or avoid the unverified cold-Voc operating condition. | Relevant gate/clamp and reverse-flow checks work at low energy. Do not rely on the 32 V path outside its verified envelope; no cold chamber or outdoor qualification is required to develop indoors. |
+| E - Start charging gently | [#8](https://github.com/Phil-CIA/Solar-Project-200w/issues/8) | With safe control, sensing and protection established, implement qualification, current-limit readback, bounded ramp and weak-source retry. | Controlled low-current operation and fault/stop behavior work in the chosen setup. Record a short result; capture waveforms when needed to understand switching or a fault. |
+| F - Increase power as practical | [#10](https://github.com/Phil-CIA/Solar-Project-200w/issues/10) | Check stability, ripple/overshoot and heating as load increases within verified limits. | State the power, duration, conditions and temperatures actually tried. Leave 125 W continuous as unverified until demonstrated; a useful lower-power prototype is a valid intermediate result. |
+| G - Choose the extras | [#11](https://github.com/Phil-CIA/Solar-Project-200w/issues/11), [#12](https://github.com/Phil-CIA/Solar-Project-200w/issues/12) | Add telemetry when useful; ask Phil before expanding scope. | Implemented extras work without taking safety authority from STM32, or Phil agrees to defer them. Networking does not block local charging development. |
 
-The next work session starts with #3: collect the physical-board evidence and identify missing inputs. Reconcile #4 before using any existing power-up instructions. Source-only documentation and firmware preparation may proceed, but must not be reported as hardware validation.
+Continue with #4 using the identified manufacturing package. Confirm only the current board state and equipment needed for the immediate bench step. Repository and firmware preparation can proceed without demanding more photos or reconstructing all purchase records.
 
-### Evidence and Failure Handling
+### Notes and Failures
 
-Use the existing [bring-up checklist](test/bringup-checklist.md) and [validation plan](test/validation-plan.md) as the evidence framework after reconciling them under #4. Store one dated record per board/session, using the checklist's `evidence/YYYY-MM-DD-rev1-boardNN/` convention.
+Use a short issue comment or board-note entry: what was connected, supply voltage/current limit, firmware if relevant, what happened, and any important reading. A photo, meter reading or scope capture is useful when it resolves a specific question, not as a blanket documentation requirement. Original photos and manufacturing files may remain local; keep personal/account details out of repository records.
 
-Every executed test records board/assembly identity, source revision, firmware hash, wiring topology, instrument/probe details, source/sink settings, limits, measured results, raw captures, operator and date. Record `PASS`, `FAIL`, `BLOCKED`, or `NOT RUN`; a planned test or blank table is not a pass. Keep private procurement/account data out of evidence.
+The existing [bring-up checklist](test/bringup-checklist.md) and [validation plan](test/validation-plan.md) are engineering references, not a requirement to complete every historical table before doing useful work. Reconcile their obsolete instructions under #4 before use. This section supersedes their documentation-volume expectations for current hobby work, not their applicable electrical precautions.
 
-Map requirements to tests and results, not just to documents. Extend the validation matrix where its current VAL-001 through VAL-008 coverage does not verify an active requirement. Update the derating review with measured component dispositions and the decisions log with accepted changes or restrictions.
+Keep `worked`, `failed`, and `not tried` distinct. On unexpected current, heating, backfeed, uncontrolled switching or another unsafe condition, stop that test and investigate before increasing energy. Record meaningful fixes and operating restrictions; do not turn absent records into passing results.
 
-On a failed or unsafe condition, stop the affected stage, record the observation in its issue, and create a focused defect issue when warranted. Do not advance dependent tests until the failure is resolved or an explicitly reviewed restriction makes the remaining test safe. A waiver allowing PCB fabrication does not automatically authorize charging or rated-power operation.
+### PR and Issue Closure
 
-### Pull Request Boundaries
+Continue small related changes on the open PR as appropriate; use separate PRs for later substantive firmware/hardware changes. Reference #1 without auto-closing it when only part of the work is done.
 
-This initial PR adds the execution/closure plan and its documentation entry point only. It references #1 without a closing keyword. Merging the plan does not complete any physical gate or close the development tracker.
+Close #3 when the working board/design baseline and useful known differences are recorded. Carry operation-specific checks into #4/#5/#6/#7/#9 rather than keeping #3 open for a professional assembly dossier.
 
-Use reviewable follow-up PRs for repository, procedure, firmware, and evidence changes, linked to the relevant child issue. A child issue closes only when all its acceptance criteria have evidence or its scope receives an explicit approved deferral. Keep #1 open across those changes; do not close it merely because the last code PR merged.
+Close other child issues when the requested behavior works to the agreed hobby scope, or Phil explicitly chooses to defer it. A short result and any remaining limitation are enough; no formal acceptance certificate is needed.
 
-### Final Tracker Closure Gate
+Close #1 when:
 
-Close #1 only after a final review records all of the following in the tracker:
+- Each child is done or explicitly deferred by Phil, without silently dropping unresolved problems.
+- The repo explains how to build/use the current prototype and what has actually worked.
+- Safety-relevant unknowns are resolved for the operations being attempted, or those operations remain clearly excluded.
+- Actual tested power/conditions and remaining limitations are stated without claiming untried full-power, cold-weather, outdoor or AC readiness.
+- Phil is satisfied with the useful prototype scope and remaining work is still visible.
 
-- Every child issue #2 through #12 has evidence-backed completion or a dated deferral explicitly accepted by Phil, with rationale, owner, review date/trigger, and retained restrictions. Deferred implementation stays traceable in its child issue.
-- The as-built hardware, firmware and documentation identify the same qualified baseline. Historical concerns are resolved, confirmed as defects with tracked fixes, or explicitly dispositioned; no ambiguity is silently marked complete.
-- Every active requirement maps to a recorded result. Any unexecuted, failed or deferred verification is visible with an accepted restriction; the closeout states the actually demonstrated operating envelope.
-- Safety-critical readiness, protection, sensing, startup and stress gates pass for every operation claimed as qualified. Non-safety feature deferrals may permit tracker closure; an unresolved safety gate prohibits the corresponding operating claim.
-- The final summary links board/firmware identity, test and thermal evidence, decisions/waivers, remaining risks and feature deferrals, and Phil's acceptance of the demonstrated scope.
-- README, HANDOFF, the documentation index, this plan and the tracker agree on current status and next work. Update completed tracker checkboxes from evidence and close the issue manually after acceptance.
-
-If the full target cannot be qualified, leave the tracker open unless Phil explicitly accepts a narrower, documented closeout with the unqualified operations prohibited and remaining work tracked. Neither assembly completion nor a merged planning PR is sufficient closure evidence.
+Merging docs or assembling the board alone does not establish working charging. Conversely, missing optional photos or formal reports must not keep a useful hobby milestone open.
