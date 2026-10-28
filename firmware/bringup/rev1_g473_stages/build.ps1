@@ -77,6 +77,10 @@ $targets = @(
     @{
         Name = "solar_rev1_stage_uart_bootlog"
         Source = (Join-Path $scriptDir "stage_uart_bootlog.c")
+    },
+    @{
+        Name = "solar_rev1_stage_aht20_display_uart"
+        Source = (Join-Path $scriptDir "stage_aht20_display_uart.c")
     }
 )
 

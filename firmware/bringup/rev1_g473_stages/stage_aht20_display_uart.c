@@ -25,10 +25,21 @@
 #define USART_ISR REG32(USART1_BASE + 0x1CUL)
 #define USART_TDR REG32(USART1_BASE + 0x28UL)
 
+#define ADC1_BASE 0x50000000UL
+#define ADC12_COMMON_BASE 0x50000300UL
+#define ADC_ISR REG32(ADC1_BASE + 0x00UL)
+#define ADC_CR REG32(ADC1_BASE + 0x08UL)
+#define ADC_CFGR REG32(ADC1_BASE + 0x0CUL)
+#define ADC_SMPR1 REG32(ADC1_BASE + 0x14UL)
+#define ADC_SQR1 REG32(ADC1_BASE + 0x30UL)
+#define ADC_DR REG32(ADC1_BASE + 0x40UL)
+#define ADC12_CCR REG32(ADC12_COMMON_BASE + 0x08UL)
+
 #define GPIOA_EN_BIT (1UL << 0)
 #define GPIOB_EN_BIT (1UL << 1)
 #define GPIOC_EN_BIT (1UL << 2)
 #define USART1_EN_BIT (1UL << 14)
+#define ADC12_EN_BIT (1UL << 13)
 
 #define PB6_BIT (1UL << 6) /* SDA */
 #define PB7_BIT (1UL << 7) /* SCL */
@@ -42,6 +53,11 @@
 #define OLED_ADDR 0x3CU
 #define U6_ADDR 0x6AU
 #define WS_RESET_CYCLES (300U * 16U) /* 300 us at 16 MHz */
+#define PA5_BIT (1UL << 5) /* V_in_ON */
+
+#define VIN_ADC_SHUTDOWN_MV 50000U
+#define VIN_ADC_SCALE_NUM 190U
+#define VIN_ADC_SCALE_DEN 10U
 
 static void delay_cycles(volatile uint32_t cycles) {
     while (cycles-- > 0U) {
@@ -53,6 +69,24 @@ static void delay_ms(uint32_t ms) {
     while (ms-- > 0U) {
         delay_cycles(16000U);
     }
+}
+
+static bool wait_reg32_set(volatile uint32_t *reg, uint32_t mask, uint32_t timeout_cycles) {
+    while (((*reg) & mask) == 0U) {
+        if (timeout_cycles-- == 0U) {
+            return false;
+        }
+    }
+    return true;
+}
+
+static bool wait_reg32_clear(volatile uint32_t *reg, uint32_t mask, uint32_t timeout_cycles) {
+    while (((*reg) & mask) != 0U) {
+        if (timeout_cycles-- == 0U) {
+            return false;
+        }
+    }
+    return true;
 }
 
 static void uart_gpio_init(void) {
@@ -125,6 +159,74 @@ static void u6_flt_gpio_init(void) {
 
 static bool u6_flt_asserted(void) {
     return (GPIO_IDR(GPIOC_BASE) & PC13_BIT) == 0U;
+}
+
+static void vin_path_gpio_init(void) {
+    RCC_AHB2ENR |= GPIOA_EN_BIT;
+    (void)RCC_AHB2ENR;
+
+    GPIO_MODER(GPIOA_BASE) = (GPIO_MODER(GPIOA_BASE) & ~((3UL << (4U * 2U)) | (3UL << (5U * 2U)))) |
+                             (3UL << (4U * 2U)) | /* PA4 analog (V_in_ADC) */
+                             (1UL << (5U * 2U));  /* PA5 output (V_in_ON) */
+    GPIO_BSRR(GPIOA_BASE) = PA5_BIT; /* default ON: active-high control */
+}
+
+static void vin_path_enable(bool enabled) {
+    if (enabled) {
+        GPIO_BSRR(GPIOA_BASE) = PA5_BIT;
+    } else {
+        GPIO_BSRR(GPIOA_BASE) = PA5_BIT << 16U;
+    }
+}
+
+static bool adc1_init_pa4(void) {
+    RCC_AHB2ENR |= ADC12_EN_BIT;
+    (void)RCC_AHB2ENR;
+
+    ADC12_CCR &= ~(0x3UL << 16U); /* CKMODE = HCLK/1 (synchronous clock) */
+
+    ADC_CR &= ~(1UL << 29U); /* Exit deep-power-down */
+    ADC_CR |= (1UL << 28U);  /* Enable ADC regulator */
+    delay_cycles(1000U);
+
+    if ((ADC_CR & 1UL) != 0U) {
+        ADC_CR |= (1UL << 1U); /* ADDIS */
+        if (!wait_reg32_clear(&ADC_CR, 1UL, 200000U)) {
+            return false;
+        }
+    }
+
+    ADC_CR |= (1UL << 31U); /* ADCAL */
+    if (!wait_reg32_clear(&ADC_CR, (1UL << 31U), 500000U)) {
+        return false;
+    }
+
+    ADC_ISR |= 1UL;      /* clear ADRDY */
+    ADC_CFGR = 0U;       /* single conversion, software trigger */
+    ADC_SMPR1 &= ~(7UL << 12U);
+    ADC_SMPR1 |= (7UL << 12U); /* channel 4 sampling time */
+    ADC_SQR1 = (4UL << 6U);    /* SQ1 = channel 4, sequence length = 1 */
+
+    ADC_CR |= 1UL; /* ADEN */
+    if (!wait_reg32_set(&ADC_ISR, 1UL, 500000U)) {
+        return false;
+    }
+    return true;
+}
+
+static bool adc1_read_pa4_raw(uint16_t *raw_out) {
+    ADC_ISR |= (1UL << 2U) | (1UL << 3U); /* clear EOC/EOS */
+    ADC_CR |= (1UL << 2U);                /* ADSTART */
+    if (!wait_reg32_set(&ADC_ISR, (1UL << 2U), 500000U)) {
+        return false;
+    }
+    *raw_out = (uint16_t)(ADC_DR & 0x0FFFU);
+    return true;
+}
+
+static uint32_t vin_input_mv_from_adc_raw(uint16_t raw) {
+    const uint32_t adc_mv = ((uint32_t)raw * 3300UL) / 4095UL;
+    return (adc_mv * VIN_ADC_SCALE_NUM) / VIN_ADC_SCALE_DEN;
 }
 
 static inline void ws_delay_short(void) {
@@ -567,6 +669,8 @@ static void format_hex8(uint8_t value, char *out) {
 int main(void) {
     uart_gpio_init();
     uart_init();
+    vin_path_gpio_init();
+    const bool vin_adc_ok = adc1_init_pa4();
     i2c_gpio_init();
     ws_gpio_init();
     u6_flt_gpio_init();
@@ -575,6 +679,7 @@ int main(void) {
     uart_line("");
     uart_line("Solar Rev1 AHT20/OLED stage");
     uart_line("USART1 115200 8N1 on PA9/PA10");
+    uart_line(vin_adc_ok ? "VIN ADC init OK" : "VIN ADC init FAIL");
 
     const bool has_aht20 = aht20_probe();
     const bool has_oled = oled_probe();
@@ -594,7 +699,24 @@ int main(void) {
     }
 
     bool heartbeat_phase = false;
+    bool vin_path_on = true;
+    bool vin_cutoff_reported = false;
     for (;;) {
+        if (vin_adc_ok && vin_path_on) {
+            uint16_t vin_adc_raw = 0U;
+            if (adc1_read_pa4_raw(&vin_adc_raw)) {
+                const uint32_t vin_input_mv = vin_input_mv_from_adc_raw(vin_adc_raw);
+                if (vin_input_mv >= VIN_ADC_SHUTDOWN_MV) {
+                    vin_path_on = false;
+                    vin_path_enable(false);
+                    if (!vin_cutoff_reported) {
+                        uart_line("VIN cutoff: PA5 OFF (>=50V input)");
+                        vin_cutoff_reported = true;
+                    }
+                }
+            }
+        }
+
         uint8_t u6_status = 0U;
         uint8_t u6_pd_status0 = 0U;
         char u6_status_hex[5];
