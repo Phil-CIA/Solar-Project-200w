@@ -25,6 +25,33 @@ The bare-metal stage-1 image avoids STM32Cube/HAL dependencies and can be built 
 
 Stage 1 provides UART diagnostics, safe output state, fault input reads, open-drain software I2C, AHT20 measurements, SSD1306 output, and the D8 RGB heartbeat. Its automatic dashboard shows software wall time, reset-relative uptime, sensor data, and the cached LM51772 `STATUS_BYTE` with a read-failure count (`U6 xx Nnnn`). The U6 status poll is read-only and runs every two seconds while automatic I2C traffic is enabled. ADC remains a placeholder for a later calibrated acquisition pass.
 
+## Rev 1 inert minimal image (STM32G473CEU6)
+
+- Source folder: [bringup/rev1_g473_minimal/](bringup/rev1_g473_minimal/)
+- Intent: known-buildable inert image for Rev 1 MCU validation only.
+- Behavior: startup reaches `main()` and remains in a `WFI` loop.
+- No application GPIO/peripheral/charger setup is performed.
+
+Build command:
+
+```powershell
+./firmware/bringup/rev1_g473_minimal/build.ps1
+```
+
+## Rev 1 isolated validation stages (STM32G473CEU6)
+
+- Source folder: [bringup/rev1_g473_stages/](bringup/rev1_g473_stages/)
+- Stage A (`stage_d8_heartbeat.c`): PB2-only low-brightness heartbeat for the D8 data chain.
+- Stage B (`stage_i2c_scan.c`): PB6/PB7 open-drain software I2C bounded address probe with debugger-readable RAM results.
+- Stage C (`stage_uart_bootlog.c`): USART1 boot log on PA9/PA10 for CP2102 serial (COM5), no charger/control pin activity.
+- Both stages use the same STM32G473 startup and linker baseline as the inert minimal target.
+
+Build command:
+
+```powershell
+./firmware/bringup/rev1_g473_stages/build.ps1
+```
+
 ## Rev 0 SWD-Only Checks
 
 The scripts in [scripts/](scripts/) use xPack OpenOCD and ST-LINK to run volatile register checks without flashing firmware:
