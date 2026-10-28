@@ -24,7 +24,8 @@ Item #,Designator,Qty,Value,Footprint,LCSC Part #,Description
 23,D8,1,WS2812B,PCM_JLCPCB:LED-SMD_4P-L1.6-W1.5_XL-1615RGBC-WS2812B,C5349954,1615 RGB LEDs(Built-in IC) ROHS
 24,D9,1,Green,PCM_JLCPCB:D_0805,C2297,Emerald 0805 LED Indication - Discrete ROHS
 25,D12,1,Yellow,PCM_JLCPCB:D_0805,C2296,Yellow 0805 LED Indication - Discrete ROHS
-26,"F1, F2",2,Fuse,Fuse:Fuseholder_Littelfuse_100_series_5x25mm,C142864,Fuse
+26,F1,1,3522-2,1My_Parts_ Passive:Automotive fuse holder keystone 3522-2_KEY,,"DEC-036: 10A blade fuse, BENCH-TEST PROVISIONAL ONLY (bench sources stay well under 32V). DEC-035: holder is NOT safe for real PV-array exposure (2S string Voc 45.58V at STC, higher when cold, exceeds 32V-class blade-fuse rating). Replace holder before any full-PV-voltage test"
+26a,F2,1,3522-2,1My_Parts_ Passive:Automotive fuse holder keystone 3522-2_KEY,,"15A blade fuse (DEC-036), confirmed safe for battery side (14.6V max, well within 32V class); not stocked on LCSC, source via Digikey/Mouser; final interrupt-rating sign-off pending Q-001"
 27,"J1, J3",2,Screw_Terminal_01x02,"TerminalBlock_Phoenix:TerminalBlock_Phoenix_MKDS-1,5-2-5.08_1x02_P5.08mm_Horizontal",C8439,"Generic screw terminal, single row, 01x02, script generated (kicad-library-utils/schlib/autogen/connector/)"
 28,J2,1,USB4105-GF-A,1My_Parts_ Connectors:GCT_USB4105-GF-A,C3020560,
 29,J4,1,Conn_01x04,Connector_PinHeader_2.54mm:PinHeader_1x04_P2.54mm_Vertical_SMD_Pin1Right,C41417361,"Generic connector, single row, 01x04, script generated (kicad-library-utils/schlib/autogen/connector/)"

@@ -2,8 +2,8 @@
 
 **Project:** Solar Project 200W MPPT & Battery-First Power Controller  
 **Hardware Revision:** Rev 1.0  
-**Status:** Synchronized with `Solar Project Rev1.kicad_sch` and `Solar Project Rev1.net`  
-**Total Component Count:** 172 Parts (163 with verified LCSC / JLCPCB Part Numbers)  
+**Status:** Synchronized with `Solar Project Rev1.kicad_sch` and `Solar Project Rev1.net`; C7, C52, and D2 catalog numbers confirmed 2026-09-17 (DEC-058) - C7=YAGEO CC1206KKX7R0BB225 (`C577211`, 2.2uF/100V/X7R/1206), C52=Samsung CL21B224KBFNNNE (`C5378`, 220nF/50V/X7R/0805), D2=Littelfuse SMBJ48CA (`C151264`, Vrwm=48V/VC=77.4V@Ipp=7.8A/DO-214AA) - all three datasheet-verified as exact matches to the DEC-055/056/057 targets. New connector `J8` added 2026-09-17 (DEC-061, Track C battery temperature sensing) - remote sensor module now proposed (Adafruit MCP9808 breakout), final part confirmation still open. Track B BOM/sourcing sweep completed 2026-09-17 (Tasks 1-5): `J6` confirmed (`C150517`), `U1` sourcing decided (Mouser/DigiKey), `U2` sourcing decided (outside LCSC), 9 of 10 flagged passive substitutions written in with live-verified in-stock replacements, `R28` remains genuinely open (no in-stock exact match found; source from DigiKey per Phil's prior channel).  
+**Total Component Count:** 173 Parts (161 with verified LCSC / JLCPCB Part Numbers, 3 newly split/added TBD)  
 
 ---
 
@@ -11,17 +11,19 @@
 
 | Item | Designator | Qty | Value | Package / Footprint | LCSC Part # | Description |
 | :---: | :--- | :---: | :--- | :--- | :--- | :--- |
-| 1 | `10mm1, 10mm2` | 2 |  | `10mm LOGO` | — |  |
-| 2 | `C1, C8, C12, C22, C28, C33, C44, C45, C46, C47, C48, C51, C52, C54, C57` | 15 | 100nF | `C_0805` | **C28233** | 100V 100nF X7R ±10% 0805 Multilayer Ceramic Capacitors MLCC - SMD/SMT ROHS |
+| 1 | `10mm1, 10mm2` | 2 |  | `10mm LOGO` | — | Silkscreen artwork - not an orderable part; no LCSC part required |
+| 2 | `C1, C8, C12, C22, C28, C33, C44, C45, C46, C47, C48, C51, C54, C57` | 14 | 100nF | `C_0805` | **C28233** | 100V 100nF X7R ±10% 0805 Multilayer Ceramic Capacitors MLCC - SMD/SMT ROHS |
+| 2a | `C52` | 1 | 220nF, 50V, X7R | `C_0805` | **C5378** | Samsung Electro-Mechanics CL21B224KBFNNNE. Bump from 100nF - LM74502H's own `CVCAP>=10x Ciss` guidance needs ~106nF at Q5/Q6's worst-case (max) `Ciss` for the shared gate load; 100nF clears typ-Ciss with ~22% headroom but falls ~6% short of max-Ciss (DEC-042). Voltage rating comfortable (chip-side VCAP-VS abs max is 15V) - confirmed 2026-09-17 (DEC-058) |
 | 3 | `C2, C55, C56` | 3 | 1uF | `C_0805` | **C28323** | 50V 1uF X7R ±10% 0805 Multilayer Ceramic Capacitors MLCC - SMD/SMT ROHS |
 | 4 | `C3` | 1 | 100uF | `CP_Radial_D6.3mm_P2.50mm` | **C49232871** | Unpolarized capacitor |
-| 5 | `C7, C15, C34, C35` | 4 | 2.2uF | `C_1206` | **C50254** | 50V 2.2uF X7R ±10% 1206 Multilayer Ceramic Capacitors MLCC - SMD/SMT ROHS |
+| 5 | `C15, C34, C35` | 3 | 2.2uF | `C_1206` | **C50254** | 50V 2.2uF X7R ±10% 1206 Multilayer Ceramic Capacitors MLCC - SMD/SMT ROHS |
+| 5a | `C7` | 1 | 2.2uF, 100V, X7R | `C_1206` | **C577211** | YAGEO CC1206KKX7R0BB225. 100V-rated replacement for the 50V `C50254` part - C7 sits on `PV_IN_POS`, whose real operating voltage (up to 57V at STC under 2S, or 28.5V/~34V cold under the DEC-051 2P baseline) exceeds the 50V rating fitted here (DEC-049). Split out of the shared 50V line; confirmed 2026-09-17 (DEC-058) |
 | 6 | `C9, C13` | 2 | 2.2nF | `C_0805` | **C28260** | 50V 2.2nF C0G ±5% 0805 Multilayer Ceramic Capacitors MLCC - SMD/SMT ROHS |
 | 7 | `C10` | 1 | 47pF | `C_0805` | **C14857** | 50V 47pF C0G ±5% 0805 Multilayer Ceramic Capacitors MLCC - SMD/SMT ROHS |
 | 8 | `C14, C53` | 2 | 100uF | `C_1206` | **C15008** | 6.3V 100uF X5R ±20% 1206 Multilayer Ceramic Capacitors MLCC - SMD/SMT ROHS |
 | 9 | `C18` | 1 | 560uF | `CP_Elec_10x12.6` | **C264031** | Unpolarized capacitor |
 | 10 | `C19, C21, C30` | 3 | 47uF | `C_Radial_D8.0mm_H7.0mm_P3.50mm` | **C44606514** | Unpolarized capacitor |
-| 11 | `C20` | 1 | 180pF | `C_0805` | **C1794** | Unpolarized capacitor |
+| 11 | `C20` | 1 | 180pF | `C_0805` | **C113826** | YAGEO CC0805JRNPO9BN181, 180pF C0G/NP0 0805 - replaces discontinued `C1794`; live-verified in stock 2026-09-17 (Task 5 reconciliation) |
 | 12 | `C23` | 1 | 100nF | `C_0805` | **C28233** | Unpolarized capacitor |
 | 13 | `C24` | 1 | 22nF | `C_0805` | **C1710** | Unpolarized capacitor |
 | 14 | `C25` | 1 | 1.5nF | `C_0805` | **C1590** | Unpolarized capacitor |
@@ -30,7 +32,7 @@
 | 17 | `C31` | 1 | 47uF | `CP_Radial_D8.0mm_P3.50mm` | **C44606514** | Unpolarized capacitor |
 | 18 | `C49, C50` | 2 | 33pF | `C_0805` | **C1798** | 50V 33pF NP0 ±5% 0805 Multilayer Ceramic Capacitors MLCC - SMD/SMT ROHS |
 | 19 | `D1, D5` | 2 | 1SMA4742A | `D_DO-214AC(SMA)` | **C19077480** | Independent Type 11.4V~12.6V 1W 12V SMA(DO-214AC) Zener Diodes ROHS |
-| 20 | `D2` | 1 | SMBJ60CA | `D_SMB` | **C19077593** | 6.2A 600W 96.8V 73.7V Bidirectional 60V SMB ESD and Surge Protection (TVS/ESD) ROHS |
+| 20 | `D2` | 1 | SMBJ48CA (replaces `SMBJ60CA`) | `D_SMB` | **C151264** | Littelfuse SMBJ48CA. 100V-VDS-margin-corrected TVS: `Vrwm`=48V, `Vbr`=53.3-58.9V, `VC`(clamp)=77.4V @ `Ipp`=7.8A, DO-214AA - replaces the installed `SMBJ60CA` (`Vrwm`=60V, `VC`=96.8V @ `Ipp`=6.20A, only ~3.2% clamp margin vs Q4's 100V VDS) for more comfortable clamp-voltage margin; confirmed 2026-09-17 (DEC-058) |
 | 21 | `D3` | 1 | USBLC6-2SC6 | `SOT-23-6` | **C7519** | Very low capacitance ESD protection diode, 2 data-line, SOT-23-6 |
 | 22 | `D4, D6, D7, D10` | 4 | 1N5819WS | `D_SOD-323` | **C191023** | 40V 600mV@1A 1A SOD-323 Schottky Diodes ROHS |
 | 23 | `D8` | 1 | WS2812B | `LED-SMD_4P-L1.6-W1.5_XL-1615RGBC-WS2812B` | **C5349954** | 1615 RGB LEDs(Built-in IC) ROHS |
@@ -41,7 +43,8 @@
 | 28 | `J2` | 1 | USB4105-GF-A | `GCT_USB4105-GF-A` | **C3020560** |  |
 | 29 | `J4` | 1 | Conn_01x04 | `PinHeader_1x04_P2.54mm_Vertical_SMD_Pin1Right` | **C41417361** | Generic connector, single row, 01x04, script generated (kicad-library-utils/schlib/autogen/connector/) |
 | 30 | `J5` | 1 | Conn_01x03_Socket | `PinHeader_1x03_P2.54mm_Vertical` | **C2937625** | Generic connector, single row, 01x03, script generated |
-| 31 | `J6` | 1 | 20021121-00010C4LF | `PinHeader_2x5_P1.27mm` | — |  |
+| 31 | `J6` | 1 | 20021121-00010C4LF | `PinHeader_2x5_P1.27mm` | **C150517** | Amphenol 20021121-00010C4LF, 10-pin (2x5) 1.27mm SMD header - exact MPN match confirmed on LCSC, in stock 4,404 units 2026-09-17 |
+| 31a | `J8` | 1 | Conn_01x04 | `PinHeader_1x04_P2.54mm_Vertical` | — | DEC-061: new remote battery-pack I2C temperature-sensor probe header, taps existing `I2C CLK`/`I2C DATA`/`CTRL_3V3`/`PWR_NEG` nets (pin1=`I2C CLK`, pin2=`PWR_NEG`, pin3=`CTRL_3V3`, pin4=`I2C DATA`). **Proposed remote sensor module (2026-09-17, needs final confirmation): Adafruit MCP9808 High Precision I2C Temperature Sensor Breakout (PID 1782)** - default address `0x18` (distinct from `U7` AHT20's `0x38`, no conflict), address configurable via onboard `A0-A2` jumpers if a second unit is ever added. Sourced outside LCSC (Adafruit/authorized reseller), wired via 4-conductor cable to J8 (VDD->`CTRL_3V3`, GND->`PWR_NEG`, SCL->`I2C CLK`, SDA->`I2C DATA`). Mating cable/connector on the sensor end still open |
 | 32 | `L2` | 1 | L | `L_APV_APH1240` | **C49308530** | Inductor |
 | 33 | `L3` | 1 | L | `L_KOHERelec_MDA7030` | **C49333024** | Inductor |
 | 34 | `M1, M2, M3, M4` | 4 | CSD18540Q5B | `TDSON-8-1` | **C86513** | 100A Id, 60V Vds, NexFET N-Channel Power MOSFET, 2.2mOhm Ron, 41nC Qg(typ), SON8 5x6mm |
@@ -53,40 +56,40 @@
 | 40 | `R4, R26, R27, R41, R65, R69, R70, R71, R72, R73` | 10 | 10Ω | `R_0805` | **C17414** | 125mW Thick Film Resistors 150V ±1% ±200ppm/°C 10Ω 0805 Chip Resistor - Surface Mount ROHS |
 | 41 | `R5, R44, R45` | 3 | 4.7kΩ | `R_0805` | **C17673** | 125mW Thick Film Resistors 150V ±100ppm/°C ±1% 4.7kΩ 0805 Chip Resistor - Surface Mount ROHS |
 | 42 | `R6, R19, R34, R36, R47, R48, R50, R53, R54, R55, R56, R57, R58, R59` | 14 | 10kΩ | `R_0805` | **C17415** | 125mW Thick Film Resistors 150V ±100ppm/°C ±1% 10kΩ 0805 Chip Resistor - Surface Mount ROHS |
-| 43 | `R7, R10, R61` | 3 | 20kΩ | `R_0805` | **C17523** | 125mW Thick Film Resistors 150V ±100ppm/°C ±1% 20kΩ 0805 Chip Resistor - Surface Mount ROHS |
+| 43 | `R7, R10, R61` | 3 | 20kΩ | `R_0805` | **0805W8F2002T5E** | UNI-ROYAL 0805W8F2002T5E, 20kΩ 0805 1% - replaces backordered `C17523`; live-verified in stock (2,296,400 units) 2026-09-17 (Task 5 reconciliation); exact LCSC C-number still needs a final lookup pass before ordering |
 | 44 | `R8` | 1 | 27kΩ | `R_0805` | **C17547** | 125mW Thick Film Resistors 150V ±100ppm/°C ±1% 27kΩ 0805 Chip Resistor - Surface Mount ROHS |
 | 45 | `R9` | 1 | 180k | `R_0805` | **C17497** | Resistor |
 | 46 | `R11, R39` | 2 | 330Ω | `R_0805` | **C17650** | 125mW Thick Film Resistors 150V ±100ppm/°C ±1% 330Ω 0805 Chip Resistor - Surface Mount ROHS |
 | 47 | `R12` | 1 | 6.8kΩ | `R_0805` | **C17730** | 125mW Thick Film Resistors 150V ±100ppm/°C ±1% 6.8kΩ 0805 Chip Resistor - Surface Mount ROHS |
 | 48 | `R13` | 1 | 1MΩ | `R_0805` | **C17514** | 125mW Thick Film Resistors 150V ±100ppm/°C ±1% 1MΩ 0805 Chip Resistor - Surface Mount ROHS |
-| 49 | `R14` | 1 | 330kΩ | `R_0805` | **C17651** | 125mW Thick Film Resistors 150V ±100ppm/°C ±1% 330kΩ 0805 Chip Resistor - Surface Mount ROHS |
-| 50 | `R15` | 1 | 2kΩ | `R_0805` | **C17537** | 125mW Thick Film Resistors 150V ±100ppm/°C ±1% 2kΩ 0805 Chip Resistor - Surface Mount ROHS |
+| 49 | `R14` | 1 | 330kΩ | `R_0805` | **0805W8F3303T5E** | UNI-ROYAL 0805W8F3303T5E, 330kΩ 0805 1% - replaces backordered `C17651`; live-verified in stock (104,100 units) 2026-09-17 (Task 5 reconciliation); exact LCSC C-number still needs a final lookup pass before ordering |
+| 50 | `R15` | 1 | 2kΩ | `R_0805` | **C17604** | UNI-ROYAL 0805W8F2001T5E, 2kΩ 0805 1% - replaces backordered `C17537`; live-verified in stock (4,708,600 units) 2026-09-17 (Task 5 reconciliation) |
 | 51 | `R16, R22` | 2 | 0.001ohms | `R_Shunt_Vishay_WSK2512_6332Metric_T2.66mm` | **C41382682** | Shunt resistor with Kelvin connections |
 | 52 | `R17` | 1 | 5.62k | `R_0805` | **C2933470** | Resistor RES 5.62kΩ ±1% 125mW 0805 |
 | 53 | `R18` | 1 | 76.8k | `R_0805` | **C3000581** | Resistor RES 76.8kΩ ±1% 125mW 0805 |
-| 54 | `R20` | 1 | 499k | `R_0805` | **C119857** | Resistor |
+| 54 | `R20` | 1 | 499k | `R_0805` | **0805W8F4993T5E** | UNI-ROYAL 0805W8F4993T5E, 499kΩ 0805 1% - replaces unverified `C119857`; live-verified in stock (64,700 units) 2026-09-17 (Task 5 reconciliation); exact LCSC code (`Cxxxxx`) still needs a final lookup pass before ordering |
 | 55 | `R21` | 1 | 102k | `R_0805` | **C119830** | Resistor |
-| 56 | `R23` | 1 | 75kΩ | `R_0805` | **C17743** | 125mW Thick Film Resistors 150V ±100ppm/°C ±1% 75kΩ 0805 Chip Resistor - Surface Mount ROHS |
-| 57 | `R24, R62` | 2 | 5.1kΩ | `R_0805` | **C17700** | 125mW Thick Film Resistors 150V ±100ppm/°C ±1% 5.1kΩ 0805 Chip Resistor - Surface Mount ROHS |
+| 56 | `R23` | 1 | 75kΩ | `R_0805` | **0805W8F7502T5E** | UNI-ROYAL 0805W8F7502T5E, 75kΩ 0805 1% - replaces backordered `C17743`; live-verified in stock (709,200 units) 2026-09-17 (Task 5 reconciliation); exact LCSC code still needs a final lookup pass before ordering |
+| 57 | `R24, R62` | 2 | 5.1kΩ | `R_0805` | **0805W8F5101T5E** | UNI-ROYAL 0805W8F5101T5E, 5.1kΩ 0805 1% - replaces backordered `C17700`; live-verified in stock (2,665,400 units) 2026-09-17 (Task 5 reconciliation); exact LCSC code still needs a final lookup pass before ordering |
 | 58 | `R25` | 1 | 5.62k | `R_0805` | **C2933470** | Resistor  RES 5.62kΩ ±1% 125mW 0805 |
-| 59 | `R28` | 1 | 51.7k | `R_0805` | **C119851** | Resistor |
-| 60 | `R29` | 1 | 20.5k | `R_0805` | **C119842** | Resistor |
-| 61 | `R30` | 1 | 40.2k | `R_0805` | **C119848** | Resistor |
-| 62 | `R31` | 1 | 2.43k | `R_0805` | **C119853** | Resistor |
-| 63 | `R33, R49, R63, R64` | 4 | 0Ω | `R_0805` | **C17888** | 125mW Thick Film Resistors 150V ±800ppm/°C ±1% 0Ω 0805 Chip Resistor - Surface Mount ROHS |
+| 59 | `R28` | 1 | 51.7k | `R_0805` | — | No verified in-stock exact-match 0805 1% 51.7kΩ part found on LCSC (checked 2026-09-17, incl. `ERJ6ENF5172V`/`RC0805FR-0751K7L` variants - none matched live). Phil's prior source for this exact value: DigiKey (see order history link). Left open - source from DigiKey directly at order time rather than substituting a different value |
+| 60 | `R29` | 1 | 20.5k | `R_0805` | **C2092167** | PANASONIC ERJ6ENF2052V, 20.5kΩ 0805 1% - replaces unverified `C119842`; live-verified in stock (4,300 units) 2026-09-17 (Task 5 reconciliation) |
+| 61 | `R30` | 1 | 0Ω | `R_0805` | **C17888** | Resistor - CDC pin grounded to disable cable-drop-compensation/current-monitor feature for bring-up (DEC-060); consolidated into row 63's 0Ω group |
+| 62 | `R31` | 1 | 2.43k | `R_0805` | **0805W8F2431T5E** | UNI-ROYAL 0805W8F2431T5E, 2.43kΩ 0805 1% - replaces `C119853` (resolved to an unrelated through-hole part); live-verified in stock (5,000 units) 2026-09-17 (Task 5 reconciliation); exact LCSC code still needs a final lookup pass before ordering |
+| 63 | `R30, R33, R49, R63, R64` | 5 | 0Ω | `R_0805` | **C17888** | 125mW Thick Film Resistors 150V ±800ppm/°C ±1% 0Ω 0805 Chip Resistor - Surface Mount ROHS |
 | 64 | `R35` | 1 | 180kΩ | `R_0805` | **C17497** | 125mW Thick Film Resistors 150V ±100ppm/°C ±1% 180kΩ 0805 Chip Resistor - Surface Mount ROHS |
 | 65 | `R37, R66` | 2 | 2.2MΩ | `R_0805` | **C17539** | 125mW Thick Film Resistors 150V ±100ppm/°C ±1% 2.2MΩ 0805 Chip Resistor - Surface Mount ROHS |
 | 66 | `R42, R52` | 2 | 1kΩ | `R_0805` | **C17513** | 125mW Thick Film Resistors 150V ±100ppm/°C ±1% 1kΩ 0805 Chip Resistor - Surface Mount ROHS |
 | 67 | `R46` | 1 | 82kΩ | `R_0805` | **C17840** | 125mW Thick Film Resistors 150V ±100ppm/°C ±1% 82kΩ 0805 Chip Resistor - Surface Mount ROHS |
-| 68 | `R51` | 1 | 2.7kΩ | `R_0805` | **C17546** | 125mW Thick Film Resistors 150V ±100ppm/°C ±1% 2.7kΩ 0805 Chip Resistor - Surface Mount ROHS |
+| 68 | `R51` | 1 | 2.7kΩ | `R_0805` | **0805W8F2701T5E** | UNI-ROYAL 0805W8F2701T5E, 2.7kΩ 0805 1% - replaces backordered `C17546`; live-verified in stock (1,710,800 units) 2026-09-17 (Task 5 reconciliation); exact LCSC code still needs a final lookup pass before ordering |
 | 69 | `R60` | 1 | 1.5kΩ | `R_0805` | **C17515** | 125mW Thick Film Resistors 150V ±100ppm/°C ±1% 1.5kΩ 0805 Chip Resistor - Surface Mount ROHS |
 | 70 | `R68` | 1 | 1.3k | `R_0805` | **C2933303** | Resistor |
 | 71 | `S1` | 1 | Tactile Button, 160gf | `SW_TS-1088-AR02016` | **C720477** | Without 50mA 4mm 100MΩ 100000 Times 12V 160gf 3mm 2mm Round Button Standing paste SPST SMD Tactile Switches ROHS |
 | 72 | `SW1, SW2, SW3, SW4, SW5` | 5 | Tactile Button, 160gf | `SW-SMD_4P-L5.1-W5.1-P3.70-LS6.5-TL-2` | **C318884** | None Without 50mA 5.1mm 100000 Times 160gf 12V 5.1mm 1.5mm Round Button Standing paste SPST SMD Tactile Switches ROHS |
-| 73 | `TP1` | 1 | TestPoint_Small | `PinHeader_1x01_P2.54mm_Vertical` | — | test point |
-| 74 | `TP15, TP16, TP17, TP18` | 4 | 5015 | `TestPoint_Keystone_5015_Micro_Mini` | — |  |
-| 75 | `U1` | 1 | STM32G431CBU6 | `QFN-48-1EP_7x7mm_P0.5mm_EP5.6x5.6mm` | **C529356** | Arm Cortex-M4 32-bit MCU+FPU, 170 MHz / 213 DMIPS, up to 128 KB Flash, 32 KB SRAM, rich analog, math accelerator |
-| 76 | `U2` | 1 | ESP32_C3_mini | `ESP32 C3 mini` | — |  |
+| 73 | `TP1` | 1 | TestPoint_Small | `PinHeader_1x01_P2.54mm_Vertical` | — | Single-pin test point header footprint (PinHeader_1x01_P2.54mm). Decide whether to populate; no LCSC part assigned |
+| 74 | `TP15, TP16, TP17, TP18` | 4 | 5015 | `TestPoint_Keystone_5015_Micro_Mini` | — | Footprint matches Keystone 5015 micro test point; please provide LCSC/manufacturer link if ordering is required |
+| 75 | `U1` | 1 | STM32G431CBU6 | `QFN-48-1EP_7x7mm_P0.5mm_EP5.6x5.6mm` | **C529356** | Arm Cortex-M4 32-bit MCU+FPU, 170 MHz / 213 DMIPS, up to 128 KB Flash, 32 KB SRAM, rich analog, math accelerator. Sourcing: source from Mouser/DigiKey per user instruction; LCSC availability was 4,680 units (est. lead 8-10 business days) as of 2026-09-17. |
+| 76 | `U2` | 1 | ESP32_C3_mini | `ESP32 C3 mini` | — | **Sourcing decision 2026-09-17: source outside LCSC** (AliExpress/Amazon generic clone board), ordered separately from the main LCSC BOM batch. Symbol/footprint pin pattern (16 pins: GPIO0/1/2/3/4/5/6/7/8/9/10/20/21 + 3V3/5V/GND, castellated-edge, no EN/reset pin broken out) does NOT match Espressif's official `ESP32-C3-MINI-1`/`-1U` SMD module (that part is a bare 22+pad RF module with no onboard 5V/USB, meant for direct PCB reflow). It matches the pinout of the generic "ESP32-C3 SuperMini" style assembled dev board (onboard USB-C + LDO, breaks out all usable GPIOs incl. GPIO0/1 which Espressif's own modules/Seeed XIAO do not expose) - UART0 default pins GPIO21(TX)/GPIO20(RX) are present and consistent with DEC-015's UART link to U1. **Pinout independently confirmed 2026-09-17** against Random Nerd Tutorials' "ESP32-C3 Super Mini" reference (pin-for-pin match on all 16 pins incl. GPIO0/1/2/3/4/5/6/7/8/9/10/20/21 + 3V3/5V/GND, UART0 default GPIO20(RX)/GPIO21(TX)) - that source also confirms "ESP32-C3 Super Mini" is a generic/unbranded design sold under many different reseller names (e.g. Tenstar, Nologo) via AliExpress/Amazon, with no single controlling manufacturer or MPN, which explains its absence from LCSC's catalog. KiCad symbol's SnapEDA-derived metadata (MF="Seeed Technology Co., Ltd", MP="113991054", Value field mislabeled "ESP32_C6_ super mini") could not be independently verified - SnapEDA/Mouser part-tracking URLs return HTTP 403 on fetch, and Seeed does not list a "Super Mini" product under its own brand, so that attribution is likely a mislabeled/generic SnapEDA symbol rather than a real Seeed part. LCSC catalog searched live for "ESP32-C3 SuperMini" and "ESP32C3 Super Mini" (24 results each): only bare ESP32-C3 chips (e.g. `C2838500`, `C2858491`, QFN-32) and unrelated eval boards (e.g. LCSC's own `C22371244` "LCKFB-SZPI-ESP32-C3-VA", $19.69, different form factor) were found - no LCSC listing matches this generic 16-pin castellated board. No LCSC part number can be verified; this part is most likely sourced outside LCSC (AliExpress/Amazon generic clone board) - confirm sourcing channel/budget with Phil before finalizing. |
 | 77 | `U3` | 1 | CP2102-GMR | `WQFN-28_L5.0-W5.0-P0.50-BL-EP3.2` | **C6568** | 12Mbps Transceiver USB WQFN-28-EP(5x5) USB Converters ROHS |
 | 78 | `U4` | 1 | LM5163 | `Texas_R-PDSO-G8_EP2.95x4.9mm_Mask2.4x3.1mm_ThermalVias` | **C2873264** | 100V Input, 0.5A Synchronous Buck DC/DC Converter With Ultra-low IQ |
 | 79 | `U5` | 1 | LP5912-3.3DRV | `WSON-6-1EP_2x2mm_P0.65mm_EP1x1.6mm_ThermalVias` | **C114569** | 500-mA Ultra-Low-Noise Low-IQ LDO, 3.3V, WSON-6 |

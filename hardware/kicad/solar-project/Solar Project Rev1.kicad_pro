@@ -40,8 +40,8 @@
         "other_text_upright": false,
         "pads": {
           "drill": 0.0,
-          "height": 0.6,
-          "width": 0.9
+          "height": 1.15,
+          "width": 0.7
         },
         "silk_line_width": 0.1,
         "silk_text_italic": false,
@@ -212,8 +212,7 @@
       "track_widths": [
         0.0,
         1.0,
-        5.0,
-        8.0
+        5.0
       ],
       "tuning_pattern_settings": {
         "diff_pair_defaults": {
@@ -248,6 +247,10 @@
         },
         {
           "diameter": 1.0,
+          "drill": 0.9
+        },
+        {
+          "diameter": 1.1,
           "drill": 0.9
         }
       ],
@@ -506,9 +509,7 @@
   },
   "libraries": {
     "pinned_footprint_libs": [],
-    "pinned_symbol_libs": [
-      "1My Passive"
-    ]
+    "pinned_symbol_libs": []
   },
   "meta": {
     "filename": "Solar Project Rev1.kicad_pro",
@@ -1360,7 +1361,7 @@
         "uuid": "28299885-0f47-4c9d-af0f-f2db484b5c54"
       }
     ],
-    "used_designators": "C3,C8,C21,C30-31,C33-35,M1,TP6-18,R46,R68-74,#FLG8,J6-7,Q7,D11",
+    "used_designators": "C3,C8,C21,C30-31,C33-35,M1,TP6-18,F3,J6,#FLG8,R46,R68-74,Q7",
     "variants": []
   },
   "sheets": [

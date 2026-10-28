@@ -1,0 +1,35 @@
+Designator,Value,Current_LCSC,Candidates,RecommendedText
+C20,180 pF 0805 MLCC,C1794,,Swap to standard in-stock 180 pF 0805 C0G cap (e.g. Uniroyal/Yageo 0805 180pF).
+R20,499 kΩ 0805 1%,C119857,,Select any standard 0805 1% 499 kΩ resistor on LCSC.
+R28,51.7 kΩ 0805 1% (UVLO),C119851,,Select any standard 0805 1% 51.7 kΩ resistor on LCSC.
+R29,20.5 kΩ 0805 1%,C119842,,Select any standard 0805 1% 20.5 kΩ resistor on LCSC.
+R30,40.2 kΩ 0805 1%,C119848,,Select any standard 0805 1% 40.2 kΩ resistor on LCSC.
+R31,2.43 kΩ 0805 1% (Comp Zero),C119853,,Select alternative in-stock 0805 1% 2.43 kΩ resistor on LCSC.
+"R7, R10, R61",20 kΩ 0805 1%,C17523,C17522,Swap to `C17522` or standard 0805 1% 20 kΩ resistor on LCSC.
+R14,330 kΩ 0805 1%,C17651,,Swap to standard 0805 1% 330 kΩ resistor on LCSC.
+R15,2 kΩ 0805 1%,C17537,,Swap to standard 0805 1% 2 kΩ resistor on LCSC.
+R23,75 kΩ 0805 1%,C17743,,Swap to standard 0805 1% 75 kΩ resistor on LCSC.
+"R24, R62",5.1 kΩ 0805 1%,C17700,C17699,Swap to `C17699` or standard 0805 1% 5.1 kΩ resistor on LCSC.
+R51,2.7 kΩ 0805 1%,C17546,,Swap to standard 0805 1% 2.7 kΩ resistor on LCSC.
+"M1, M2, M3, M4",4,CSD18540Q5B (60V 100A),,$1.12
+"Q5, Q6",2,BSC040N10NS5 (100V 100A),,$0.85
+Q4,1,HSBA0119 (-40V -100A),,$0.42
+"R16, R22",2,0.001 Ω 5W 4-Pad,,$0.89
+U14,1,LM74502HDDFR,,$1.15
+U4,1,LM5163 (100V Buck),,$1.85
+U3,1,CP2102-GMR,,$1.95
+U9,1,LMV393 Dual Comp,,$0.22
+U10,1,INA213AIDCKR,,$0.92
+L2,1,3.3 uH 12x10mm Inductor,,$1.45
+D2,1,SMBJ60CA 600W TVS,,$0.18
+C20,"180 pF, 0805, C0G, 50 V",C1794,C113826;C501859,"`CC0805JRNPO9BN181` (`C113826`), YAGEO, 25,750 in stock; also `0805CG181J500NT` (`C501859`), FH, 2,550 in stock"
+R20,"499 kOhm, 0805, 1%",C119857,,"`0805W8F4993T5E`, UNI-ROYAL, 64,700 in stock"
+R28,"51.7 kOhm, 0805, 1%",C119851,,"No same-spec in-stock 0805 1% exact-value replacement found in this pass. Closest exact-value hit was `RT0603DRE0751K7L`, 0603, +/-0.5%, 4,900 in stock, which is not package-compatible"
+R29,"20.5 kOhm, 0805, 1%",C119842,C2092167,"`ERJ6ENF2052V` (`C2092167`), PANASONIC, 4,300 in stock"
+R31,"2.43 kOhm, 0805, 1%",C119853,,"`0805W8F2431T5E`, UNI-ROYAL, 5,000 in stock"
+"R7, R10, R61","20 kOhm, 0805, 1%",C17523,,"`0805W8F2002T5E`, UNI-ROYAL, 2,296,400 in stock"
+R14,"330 kOhm, 0805, 1%",C17651,,"`0805W8F3303T5E`, UNI-ROYAL, 104,100 in stock"
+R15,"2 kOhm, 0805, 1%",C17537,C17604,"`0805W8F2001T5E` (`C17604`), UNI-ROYAL, 4,708,600 in stock"
+R23,"75 kOhm, 0805, 1%",C17743,,"`0805W8F7502T5E`, UNI-ROYAL, 709,200 in stock"
+"R24, R62","5.1 kOhm, 0805, 1%",C17700,,"`0805W8F5101T5E`, UNI-ROYAL, 2,665,400 in stock"
+R51,"2.7 kOhm, 0805, 1%",C17546,,"`0805W8F2701T5E`, UNI-ROYAL, 1,710,800 in stock"
