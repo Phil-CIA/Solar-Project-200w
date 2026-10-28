@@ -7,7 +7,7 @@
 **
 ** @brief       : Linker script for STM32G473CEUx Device from STM32G4 series
 **                      512Kbytes FLASH
-**                      128Kbytes RAM
+**                      96Kbytes SRAM1+SRAM2 contiguous RAM
 **
 **                Set heap size, stack size and stack location according
 **                to application requirements.
@@ -45,7 +45,7 @@ _Min_Stack_Size = 0x400; /* required amount of stack */
 /* Memories definition */
 MEMORY
 {
-  RAM    (xrw)    : ORIGIN = 0x20000000,   LENGTH = 128K
+  RAM    (xrw)    : ORIGIN = 0x20000000,   LENGTH = 96K
   FLASH    (rx)    : ORIGIN = 0x8000000,   LENGTH = 512K
 }
 
