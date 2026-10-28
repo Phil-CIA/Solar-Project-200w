@@ -8,11 +8,9 @@ Solar Project 200W is a prototype-first hardware and firmware effort for a 200W-
 - Defining control, telemetry, and protection behavior
 - Tracking design decisions, handoffs, and bring-up evidence
 
-## Current Rev 0 focus
+## Current project state
 
-- Close MPPT schematic and routing readiness
-- Maintain component continuity with in-stock substitutions
-- Keep protection and validation gates explicit before bring-up
+Only Rev 0 and Rev 1 exist. The Rev 1 production release sent to the manufacturer is the source of truth at `C:\Users\user\OneDrive\JLCPCB files\Solar Charger\Rev 1`. This repository contains Rev 1 copies and supporting history, but some tracked files differ from that release; use the release package for board identity and manufacturing questions until the copies are reconciled.
 
 ## System baseline
 
@@ -31,7 +29,9 @@ Solar Project 200W is a prototype-first hardware and firmware effort for a 200W-
 1. [docs/requirements.md](docs/requirements.md)
 2. [docs/architecture.md](docs/architecture.md)
 3. [docs/decisions-log.md](docs/decisions-log.md)
-4. [SOLAR_HANDOFF_2026-07-26.md](SOLAR_HANDOFF_2026-07-26.md)
+4. [HANDOFF.md](HANDOFF.md) for current repository status
+5. [SOLAR_HANDOFF_2026-09-19.md](SOLAR_HANDOFF_2026-09-19.md) and [SOLAR_HANDOFF_2026-09-18.md](SOLAR_HANDOFF_2026-09-18.md) for the latest recorded Rev 1 closeout
+6. [hardware/kicad/solar-project/REVISION-INDEX.md](hardware/kicad/solar-project/REVISION-INDEX.md) for KiCad source-of-truth rules
 
 ## Simulation workflow
 
@@ -39,7 +39,7 @@ The PV switch gate-drive concept should be verified with SPICE as part of the no
 
 A provisional LTspice integration harness is also present at [hardware/kicad/solar-project/spice/90_system_integration_harness_ltspice.cir](hardware/kicad/solar-project/spice/90_system_integration_harness_ltspice.cir). It is a simplified, staged model of the PV input, buck power stage, and battery boundary. The current run converged to about 13.64 V at the output node and 13.98 V at the battery bus at 4 ms, which is consistent with a basic charging path but still not hardware-validated.
 
-The earlier validation showed that the current gate-drive arrangement does not provide a usable Vgs margin across the tested PV input range, so this should be treated as a design blocker until the gate-drive topology is revised.
+The earlier simulation found inadequate Vgs margin for the modeled gate-drive arrangement across the tested PV input range. Treat that as evidence about the modeled circuit only; confirm the topology against the Rev 1 production release before applying the result to a physical board.
 
 ## Safety notice
 
