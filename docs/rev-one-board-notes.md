@@ -1,6 +1,6 @@
 # Rev 1 Board Notes
 
-Updated: 2026-10-25
+Updated: 2026-10-28 (production-release and firmware context reconciled; no new physical tests)
 Related work: [#3](https://github.com/Phil-CIA/Solar-Project-200w/issues/3), [development tracker](https://github.com/Phil-CIA/Solar-Project-200w/issues/1)
 
 ## Working Baseline
@@ -12,6 +12,8 @@ Phil identified this local folder as the files used for manufacture:
 `C:\Users\forch\OneDrive\JLCPCB files\Solar Charger\Rev 1`
 
 The folder was read without modifying it. Its `Kicad`, `GERBERS`, and `BOM` files establish the working design baseline; they do not prove every installed component matches the BOM.
+
+The later production handoff records `C:\Users\user\OneDrive\JLCPCB files\Solar Charger\Rev 1` on the current machine. Keep the earlier location above as provenance, not a requirement to use that user profile. The production release sent to the manufacturer is authoritative for the physical Rev 1 board; repository copies support continued development. This documentation merge did not reopen or modify either external folder. Only Rev 0 and Rev 1 exist; Rev 2 remains future scope.
 
 ## What We Established
 
@@ -36,9 +38,11 @@ The supplied front photo shows the display, ESP32-style development board, main 
 - F1/F2 clips appear empty in the photo. Confirm the actual fuse installation and ratings when planning a powered test; do not infer them from the holder footprint.
 - J8 appears unpopulated and no remote battery-temperature sensor is connected in the photo. That does not block disconnected, low-energy control development, but pack-temperature protection must be addressed before charging.
 - The BOM names U1 `STM32G431CBU6`, U2 `ESP32_C3_mini`, and U14 `LM74502HDDFR`. Those are design identities, not independently confirmed chip markings. Confirm the MCU target before flashing.
-- No powered behavior, firmware compatibility, shorts check, or charging performance has been established in this session.
+- The 2026-10-25 notes did not establish powered behavior, firmware compatibility, a shorts check, or charging performance. No later physical-test result is established by this documentation reconciliation.
 
-Phil confirms the board has **never been powered**. Available supply: generic **30 V / 10 A bench supply with adjustable CC/CV**. Those are its capabilities, not first-power settings; do not apply 30 V or use a 10 A current limit for control-power bring-up.
+At the **2026-10-25 checkpoint**, Phil confirmed the board had **never been powered**. Available supply: generic **30 V / 10 A bench supply with adjustable CC/CV**. Those are its capabilities, not first-power settings; do not apply 30 V or use a 10 A current limit for control-power bring-up. This dated report does not establish board state after subsequent work.
+
+Firmware development through `ff89791` is already on `main`, with Rev 1 STM32G473 minimal and staged targets; see [firmware notes](../firmware/README.md). The BOM's MCU identity and firmware target are not proof of the fitted chip. Verify the actual MCU/pin map and relevant stage behavior before flashing; source commits alone do not prove successful or safe physical tests.
 
 ## BOM Differences Worth Keeping Visible
 
@@ -56,4 +60,4 @@ Use the supplied manufacturing BOM as the working assembly reference, not the st
 
 ## Next Step
 
-Reconcile the low-energy bring-up instructions under [#4](https://github.com/Phil-CIA/Solar-Project-200w/issues/4). The immediate physical step is an unpowered shorts/polarity check, not connecting PV or a battery. The supply and never-powered state are now known; do not repeatedly ask for them. Confirm the connection lead and conservative voltage/current settings before the later first energization, and identify the programmer/MCU before flashing. No need to reconstruct every purchase or produce additional photos unless a specific uncertainty needs one.
+Reconcile the low-energy bring-up instructions under [#4](https://github.com/Phil-CIA/Solar-Project-200w/issues/4) against the production release. Carry forward the recorded supply and 2026-10-25 board state; ask only about later changes that affect the next operation, not the same equipment dossier again. Keep unpowered shorts/polarity checks before energizing, not connecting PV or a battery as the next assumed step. Confirm the connection lead and conservative voltage/current settings before energization, and identify the programmer/MCU before flashing. Record useful setup/readings and deviations in a short dated note or issue comment. No need to reconstruct every purchase or produce additional photos unless a specific uncertainty needs one.
