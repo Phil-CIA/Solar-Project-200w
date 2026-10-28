@@ -1,8 +1,16 @@
 # Rev 1 Checkpoint & Closure Plan - 2026-09-16
 
-Status: active tracking document
+Status: active tracking document; assembled-board execution plan updated 2026-10-25
 Companion to: [rev-one-implementation-plan.md](rev-one-implementation-plan.md) (Gates 0-6), [rev-one-component-derating-review.md](rev-one-component-derating-review.md), [rev-one-bench-learning-matrix.md](rev-one-bench-learning-matrix.md)
 Purpose: convert the 2026-09-16 project review into a trackable checklist so the "nearing completion" feeling is backed by closed items, not just closed documents.
+
+## Current Checkpoint - 2026-10-25
+
+Phil reports that the Rev 1 PCB build is complete. This establishes assembly completion, not a passing electrical test, a verified fitted BOM, or rated-power qualification. The September fabrication/order milestones below are retained as history; their statements that hardware does not exist or ordering is next are no longer current.
+
+The actionable backlog is [issue #1](https://github.com/Phil-CIA/Solar-Project-200w/issues/1) and its child issues. [Section 6](#6-assembled-board-execution-and-issue-1-closure) defines the current execution sequence and closure gates. Historical `OPEN`/`HOLD` entries require reconciliation against the actual board; they are not newly confirmed Rev 1 defects. Accepted design decisions remain in force unless new evidence requires review.
+
+The first deliverable is a useful board baseline and applicable safe bring-up instructions, not immediate charging. Phil supplied the manufacturing folder and both-side photos; findings are in [Rev 1 board notes](rev-one-board-notes.md). Phil also clarified that this is a hobby project: use a practical "good enough" standard, not a professional lab documentation process. This update does not establish electrical readiness.
 
 ## 0. Where We Are / Path to Ordering the Board (updated 2026-09-18)
 
@@ -131,3 +139,55 @@ Decide and log; do not build unless explicitly greenlit:
 ## 5. Maintenance Rule
 
 Update this file directly as tracks close instead of creating a new dated plan doc for the same scope. Add a new dated closure plan only after this one reaches Definition of Done or the project scope changes materially.
+
+## 6. Assembled-Board Execution and Issue #1 Closure
+
+### Ownership and Tracking
+
+GitHub issues own task status; this section gives the working order. Record useful results in an issue or the existing board notes rather than maintaining duplicate checklists.
+
+**Hobby-project standard, directed by Phil on 2026-10-25:** short notes, available photos, and checks relevant to the next step are enough. Do not require a full fitted-parts audit, formal sign-offs, calibration certificates, a requirement-by-requirement dossier, scheduled reviews, or a scope capture for every operation. Ask for missing information only when it changes the next action. Phil chooses which optional records to provide. Unknowns stay unknown rather than becoming paperwork blockers or assumed passes.
+
+This reduces documentation, not electrical precautions: verify the target before flashing, check for shorts/polarity problems before power, use current-limited staged bring-up, and confirm relevant protection and component limits before charging or increasing power. Do not claim full-power or outdoor operation works without actually trying it under suitable conditions.
+
+Maintain the accepted baseline: LM51772 four-switch conversion, STM32 safety authority, two 100 W panels in parallel (DEC-051), 125 W continuous output, 150 W maximum PV operating power, 8-10 A nominal charge target, and approximately 12 A hardware protection pending tolerance verification. Battery-first operation and USB-only inhibit remain mandatory. ESP32 is a coprocessor; BMS communications remain deferred to Rev 2 (DEC-062).
+
+### Practical Work Order
+
+| Stage | Issues | Work | Good enough to move on |
+|---|---|---|---|
+| A - Know which board we have | [#3](https://github.com/Phil-CIA/Solar-Project-200w/issues/3) | Identify the manufacturing files, use the photos Phil supplies, and note meaningful differences. | Working design identified and important unknowns written down. See [board notes](rev-one-board-notes.md); no full assembly audit required. |
+| B - Make the repo and next bench step usable | [#2](https://github.com/Phil-CIA/Solar-Project-200w/issues/2), [#4](https://github.com/Phil-CIA/Solar-Project-200w/issues/4) | Fix stale entry-point docs and prepare a short, board-specific power-up sequence. | Clear connections, supply settings, expected rails and stop conditions for the next test. Check actual pack/fuse limits before using a real battery. |
+| C - Get safe firmware and useful readings | [#5](https://github.com/Phil-CIA/Solar-Project-200w/issues/5), [#6](https://github.com/Phil-CIA/Solar-Project-200w/issues/6) | Verify MCU/pins, build/flash, default-off behavior, serial output and sensing. | Firmware runs on the right target without unwanted switching; readings agree reasonably with available reference measurements, and missing sensors are reported. |
+| D - Check the protection that matters | [#9](https://github.com/Phil-CIA/Solar-Project-200w/issues/9), [#7](https://github.com/Phil-CIA/Solar-Project-200w/issues/7) | Check U14/Q5/Q6 behavior before charging. Resolve or avoid the unverified cold-Voc operating condition. | Relevant gate/clamp and reverse-flow checks work at low energy. Do not rely on the 32 V path outside its verified envelope; no cold chamber or outdoor qualification is required to develop indoors. |
+| E - Start charging gently | [#8](https://github.com/Phil-CIA/Solar-Project-200w/issues/8) | With safe control, sensing and protection established, implement qualification, current-limit readback, bounded ramp and weak-source retry. | Controlled low-current operation and fault/stop behavior work in the chosen setup. Record a short result; capture waveforms when needed to understand switching or a fault. |
+| F - Increase power as practical | [#10](https://github.com/Phil-CIA/Solar-Project-200w/issues/10) | Check stability, ripple/overshoot and heating as load increases within verified limits. | State the power, duration, conditions and temperatures actually tried. Leave 125 W continuous as unverified until demonstrated; a useful lower-power prototype is a valid intermediate result. |
+| G - Choose the extras | [#11](https://github.com/Phil-CIA/Solar-Project-200w/issues/11), [#12](https://github.com/Phil-CIA/Solar-Project-200w/issues/12) | Add telemetry when useful; ask Phil before expanding scope. | Implemented extras work without taking safety authority from STM32, or Phil agrees to defer them. Networking does not block local charging development. |
+
+Continue with #4 using the identified manufacturing package. Confirm only the current board state and equipment needed for the immediate bench step. Repository and firmware preparation can proceed without demanding more photos or reconstructing all purchase records.
+
+### Notes and Failures
+
+Use a short issue comment or board-note entry: what was connected, supply voltage/current limit, firmware if relevant, what happened, and any important reading. A photo, meter reading or scope capture is useful when it resolves a specific question, not as a blanket documentation requirement. Original photos and manufacturing files may remain local; keep personal/account details out of repository records.
+
+The existing [bring-up checklist](test/bringup-checklist.md) and [validation plan](test/validation-plan.md) are engineering references, not a requirement to complete every historical table before doing useful work. Reconcile their obsolete instructions under #4 before use. This section supersedes their documentation-volume expectations for current hobby work, not their applicable electrical precautions.
+
+Keep `worked`, `failed`, and `not tried` distinct. On unexpected current, heating, backfeed, uncontrolled switching or another unsafe condition, stop that test and investigate before increasing energy. Record meaningful fixes and operating restrictions; do not turn absent records into passing results.
+
+### PR and Issue Closure
+
+Continue small related changes on the open PR as appropriate; use separate PRs for later substantive firmware/hardware changes. Reference #1 without auto-closing it when only part of the work is done.
+
+Close #3 when the working board/design baseline and useful known differences are recorded. Carry operation-specific checks into #4/#5/#6/#7/#9 rather than keeping #3 open for a professional assembly dossier.
+
+Close other child issues when the requested behavior works to the agreed hobby scope, or Phil explicitly chooses to defer it. A short result and any remaining limitation are enough; no formal acceptance certificate is needed.
+
+Close #1 when:
+
+- Each child is done or explicitly deferred by Phil, without silently dropping unresolved problems.
+- The repo explains how to build/use the current prototype and what has actually worked.
+- Safety-relevant unknowns are resolved for the operations being attempted, or those operations remain clearly excluded.
+- Actual tested power/conditions and remaining limitations are stated without claiming untried full-power, cold-weather, outdoor or AC readiness.
+- Phil is satisfied with the useful prototype scope and remaining work is still visible.
+
+Merging docs or assembling the board alone does not establish working charging. Conversely, missing optional photos or formal reports must not keep a useful hobby milestone open.

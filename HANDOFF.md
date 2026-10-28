@@ -1,21 +1,23 @@
-# Solar Project 200W - Handoff
+# Solar Project 200W - Current Handoff
 
-Latest active handoff: [SOLAR_HANDOFF_2026-09-17.md](SOLAR_HANDOFF_2026-09-17.md)
+Current checkpoint: 2026-10-28. Start with [Rev 1 board notes](docs/rev-one-board-notes.md) and the [development tracker](https://github.com/Phil-CIA/Solar-Project-200w/issues/1).
 
-## Current status
+## Current state
 
-- Rev 0 is on the bench; Rev 1 schematic/BOM work is underway. No physical Rev 1 board exists yet (Gate 4 PCB layout has not started).
-- [docs/rev-one-closure-plan-2026-09-16.md](docs/rev-one-closure-plan-2026-09-16.md) is the living tracked checklist for closing Gate 1 component derating, BOM/sourcing, safety-scope decisions, Rev 0 evidence mining, and Gate 4 PCB entry. Update it in place; do not create parallel plan docs.
-- Gate 1 (component derating) has NOT actually exited even though Gate 2/3 schematic work proceeded — several components are still `OPEN`/`HOLD`. Do not start Gate 4 PCB floorplanning until Track A of the closure plan closes or gets written waivers.
-- **The 2026-09-17 U6 VIN/BIAS and D2 overvoltage crisis is fully RESOLVED** (DEC-051 through DEC-057): the PV array is now wired 2P (parallel), not 2S (series) — see `hardware/mppt/envelope-decision-worksheet.md` Section 2.1, now the active baseline. Remaining open items are ordinary BOM-sourcing gaps (C7, C52, D2 replacement exact catalog numbers) and a new, not-yet-implemented firmware requirement (active parasitic-load Voc control for F1's cold-Voc margin, DEC-054) — not open safety questions.
-- F1 stays on the Keystone `3522-2` blade-fuse clip (DEC-054, reversed an earlier DEC-053 fuse-family swap decision) — do not re-propose changing it without new information.
-- The U14/Q5/Q6 gate test is confirmed BLOCKED on hardware: Rev 0 has none of the relevant parts (LM74502/U14/BSC040N10NS5), and no physical Rev 1 board exists yet either.
-- **Track C (safety/sensing gaps) is now CLOSED** (DEC-061/062): a dedicated battery-pack temperature input was added and implemented as a new connector `J8` tapping the existing I2C bus (not a new ADC/NTC channel - every MCU GPIO was already in use); the BMS communication link is formally deferred to Rev 2. Remote I2C sensor part selection for `J8` is still open (Track B/BOM item).
+- Only Rev 0 and Rev 1 exist. Rev 1 is the current production revision, not Rev 2. The September [18](SOLAR_HANDOFF_2026-09-18.md) and [19](SOLAR_HANDOFF_2026-09-19.md) handoffs record design closure, fabrication preparation and the PCB order.
+- Phil reports Rev 1 assembly complete and supplied the manufacturing folder plus front/rear photos. The package PCB and fabrication outputs match the repository copies; the schematic differs only by empty supplier metadata. See the board notes for details.
+- The production release sent to the manufacturer is authoritative for the physical Rev 1 board. Its current recorded location is `C:\Users\user\OneDrive\JLCPCB files\Solar Charger\Rev 1`, containing `Kicad`, `BOM`, and `GERBERS`; board notes retain the earlier machine's location. Repository schematic, project and BOM files are not byte-identical to the release. Preserve the release and reconcile relevant differences before board-specific tests; use repository copies for continued development.
+- This is a hobby project. Phil requested a practical "good enough" standard: short notes and checks needed for the next step, not a professional lab dossier. Optional photos, full part audits, and formal reports are not blanket prerequisites.
+- Firmware development through `ff89791` is already on `main`, including Rev 1 STM32G473 minimal and staged bring-up targets; see [firmware notes](firmware/README.md). Code availability does not establish fitted-MCU compatibility, safe switching behavior, or successful charging. No physical tests were performed during this documentation reconciliation. Historical `OPEN`/`HOLD` entries are not automatically confirmed faults of this board.
+- The supplied manufacturing BOM is a better working assembly reference than the stale procurement master CSV. C52 and D2 have the later design values; C7's grouped supplier entries remain ambiguous. Do not silently rewrite the BOM or infer installed values from it.
+- F1/F2 clips appear empty and J8 appears unpopulated in the supplied front photo. Check what matters for the intended operation; no additional photo campaign is required.
+- U14 testing is no longer blocked on Rev 1 hardware not existing. It still needs an applicable low-energy procedure before execution.
+- Keep the [existing closure plan](docs/rev-one-closure-plan-2026-09-16.md#6-assembled-board-execution-and-issue-1-closure) as the sequencing reference; GitHub issues track the actual work.
 
 ## Locked Baselines
 
 - Retain one LM51772 four-switch conversion stage and rerate it for Rev 1.
-- LM74502H plus back-to-back N-MOS (Q5/Q6, `BSC040N10NS5`) input/output protection remains retained.
+- LM74502H plus back-to-back N-MOS (Q5/Q6, `BSC040N10NS5`) output-switch/reverse-flow protection remains retained.
 - Protected battery power is the normal runtime control source and startup prerequisite.
 - STM32 retains charger supervision, safety policy, and telemetry ownership.
 - USB service power must not independently authorize power-stage switching.
@@ -24,12 +26,18 @@ Latest active handoff: [SOLAR_HANDOFF_2026-09-17.md](SOLAR_HANDOFF_2026-09-17.md
 - PV array wiring is 2P (parallel), not 2S (series) — DEC-051, supersedes the original DEC-004 baseline.
 - Battery-pack temperature sensing is a remote I2C module via connector `J8`, not an NTC/ADC channel — DEC-061 (every MCU GPIO is already in use except `PB8`/`BOOT0`).
 - BMS communication link is explicitly deferred to Rev 2 — DEC-062; Rev 1 relies solely on the Q-001 `>=20A` current-capability assumption.
+- F1 retains the Keystone `3522-2` clip (DEC-054). Cold-Voc load mitigation remains unverified; do not assume firmware increases component ratings or change the fuse family without new information.
+- Design targets remain 125 W continuous output, at most 150 W PV operating power, and 8-10 A nominal charging with approximately 12 A hardware protection pending verification; these are not measured results.
 
 ## Next session objective
 
-Track A (component derating) and Track C (safety-scope decisions) are both effectively closed. Work down the closure-plan priority list: Track B BOM/sourcing sweep (resolve remaining non-matched BOM lines, pick the `J8` remote I2C temperature-sensor part/address, confirm U1 sourcing), then either C18's ripple-current rating or Track E Gate 4 PCB layout kickoff (Update PCB From Schematic, power-loop floorplan, DRC).
+Continue [#4](https://github.com/Phil-CIA/Solar-Project-200w/issues/4): reconcile the board-specific low-energy bring-up instructions against the production release. The 2026-10-25 checkpoint records Phil's never-powered report and generic 30 V / 10 A CC/CV bench supply; it is not evidence of board state after later development. No later physical-test result is established here. Carry forward that equipment information and confirm only changes that affect the next action. Keep unpowered shorts/polarity checks before energizing; those supply ratings are not first-power settings.
 
-Full detail: [SOLAR_HANDOFF_2026-09-17.md](SOLAR_HANDOFF_2026-09-17.md)
+Do not run Rev 0 flash/control scripts on Rev 1 without checking the fitted MCU and pin map. Keep basic shorts/polarity checks, current limiting and default-off control; reduce paperwork, not power-up precautions.
+
+The latest `stage_aht20_display_uart.c` explicitly drives PA5 (`V_in_ON`) high at initialization. Do not treat its "status-only" name as an inert/default-off guarantee or run it on a connected power path without reconciling that behavior against the board and intended test.
+
+Use a short dated issue comment or board-note entry for the setup, relevant measurements, firmware and deviations from the release. KiCad lock files were reported in the release `Kicad` folder during inspection; do not edit or remove them unless KiCad is confirmed closed.
 
 ## Primary evidence files
 
@@ -42,7 +50,6 @@ Full detail: [SOLAR_HANDOFF_2026-09-17.md](SOLAR_HANDOFF_2026-09-17.md)
 - [hardware/kicad/solar-project/REVISION-INDEX.md](hardware/kicad/solar-project/REVISION-INDEX.md)
 - [hardware/kicad/solar-project/Solar Project Rev1.kicad_sch](hardware/kicad/solar-project/Solar%20Project%20Rev1.kicad_sch)
 - [hardware/kicad/solar-project/Solar Project Rev0.kicad_sch](hardware/kicad/solar-project/Solar%20Project%20Rev0.kicad_sch)
-- [hardware/kicad/solar-project/ERC.rpt](hardware/kicad/solar-project/ERC.rpt)
 - [docs/test/rev0-bringup-addendum.md](docs/test/rev0-bringup-addendum.md)
 - [docs/test/bringup-checklist.md](docs/test/bringup-checklist.md)
 - [hardware/mppt/kicad-implementation-checklist.md](hardware/mppt/kicad-implementation-checklist.md)
@@ -51,6 +58,8 @@ Full detail: [SOLAR_HANDOFF_2026-09-17.md](SOLAR_HANDOFF_2026-09-17.md)
 - [docs/test/rev-one-erc-drc-closure-checklist.md](docs/test/rev-one-erc-drc-closure-checklist.md)
 - [docs/wifi-coprocessor-architecture.md](docs/wifi-coprocessor-architecture.md)
 - [SOLAR_HANDOFF_2026-09-17.md](SOLAR_HANDOFF_2026-09-17.md)
+- [SOLAR_HANDOFF_2026-09-18.md](SOLAR_HANDOFF_2026-09-18.md)
+- [SOLAR_HANDOFF_2026-09-19.md](SOLAR_HANDOFF_2026-09-19.md)
 - [SOLAR_HANDOFF_2026-09-12.md](SOLAR_HANDOFF_2026-09-12.md)
 - [SOLAR_HANDOFF_2026-09-09.md](SOLAR_HANDOFF_2026-09-09.md)
 
