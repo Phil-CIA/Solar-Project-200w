@@ -23,6 +23,8 @@
 #define USART_CR1 REG32(USART1_BASE + 0x00UL)
 #define USART_BRR REG32(USART1_BASE + 0x0CUL)
 #define USART_ISR REG32(USART1_BASE + 0x1CUL)
+#define USART_ICR REG32(USART1_BASE + 0x20UL)
+#define USART_RDR REG32(USART1_BASE + 0x24UL)
 #define USART_TDR REG32(USART1_BASE + 0x28UL)
 
 #define ADC1_BASE 0x50000000UL
@@ -48,16 +50,38 @@
 #define PB2_SET PB2_BIT
 #define PB2_CLR (PB2_BIT << 16U)
 #define PC13_BIT (1UL << 13) /* U6_FLT (open-drain, pulled up by R34) */
+#define PB12_BIT (1UL << 12) /* CTRL_EN_CHG: active-high EN/UVLO clamp */
 
 #define AHT20_ADDR 0x38U
 #define OLED_ADDR 0x3CU
 #define U6_ADDR 0x6AU
 #define WS_RESET_CYCLES (300U * 16U) /* 300 us at 16 MHz */
 #define PA5_BIT (1UL << 5) /* V_in_ON */
+#define PA8_BIT (1UL << 8) /* V_out _on: U14 EN/UVLO */
 
 #define VIN_ADC_SHUTDOWN_MV 50000U
 #define VIN_ADC_SCALE_NUM 190U
 #define VIN_ADC_SCALE_DEN 10U
+#define BENCH_JUMPER_FITTED 1U
+#define ARM_WINDOW_MS 3000U
+#define QUIET_TEST_LOG 1U
+#define CMD_IDLE_EXECUTE_MS 150U
+#define ENABLE_IVP_BENCH 0U
+#define ARM_WRITE_D6_MFR_SPECIFIC_BITS32 0U
+#define D6_BITS32_MASK 0x0CU
+#define D6_BITS32_TARGET 0x0CU
+#define LOOP_PERIOD_MS 1U
+#define TELEMETRY_PERIOD_MS 1000U
+#define UART_RX_BUF_SIZE 128U
+#if QUIET_TEST_LOG
+#define MAYBE_UNUSED __attribute__((unused))
+#else
+#define MAYBE_UNUSED
+#endif
+
+static volatile uint8_t uart_rx_buf[UART_RX_BUF_SIZE];
+static volatile uint16_t uart_rx_head = 0U;
+static volatile uint16_t uart_rx_tail = 0U;
 
 static void delay_cycles(volatile uint32_t cycles) {
     while (cycles-- > 0U) {
@@ -103,18 +127,30 @@ static void uart_gpio_init(void) {
 }
 
 static void uart_init(void) {
+    const uint32_t NVIC_ISER1 = 0xE000E104UL;
+    const uint32_t USART1_IRQ_BIT_IN_ISER1 = (1UL << 5U);
     RCC_APB2ENR |= USART1_EN_BIT;
     (void)RCC_APB2ENR;
 
     USART_CR1 = 0U;
     USART_BRR = 139U; /* 16 MHz / 115200 ~= 138.9 */
-    USART_CR1 = (1UL << 0) | (1UL << 2) | (1UL << 3);
+    USART_CR1 = (1UL << 0) | (1UL << 2) | (1UL << 3) | (1UL << 5);
+    REG32(NVIC_ISER1) = USART1_IRQ_BIT_IN_ISER1;
 }
 
 static void uart_putc(char value) {
     while ((USART_ISR & (1UL << 7)) == 0U) {
     }
     USART_TDR = (uint32_t)(uint8_t)value;
+}
+
+static bool uart_try_getc(char *out) {
+    if (uart_rx_tail != uart_rx_head) {
+        *out = (char)uart_rx_buf[uart_rx_tail];
+        uart_rx_tail = (uint16_t)((uart_rx_tail + 1U) % UART_RX_BUF_SIZE);
+        return true;
+    }
+    return false;
 }
 
 static void uart_write(const char *text) {
@@ -126,6 +162,20 @@ static void uart_write(const char *text) {
 static void uart_line(const char *text) {
     uart_write(text);
     uart_write("\r\n");
+}
+
+void USART1_IRQHandler(void) {
+    while ((USART_ISR & (1UL << 5U)) != 0U) {
+        const uint8_t byte = (uint8_t)(USART_RDR & 0xFFU);
+        const uint16_t next = (uint16_t)((uart_rx_head + 1U) % UART_RX_BUF_SIZE);
+        if (next != uart_rx_tail) {
+            uart_rx_buf[uart_rx_head] = byte;
+            uart_rx_head = next;
+        }
+    }
+    if ((USART_ISR & (1UL << 3U)) != 0U) {
+        USART_ICR = (1UL << 3U);
+    }
 }
 
 static void i2c_gpio_init(void) {
@@ -165,10 +215,30 @@ static void vin_path_gpio_init(void) {
     RCC_AHB2ENR |= GPIOA_EN_BIT;
     (void)RCC_AHB2ENR;
 
-    GPIO_MODER(GPIOA_BASE) = (GPIO_MODER(GPIOA_BASE) & ~((3UL << (4U * 2U)) | (3UL << (5U * 2U)))) |
+    GPIO_MODER(GPIOA_BASE) = (GPIO_MODER(GPIOA_BASE) & ~((3UL << (4U * 2U)) | (3UL << (5U * 2U)) | (3UL << (8U * 2U)))) |
                              (3UL << (4U * 2U)) | /* PA4 analog (V_in_ADC) */
-                             (1UL << (5U * 2U));  /* PA5 output (V_in_ON) */
+                             (1UL << (5U * 2U)) | /* PA5 output (V_in_ON) */
+                             (1UL << (8U * 2U));  /* PA8 output (V_out _on) */
     GPIO_BSRR(GPIOA_BASE) = PA5_BIT; /* default ON: active-high control */
+    GPIO_BSRR(GPIOA_BASE) = PA8_BIT << 16U; /* default OFF */
+}
+
+static void u6_ctrl_gpio_init(void) {
+    RCC_AHB2ENR |= GPIOB_EN_BIT;
+    (void)RCC_AHB2ENR;
+
+    GPIO_MODER(GPIOB_BASE) = (GPIO_MODER(GPIOB_BASE) & ~(3UL << (12U * 2U))) |
+                             (1UL << (12U * 2U));
+    GPIO_OTYPER(GPIOB_BASE) &= ~PB12_BIT;
+    GPIO_BSRR(GPIOB_BASE) = PB12_BIT; /* default inhibit asserted */
+}
+
+static void u6_set_inhibit(bool inhibit) {
+    if (inhibit) {
+        GPIO_BSRR(GPIOB_BASE) = PB12_BIT;
+    } else {
+        GPIO_BSRR(GPIOB_BASE) = PB12_BIT << 16U;
+    }
 }
 
 static void vin_path_enable(bool enabled) {
@@ -177,6 +247,19 @@ static void vin_path_enable(bool enabled) {
     } else {
         GPIO_BSRR(GPIOA_BASE) = PA5_BIT << 16U;
     }
+}
+
+static void out_path_enable(bool enabled) {
+#if BENCH_JUMPER_FITTED
+    (void)enabled;
+    GPIO_BSRR(GPIOA_BASE) = PA8_BIT << 16U;
+#else
+    if (enabled) {
+        GPIO_BSRR(GPIOA_BASE) = PA8_BIT;
+    } else {
+        GPIO_BSRR(GPIOA_BASE) = PA8_BIT << 16U;
+    }
+#endif
 }
 
 static bool adc1_init_pa4(void) {
@@ -294,7 +377,7 @@ static void ws_latch_reset(void) {
     delay_cycles(WS_RESET_CYCLES);
 }
 
-static void ws_send_two_pixels(uint8_t d8_red, uint8_t d8_green, uint8_t d8_blue,
+static MAYBE_UNUSED void ws_send_two_pixels(uint8_t d8_red, uint8_t d8_green, uint8_t d8_blue,
                                uint8_t d11_red, uint8_t d11_green, uint8_t d11_blue) {
     ws_send_pixel(d8_red, d8_green, d8_blue);
     ws_send_pixel(d11_red, d11_green, d11_blue);
@@ -486,7 +569,21 @@ static bool u6_read_status(uint8_t *status_byte, uint8_t *pd_status0) {
     return true;
 }
 
-static bool aht20_read_measurement(int32_t *temp_f_tenths, int32_t *rh_tenths) {
+static bool u6_write_reg8(uint8_t reg, uint8_t value) {
+    const uint8_t bytes[2] = {reg, value};
+    return i2c_write_bytes(U6_ADDR, bytes, 2U);
+}
+
+static bool u6_read_reg8(uint8_t reg, uint8_t *value) {
+    return i2c_read_reg8(U6_ADDR, reg, value);
+}
+
+static bool u6_clear_faults(void) {
+    const uint8_t cmd = 0x03U; /* CLEAR_FAULTS command */
+    return i2c_write_bytes(U6_ADDR, &cmd, 1U);
+}
+
+static MAYBE_UNUSED bool aht20_read_measurement(int32_t *temp_f_tenths, int32_t *rh_tenths) {
     const uint8_t init_cmd[3] = {0xBEU, 0x08U, 0x00U};
     (void)i2c_write_bytes(AHT20_ADDR, init_cmd, 3U);
     delay_ms(10U);
@@ -602,7 +699,7 @@ static const uint8_t *font5x7(char c) {
     }
 }
 
-static bool oled_write_text_line(uint8_t page, const char *text) {
+static MAYBE_UNUSED bool oled_write_text_line(uint8_t page, const char *text) {
     if (!oled_set_cursor(page, 0U)) {
         return false;
     }
@@ -633,7 +730,7 @@ static bool oled_init(void) {
     return oled_clear();
 }
 
-static void format_tenths(int32_t value_tenths, char suffix, char *out) {
+static MAYBE_UNUSED void format_tenths(int32_t value_tenths, char suffix, char *out) {
     uint32_t pos = 0U;
     if (value_tenths < 0) {
         out[pos++] = '-';
@@ -666,10 +763,555 @@ static void format_hex8(uint8_t value, char *out) {
     out[4] = '\0';
 }
 
+static bool streq(const char *a, const char *b) {
+    while (*a != '\0' && *b != '\0') {
+        if (*a != *b) {
+            return false;
+        }
+        ++a;
+        ++b;
+    }
+    return (*a == '\0') && (*b == '\0');
+}
+
+static void uppercase_ascii(char *text) {
+    while (*text != '\0') {
+        if (*text >= 'a' && *text <= 'z') {
+            *text = (char)(*text - ('a' - 'A'));
+        }
+        ++text;
+    }
+}
+
+static bool parse_u32_dec(const char *text, uint32_t *value_out) {
+    uint32_t value = 0U;
+    if (*text == '\0') {
+        return false;
+    }
+    while (*text != '\0') {
+        if (*text < '0' || *text > '9') {
+            return false;
+        }
+        value = (value * 10U) + (uint32_t)(*text - '0');
+        ++text;
+    }
+    *value_out = value;
+    return true;
+}
+
+static bool hex_value(char c, uint8_t *out) {
+    if (c >= '0' && c <= '9') {
+        *out = (uint8_t)(c - '0');
+        return true;
+    }
+    if (c >= 'A' && c <= 'F') {
+        *out = (uint8_t)(10 + (c - 'A'));
+        return true;
+    }
+    if (c >= 'a' && c <= 'f') {
+        *out = (uint8_t)(10 + (c - 'a'));
+        return true;
+    }
+    return false;
+}
+
+static bool parse_u8_hex(const char *text, uint8_t *value_out) {
+    uint8_t high = 0U;
+    uint8_t low = 0U;
+    if (text[0] == '0' && (text[1] == 'x' || text[1] == 'X')) {
+        text += 2;
+    }
+    if (text[0] == '\0' || text[1] == '\0' || text[2] != '\0') {
+        return false;
+    }
+    if (!hex_value(text[0], &high) || !hex_value(text[1], &low)) {
+        return false;
+    }
+    *value_out = (uint8_t)((high << 4U) | low);
+    return true;
+}
+
+static void print_u6_status_once(void) {
+    uint8_t status = 0U;
+    uint8_t pd0 = 0U;
+    char status_hex[5];
+    char pd_hex[5];
+    if (!u6_read_status(&status, &pd0)) {
+        uart_line("U6 status read FAIL");
+        return;
+    }
+    format_hex8(status, status_hex);
+    format_hex8(pd0, pd_hex);
+    uart_write("U6 STATUS=");
+    uart_write(status_hex);
+    uart_write(" PD0=");
+    uart_write(pd_hex);
+    uart_write(" FLT_PIN=");
+    uart_line(u6_flt_asserted() ? "LOW" : "HIGH");
+}
+
+static void print_help(void) {
+    uart_line("Commands:");
+    uart_line("  HELP");
+    uart_line("  STAT");
+    uart_line("  ARM");
+    uart_line("  INH 1");
+    uart_line("  DIV10 | DIV20");
+    uart_line("  SETV <mV>");
+    uart_line("  SET5");
+    uart_line("  CLR");
+    uart_line("  READ <regHex>");
+    uart_line("  WRITE <regHex> <valHex>");
+    uart_line("  START <ms>");
+    uart_line("  STOP");
+}
+
+static void print_reg_result(const char *name, uint8_t reg) {
+    uint8_t value = 0U;
+    char hex[5];
+    if (u6_read_reg8(reg, &value)) {
+        format_hex8(value, hex);
+        uart_write("U6 ");
+        uart_write(name);
+        uart_write("=");
+        uart_line(hex);
+    } else {
+        uart_write("U6 ");
+        uart_write(name);
+        uart_line(" read FAIL");
+    }
+}
+
+static void print_u6_set_snapshot(const char *label) {
+    uart_line(label);
+    print_reg_result("0A", 0x0AU);
+    print_reg_result("D7", 0xD7U);
+    print_reg_result("D3", 0xD3U);
+    print_reg_result("DA", 0xDAU);
+    print_reg_result("D8", 0xD8U);
+    print_reg_result("0D", 0x0DU);
+    print_reg_result("0C", 0x0CU);
+}
+
+static void print_u6_meas_snapshot(const char *label) {
+    uart_line(label);
+    print_reg_result("78", 0x78U);
+    print_reg_result("21", 0x21U);
+    uart_write("U6 FLT_PIN=");
+    uart_line(u6_flt_asserted() ? "LOW" : "HIGH");
+}
+
+typedef struct {
+    bool inhibit_asserted;
+    bool fault_latched;
+    bool armed;
+    bool baseline_valid;
+    bool flt_low_baseline;
+    uint8_t status_fault_mask_baseline;
+    uint32_t run_ms_remaining;
+    uint32_t arm_window_ms;
+} control_state_t;
+
+static void stop_and_latch_fault(control_state_t *ctl, const char *reason) {
+    u6_set_inhibit(true);
+    ctl->inhibit_asserted = true;
+    out_path_enable(false);
+    ctl->run_ms_remaining = 0U;
+    ctl->arm_window_ms = 0U;
+    ctl->armed = false;
+    if (!ctl->fault_latched) {
+        ctl->fault_latched = true;
+        uart_write("FAULT_LATCHED: ");
+        uart_line(reason);
+    }
+}
+
+static void safety_fast_path(control_state_t *ctl, bool has_u6) {
+    if (ctl->fault_latched) {
+        return;
+    }
+    if (ctl->inhibit_asserted) {
+        return;
+    }
+    if (u6_flt_asserted() && (!ctl->baseline_valid || !ctl->flt_low_baseline)) {
+        stop_and_latch_fault(ctl, "FLT asserted");
+        return;
+    }
+    if (!has_u6) {
+        stop_and_latch_fault(ctl, "U6 missing");
+        return;
+    }
+    uint8_t status_byte = 0U;
+    uint8_t pd_status0 = 0U;
+    (void)pd_status0;
+    if (!u6_read_status(&status_byte, &pd_status0)) {
+        stop_and_latch_fault(ctl, "U6 comms loss");
+        return;
+    }
+    {
+        const uint8_t current_mask = (uint8_t)(status_byte & 0x3FU);
+        if (ctl->baseline_valid) {
+            const uint8_t new_faults = (uint8_t)(current_mask & (uint8_t)~ctl->status_fault_mask_baseline);
+            if (new_faults != 0U) {
+                stop_and_latch_fault(ctl, "U6 STATUS new fault");
+            }
+        } else if (current_mask != 0U) {
+            stop_and_latch_fault(ctl, "U6 STATUS fault");
+        }
+    }
+}
+
+static void arm_start_sequence(control_state_t *ctl, bool has_u6) {
+    if (ctl->fault_latched) {
+        if (!ctl->inhibit_asserted || ctl->run_ms_remaining > 0U) {
+            uart_line("ERR fault latched");
+            return;
+        }
+        ctl->fault_latched = false;
+        uart_line("FAULT_LATCH CLEARED (software)");
+    }
+    if (!has_u6) {
+        uart_line("ERR U6 unavailable");
+        return;
+    }
+    if (!u6_clear_faults()) {
+        uart_line("ERR CLR");
+        return;
+    }
+    delay_ms(2U);
+#if ENABLE_IVP_BENCH
+    if (!u6_write_reg8(0xDAU, 0x4AU)) {
+        uart_line("ERR write DA");
+        return;
+    }
+    {
+        uint8_t da_verify = 0U;
+        if (!u6_read_reg8(0xDAU, &da_verify)) {
+            uart_line("ERR read DA");
+            return;
+        }
+        if (da_verify != 0x4AU) {
+            uart_line("ERR DA verify");
+            return;
+        }
+    }
+    {
+        uint8_t d3 = 0U;
+        if (!u6_read_reg8(0xD3U, &d3)) {
+            uart_line("ERR read D3");
+            return;
+        }
+        const uint8_t target_d3 = (uint8_t)((d3 | 0x80U) & (uint8_t)~0x40U);
+        if (!u6_write_reg8(0xD3U, target_d3)) {
+            uart_line("ERR write D3");
+            return;
+        }
+        uint8_t d3_verify = 0U;
+        if (!u6_read_reg8(0xD3U, &d3_verify)) {
+            uart_line("ERR readback D3");
+            return;
+        }
+        if (d3_verify != target_d3) {
+            uart_line("ERR D3 verify");
+            return;
+        }
+    }
+#endif
+#if ARM_WRITE_D6_MFR_SPECIFIC_BITS32
+    {
+        uint8_t d6 = 0U;
+        if (!u6_read_reg8(0xD6U, &d6)) {
+            uart_line("ERR read D6");
+            return;
+        }
+        const uint8_t target_d6 =
+            (uint8_t)((d6 & (uint8_t)~D6_BITS32_MASK) | (D6_BITS32_TARGET & D6_BITS32_MASK));
+        if (target_d6 != d6) {
+            if (!u6_write_reg8(0xD6U, target_d6)) {
+                uart_line("ERR write D6");
+                return;
+            }
+        }
+        uint8_t d6_verify = 0U;
+        if (!u6_read_reg8(0xD6U, &d6_verify)) {
+            uart_line("ERR verify D6");
+            return;
+        }
+        if ((d6_verify & D6_BITS32_MASK) != (D6_BITS32_TARGET & D6_BITS32_MASK)) {
+            uart_line("ERR D6[3:2] verify");
+            return;
+        }
+        uart_write("ARMED D6=");
+        {
+            char hx[5];
+            format_hex8(d6_verify, hx);
+            uart_line(hx);
+        }
+    }
+#endif
+    uint8_t d7 = 0U;
+    if (!u6_read_reg8(0xD7U, &d7)) {
+        uart_line("ERR read D7");
+        return;
+    }
+    const uint8_t target_d7 = (uint8_t)((d7 & 0xF0U) | 0x03U);
+    if (target_d7 != d7) {
+        if (!u6_write_reg8(0xD7U, target_d7)) {
+            uart_line("ERR write D7");
+            return;
+        }
+    }
+    uint8_t d7_verify = 0U;
+    if (!u6_read_reg8(0xD7U, &d7_verify)) {
+        uart_line("ERR verify D7");
+        return;
+    }
+    if ((d7_verify & 0x0FU) != 0x03U) {
+        uart_line("ERR D7 slope verify");
+        return;
+    }
+    {
+        uint8_t status_byte = 0U;
+        uint8_t pd_status0 = 0U;
+        if (!u6_read_status(&status_byte, &pd_status0)) {
+            uart_line("ERR status baseline");
+            return;
+        }
+        ctl->status_fault_mask_baseline = (uint8_t)(status_byte & 0x3FU);
+    }
+    ctl->flt_low_baseline = u6_flt_asserted();
+    ctl->baseline_valid = true;
+    ctl->armed = true;
+    ctl->arm_window_ms = ARM_WINDOW_MS;
+    uart_write("ARMED D7=");
+    {
+        char hx[5];
+        format_hex8(d7_verify, hx);
+        uart_line(hx);
+    }
+    print_u6_set_snapshot("SET_SNAPSHOT");
+    print_u6_meas_snapshot("MEAS_SNAPSHOT");
+}
+
+static void run_command(const char *line, control_state_t *ctl, bool has_u6) {
+    char cmd[16] = {0};
+    char arg1[16] = {0};
+    char arg2[16] = {0};
+    uint32_t ci = 0U;
+    uint32_t ai = 0U;
+    uint32_t bi = 0U;
+    uint32_t idx = 0U;
+
+    while (line[idx] != '\0' &&
+           (((unsigned char)line[idx] <= (unsigned char)' ') || ((unsigned char)line[idx] > 0x7EU))) {
+        ++idx;
+    }
+    while (line[idx] != '\0' &&
+           ((unsigned char)line[idx] > (unsigned char)' ') &&
+           ((unsigned char)line[idx] <= 0x7EU) &&
+           ci + 1U < sizeof(cmd)) {
+        cmd[ci++] = line[idx++];
+    }
+    cmd[ci] = '\0';
+    while (line[idx] != '\0' &&
+           (((unsigned char)line[idx] <= (unsigned char)' ') || ((unsigned char)line[idx] > 0x7EU))) {
+        ++idx;
+    }
+    while (line[idx] != '\0' &&
+           ((unsigned char)line[idx] > (unsigned char)' ') &&
+           ((unsigned char)line[idx] <= 0x7EU) &&
+           ai + 1U < sizeof(arg1)) {
+        arg1[ai++] = line[idx++];
+    }
+    arg1[ai] = '\0';
+    while (line[idx] != '\0' &&
+           (((unsigned char)line[idx] <= (unsigned char)' ') || ((unsigned char)line[idx] > 0x7EU))) {
+        ++idx;
+    }
+    while (line[idx] != '\0' &&
+           ((unsigned char)line[idx] > (unsigned char)' ') &&
+           ((unsigned char)line[idx] <= 0x7EU) &&
+           bi + 1U < sizeof(arg2)) {
+        arg2[bi++] = line[idx++];
+    }
+    arg2[bi] = '\0';
+    uppercase_ascii(cmd);
+    uppercase_ascii(arg1);
+    uppercase_ascii(arg2);
+    uart_write("CMD<");
+    uart_write(line);
+    uart_line(">");
+
+    if (streq(cmd, "HELP")) {
+        print_help();
+        return;
+    }
+    if (streq(cmd, "ARM")) {
+        arm_start_sequence(ctl, has_u6);
+        return;
+    }
+    if (streq(cmd, "STAT")) {
+        if (!has_u6) {
+            uart_line("U6 not present");
+            return;
+        }
+        print_u6_set_snapshot("SET_VALUES");
+        print_u6_meas_snapshot("MEAS_VALUES");
+        print_u6_status_once();
+        return;
+    }
+    if (streq(cmd, "INH")) {
+        if (streq(arg1, "1")) {
+            stop_and_latch_fault(ctl, "INH 1 command");
+            uart_line("INH=1");
+            return;
+        }
+        if (streq(arg1, "0")) {
+            uart_line("ERR INH 0 disabled; use ARM then START");
+            return;
+        }
+        uart_line("ERR usage: INH 1");
+        return;
+    }
+    if (!has_u6) {
+        uart_line("ERR U6 unavailable");
+        return;
+    }
+    if (streq(cmd, "DIV10") || streq(cmd, "DIV20")) {
+        uint8_t d8 = 0U;
+        if (!u6_read_reg8(0xD8U, &d8)) {
+            uart_line("ERR read D8");
+            return;
+        }
+        if (streq(cmd, "DIV10")) {
+            d8 &= (uint8_t)~0x80U;
+        } else {
+            d8 |= 0x80U;
+        }
+        if (!u6_write_reg8(0xD8U, d8)) {
+            uart_line("ERR write D8");
+            return;
+        }
+        uart_write("OK D8=");
+        {
+            char hx[5];
+            format_hex8(d8, hx);
+            uart_line(hx);
+        }
+        return;
+    }
+    if (streq(cmd, "SETV")) {
+        uint32_t mv = 0U;
+        uint8_t d8 = 0U;
+        if (!parse_u32_dec(arg1, &mv)) {
+            uart_line("ERR usage: SETV <mV>");
+            return;
+        }
+        if (!u6_read_reg8(0xD8U, &d8)) {
+            uart_line("ERR read D8");
+            return;
+        }
+        const bool div20 = (d8 & 0x80U) != 0U;
+        const uint32_t step_mv = div20 ? 20U : 10U;
+        const uint32_t min_mv = div20 ? 3300U : 1000U;
+        const uint32_t max_mv = div20 ? 48000U : 24000U;
+        if (mv < min_mv || mv > max_mv || (mv % step_mv) != 0U) {
+            uart_line("ERR out of range/step");
+            return;
+        }
+        const uint16_t code = (uint16_t)(mv / step_mv);
+        if (!u6_write_reg8(0x0DU, (uint8_t)((code >> 8U) & 0x0FU)) ||
+            !u6_write_reg8(0x0CU, (uint8_t)(code & 0xFFU))) {
+            uart_line("ERR write VOUT");
+            return;
+        }
+        uart_line("OK VOUT set");
+        return;
+    }
+    if (streq(cmd, "SET5")) {
+        uint8_t d8 = 0U;
+        if (!u6_read_reg8(0xD8U, &d8)) {
+            uart_line("ERR read D8");
+            return;
+        }
+        d8 &= (uint8_t)~0x80U;
+        if (!u6_write_reg8(0xD8U, d8) || !u6_write_reg8(0x0DU, 0x01U) || !u6_write_reg8(0x0CU, 0xF4U)) {
+            uart_line("ERR set5");
+            return;
+        }
+        uart_line("OK SET5");
+        return;
+    }
+    if (streq(cmd, "CLR")) {
+        uart_line(u6_clear_faults() ? "OK CLR" : "ERR CLR");
+        return;
+    }
+    if (streq(cmd, "READ")) {
+        uint8_t reg = 0U;
+        uint8_t val = 0U;
+        char hx[5];
+        if (!parse_u8_hex(arg1, &reg)) {
+            uart_line("ERR usage: READ <regHex>");
+            return;
+        }
+        if (!u6_read_reg8(reg, &val)) {
+            uart_line("ERR READ");
+            return;
+        }
+        format_hex8(val, hx);
+        uart_write("READ ");
+        uart_write(arg1);
+        uart_write(" = ");
+        uart_line(hx);
+        return;
+    }
+    if (streq(cmd, "WRITE")) {
+        uint8_t reg = 0U;
+        uint8_t val = 0U;
+        if (!parse_u8_hex(arg1, &reg) || !parse_u8_hex(arg2, &val)) {
+            uart_line("ERR usage: WRITE <regHex> <valHex>");
+            return;
+        }
+        uart_line(u6_write_reg8(reg, val) ? "OK WRITE" : "ERR WRITE");
+        return;
+    }
+    if (streq(cmd, "START")) {
+        uint32_t ms = 0U;
+        if (!parse_u32_dec(arg1, &ms) || ms == 0U || ms > 10000U) {
+            uart_line("ERR usage: START <1..10000ms>");
+            return;
+        }
+        if (ctl->fault_latched) {
+            uart_line("ERR fault latched");
+            return;
+        }
+        if (!ctl->armed || ctl->arm_window_ms == 0U) {
+            uart_line("ERR not armed");
+            return;
+        }
+        ctl->armed = false;
+        ctl->arm_window_ms = 0U;
+        ctl->inhibit_asserted = false;
+        ctl->run_ms_remaining = ms;
+        out_path_enable(true);
+        delay_ms(10U);
+        u6_set_inhibit(false);
+        uart_line("START");
+        return;
+    }
+    if (streq(cmd, "STOP")) {
+        stop_and_latch_fault(ctl, "STOP command");
+        uart_line("STOP");
+        return;
+    }
+    uart_line("ERR unknown command");
+}
+
 int main(void) {
     uart_gpio_init();
     uart_init();
     vin_path_gpio_init();
+    u6_ctrl_gpio_init();
     const bool vin_adc_ok = adc1_init_pa4();
     i2c_gpio_init();
     ws_gpio_init();
@@ -701,7 +1343,68 @@ int main(void) {
     bool heartbeat_phase = false;
     bool vin_path_on = true;
     bool vin_cutoff_reported = false;
+    control_state_t ctl = {
+        .inhibit_asserted = true,
+        .fault_latched = false,
+        .armed = false,
+        .baseline_valid = false,
+        .flt_low_baseline = false,
+        .status_fault_mask_baseline = 0U,
+        .run_ms_remaining = 0U,
+        .arm_window_ms = 0U,
+    };
+    char cmd_buf[64];
+    uint32_t cmd_len = 0U;
+    uint32_t cmd_idle_ms = 0U;
+    uint32_t telemetry_tick = 0U;
+    print_help();
     for (;;) {
+        char rx = 0;
+        bool saw_rx = false;
+        while (uart_try_getc(&rx)) {
+            saw_rx = true;
+            if (rx == '\r' || rx == '\n') {
+                if (cmd_len > 0U) {
+                    cmd_buf[cmd_len] = '\0';
+                    run_command(cmd_buf, &ctl, has_u6);
+                    cmd_len = 0U;
+                    cmd_idle_ms = 0U;
+                }
+            } else if (cmd_len + 1U < sizeof(cmd_buf)) {
+                cmd_buf[cmd_len++] = rx;
+                cmd_idle_ms = 0U;
+            }
+        }
+        if (!saw_rx && cmd_len > 0U) {
+            cmd_idle_ms += LOOP_PERIOD_MS;
+            if (cmd_idle_ms >= CMD_IDLE_EXECUTE_MS) {
+                cmd_buf[cmd_len] = '\0';
+                run_command(cmd_buf, &ctl, has_u6);
+                cmd_len = 0U;
+                cmd_idle_ms = 0U;
+            }
+        }
+
+        if (ctl.run_ms_remaining > 0U) {
+            if (ctl.run_ms_remaining <= LOOP_PERIOD_MS) {
+                stop_and_latch_fault(&ctl, "START timeout");
+                uart_line("START timeout -> STOP");
+            } else {
+                ctl.run_ms_remaining -= LOOP_PERIOD_MS;
+            }
+        }
+        if (ctl.arm_window_ms > 0U) {
+            if (ctl.arm_window_ms <= LOOP_PERIOD_MS) {
+                ctl.arm_window_ms = 0U;
+                ctl.armed = false;
+                uart_line("ARM window expired");
+            } else {
+                ctl.arm_window_ms -= LOOP_PERIOD_MS;
+            }
+        }
+
+        safety_fast_path(&ctl, has_u6);
+
         if (vin_adc_ok && vin_path_on) {
             uint16_t vin_adc_raw = 0U;
             if (adc1_read_pa4_raw(&vin_adc_raw)) {
@@ -717,83 +1420,106 @@ int main(void) {
             }
         }
 
-        uint8_t u6_status = 0U;
-        uint8_t u6_pd_status0 = 0U;
-        char u6_status_hex[5];
-        char u6_pd_hex[5];
-        const bool u6_status_ok = has_u6 && u6_read_status(&u6_status, &u6_pd_status0);
-        format_hex8(u6_status, u6_status_hex);
-        format_hex8(u6_pd_status0, u6_pd_hex);
+        if (telemetry_tick == 0U) {
+#if !QUIET_TEST_LOG
+            uint8_t u6_status = 0U;
+            uint8_t u6_pd_status0 = 0U;
+            char u6_status_hex[5];
+            char u6_pd_hex[5];
+            const bool u6_status_ok = has_u6 && u6_read_status(&u6_status, &u6_pd_status0);
+            format_hex8(u6_status, u6_status_hex);
+            format_hex8(u6_pd_status0, u6_pd_hex);
 
-        int32_t tf_tenths = 0;
-        int32_t rh_tenths = 0;
-        const bool sample_ok = has_aht20 && aht20_read_measurement(&tf_tenths, &rh_tenths);
+            int32_t tf_tenths = 0;
+            int32_t rh_tenths = 0;
+            const bool sample_ok = has_aht20 && aht20_read_measurement(&tf_tenths, &rh_tenths);
 
-        if (sample_ok) {
-            char temp_str[12];
-            char rh_str[12];
-            char line1[18];
-            char line2[18];
-            format_tenths(tf_tenths, 'F', temp_str);
-            format_tenths(rh_tenths, '%', rh_str);
+            if (sample_ok) {
+                char temp_str[12];
+                char rh_str[12];
+                char line1[18];
+                char line2[18];
+                format_tenths(tf_tenths, 'F', temp_str);
+                format_tenths(rh_tenths, '%', rh_str);
 
-            uint32_t i = 0U;
-            line1[i++] = 'T';
-            line1[i++] = ':';
-            for (uint32_t j = 0U; temp_str[j] != '\0'; ++j) {
-                line1[i++] = temp_str[j];
+                uint32_t i = 0U;
+                line1[i++] = 'T';
+                line1[i++] = ':';
+                for (uint32_t j = 0U; temp_str[j] != '\0'; ++j) {
+                    line1[i++] = temp_str[j];
+                }
+                line1[i] = '\0';
+
+                i = 0U;
+                line2[i++] = 'H';
+                line2[i++] = ':';
+                for (uint32_t j = 0U; rh_str[j] != '\0'; ++j) {
+                    line2[i++] = rh_str[j];
+                }
+                line2[i] = '\0';
+
+#if !QUIET_TEST_LOG
+                uart_write(line1);
+                uart_write("  ");
+                uart_line(line2);
+#endif
+
+                if (oled_ok) {
+                    (void)oled_clear();
+                    (void)oled_write_text_line(0U, line1);
+                    (void)oled_write_text_line(2U, line2);
+                }
+            } else {
+#if !QUIET_TEST_LOG
+                uart_line("AHT20 sample FAIL");
+#endif
+                if (oled_ok) {
+                    (void)oled_clear();
+                    (void)oled_write_text_line(0U, "AHT20 FAIL");
+                }
             }
-            line1[i] = '\0';
 
-            i = 0U;
-            line2[i++] = 'H';
-            line2[i++] = ':';
-            for (uint32_t j = 0U; rh_str[j] != '\0'; ++j) {
-                line2[i++] = rh_str[j];
+            if (u6_status_ok) {
+#if !QUIET_TEST_LOG
+                uart_write("MEAS_U6_STATUS=");
+                uart_write(u6_status_hex);
+                uart_write(" MEAS_U6_PD0=");
+                uart_write(u6_pd_hex);
+                uart_write(" MEAS_FLT_PIN=");
+                uart_line(u6_flt_asserted() ? "LOW" : "HIGH");
+#endif
+            } else {
+#if !QUIET_TEST_LOG
+                uart_line("U6 status read FAIL");
+#endif
+                if (!ctl.inhibit_asserted && !ctl.fault_latched) {
+                    stop_and_latch_fault(&ctl, "telemetry comms loss");
+                }
             }
-            line2[i] = '\0';
 
-            uart_write(line1);
-            uart_write("  ");
-            uart_line(line2);
-
-            if (oled_ok) {
-                (void)oled_clear();
-                (void)oled_write_text_line(0U, line1);
-                (void)oled_write_text_line(2U, line2);
+            if (heartbeat_phase) {
+                ws_send_two_pixels(
+                    0x08U, 0x00U, 0x00U, /* D8 red */
+                    0x00U, 0x00U, 0x00U  /* D11 off */
+                );
+            } else {
+                ws_send_two_pixels(
+                    0x00U, 0x00U, 0x00U, /* D8 off */
+                    0x08U, 0x00U, 0x00U  /* D11 red */
+                );
             }
-        } else {
-            uart_line("AHT20 sample FAIL");
-            if (oled_ok) {
-                (void)oled_clear();
-                (void)oled_write_text_line(0U, "AHT20 FAIL");
-            }
+            heartbeat_phase = !heartbeat_phase;
+#else
+            (void)has_aht20;
+            (void)oled_ok;
+            (void)heartbeat_phase;
+#endif
         }
 
-        if (u6_status_ok) {
-            uart_write("U6 STATUS=");
-            uart_write(u6_status_hex);
-            uart_write(" PD0=");
-            uart_write(u6_pd_hex);
-            uart_write(" FLT_PIN=");
-            uart_line(u6_flt_asserted() ? "LOW" : "HIGH");
-        } else {
-            uart_line("U6 status read FAIL");
+        telemetry_tick += LOOP_PERIOD_MS;
+        if (telemetry_tick >= TELEMETRY_PERIOD_MS) {
+            telemetry_tick = 0U;
         }
-
-        if (heartbeat_phase) {
-            ws_send_two_pixels(
-                0x08U, 0x00U, 0x00U, /* D8 red */
-                0x00U, 0x00U, 0x00U  /* D11 off */
-            );
-        } else {
-            ws_send_two_pixels(
-                0x00U, 0x00U, 0x00U, /* D8 off */
-                0x08U, 0x00U, 0x00U  /* D11 red */
-            );
-        }
-        heartbeat_phase = !heartbeat_phase;
-
-        delay_ms(1000U);
+        delay_ms(LOOP_PERIOD_MS);
     }
 }
