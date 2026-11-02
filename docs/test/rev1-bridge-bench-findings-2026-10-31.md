@@ -36,4 +36,18 @@ This note records bench evidence and analysis. Items marked **hypothesis** are u
 3. Scope at 1-2 us/div on `SW_1` and `SW_2` (J6 pins 9 and 10, spring ground) around the plateau, then gate-at-FET versus gate-at-IC-pin probing.
 4. Probe U6 pin 14 at the plateau; record `STATUS_BYTE` after each run without clearing faults.
 
+## 5. Update 2026-11-01/02 (loop, compensation, sense-resistor and divider checks)
+
+| Item | Result |
+|---|---|
+| IVP bench flag | Implemented; pre-run read `D3` = 0xA0, `DA` = 0x4A while inhibited. Post-run and STAT reads showed `D3` = 0x20, `DA` = 0xFF, `0x78` = 0x48 (reset values). Whether ARM writes survive EN release is **unresolved**. |
+| 9.5 V scope | Switching about 605 kHz (period about 1.64 us), SW swing about -1.9 V to +12 V with ringing; FB about 0.75 V at plateau; COMP reported pinned low with about 0.8 Vpp activity. |
+| SS/ATRK | About 27 Mohm to `PWR_NEG` unpowered (no leakage); about 3.0 V and still rising at 500 us/div. Stall theory **disproved**. |
+| Compensation | BOM values R31 = 2.43 kohm, C24 = **22 nF**, C25 = 1.5 nF (`docs/rev-one-component-derating-review.md` previously said 220 nF; corrected). Simple model: zero about 3.0 kHz, crossover about 7 kHz at 664 uF, phase margin about 74 deg (upper bound). Compensation is not the cause. |
+| R22 (peak-current shunt) | 1 mohm gives about 1.7 mV at 1.65 A peak; datasheet limit is 50 mV. Replaced with 10 mohm (THT): **same response, output about 3.5 V**. R22 value is not the cause. Slope comp (`D7`) was not re-tuned for 10 mohm (0x2B suggested). |
+| FB divider | R3 changed to 82 kohm (R25 20 kohm, 5.1 V target). FB measured 0.697 V at the 3.5 V plateau, consistent with the divider, so the divider is working. |
+| Output path | `V_out_sense` is jumpered to `CHG_OUT_POS`, so Q5/Q6/U14 are bypassed. 3.5 V is the converter output. R16 carries the output current. |
+
+Status: the output stops near 3.5 V regardless of the R22 value or the FB target, with FB about 0.7 V against a 1.0 V reference. That points at COMP, SS/ATRK or internal U6 limiting rather than the power stage. Next: scope COMP, SS/ATRK, FB and `CHG_OUT_POS` together at the plateau; measure U6 pin 19 vs pin 20 (ISNSN/ISNSP) to rule out the average-current limiter; confirm the register readback after ARM and during START. R22 (10 mohm) and R3 (82 kohm) are bench rework that differ from the Rev 1 BOM.
+
 Limits for any powered run: low input voltage, low PSU current limit, no load, jumper fitted and later removed before battery tests, `PB12` re-inhibit within 50 ms.
