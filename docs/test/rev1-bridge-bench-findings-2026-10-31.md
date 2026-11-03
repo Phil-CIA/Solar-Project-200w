@@ -131,3 +131,46 @@ The load did not fix the shortfall. At 7 V the output was lower with the load (4
 - Bench rework not in the Rev 1 BOM/PCB: R22 = 10 mohm THT, R3 lifted (82 kohm during the external-FB tests), FB (pin 14) to VCC2, ILIM wiring (R68 lifted, pin 16 to VCC2) was a temporary test; confirm whether it was restored.
 - Bring-up ceiling used for reliable operation so far: Vin <= 7 V for targets up to 5 V.
 - Constraints unchanged: Vin <= 9.5 V, PSU <= 0.5 A, jumper fitted, START <= 1000 ms with `PB12` re-inhibit, no 0x03 reads, no battery, no flashing or KiCad edits without approval.
+
+## 7. Slope compensation, 18-30 V target range, I2C poll failures (2026-11-03)
+
+### 7.1 Slope compensation (D7)
+
+- Subharmonic oscillation (alternating wide/narrow `SW_1` pulses) seen at 8 V / 5000 mV with `D7` = 0x2B. `D7` = 0x2F gave uniform pulses, about 60 % duty, Vout about 5.04 V.
+- Slope comp scales with R_CS (datasheet 7.3.16). The shunt is 10 mohm (BOM 1 mohm), so the TI calculator assumption does not apply; sweep `D7` rather than trusting defaults.
+- `D7` = 0x2F, 5000 mV sweep: 7 V -> 4.97 V; 8 V -> 4.96 V; 9.25 V -> 4.96 V; 9.5 V -> 4.70 V; 10 V -> 4.42 V (PSU 77-85 mA). At 10 V the waveform is clean, duty < 50 %, no alternating pulse. Cause of the droop is **unexplained**.
+- C20 = 180 pF + 180 pF in parallel, unchanged for the whole test series (not new data).
+
+### 7.2 Real operating range
+
+- 18-30 V in, 11.8-14 V out (Li battery charging). Buck duty 0.39 (30 V -> 11.8 V) to 0.78 (18 V -> 14 V). The 5 V / 7-10 V work is only a proxy.
+- Proposed staged points: 18->12, 18->14, 24->12, 30->12. Needs new abort limits (Vout abort = target + 1.0 V, PSU abort 0.3 A) and a >= 18 V supply.
+- Codes: Vout mV = code x 20; 12000 mV = 0x0258, 14000 mV = 0x02BC.
+
+### 7.3 `u6 test 10000 14` poll failure
+
+- Code 0x01F4 write/readback matched, then `FAULT_LATCHED: U6 test poll read fail` at the first poll (t = 50 ms). Reproduced; early logs were from the old build, diagnostics added as `u6diag-1/2`.
+- I2C is bit-bang (no HAL error code). Post-fail dump failed 7 of 8 reads; registers survived (D3/D7/D8/DA, 0D/0C intact; `stat` read cleanly afterward).
+- Converter switches about 350 ms at about 600 kHz, about 35 % duty, Vin swing about 1 Vpk, no collapse. Not "one pulse then dead".
+- At 10 kHz I2C (`i2c speed 10`) the failure persists (first failed reg moved 0x78 -> 0x21). `D8` read 0x85 vs 0x84 with no write: a read bit-error. U6 answers but data/edges are corrupted during switching; likely noise or ground offset, not timing. 0x78 = 0x58/0x18 is not diagnostic.
+
+### 7.4 PCM / VIN-FB research
+
+- `V_in_FB` (pin 15) divider R18 76.8k / R17 5.62k (gain 0.0682); datasheet says tie VIN-FB to AGND when using the internal Vout divider. Rework (internal FB) leaves it mismatched.
+- TI E2E China thread (943530): TI said there is no such use case (internal FB + PCM) and advised an external divider. No TI guidance exists.
+- PCM lead is plausible but weak: with the internal 1/20 divider, VIN-FB at 0.068 should read Vin high, keeping it out of the window at Vin above target. Cheapest test: `D9` = 0x20 (PCM off). Fallback (Phil's decision): lift R18, tie pin 15 to AGND.
+- E2E 1660263 (TI): CSA line sharing SW1 injects gate-return current; gate loops/switch-node area. E2E 1692810: logic-level FETs only, phase margin > 60 deg wanted.
+
+### 7.5 Current-sense routing (read-only PCB check)
+
+- R22 at about (151, 71) mm; U6 CSA/CSB, R26/R27, C20 at about (166-171, 95-102) mm: runs of about 30-35 mm.
+- `_CSA_2` mainly In1.Cu, `_CSB_2` on B.Cu, 0.2 mm wide: different layers and paths, not a tight Kelvin pair. Proximity to SW nodes not checked. With the 10 mohm shunt the sense signal is 10x the BOM design, so this is a weaker suspect.
+
+### 7.6 Next tests (one variable per run, 10 V / 5000 mV)
+
+1. Baseline `D7` = 0x2F, log D9, real Vin/Vout/PSU current, VCC2.
+2. `D9` = 0x20.
+3. `D7` sweep 0x2B...0x2F and lower.
+4. Regression `u6 test 5000 8` on `u6diag-2` (default and 10 kHz).
+5. Blind `u6 test` (no I2C during START), scope `SW_1`, `CHG_OUT_POS`, `PV_IN_POS`; scope SDA/SCL with ground at U6 AGND; DMM MCU GND to U6 AGND; DMM VCC2 at 8/10/14 V.
+6. Unrecorded: load resistor value, PSU limit, ILIM rework restored?, D9 during `D7` = 0x2F runs.
