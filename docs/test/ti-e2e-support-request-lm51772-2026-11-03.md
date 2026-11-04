@@ -26,7 +26,9 @@ Custom board with LM51772 (QFN, I2C address 0x6A) for charging a Li battery from
 1. With the external divider: regulated 5.10 V at Vin up to 9.0 V, failed at 9.25 V and above.
 2. With internal FB and `D7` = 0x2B: output capped near 4.7 V at 8 V; `SW_1` showed alternating wide/narrow pulses (subharmonic oscillation).
 3. With `D7` = 0x2F, 5000 mV target: Vout = 4.97 V at 7 V, 4.96 V at 8 V and 9.25 V, 4.70 V at 9.5 V, 4.42 V at 10 V; PSU current 77-85 mA. At 10 V the `SW_1` waveform is clean, duty below 50 %, no alternating pulses. Cause of the droop is unknown.
-4. Target 10 V out from 14 V in: the register write and readback succeed (0x01F4). The converter switches for about 350 ms at about 600 kHz, about 35 % duty, Vin swings about 1 Vpk without collapsing. Our MCU's first I2C poll at 50 ms fails (reads of 0x78/0x21 fail; after a failure, 7 of 8 register reads failed). Registers are intact afterwards (no reset; `D3/D7/D8/DA/0D/0C` unchanged). Slowing the bit-banged I2C clock to 10 kHz did not help. One read returned `D8` = 0x85 instead of 0x84 with no write, i.e. a bit error on the read. The I2C bus is under 50 mm long.
+4. Target 10 V out from 14 V in: the register write and readback succeed (0x01F4). The converter switches for about 350 ms at about 600 kHz, about 35 % duty, Vin swings about 1 Vpk without collapsing. Our MCU's first I2C poll at 50 ms fails (reads of 0x78/0x21 fail; after a failure, 7 of 8 register reads failed). Registers are intact afterwards (no reset; `D3/D7/D8/DA/0D/0C` unchanged). Slowing the bit-banged I2C clock to 10 kHz did not help. One read returned `D8` = 0x85 instead of 0x84 with no write. The I2C bus is under 50 mm long.
+
+   We do **not** know the cause of the I2C failure. We have not shown that switching noise corrupts the bus; the I2C failure may only be a symptom of something else, for example the chip entering a shutdown, protection or fault state (or a logic-supply dip) at that moment. We have not captured SDA/SCL or VCC2 during the event, and the status registers we read (0x78/0x21) have not been diagnostic. We are asking what internal state could make the device stop responding or return corrupted data shortly after the start of switching.
 
 ## What we have ruled out
 
@@ -39,7 +41,7 @@ Custom board with LM51772 (QFN, I2C address 0x6A) for charging a Li battery from
 
 1. What could cause Vout to droop in a clean, below-50 % duty buck region as Vin rises above about 9.5 V, with `D7` at maximum? Does slope compensation, which scales with R_CS, behave unexpectedly with a 10 mohm sense resistor and what is the valid range of R_CS?
 2. When using the internal Vout divider, what should the VIN-FB (pin 15) pin be connected to? We have a Vin divider of 0.068 there. Can PCM or the VIN-FB path affect regulation in this mode? (An earlier E2E post in Chinese, thread 943530, got no guidance for internal FB with PCM.)
-3. Is a layout issue plausible for the I2C read errors during switching? Our CSA and CSB traces are about 30-35 mm long on different layers (In1.Cu and B.Cu) and not routed as a tight Kelvin pair. Would that or ground bounce explain bit errors on SDA/SCL?
+3. What conditions make the LM51772 stop answering I2C, or return wrong data, shortly after switching starts (shutdown, UVLO, internal supply dip, protection latch)? How can we tell which from the registers? For reference, our CSA and CSB traces are about 30-35 mm long on different layers (In1.Cu and B.Cu) and not a tight Kelvin pair; we do not know whether that is related.
 4. Is there a recommended way to check VCC2 and the internal logic supply at high Vin? With VIN/BIAS at 14 V, are there dissipation limits on the VCC2 LDO we should check?
 5. Anything in the register state we should read (other than STATUS 0x78/0x21) that distinguishes the cause of the droop?
 
