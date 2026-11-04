@@ -185,3 +185,10 @@ The load did not fix the shortfall. At 7 V the output was lower with the load (4
 - Bench rework list now also includes R18 = 100k, R17 = 5.1k.
 
 - **Update 2026-11-04:** after the R18/R17 rework, Vout still falls as Vin rises. A D7 (slope compensation) sweep left Vout unchanged, so slope compensation is ruled out as the droop cause (supersedes 7.1 suspicion). Remaining suspects: CSA/CSB sense noise (EVM filter is 10 ohm / 680 pF, Rev 1 is 180 pF + 180 pF), AGND vs power-ground offset, residual VIN-FB / reference path. [Record the D7 values swept and the Vout/Vin points.]
+
+## 9. CSA/CSB filter capacitor: Vout recovers (2026-11-04)
+
+- Rework: 1 nF added across CSA-CSB at U6 (on the U6 side of R26/R27, which are 10 ohm, same as the EVM). Existing C20 = 180 pF + 180 pF.
+- Result (Phil): Vout rose to almost 5 V (target 5000 mV). This supports the sense-noise explanation: a switching spike on CSA/CSB ended pulses early at higher Vin, so Vout fell as Vin rose.
+- [Record Vin, exact Vout, PSU current, D7/D9, and whether Vout holds across the Vin range.]
+- Open: scope CSA-CSB before/after to confirm the spike; decide the permanent filter (EVM uses 680 pF to ground on each line); check CSA/CSB layout (long, different layers); recheck the 18-30 V / 11.8-14 V range; rerun u6 test 10000 14 for the I2C poll failure; re-sweep D7 now that the sense noise is reduced.
