@@ -18,7 +18,7 @@ Custom board with LM51772 (QFN, I2C address 0x6A) for charging a Li battery from
 - `D3` = 0x20 (IVP disabled), `D7` = 0x2F (slope comp max), `D9` = 0x20 in the cases where it was read (PCM window = 0), `DA` = 0xFF.
 - Current sense: R22 = 10 mohm (the BOM/calculator value is 1 mohm), on the SW1 side in series with the inductor; CSA/CSB go through R26/R27 with C20 = 180 pF + 180 pF in parallel across CSA/CSB.
 - Compensation: C24 = 22 nF [add Rcomp/other values from schematic]. ILIM was disabled temporarily during testing; [confirm restored].
-- Power stage: [FET part numbers], [inductor value and part], [Cin/Cout], gate drive from the LM51772. VIN/BIAS are fed from the PV input, so VCC2 comes from the internal LDO.
+- Power stage: four switches M1-M4 = CSD18540Q5B (60 V, 2.2 mohm, Qg 41 nC), inductor L2 = 3.3 uH MMPC1206-3R3MT (Isat 35 A, DCR about 5.8 mohm), [Cin/Cout values], gate drive from the LM51772. VIN/BIAS are fed from the PV input, so VCC2 comes from the internal LDO.
 - Load for the tests: [load resistor value, or none]. Supply: [bench PSU, current limit].
 
 ## Symptoms
