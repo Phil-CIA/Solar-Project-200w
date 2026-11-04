@@ -183,3 +183,5 @@ The load did not fix the shortfall. At 7 V the output was lower with the load (4
 - **Result (Phil, 2026-11-04): the converter now runs regardless of Vin.** [Record exact Vin/Vout/PSU current points tested and the D7/D9 values used.]
 - Supersedes 7.4: the datasheet advice to tie VIN-FB to AGND is not what TI does on the EVM; a matched about 1/20 divider is. Open: confirm D7 can be lowered toward the EVM default, re-check efficiency (earlier 25-40 %), and the 18-30 V / 11.8-14 V target range.
 - Bench rework list now also includes R18 = 100k, R17 = 5.1k.
+
+- **Update 2026-11-04:** after the R18/R17 rework, Vout still falls as Vin rises. A D7 (slope compensation) sweep left Vout unchanged, so slope compensation is ruled out as the droop cause (supersedes 7.1 suspicion). Remaining suspects: CSA/CSB sense noise (EVM filter is 10 ohm / 680 pF, Rev 1 is 180 pF + 180 pF), AGND vs power-ground offset, residual VIN-FB / reference path. [Record the D7 values swept and the Vout/Vin points.]
