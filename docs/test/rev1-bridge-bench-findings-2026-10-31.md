@@ -174,3 +174,12 @@ The load did not fix the shortfall. At 7 V the output was lower with the load (4
 4. Regression `u6 test 5000 8` on `u6diag-2` (default and 10 kHz).
 5. Blind `u6 test` (no I2C during START), scope `SW_1`, `CHG_OUT_POS`, `PV_IN_POS`; scope SDA/SCL with ground at U6 AGND; DMM MCU GND to U6 AGND; DMM VCC2 at 8/10/14 V.
 6. Unrecorded: load resistor value, PSU limit, ILIM rework restored?, D9 during `D7` = 0x2F runs.
+
+## 8. VIN-FB divider mismatch: likely cause of Vin-dependent failure (2026-11-04)
+
+- TI LM51772EVM-HP user guide (SNVU852B, schematic p.13): the EVM uses **matched** dividers, FB R1 82.0k / R2 4.30k and VIN-FB R44 82.0k / R18 4.30k (ratio 0.0498, about the internal 1/20). In I2C mode JP6 pins 4-5 put VCC2 on the R_FB node (FB pin 14 through R46 0 ohm) and the VIN-FB divider stays fitted. EVM also uses 3.3 uH, 600 kHz, R6 = 10 mohm, 3 ohm gate resistors, 10 ohm / 680 pF CSA/CSB filters.
+- Rev 1 VIN-FB divider was R18 76.8k / R17 5.62k = 0.0682 (about 1/14.7), mismatched to the internal 1/20 divider. This made U6 see Vin about 1.36x too high.
+- Rework: R18 = 100k, R17 = 5.1k (ratio 0.0485, within about 3 % of 1/20). Nothing else changed.
+- **Result (Phil, 2026-11-04): the converter now runs regardless of Vin.** [Record exact Vin/Vout/PSU current points tested and the D7/D9 values used.]
+- Supersedes 7.4: the datasheet advice to tie VIN-FB to AGND is not what TI does on the EVM; a matched about 1/20 divider is. Open: confirm D7 can be lowered toward the EVM default, re-check efficiency (earlier 25-40 %), and the 18-30 V / 11.8-14 V target range.
+- Bench rework list now also includes R18 = 100k, R17 = 5.1k.

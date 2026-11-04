@@ -19,7 +19,7 @@ Custom board with LM51772 (QFN, I2C address 0x6A) for charging a Li battery from
 - Current sense: R22 = 10 mohm (the BOM/calculator value is 1 mohm), on the SW1 side in series with the inductor; CSA/CSB go through R26/R27 with C20 = 180 pF + 180 pF in parallel across CSA/CSB.
 - Compensation: C24 = 22 nF [add Rcomp/other values from schematic]. ILIM was disabled temporarily during testing; [confirm restored].
 - Power stage: four switches M1-M4 = CSD18540Q5B (60 V, 2.2 mohm, Qg 41 nC), inductor L2 = 3.3 uH MMPC1206-3R3MT (Isat 35 A, DCR about 5.8 mohm), [Cin/Cout values], gate drive from the LM51772. VIN/BIAS are fed from the PV input, so VCC2 comes from the internal LDO.
-- Load for the tests: [load resistor value, or none]. Supply: [bench PSU, current limit].
+- Load for the tests: 100ohm 5 watt . Supply: 10VDC and limited to 900ma .
 
 ## Symptoms
 
@@ -48,3 +48,7 @@ Custom board with LM51772 (QFN, I2C address 0x6A) for charging a Li battery from
 ## Data we can provide
 
 Scope captures of `SW_1`, `SW_2`, `CHG_OUT_POS`, `PV_IN_POS`; full register dumps; Quickstart workbook; schematic and layout; UART logs.
+
+## UPDATE 2026-11-04: likely resolved
+
+The VIN-FB divider was 76.8k/5.62k (0.0682), mismatched to the internal 1/20 divider. The TI EVM (SNVU852B) uses matched 82k/4.3k on both FB and VIN-FB, even in I2C mode. After changing VIN-FB to 100k/5.1k (0.0485) the converter runs at any Vin we tried. If you post this, consider posting the fix instead and asking TI to document the VIN-FB requirement for internal-FB mode.
