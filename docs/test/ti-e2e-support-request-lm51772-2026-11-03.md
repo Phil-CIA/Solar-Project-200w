@@ -12,7 +12,7 @@ Custom board with LM51772 (QFN, I2C address 0x6A) for charging a Li battery from
 
 ## Configuration on the bench
 
-- Internal feedback divider selected through I2C: FB (pin 14) tied to VCC2 (pin 29), `D8` = 0x84 (DIV20), Vout set by registers `0x0C/0x0D` (code x 20 mV; 5000 mV = 0x00FA).
+- Internal feedback divider selected through I2C: FB (pin 14) is jumpered to VCC2 (pin 29) with a wire (bench rework, not in the PCB design), `D8` = 0x84 (DIV20), Vout set by registers `0x0C/0x0D` (code x 20 mV; 5000 mV = 0x00FA).
 - Original external divider R3 76.8 k / R25 5.62 k; R3 lifted for these tests.
 - `V_in_FB` (pin 15) still connected to a Vin divider R18 76.8 k / R17 5.62 k (the design was for an external-divider + PCM). The datasheet says to tie it to AGND when using the internal divider; we have not changed this yet.
 - `D3` = 0x20 (IVP disabled), `D7` = 0x2F (slope comp max), `D9` = 0x20 in the cases where it was read (PCM window = 0), `DA` = 0xFF.
