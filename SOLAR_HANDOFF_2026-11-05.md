@@ -29,6 +29,16 @@ Test results
 - Input starvation is ruled out. Noise on the measurement is unlikely.
 - Phil ran additional tests after each firmware step to check for any change in Vout. None showed progress: the ceiling stayed the same (exact targets and readings were not recorded). The firmware changes did not alter converter regulation, so the limit is most likely physical (current-sense path, an output-net clamp, or feedback). 12 V has never been demonstrated on this board; the highest verified target is 3.3 V, and 5.0 V stalls at 4.45–4.76 V.
 
+Late-session findings (desk review of `Solar Project.net` + datasheet; netlist vs. built board not cross-checked)
+- Power-cycle read of U6 (no writes): `78=0x48` (OC clear at power-up), `0A=0x64`, `0C/0D=0x0258` (600), `D3=0x20`, `D7=0x28`, `D8=0x84`, `DA=0xFF`. `0A=0x8C` seen earlier was written by our firmware.
+- 12 V test: `U6 TEST 12000 19 BLIND` (code 0x0258, the power-on default) read **4.7 V at TP1** (R16 pad, converter side of U5, about 1 mΩ from the converter's V_out node). With 3.3 V target -> 3.28 V, 5.0 V -> 4.45–4.76 V, the ceiling is about 4.7 V regardless of target, and OC sets on every start. The register-to-reference mapping idea and the U5 output-switch idea were both tested against this and do not explain it.
+- Feedback: FB pin 14 sits on R3 (66.5 kΩ, from V_out) / R25 (5.62 kΩ) = external-feedback mode, V_out = 1.00 V x 12.83 = 12.83 V (matches `docs/test/rev0-first-power-plan-2026-09-04.md`). Firmware `U6 TEST <mV>` assumes internal-feedback semantics, so a target in mV may not equal Vout.
+- Peak current limit = 50 mV / R_CS (datasheet 7.3.11). With R22 = 1 mΩ in the netlist this is about 50 A, so a real peak-limit trip at no load is implausible. Suspect false OC from noise on the CSA/CSB sense (R26/R27 10 Ω, C20 180 pF: about 1.8 ns filter) or a different assembled R22 value. L2 = 1 µH gives large ripple.
+- Average-current sense R16 = 1 mΩ (datasheet reference is 10 mΩ), so `0A` ILIM codes are 10x larger in amps than the datasheet table shows (0x64 = 50 A at 1 mΩ).
+- R2D contradiction to resolve: netlist has R33 = 6.49 kΩ on ADDR/SLOPE_CFG1. Datasheet Table 7-4 says 6.5 kΩ means I²C DISABLED, yet U6 answers at 0x6A. Either R33 is not fitted on the board or the table reads differently. Confirm the assembled value (Rev 0 notes also mention R33 blocking I²C).
+- U5 output switch (BSC155N06ND pair): gate pulled up from the converter side via R38 (100 kΩ), pulled down by Q1 (BSS138) when PA8 is high. PA8 high turns the path off (the net name `V_out _on` is misleading). Firmware holds PA8 low (BENCH_JUMPER_FITTED). The gate can only rise to the converter-side voltage, so the switch will not fully enhance; this does not explain the TP1 reading but needs review for Rev 2.
+- U6 VCC2 (gate-driver supply, "no external load" per datasheet) also feeds WS2812B D8. Minor risk.
+
 Next steps (no converter runs until the first two are done)
 1. Check the ISNSP/ISNSN sense resistor: fitted value and soldering against the schematic (the datasheet assumes 10 mΩ). Scope the ISNSP–ISNSN pair during a blind 1 s start.
 2. List everything on the output rail (TVS, zener, bleeder, output FET) for a clamp near 5 V.
