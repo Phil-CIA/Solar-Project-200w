@@ -27,6 +27,7 @@ Test results
 - OC sets on every real start, with no load and PSU current not limiting (peak not captured, under 0.25 A). Cleared at idle before each run (`78=0x48`), then `0x58` again after about 100 ms or after the 1 s blind run.
 - With OC pre-cleared, U6 stops answering I²C at the first read, 100 ms after release. The same happens with an in-run CLEAR_FAULTS at 30 ms and at 100 ms. Reads recovered once the converter was re-inhibited. The cause is unknown: U6 reset or brownout, switching noise on the bus, or the bit-bang I²C lacking clock-stretch and bus recovery.
 - Input starvation is ruled out. Noise on the measurement is unlikely.
+- Phil ran additional tests after each firmware step to check for any change in Vout. None showed progress: the ceiling stayed the same (exact targets and readings were not recorded). The firmware changes did not alter converter regulation, so the limit is most likely physical (current-sense path, an output-net clamp, or feedback). 12 V has never been demonstrated on this board; the highest verified target is 3.3 V, and 5.0 V stalls at 4.45–4.76 V.
 
 Next steps (no converter runs until the first two are done)
 1. Check the ISNSP/ISNSN sense resistor: fitted value and soldering against the schematic (the datasheet assumes 10 mΩ). Scope the ISNSP–ISNSN pair during a blind 1 s start.
