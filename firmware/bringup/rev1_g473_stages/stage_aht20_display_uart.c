@@ -74,9 +74,9 @@
 #define ARM_WRITE_D6_MFR_SPECIFIC_BITS32 0U
 #define D6_BITS32_MASK 0x0CU
 #define D6_BITS32_TARGET 0x0CU
-#define START_TIMEOUT_MS 1000U
+#define START_TIMEOUT_MS 10000U
 #define U6_STATUS_LOG_INTERVAL_MS 100U
-#define U6_STATUS_LOG_DURATION_MS 5000U
+#define U6_STATUS_LOG_DURATION_MS 10000U
 #define U6_TEST_MIN_MV 3300U
 #define U6_TEST_MAX_MV 14000U
 #define U6_TEST_MIN_HEADROOM_MV 3000U
@@ -1287,6 +1287,7 @@ static void print_help(void) {
     uart_line("  WRITE <regHex> <valHex>");
     uart_line("  U6 TEST <mV> <VinV>");
     uart_line("  U6 TEST <mV> <VinV> BLIND [kHz]");
+    uart_line("  U6 BOOST ON|OFF  (bypass Vin>=target+3V guard)");
     uart_line("  I2C SPEED <kHz>");
     uart_line("  START <ms> (deprecated)");
     uart_line("  STOP");
@@ -1451,6 +1452,8 @@ static void arm_start_sequence(control_state_t *ctl, bool has_u6) {
     print_u6_meas_snapshot("MEAS_SNAPSHOT");
 }
 
+static bool g_u6_allow_boost = false;
+
 static void u6_set_and_start(control_state_t *ctl, bool has_u6, uint32_t mv, uint32_t vin_v, bool blind, uint32_t speed_khz, bool speed_override) {
     if (!has_u6) {
         uart_line("ERR U6 unavailable");
@@ -1473,9 +1476,12 @@ static void u6_set_and_start(control_state_t *ctl, bool has_u6, uint32_t mv, uin
         uart_line("ERR Vin > 30V");
         return;
     }
-    if (vin_mv < (mv + U6_TEST_MIN_HEADROOM_MV)) {
-        uart_line("ERR Vin < target+3V");
+    if (vin_mv < (mv + U6_TEST_MIN_HEADROOM_MV) && !g_u6_allow_boost) {
+        uart_line("ERR Vin < target+3V (use U6 BOOST ON to allow)");
         return;
+    }
+    if (g_u6_allow_boost) {
+        uart_line("U6_TEST BOOST_OVERRIDE=1 headroom guard bypassed");
     }
     {
         uart_write("U6_TEST VIN_V=");
@@ -1714,7 +1720,9 @@ static void u6_set_and_start(control_state_t *ctl, bool has_u6, uint32_t mv, uin
         ctl->arm_window_ms = 0U;
         uart_line("U6_TEST REINHIBIT t=<forced>");
     }
-    uart_line("U6_TEST status log complete (5s)");
+    uart_write("U6_TEST status log complete (");
+    uart_write_u32(U6_STATUS_LOG_DURATION_MS / 1000U);
+    uart_line("s)");
     uart_line("U6_TEST DMM_CHG_OUT_POS=<manual>");
 }
 
@@ -1842,6 +1850,18 @@ static void run_command(const char *line, control_state_t *ctl, bool has_u6) {
             speed_override = true;
         }
         u6_set_and_start(ctl, has_u6, mv, vin_v, blind, speed_khz, speed_override);
+        return;
+    }
+    if (streq(cmd, "U6") && streq(arg1, "BOOST")) {
+        if (streq(arg2, "ON")) {
+            g_u6_allow_boost = true;
+        } else if (streq(arg2, "OFF")) {
+            g_u6_allow_boost = false;
+        } else {
+            uart_line("ERR usage: U6 BOOST ON|OFF");
+            return;
+        }
+        uart_line(g_u6_allow_boost ? "U6_BOOST ON (Vin headroom guard bypassed)" : "U6_BOOST OFF");
         return;
     }
     if (streq(cmd, "U6") && streq(arg1, "FAULTS")) {
