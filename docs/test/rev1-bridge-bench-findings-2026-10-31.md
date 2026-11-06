@@ -192,3 +192,12 @@ The load did not fix the shortfall. At 7 V the output was lower with the load (4
 - Result (Phil): Vout rose to almost 5 V (target 5000 mV). This supports the sense-noise explanation: a switching spike on CSA/CSB ended pulses early at higher Vin, so Vout fell as Vin rose.
 - [Record Vin, exact Vout, PSU current, D7/D9, and whether Vout holds across the Vin range.]
 - Open: scope CSA-CSB before/after to confirm the spike; decide the permanent filter (EVM uses 680 pF to ground on each line); check CSA/CSB layout (long, different layers); recheck the 18-30 V / 11.8-14 V range; rerun u6 test 10000 14 for the I2C poll failure; re-sweep D7 now that the sense noise is reduced.
+
+## 10. Shunt size, 2.2 nF, Vout ceiling and fault flags (2026-11-05/06)
+
+- Shunt: 1 mohm made the droop worse (10x less sense signal); returned to 10 mohm. Note 50 mV / R_CS sets the peak limit (10 mohm = 5 A), too low for the 11.8-14 V / ~14 A target; the datasheet example uses 2.5 mohm (2 x 5 mohm). Shunt refdes (R21 vs R22 in the PCB file) unconfirmed.
+- Scope: the "800 mV spike" was the Rigol math Diff(CH1) trace at 200 MV/s per div, a dV/dt of a switching edge, not sense noise. CH1/CH2 are ground-referenced at 5 V/div and cannot show mV-level sense noise. Needs a true differential probe at 10-20 mV/div or CSA/CSB to AGND at the U6 pins.
+- With 10 mohm and 2.2 nF across CSA/CSB: Vin 19 V, request 5000 mV, Vout = 4.74 V (earlier 4.42 V at 10 V Vin).
+- Vout will not go much above about 5.5 V regardless of the request. D8 = 0x84 (DIV20, CDC off), so the divider setting is not the cap.
+- STATUS_BYTE (0x78) read as 0x58: OFF (bit 6), IOUT_OC (bit 4), VIN_UV (bit 3) set. This points to protection events and restarts rather than pure regulation noise, and may explain the I2C poll failures. Unknown whether the flags were live or latched; Vin/PSU current limit during the event not recorded.
+- Next (one change at a time): add OLED/serial fault display (STATUS_BYTE, STATUS_WORD, detail registers; CLEAR_FAULTS command code to be confirmed from the datasheet), log STATUS at 100 ms for 5 s from a clean start at 12 V and 19 V Vin to see which flag sets first; read back the Vout target register after a 10000 mV request; check Vout ceiling at 12/24 V Vin; confirm the PSU is not in current limit.
