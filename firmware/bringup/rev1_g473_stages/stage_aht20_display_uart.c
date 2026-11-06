@@ -1288,6 +1288,7 @@ static void print_help(void) {
     uart_line("  U6 TEST <mV> <VinV>");
     uart_line("  U6 TEST <mV> <VinV> BLIND [kHz]");
     uart_line("  U6 BOOST ON|OFF  (bypass Vin>=target+3V guard)");
+    uart_line("  U6 PCM OFF|DEFAULT  (D9 PCM_WINDOW_LOW 0 / 0xC)");
     uart_line("  I2C SPEED <kHz>");
     uart_line("  START <ms> (deprecated)");
     uart_line("  STOP");
@@ -1862,6 +1863,43 @@ static void run_command(const char *line, control_state_t *ctl, bool has_u6) {
             return;
         }
         uart_line(g_u6_allow_boost ? "U6_BOOST ON (Vin headroom guard bypassed)" : "U6_BOOST OFF");
+        return;
+    }
+    if (streq(cmd, "U6") && streq(arg1, "PCM")) {
+        if (!has_u6) {
+            uart_line("ERR U6 unavailable");
+            return;
+        }
+        if (!ctl->inhibit_asserted || ctl->run_ms_remaining > 0U) {
+            uart_line("ERR converter not inhibited");
+            return;
+        }
+        const bool pcm_off = streq(arg2, "OFF");
+        if (!pcm_off && !streq(arg2, "DEFAULT")) {
+            uart_line("ERR usage: U6 PCM OFF|DEFAULT");
+            return;
+        }
+        uint8_t d9 = 0U;
+        if (!u6_read_reg8(0xD9U, &d9)) {
+            uart_line("ERR read D9");
+            return;
+        }
+        d9 = (uint8_t)((d9 & 0xE0U) | (pcm_off ? 0x00U : 0x0CU));
+        if (!u6_write_reg8(0xD9U, d9)) {
+            uart_line("ERR write D9");
+            return;
+        }
+        uint8_t d9_rb = 0U;
+        if (!u6_read_reg8(0xD9U, &d9_rb) || d9_rb != d9) {
+            uart_line("ERR D9 readback mismatch");
+            return;
+        }
+        uart_write(pcm_off ? "OK PCM_WINDOW_LOW=0 D9=" : "OK PCM_WINDOW_LOW=default D9=");
+        {
+            char hx[5];
+            format_hex8(d9_rb, hx);
+            uart_line(hx);
+        }
         return;
     }
     if (streq(cmd, "U6") && streq(arg1, "FAULTS")) {
