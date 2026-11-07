@@ -201,3 +201,15 @@ The load did not fix the shortfall. At 7 V the output was lower with the load (4
 - Vout will not go much above about 5.5 V regardless of the request. D8 = 0x84 (DIV20, CDC off), so the divider setting is not the cap.
 - STATUS_BYTE (0x78) read as 0x58: OFF (bit 6), IOUT_OC (bit 4), VIN_UV (bit 3) set. This points to protection events and restarts rather than pure regulation noise, and may explain the I2C poll failures. Unknown whether the flags were live or latched; Vin/PSU current limit during the event not recorded.
 - Next (one change at a time): add OLED/serial fault display (STATUS_BYTE, STATUS_WORD, detail registers; CLEAR_FAULTS command code to be confirmed from the datasheet), log STATUS at 100 ms for 5 s from a clean start at 12 V and 19 V Vin to see which flag sets first; read back the Vout target register after a 10000 mV request; check Vout ceiling at 12/24 V Vin; confirm the PSU is not in current limit.
+
+## 11. Q5/Q6 switched-output path retest (2026-11-07)
+
+- Test firmware was updated to a timed 10 s output window (`BUILD u6q5q6-10s`) for bench capture.
+- With the TP1-to-CHG_OUT_POS bypass jumper removed, early runs showed weak gate enhancement and low output transfer through Q5/Q6.
+- During debug, measured voltage across D5 during the run was about 30 mV (clamp not active), and measured Q5/Q6 gate-to-source peak was about 2.39 V in the failing state.
+- After rework correction, controlled run at 18 V in, target 12.8 V, with a 100 ohm load gave:
+  - `TP1` = 12.78 V
+  - `CHG_OUT_POS` = 12.78 V
+  - PSU current about 153 mA
+- Outcome: Q5/Q6/U14 output path now transfers the commanded voltage during the timed run under load.
+- Scope limit: this is an initial functional pass only; it does not by itself prove default-off behavior, reverse-flow blocking, or D5 pulse-energy margin.
