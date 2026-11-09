@@ -1,6 +1,10 @@
 # Solar Project KiCad Revision Index
 
-Last updated: 2026-10-28
+Last updated: 2026-11-09
+
+## Rev2 preparation - no design set yet
+
+Rev2 preparation is in progress; see the [consolidation record and design gates](../../../docs/rev-two-consolidation.md). No Rev2 project/schematic/PCB set exists in this checkpoint. The Rev1 development files below are not silently renamed or overwritten. After consolidation and controller selection, create a distinct Rev2 set from the reconciled source and record its baseline commit here. Keep the manufactured Rev1 release and fabrication outputs unchanged.
 
 ## Current production source - Rev 1
 

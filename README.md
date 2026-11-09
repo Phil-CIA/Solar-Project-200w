@@ -8,11 +8,15 @@ Solar Project 200W is a prototype-first hardware and firmware effort for a 200W-
 - Defining control, telemetry, and protection behavior
 - Tracking design decisions, handoffs, and bring-up evidence
 
-## Current Rev 1 focus
+## Rev2 preparation
+
+Rev2 work starts with [branch consolidation and the change register](docs/rev-two-consolidation.md). The current [handoff](HANDOFF.md) links the latest converter and Q5/Q6 bench evidence and identifies unresolved decisions. Rev1 remains the manufactured baseline; a separate Rev2 KiCad design set has not yet been created. Decide the controller architecture before detailed converter layout.
+
+## Rev 1 manufactured baseline
 
 - Only Rev 0 and Rev 1 exist; Rev 1 is the current production revision. The production release at `C:\Users\user\OneDrive\JLCPCB files\Solar Charger\Rev 1` is authoritative for board identity, manufacturing and board-specific tests. Repository copies support continued development; the schematic, project and BOM differences are described in the board notes.
 - Rev 1 is assembled; the supplied manufacturing package and both-side photos are recorded in [board notes](docs/rev-one-board-notes.md).
-- Continue with practical low-energy bring-up and Rev 1 firmware, using the [development tracker](https://github.com/Phil-CIA/Solar-Project-200w/issues/1) and [working plan](docs/rev-one-closure-plan-2026-09-16.md#6-assembled-board-execution-and-issue-1-closure).
+- Retain the Rev 1 [development tracker](https://github.com/Phil-CIA/Solar-Project-200w/issues/1) and [working plan](docs/rev-one-closure-plan-2026-09-16.md#6-assembled-board-execution-and-issue-1-closure) as qualification references. Later bench findings and current next steps are linked from the handoff; old unpowered checkpoints are not the current board state.
 - This is a hobby prototype: keep useful notes and relevant checks, not a formal lab dossier. Assembly does not establish working charging or full-power performance.
 - Rev 1 STM32G473 bring-up firmware through `ff89791` is already on `main`; see [firmware notes](firmware/README.md). That is development progress, not proof of board compatibility or a passing powered test.
 
