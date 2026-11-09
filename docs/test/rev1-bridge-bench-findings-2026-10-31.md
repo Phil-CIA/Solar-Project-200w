@@ -215,3 +215,9 @@ Phil reports a timed run with the TP1-to-`CHG_OUT_POS` bypass jumper removed. Ph
 | Input voltage, PSU current limit/current, firmware build ID, and command | Not recorded |
 
 Phil's disposition: he considers Q5/Q6 working and reports that the path passed the full-current test; he accepts it as good for now, is stopping further Q5/Q6 testing, and is moving on to ESP32 Wi-Fi. The tested current, duration, and detailed conditions were not recorded, so "full current" remains the user's reported result rather than a quantified rating in this record. The D5 schematic polarity discrepancy is also unresolved and is not being pursued as part of this bench session. Default-off, reverse-flow, gate-waveform/clamp, thermal, and rated-current details remain undocumented; they are deferred, not blocking the user's decision to proceed. Do not use the earlier bypassed converter runs as Q5/Q6 evidence; those used TP1 jumpered directly to `CHG_OUT_POS`.
+
+### Additional record recovered during consolidation (2026-11-09)
+
+Local-main commit `923e8fb` also records approximately 153 mA PSU current for the 100 Ohm result, an 18 V input, and the `u6q5q6-10s` build. Earlier failing runs recorded about 30 mV across D5 and about 2.39 V peak gate-to-source voltage. These are recovered notes, not a new test. The two branch accounts differ in how completely they specify the successful run; retain that provenance rather than treating the combined account as a newly verified setup. The D5 schematic polarity discrepancy and the limits of the full-current claim above remain unresolved.
+
+The consolidated source retains the 10-second test/start limits, disables the TP1-to-output bypass-jumper assumption, and inhibits outputs on an invalid I2C-speed override. A separate earlier 1-second Q5/Q6 source variant and its generated images are preserved in the bring-up session; neither image was flashed during consolidation.

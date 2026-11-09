@@ -66,7 +66,7 @@
 #define VIN_ADC_SHUTDOWN_MV 50000U
 #define VIN_ADC_SCALE_NUM 190U
 #define VIN_ADC_SCALE_DEN 10U
-#define BENCH_JUMPER_FITTED 1U
+#define BENCH_JUMPER_FITTED 0U /* TP1-to-CHG_OUT_POS jumper removed; U6 TEST controls U14 */
 #define ARM_WINDOW_MS 3000U
 #define QUIET_TEST_LOG 1U
 #define CMD_IDLE_EXECUTE_MS 150U
@@ -84,7 +84,7 @@
 #define U6_TEST_POLL_MS 50U
 #define U6_TEST_UPDATE_D7 0U
 #define U6_TEST_D7_TARGET 0x2BU
-#define BUILD_ID "u6diag-2"
+#define BUILD_ID "u6q5q6-10s"
 #define I2C_DEFAULT_HALF_PERIOD_CYCLES 70U
 #define I2C_SCL_HIGH_TIMEOUT_MS 2U
 #define LOOP_PERIOD_MS 1U
@@ -1607,7 +1607,8 @@ static void u6_set_and_start(control_state_t *ctl, bool has_u6, uint32_t mv, uin
         uint32_t saved_half_cycles = i2c_half_period_cycles;
         if (speed_override) {
             if (!i2c_set_speed_khz(speed_khz)) {
-                uart_line("ERR I2C speed");
+                stop_and_latch_fault(ctl, "I2C speed");
+                uart_line("ERR I2C speed; outputs inhibited");
                 return;
             }
         }

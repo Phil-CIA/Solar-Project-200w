@@ -11,6 +11,12 @@ The setup SSID and a randomly generated password are printed to the USB Serial/J
 
 This first stage does not implement STM32 UART messages, MQTT/HTTPS telemetry, remote commands, or OTA. The STM32 remains the sole owner of charging and safety control. To reset stored credentials during development, erase flash and reflash the application.
 
+## Consolidated implementation
+
+The Rev2 consolidation retains the bring-up branch's `b62498e` implementation: a WPA2 setup AP with a random password, explicit ESP-IDF component dependencies, and a persistent event loop for reconnect/fallback after initial setup. The alternative implementation from local-main commit `61886c3` is preserved in Git history, but its open setup AP and web credential-clear endpoint are not carried into the active source.
+
+The implementations use different NVS namespaces (`wifi_config` here versus `wifi_cfg` in the alternative). Credentials are not migrated automatically: after switching from the alternative image, reconnect to the protected setup AP and provision again. The old namespace is left untouched; the erase-flash command below removes all saved flash data, not just Wi-Fi credentials.
+
 ## Build and flash
 
 Use an ESP-IDF installation with ESP32-C3 support:
