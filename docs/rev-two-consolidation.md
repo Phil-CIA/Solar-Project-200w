@@ -2,6 +2,14 @@
 
 Checkpoint: 2026-11-09. This records repository integration, not new hardware validation.
 
+## Merged baseline and Rev2 controller decision
+
+[PR #25](https://github.com/Phil-CIA/Solar-Project-200w/pull/25) is merged into GitHub `main` at **`32243b5789a5f2400ddd37af67e152e77bece215`**. The published tag **`rev2-development-baseline-2026-11-09`** marks that reconciled source. The Rev2 session fetched origin and fast-forwarded its own branch to that baseline before editing; the separate local-main checkout was not accessed or changed.
+
+Phil explicitly selected **retain LM51772 for Rev2** ([DEC-067](decisions-log.md), [#20 comment](https://github.com/Phil-CIA/Solar-Project-200w/issues/20#issuecomment-6737135332)). This is a user-directed architecture choice, not a completed evidence-based comparison with BQ25756. #20 stays open for its remaining acceptance criteria; no BQ25756 evaluation or purchase is requested.
+
+The distinct `Solar Project Rev2.kicad_pro`, `.kicad_sch` and `.kicad_pcb` set now lives beside Rev1 in `hardware\kicad\solar-project`. It copies the repository Rev1 development set at that commit, with only identity/export metadata changes; it is **not an implemented or qualified Rev2 and is not for fabrication**. Shared libraries, historical sources, manufacturing references and fabrication outputs are untouched. No circuit values, routing or temporary bench modifications were imported. See the [revision index](../hardware/kicad/solar-project/REVISION-INDEX.md) for exact identities and the paired KiCad 10.0.6 structural checks: identical electrical netlists and inherited ERC/DRC findings, with zero unconnected or schematic-parity items in both sets.
+
 ## Branch disposition
 
 The integration branch is `phil-cia-rev2-branch-consolidation`, starting from remote-main commit `11aa4dc`. Local backup tags under `backup/rev2-consolidation-2026-11-09/` preserve the inventoried source tips. No source branch or session has been deleted or archived.
@@ -27,7 +35,7 @@ Owning sessions reported clean Git worktrees for handoff, safe firmware, and ben
 
 | Work | Existing tracker / gate |
 |---|---|
-| Select LM51772 retention versus charger replacement | [#20](https://github.com/Phil-CIA/Solar-Project-200w/issues/20); decide before detailed converter design/layout. |
+| Controller selection recorded; comparison still outstanding | Phil selected LM51772 for Rev2 on 2026-11-09. [#20](https://github.com/Phil-CIA/Solar-Project-200w/issues/20) remains open: its evidence-based comparison has not been performed. No BQ25756 evaluation or purchase requested. |
 | Correct and qualify peak-current sensing | [#19](https://github.com/Phil-CIA/Solar-Project-200w/issues/19); diagnostic sense bypasses are not production protection. |
 | Match feedback wiring to firmware | [#21](https://github.com/Phil-CIA/Solar-Project-200w/issues/21); internal feedback bench jumper is not an existing Rev1 feature. |
 | Actual measured voltage/current, not target readback | [#15](https://github.com/Phil-CIA/Solar-Project-200w/issues/15). |
@@ -45,7 +53,7 @@ Also carry the historical ADDR/SLOPE, MODE/ISET separation, grounding, RT and co
 Both firmware builds completed during consolidation: the four Rev1 STM32 stages using the installed GNU Arm toolchain, and the ESP32-C3 application using the installed ESP-IDF 5.5 environment with its matching RISC-V compiler. STM32 linking still reports syscall-stub and RWX-segment warnings; build success is not a hardware safety/qualification result. No flashing or powered tests were performed.
 
 1. Retain the published backup refs and the original bench images. All inventoried unique committed source histories are incorporated; this is not permission to delete worktrees.
-2. Land the reviewed consolidation through [PR #25](https://github.com/Phil-CIA/Solar-Project-200w/pull/25); its live state is authoritative for whether GitHub main contains this checkpoint. The builds above cover the selected tree. Do not flash hardware as part of consolidation.
+2. Completed: consolidation landed through [PR #25](https://github.com/Phil-CIA/Solar-Project-200w/pull/25) at `32243b5`. The builds above cover the selected tree. No flashing or powered work was performed.
 3. Reconcile the separate local-main checkout in its owning context after landing, without resetting local work. That checkout was not inspected or modified by this consolidation session; its tracked files, untracked files, and editor buffers need their own preservation check before synchronization.
-4. Record the merged commit as the development baseline. Create a distinct Rev2 KiCad project/schematic/PCB set from reconciled source, preserving the manufactured Rev1 package and fab outputs.
-5. After controller selection, implement the approved Rev2 changes with schematic and PCB edits kept together. Retire old branches/sessions only after all work is accounted for and the user approves cleanup.
+4. Completed: recorded the merged baseline and copied the distinct Rev2 KiCad set described above, preserving Rev1 sources and fab outputs. This does not implement any unresolved design changes.
+5. LM51772 retention is selected; next implement the approved Rev2 changes with schematic and PCB edits kept together. Current-sense #19, feedback #21, measured telemetry #15 and all other unresolved register entries remain open. Retire old branches/sessions only after all work is accounted for and the user approves cleanup; none were deleted or archived here.
