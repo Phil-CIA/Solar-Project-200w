@@ -201,3 +201,17 @@ The load did not fix the shortfall. At 7 V the output was lower with the load (4
 - Vout will not go much above about 5.5 V regardless of the request. D8 = 0x84 (DIV20, CDC off), so the divider setting is not the cap.
 - STATUS_BYTE (0x78) read as 0x58: OFF (bit 6), IOUT_OC (bit 4), VIN_UV (bit 3) set. This points to protection events and restarts rather than pure regulation noise, and may explain the I2C poll failures. Unknown whether the flags were live or latched; Vin/PSU current limit during the event not recorded.
 - Next (one change at a time): add OLED/serial fault display (STATUS_BYTE, STATUS_WORD, detail registers; CLEAR_FAULTS command code to be confirmed from the datasheet), log STATUS at 100 ms for 5 s from a clean start at 12 V and 19 V Vin to see which flag sets first; read back the Vout target register after a 10000 mV request; check Vout ceiling at 12/24 V Vin; confirm the PSU is not in current limit.
+
+## 11. Q5/Q6 Timed Output-Path Check and Bench Disposition (2026-11-07)
+
+Phil reports a timed run with the TP1-to-`CHG_OUT_POS` bypass jumper removed. Phil initially noted D5 was backwards, then clarified that the schematic's D5 polarity symbol is wrong. Therefore, whether the fitted diode was electrically reversed relative to the intended design is unresolved:
+
+| Measurement / condition | Result |
+|---|---|
+| TP1 (`V_out_sense`) | 12.78 V |
+| `CHG_OUT_POS` | 12.78 V |
+| Load | 100 Ohm (exact connection point not restated with this result) |
+| D5 orientation | Described as backwards; schematic polarity reference is known to be wrong, so intended orientation is unresolved |
+| Input voltage, PSU current limit/current, firmware build ID, and command | Not recorded |
+
+Phil's disposition: he considers Q5/Q6 working and reports that the path passed the full-current test; he accepts it as good for now, is stopping further Q5/Q6 testing, and is moving on to ESP32 Wi-Fi. The tested current, duration, and detailed conditions were not recorded, so "full current" remains the user's reported result rather than a quantified rating in this record. The D5 schematic polarity discrepancy is also unresolved and is not being pursued as part of this bench session. Default-off, reverse-flow, gate-waveform/clamp, thermal, and rated-current details remain undocumented; they are deferred, not blocking the user's decision to proceed. Do not use the earlier bypassed converter runs as Q5/Q6 evidence; those used TP1 jumpered directly to `CHG_OUT_POS`.
