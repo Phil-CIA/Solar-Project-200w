@@ -12,9 +12,10 @@ The integration branch is `phil-cia-rev2-branch-consolidation`, starting from re
 | Local `main` at `61886c3`, including `923e8fb` | Merged with explicit tree reconciliation in `9dca4ef`; the separate main checkout was not modified. |
 | `origin/copilot/troubleshoot-lm51772-communication` at `12644b1` | Four unique commits merged in `e77150d`; historical handoff and migration checklist carry explicit scope warnings. |
 | `origin/phil-cia-converter-voltage-research` at `7a95879` | Research handoff merged in `538e5b6`; its earlier voltage-ceiling hypothesis is marked superseded by later tests. |
+| Bring-up preservation commit `df3660d` | Earlier uncommitted one-second Q5/Q6 source saved by its owning session, merged into ancestry without replacing the later 10-second default, and backed up with the `q5q6-1s` tag. |
 | Handoff `ad33498`, safe firmware `aa842b3`, bench prep `24f7b8e`, substitutions `bb561d6`, latest-handoff `1d474d3`, development-issues `7ebaf85` | Already ancestors of remote main at inventory time; committed history is retained. |
 
-Owning sessions reported clean Git worktrees for handoff, safe firmware, and bench prep. The bring-up session reported one intentional source variant and generated `build-q5q6` images requiring preservation. Unsaved external editor buffers cannot be certified from Git status. Do not delete that worktree or its generated images as cleanup.
+Owning sessions reported clean Git worktrees for handoff, safe firmware, and bench prep. The bring-up session's intentional source variant is now committed as `df3660d`; its generated `build-q5q6` images remain untouched and untracked in that worktree. Unsaved external editor buffers cannot be certified from Git status. Do not delete that worktree or its generated images as cleanup.
 
 ## Firmware reconciliation
 
@@ -39,12 +40,12 @@ Owning sessions reported clean Git worktrees for handoff, safe firmware, and ben
 
 Also carry the historical ADDR/SLOPE, MODE/ISET separation, grounding, RT and configuration-strap lessons into review of the chosen design. They must be checked against current source and datasheets, not copied from the September netlist. Temporary ISET-to-VCC2 wiring, 22 Ohm gate resistors, and C26 = 690 nF remain bench experiments, not approved Rev2 selections.
 
-## Remaining release gates
+## Landing and Rev2 gates
 
 Both firmware builds completed during consolidation: the four Rev1 STM32 stages using the installed GNU Arm toolchain, and the ESP32-C3 application using the installed ESP-IDF 5.5 environment with its matching RISC-V compiler. STM32 linking still reports syscall-stub and RWX-segment warnings; build success is not a hardware safety/qualification result. No flashing or powered tests were performed.
 
-1. Preserve the reported bring-up source variant and retain its bench images; keep backup refs until consolidation is safely published.
-2. Complete affected firmware builds and final diff review. Do not flash hardware as part of consolidation.
-3. Publish and merge the consolidation to GitHub main, then reconcile the separate local-main checkout in its owning context without resetting local work.
+1. Retain the published backup refs and the original bench images. All inventoried unique committed source histories are incorporated; this is not permission to delete worktrees.
+2. Land the reviewed consolidation through [PR #25](https://github.com/Phil-CIA/Solar-Project-200w/pull/25); its live state is authoritative for whether GitHub main contains this checkpoint. The builds above cover the selected tree. Do not flash hardware as part of consolidation.
+3. Reconcile the separate local-main checkout in its owning context after landing, without resetting local work. That checkout was not inspected or modified by this consolidation session; its tracked files, untracked files, and editor buffers need their own preservation check before synchronization.
 4. Record the merged commit as the development baseline. Create a distinct Rev2 KiCad project/schematic/PCB set from reconciled source, preserving the manufactured Rev1 package and fab outputs.
 5. After controller selection, implement the approved Rev2 changes with schematic and PCB edits kept together. Retire old branches/sessions only after all work is accounted for and the user approves cleanup.
