@@ -10,7 +10,9 @@
 #include "esp_log.h"
 #include "esp_mac.h"
 #include "esp_netif.h"
+#include "esp_system.h"
 #include "esp_wifi.h"
+#include "driver/usb_serial_jtag.h"
 #include "freertos/FreeRTOS.h"
 #include "freertos/event_groups.h"
 #include "nvs.h"
@@ -112,11 +114,18 @@ static void log_target_scan_diagnostics(const wifi_creds_t *creds) {
         return;
     }
 
-    wifi_ap_record_t records[20];
-    uint16_t fetched = (uint16_t)(sizeof(records) / sizeof(records[0]));
+    enum { SCAN_RECORD_LIMIT = 20 };
+    wifi_ap_record_t *records = calloc(SCAN_RECORD_LIMIT, sizeof(*records));
+    if (records == NULL) {
+        ESP_LOGW(TAG, "Scan records allocation failed");
+        return;
+    }
+
+    uint16_t fetched = SCAN_RECORD_LIMIT;
     err = esp_wifi_scan_get_ap_records(&fetched, records);
     if (err != ESP_OK) {
         ESP_LOGW(TAG, "Scan records read failed: %s", esp_err_to_name(err));
+        free(records);
         return;
     }
 
@@ -144,6 +153,8 @@ static void log_target_scan_diagnostics(const wifi_creds_t *creds) {
     } else {
         ESP_LOGW(TAG, "Target AP not found in scan snapshot");
     }
+
+    free(records);
 }
 
 static const char k_form_html[] =
@@ -497,7 +508,42 @@ static esp_err_t start_provisioning_ap(void) {
     return start_http_server();
 }
 
+static const char *reset_reason_to_str(esp_reset_reason_t reason) {
+    switch (reason) {
+        case ESP_RST_POWERON: return "POWERON";
+        case ESP_RST_EXT: return "EXTERNAL_PIN";
+        case ESP_RST_SW: return "SOFTWARE";
+        case ESP_RST_PANIC: return "PANIC";
+        case ESP_RST_INT_WDT: return "INT_WDT";
+        case ESP_RST_TASK_WDT: return "TASK_WDT";
+        case ESP_RST_WDT: return "OTHER_WDT";
+        case ESP_RST_DEEPSLEEP: return "DEEPSLEEP";
+        case ESP_RST_BROWNOUT: return "BROWNOUT";
+        case ESP_RST_SDIO: return "SDIO";
+        case ESP_RST_USB: return "USB";
+        case ESP_RST_JTAG: return "JTAG";
+        default: return "UNKNOWN";
+    }
+}
+
+// USB Serial/JTAG re-enumerates on every chip reset, so early boot logs are lost
+// before the host terminal reopens COM. Hold briefly so the banner is visible.
+static void wait_for_usb_console_and_log_boot(void) {
+    const TickType_t start = xTaskGetTickCount();
+    while (!usb_serial_jtag_is_connected() &&
+           (xTaskGetTickCount() - start) < pdMS_TO_TICKS(3000)) {
+        vTaskDelay(pdMS_TO_TICKS(50));
+    }
+    if (usb_serial_jtag_is_connected()) {
+        vTaskDelay(pdMS_TO_TICKS(1500));
+    }
+    const esp_reset_reason_t reason = esp_reset_reason();
+    ESP_LOGW(TAG, "===== BOOT: reset_reason=%s (%d) =====", reset_reason_to_str(reason), (int)reason);
+}
+
 void app_main(void) {
+    wait_for_usb_console_and_log_boot();
+
     esp_err_t err = nvs_flash_init();
     if (err == ESP_ERR_NVS_NO_FREE_PAGES || err == ESP_ERR_NVS_NEW_VERSION_FOUND) {
         ESP_ERROR_CHECK(nvs_flash_erase());
