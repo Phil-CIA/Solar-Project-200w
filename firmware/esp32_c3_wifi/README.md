@@ -6,8 +6,11 @@ Implemented scope:
 - First-boot setup AP + local web form for SSID/password
 - Credential validation and storage in NVS
 - Boot reconnect using saved credentials
-- Fallback to setup AP after repeated connection failures
-- Setup AP disabled after station gets an IP address
+- Router retries never stop: exponential backoff 1 s → 60 s between attempts, including after a drop once connected
+- Setup AP (`SolarSetup-XXXXXX`, http://192.168.4.1/) runs alongside the station (APSTA), so router retries continue while it is open. It opens when:
+  - no credentials are saved
+  - the router has been unreachable for 5 minutes (closes automatically once the router connects)
+  - the module BOOT button (GPIO9, unused on Rev1) is held for 3 s after boot. It stays open until new credentials are saved, or for 10 minutes while connected.
 
 Out of scope in this project:
 - STM32 UART control path

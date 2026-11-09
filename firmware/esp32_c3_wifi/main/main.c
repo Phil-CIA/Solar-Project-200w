@@ -12,16 +12,26 @@
 #include "esp_netif.h"
 #include "esp_system.h"
 #include "esp_wifi.h"
+#include "driver/gpio.h"
 #include "driver/usb_serial_jtag.h"
 #include "freertos/FreeRTOS.h"
 #include "freertos/event_groups.h"
 #include "nvs.h"
 #include "nvs_flash.h"
 
-#define WIFI_MAXIMUM_RETRY 8
-#define WIFI_CONNECTED_BIT BIT0
-#define WIFI_FAIL_BIT      BIT1
+#define WIFI_GOT_IP_BIT    BIT0
+#define WIFI_DISC_BIT      BIT1
 #define WIFI_PROV_BIT      BIT2
+#define WIFI_CLEAR_BIT     BIT3
+
+#define WIFI_BACKOFF_MIN_MS       1000U
+#define WIFI_BACKOFF_MAX_MS       60000U
+#define WIFI_ATTEMPT_TIMEOUT_MS   30000U
+#define WIFI_AP_FALLBACK_MS       (5U * 60U * 1000U)
+#define SUPERVISOR_POLL_MS        250U
+#define SETUP_BUTTON_GPIO         GPIO_NUM_9
+#define SETUP_BUTTON_HOLD_MS      3000U
+#define SETUP_AP_IDLE_CLOSE_MS    (10U * 60U * 1000U)
 
 #define WIFI_NAMESPACE     "wifi_cfg"
 #define WIFI_SSID_KEY      "ssid"
@@ -41,7 +51,10 @@ typedef struct {
 static EventGroupHandle_t s_wifi_event_group;
 static httpd_handle_t s_httpd_server;
 static wifi_creds_t s_prov_creds;
-static int s_retry_num;
+static volatile bool s_sta_has_ip;
+static bool s_ap_active;
+static TickType_t s_ap_opened_at;
+static bool s_ap_manual;
 
 static const char *wifi_reason_to_str(uint8_t reason) {
     switch (reason) {
@@ -374,6 +387,7 @@ static esp_err_t clear_post_handler(httpd_req_t *req) {
     }
     memset(&s_prov_creds, 0, sizeof(s_prov_creds));
     ESP_LOGW(TAG, "Saved Wi-Fi credentials cleared");
+    xEventGroupSetBits(s_wifi_event_group, WIFI_CLEAR_BIT);
     return httpd_resp_sendstr(req, "Saved credentials cleared. Re-enter Wi-Fi credentials.");
 }
 
@@ -420,73 +434,41 @@ static void stop_http_server(void) {
 }
 
 static void wifi_event_handler(void *arg, esp_event_base_t event_base, int32_t event_id, void *event_data) {
-    if (event_base == WIFI_EVENT && event_id == WIFI_EVENT_STA_START) {
-        return;
-    }
-
     if (event_base == WIFI_EVENT && event_id == WIFI_EVENT_STA_DISCONNECTED) {
         wifi_event_sta_disconnected_t *disconn = (wifi_event_sta_disconnected_t *)event_data;
         ESP_LOGW(TAG, "STA disconnected: reason=%u (%s)", disconn->reason, wifi_reason_to_str(disconn->reason));
-        if (s_retry_num < WIFI_MAXIMUM_RETRY) {
-            esp_wifi_connect();
-            s_retry_num++;
-            ESP_LOGW(TAG, "Wi-Fi reconnect attempt %d/%d", s_retry_num, WIFI_MAXIMUM_RETRY);
-        } else {
-            xEventGroupSetBits(s_wifi_event_group, WIFI_FAIL_BIT);
-        }
+        s_sta_has_ip = false;
+        xEventGroupSetBits(s_wifi_event_group, WIFI_DISC_BIT);
         return;
     }
 
     if (event_base == IP_EVENT && event_id == IP_EVENT_STA_GOT_IP) {
         ip_event_got_ip_t *event = (ip_event_got_ip_t *)event_data;
         ESP_LOGI(TAG, "Got IP: " IPSTR, IP2STR(&event->ip_info.ip));
-        s_retry_num = 0;
-        xEventGroupSetBits(s_wifi_event_group, WIFI_CONNECTED_BIT);
+        s_sta_has_ip = true;
+        xEventGroupSetBits(s_wifi_event_group, WIFI_GOT_IP_BIT);
     }
 }
 
-static esp_err_t wifi_try_connect_sta(const wifi_creds_t *creds) {
+static void apply_sta_config(const wifi_creds_t *creds) {
     wifi_config_t wifi_cfg = {0};
     strlcpy((char *)wifi_cfg.sta.ssid, creds->ssid, sizeof(wifi_cfg.sta.ssid));
     strlcpy((char *)wifi_cfg.sta.password, creds->pass, sizeof(wifi_cfg.sta.password));
     wifi_cfg.sta.threshold.authmode = WIFI_AUTH_OPEN;
     wifi_cfg.sta.scan_method = WIFI_ALL_CHANNEL_SCAN;
     wifi_cfg.sta.sort_method = WIFI_CONNECT_AP_BY_SIGNAL;
-    if (creds->pass[0] == '\0') {
-        wifi_cfg.sta.threshold.authmode = WIFI_AUTH_OPEN;
-    }
     wifi_cfg.sta.pmf_cfg.capable = true;
     wifi_cfg.sta.pmf_cfg.required = false;
-
-    ESP_LOGI(TAG, "Attempting STA connect using saved credentials (password_len=%u)",
-             (unsigned)strnlen(creds->pass, sizeof(creds->pass)));
-    xEventGroupClearBits(s_wifi_event_group, WIFI_CONNECTED_BIT | WIFI_FAIL_BIT);
-    s_retry_num = 0;
-
-    ESP_ERROR_CHECK(esp_wifi_set_mode(WIFI_MODE_STA));
     ESP_ERROR_CHECK(esp_wifi_set_config(WIFI_IF_STA, &wifi_cfg));
-    ESP_ERROR_CHECK(esp_wifi_start());
-    log_target_scan_diagnostics(creds);
-    ESP_ERROR_CHECK(esp_wifi_connect());
-
-    const EventBits_t bits = xEventGroupWaitBits(
-        s_wifi_event_group,
-        WIFI_CONNECTED_BIT | WIFI_FAIL_BIT,
-        pdTRUE,
-        pdFALSE,
-        pdMS_TO_TICKS(45000));
-
-    if (bits & WIFI_CONNECTED_BIT) {
-        ESP_LOGI(TAG, "STA connected, provisioning AP is disabled");
-        return ESP_OK;
-    }
-
-    ESP_LOGW(TAG, "STA connection failed; reopening provisioning AP");
-    ESP_ERROR_CHECK(esp_wifi_stop());
-    return ESP_FAIL;
+    ESP_LOGI(TAG, "STA config set (password_len=%u)",
+             (unsigned)strnlen(creds->pass, sizeof(creds->pass)));
 }
 
-static esp_err_t start_provisioning_ap(void) {
+// Setup AP runs alongside STA (APSTA) so router retries continue while it is open.
+static void open_setup_ap(const char *why) {
+    if (s_ap_active) {
+        return;
+    }
     uint8_t mac[6] = {0};
     ESP_ERROR_CHECK(esp_read_mac(mac, ESP_MAC_WIFI_SOFTAP));
 
@@ -500,12 +482,36 @@ static esp_err_t start_provisioning_ap(void) {
     ap_cfg.ap.max_connection = 4;
     ap_cfg.ap.authmode = WIFI_AUTH_OPEN;
 
-    ESP_ERROR_CHECK(esp_wifi_set_mode(WIFI_MODE_AP));
+    ESP_ERROR_CHECK(esp_wifi_set_mode(WIFI_MODE_APSTA));
     ESP_ERROR_CHECK(esp_wifi_set_config(WIFI_IF_AP, &ap_cfg));
-    ESP_ERROR_CHECK(esp_wifi_start());
+    if (start_http_server() != ESP_OK) {
+        ESP_LOGE(TAG, "HTTP server start failed");
+    }
+    s_ap_active = true;
+    s_ap_opened_at = xTaskGetTickCount();
+    ESP_LOGW(TAG, "Setup AP open (%s): SSID=%s, page http://192.168.4.1/", why, ap_ssid);
+}
 
-    ESP_LOGW(TAG, "Provisioning AP active: SSID=%s", ap_ssid);
-    return start_http_server();
+static void close_setup_ap(void) {
+    if (!s_ap_active) {
+        return;
+    }
+    stop_http_server();
+    ESP_ERROR_CHECK(esp_wifi_set_mode(WIFI_MODE_STA));
+    s_ap_active = false;
+    s_ap_manual = false;
+    ESP_LOGI(TAG, "Setup AP closed");
+}
+
+static void setup_button_init(void) {
+    const gpio_config_t cfg = {
+        .pin_bit_mask = 1ULL << SETUP_BUTTON_GPIO,
+        .mode = GPIO_MODE_INPUT,
+        .pull_up_en = GPIO_PULLUP_ENABLE,
+        .pull_down_en = GPIO_PULLDOWN_DISABLE,
+        .intr_type = GPIO_INTR_DISABLE,
+    };
+    ESP_ERROR_CHECK(gpio_config(&cfg));
 }
 
 static const char *reset_reason_to_str(esp_reset_reason_t reason) {
@@ -561,29 +567,113 @@ void app_main(void) {
     ESP_ERROR_CHECK(esp_wifi_init(&cfg));
     ESP_ERROR_CHECK(esp_event_handler_register(WIFI_EVENT, ESP_EVENT_ANY_ID, &wifi_event_handler, NULL));
     ESP_ERROR_CHECK(esp_event_handler_register(IP_EVENT, IP_EVENT_STA_GOT_IP, &wifi_event_handler, NULL));
+    setup_button_init();
 
-    wifi_creds_t boot_creds = {0};
-    err = load_creds_from_nvs(&boot_creds);
-    if (err == ESP_OK && boot_creds.valid && wifi_try_connect_sta(&boot_creds) == ESP_OK) {
-        ESP_LOGI(TAG, "Boot Wi-Fi connected from saved credentials");
-        return;
+    wifi_creds_t creds = {0};
+    bool have_creds = (load_creds_from_nvs(&creds) == ESP_OK) && creds.valid;
+
+    ESP_ERROR_CHECK(esp_wifi_set_mode(WIFI_MODE_STA));
+    ESP_ERROR_CHECK(esp_wifi_start());
+    if (have_creds) {
+        apply_sta_config(&creds);
+        log_target_scan_diagnostics(&creds);
+    } else {
+        open_setup_ap("no saved credentials");
     }
 
-    while (true) {
-        if (start_provisioning_ap() != ESP_OK) {
-            ESP_LOGE(TAG, "Provisioning AP start failed; retrying in 3 seconds");
-            vTaskDelay(pdMS_TO_TICKS(3000));
-            continue;
+    // Supervisor: retry the router forever with exponential backoff; open the setup AP
+    // only after a long outage or a BOOT-button long press. A button-opened AP stays up
+    // until new credentials are saved or SETUP_AP_IDLE_CLOSE_MS elapses.
+    bool was_up = false;
+    bool attempt_pending = false;
+    uint32_t backoff_ms = WIFI_BACKOFF_MIN_MS;
+    uint32_t attempt_no = 0;
+    TickType_t outage_start = xTaskGetTickCount();
+    TickType_t next_attempt = outage_start;
+    TickType_t attempt_start = outage_start;
+    uint32_t button_low_ms = 0;
+
+    for (;;) {
+        const EventBits_t bits = xEventGroupWaitBits(
+            s_wifi_event_group, WIFI_GOT_IP_BIT | WIFI_DISC_BIT | WIFI_PROV_BIT | WIFI_CLEAR_BIT,
+            pdTRUE, pdFALSE, pdMS_TO_TICKS(SUPERVISOR_POLL_MS));
+        const TickType_t now = xTaskGetTickCount();
+
+        if (bits & WIFI_CLEAR_BIT) {
+            have_creds = false;
+            attempt_pending = false;
+            esp_wifi_disconnect();
         }
 
-        xEventGroupClearBits(s_wifi_event_group, WIFI_PROV_BIT);
-        xEventGroupWaitBits(s_wifi_event_group, WIFI_PROV_BIT, pdTRUE, pdFALSE, portMAX_DELAY);
-        stop_http_server();
-        ESP_ERROR_CHECK(esp_wifi_stop());
+        if (bits & WIFI_PROV_BIT) {
+            creds = s_prov_creds;
+            have_creds = creds.valid;
+            if (have_creds) {
+                s_ap_manual = false;
+                esp_wifi_disconnect();
+                apply_sta_config(&creds);
+                backoff_ms = WIFI_BACKOFF_MIN_MS;
+                attempt_no = 0;
+                attempt_pending = false;
+                next_attempt = now + pdMS_TO_TICKS(500);
+            }
+        }
 
-        if (s_prov_creds.valid && wifi_try_connect_sta(&s_prov_creds) == ESP_OK) {
-            ESP_LOGI(TAG, "Provisioning complete");
-            return;
+        const bool up = s_sta_has_ip;
+        if (up && !was_up) {
+            ESP_LOGI(TAG, "Wi-Fi up after %u attempt(s)", (unsigned)attempt_no);
+            if (!s_ap_manual) {
+                close_setup_ap();
+            }
+            backoff_ms = WIFI_BACKOFF_MIN_MS;
+            attempt_no = 0;
+            attempt_pending = false;
+        } else if (!up && was_up) {
+            ESP_LOGW(TAG, "Wi-Fi lost; retrying with backoff");
+            outage_start = now;
+            next_attempt = now + pdMS_TO_TICKS(WIFI_BACKOFF_MIN_MS);
+            attempt_pending = false;
+        } else if (!up && attempt_pending &&
+                   ((bits & WIFI_DISC_BIT) ||
+                    (now - attempt_start) >= pdMS_TO_TICKS(WIFI_ATTEMPT_TIMEOUT_MS))) {
+            attempt_pending = false;
+            next_attempt = now + pdMS_TO_TICKS(backoff_ms);
+            ESP_LOGW(TAG, "Attempt %u failed; next in %u ms (outage %u s)",
+                     (unsigned)attempt_no, (unsigned)backoff_ms,
+                     (unsigned)((now - outage_start) * portTICK_PERIOD_MS / 1000U));
+            backoff_ms = (backoff_ms * 2U > WIFI_BACKOFF_MAX_MS) ? WIFI_BACKOFF_MAX_MS : backoff_ms * 2U;
+        }
+        was_up = up;
+
+        if (!up && have_creds && !attempt_pending && (int32_t)(now - next_attempt) >= 0) {
+            attempt_no++;
+            attempt_pending = true;
+            attempt_start = now;
+            ESP_LOGI(TAG, "Connect attempt %u", (unsigned)attempt_no);
+            esp_err_t cerr = esp_wifi_connect();
+            if (cerr != ESP_OK) {
+                ESP_LOGW(TAG, "esp_wifi_connect: %s", esp_err_to_name(cerr));
+            }
+        }
+
+        if (!up && !s_ap_active &&
+            (!have_creds || (now - outage_start) >= pdMS_TO_TICKS(WIFI_AP_FALLBACK_MS))) {
+            open_setup_ap(have_creds ? "long outage" : "no saved credentials");
+        }
+
+        if (up && s_ap_active && (now - s_ap_opened_at) >= pdMS_TO_TICKS(SETUP_AP_IDLE_CLOSE_MS)) {
+            close_setup_ap();
+        }
+
+        if (gpio_get_level(SETUP_BUTTON_GPIO) == 0) {
+            button_low_ms += SUPERVISOR_POLL_MS;
+            if (button_low_ms == SETUP_BUTTON_HOLD_MS) {
+                open_setup_ap("BOOT button held");
+                s_ap_manual = true;
+                s_ap_opened_at = now;
+            }
+        } else {
+            button_low_ms = 0;
         }
     }
 }
