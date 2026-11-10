@@ -7,10 +7,343 @@
 	(title_block
 		(title "Solar Charge Controller")
 		(rev "Rev 2 - copied baseline, NOT QUALIFIED")
-		(comment 1 "Copied Rev1 development source at 32243b5789a5f2400ddd37af67e152e77bece215; not for fabrication")
 		(company "True North Enterprise Solutions LLC")
+		(comment 1 "Copied Rev1 development source at 32243b5789a5f2400ddd37af67e152e77bece215; not for fabrication")
 	)
 	(lib_symbols
+		(symbol "1 - Phil's global lib:KRL2012E-M-R005-F-T5"
+			(body_styles demorgan)
+			(pin_names
+				(offset 0.254)
+			)
+			(exclude_from_sim no)
+			(in_bom yes)
+			(on_board yes)
+			(in_pos_files yes)
+			(duplicate_pin_numbers_are_jumpers no)
+			(property "Reference" "R"
+				(at 5.715 3.81 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(effects
+					(font
+						(size 1.524 1.524)
+					)
+				)
+			)
+			(property "Value" "KRL2012E-M-R005-F-T5"
+				(at 6.35 -3.81 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(effects
+					(font
+						(size 1.524 1.524)
+					)
+				)
+			)
+			(property "Footprint" "1My_Parts_ Passive:RES_2012_SUS- wide 0805"
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+						(italic yes)
+					)
+				)
+			)
+			(property "Datasheet" "KRL2012E-M-R005-F-T5"
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+						(italic yes)
+					)
+				)
+			)
+			(property "Description" ""
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "ki_keywords" "KRL2012E-M-R005-F-T5"
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "ki_fp_filters" "RES_2012_SUS RES_2012_SUS-M RES_2012_SUS-L"
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(symbol "KRL2012E-M-R005-F-T5_1_1"
+				(polyline
+					(pts
+						(xy 2.54 0) (xy 3.175 1.27)
+					)
+					(stroke
+						(width 0.2032)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(polyline
+					(pts
+						(xy 3.175 1.27) (xy 4.445 -1.27)
+					)
+					(stroke
+						(width 0.2032)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(polyline
+					(pts
+						(xy 4.445 -1.27) (xy 5.715 1.27)
+					)
+					(stroke
+						(width 0.2032)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(polyline
+					(pts
+						(xy 5.715 1.27) (xy 6.985 -1.27)
+					)
+					(stroke
+						(width 0.2032)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(polyline
+					(pts
+						(xy 6.985 -1.27) (xy 8.255 1.27)
+					)
+					(stroke
+						(width 0.2032)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(polyline
+					(pts
+						(xy 8.255 1.27) (xy 9.525 -1.27)
+					)
+					(stroke
+						(width 0.2032)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(polyline
+					(pts
+						(xy 9.525 -1.27) (xy 10.16 0)
+					)
+					(stroke
+						(width 0.2032)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(pin unspecified line
+					(at 0 0 0)
+					(length 2.54)
+					(name ""
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "1"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+				(pin unspecified line
+					(at 12.7 0 180)
+					(length 2.54)
+					(name ""
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "2"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+			)
+			(symbol "KRL2012E-M-R005-F-T5_1_2"
+				(polyline
+					(pts
+						(xy -1.27 8.255) (xy 1.27 9.525)
+					)
+					(stroke
+						(width 0.2032)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(polyline
+					(pts
+						(xy -1.27 5.715) (xy 1.27 6.985)
+					)
+					(stroke
+						(width 0.2032)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(polyline
+					(pts
+						(xy -1.27 3.175) (xy 1.27 4.445)
+					)
+					(stroke
+						(width 0.2032)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(polyline
+					(pts
+						(xy 0 2.54) (xy -1.27 3.175)
+					)
+					(stroke
+						(width 0.2032)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(polyline
+					(pts
+						(xy 1.27 9.525) (xy 0 10.16)
+					)
+					(stroke
+						(width 0.2032)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(polyline
+					(pts
+						(xy 1.27 6.985) (xy -1.27 8.255)
+					)
+					(stroke
+						(width 0.2032)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(polyline
+					(pts
+						(xy 1.27 4.445) (xy -1.27 5.715)
+					)
+					(stroke
+						(width 0.2032)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(pin unspecified line
+					(at 0 12.7 270)
+					(length 2.54)
+					(name ""
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "1"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+				(pin unspecified line
+					(at 0 0 90)
+					(length 2.54)
+					(name ""
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "2"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+			)
+			(embedded_fonts no)
+		)
 		(symbol "1My_Basic components:0.96in_OLED_SSD1306"
 			(exclude_from_sim no)
 			(in_bom yes)
@@ -33423,6 +33756,12 @@
 		(uuid "11e72b32-d7ac-415b-94f0-39963a1d3582")
 	)
 	(junction
+		(at 219.71 74.93)
+		(diameter 0)
+		(color 0 0 0 0)
+		(uuid "178471a7-fa25-4909-919c-e6f314f07980")
+	)
+	(junction
 		(at 514.35 191.77)
 		(diameter 0)
 		(color 0 0 0 0)
@@ -33751,6 +34090,12 @@
 		(diameter 0)
 		(color 0 0 0 0)
 		(uuid "6a0c6561-d2f6-4cc5-b6c3-9aac45000889")
+	)
+	(junction
+		(at 207.01 74.93)
+		(diameter 0)
+		(color 0 0 0 0)
+		(uuid "6b17d20e-55c9-4eba-bab8-5e055d255828")
 	)
 	(junction
 		(at 299.72 180.34)
@@ -34638,6 +34983,16 @@
 	)
 	(wire
 		(pts
+			(xy 198.12 74.93) (xy 207.01 74.93)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "0c8a6c06-0e17-4d6d-abc2-090bbceee491")
+	)
+	(wire
+		(pts
 			(xy 181.61 76.2) (xy 181.61 77.47)
 		)
 		(stroke
@@ -34735,6 +35090,16 @@
 			(type default)
 		)
 		(uuid "11becb30-5d4f-40bc-88f6-7f3ede05f130")
+	)
+	(wire
+		(pts
+			(xy 219.71 71.12) (xy 219.71 74.93)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "141576f5-f90d-4dd4-955f-55b6e6d246d2")
 	)
 	(wire
 		(pts
@@ -35185,6 +35550,16 @@
 			(type default)
 		)
 		(uuid "33d07ace-0707-427c-960b-941898834fc4")
+	)
+	(wire
+		(pts
+			(xy 207.01 71.12) (xy 207.01 74.93)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "34bfbdcd-763e-4d81-82cc-aa1cba0809b8")
 	)
 	(wire
 		(pts
@@ -36215,16 +36590,6 @@
 			(type default)
 		)
 		(uuid "6f258536-f297-4842-b510-29ba0a0fd438")
-	)
-	(wire
-		(pts
-			(xy 198.12 74.93) (xy 209.55 74.93)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "70d319e8-329b-4c09-9938-dbdabcac1251")
 	)
 	(wire
 		(pts
@@ -37708,6 +38073,16 @@
 	)
 	(wire
 		(pts
+			(xy 219.71 74.93) (xy 222.25 74.93)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "c2eac077-edd0-499a-b75d-3967332baf04")
+	)
+	(wire
+		(pts
 			(xy 417.83 59.69) (xy 420.37 59.69)
 		)
 		(stroke
@@ -38478,16 +38853,6 @@
 	)
 	(wire
 		(pts
-			(xy 219.71 74.93) (xy 222.25 74.93)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "eef886a0-c449-4bf8-8eee-f6a89e48cbc1")
-	)
-	(wire
-		(pts
 			(xy 289.56 223.52) (xy 289.56 226.06)
 		)
 		(stroke
@@ -39106,9 +39471,9 @@
 			)
 		)
 	)
-	(global_label "_CSA_2"
+	(global_label "SW_1"
 		(shape input)
-		(at 212.09 77.47 270)
+		(at 205.74 74.93 270)
 		(fields_autoplaced yes)
 		(effects
 			(font
@@ -39118,7 +39483,7 @@
 		)
 		(uuid "177a1316-8cf3-4dc4-80a1-9679980b8408")
 		(property "Intersheetrefs" "${INTERSHEET_REFS}"
-			(at 212.09 82.3192 90)
+			(at 205.74 78.8418 90)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -40024,7 +40389,7 @@
 			)
 		)
 	)
-	(global_label "_CSB_2"
+	(global_label "CSB_2"
 		(shape input)
 		(at 186.69 189.23 0)
 		(fields_autoplaced yes)
@@ -40036,7 +40401,7 @@
 		)
 		(uuid "50e60b71-43e8-44bc-98ea-ad8953af2278")
 		(property "Intersheetrefs" "${INTERSHEET_REFS}"
-			(at 191.6299 189.23 0)
+			(at 191.1461 189.23 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -40926,9 +41291,9 @@
 			)
 		)
 	)
-	(global_label "_CSB_2"
+	(global_label "CSB_2"
 		(shape input)
-		(at 217.17 77.47 270)
+		(at 219.71 74.93 270)
 		(fields_autoplaced yes)
 		(effects
 			(font
@@ -40938,7 +41303,7 @@
 		)
 		(uuid "7c5febeb-484d-479f-874b-d808d4f5f81f")
 		(property "Intersheetrefs" "${INTERSHEET_REFS}"
-			(at 217.17 82.4099 90)
+			(at 219.71 79.3861 90)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -42278,7 +42643,7 @@
 			)
 		)
 	)
-	(global_label "_CSA_2"
+	(global_label "SW_1"
 		(shape input)
 		(at 186.69 181.61 0)
 		(fields_autoplaced yes)
@@ -42290,7 +42655,7 @@
 		)
 		(uuid "bc2e54b0-5cb6-4879-97e7-4fd247114aea")
 		(property "Intersheetrefs" "${INTERSHEET_REFS}"
-			(at 191.5392 181.61 0)
+			(at 190.6018 181.61 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -97324,8 +97689,8 @@
 		)
 	)
 	(symbol
-		(lib_id "Device:R_Shunt")
-		(at 214.63 74.93 270)
+		(lib_id "1 - Phil's global lib:KRL2012E-M-R005-F-T5")
+		(at 207.01 74.93 0)
 		(unit 1)
 		(body_style 1)
 		(exclude_from_sim no)
@@ -97333,52 +97698,55 @@
 		(on_board yes)
 		(in_pos_files yes)
 		(dnp no)
-		(fields_autoplaced yes)
 		(uuid "acfe2c80-2498-4c82-aca3-320a1d0f2cae")
 		(property "Reference" "R22"
-			(at 214.63 68.58 90)
+			(at 208.788 77.47 0)
 			(show_name no)
 			(do_not_autoplace no)
 			(effects
 				(font
 					(size 1.27 1.27)
 				)
+				(justify left)
 			)
 		)
-		(property "Value" "0.001ohms"
-			(at 214.63 71.12 90)
+		(property "Value" ".005"
+			(at 213.614 77.724 0)
 			(show_name no)
 			(do_not_autoplace no)
 			(effects
 				(font
-					(size 1.27 1.27)
+					(size 1.524 1.524)
 				)
+				(justify left)
 			)
 		)
-		(property "Footprint" "Resistor_SMD:R_Shunt_Vishay_WSK2512_6332Metric_T2.66mm"
-			(at 214.63 73.152 90)
+		(property "Footprint" "1My_Parts_ Passive:RES_2012_SUS- wide 0805"
+			(at 207.01 74.93 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
 			(effects
 				(font
 					(size 1.27 1.27)
+					(italic yes)
 				)
 			)
 		)
-		(property "Datasheet" "https://www.lcsc.com/datasheet/C41382682.pdf?spm=wm.sxq.inf.ggs___wm.fly.bg.0.xh&lcsc_vid=EVEIA1dfFlIMBAdXEgVXUVVVTwRWBgBfE1lbBABSQFMxVlNeQ1daVVNfR1dbVDsOAxUeFF5JWBYZEEoKFBINSQcJGk4NBhADEA4cHktQQlBADxALGw%3D%3D"
-			(at 214.63 74.93 0)
+		(property "Datasheet" "KRL2012E-M-R005-F-T5"
+			(at 207.01 74.93 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
 			(effects
 				(font
 					(size 1.27 1.27)
+					(italic yes)
 				)
 			)
 		)
 		(property "Description" "Shunt resistor with Kelvin connections"
-			(at 214.63 74.93 0)
+			(at 207.01 74.93 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -97389,7 +97757,7 @@
 			)
 		)
 		(property "Average Rectified Current (Io)" ""
-			(at 214.63 74.93 90)
+			(at 207.01 74.93 90)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -97400,7 +97768,7 @@
 			)
 		)
 		(property "Diode Configuration" ""
-			(at 214.63 74.93 90)
+			(at 207.01 74.93 90)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -97411,7 +97779,7 @@
 			)
 		)
 		(property "Peak forward surge current" ""
-			(at 214.63 74.93 90)
+			(at 207.01 74.93 90)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -97422,7 +97790,7 @@
 			)
 		)
 		(property "Part - USA" ""
-			(at 214.63 74.93 90)
+			(at 207.01 74.93 90)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -97433,7 +97801,7 @@
 			)
 		)
 		(property "LCSC" "C41382682"
-			(at 214.63 74.93 90)
+			(at 207.01 74.93 90)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -97444,7 +97812,7 @@
 			)
 		)
 		(property "Continuous Drain Current (Id)" ""
-			(at 214.63 74.93 90)
+			(at 207.01 74.93 90)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -97455,7 +97823,7 @@
 			)
 		)
 		(property "Drain Source On Resistance (RDS(on)@Vgs,Id)" ""
-			(at 214.63 74.93 90)
+			(at 207.01 74.93 90)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -97466,7 +97834,7 @@
 			)
 		)
 		(property "Drain Source Voltage (Vdss)" ""
-			(at 214.63 74.93 90)
+			(at 207.01 74.93 90)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -97477,7 +97845,7 @@
 			)
 		)
 		(property "Gate Threshold Voltage (Vgs(th)@Id)" ""
-			(at 214.63 74.93 90)
+			(at 207.01 74.93 90)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -97488,7 +97856,7 @@
 			)
 		)
 		(property "Input Capacitance (Ciss@Vds)" ""
-			(at 214.63 74.93 90)
+			(at 207.01 74.93 90)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -97499,7 +97867,7 @@
 			)
 		)
 		(property "Power Dissipation (Pd)" ""
-			(at 214.63 74.93 90)
+			(at 207.01 74.93 90)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -97510,7 +97878,7 @@
 			)
 		)
 		(property "Reverse Transfer Capacitance (Crss@Vds)" ""
-			(at 214.63 74.93 90)
+			(at 207.01 74.93 90)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -97521,7 +97889,7 @@
 			)
 		)
 		(property "Sim.Device" ""
-			(at 214.63 74.93 90)
+			(at 207.01 74.93 90)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -97532,7 +97900,7 @@
 			)
 		)
 		(property "Sim.Library" ""
-			(at 214.63 74.93 90)
+			(at 207.01 74.93 90)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -97543,7 +97911,7 @@
 			)
 		)
 		(property "Sim.Name" ""
-			(at 214.63 74.93 90)
+			(at 207.01 74.93 90)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -97554,7 +97922,7 @@
 			)
 		)
 		(property "Sim.Pins" ""
-			(at 214.63 74.93 90)
+			(at 207.01 74.93 90)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -97565,7 +97933,7 @@
 			)
 		)
 		(property "Sim.Type" ""
-			(at 214.63 74.93 90)
+			(at 207.01 74.93 90)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -97576,7 +97944,7 @@
 			)
 		)
 		(property "Total Gate Charge (Qg@Vgs)" ""
-			(at 214.63 74.93 90)
+			(at 207.01 74.93 90)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -97587,7 +97955,7 @@
 			)
 		)
 		(property "Breakdown Voltage" ""
-			(at 214.63 74.93 90)
+			(at 207.01 74.93 90)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -97598,7 +97966,7 @@
 			)
 		)
 		(property "Maximum Clamping Voltage" ""
-			(at 214.63 74.93 90)
+			(at 207.01 74.93 90)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -97609,7 +97977,7 @@
 			)
 		)
 		(property "Number of Lines" ""
-			(at 214.63 74.93 90)
+			(at 207.01 74.93 90)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -97620,7 +97988,7 @@
 			)
 		)
 		(property "Peak Pulse Current (Ipp)" ""
-			(at 214.63 74.93 90)
+			(at 207.01 74.93 90)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -97631,7 +97999,7 @@
 			)
 		)
 		(property "Peak Pulse Power Dissipation (Ppp)" ""
-			(at 214.63 74.93 90)
+			(at 207.01 74.93 90)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -97642,7 +98010,7 @@
 			)
 		)
 		(property "Reverse Stand-Off Voltage (Vrwm)" ""
-			(at 214.63 74.93 90)
+			(at 207.01 74.93 90)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -97653,7 +98021,7 @@
 			)
 		)
 		(property "polarity" ""
-			(at 214.63 74.93 90)
+			(at 207.01 74.93 90)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -97668,12 +98036,6 @@
 		)
 		(pin "2"
 			(uuid "b7f349ae-3617-48d2-af43-a3a5b4d31b35")
-		)
-		(pin "4"
-			(uuid "1148ce07-facd-407b-8536-cee768c99c10")
-		)
-		(pin "3"
-			(uuid "2860627c-0d39-4e2f-af41-6d1c4bb70469")
 		)
 		(instances
 			(project "Solar Project Rev2"
@@ -108462,6 +108824,364 @@
 			(project "Solar Project Rev2"
 				(path "/28299885-0f47-4c9d-af0f-f2db484b5c54"
 					(reference "C54")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "1 - Phil's global lib:KRL2012E-M-R005-F-T5")
+		(at 207.01 71.12 0)
+		(unit 1)
+		(body_style 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(in_pos_files yes)
+		(dnp no)
+		(uuid "d5d10459-1c57-4683-9ea7-7d63451dd493")
+		(property "Reference" "R75"
+			(at 208.788 68.326 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Value" ".005"
+			(at 213.36 68.58 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.524 1.524)
+				)
+				(justify left)
+			)
+		)
+		(property "Footprint" "1My_Parts_ Passive:RES_2012_SUS- wide 0805"
+			(at 207.01 71.12 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+					(italic yes)
+				)
+			)
+		)
+		(property "Datasheet" "KRL2012E-M-R005-F-T5"
+			(at 207.01 71.12 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+					(italic yes)
+				)
+			)
+		)
+		(property "Description" "Shunt resistor with Kelvin connections"
+			(at 207.01 71.12 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Average Rectified Current (Io)" ""
+			(at 207.01 71.12 90)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Diode Configuration" ""
+			(at 207.01 71.12 90)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Peak forward surge current" ""
+			(at 207.01 71.12 90)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Part - USA" ""
+			(at 207.01 71.12 90)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "LCSC" "C41382682"
+			(at 207.01 71.12 90)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Continuous Drain Current (Id)" ""
+			(at 207.01 71.12 90)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Drain Source On Resistance (RDS(on)@Vgs,Id)" ""
+			(at 207.01 71.12 90)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Drain Source Voltage (Vdss)" ""
+			(at 207.01 71.12 90)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Gate Threshold Voltage (Vgs(th)@Id)" ""
+			(at 207.01 71.12 90)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Input Capacitance (Ciss@Vds)" ""
+			(at 207.01 71.12 90)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Power Dissipation (Pd)" ""
+			(at 207.01 71.12 90)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Reverse Transfer Capacitance (Crss@Vds)" ""
+			(at 207.01 71.12 90)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Sim.Device" ""
+			(at 207.01 71.12 90)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Sim.Library" ""
+			(at 207.01 71.12 90)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Sim.Name" ""
+			(at 207.01 71.12 90)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Sim.Pins" ""
+			(at 207.01 71.12 90)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Sim.Type" ""
+			(at 207.01 71.12 90)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Total Gate Charge (Qg@Vgs)" ""
+			(at 207.01 71.12 90)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Breakdown Voltage" ""
+			(at 207.01 71.12 90)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Maximum Clamping Voltage" ""
+			(at 207.01 71.12 90)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Number of Lines" ""
+			(at 207.01 71.12 90)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Peak Pulse Current (Ipp)" ""
+			(at 207.01 71.12 90)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Peak Pulse Power Dissipation (Ppp)" ""
+			(at 207.01 71.12 90)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Reverse Stand-Off Voltage (Vrwm)" ""
+			(at 207.01 71.12 90)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "polarity" ""
+			(at 207.01 71.12 90)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(pin "1"
+			(uuid "5766a4a7-484b-4462-9d9e-411861ec2de1")
+		)
+		(pin "2"
+			(uuid "727849c2-4dfe-4334-823b-84ac0703c2ba")
+		)
+		(instances
+			(project "Solar Project Rev2"
+				(path "/28299885-0f47-4c9d-af0f-f2db484b5c54"
+					(reference "R75")
 					(unit 1)
 				)
 			)

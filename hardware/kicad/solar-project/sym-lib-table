@@ -1,7 +1,7 @@
 (sym_lib_table
 	(version 7)
 	(lib (name "KiCad") (type "Table") (uri "C:/Users/forch/AppData/Local/Programs/KiCad/10.0/share/kicad/template/sym-lib-table") (options "") (descr "KiCad Default Libraries"))
-	(lib (name "1 - Phil's global lib") (type "KiCad") (uri "C:/Users/forch/OneDrive/KiCad projects/1 My Parts Lib/Symbols/1 - Phil's global lib.kicad_sym") (options "") (descr ""))
+	(lib (name "1 - Phil's global lib") (type "KiCad") (uri "C:/Users/user/OneDrive/KiCad projects/1 My Parts Lib/Symbols/1 - Phil's global lib.kicad_sym") (options "") (descr ""))
 	(lib (name "PCM_JLCPCB-Analog") (type "KiCad") (uri "C:/Users/forch/AppData/Local/Programs/KiCad/10.0/KiCad/10.0/3rdparty/symbols/com_github_CDFER_JLCPCB-Kicad-Library/JLCPCB-Analog.kicad_sym") (options "") (descr ""))
 	(lib (name "PCM_JLCPCB-Capacitors") (type "KiCad") (uri "C:/Users/forch/AppData/Local/Programs/KiCad/10.0/KiCad/10.0/3rdparty/symbols/com_github_CDFER_JLCPCB-Kicad-Library/JLCPCB-Capacitors.kicad_sym") (options "") (descr ""))
 	(lib (name "PCM_JLCPCB-Connectors_Buttons") (type "KiCad") (uri "C:/Users/forch/AppData/Local/Programs/KiCad/10.0/KiCad/10.0/3rdparty/symbols/com_github_CDFER_JLCPCB-Kicad-Library/JLCPCB-Connectors_Buttons.kicad_sym") (options "") (descr ""))
