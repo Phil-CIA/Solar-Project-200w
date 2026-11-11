@@ -1,0 +1,205 @@
+(footprint "0.96 inOLED display SSD1306"
+	(version 20241229)
+	(generator "pcbnew")
+	(generator_version "9.0")
+	(layer "F.Cu")
+	(descr "Through hole straight pin header, 1x04, 2.54mm pitch, single row")
+	(tags "Through hole pin header THT 1x04 2.54mm single row")
+	(property "Reference" "U1"
+		(at -6.265 -11.52 90)
+		(layer "F.SilkS")
+		(hide yes)
+		(uuid "ffb5e9c7-1226-4d8f-96f4-8c7e6010f218")
+		(effects
+			(font
+				(size 1 1)
+				(thickness 0.15)
+			)
+		)
+	)
+	(property "Value" "~"
+		(at 6.115 -11.52 90)
+		(layer "F.Fab")
+		(hide yes)
+		(uuid "5c7759c7-0a62-4671-8f9c-9ff1370686dd")
+		(effects
+			(font
+				(size 1 1)
+				(thickness 0.15)
+			)
+		)
+	)
+	(property "Datasheet" ""
+		(at 0 0 0)
+		(layer "F.Fab")
+		(hide yes)
+		(uuid "aa541799-2345-4290-9348-8a890983209a")
+		(effects
+			(font
+				(size 1.27 1.27)
+				(thickness 0.15)
+			)
+		)
+	)
+	(property "Description" "0.96 Inch OLED I2C IIC Display Module 12864 128x64 Pixel SSD1306"
+		(at 0 0 0)
+		(layer "F.Fab")
+		(hide yes)
+		(uuid "427dd04c-6345-4d2b-a1b9-bbdfcec2667a")
+		(effects
+			(font
+				(size 1.27 1.27)
+				(thickness 0.15)
+			)
+		)
+	)
+	(attr through_hole)
+	(fp_rect
+		(start -14.355 -13.52)
+		(end 13.445 13.88)
+		(stroke
+			(width 0.1)
+			(type default)
+		)
+		(fill no)
+		(layer "F.SilkS")
+		(uuid "a602e520-cf78-442e-b780-b27754d81da1")
+	)
+	(fp_line
+		(start -5.155 -12.79)
+		(end 5.005 -12.79)
+		(stroke
+			(width 0.1)
+			(type solid)
+		)
+		(layer "F.Fab")
+		(uuid "098da991-cab7-4f30-bffc-5fd1ba93d833")
+	)
+	(fp_line
+		(start -5.155 -10.885)
+		(end -5.155 -12.79)
+		(stroke
+			(width 0.1)
+			(type solid)
+		)
+		(layer "F.Fab")
+		(uuid "41c555e0-a747-49a3-af26-a50acf190b4a")
+	)
+	(fp_line
+		(start -4.52 -10.25)
+		(end -5.155 -10.885)
+		(stroke
+			(width 0.1)
+			(type solid)
+		)
+		(layer "F.Fab")
+		(uuid "1b7e8c0c-8c0b-4936-8a73-a9b28d3416df")
+	)
+	(fp_line
+		(start 5.005 -12.79)
+		(end 5.005 -10.25)
+		(stroke
+			(width 0.1)
+			(type solid)
+		)
+		(layer "F.Fab")
+		(uuid "a66b0c54-e877-42a4-b583-09dcfefc4b73")
+	)
+	(fp_line
+		(start 5.005 -10.25)
+		(end -4.52 -10.25)
+		(stroke
+			(width 0.1)
+			(type solid)
+		)
+		(layer "F.Fab")
+		(uuid "5a2acf19-0031-4d4b-a99c-ca435edbc7a1")
+	)
+	(fp_text user "${REFERENCE}"
+		(at -0.15 -4.75 180)
+		(layer "F.Fab")
+		(uuid "84c093e7-f8b5-4bbc-a0fd-4976fd1dc88a")
+		(effects
+			(font
+				(size 1 1)
+				(thickness 0.15)
+			)
+		)
+	)
+	(pad "1" thru_hole rect
+		(at -3.885 -11.52 90)
+		(size 1.7 1.7)
+		(drill 1)
+		(layers "*.Cu" "*.Mask")
+		(remove_unused_layers no)
+		(uuid "0e9cf9d4-b58f-472d-bd94-8831be9d5258")
+	)
+	(pad "2" thru_hole circle
+		(at -1.345 -11.52 90)
+		(size 1.7 1.7)
+		(drill 1)
+		(layers "*.Cu" "*.Mask")
+		(remove_unused_layers no)
+		(uuid "68f92fc3-c2e8-403c-bc00-ac423ef82977")
+	)
+	(pad "3" thru_hole circle
+		(at 1.195 -11.52 90)
+		(size 1.7 1.7)
+		(drill 1)
+		(layers "*.Cu" "*.Mask")
+		(remove_unused_layers no)
+		(uuid "8d6bcba8-1440-45d2-9122-91076dd0c9bc")
+	)
+	(pad "4" thru_hole circle
+		(at 3.735 -11.52 90)
+		(size 1.7 1.7)
+		(drill 1)
+		(layers "*.Cu" "*.Mask")
+		(remove_unused_layers no)
+		(uuid "5dd6ff0f-3c25-4c74-86ec-afc2046dd5f7")
+	)
+	(pad "5" thru_hole circle
+		(at 11.525 -11.45)
+		(size 3.5 3.5)
+		(drill 2)
+		(layers "*.Cu" "*.Mask")
+		(remove_unused_layers no)
+		(uuid "a7e14c8b-f2dd-438c-8513-e413e94bff48")
+	)
+	(pad "6" thru_hole circle
+		(at -11.525 -11.45)
+		(size 3.5 3.5)
+		(drill 2)
+		(layers "*.Cu" "*.Mask")
+		(remove_unused_layers no)
+		(uuid "1ac6c001-baf6-4819-9e06-5eeb493f16b6")
+	)
+	(pad "7" thru_hole circle
+		(at -11.525 11.6)
+		(size 3.5 3.5)
+		(drill 2)
+		(layers "*.Cu" "*.Mask")
+		(remove_unused_layers no)
+		(uuid "1b7111a6-2259-43cc-aff8-a589a224b3eb")
+	)
+	(pad "8" thru_hole circle
+		(at 11.525 11.6)
+		(size 3.54 3.54)
+		(drill 2)
+		(layers "*.Cu" "*.Mask")
+		(remove_unused_layers no)
+		(uuid "f8069d70-8b6c-43a0-97b8-41a337ec5ee4")
+	)
+	(embedded_fonts no)
+	(model "${KICAD9_3DMODEL_DIR}/Connector_PinHeader_2.54mm.3dshapes/PinHeader_1x04_P2.54mm_Vertical.step"
+		(offset
+			(xyz -4 11.5 2.5)
+		)
+		(scale
+			(xyz 1 1 1)
+		)
+		(rotate
+			(xyz -0 -180 -90)
+		)
+	)
+)
