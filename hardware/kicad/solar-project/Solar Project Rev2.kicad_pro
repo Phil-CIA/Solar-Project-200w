@@ -1324,7 +1324,7 @@
       "intersheets_ref_own_page": false,
       "intersheets_ref_prefix": "",
       "intersheets_ref_short": false,
-      "intersheets_ref_show": false,
+      "intersheets_ref_show": true,
       "intersheets_ref_suffix": "",
       "junction_size_choice": 3,
       "label_size_ratio": 0.375,
@@ -1361,7 +1361,7 @@
         "uuid": "28299885-0f47-4c9d-af0f-f2db484b5c54"
       }
     ],
-    "used_designators": "C3,C8,C21,C30-31,C33-35,M1,TP6-18,F3,J6,R46,R68-75,#FLG8,Q7,H1",
+    "used_designators": "C3,C8,C21,C30-31,C33-35,M1,F3,TP6-18,R16,R46,R68-82,#FLG8,J6,Q7,H1,U11-12",
     "variants": []
   },
   "sheets": [
