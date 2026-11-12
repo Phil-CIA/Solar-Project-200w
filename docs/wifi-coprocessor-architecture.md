@@ -29,7 +29,7 @@ The STM32 is the charge-controller and safety owner. The ESP32-C3 development mo
 - Telemetry publication and remote-request forwarding
 - OTA updates for ESP32 firmware
 
-STM32 firmware updates remain through SWD for the initial implementation. ESP32-assisted STM32 updates are deferred until the communications protocol is proven.
+STM32 firmware updates remain through SWD for the initial implementation. ESP32-assisted STM32 updates are deferred until the communications protocol is proven. The draft delivery plan for [#24](https://github.com/Phil-CIA/Solar-Project-200w/issues/24) is in [esp32-stm32-firmware-delivery-plan.md](esp32-stm32-firmware-delivery-plan.md); it records that Rev1 PA11/PA12 (`RXD_ESP`/`TXD_ESP`) have no USART TX/RX function, so the Rev1 data link would use USART3 on PB10/PB11.
 
 ## Hardware Interface
 
