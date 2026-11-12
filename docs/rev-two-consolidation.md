@@ -28,7 +28,7 @@ Owning sessions reported clean Git worktrees for handoff, safe firmware, and ben
 ## Firmware reconciliation
 
 - STM32: preserve BOOST/PCM commands and the 10-second start/status window; take local-main `BENCH_JUMPER_FITTED=0`, build ID `u6q5q6-10s`, and fault-latched shutdown on an invalid I2C-speed override. The earlier bring-up worktree's 1-second Q5/Q6 variant is historical, not the consolidated default.
-- ESP32: retain `b62498e` protected setup AP, explicit component dependencies, and persistent reconnect/fallback event loop. The open-AP implementation from `61886c3` stays in history, not in a second competing active firmware folder. Its web credential-clear endpoint is not retained; reconfiguration/erase behavior and incompatible NVS namespaces are documented in the [application README](../firmware/esp32_c3_wifi/README.md).
+- ESP32 (superseded 2026-11-12 by DEC-068 in the [decisions log](decisions-log.md): the active app is the bench-tested `5174fab` supervisor with the `b62498e` WPA2 setup AP; `/clear` is retained and credentials use NVS namespace `wifi_cfg`): retain `b62498e` protected setup AP, explicit component dependencies, and persistent reconnect/fallback event loop. The open-AP implementation from `61886c3` stays in history, not in a second competing active firmware folder. Its web credential-clear endpoint is not retained; reconfiguration/erase behavior and incompatible NVS namespaces are documented in the [application README](../firmware/esp32_c3_wifi/README.md).
 - Documentation: preserve both Q5/Q6 accounts with provenance rather than erasing the unresolved D5 polarity discrepancy or presenting merged notes as a new verified bench test.
 
 ## Rev2 change register

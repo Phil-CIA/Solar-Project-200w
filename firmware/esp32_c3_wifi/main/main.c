@@ -1,4 +1,6 @@
+#include <ctype.h>
 #include <stdbool.h>
+#include <stdint.h>
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
@@ -11,388 +13,560 @@
 #include "esp_random.h"
 #include "esp_system.h"
 #include "esp_wifi.h"
+#include "driver/gpio.h"
+#include "driver/usb_serial_jtag.h"
 #include "freertos/FreeRTOS.h"
 #include "freertos/event_groups.h"
-#include "freertos/task.h"
 #include "nvs.h"
 #include "nvs_flash.h"
 
-#define WIFI_NAMESPACE "wifi_config"
-#define WIFI_SSID_KEY "ssid"
-#define WIFI_PASSWORD_KEY "password"
-#define WIFI_SSID_MAX_BYTES 32
-#define WIFI_PASSWORD_MAX_BYTES 63
-#define WIFI_RETRY_LIMIT 5
-#define FORM_BODY_MAX_BYTES 384
-#define WIFI_CONNECTED_BIT BIT0
-#define WIFI_FALLBACK_BIT BIT1
-#define PORTAL_JOIN_FAILED_BIT BIT2
+#define WIFI_GOT_IP_BIT    BIT0
+#define WIFI_DISC_BIT      BIT1
+#define WIFI_PROV_BIT      BIT2
+#define WIFI_CLEAR_BIT     BIT3
 
-static const char *TAG = "solar_wifi";
-static EventGroupHandle_t s_wifi_events;
-static httpd_handle_t s_http_server;
-static volatile bool s_wifi_started;
-static volatile bool s_portal_active;
-static volatile bool s_station_join_requested;
-static volatile unsigned s_retry_count;
+#define WIFI_BACKOFF_MIN_MS       1000U
+#define WIFI_BACKOFF_MAX_MS       60000U
+#define WIFI_ATTEMPT_TIMEOUT_MS   30000U
+#define WIFI_AP_FALLBACK_MS       (5U * 60U * 1000U)
+#define SUPERVISOR_POLL_MS        250U
+#define SETUP_BUTTON_GPIO         GPIO_NUM_9
+#define SETUP_BUTTON_HOLD_MS      3000U
+#define SETUP_AP_IDLE_CLOSE_MS    (10U * 60U * 1000U)
 
-static const char SETUP_PAGE[] =
-    "<!doctype html><html><head><meta name=\"viewport\" "
-    "content=\"width=device-width,initial-scale=1\"><title>Solar Wi-Fi setup</title>"
-    "</head><body><h1>Solar Wi-Fi setup</h1>"
-    "<form method=\"post\" action=\"/save\">"
-    "<label>Network name (SSID)<br><input name=\"ssid\" maxlength=\"32\" "
-    "autocomplete=\"username\" required></label><br><br>"
-    "<label>Network password<br><input name=\"password\" type=\"password\" "
-    "maxlength=\"63\" autocomplete=\"new-password\"></label><br><br>"
-    "<button type=\"submit\">Save and connect</button></form></body></html>";
+#define WIFI_NAMESPACE     "wifi_cfg"
+#define WIFI_SSID_KEY      "ssid"
+#define WIFI_PASS_KEY      "pass"
+#define MAX_SSID_LEN       32
+#define MAX_PASS_LEN       63
+#define MAX_FORM_BODY_LEN  192
 
-static esp_err_t save_credentials(const char *ssid, const char *password)
-{
-    nvs_handle_t handle;
-    esp_err_t err = nvs_open(WIFI_NAMESPACE, NVS_READWRITE, &handle);
-    if (err != ESP_OK) {
-        return err;
+static const char *TAG = "wifi_prov";
+
+typedef struct {
+    char ssid[MAX_SSID_LEN + 1];
+    char pass[MAX_PASS_LEN + 1];
+    bool valid;
+} wifi_creds_t;
+
+static EventGroupHandle_t s_wifi_event_group;
+static httpd_handle_t s_httpd_server;
+static wifi_creds_t s_prov_creds;
+static volatile bool s_sta_has_ip;
+static bool s_ap_active;
+static TickType_t s_ap_opened_at;
+static bool s_ap_manual;
+
+static const char *wifi_reason_to_str(uint8_t reason) {
+    switch (reason) {
+        case WIFI_REASON_AUTH_EXPIRE: return "AUTH_EXPIRE";
+        case WIFI_REASON_AUTH_LEAVE: return "AUTH_LEAVE";
+        case WIFI_REASON_ASSOC_EXPIRE: return "ASSOC_EXPIRE";
+        case WIFI_REASON_ASSOC_TOOMANY: return "ASSOC_TOOMANY";
+        case WIFI_REASON_NOT_AUTHED: return "NOT_AUTHED";
+        case WIFI_REASON_NOT_ASSOCED: return "NOT_ASSOCED";
+        case WIFI_REASON_ASSOC_LEAVE: return "ASSOC_LEAVE";
+        case WIFI_REASON_ASSOC_NOT_AUTHED: return "ASSOC_NOT_AUTHED";
+        case WIFI_REASON_DISASSOC_PWRCAP_BAD: return "DISASSOC_PWRCAP_BAD";
+        case WIFI_REASON_DISASSOC_SUPCHAN_BAD: return "DISASSOC_SUPCHAN_BAD";
+        case WIFI_REASON_IE_INVALID: return "IE_INVALID";
+        case WIFI_REASON_MIC_FAILURE: return "MIC_FAILURE";
+        case WIFI_REASON_4WAY_HANDSHAKE_TIMEOUT: return "4WAY_TIMEOUT";
+        case WIFI_REASON_GROUP_KEY_UPDATE_TIMEOUT: return "GROUP_KEY_TIMEOUT";
+        case WIFI_REASON_IE_IN_4WAY_DIFFERS: return "IE_IN_4WAY_DIFFERS";
+        case WIFI_REASON_GROUP_CIPHER_INVALID: return "GROUP_CIPHER_INVALID";
+        case WIFI_REASON_PAIRWISE_CIPHER_INVALID: return "PAIRWISE_CIPHER_INVALID";
+        case WIFI_REASON_AKMP_INVALID: return "AKMP_INVALID";
+        case WIFI_REASON_UNSUPP_RSN_IE_VERSION: return "UNSUPP_RSN_IE_VERSION";
+        case WIFI_REASON_INVALID_RSN_IE_CAP: return "INVALID_RSN_IE_CAP";
+        case WIFI_REASON_802_1X_AUTH_FAILED: return "8021X_AUTH_FAILED";
+        case WIFI_REASON_CIPHER_SUITE_REJECTED: return "CIPHER_SUITE_REJECTED";
+        case WIFI_REASON_BEACON_TIMEOUT: return "BEACON_TIMEOUT";
+        case WIFI_REASON_NO_AP_FOUND: return "NO_AP_FOUND";
+        case WIFI_REASON_AUTH_FAIL: return "AUTH_FAIL";
+        case WIFI_REASON_ASSOC_FAIL: return "ASSOC_FAIL";
+        case WIFI_REASON_HANDSHAKE_TIMEOUT: return "HANDSHAKE_TIMEOUT";
+        case WIFI_REASON_CONNECTION_FAIL: return "CONNECTION_FAIL";
+        case WIFI_REASON_AP_TSF_RESET: return "AP_TSF_RESET";
+        case WIFI_REASON_ROAMING: return "ROAMING";
+        default: return "UNKNOWN";
     }
-
-    err = nvs_set_str(handle, WIFI_SSID_KEY, ssid);
-    if (err == ESP_OK) {
-        err = nvs_set_str(handle, WIFI_PASSWORD_KEY, password);
-    }
-    if (err == ESP_OK) {
-        err = nvs_commit(handle);
-    }
-    nvs_close(handle);
-    return err;
 }
 
-static bool load_credentials(char *ssid, size_t ssid_size,
-                             char *password, size_t password_size)
-{
-    nvs_handle_t handle;
-    esp_err_t err = nvs_open(WIFI_NAMESPACE, NVS_READONLY, &handle);
-    if (err == ESP_ERR_NVS_NOT_FOUND) {
-        return false;
+static const char *wifi_authmode_to_str(wifi_auth_mode_t mode) {
+    switch (mode) {
+        case WIFI_AUTH_OPEN: return "OPEN";
+        case WIFI_AUTH_WEP: return "WEP";
+        case WIFI_AUTH_WPA_PSK: return "WPA_PSK";
+        case WIFI_AUTH_WPA2_PSK: return "WPA2_PSK";
+        case WIFI_AUTH_WPA_WPA2_PSK: return "WPA_WPA2_PSK";
+        case WIFI_AUTH_WPA2_ENTERPRISE: return "WPA2_ENTERPRISE";
+        case WIFI_AUTH_WPA3_PSK: return "WPA3_PSK";
+        case WIFI_AUTH_WPA2_WPA3_PSK: return "WPA2_WPA3_PSK";
+        case WIFI_AUTH_WAPI_PSK: return "WAPI_PSK";
+        default: return "UNKNOWN";
     }
-    if (err != ESP_OK) {
-        ESP_LOGE(TAG, "Cannot open Wi-Fi settings in NVS: %s", esp_err_to_name(err));
-        return false;
-    }
-
-    size_t ssid_length = ssid_size;
-    size_t password_length = password_size;
-    err = nvs_get_str(handle, WIFI_SSID_KEY, ssid, &ssid_length);
-    if (err == ESP_OK) {
-        err = nvs_get_str(handle, WIFI_PASSWORD_KEY, password, &password_length);
-    }
-    nvs_close(handle);
-
-    if (err == ESP_ERR_NVS_NOT_FOUND) {
-        return false;
-    }
-    if (err != ESP_OK || ssid_length < 2 || ssid_length > ssid_size ||
-        password_length < 1 || password_length > password_size) {
-        ESP_LOGW(TAG, "Stored Wi-Fi settings are missing or invalid; opening setup AP");
-        return false;
-    }
-    return true;
 }
 
-static int hex_value(char c)
-{
+static void log_target_scan_diagnostics(const wifi_creds_t *creds) {
+    wifi_scan_config_t scan_cfg = {
+        .ssid = NULL,
+        .bssid = NULL,
+        .channel = 0,
+        .show_hidden = true
+    };
+    esp_err_t err = esp_wifi_scan_start(&scan_cfg, true);
+    if (err != ESP_OK) {
+        ESP_LOGW(TAG, "Scan start failed: %s", esp_err_to_name(err));
+        return;
+    }
+
+    uint16_t ap_count = 0;
+    err = esp_wifi_scan_get_ap_num(&ap_count);
+    if (err != ESP_OK) {
+        ESP_LOGW(TAG, "Scan count read failed: %s", esp_err_to_name(err));
+        return;
+    }
+
+    enum { SCAN_RECORD_LIMIT = 20 };
+    wifi_ap_record_t *records = calloc(SCAN_RECORD_LIMIT, sizeof(*records));
+    if (records == NULL) {
+        ESP_LOGW(TAG, "Scan records allocation failed");
+        return;
+    }
+
+    uint16_t fetched = SCAN_RECORD_LIMIT;
+    err = esp_wifi_scan_get_ap_records(&fetched, records);
+    if (err != ESP_OK) {
+        ESP_LOGW(TAG, "Scan records read failed: %s", esp_err_to_name(err));
+        free(records);
+        return;
+    }
+
+    uint16_t matches = 0;
+    int best_rssi = -127;
+    uint8_t best_chan = 0;
+    wifi_auth_mode_t best_auth = WIFI_AUTH_OPEN;
+
+    for (uint16_t i = 0; i < fetched; ++i) {
+        if (strncmp((const char *)records[i].ssid, creds->ssid, sizeof(records[i].ssid)) == 0) {
+            matches++;
+            if (records[i].rssi > best_rssi) {
+                best_rssi = records[i].rssi;
+                best_chan = records[i].primary;
+                best_auth = records[i].authmode;
+            }
+        }
+    }
+
+    ESP_LOGI(TAG, "Pre-connect scan: ap_count=%u fetched=%u target_matches=%u",
+             (unsigned)ap_count, (unsigned)fetched, (unsigned)matches);
+    if (matches > 0) {
+        ESP_LOGI(TAG, "Best target match: rssi=%d dBm channel=%u auth=%s",
+                 best_rssi, (unsigned)best_chan, wifi_authmode_to_str(best_auth));
+    } else {
+        ESP_LOGW(TAG, "Target AP not found in scan snapshot");
+    }
+
+    free(records);
+}
+
+static const char k_form_html[] =
+    "<!doctype html><html><head><meta charset='utf-8'><title>Solar Wi-Fi Setup</title></head>"
+    "<body><h2>Solar Wi-Fi Setup</h2>"
+    "<form method='POST' action='/save'>"
+    "<label>SSID (1-32 chars)</label><br><input name='ssid' maxlength='32' required><br><br>"
+    "<label>Password (8-63 chars for WPA/WPA2, leave empty for open)</label><br>"
+    "<input name='pass' type='password' maxlength='63'><br><br>"
+    "<button type='submit'>Save and Connect</button></form><br>"
+    "<form method='POST' action='/clear'><button type='submit'>Clear Saved Credentials</button></form>"
+    "</body></html>";
+
+static uint8_t hex_to_nibble(char c) {
     if (c >= '0' && c <= '9') {
-        return c - '0';
+        return (uint8_t)(c - '0');
     }
+    c = (char)tolower((unsigned char)c);
     if (c >= 'a' && c <= 'f') {
-        return c - 'a' + 10;
+        return (uint8_t)(10 + c - 'a');
     }
-    if (c >= 'A' && c <= 'F') {
-        return c - 'A' + 10;
-    }
-    return -1;
+    return 0xFF;
 }
 
-static bool url_decode(char *destination, size_t destination_size,
-                       const char *source, size_t source_length)
-{
-    size_t output_length = 0;
-    for (size_t i = 0; i < source_length; ++i) {
-        unsigned char value = (unsigned char)source[i];
-        if (value == '+') {
-            value = ' ';
-        } else if (value == '%') {
-            if (i + 2 >= source_length) {
-                return false;
-            }
-            int high = hex_value(source[i + 1]);
-            int low = hex_value(source[i + 2]);
-            if (high < 0 || low < 0) {
-                return false;
-            }
-            value = (unsigned char)((high << 4) | low);
-            i += 2;
-        }
-
-        if (value == '\0' || output_length + 1 >= destination_size) {
-            return false;
-        }
-        destination[output_length++] = (char)value;
-    }
-    destination[output_length] = '\0';
-    return true;
-}
-
-static bool parse_form(char *body, char *ssid, size_t ssid_size,
-                       char *password, size_t password_size)
-{
-    bool found_ssid = false;
-    bool found_password = false;
-    char *save_pointer = NULL;
-
-    for (char *pair = strtok_r(body, "&", &save_pointer);
-         pair != NULL; pair = strtok_r(NULL, "&", &save_pointer)) {
-        char *equals = strchr(pair, '=');
-        if (equals == NULL) {
-            return false;
-        }
-        *equals++ = '\0';
-        char *destination = NULL;
-        size_t destination_size = 0;
-        bool *found = NULL;
-        if (strcmp(pair, "ssid") == 0) {
-            destination = ssid;
-            destination_size = ssid_size;
-            found = &found_ssid;
-        } else if (strcmp(pair, "password") == 0) {
-            destination = password;
-            destination_size = password_size;
-            found = &found_password;
-        } else {
+static size_t url_decode(const char *in, size_t in_len, char *out, size_t out_len) {
+    size_t w = 0;
+    for (size_t r = 0; r < in_len && w + 1 < out_len; ++r) {
+        char c = in[r];
+        if (c == '+') {
+            out[w++] = ' ';
             continue;
         }
-
-        if (*found || !url_decode(destination, destination_size, equals, strlen(equals))) {
-            return false;
+        if (c == '%' && r + 2 < in_len) {
+            const uint8_t hi = hex_to_nibble(in[r + 1]);
+            const uint8_t lo = hex_to_nibble(in[r + 2]);
+            if (hi != 0xFF && lo != 0xFF) {
+                out[w++] = (char)((hi << 4U) | lo);
+                r += 2;
+                continue;
+            }
         }
-        *found = true;
+        out[w++] = c;
     }
-    return found_ssid && found_password;
+    out[w] = '\0';
+    return w;
 }
 
-static esp_err_t handle_index(httpd_req_t *request)
-{
-    esp_err_t err = httpd_resp_set_type(request, "text/html; charset=utf-8");
+static void trim_ascii_whitespace(char *s) {
+    size_t len = strlen(s);
+    size_t start = 0;
+    while (start < len && isspace((unsigned char)s[start])) {
+        start++;
+    }
+    size_t end = len;
+    while (end > start && isspace((unsigned char)s[end - 1])) {
+        end--;
+    }
+    if (start > 0 || end < len) {
+        memmove(s, s + start, end - start);
+        s[end - start] = '\0';
+    }
+}
+
+static bool parse_form_value(const char *body, const char *key, char *out, size_t out_len) {
+    const size_t key_len = strlen(key);
+    const char *cur = body;
+    while (*cur != '\0') {
+        const char *next = strchr(cur, '&');
+        const size_t part_len = next ? (size_t)(next - cur) : strlen(cur);
+        if (part_len > key_len + 1 && strncmp(cur, key, key_len) == 0 && cur[key_len] == '=') {
+            const char *value = cur + key_len + 1;
+            const size_t value_len = part_len - (key_len + 1);
+            url_decode(value, value_len, out, out_len);
+            return true;
+        }
+        if (!next) {
+            break;
+        }
+        cur = next + 1;
+    }
+    out[0] = '\0';
+    return false;
+}
+
+static esp_err_t save_creds_to_nvs(const wifi_creds_t *creds) {
+    nvs_handle_t nvs_handle;
+    esp_err_t err = nvs_open(WIFI_NAMESPACE, NVS_READWRITE, &nvs_handle);
+    if (err != ESP_OK) {
+        return err;
+    }
+    err = nvs_set_str(nvs_handle, WIFI_SSID_KEY, creds->ssid);
     if (err == ESP_OK) {
-        err = httpd_resp_set_hdr(request, "Cache-Control", "no-store");
+        err = nvs_set_str(nvs_handle, WIFI_PASS_KEY, creds->pass);
     }
     if (err == ESP_OK) {
-        err = httpd_resp_send(request, SETUP_PAGE, HTTPD_RESP_USE_STRLEN);
+        err = nvs_commit(nvs_handle);
     }
+    nvs_close(nvs_handle);
     return err;
 }
 
-static esp_err_t handle_save(httpd_req_t *request)
-{
-    if (request->content_len == 0 || request->content_len > FORM_BODY_MAX_BYTES) {
-        return httpd_resp_send_err(request, HTTPD_400_BAD_REQUEST, "Invalid form size");
-    }
-
-    char body[FORM_BODY_MAX_BYTES + 1];
-    size_t received = 0;
-    while (received < request->content_len) {
-        int count = httpd_req_recv(request, body + received,
-                                   request->content_len - received);
-        if (count <= 0) {
-            return httpd_resp_send_err(request, HTTPD_400_BAD_REQUEST,
-                                       "Could not read form");
-        }
-        received += (size_t)count;
-    }
-    body[received] = '\0';
-
-    char ssid[WIFI_SSID_MAX_BYTES + 1] = {0};
-    char password[WIFI_PASSWORD_MAX_BYTES + 1] = {0};
-    if (!parse_form(body, ssid, sizeof(ssid), password, sizeof(password)) ||
-        strlen(ssid) == 0 ||
-        (strlen(password) != 0 && strlen(password) < 8)) {
-        return httpd_resp_send_err(request, HTTPD_400_BAD_REQUEST,
-                                   "Enter an SSID and a valid Wi-Fi password");
-    }
-
-    esp_err_t err = save_credentials(ssid, password);
-    if (err != ESP_OK) {
-        ESP_LOGE(TAG, "Cannot save Wi-Fi settings: %s", esp_err_to_name(err));
-        return httpd_resp_send_err(request, HTTPD_500_INTERNAL_SERVER_ERROR,
-                                   "Could not save Wi-Fi settings");
-    }
-
-    wifi_config_t station_config = {0};
-    memcpy(station_config.sta.ssid, ssid, strlen(ssid));
-    memcpy(station_config.sta.password, password, strlen(password));
-
-    err = esp_wifi_set_mode(WIFI_MODE_APSTA);
-    if (err == ESP_OK) {
-        err = esp_wifi_set_config(WIFI_IF_STA, &station_config);
-    }
-    if (err != ESP_OK) {
-        ESP_LOGE(TAG, "Cannot configure station: %s", esp_err_to_name(err));
-        return httpd_resp_send_err(request, HTTPD_500_INTERNAL_SERVER_ERROR,
-                                   "Could not start Wi-Fi connection");
-    }
-
-    s_retry_count = 0;
-    s_station_join_requested = true;
-    xEventGroupClearBits(s_wifi_events,
-                         WIFI_CONNECTED_BIT | WIFI_FALLBACK_BIT | PORTAL_JOIN_FAILED_BIT);
-    err = esp_wifi_connect();
-    if (err != ESP_OK) {
-        s_station_join_requested = false;
-        ESP_LOGE(TAG, "Cannot start Wi-Fi connection: %s", esp_err_to_name(err));
-        return httpd_resp_send_err(request, HTTPD_500_INTERNAL_SERVER_ERROR,
-                                   "Could not start Wi-Fi connection");
-    }
-
-    static const char response[] =
-        "<!doctype html><html><body><h1>Settings saved</h1>"
-        "<p>Trying to join the network. The setup page will close after connection.</p>"
-        "<p>If connection fails, reconnect to the setup network and try again.</p>"
-        "</body></html>";
-    err = httpd_resp_set_type(request, "text/html; charset=utf-8");
+static esp_err_t load_creds_from_nvs(wifi_creds_t *creds) {
+    memset(creds, 0, sizeof(*creds));
+    nvs_handle_t nvs_handle;
+    esp_err_t err = nvs_open(WIFI_NAMESPACE, NVS_READONLY, &nvs_handle);
     if (err != ESP_OK) {
         return err;
     }
-    return httpd_resp_send(request, response, HTTPD_RESP_USE_STRLEN);
+
+    size_t ssid_len = sizeof(creds->ssid);
+    size_t pass_len = sizeof(creds->pass);
+    err = nvs_get_str(nvs_handle, WIFI_SSID_KEY, creds->ssid, &ssid_len);
+    if (err == ESP_OK) {
+        err = nvs_get_str(nvs_handle, WIFI_PASS_KEY, creds->pass, &pass_len);
+    }
+    nvs_close(nvs_handle);
+    if (err != ESP_OK) {
+        return err;
+    }
+
+    const size_t ssid_actual_len = strnlen(creds->ssid, sizeof(creds->ssid));
+    const size_t pass_actual_len = strnlen(creds->pass, sizeof(creds->pass));
+    if (ssid_actual_len == 0 || ssid_actual_len > MAX_SSID_LEN) {
+        return ESP_ERR_INVALID_SIZE;
+    }
+    if (pass_actual_len > 0 && (pass_actual_len < 8 || pass_actual_len > MAX_PASS_LEN)) {
+        return ESP_ERR_INVALID_SIZE;
+    }
+    creds->valid = true;
+    return ESP_OK;
 }
 
-static esp_err_t start_http_server(void)
-{
-    httpd_config_t config = HTTPD_DEFAULT_CONFIG();
-    config.stack_size = 6144;
-    config.max_uri_handlers = 2;
+static esp_err_t root_get_handler(httpd_req_t *req) {
+    httpd_resp_set_type(req, "text/html");
+    return httpd_resp_send(req, k_form_html, HTTPD_RESP_USE_STRLEN);
+}
 
-    esp_err_t err = httpd_start(&s_http_server, &config);
+static esp_err_t save_post_handler(httpd_req_t *req) {
+    if (req->content_len <= 0 || req->content_len > MAX_FORM_BODY_LEN) {
+        httpd_resp_set_status(req, "400 Bad Request");
+        return httpd_resp_sendstr(req, "Invalid form size.");
+    }
+
+    char body[MAX_FORM_BODY_LEN + 1];
+    int total = 0;
+    while (total < req->content_len) {
+        int recv_len = httpd_req_recv(req, body + total, req->content_len - total);
+        if (recv_len <= 0) {
+            httpd_resp_set_status(req, "400 Bad Request");
+            return httpd_resp_sendstr(req, "Could not read form.");
+        }
+        total += recv_len;
+    }
+    body[total] = '\0';
+
+    wifi_creds_t incoming = {0};
+    bool has_ssid = parse_form_value(body, "ssid", incoming.ssid, sizeof(incoming.ssid));
+    (void)parse_form_value(body, "pass", incoming.pass, sizeof(incoming.pass));
+    trim_ascii_whitespace(incoming.ssid);
+    trim_ascii_whitespace(incoming.pass);
+    if (!has_ssid) {
+        httpd_resp_set_status(req, "400 Bad Request");
+        return httpd_resp_sendstr(req, "SSID missing.");
+    }
+
+    size_t ssid_len = strnlen(incoming.ssid, sizeof(incoming.ssid));
+    size_t pass_len = strnlen(incoming.pass, sizeof(incoming.pass));
+    if (ssid_len == 0 || ssid_len > MAX_SSID_LEN) {
+        httpd_resp_set_status(req, "400 Bad Request");
+        return httpd_resp_sendstr(req, "SSID must be 1-32 chars.");
+    }
+    if (pass_len > 0 && (pass_len < 8 || pass_len > MAX_PASS_LEN)) {
+        httpd_resp_set_status(req, "400 Bad Request");
+        return httpd_resp_sendstr(req, "Password must be 8-63 chars or empty.");
+    }
+    incoming.valid = true;
+
+    esp_err_t err = save_creds_to_nvs(&incoming);
+    if (err != ESP_OK) {
+        ESP_LOGE(TAG, "NVS save failed: %s", esp_err_to_name(err));
+        httpd_resp_set_status(req, "500 Internal Server Error");
+        return httpd_resp_sendstr(req, "Failed to save credentials.");
+    }
+
+    s_prov_creds = incoming;
+    ESP_LOGI(TAG, "Provisioned SSID received (len=%u), password len=%u",
+             (unsigned)ssid_len, (unsigned)pass_len);
+    xEventGroupSetBits(s_wifi_event_group, WIFI_PROV_BIT);
+    return httpd_resp_sendstr(req, "Saved. Device is connecting to Wi-Fi now.");
+}
+
+static esp_err_t clear_post_handler(httpd_req_t *req) {
+    nvs_handle_t nvs_handle;
+    esp_err_t err = nvs_open(WIFI_NAMESPACE, NVS_READWRITE, &nvs_handle);
+    if (err != ESP_OK) {
+        httpd_resp_set_status(req, "500 Internal Server Error");
+        return httpd_resp_sendstr(req, "NVS open failed.");
+    }
+    err = nvs_erase_key(nvs_handle, WIFI_SSID_KEY);
+    if (err == ESP_ERR_NVS_NOT_FOUND) {
+        err = ESP_OK;
+    }
+    if (err == ESP_OK) {
+        esp_err_t pass_err = nvs_erase_key(nvs_handle, WIFI_PASS_KEY);
+        if (pass_err != ESP_OK && pass_err != ESP_ERR_NVS_NOT_FOUND) {
+            err = pass_err;
+        }
+    }
+    if (err == ESP_OK) {
+        err = nvs_commit(nvs_handle);
+    }
+    nvs_close(nvs_handle);
+    if (err != ESP_OK) {
+        ESP_LOGE(TAG, "NVS clear failed: %s", esp_err_to_name(err));
+        httpd_resp_set_status(req, "500 Internal Server Error");
+        return httpd_resp_sendstr(req, "Failed to clear credentials.");
+    }
+    memset(&s_prov_creds, 0, sizeof(s_prov_creds));
+    ESP_LOGW(TAG, "Saved Wi-Fi credentials cleared");
+    xEventGroupSetBits(s_wifi_event_group, WIFI_CLEAR_BIT);
+    return httpd_resp_sendstr(req, "Saved credentials cleared. Re-enter Wi-Fi credentials.");
+}
+
+static esp_err_t start_http_server(void) {
+    httpd_config_t config = HTTPD_DEFAULT_CONFIG();
+    config.max_open_sockets = 3;
+    config.uri_match_fn = httpd_uri_match_wildcard;
+
+    esp_err_t err = httpd_start(&s_httpd_server, &config);
     if (err != ESP_OK) {
         return err;
     }
 
-    const httpd_uri_t index_uri = {
+    const httpd_uri_t root_uri = {
         .uri = "/",
         .method = HTTP_GET,
-        .handler = handle_index,
+        .handler = root_get_handler,
         .user_ctx = NULL
     };
     const httpd_uri_t save_uri = {
         .uri = "/save",
         .method = HTTP_POST,
-        .handler = handle_save,
+        .handler = save_post_handler,
         .user_ctx = NULL
     };
-    err = httpd_register_uri_handler(s_http_server, &index_uri);
-    if (err == ESP_OK) {
-        err = httpd_register_uri_handler(s_http_server, &save_uri);
-    }
-    if (err != ESP_OK) {
-        httpd_stop(s_http_server);
-        s_http_server = NULL;
-    }
-    return err;
-}
+    const httpd_uri_t clear_uri = {
+        .uri = "/clear",
+        .method = HTTP_POST,
+        .handler = clear_post_handler,
+        .user_ctx = NULL
+    };
 
-static esp_err_t configure_setup_ap(void)
-{
-    static const char alphabet[] =
-        "ABCDEFGHJKLMNPQRSTUVWXYZabcdefghijkmnopqrstuvwxyz23456789";
-    char ap_ssid[33];
-    char ap_password[13];
-    uint8_t mac[6];
-
-    ESP_ERROR_CHECK(esp_read_mac(mac, ESP_MAC_WIFI_SOFTAP));
-    snprintf(ap_ssid, sizeof(ap_ssid), "Solar-Setup-%02X%02X%02X",
-             mac[3], mac[4], mac[5]);
-    for (size_t i = 0; i < sizeof(ap_password) - 1; ++i) {
-        ap_password[i] = alphabet[esp_random() % (sizeof(alphabet) - 1)];
-    }
-    ap_password[sizeof(ap_password) - 1] = '\0';
-
-    wifi_config_t ap_config = {0};
-    memcpy(ap_config.ap.ssid, ap_ssid, strlen(ap_ssid));
-    ap_config.ap.ssid_len = (uint8_t)strlen(ap_ssid);
-    memcpy(ap_config.ap.password, ap_password, strlen(ap_password) + 1);
-    ap_config.ap.authmode = WIFI_AUTH_WPA2_PSK;
-    ap_config.ap.max_connection = 2;
-
-    s_station_join_requested = false;
-    s_portal_active = true;
-    esp_err_t err = esp_wifi_set_mode(WIFI_MODE_APSTA);
-    if (err == ESP_OK) {
-        err = esp_wifi_set_config(WIFI_IF_AP, &ap_config);
-    }
-    if (err == ESP_OK) {
-        err = esp_wifi_set_mode(WIFI_MODE_AP);
-    }
-    if (err == ESP_OK && !s_wifi_started) {
-        err = esp_wifi_start();
-        if (err == ESP_OK) {
-            s_wifi_started = true;
-        }
-    }
-    if (err != ESP_OK) {
-        s_portal_active = false;
-        return err;
-    }
-
-    err = start_http_server();
-    if (err != ESP_OK) {
-        s_portal_active = false;
-        return err;
-    }
-
-    ESP_LOGI(TAG, "Setup network: %s", ap_ssid);
-    ESP_LOGI(TAG, "Setup password: %s", ap_password);
-    ESP_LOGI(TAG, "Open http://192.168.4.1/ to configure Wi-Fi");
+    httpd_register_uri_handler(s_httpd_server, &root_uri);
+    httpd_register_uri_handler(s_httpd_server, &save_uri);
+    httpd_register_uri_handler(s_httpd_server, &clear_uri);
     return ESP_OK;
 }
 
-static void wifi_event_handler(void *argument, esp_event_base_t event_base,
-                               int32_t event_id, void *event_data)
-{
-    (void)argument;
-    (void)event_data;
+static void stop_http_server(void) {
+    if (s_httpd_server) {
+        httpd_stop(s_httpd_server);
+        s_httpd_server = NULL;
+    }
+}
 
+static void wifi_event_handler(void *arg, esp_event_base_t event_base, int32_t event_id, void *event_data) {
     if (event_base == WIFI_EVENT && event_id == WIFI_EVENT_STA_DISCONNECTED) {
-        xEventGroupClearBits(s_wifi_events, WIFI_CONNECTED_BIT);
-        if (!s_station_join_requested) {
-            return;
-        }
-        if (s_retry_count < WIFI_RETRY_LIMIT) {
-            ++s_retry_count;
-            esp_err_t err = esp_wifi_connect();
-            if (err != ESP_OK) {
-                ESP_LOGW(TAG, "Reconnect request failed: %s", esp_err_to_name(err));
-            }
-            return;
-        }
-
-        s_station_join_requested = false;
-        if (s_portal_active) {
-            xEventGroupSetBits(s_wifi_events, PORTAL_JOIN_FAILED_BIT);
-        } else {
-            xEventGroupSetBits(s_wifi_events, WIFI_FALLBACK_BIT);
-        }
+        wifi_event_sta_disconnected_t *disconn = (wifi_event_sta_disconnected_t *)event_data;
+        ESP_LOGW(TAG, "STA disconnected: reason=%u (%s)", disconn->reason, wifi_reason_to_str(disconn->reason));
+        s_sta_has_ip = false;
+        xEventGroupSetBits(s_wifi_event_group, WIFI_DISC_BIT);
+        return;
     }
 
     if (event_base == IP_EVENT && event_id == IP_EVENT_STA_GOT_IP) {
         ip_event_got_ip_t *event = (ip_event_got_ip_t *)event_data;
-        s_retry_count = 0;
-        ESP_LOGI(TAG, "Connected; IP address: " IPSTR, IP2STR(&event->ip_info.ip));
-        xEventGroupSetBits(s_wifi_events, WIFI_CONNECTED_BIT);
+        ESP_LOGI(TAG, "Got IP: " IPSTR, IP2STR(&event->ip_info.ip));
+        s_sta_has_ip = true;
+        xEventGroupSetBits(s_wifi_event_group, WIFI_GOT_IP_BIT);
     }
 }
 
-void app_main(void)
-{
-    char ssid[WIFI_SSID_MAX_BYTES + 1] = {0};
-    char password[WIFI_PASSWORD_MAX_BYTES + 1] = {0};
+static void apply_sta_config(const wifi_creds_t *creds) {
+    wifi_config_t wifi_cfg = {0};
+    strlcpy((char *)wifi_cfg.sta.ssid, creds->ssid, sizeof(wifi_cfg.sta.ssid));
+    strlcpy((char *)wifi_cfg.sta.password, creds->pass, sizeof(wifi_cfg.sta.password));
+    wifi_cfg.sta.threshold.authmode = WIFI_AUTH_OPEN;
+    wifi_cfg.sta.scan_method = WIFI_ALL_CHANNEL_SCAN;
+    wifi_cfg.sta.sort_method = WIFI_CONNECT_AP_BY_SIGNAL;
+    wifi_cfg.sta.pmf_cfg.capable = true;
+    wifi_cfg.sta.pmf_cfg.required = false;
+    ESP_ERROR_CHECK(esp_wifi_set_config(WIFI_IF_STA, &wifi_cfg));
+    ESP_LOGI(TAG, "STA config set (password_len=%u)",
+             (unsigned)strnlen(creds->pass, sizeof(creds->pass)));
+}
+
+// Setup AP runs alongside STA (APSTA) so router retries continue while it is open.
+// Generated once per boot so the password stays stable if the AP reopens; it is only
+// published on the console (USB and the STM32 COM relay).
+static const char *setup_ap_password(void) {
+    static const char alphabet[] = "ABCDEFGHJKLMNPQRSTUVWXYZabcdefghijkmnopqrstuvwxyz23456789";
+    static char password[13];
+    if (password[0] == '\0') {
+        for (size_t i = 0; i < sizeof(password) - 1; ++i) {
+            password[i] = alphabet[esp_random() % (sizeof(alphabet) - 1)];
+        }
+        password[sizeof(password) - 1] = '\0';
+    }
+    return password;
+}
+
+static void open_setup_ap(const char *why) {
+    if (s_ap_active) {
+        return;
+    }
+    uint8_t mac[6] = {0};
+    ESP_ERROR_CHECK(esp_read_mac(mac, ESP_MAC_WIFI_SOFTAP));
+
+    char ap_ssid[33];
+    snprintf(ap_ssid, sizeof(ap_ssid), "SolarSetup-%02X%02X%02X", mac[3], mac[4], mac[5]);
+    const char *ap_password = setup_ap_password();
+
+    wifi_config_t ap_cfg = {0};
+    strlcpy((char *)ap_cfg.ap.ssid, ap_ssid, sizeof(ap_cfg.ap.ssid));
+    ap_cfg.ap.ssid_len = (uint8_t)strlen(ap_ssid);
+    strlcpy((char *)ap_cfg.ap.password, ap_password, sizeof(ap_cfg.ap.password));
+    ap_cfg.ap.channel = 1;
+    ap_cfg.ap.max_connection = 2;
+    ap_cfg.ap.authmode = WIFI_AUTH_WPA2_PSK;
+
+    ESP_ERROR_CHECK(esp_wifi_set_mode(WIFI_MODE_APSTA));
+    ESP_ERROR_CHECK(esp_wifi_set_config(WIFI_IF_AP, &ap_cfg));
+    if (start_http_server() != ESP_OK) {
+        ESP_LOGE(TAG, "HTTP server start failed");
+    }
+    s_ap_active = true;
+    s_ap_opened_at = xTaskGetTickCount();
+    ESP_LOGW(TAG, "Setup AP open (%s): SSID=%s password=%s, page http://192.168.4.1/",
+             why, ap_ssid, ap_password);
+}
+
+static void close_setup_ap(void) {
+    if (!s_ap_active) {
+        return;
+    }
+    stop_http_server();
+    ESP_ERROR_CHECK(esp_wifi_set_mode(WIFI_MODE_STA));
+    s_ap_active = false;
+    s_ap_manual = false;
+    ESP_LOGI(TAG, "Setup AP closed");
+}
+
+static void setup_button_init(void) {
+    const gpio_config_t cfg = {
+        .pin_bit_mask = 1ULL << SETUP_BUTTON_GPIO,
+        .mode = GPIO_MODE_INPUT,
+        .pull_up_en = GPIO_PULLUP_ENABLE,
+        .pull_down_en = GPIO_PULLDOWN_DISABLE,
+        .intr_type = GPIO_INTR_DISABLE,
+    };
+    ESP_ERROR_CHECK(gpio_config(&cfg));
+}
+
+static const char *reset_reason_to_str(esp_reset_reason_t reason) {
+    switch (reason) {
+        case ESP_RST_POWERON: return "POWERON";
+        case ESP_RST_EXT: return "EXTERNAL_PIN";
+        case ESP_RST_SW: return "SOFTWARE";
+        case ESP_RST_PANIC: return "PANIC";
+        case ESP_RST_INT_WDT: return "INT_WDT";
+        case ESP_RST_TASK_WDT: return "TASK_WDT";
+        case ESP_RST_WDT: return "OTHER_WDT";
+        case ESP_RST_DEEPSLEEP: return "DEEPSLEEP";
+        case ESP_RST_BROWNOUT: return "BROWNOUT";
+        case ESP_RST_SDIO: return "SDIO";
+        case ESP_RST_USB: return "USB";
+        case ESP_RST_JTAG: return "JTAG";
+        default: return "UNKNOWN";
+    }
+}
+
+// USB Serial/JTAG re-enumerates on every chip reset, so early boot logs are lost
+// before the host terminal reopens COM. Hold briefly so the banner is visible.
+static void wait_for_usb_console_and_log_boot(void) {
+    const TickType_t start = xTaskGetTickCount();
+    while (!usb_serial_jtag_is_connected() &&
+           (xTaskGetTickCount() - start) < pdMS_TO_TICKS(3000)) {
+        vTaskDelay(pdMS_TO_TICKS(50));
+    }
+    if (usb_serial_jtag_is_connected()) {
+        vTaskDelay(pdMS_TO_TICKS(1500));
+    }
+    const esp_reset_reason_t reason = esp_reset_reason();
+    ESP_LOGW(TAG, "===== BOOT: reset_reason=%s (%d) =====", reset_reason_to_str(reason), (int)reason);
+}
+
+void app_main(void) {
+    wait_for_usb_console_and_log_boot();
 
     esp_err_t err = nvs_flash_init();
     if (err == ESP_ERR_NVS_NO_FREE_PAGES || err == ESP_ERR_NVS_NEW_VERSION_FOUND) {
@@ -403,64 +577,121 @@ void app_main(void)
 
     ESP_ERROR_CHECK(esp_netif_init());
     ESP_ERROR_CHECK(esp_event_loop_create_default());
-    if (esp_netif_create_default_wifi_sta() == NULL ||
-        esp_netif_create_default_wifi_ap() == NULL) {
-        ESP_LOGE(TAG, "Could not create Wi-Fi network interfaces");
-        abort();
-    }
+    esp_netif_create_default_wifi_sta();
+    esp_netif_create_default_wifi_ap();
 
-    wifi_init_config_t wifi_config = WIFI_INIT_CONFIG_DEFAULT();
-    ESP_ERROR_CHECK(esp_wifi_init(&wifi_config));
-    s_wifi_events = xEventGroupCreate();
-    if (s_wifi_events == NULL) {
-        ESP_LOGE(TAG, "Could not create Wi-Fi event group");
-        abort();
-    }
-    ESP_ERROR_CHECK(esp_event_handler_register(WIFI_EVENT, ESP_EVENT_ANY_ID,
-                                               wifi_event_handler, NULL));
-    ESP_ERROR_CHECK(esp_event_handler_register(IP_EVENT, IP_EVENT_STA_GOT_IP,
-                                               wifi_event_handler, NULL));
+    s_wifi_event_group = xEventGroupCreate();
+    wifi_init_config_t cfg = WIFI_INIT_CONFIG_DEFAULT();
+    ESP_ERROR_CHECK(esp_wifi_init(&cfg));
+    ESP_ERROR_CHECK(esp_event_handler_register(WIFI_EVENT, ESP_EVENT_ANY_ID, &wifi_event_handler, NULL));
+    ESP_ERROR_CHECK(esp_event_handler_register(IP_EVENT, IP_EVENT_STA_GOT_IP, &wifi_event_handler, NULL));
+    setup_button_init();
 
-    if (load_credentials(ssid, sizeof(ssid), password, sizeof(password))) {
-        wifi_config_t station_config = {0};
-        memcpy(station_config.sta.ssid, ssid, strlen(ssid));
-        memcpy(station_config.sta.password, password, strlen(password));
-        ESP_ERROR_CHECK(esp_wifi_set_mode(WIFI_MODE_STA));
-        ESP_ERROR_CHECK(esp_wifi_set_config(WIFI_IF_STA, &station_config));
-        s_station_join_requested = true;
-        ESP_ERROR_CHECK(esp_wifi_start());
-        s_wifi_started = true;
-        ESP_ERROR_CHECK(esp_wifi_connect());
-        ESP_LOGI(TAG, "Trying saved network: %s", ssid);
+    wifi_creds_t creds = {0};
+    bool have_creds = (load_creds_from_nvs(&creds) == ESP_OK) && creds.valid;
+
+    ESP_ERROR_CHECK(esp_wifi_set_mode(WIFI_MODE_STA));
+    ESP_ERROR_CHECK(esp_wifi_start());
+    if (have_creds) {
+        apply_sta_config(&creds);
+        log_target_scan_diagnostics(&creds);
     } else {
-        ESP_ERROR_CHECK(configure_setup_ap());
+        open_setup_ap("no saved credentials");
     }
+
+    // Supervisor: retry the router forever with exponential backoff; open the setup AP
+    // only after a long outage or a BOOT-button long press. A button-opened AP stays up
+    // until new credentials are saved or SETUP_AP_IDLE_CLOSE_MS elapses.
+    bool was_up = false;
+    bool attempt_pending = false;
+    uint32_t backoff_ms = WIFI_BACKOFF_MIN_MS;
+    uint32_t attempt_no = 0;
+    TickType_t outage_start = xTaskGetTickCount();
+    TickType_t next_attempt = outage_start;
+    TickType_t attempt_start = outage_start;
+    uint32_t button_low_ms = 0;
 
     for (;;) {
-        EventBits_t bits = xEventGroupWaitBits(
-            s_wifi_events,
-            WIFI_CONNECTED_BIT | WIFI_FALLBACK_BIT | PORTAL_JOIN_FAILED_BIT,
-            pdTRUE,
-            pdFALSE,
-            portMAX_DELAY);
+        const EventBits_t bits = xEventGroupWaitBits(
+            s_wifi_event_group, WIFI_GOT_IP_BIT | WIFI_DISC_BIT | WIFI_PROV_BIT | WIFI_CLEAR_BIT,
+            pdTRUE, pdFALSE, pdMS_TO_TICKS(SUPERVISOR_POLL_MS));
+        const TickType_t now = xTaskGetTickCount();
 
-        if ((bits & WIFI_CONNECTED_BIT) != 0) {
-            s_retry_count = 0;
-            if (s_portal_active) {
-                vTaskDelay(pdMS_TO_TICKS(1500));
-                if (s_http_server != NULL) {
-                    ESP_ERROR_CHECK(httpd_stop(s_http_server));
-                    s_http_server = NULL;
-                }
-                ESP_ERROR_CHECK(esp_wifi_set_mode(WIFI_MODE_STA));
-                s_portal_active = false;
-                ESP_LOGI(TAG, "Setup AP stopped; station mode active");
+        if (bits & WIFI_CLEAR_BIT) {
+            have_creds = false;
+            attempt_pending = false;
+            esp_wifi_disconnect();
+        }
+
+        if (bits & WIFI_PROV_BIT) {
+            creds = s_prov_creds;
+            have_creds = creds.valid;
+            if (have_creds) {
+                s_ap_manual = false;
+                esp_wifi_disconnect();
+                apply_sta_config(&creds);
+                backoff_ms = WIFI_BACKOFF_MIN_MS;
+                attempt_no = 0;
+                attempt_pending = false;
+                next_attempt = now + pdMS_TO_TICKS(500);
             }
-        } else if ((bits & WIFI_FALLBACK_BIT) != 0) {
-            ESP_LOGW(TAG, "Saved network unavailable; starting setup AP");
-            ESP_ERROR_CHECK(configure_setup_ap());
-        } else if ((bits & PORTAL_JOIN_FAILED_BIT) != 0) {
-            ESP_LOGW(TAG, "Could not join network; setup AP remains available");
+        }
+
+        const bool up = s_sta_has_ip;
+        if (up && !was_up) {
+            ESP_LOGI(TAG, "Wi-Fi up after %u attempt(s)", (unsigned)attempt_no);
+            if (!s_ap_manual) {
+                close_setup_ap();
+            }
+            backoff_ms = WIFI_BACKOFF_MIN_MS;
+            attempt_no = 0;
+            attempt_pending = false;
+        } else if (!up && was_up) {
+            ESP_LOGW(TAG, "Wi-Fi lost; retrying with backoff");
+            outage_start = now;
+            next_attempt = now + pdMS_TO_TICKS(WIFI_BACKOFF_MIN_MS);
+            attempt_pending = false;
+        } else if (!up && attempt_pending &&
+                   ((bits & WIFI_DISC_BIT) ||
+                    (now - attempt_start) >= pdMS_TO_TICKS(WIFI_ATTEMPT_TIMEOUT_MS))) {
+            attempt_pending = false;
+            next_attempt = now + pdMS_TO_TICKS(backoff_ms);
+            ESP_LOGW(TAG, "Attempt %u failed; next in %u ms (outage %u s)",
+                     (unsigned)attempt_no, (unsigned)backoff_ms,
+                     (unsigned)((now - outage_start) * portTICK_PERIOD_MS / 1000U));
+            backoff_ms = (backoff_ms * 2U > WIFI_BACKOFF_MAX_MS) ? WIFI_BACKOFF_MAX_MS : backoff_ms * 2U;
+        }
+        was_up = up;
+
+        if (!up && have_creds && !attempt_pending && (int32_t)(now - next_attempt) >= 0) {
+            attempt_no++;
+            attempt_pending = true;
+            attempt_start = now;
+            ESP_LOGI(TAG, "Connect attempt %u", (unsigned)attempt_no);
+            esp_err_t cerr = esp_wifi_connect();
+            if (cerr != ESP_OK) {
+                ESP_LOGW(TAG, "esp_wifi_connect: %s", esp_err_to_name(cerr));
+            }
+        }
+
+        if (!up && !s_ap_active &&
+            (!have_creds || (now - outage_start) >= pdMS_TO_TICKS(WIFI_AP_FALLBACK_MS))) {
+            open_setup_ap(have_creds ? "long outage" : "no saved credentials");
+        }
+
+        if (up && s_ap_active && (now - s_ap_opened_at) >= pdMS_TO_TICKS(SETUP_AP_IDLE_CLOSE_MS)) {
+            close_setup_ap();
+        }
+
+        if (gpio_get_level(SETUP_BUTTON_GPIO) == 0) {
+            button_low_ms += SUPERVISOR_POLL_MS;
+            if (button_low_ms == SETUP_BUTTON_HOLD_MS) {
+                open_setup_ap("BOOT button held");
+                s_ap_manual = true;
+                s_ap_opened_at = now;
+            }
+        } else {
+            button_low_ms = 0;
         }
     }
 }

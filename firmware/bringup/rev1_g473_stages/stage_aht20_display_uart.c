@@ -28,6 +28,20 @@
 #define USART_RDR REG32(USART1_BASE + 0x24UL)
 #define USART_TDR REG32(USART1_BASE + 0x28UL)
 
+/* ESP32-C3 UART0 (GPIO21 U0TXD) arrives on PB11 = USART3_RX (AF7). Receive-only relay:
+ * PB10 (to ESP GPIO20 U0RXD) is left in its reset high-Z state so the ESP is never driven. */
+#define RCC_APB1ENR1 REG32(RCC_BASE + 0x58UL)
+#define USART3_EN_BIT (1UL << 18)
+#define USART3_BASE 0x40004800UL
+#define USART3_CR1 REG32(USART3_BASE + 0x00UL)
+#define USART3_BRR REG32(USART3_BASE + 0x0CUL)
+#define USART3_ISR REG32(USART3_BASE + 0x1CUL)
+#define USART3_ICR REG32(USART3_BASE + 0x20UL)
+#define USART3_RDR REG32(USART3_BASE + 0x24UL)
+#define ESPLOG_RX_BUF_SIZE 8192U
+#define ESPLOG_LINE_MAX 160U
+#define ESPLOG_LINES_PER_PUMP 8U
+
 /* PA4 (SENSE_PV_V) is ADC2_IN17 on STM32G473; it is not routed to ADC1. */
 #define ADC2_BASE 0x50000100UL
 #define ADC12_COMMON_BASE 0x50000300UL
@@ -84,7 +98,7 @@
 #define U6_TEST_POLL_MS 50U
 #define U6_TEST_UPDATE_D7 0U
 #define U6_TEST_D7_TARGET 0x2BU
-#define BUILD_ID "u6q5q6-10s"
+#define BUILD_ID "u6q5q6-10s-esplog"
 #define I2C_DEFAULT_HALF_PERIOD_CYCLES 70U
 #define I2C_SCL_HIGH_TIMEOUT_MS 2U
 #define LOOP_PERIOD_MS 1U
@@ -223,6 +237,114 @@ void USART1_IRQHandler(void) {
     if ((USART_ISR & (1UL << 3U)) != 0U) {
         USART_ICR = (1UL << 3U);
     }
+}
+
+static void uart_write_u32(uint32_t value);
+
+static volatile uint8_t esplog_rx_buf[ESPLOG_RX_BUF_SIZE];
+static volatile uint16_t esplog_rx_head = 0U;
+static volatile uint16_t esplog_rx_tail = 0U;
+static volatile uint32_t esplog_dropped = 0U;
+static bool g_esplog_enabled = true;
+static char esplog_line[ESPLOG_LINE_MAX + 1U];
+static uint32_t esplog_line_len = 0U;
+static uint8_t esplog_esc_state = 0U; /* 0 normal, 1 after ESC, 2 inside CSI */
+
+static void esplog_init(void) {
+    const uint32_t NVIC_ISER1 = 0xE000E104UL;
+    const uint32_t USART3_IRQ_BIT_IN_ISER1 = (1UL << 7U); /* IRQ 39 */
+    RCC_AHB2ENR |= GPIOB_EN_BIT;
+    RCC_APB1ENR1 |= USART3_EN_BIT;
+    (void)RCC_APB1ENR1;
+
+    GPIO_PUPDR(GPIOB_BASE) = (GPIO_PUPDR(GPIOB_BASE) & ~(3UL << (11U * 2U))) | (1UL << (11U * 2U));
+    GPIO_AFRH(GPIOB_BASE) = (GPIO_AFRH(GPIOB_BASE) & ~(0xFUL << 12U)) | (7UL << 12U);
+    GPIO_MODER(GPIOB_BASE) = (GPIO_MODER(GPIOB_BASE) & ~(3UL << (11U * 2U))) | (2UL << (11U * 2U));
+
+    USART3_CR1 = 0U;
+    USART3_BRR = 139U; /* 16 MHz / 115200 */
+    USART3_CR1 = (1UL << 29) | (1UL << 0) | (1UL << 2) | (1UL << 5); /* FIFOEN, UE, RE, RXFNEIE */
+    REG32(NVIC_ISER1) = USART3_IRQ_BIT_IN_ISER1;
+}
+
+void USART3_IRQHandler(void) {
+    while ((USART3_ISR & (1UL << 5U)) != 0U) {
+        const uint8_t byte = (uint8_t)(USART3_RDR & 0xFFU);
+        const uint16_t next = (uint16_t)((esplog_rx_head + 1U) % ESPLOG_RX_BUF_SIZE);
+        if (next != esplog_rx_tail) {
+            esplog_rx_buf[esplog_rx_head] = byte;
+            esplog_rx_head = next;
+        } else {
+            esplog_dropped++;
+        }
+    }
+    /* Clear ORE/NF/FE (ESP reset glitches) so reception keeps running. */
+    if ((USART3_ISR & 0x0EUL) != 0U) {
+        USART3_ICR = 0x0EUL;
+    }
+}
+
+static void esplog_flush_line(void) {
+    esplog_line[esplog_line_len] = '\0';
+    uart_write("ESP> ");
+    uart_line(esplog_line);
+    esplog_line_len = 0U;
+}
+
+/* Emits one complete ESP line; returns false when no full line is buffered. */
+static bool esplog_pump_line(void) {
+    while (esplog_rx_tail != esplog_rx_head) {
+        const uint8_t c = esplog_rx_buf[esplog_rx_tail];
+        esplog_rx_tail = (uint16_t)((esplog_rx_tail + 1U) % ESPLOG_RX_BUF_SIZE);
+        if (esplog_esc_state == 1U) {
+            esplog_esc_state = (c == '[') ? 2U : 0U;
+            continue;
+        }
+        if (esplog_esc_state == 2U) {
+            if (c >= 0x40U && c <= 0x7EU) {
+                esplog_esc_state = 0U;
+            }
+            continue;
+        }
+        if (c == 0x1BU) {
+            esplog_esc_state = 1U;
+            continue;
+        }
+        if (c == '\n') {
+            esplog_flush_line();
+            return true;
+        }
+        if (c == '\r') {
+            continue;
+        }
+        esplog_line[esplog_line_len++] = (c >= 0x20U && c <= 0x7EU) ? (char)c : '.';
+        if (esplog_line_len >= ESPLOG_LINE_MAX) {
+            esplog_flush_line();
+            return true;
+        }
+    }
+    return false;
+}
+
+static void esplog_pump(void) {
+    if (esplog_dropped != 0U) {
+        const uint32_t dropped = esplog_dropped;
+        esplog_dropped = 0U;
+        uart_write("ESP> [relay dropped ");
+        uart_write_u32(dropped);
+        uart_line(" bytes]");
+    }
+    for (uint32_t i = 0U; i < ESPLOG_LINES_PER_PUMP; i++) {
+        if (!esplog_pump_line()) {
+            break;
+        }
+    }
+}
+
+static void esplog_discard_pending(void) {
+    esplog_rx_tail = esplog_rx_head;
+    esplog_line_len = 0U;
+    esplog_esc_state = 0U;
 }
 
 static void i2c_gpio_init(void) {
@@ -1292,6 +1414,7 @@ static void print_help(void) {
     uart_line("  I2C SPEED <kHz>");
     uart_line("  START <ms> (deprecated)");
     uart_line("  STOP");
+    uart_line("  ESPLOG ON|OFF  (relay ESP UART0 via PB11; paused while armed/running)");
 }
 
 static void print_reg_result(const char *name, uint8_t reg) {
@@ -1823,6 +1946,19 @@ static void run_command(const char *line, control_state_t *ctl, bool has_u6) {
         print_help();
         return;
     }
+    if (streq(cmd, "ESPLOG")) {
+        if (streq(arg1, "ON")) {
+            esplog_discard_pending();
+            g_esplog_enabled = true;
+            uart_line("ESPLOG ON");
+        } else if (streq(arg1, "OFF")) {
+            g_esplog_enabled = false;
+            uart_line("ESPLOG OFF");
+        } else {
+            uart_line("ERR ESPLOG ON|OFF");
+        }
+        return;
+    }
     if (streq(cmd, "ARM")) {
         arm_start_sequence(ctl, has_u6);
         return;
@@ -2087,6 +2223,10 @@ int main(void) {
     uart_line("");
     uart_line("Solar Rev1 AHT20/OLED stage");
     uart_line("USART1 115200 8N1 on PA9/PA10");
+    uart_write("BUILD ");
+    uart_line(BUILD_ID);
+    esplog_init();
+    uart_line("ESPLOG ON (USART3 RX PB11 <- ESP GPIO21, 115200)");
     uart_line(g_vin_adc_ok ? "VIN ADC init OK" : "VIN ADC init FAIL");
 
     const bool has_aht20 = aht20_probe();
@@ -2341,6 +2481,15 @@ int main(void) {
                 );
             }
             heartbeat_phase = !heartbeat_phase;
+        }
+
+        if (!ctl.armed && ctl.run_ms_remaining == 0U) {
+            if (g_esplog_enabled) {
+                esplog_pump();
+            } else {
+                esplog_discard_pending();
+                esplog_dropped = 0U;
+            }
         }
 
         telemetry_tick += LOOP_PERIOD_MS;
