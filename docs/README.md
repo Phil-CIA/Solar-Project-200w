@@ -4,6 +4,8 @@ This folder is the working engineering record for Solar Project 200W.
 
 ## Read order for active work
 
+For Rev2 work, start with [the current handoff](../HANDOFF.md), [consolidation/change register](rev-two-consolidation.md), and [KiCad revision index](../hardware/kicad/solar-project/REVISION-INDEX.md). Phil selected LM51772; the separate Rev2 set is a copied starting baseline, not an implemented or qualified redesign. These entry points distinguish later bench evidence from the older assembled-board checkpoint below and link the unresolved Rev-next issues.
+
 Rev 1 assembly was reported complete on 2026-10-25; electrical and performance qualification are not established by that report. Start with the [assembled-board execution and closure plan](rev-one-closure-plan-2026-09-16.md#6-assembled-board-execution-and-issue-1-closure) and [development tracker](https://github.com/Phil-CIA/Solar-Project-200w/issues/1) for current sequencing. Reconcile the older requirements and bench procedures against the as-built board before relying on them for powered work.
 
 The [board notes](rev-one-board-notes.md) identify Phil's manufacturing package, supplied photos and useful BOM differences. Use the hobby-scale process Phil requested: short notes and relevant checks, not a mandatory lab dossier. Older documentation requirements do not override that current scope; electrical precautions still apply.

@@ -44,13 +44,19 @@ Build command:
 - Stage A (`stage_d8_heartbeat.c`): PB2-only low-brightness heartbeat for the D8 data chain.
 - Stage B (`stage_i2c_scan.c`): PB6/PB7 open-drain software I2C bounded address probe with debugger-readable RAM results.
 - Stage C (`stage_uart_bootlog.c`): USART1 boot log on PA9/PA10 for CP2102 serial (COM5), no charger/control pin activity.
-- Both stages use the same STM32G473 startup and linker baseline as the inert minimal target.
+- The stages use the same STM32G473 startup and linker baseline as the inert minimal target.
+- The combined bench stage (`stage_aht20_display_uart.c`) additionally provides AHT20/OLED/UART diagnostics and active U6 control. Consolidated build `u6q5q6-10s` retains the 10-second U6 test/start window, `U6 BOOST ON|OFF`, and `U6 PCM OFF|DEFAULT`; the TP1-to-output bypass-jumper assumption is disabled. Invalid I2C-speed override requests inhibit outputs and latch a fault.
+- The combined stage is not inert or a production charger image: PA5 (`V_in_ON`) is driven high at initialization. Reconcile actual bench wiring and current-limit configuration before any separately authorized flash or powered run; see [current findings](../docs/test/rev1-lm51772-12v8-findings-2026-11-06.md).
 
 Build command:
 
 ```powershell
 ./firmware/bringup/rev1_g473_stages/build.ps1
 ```
+
+## ESP32-C3 networking
+
+The [ESP-IDF Wi-Fi application](esp32_c3_wifi/README.md) is the consolidated provisioning baseline. STM32 retains charger/safety ownership; UART telemetry, remote commands, and OTA are not implemented by this application.
 
 ## Rev 0 SWD-Only Checks
 

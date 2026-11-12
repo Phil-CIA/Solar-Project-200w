@@ -10,6 +10,7 @@
 #include "esp_log.h"
 #include "esp_mac.h"
 #include "esp_netif.h"
+#include "esp_random.h"
 #include "esp_system.h"
 #include "esp_wifi.h"
 #include "driver/gpio.h"
@@ -465,6 +466,20 @@ static void apply_sta_config(const wifi_creds_t *creds) {
 }
 
 // Setup AP runs alongside STA (APSTA) so router retries continue while it is open.
+// Generated once per boot so the password stays stable if the AP reopens; it is only
+// published on the console (USB and the STM32 COM relay).
+static const char *setup_ap_password(void) {
+    static const char alphabet[] = "ABCDEFGHJKLMNPQRSTUVWXYZabcdefghijkmnopqrstuvwxyz23456789";
+    static char password[13];
+    if (password[0] == '\0') {
+        for (size_t i = 0; i < sizeof(password) - 1; ++i) {
+            password[i] = alphabet[esp_random() % (sizeof(alphabet) - 1)];
+        }
+        password[sizeof(password) - 1] = '\0';
+    }
+    return password;
+}
+
 static void open_setup_ap(const char *why) {
     if (s_ap_active) {
         return;
@@ -474,13 +489,15 @@ static void open_setup_ap(const char *why) {
 
     char ap_ssid[33];
     snprintf(ap_ssid, sizeof(ap_ssid), "SolarSetup-%02X%02X%02X", mac[3], mac[4], mac[5]);
+    const char *ap_password = setup_ap_password();
 
     wifi_config_t ap_cfg = {0};
     strlcpy((char *)ap_cfg.ap.ssid, ap_ssid, sizeof(ap_cfg.ap.ssid));
     ap_cfg.ap.ssid_len = (uint8_t)strlen(ap_ssid);
+    strlcpy((char *)ap_cfg.ap.password, ap_password, sizeof(ap_cfg.ap.password));
     ap_cfg.ap.channel = 1;
-    ap_cfg.ap.max_connection = 4;
-    ap_cfg.ap.authmode = WIFI_AUTH_OPEN;
+    ap_cfg.ap.max_connection = 2;
+    ap_cfg.ap.authmode = WIFI_AUTH_WPA2_PSK;
 
     ESP_ERROR_CHECK(esp_wifi_set_mode(WIFI_MODE_APSTA));
     ESP_ERROR_CHECK(esp_wifi_set_config(WIFI_IF_AP, &ap_cfg));
@@ -489,7 +506,8 @@ static void open_setup_ap(const char *why) {
     }
     s_ap_active = true;
     s_ap_opened_at = xTaskGetTickCount();
-    ESP_LOGW(TAG, "Setup AP open (%s): SSID=%s, page http://192.168.4.1/", why, ap_ssid);
+    ESP_LOGW(TAG, "Setup AP open (%s): SSID=%s password=%s, page http://192.168.4.1/",
+             why, ap_ssid, ap_password);
 }
 
 static void close_setup_ap(void) {

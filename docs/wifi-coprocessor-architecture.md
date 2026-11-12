@@ -4,6 +4,10 @@ Last updated: 2026-08-08
 Status: Accepted Rev 1 baseline  
 Decision: DEC-015
 
+## Initial Firmware Scope
+
+The first ESP32-C3 firmware stage is in `firmware/esp32_c3_wifi/`. It implements temporary setup-AP provisioning, credential storage in NVS, Wi-Fi association, retry, and setup-AP fallback. It does not yet implement the STM32 UART protocol, MQTT/HTTPS telemetry, remote commands, or OTA.
+
 ## System Boundary
 
 The STM32 is the charge-controller and safety owner. The ESP32-C3 development module is a network coprocessor. A Wi-Fi outage, ESP32 reset, or communications failure must not interrupt safe charger operation.

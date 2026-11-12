@@ -202,14 +202,22 @@ The load did not fix the shortfall. At 7 V the output was lower with the load (4
 - STATUS_BYTE (0x78) read as 0x58: OFF (bit 6), IOUT_OC (bit 4), VIN_UV (bit 3) set. This points to protection events and restarts rather than pure regulation noise, and may explain the I2C poll failures. Unknown whether the flags were live or latched; Vin/PSU current limit during the event not recorded.
 - Next (one change at a time): add OLED/serial fault display (STATUS_BYTE, STATUS_WORD, detail registers; CLEAR_FAULTS command code to be confirmed from the datasheet), log STATUS at 100 ms for 5 s from a clean start at 12 V and 19 V Vin to see which flag sets first; read back the Vout target register after a 10000 mV request; check Vout ceiling at 12/24 V Vin; confirm the PSU is not in current limit.
 
-## 11. Q5/Q6 switched-output path retest (2026-11-07)
+## 11. Q5/Q6 Timed Output-Path Check and Bench Disposition (2026-11-07)
 
-- Test firmware was updated to a timed 10 s output window (`BUILD u6q5q6-10s`) for bench capture.
-- With the TP1-to-CHG_OUT_POS bypass jumper removed, early runs showed weak gate enhancement and low output transfer through Q5/Q6.
-- During debug, measured voltage across D5 during the run was about 30 mV (clamp not active), and measured Q5/Q6 gate-to-source peak was about 2.39 V in the failing state.
-- After rework correction, controlled run at 18 V in, target 12.8 V, with a 100 ohm load gave:
-  - `TP1` = 12.78 V
-  - `CHG_OUT_POS` = 12.78 V
-  - PSU current about 153 mA
-- Outcome: Q5/Q6/U14 output path now transfers the commanded voltage during the timed run under load.
-- Scope limit: this is an initial functional pass only; it does not by itself prove default-off behavior, reverse-flow blocking, or D5 pulse-energy margin.
+Phil reports a timed run with the TP1-to-`CHG_OUT_POS` bypass jumper removed. Phil initially noted D5 was backwards, then clarified that the schematic's D5 polarity symbol is wrong. Therefore, whether the fitted diode was electrically reversed relative to the intended design is unresolved:
+
+| Measurement / condition | Result |
+|---|---|
+| TP1 (`V_out_sense`) | 12.78 V |
+| `CHG_OUT_POS` | 12.78 V |
+| Load | 100 Ohm (exact connection point not restated with this result) |
+| D5 orientation | Described as backwards; schematic polarity reference is known to be wrong, so intended orientation is unresolved |
+| Input voltage, PSU current limit/current, firmware build ID, and command | Not recorded |
+
+Phil's disposition: he considers Q5/Q6 working and reports that the path passed the full-current test; he accepts it as good for now, is stopping further Q5/Q6 testing, and is moving on to ESP32 Wi-Fi. The tested current, duration, and detailed conditions were not recorded, so "full current" remains the user's reported result rather than a quantified rating in this record. The D5 schematic polarity discrepancy is also unresolved and is not being pursued as part of this bench session. Default-off, reverse-flow, gate-waveform/clamp, thermal, and rated-current details remain undocumented; they are deferred, not blocking the user's decision to proceed. Do not use the earlier bypassed converter runs as Q5/Q6 evidence; those used TP1 jumpered directly to `CHG_OUT_POS`.
+
+### Additional record recovered during consolidation (2026-11-09)
+
+Local-main commit `923e8fb` also records approximately 153 mA PSU current for the 100 Ohm result, an 18 V input, and the `u6q5q6-10s` build. Earlier failing runs recorded about 30 mV across D5 and about 2.39 V peak gate-to-source voltage. These are recovered notes, not a new test. The two branch accounts differ in how completely they specify the successful run; retain that provenance rather than treating the combined account as a newly verified setup. The D5 schematic polarity discrepancy and the limits of the full-current claim above remain unresolved.
+
+The consolidated source retains the 10-second test/start limits, disables the TP1-to-output bypass-jumper assumption, and inhibits outputs on an invalid I2C-speed override. A separate earlier 1-second Q5/Q6 source variant and its generated images are preserved in the bring-up session; neither image was flashed during consolidation.
