@@ -2,6 +2,12 @@
 
 Date: 2026-11-09. Tracker: [#19](https://github.com/Phil-CIA/Solar-Project-200w/issues/19). Read-only electrical investigation of the Rev2 copied baseline at `488441a`; no circuit values, placement or routing changed.
 
+## Current schematic status (schematic-only)
+
+The investigation below remains a historical description of the copied PCB baseline. A later schematic-only packet now captures three INA241A3 current channels: output on PA0 across R16/R80 (0.005 Ohm each), PV on PA1 across R76/R77 (0.010 Ohm each) between `PV_FUSED_POS` and `PV_Q4_SOURCE` after F1 and before Q4, and battery on PC4 across R78/R79 (0.001 Ohm each) between `BAT_PACK_POS` and `BAT_BUS_POS`. U10/U11/U12 are entered as INA241A3IDDFR with TSOT-23-8 footprints. These are schematic values and connections, not a released BOM or qualified measurement design.
+
+The CSA/CSB schematic retains R26/R27 at 10 Ohm and C20 at 180 pF, with DNP C61 provided across the sense nets. R22/R75 are each shown as 0.005 Ohm; the peak-current threshold and filter timing still require calculation and review. R81 pin 1 is on `CHG_OUT_POS`, preserving the existing output-voltage divider input. After the user's graphical cleanup, the PV source-sense connection, U10 REF2, and J3 pin 1 were restored to their intended nets; the latest netlist verifies the current-sensing connections. The PCB remains unchanged, so none of these shunts, sensor routes, or filter provisions is implemented or validated on copper. KiCad 10.0.6 ERC reports 0 errors and 53 warnings. PCB DRC reports two inherited courtyard overlaps (C3/C18 and R72/C18) and 412 inherited unconnected items; schematic parity reports 59 issues, up from 36 before the schematic-only changes. The warnings and parity findings remain open.
+
 ## Confirmed source findings
 
 The PCB source contains these connections:
