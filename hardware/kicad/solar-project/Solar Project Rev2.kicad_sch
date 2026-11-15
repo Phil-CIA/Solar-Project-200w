@@ -17375,6 +17375,148 @@
 			)
 			(embedded_fonts no)
 		)
+		(symbol "Device:NetTie_2"
+			(pin_numbers
+				(hide yes)
+			)
+			(pin_names
+				(offset 0)
+				(hide yes)
+			)
+			(exclude_from_sim no)
+			(in_bom no)
+			(on_board yes)
+			(in_pos_files yes)
+			(duplicate_pin_numbers_are_jumpers no)
+			(property "Reference" "NT"
+				(at 0 1.27 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Value" "NetTie_2"
+				(at 0 -1.27 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Footprint" ""
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Datasheet" ""
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Description" "Net tie, 2 pins"
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "ki_keywords" "net tie short"
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "ki_fp_filters" "Net*Tie*"
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(symbol "NetTie_2_0_1"
+				(polyline
+					(pts
+						(xy -1.27 0) (xy 1.27 0)
+					)
+					(stroke
+						(width 0.254)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+			)
+			(symbol "NetTie_2_1_1"
+				(pin passive line
+					(at -2.54 0 0)
+					(length 2.54)
+					(name "1"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "1"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+				(pin passive line
+					(at 2.54 0 180)
+					(length 2.54)
+					(name "2"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "2"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+			)
+			(embedded_fonts no)
+		)
 		(symbol "Device:Q_PMOS"
 			(pin_numbers
 				(hide yes)
@@ -33041,8 +33183,8 @@
 		(uuid "d735d555-7f7f-4437-9018-45110d5c9c55")
 	)
 	(rectangle
-		(start 56.134 41.91)
-		(end 465.074 120.65)
+		(start 53.594 49.022)
+		(end 462.534 127.762)
 		(stroke
 			(width 0)
 			(type default)
@@ -33259,7 +33401,7 @@
 		(uuid "0fb64931-ab8c-43c4-b987-ccbfd3731fbb")
 	)
 	(junction
-		(at 429.26 71.12)
+		(at 430.53 71.12)
 		(diameter 0)
 		(color 0 0 0 0)
 		(uuid "0fdbe8a5-5f4e-40aa-8872-9c312654656e")
@@ -33299,6 +33441,12 @@
 		(diameter 0)
 		(color 0 0 0 0)
 		(uuid "1bdc48e9-f03c-41c5-a541-6b7bbcab6d60")
+	)
+	(junction
+		(at 93.98 71.12)
+		(diameter 0)
+		(color 0 0 0 0)
+		(uuid "1e736ff3-b602-4b94-95b0-78475c847a71")
 	)
 	(junction
 		(at 486.41 182.88)
@@ -33781,7 +33929,7 @@
 		(uuid "8a675e46-4306-4267-a6bb-6e19375be6d1")
 	)
 	(junction
-		(at 429.26 76.2)
+		(at 430.53 76.2)
 		(diameter 0)
 		(color 0 0 0 0)
 		(uuid "8b6ebcb8-3550-4f32-90a0-9b6f35f8a600")
@@ -35296,7 +35444,7 @@
 	)
 	(wire
 		(pts
-			(xy 96.52 71.12) (xy 92.71 71.12)
+			(xy 96.52 71.12) (xy 93.98 71.12)
 		)
 		(stroke
 			(width 0)
@@ -35346,7 +35494,7 @@
 	)
 	(wire
 		(pts
-			(xy 426.72 76.2) (xy 433.07 76.2)
+			(xy 427.99 76.2) (xy 433.07 76.2)
 		)
 		(stroke
 			(width 0)
@@ -35866,6 +36014,16 @@
 	)
 	(wire
 		(pts
+			(xy 93.98 71.12) (xy 92.71 71.12)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "5bb5e023-c1b5-4bcb-af7e-53b2e5e3d319")
+	)
+	(wire
+		(pts
 			(xy 110.49 224.79) (xy 53.34 224.79)
 		)
 		(stroke
@@ -35946,7 +36104,7 @@
 	)
 	(wire
 		(pts
-			(xy 265.43 80.01) (xy 265.43 81.28)
+			(xy 265.43 78.74) (xy 265.43 81.28)
 		)
 		(stroke
 			(width 0)
@@ -37006,7 +37164,7 @@
 	)
 	(wire
 		(pts
-			(xy 429.26 76.2) (xy 429.26 71.12)
+			(xy 430.53 76.2) (xy 430.53 71.12)
 		)
 		(stroke
 			(width 0)
@@ -37256,6 +37414,16 @@
 	)
 	(wire
 		(pts
+			(xy 93.98 69.85) (xy 92.71 71.12)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "a617e886-95c4-40db-9ac7-2d8309f0998a")
+	)
+	(wire
+		(pts
 			(xy 289.56 182.88) (xy 302.26 182.88)
 		)
 		(stroke
@@ -37313,16 +37481,6 @@
 			(type default)
 		)
 		(uuid "a8944ceb-9641-41c5-b7d9-aea5f573c7eb")
-	)
-	(wire
-		(pts
-			(xy 265.43 72.39) (xy 265.43 71.12)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "a8ad2e73-c01b-4ca0-9bc4-967fd96c915e")
 	)
 	(wire
 		(pts
@@ -38516,6 +38674,16 @@
 	)
 	(wire
 		(pts
+			(xy 422.91 76.2) (xy 421.64 76.2)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "e30df6fb-b055-4350-8e2d-f2d6792319bd")
+	)
+	(wire
+		(pts
 			(xy 110.49 166.37) (xy 52.07 166.37)
 		)
 		(stroke
@@ -38663,6 +38831,16 @@
 			(type default)
 		)
 		(uuid "eb90e528-daf0-4e97-92e2-4a8452950fa8")
+	)
+	(wire
+		(pts
+			(xy 219.71 80.01) (xy 219.71 74.93)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "ebcd5a8e-bb7b-47fd-bd18-f20365736168")
 	)
 	(wire
 		(pts
@@ -39382,29 +39560,6 @@
 			)
 		)
 	)
-	(global_label "SW_1"
-		(shape input)
-		(at 205.74 74.93 270)
-		(fields_autoplaced yes)
-		(effects
-			(font
-				(size 0.635 0.635)
-			)
-			(justify right)
-		)
-		(uuid "177a1316-8cf3-4dc4-80a1-9679980b8408")
-		(property "Intersheetrefs" "${INTERSHEET_REFS}"
-			(at 205.74 78.8418 90)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify right)
-			)
-		)
-	)
 	(global_label "CTRL_3V3"
 		(shape input)
 		(at 289.56 172.72 0)
@@ -39425,6 +39580,29 @@
 					(size 1.27 1.27)
 				)
 				(justify left)
+			)
+		)
+	)
+	(global_label "I_in_-"
+		(shape input)
+		(at 93.98 76.2 270)
+		(fields_autoplaced yes)
+		(effects
+			(font
+				(size 0.635 0.635)
+			)
+			(justify right)
+		)
+		(uuid "18cb4e18-f8d1-4fc9-b0fd-e8bafd06c3eb")
+		(property "Intersheetrefs" "${INTERSHEET_REFS}"
+			(at 93.98 80.6258 90)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify right)
 			)
 		)
 	)
@@ -39957,29 +40135,6 @@
 			)
 		)
 	)
-	(global_label "V_out_SNS_N"
-		(shape input)
-		(at 332.74 71.12 270)
-		(fields_autoplaced yes)
-		(effects
-			(font
-				(size 0.8 0.8)
-			)
-			(justify right)
-		)
-		(uuid "3d74532c-a5db-4515-addc-509f6c3df6ed")
-		(property "Intersheetrefs" "${INTERSHEET_REFS}"
-			(at 332.74 80.6192 90)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify right)
-			)
-		)
-	)
 	(global_label "CTRL_5V"
 		(shape input)
 		(at 292.1 284.48 180)
@@ -40108,6 +40263,29 @@
 		(uuid "43bbbfb2-a624-46e2-bba4-6d6566962e4f")
 		(property "Intersheetrefs" "${INTERSHEET_REFS}"
 			(at 192.9382 73.66 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify right)
+			)
+		)
+	)
+	(global_label "SW_1_+"
+		(shape input)
+		(at 207.01 80.01 270)
+		(fields_autoplaced yes)
+		(effects
+			(font
+				(size 0.635 0.635)
+			)
+			(justify right)
+		)
+		(uuid "44fecc56-5111-48b2-bfe3-579a739ed3ad")
+		(property "Intersheetrefs" "${INTERSHEET_REFS}"
+			(at 207.01 85.1918 90)
 			(show_name no)
 			(do_not_autoplace no)
 			(effects
@@ -40256,29 +40434,6 @@
 			)
 		)
 	)
-	(global_label "BAT_PACK_POS"
-		(shape input)
-		(at 426.72 76.2 180)
-		(fields_autoplaced yes)
-		(effects
-			(font
-				(size 0.635 0.635)
-			)
-			(justify right)
-		)
-		(uuid "4c042474-4557-4e88-87ef-a09918b08faa")
-		(property "Intersheetrefs" "${INTERSHEET_REFS}"
-			(at 418.2423 76.2 0)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify right)
-			)
-		)
-	)
 	(global_label "PWR_NEG"
 		(shape input)
 		(at 157.48 336.55 180)
@@ -40348,7 +40503,7 @@
 			)
 		)
 	)
-	(global_label "CSB_2"
+	(global_label "SW_1_-"
 		(shape input)
 		(at 194.31 189.23 0)
 		(fields_autoplaced yes)
@@ -40360,7 +40515,7 @@
 		)
 		(uuid "50e60b71-43e8-44bc-98ea-ad8953af2278")
 		(property "Intersheetrefs" "${INTERSHEET_REFS}"
-			(at 198.7661 189.23 0)
+			(at 199.4918 189.23 0)
 			(show_name no)
 			(do_not_autoplace no)
 			(effects
@@ -40440,7 +40595,7 @@
 			)
 		)
 	)
-	(global_label "PV_FUSED_POS"
+	(global_label "I_in_+"
 		(shape input)
 		(at 233.68 288.29 180)
 		(fields_autoplaced yes)
@@ -40452,7 +40607,7 @@
 		)
 		(uuid "5550e306-eecc-47dd-8c4f-352bfefca833")
 		(property "Intersheetrefs" "${INTERSHEET_REFS}"
-			(at 228.0749 288.29 0)
+			(at 229.2542 288.29 0)
 			(show_name no)
 			(do_not_autoplace no)
 			(effects
@@ -40486,7 +40641,7 @@
 			)
 		)
 	)
-	(global_label "BAT_PACK_POS"
+	(global_label "I_BATT_-"
 		(shape input)
 		(at 287.02 294.64 180)
 		(fields_autoplaced yes)
@@ -40498,7 +40653,7 @@
 		)
 		(uuid "55a878b5-4022-4ecf-9f2e-42220d325874")
 		(property "Intersheetrefs" "${INTERSHEET_REFS}"
-			(at 278.9053 294.64 0)
+			(at 281.3242 294.64 0)
 			(show_name no)
 			(do_not_autoplace no)
 			(effects
@@ -40831,29 +40986,6 @@
 			)
 		)
 	)
-	(global_label "V_out_SNS_P "
-		(shape input)
-		(at 320.04 71.12 270)
-		(fields_autoplaced yes)
-		(effects
-			(font
-				(size 0.8 0.8)
-			)
-			(justify right)
-		)
-		(uuid "6707e50d-bb74-415f-991b-2f01878dc1d0")
-		(property "Intersheetrefs" "${INTERSHEET_REFS}"
-			(at 320.04 81.1906 90)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify right)
-			)
-		)
-	)
 	(global_label "CTRL_3V3"
 		(shape input)
 		(at 289.56 165.1 0)
@@ -40923,6 +41055,29 @@
 			)
 		)
 	)
+	(global_label "I_BATT_-"
+		(shape input)
+		(at 421.64 76.2 180)
+		(fields_autoplaced yes)
+		(effects
+			(font
+				(size 0.635 0.635)
+			)
+			(justify right)
+		)
+		(uuid "69eb88cd-cb20-411d-9be4-05a00faf5be2")
+		(property "Intersheetrefs" "${INTERSHEET_REFS}"
+			(at 415.9442 76.2 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify right)
+			)
+		)
+	)
 	(global_label "BTN_DN_N"
 		(shape input)
 		(at 243.84 228.6 180)
@@ -40943,29 +41098,6 @@
 					(size 1.27 1.27)
 				)
 				(justify right)
-			)
-		)
-	)
-	(global_label "BAT_BUS_POS"
-		(shape input)
-		(at 438.15 60.96 0)
-		(fields_autoplaced yes)
-		(effects
-			(font
-				(size 0.635 0.635)
-			)
-			(justify left)
-		)
-		(uuid "6babba3f-ccb9-4e71-9458-8d6c84c1a410")
-		(property "Intersheetrefs" "${INTERSHEET_REFS}"
-			(at 446.0834 60.96 0)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify left)
 			)
 		)
 	)
@@ -41222,7 +41354,7 @@
 			)
 		)
 	)
-	(global_label "PV_Q4_SOURCE"
+	(global_label "I_in_-"
 		(shape input)
 		(at 233.68 293.37 180)
 		(fields_autoplaced yes)
@@ -41234,30 +41366,7 @@
 		)
 		(uuid "7c303293-3901-4019-bafc-c9cf61f94c72")
 		(property "Intersheetrefs" "${INTERSHEET_REFS}"
-			(at 227.1678 293.37 0)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify right)
-			)
-		)
-	)
-	(global_label "CSB_2"
-		(shape input)
-		(at 219.71 74.93 270)
-		(fields_autoplaced yes)
-		(effects
-			(font
-				(size 0.635 0.635)
-			)
-			(justify right)
-		)
-		(uuid "7c5febeb-484d-479f-874b-d808d4f5f81f")
-		(property "Intersheetrefs" "${INTERSHEET_REFS}"
-			(at 219.71 79.3861 90)
+			(at 229.2542 293.37 0)
 			(show_name no)
 			(do_not_autoplace no)
 			(effects
@@ -42144,24 +42253,24 @@
 	)
 	(global_label "PV_Q4_SOURCE"
 		(shape input)
-		(at 92.71 71.12 180)
+		(at 93.98 69.85 0)
 		(fields_autoplaced yes)
 		(effects
 			(font
 				(size 0.635 0.635)
 			)
-			(justify right)
+			(justify left)
 		)
 		(uuid "a6c4830e-12d5-48b1-8a1d-d705494a3917")
 		(property "Intersheetrefs" "${INTERSHEET_REFS}"
-			(at 86.1978 71.12 0)
+			(at 102.6693 69.85 0)
 			(show_name no)
 			(do_not_autoplace no)
 			(effects
 				(font
 					(size 1.27 1.27)
 				)
-				(justify right)
+				(justify left)
 			)
 		)
 	)
@@ -42346,6 +42455,29 @@
 					(size 1.27 1.27)
 				)
 				(justify right)
+			)
+		)
+	)
+	(global_label "I_BATT_+"
+		(shape input)
+		(at 443.23 60.96 0)
+		(fields_autoplaced yes)
+		(effects
+			(font
+				(size 0.635 0.635)
+			)
+			(justify left)
+		)
+		(uuid "aebf24e2-6823-4526-b5dd-9f2aef1d9cd8")
+		(property "Intersheetrefs" "${INTERSHEET_REFS}"
+			(at 448.9258 60.96 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
 			)
 		)
 	)
@@ -42579,7 +42711,7 @@
 			)
 		)
 	)
-	(global_label "SW_1"
+	(global_label "SW_1_+"
 		(shape input)
 		(at 194.31 181.61 0)
 		(fields_autoplaced yes)
@@ -42591,7 +42723,7 @@
 		)
 		(uuid "bc2e54b0-5cb6-4879-97e7-4fd247114aea")
 		(property "Intersheetrefs" "${INTERSHEET_REFS}"
-			(at 198.2218 181.61 0)
+			(at 199.4918 181.61 0)
 			(show_name no)
 			(do_not_autoplace no)
 			(effects
@@ -42786,6 +42918,29 @@
 			)
 		)
 	)
+	(global_label "V_out_SNS_N"
+		(shape input)
+		(at 332.74 76.2 270)
+		(fields_autoplaced yes)
+		(effects
+			(font
+				(size 0.8 0.8)
+			)
+			(justify right)
+		)
+		(uuid "c5f62225-07f9-4e2d-b01e-4b00aa02944c")
+		(property "Intersheetrefs" "${INTERSHEET_REFS}"
+			(at 332.74 85.6992 90)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify right)
+			)
+		)
+	)
 	(global_label "CTRL_3V3"
 		(shape input)
 		(at 377.19 186.69 0)
@@ -42924,7 +43079,7 @@
 			)
 		)
 	)
-	(global_label "BAT_BUS_POS"
+	(global_label "I_BATT_+"
 		(shape input)
 		(at 287.02 289.56 180)
 		(fields_autoplaced yes)
@@ -42936,7 +43091,7 @@
 		)
 		(uuid "cc946fb1-b3aa-4e40-a72d-42d1db8cc2db")
 		(property "Intersheetrefs" "${INTERSHEET_REFS}"
-			(at 279.9938 289.56 0)
+			(at 281.3242 289.56 0)
 			(show_name no)
 			(do_not_autoplace no)
 			(effects
@@ -43358,6 +43513,29 @@
 					(size 1.27 1.27)
 				)
 				(justify left)
+			)
+		)
+	)
+	(global_label "SW_1_-"
+		(shape input)
+		(at 219.71 80.01 270)
+		(fields_autoplaced yes)
+		(effects
+			(font
+				(size 0.635 0.635)
+			)
+			(justify right)
+		)
+		(uuid "dded3f70-8614-47f4-8dba-ac5d983e9d97")
+		(property "Intersheetrefs" "${INTERSHEET_REFS}"
+			(at 219.71 85.1918 90)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify right)
 			)
 		)
 	)
@@ -43936,6 +44114,29 @@
 			)
 		)
 	)
+	(global_label "I_in_+"
+		(shape input)
+		(at 80.01 76.2 270)
+		(fields_autoplaced yes)
+		(effects
+			(font
+				(size 0.635 0.635)
+			)
+			(justify right)
+		)
+		(uuid "f5ca476e-d870-4b82-81a5-04d4bfba0359")
+		(property "Intersheetrefs" "${INTERSHEET_REFS}"
+			(at 80.01 80.6258 90)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify right)
+			)
+		)
+	)
 	(global_label "PWR_NEG"
 		(shape input)
 		(at 336.55 182.88 180)
@@ -43995,6 +44196,29 @@
 		(uuid "f8061920-5d7e-4f10-e132-6d7e8f901234")
 		(property "Intersheetrefs" "${INTERSHEET_REFS}"
 			(at 471.7231 331.42 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify right)
+			)
+		)
+	)
+	(global_label "V_out_SNS_P "
+		(shape input)
+		(at 320.04 76.2 270)
+		(fields_autoplaced yes)
+		(effects
+			(font
+				(size 0.8 0.8)
+			)
+			(justify right)
+		)
+		(uuid "f87e67b9-8bb0-4e76-b9f7-77ce2d0de3b3")
+		(property "Intersheetrefs" "${INTERSHEET_REFS}"
+			(at 320.04 86.2706 90)
 			(show_name no)
 			(do_not_autoplace no)
 			(effects
@@ -68168,6 +68392,88 @@
 		)
 	)
 	(symbol
+		(lib_id "Device:NetTie_2")
+		(at 320.04 73.66 90)
+		(unit 1)
+		(body_style 1)
+		(exclude_from_sim no)
+		(in_bom no)
+		(on_board yes)
+		(in_pos_files yes)
+		(dnp no)
+		(fields_autoplaced yes)
+		(uuid "502cab69-e830-4734-893f-c1f11c7e9ce1")
+		(property "Reference" "NT5"
+			(at 317.5 73.66 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Value" "NetTie_2"
+			(at 317.5 73.66 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" "NetTie:NetTie-2_SMD_Pad0.5mm"
+			(at 320.04 73.66 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Datasheet" ""
+			(at 320.04 73.66 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Description" "Net tie, 2 pins"
+			(at 320.04 73.66 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(pin "2"
+			(uuid "b1531b80-e63a-4f9f-9217-8dfdb120abc7")
+		)
+		(pin "1"
+			(uuid "2151988b-bc30-4cf0-96b3-5277a50e0696")
+		)
+		(instances
+			(project "Solar Project Rev2"
+				(path "/28299885-0f47-4c9d-af0f-f2db484b5c54"
+					(reference "NT5")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
 		(lib_id "PCM_JLCPCB-Capacitors:0805,100nF")
 		(at 69.85 180.34 0)
 		(unit 1)
@@ -87203,6 +87509,88 @@
 		)
 	)
 	(symbol
+		(lib_id "Device:NetTie_2")
+		(at 219.71 77.47 90)
+		(unit 1)
+		(body_style 1)
+		(exclude_from_sim no)
+		(in_bom no)
+		(on_board yes)
+		(in_pos_files yes)
+		(dnp no)
+		(uuid "7eb2dc80-3ae4-4b63-9d23-29094ff23db4")
+		(property "Reference" "NT1"
+			(at 220.218 77.216 90)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify right)
+			)
+		)
+		(property "Value" "NetTie_2"
+			(at 220.98 78.7399 90)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify right)
+			)
+		)
+		(property "Footprint" "NetTie:NetTie-2_SMD_Pad0.5mm"
+			(at 219.71 77.47 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Datasheet" ""
+			(at 219.71 77.47 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Description" "Net tie, 2 pins"
+			(at 219.71 77.47 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(pin "1"
+			(uuid "f88ab201-f7d8-425e-9b1c-7e53338128a9")
+		)
+		(pin "2"
+			(uuid "9a1b8faa-7b49-4831-a29e-22246e16c506")
+		)
+		(instances
+			(project "Solar Project Rev2"
+				(path "/28299885-0f47-4c9d-af0f-f2db484b5c54"
+					(reference "NT1")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
 		(lib_id "PCM_JLCPCB-Resistors:0805,100kΩ")
 		(at 397.51 90.17 0)
 		(unit 1)
@@ -88217,6 +88605,88 @@
 			(project "Solar Project Rev2"
 				(path "/28299885-0f47-4c9d-af0f-f2db484b5c54"
 					(reference "R14")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "Device:NetTie_2")
+		(at 80.01 73.66 90)
+		(unit 1)
+		(body_style 1)
+		(exclude_from_sim no)
+		(in_bom no)
+		(on_board yes)
+		(in_pos_files yes)
+		(dnp no)
+		(fields_autoplaced yes)
+		(uuid "80c1a1bf-bd71-4c8e-b586-523d069adb96")
+		(property "Reference" "NT4"
+			(at 77.47 73.66 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Value" "NetTie_2"
+			(at 77.47 73.66 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" "NetTie:NetTie-2_SMD_Pad0.5mm"
+			(at 80.01 73.66 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Datasheet" ""
+			(at 80.01 73.66 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Description" "Net tie, 2 pins"
+			(at 80.01 73.66 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(pin "2"
+			(uuid "652fded2-d2e5-4066-9f19-223b868926fb")
+		)
+		(pin "1"
+			(uuid "6021dd06-bf6b-4252-9d99-7753293e5b7c")
+		)
+		(instances
+			(project "Solar Project Rev2"
+				(path "/28299885-0f47-4c9d-af0f-f2db484b5c54"
+					(reference "NT4")
 					(unit 1)
 				)
 			)
@@ -109590,6 +110060,88 @@
 		)
 	)
 	(symbol
+		(lib_id "Device:NetTie_2")
+		(at 332.74 73.66 90)
+		(unit 1)
+		(body_style 1)
+		(exclude_from_sim no)
+		(in_bom no)
+		(on_board yes)
+		(in_pos_files yes)
+		(dnp no)
+		(fields_autoplaced yes)
+		(uuid "c6d68486-043d-4956-a8d2-2e6f15f3429d")
+		(property "Reference" "NT6"
+			(at 330.2 73.66 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Value" "NetTie_2"
+			(at 330.2 73.66 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" "NetTie:NetTie-2_SMD_Pad0.5mm"
+			(at 332.74 73.66 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Datasheet" ""
+			(at 332.74 73.66 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Description" "Net tie, 2 pins"
+			(at 332.74 73.66 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(pin "2"
+			(uuid "bb272764-1a64-4cf4-9aac-199488f92a17")
+		)
+		(pin "1"
+			(uuid "3b2d651a-03e0-4e53-97be-f50e6de64464")
+		)
+		(instances
+			(project "Solar Project Rev2"
+				(path "/28299885-0f47-4c9d-af0f-f2db484b5c54"
+					(reference "NT6")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
 		(lib_id "PCM_JLCPCB-Resistors:0805,4.7kΩ")
 		(at 306.07 186.69 0)
 		(unit 1)
@@ -110537,6 +111089,88 @@
 			(project "Solar Project Rev2"
 				(path "/28299885-0f47-4c9d-af0f-f2db484b5c54"
 					(reference "C61")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "Device:NetTie_2")
+		(at 425.45 76.2 180)
+		(unit 1)
+		(body_style 1)
+		(exclude_from_sim no)
+		(in_bom no)
+		(on_board yes)
+		(in_pos_files yes)
+		(dnp no)
+		(fields_autoplaced yes)
+		(uuid "cbe64029-6e85-410b-8e70-2a479a89f942")
+		(property "Reference" "NT8"
+			(at 425.45 78.74 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Value" "NetTie_2"
+			(at 425.45 78.74 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" "NetTie:NetTie-2_SMD_Pad0.5mm"
+			(at 425.45 76.2 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Datasheet" ""
+			(at 425.45 76.2 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Description" "Net tie, 2 pins"
+			(at 425.45 76.2 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(pin "2"
+			(uuid "283d2df0-e8c8-42b9-a339-a2879b28a2de")
+		)
+		(pin "1"
+			(uuid "ae068741-c3cf-4b9a-b4db-1c883ed2df56")
+		)
+		(instances
+			(project "Solar Project Rev2"
+				(path "/28299885-0f47-4c9d-af0f-f2db484b5c54"
+					(reference "NT8")
 					(unit 1)
 				)
 			)
@@ -113686,6 +114320,88 @@
 			(project "Solar Project Rev2"
 				(path "/28299885-0f47-4c9d-af0f-f2db484b5c54"
 					(reference "TP17")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "Device:NetTie_2")
+		(at 440.69 60.96 180)
+		(unit 1)
+		(body_style 1)
+		(exclude_from_sim no)
+		(in_bom no)
+		(on_board yes)
+		(in_pos_files yes)
+		(dnp no)
+		(fields_autoplaced yes)
+		(uuid "d3c6ccbd-0661-4f6a-8b08-87417340d83b")
+		(property "Reference" "NT7"
+			(at 440.69 63.5 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Value" "NetTie_2"
+			(at 440.69 63.5 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" "NetTie:NetTie-2_SMD_Pad0.5mm"
+			(at 440.69 60.96 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Datasheet" ""
+			(at 440.69 60.96 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Description" "Net tie, 2 pins"
+			(at 440.69 60.96 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(pin "2"
+			(uuid "67236058-ff37-4ad8-9424-2e77c45cc310")
+		)
+		(pin "1"
+			(uuid "b6cecc46-51a2-40cd-bfc5-2d0c2dd1ab95")
+		)
+		(instances
+			(project "Solar Project Rev2"
+				(path "/28299885-0f47-4c9d-af0f-f2db484b5c54"
+					(reference "NT7")
 					(unit 1)
 				)
 			)
@@ -118547,6 +119263,88 @@
 			(project "Solar Project Rev2"
 				(path "/28299885-0f47-4c9d-af0f-f2db484b5c54"
 					(reference "C1")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "Device:NetTie_2")
+		(at 93.98 73.66 90)
+		(unit 1)
+		(body_style 1)
+		(exclude_from_sim no)
+		(in_bom no)
+		(on_board yes)
+		(in_pos_files yes)
+		(dnp no)
+		(fields_autoplaced yes)
+		(uuid "dea5f1d0-49a4-42e0-8d18-19723bb30919")
+		(property "Reference" "NT3"
+			(at 91.44 73.66 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Value" "NetTie_2"
+			(at 91.44 73.66 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" "NetTie:NetTie-2_SMD_Pad0.5mm"
+			(at 93.98 73.66 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Datasheet" ""
+			(at 93.98 73.66 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Description" "Net tie, 2 pins"
+			(at 93.98 73.66 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(pin "2"
+			(uuid "c6264fb7-2ced-42cd-8086-0d8742b70f52")
+		)
+		(pin "1"
+			(uuid "6596664b-cadd-423f-af3c-8fdb497aec05")
+		)
+		(instances
+			(project "Solar Project Rev2"
+				(path "/28299885-0f47-4c9d-af0f-f2db484b5c54"
+					(reference "NT3")
 					(unit 1)
 				)
 			)
@@ -125410,17 +126208,17 @@
 	)
 	(symbol
 		(lib_id "Device:R")
-		(at 265.43 76.2 0)
+		(at 265.43 74.93 0)
 		(unit 1)
 		(body_style 1)
 		(exclude_from_sim no)
 		(in_bom yes)
 		(on_board yes)
 		(in_pos_files yes)
-		(dnp no)
+		(dnp yes)
 		(uuid "f3fc6b1b-2dd8-41f3-b4a0-cb8737ab2dc4")
 		(property "Reference" "R3"
-			(at 267.97 74.9299 0)
+			(at 267.97 73.6599 0)
 			(show_name no)
 			(do_not_autoplace no)
 			(effects
@@ -125431,7 +126229,7 @@
 			)
 		)
 		(property "Value" "76.8k"
-			(at 265.43 77.724 90)
+			(at 265.43 76.454 90)
 			(show_name no)
 			(do_not_autoplace no)
 			(effects
@@ -125442,7 +126240,7 @@
 			)
 		)
 		(property "Footprint" "PCM_JLCPCB:R_0805"
-			(at 263.652 76.2 90)
+			(at 263.652 74.93 90)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -125453,7 +126251,7 @@
 			)
 		)
 		(property "Datasheet" "https://www.lcsc.com/datasheet/C3000581.pdf?spm=wm.sxq.inf.ggs___wm.fly.bg.0.xh&lcsc_vid=FgBbX1QHRgQKBgdUQ1lbVgIFRwILVwVXFgdWUQJXFAUxVlNeTlFaV1NVR1ZfUjsOAxUeFF5JWBYZEEoKFBINSQcJGk4NBhADEA4cHktXRlhXSQwSGg0%3D"
-			(at 265.43 76.2 0)
+			(at 265.43 74.93 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -125464,7 +126262,7 @@
 			)
 		)
 		(property "Description" "ResistorRES 76.8kΩ ±1% 125mW 0805"
-			(at 265.43 76.2 0)
+			(at 265.43 74.93 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -125475,7 +126273,7 @@
 			)
 		)
 		(property "LCSC" "C3000581"
-			(at 265.43 76.2 0)
+			(at 265.43 74.93 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -125486,7 +126284,7 @@
 			)
 		)
 		(property "Continuous Drain Current (Id)" ""
-			(at 265.43 76.2 0)
+			(at 265.43 74.93 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -125497,7 +126295,7 @@
 			)
 		)
 		(property "Drain Source On Resistance (RDS(on)@Vgs,Id)" ""
-			(at 265.43 76.2 0)
+			(at 265.43 74.93 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -125508,7 +126306,7 @@
 			)
 		)
 		(property "Drain Source Voltage (Vdss)" ""
-			(at 265.43 76.2 0)
+			(at 265.43 74.93 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -125519,7 +126317,7 @@
 			)
 		)
 		(property "Gate Threshold Voltage (Vgs(th)@Id)" ""
-			(at 265.43 76.2 0)
+			(at 265.43 74.93 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -125530,7 +126328,7 @@
 			)
 		)
 		(property "Input Capacitance (Ciss@Vds)" ""
-			(at 265.43 76.2 0)
+			(at 265.43 74.93 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -125541,7 +126339,7 @@
 			)
 		)
 		(property "Power Dissipation (Pd)" ""
-			(at 265.43 76.2 0)
+			(at 265.43 74.93 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -125552,7 +126350,7 @@
 			)
 		)
 		(property "Reverse Transfer Capacitance (Crss@Vds)" ""
-			(at 265.43 76.2 0)
+			(at 265.43 74.93 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -125563,7 +126361,7 @@
 			)
 		)
 		(property "Sim.Device" ""
-			(at 265.43 76.2 0)
+			(at 265.43 74.93 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -125574,7 +126372,7 @@
 			)
 		)
 		(property "Sim.Library" ""
-			(at 265.43 76.2 0)
+			(at 265.43 74.93 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -125585,7 +126383,7 @@
 			)
 		)
 		(property "Sim.Name" ""
-			(at 265.43 76.2 0)
+			(at 265.43 74.93 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -125596,7 +126394,7 @@
 			)
 		)
 		(property "Sim.Pins" ""
-			(at 265.43 76.2 0)
+			(at 265.43 74.93 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -125607,7 +126405,7 @@
 			)
 		)
 		(property "Sim.Type" ""
-			(at 265.43 76.2 0)
+			(at 265.43 74.93 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -125618,7 +126416,7 @@
 			)
 		)
 		(property "Total Gate Charge (Qg@Vgs)" ""
-			(at 265.43 76.2 0)
+			(at 265.43 74.93 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -125629,7 +126427,7 @@
 			)
 		)
 		(property "Breakdown Voltage" ""
-			(at 265.43 76.2 0)
+			(at 265.43 74.93 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -125640,7 +126438,7 @@
 			)
 		)
 		(property "Maximum Clamping Voltage" ""
-			(at 265.43 76.2 0)
+			(at 265.43 74.93 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -125651,7 +126449,7 @@
 			)
 		)
 		(property "Number of Lines" ""
-			(at 265.43 76.2 0)
+			(at 265.43 74.93 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -125662,7 +126460,7 @@
 			)
 		)
 		(property "Peak Pulse Current (Ipp)" ""
-			(at 265.43 76.2 0)
+			(at 265.43 74.93 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -125673,7 +126471,7 @@
 			)
 		)
 		(property "Peak Pulse Power Dissipation (Ppp)" ""
-			(at 265.43 76.2 0)
+			(at 265.43 74.93 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -125684,7 +126482,7 @@
 			)
 		)
 		(property "Reverse Stand-Off Voltage (Vrwm)" ""
-			(at 265.43 76.2 0)
+			(at 265.43 74.93 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -125695,7 +126493,7 @@
 			)
 		)
 		(property "polarity" ""
-			(at 265.43 76.2 0)
+			(at 265.43 74.93 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -126718,6 +127516,88 @@
 		)
 	)
 	(symbol
+		(lib_id "Device:NetTie_2")
+		(at 207.01 77.47 90)
+		(unit 1)
+		(body_style 1)
+		(exclude_from_sim no)
+		(in_bom no)
+		(on_board yes)
+		(in_pos_files yes)
+		(dnp no)
+		(uuid "f56c2f2d-144b-4330-b303-e256b71eb5d4")
+		(property "Reference" "NT2"
+			(at 207.518 77.216 90)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify right)
+			)
+		)
+		(property "Value" "NetTie_2"
+			(at 208.28 78.7399 90)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify right)
+			)
+		)
+		(property "Footprint" "NetTie:NetTie-2_SMD_Pad0.5mm"
+			(at 207.01 77.47 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Datasheet" ""
+			(at 207.01 77.47 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Description" "Net tie, 2 pins"
+			(at 207.01 77.47 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(pin "1"
+			(uuid "61cf2fdd-9ac5-42a3-ba1c-ddce078e5fd8")
+		)
+		(pin "2"
+			(uuid "c85042fc-f6cf-44dc-8808-c7b8464a7ef5")
+		)
+		(instances
+			(project "Solar Project Rev2"
+				(path "/28299885-0f47-4c9d-af0f-f2db484b5c54"
+					(reference "NT2")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
 		(lib_id "Connector_Generic:Conn_01x04")
 		(at 266.7 254 0)
 		(unit 1)
@@ -127603,7 +128483,7 @@
 		)
 		(property "Value" "180kΩ"
 			(at 407.67 63.5 90)
-			(show_name no)
+			(show_name yes)
 			(do_not_autoplace yes)
 			(effects
 				(font
@@ -128996,7 +129876,7 @@
 		(in_bom yes)
 		(on_board yes)
 		(in_pos_files yes)
-		(dnp no)
+		(dnp yes)
 		(uuid "fe69288b-21eb-43d1-a97f-562a14eb5bbb")
 		(property "Reference" "R25"
 			(at 267.97 85.7249 0)
