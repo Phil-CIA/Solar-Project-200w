@@ -33,6 +33,8 @@ Owning sessions reported clean Git worktrees for handoff, safe firmware, and ben
 
 ## Rev2 change register
 
+The proposed [Rev2 change plan](rev-two-change-plan.md) separates fixes, additions, open scope decisions and implementation order. It does not approve optional features or apply electrical changes.
+
 | Work | Existing tracker / gate |
 |---|---|
 | Controller selection recorded; comparison still outstanding | Phil selected LM51772 for Rev2 on 2026-11-09. [#20](https://github.com/Phil-CIA/Solar-Project-200w/issues/20) remains open: its evidence-based comparison has not been performed. No BQ25756 evaluation or purchase requested. |

@@ -1,0 +1,115 @@
+(footprint "HC3-1R0-R"
+	(version 20241229)
+	(generator "pcbnew")
+	(generator_version "9.0")
+	(layer "F.Cu")
+	(property "Reference" "REF**"
+		(at 0 -0.5 0)
+		(unlocked yes)
+		(layer "F.SilkS")
+		(uuid "ed604e11-5228-4082-bb86-d1440eca01c6")
+		(effects
+			(font
+				(size 1 1)
+				(thickness 0.1)
+			)
+		)
+	)
+	(property "Value" "HC3-1R0-R"
+		(at 0 1 0)
+		(unlocked yes)
+		(layer "F.Fab")
+		(uuid "30ee0262-4803-470c-bbc1-d219828f1630")
+		(effects
+			(font
+				(size 1 1)
+				(thickness 0.15)
+			)
+		)
+	)
+	(property "Datasheet" ""
+		(at 0 0 0)
+		(unlocked yes)
+		(layer "F.Fab")
+		(hide yes)
+		(uuid "5b88544e-0697-4376-9c2d-d3f032115d0b")
+		(effects
+			(font
+				(size 1 1)
+				(thickness 0.15)
+			)
+		)
+	)
+	(property "Description" ""
+		(at 0 0 0)
+		(unlocked yes)
+		(layer "F.Fab")
+		(hide yes)
+		(uuid "d51eebd5-01a9-46f2-89bf-c32c0976de28")
+		(effects
+			(font
+				(size 1 1)
+				(thickness 0.15)
+			)
+		)
+	)
+	(attr smd)
+	(fp_rect
+		(start -12.175 -14.9)
+		(end 11.825 18.1)
+		(stroke
+			(width 0.1)
+			(type solid)
+		)
+		(fill no)
+		(layer "F.SilkS")
+		(uuid "461bc64c-3c2b-4c4b-aac9-c95d61294bb3")
+	)
+	(fp_rect
+		(start -12.175 -14.9)
+		(end 11.825 18.1)
+		(stroke
+			(width 0.05)
+			(type solid)
+		)
+		(fill no)
+		(layer "F.CrtYd")
+		(uuid "96f2ec32-b964-40eb-9733-a185c73785ac")
+	)
+	(fp_text user "${REFERENCE}"
+		(at -0.05 2.55 0)
+		(layer "F.Fab")
+		(uuid "2c864c85-9714-4b5c-b890-d0fdd190713c")
+		(effects
+			(font
+				(size 1 1)
+				(thickness 0.15)
+			)
+		)
+	)
+	(fp_text user "${REFERENCE}"
+		(at 0 2.5 0)
+		(unlocked yes)
+		(layer "F.Fab")
+		(uuid "d2a268b5-f71f-4b62-a723-b134beaa7510")
+		(effects
+			(font
+				(size 1 1)
+				(thickness 0.15)
+			)
+		)
+	)
+	(pad "1" smd rect
+		(at -0.175 14.25 180)
+		(size 22 5.5)
+		(layers "F.Cu" "F.Mask" "F.Paste")
+		(uuid "a503787e-a250-4f76-b4d3-55e0442faf78")
+	)
+	(pad "2" smd rect
+		(at -0.175 -11.05 180)
+		(size 22 5.5)
+		(layers "F.Cu" "F.Mask" "F.Paste")
+		(uuid "e7d2fb62-f989-484b-824f-e7549504bc64")
+	)
+	(embedded_fonts no)
+)
