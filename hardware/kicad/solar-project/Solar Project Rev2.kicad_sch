@@ -37452,16 +37452,7 @@
 		)
 		(uuid "a770d7f7-ee69-4025-a0d5-4e7241c87e2e")
 	)
-	(wire
-		(pts
-			(xy 427.99 158.75) (xy 427.99 163.83)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "a79fcdff-389e-47c8-9382-42932c4e17ac")
-	)
+
 	(wire
 		(pts
 			(xy 289.56 180.34) (xy 306.07 180.34)
@@ -41814,29 +41805,7 @@
 			)
 		)
 	)
-	(global_label "BAT_BUS_POS"
-		(shape input)
-		(at 420.37 168.91 180)
-		(fields_autoplaced yes)
-		(effects
-			(font
-				(size 0.635 0.635)
-			)
-			(justify right)
-		)
-		(uuid "93d8b859-130c-43ec-8f85-7259d44c78be")
-		(property "Intersheetrefs" "${INTERSHEET_REFS}"
-			(at 412.4366 168.91 0)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify right)
-			)
-		)
-	)
+
 	(global_label "_Undervoltage Feedback"
 		(shape input)
 		(at 181.61 76.2 0)
@@ -76562,7 +76531,7 @@
 	)
 	(symbol
 		(lib_id "power:PWR_FLAG")
-		(at 427.99 158.75 0)
+		(at 427.99 163.83 0)
 		(unit 1)
 		(body_style 1)
 		(exclude_from_sim no)
@@ -76572,7 +76541,7 @@
 		(dnp no)
 		(uuid "66931701-8361-481b-a934-1a0dcb7e6d75")
 		(property "Reference" "#FLG03"
-			(at 427.99 156.845 0)
+			(at 427.99 161.925 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -76583,7 +76552,7 @@
 			)
 		)
 		(property "Value" "PWR_FLAG"
-			(at 434.086 158.242 0)
+			(at 434.086 163.322 0)
 			(show_name no)
 			(do_not_autoplace no)
 			(effects
@@ -76593,7 +76562,7 @@
 			)
 		)
 		(property "Footprint" ""
-			(at 427.99 158.75 0)
+			(at 427.99 163.83 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -76604,7 +76573,7 @@
 			)
 		)
 		(property "Datasheet" ""
-			(at 427.99 158.75 0)
+			(at 427.99 163.83 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -76615,7 +76584,7 @@
 			)
 		)
 		(property "Description" "Special symbol for telling ERC where power comes from"
-			(at 427.99 158.75 0)
+			(at 427.99 163.83 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -93701,492 +93670,6 @@
 			(project "Solar Project Rev2"
 				(path "/28299885-0f47-4c9d-af0f-f2db484b5c54"
 					(reference "R62")
-					(unit 1)
-				)
-			)
-		)
-	)
-	(symbol
-		(lib_id "PCM_JLCPCB-Diodes:Schottky,1N5819WS")
-		(at 424.18 168.91 90)
-		(unit 1)
-		(body_style 1)
-		(exclude_from_sim no)
-		(in_bom yes)
-		(on_board yes)
-		(in_pos_files yes)
-		(dnp no)
-		(uuid "92caf6c3-412e-4b95-8303-2eadf3bfacb9")
-		(property "Reference" "D4"
-			(at 423.926 172.72 90)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Value" "1N5819WS"
-			(at 423.926 171.196 90)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 0.8 0.8)
-				)
-			)
-		)
-		(property "Footprint" "PCM_JLCPCB:D_SOD-323"
-			(at 424.18 170.688 90)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Datasheet" "https://www.lcsc.com/datasheet/lcsc_datasheet_2409300937_Guangdong-Hottech-1N5819WS_C191023.pdf"
-			(at 424.18 168.91 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Description" "40V 600mV@1A 1A SOD-323 Schottky Diodes ROHS"
-			(at 424.18 168.91 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Stock" "1836556"
-			(at 424.18 168.91 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Price" "0.013USD"
-			(at 424.18 168.91 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Process" "SMT"
-			(at 424.18 168.91 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Minimum Qty" "20"
-			(at 424.18 168.91 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Attrition Qty" "10"
-			(at 424.18 168.91 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Class" "Basic Component"
-			(at 424.18 168.91 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Category" "Diodes,Schottky Barrier Diodes (SBD)"
-			(at 424.18 168.91 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Manufacturer" "Guangdong Hottech"
-			(at 424.18 168.91 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Part" "1N5819WS"
-			(at 424.18 168.91 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Rectified Current" "1A"
-			(at 424.18 168.91 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Forward Voltage (Vf@If)" "600mV@1A"
-			(at 424.18 168.91 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Reverse Voltage (Vr)" "40V"
-			(at 424.18 168.91 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Average Rectified Current (Io)" ""
-			(at 424.18 168.91 90)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Diode Configuration" ""
-			(at 424.18 168.91 90)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Peak forward surge current" ""
-			(at 424.18 168.91 90)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Part - USA" ""
-			(at 424.18 168.91 90)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "LCSC" "C191023"
-			(at 424.18 168.91 90)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Continuous Drain Current (Id)" ""
-			(at 424.18 168.91 90)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Drain Source On Resistance (RDS(on)@Vgs,Id)" ""
-			(at 424.18 168.91 90)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Drain Source Voltage (Vdss)" ""
-			(at 424.18 168.91 90)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Gate Threshold Voltage (Vgs(th)@Id)" ""
-			(at 424.18 168.91 90)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Input Capacitance (Ciss@Vds)" ""
-			(at 424.18 168.91 90)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Power Dissipation (Pd)" ""
-			(at 424.18 168.91 90)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Reverse Transfer Capacitance (Crss@Vds)" ""
-			(at 424.18 168.91 90)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Sim.Device" ""
-			(at 424.18 168.91 90)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Sim.Library" ""
-			(at 424.18 168.91 90)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Sim.Name" ""
-			(at 424.18 168.91 90)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Sim.Pins" ""
-			(at 424.18 168.91 90)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Sim.Type" ""
-			(at 424.18 168.91 90)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Total Gate Charge (Qg@Vgs)" ""
-			(at 424.18 168.91 90)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Breakdown Voltage" ""
-			(at 424.18 168.91 90)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Maximum Clamping Voltage" ""
-			(at 424.18 168.91 90)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Number of Lines" ""
-			(at 424.18 168.91 90)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Peak Pulse Current (Ipp)" ""
-			(at 424.18 168.91 90)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Peak Pulse Power Dissipation (Ppp)" ""
-			(at 424.18 168.91 90)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Reverse Stand-Off Voltage (Vrwm)" ""
-			(at 424.18 168.91 90)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "polarity" ""
-			(at 424.18 168.91 90)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(pin "1"
-			(uuid "3805de03-5b8d-452b-b4b3-872c4f28d7e4")
-		)
-		(pin "2"
-			(uuid "c5d3a22c-bcab-4a04-8225-1fe4da529d31")
-		)
-		(instances
-			(project "Solar Project Rev2"
-				(path "/28299885-0f47-4c9d-af0f-f2db484b5c54"
-					(reference "D4")
 					(unit 1)
 				)
 			)
@@ -130684,4 +130167,51 @@
 		)
 	)
 	(embedded_fonts no)
+	(global_label "CTRL_5V"
+		(shape input)
+		(at 427.99 158.75 0)
+		(fields_autoplaced yes)
+		(effects
+			(font
+				(size 0.635 0.635)
+			)
+			(justify left)
+		)
+		(uuid "4e332ff9-c20d-4342-8c40-8ff2299c4cb5")
+		(property "Intersheetrefs" "${INTERSHEET_REFS}"
+			(at 434.8369 158.75 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+	)
+	(global_label "CTRL_SUPPLY_IN"
+		(shape input)
+		(at 427.99 168.91 180)
+		(fields_autoplaced yes)
+		(effects
+			(font
+				(size 0.635 0.635)
+			)
+			(justify right)
+		)
+		(uuid "0425fa2c-50a0-4df7-a5df-9d26c0d15519")
+		(property "Intersheetrefs" "${INTERSHEET_REFS}"
+			(at 420.37 168.91 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify right)
+			)
+		)
+	)
+
 )

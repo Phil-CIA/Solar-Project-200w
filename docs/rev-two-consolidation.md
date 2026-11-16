@@ -8,7 +8,7 @@ Checkpoint: 2026-11-09. This records repository integration, not new hardware va
 
 Phil explicitly selected **retain LM51772 for Rev2** ([DEC-067](decisions-log.md), [#20 comment](https://github.com/Phil-CIA/Solar-Project-200w/issues/20#issuecomment-6737135332)). This is a user-directed architecture choice, not a completed evidence-based comparison with BQ25756. #20 stays open for its remaining acceptance criteria; no BQ25756 evaluation or purchase is requested.
 
-The distinct `Solar Project Rev2.kicad_pro`, `.kicad_sch` and `.kicad_pcb` set now lives beside Rev1 in `hardware\kicad\solar-project`. It copies the repository Rev1 development set at that commit, with only identity/export metadata changes; it is **not an implemented or qualified Rev2 and is not for fabrication**. Shared libraries, historical sources, manufacturing references and fabrication outputs are untouched. No circuit values, routing or temporary bench modifications were imported. See the [revision index](../hardware/kicad/solar-project/REVISION-INDEX.md) for exact identities and the paired KiCad 10.0.6 structural checks: identical electrical netlists and inherited ERC/DRC findings, with zero unconnected or schematic-parity items in both sets.
+The distinct `Solar Project Rev2.kicad_pro`, `.kicad_sch` and `.kicad_pcb` set lives beside Rev1 in `hardware\kicad\solar-project`. It began as a copy of the repository Rev1 development set at that commit, with identity/export metadata changes; issue #22 now adds the first electrical delta described below. Rev2 remains **unqualified and not for fabrication**. Shared libraries, historical sources, manufacturing references, Rev1 and fabrication outputs are untouched. No temporary bench modifications were imported. See the [revision index](../hardware/kicad/solar-project/REVISION-INDEX.md) for exact identities, the inherited baseline checks, and the focused issue #22 validation.
 
 ## Branch disposition
 
@@ -41,7 +41,7 @@ The proposed [Rev2 change plan](rev-two-change-plan.md) separates fixes, additio
 | Correct and qualify peak-current sensing | [#19](https://github.com/Phil-CIA/Solar-Project-200w/issues/19); diagnostic sense bypasses are not production protection. |
 | Match feedback wiring to firmware | [#21](https://github.com/Phil-CIA/Solar-Project-200w/issues/21); internal feedback bench jumper is not an existing Rev1 feature. |
 | Actual measured voltage/current, not target readback | [#15](https://github.com/Phil-CIA/Solar-Project-200w/issues/15). |
-| Control-supply D4/D6 connections | [#22](https://github.com/Phil-CIA/Solar-Project-200w/issues/22). |
+| Control-supply topology implemented; electrical qualification open | [#22](https://github.com/Phil-CIA/Solar-Project-200w/issues/22), [DEC-068](decisions-log.md). |
 | C24 and compensation | [#23](https://github.com/Phil-CIA/Solar-Project-200w/issues/23), [#10](https://github.com/Phil-CIA/Solar-Project-200w/issues/10); 22 nF is the documented design value pending fitted-part/loop verification. |
 | BOOT0, control-rail TVS, debug connector | [#14](https://github.com/Phil-CIA/Solar-Project-200w/issues/14), [#16](https://github.com/Phil-CIA/Solar-Project-200w/issues/16), [#17](https://github.com/Phil-CIA/Solar-Project-200w/issues/17). |
 | ESP32/STM32 link and firmware delivery | [#11](https://github.com/Phil-CIA/Solar-Project-200w/issues/11), [#24](https://github.com/Phil-CIA/Solar-Project-200w/issues/24); retain STM32 charger authority. |
@@ -49,6 +49,13 @@ The proposed [Rev2 change plan](rev-two-change-plan.md) separates fixes, additio
 | Battery/BMS boundary and deferred interfaces | [#4](https://github.com/Phil-CIA/Solar-Project-200w/issues/4), [#12](https://github.com/Phil-CIA/Solar-Project-200w/issues/12), DEC-062. |
 
 Also carry the historical ADDR/SLOPE, MODE/ISET separation, grounding, RT and configuration-strap lessons into review of the chosen design. They must be checked against current source and datasheets, not copied from the September netlist. Temporary ISET-to-VCC2 wiring, 22 Ohm gate resistors, and C26 = 690 nF remain bench experiments, not approved Rev2 selections.
+
+### Issue #22 control-supply implementation
+
+- D4 is removed, eliminating its direct `BAT_BUS_POS` feed into U4 VIN.
+- D6 remains oriented from `CHG_OUT_POS` to `CTRL_SUPPLY_IN`/U4 VIN. D7 now connects USB `VBUS` directly to `CTRL_5V`, bypassing U4's input.
+- The exported schematic netlist confirms the named nets and diode pins; PCB parity is zero. Against the saved KiCad 10.0.5 baseline, DRC findings changed from 222 to 221, unconnected items from 382 to 380, with no new violation category. ERC changed from 316 to 314 warnings and has no errors; the remaining new single-pin `BAT_BUS_POS` label warning follows removal of D4.
+- This is a topology change, not power-path qualification. Battery-only startup depends on `CHG_OUT_POS` being available through the battery/output path. USB-only power biases the shared U4/L3 output node, and the `CTRL_5V` voltage is reduced by D7's forward drop. Confirm these conditions, both-source interaction and diode ratings/thermal margin before relying on the rail. No powered tests were performed.
 
 ## Landing and Rev2 gates
 
@@ -58,4 +65,4 @@ Both firmware builds completed during consolidation: the four Rev1 STM32 stages 
 2. Completed: consolidation landed through [PR #25](https://github.com/Phil-CIA/Solar-Project-200w/pull/25) at `32243b5`. The builds above cover the selected tree. No flashing or powered work was performed.
 3. Reconcile the separate local-main checkout in its owning context after landing, without resetting local work. That checkout was not inspected or modified by this consolidation session; its tracked files, untracked files, and editor buffers need their own preservation check before synchronization.
 4. Completed: recorded the merged baseline and copied the distinct Rev2 KiCad set described above, preserving Rev1 sources and fab outputs. This does not implement any unresolved design changes.
-5. LM51772 retention is selected; next implement the approved Rev2 changes with schematic and PCB edits kept together. Current-sense #19, feedback #21, measured telemetry #15 and all other unresolved register entries remain open. Retire old branches/sessions only after all work is accounted for and the user approves cleanup; none were deleted or archived here.
+5. LM51772 retention is selected; issue #22's initial control-supply topology is implemented with matching schematic/PCB edits, while its electrical qualification remains open. Current-sense #19, feedback #21, measured telemetry #15 and all other unresolved register entries remain open. Retire old branches/sessions only after all work is accounted for and the user approves cleanup; none were deleted or archived here.
