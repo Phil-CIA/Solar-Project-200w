@@ -1,23 +1,23 @@
 # Rev2 change plan
 
-Planning checkpoint: 2026-11-09; current-sense schematic status updated after that checkpoint. Proposed work, not authorization to apply every option below. A schematic-only current-sensing packet is now captured; the PCB and manufacturing files remain unchanged.
+Planning checkpoint: 2026-11-09; current-sense status updated 2026-11-16. Proposed work, not authorization to apply every option below. The Rev2 schematic and PCB have since changed; the board is not yet fully routed or qualified.
 
 ## Baseline and scope
 
 - Retain LM51772 (Phil's decision, DEC-067). No BQ25756 evaluation or purchase is required for this plan; the unperformed comparison in issue #20 is not a new blocker to the selected architecture.
 - BMS communications is included in Rev2 (Phil confirmed 2026-11-09), fulfilling the Rev1 deferral in DEC-062. Only its implementation details remain open; do not defer it again or treat it as an optional feature.
 - Continue from the Rev2 consolidation lineage at `20aa6fa`, preserving its preceding CAD edits and portable libraries. The saved-source investigation in [rev-two-current-sense-review.md](rev-two-current-sense-review.md) describes the earlier PCB baseline at `488441a`; it is not the current schematic state.
-- Rev2 currently copies Rev1 circuitry and routing; it is not qualified or ready for fabrication. Preserve Rev1 and its manufacturing package.
+- Rev2 began as a copy of Rev1 and has since been revised; it is not qualified or ready for fabrication. Preserve Rev1 and its manufacturing package.
 - Keep the existing 4S LiFePO4 / 2P panel baseline and current design targets: 125 W continuous output, up to 150 W PV operating power, 8-10 A nominal charging, approximately 12 A hardware protection pending verification. The project name does not establish a 200 W output rating.
 - Work toward a functional, serviceable charger prototype. Do not silently add an expanded communications/UI feature set or require a formal lab dossier.
 
 ## A. Fix or reconcile
 
-CSA/CSB work has started with the [saved-source investigation](rev-two-current-sense-review.md), and a later schematic-only packet captures current-measurement channels and filter/test provisions. The PCB geometry and behavior remain those of the copied baseline; the new schematic has not been routed, electrically qualified, or approved for fabrication.
+The [current-sense review](rev-two-current-sense-review.md) records the historical baseline and the newer shunt/filter layout. The current PCB still has unconnected CSA/CSB filter nets and has not been electrically qualified or approved for fabrication.
 
 | Item | Planned work | Done when / tracker |
 |---|---|---|
-| Peak-current sense path | The schematic currently shows R22/R75 = 0.005 Ohm each, R26/R27 = 10 Ohm, C20 = 180 pF, and DNP C61 across CSA/CSB. Resolve the false-trip versus real-peak-current question, calculate the effective threshold/filter timing, then implement deliberate Kelvin pickup and compact paired routing on the PCB. Do not prescribe a capacitor value from attenuation alone. | Calculated current threshold and measured behavior agree; intended protection remains effective. [#19](https://github.com/Phil-CIA/Solar-Project-200w/issues/19). |
+| Peak-current sense path | Retain R26/R27 = 10 Ohm and C20 = 180 pF as prototype starting values, with C61 DNP and R22/R75 = 0.005 Ohm each. Complete the unconnected filter and shunt-side routing, review Kelvin pickup, and calculate the filter against the operating-point minimum pulse. Resolve false-trip versus real-peak-current behavior by measurement. | Calculated current threshold and measured behavior agree; intended protection remains effective. [#19](https://github.com/Phil-CIA/Solar-Project-200w/issues/19). |
 | Feedback wiring versus firmware | Recommended: internal I2C-controlled feedback, with FB-to-VCC2 established before startup and matching DIV20 configuration. Confirm this choice before editing; remove or deliberately mark unused divider parts rather than leaving ambiguous options. | Hardware mode, firmware target range/readback and independently measured Vout agree. [#21](https://github.com/Phil-CIA/Solar-Project-200w/issues/21). |
 | Average-current limiting / ISET | Explicitly choose the pin-controlled or register-controlled limit and design/program it accordingly. Reconcile R68/R46, ISET, MODE and D9 selection; calculate limits separately from the CSA/CSB peak-current limit. Do not carry the bench VCC2 jumper forward as an approved limit. | Both average and peak protection have defined limits, startup states and validation evidence. [#8](https://github.com/Phil-CIA/Solar-Project-200w/issues/8), [#19](https://github.com/Phil-CIA/Solar-Project-200w/issues/19), [#10](https://github.com/Phil-CIA/Solar-Project-200w/issues/10). |
 | Input sensing / UVLO / configuration | Recalculate VIN-FB and EN/UVLO for the intended source range; investigate the persistent INPUT status without assuming it caused the earlier stall. Check current ADDR/SLOPE, MODE, RT, configuration straps and ground returns against the actual Rev2 source, not September net descriptions. Define PCM behavior for charging. | Thresholds, divider values, switching mode/frequency and reset/startup settings are intentional and documented. #8, #10. |
