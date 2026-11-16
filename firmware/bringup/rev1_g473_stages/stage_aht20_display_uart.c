@@ -3,6 +3,8 @@
 #include <stdbool.h>
 #include <stdint.h>
 
+#include "wifi_status.h"
+
 #define REG32(address) (*(volatile uint32_t *)(address))
 
 #define RCC_BASE 0x40021000UL
@@ -98,7 +100,7 @@
 #define U6_TEST_POLL_MS 50U
 #define U6_TEST_UPDATE_D7 0U
 #define U6_TEST_D7_TARGET 0x2BU
-#define BUILD_ID "u6q5q6-10s-esplog"
+#define BUILD_ID "u6q5q6-10s-wifi1"
 #define I2C_DEFAULT_HALF_PERIOD_CYCLES 70U
 #define I2C_SCL_HIGH_TIMEOUT_MS 2U
 #define LOOP_PERIOD_MS 1U
@@ -249,6 +251,19 @@ static bool g_esplog_enabled = true;
 static char esplog_line[ESPLOG_LINE_MAX + 1U];
 static uint32_t esplog_line_len = 0U;
 static uint8_t esplog_esc_state = 0U; /* 0 normal, 1 after ESC, 2 inside CSI */
+static wifi_status_t g_wifi_status;
+static bool g_wifi_status_valid = false;
+static bool g_wifi_wait_for_drain = false;
+static uint32_t g_wifi_status_cycles = 0U;
+
+static bool wifi_status_is_fresh(void) {
+    if (g_wifi_status_valid &&
+        !wifi_status_is_recent(true, dwt_ms_since(g_wifi_status_cycles))) {
+        g_wifi_status_valid = false;
+        uart_line("WARN ESP Wi-Fi status timed out");
+    }
+    return g_wifi_status_valid;
+}
 
 static void esplog_init(void) {
     const uint32_t NVIC_ISER1 = 0xE000E104UL;
@@ -286,8 +301,20 @@ void USART3_IRQHandler(void) {
 
 static void esplog_flush_line(void) {
     esplog_line[esplog_line_len] = '\0';
-    uart_write("ESP> ");
-    uart_line(esplog_line);
+    wifi_status_t status;
+    const wifi_record_result_t result = wifi_status_parse(esplog_line, &status);
+    if (result == WIFI_RECORD_VALID && !g_wifi_wait_for_drain) {
+        g_wifi_status = status;
+        g_wifi_status_cycles = DWT_CYCCNT_REG;
+        g_wifi_status_valid = true;
+    } else if (result == WIFI_RECORD_INVALID) {
+        g_wifi_status_valid = false;
+        uart_line("ERR invalid ESP Wi-Fi status");
+    }
+    if (g_esplog_enabled) {
+        uart_write("ESP> ");
+        uart_line(esplog_line);
+    }
     esplog_line_len = 0U;
 }
 
@@ -330,14 +357,24 @@ static void esplog_pump(void) {
     if (esplog_dropped != 0U) {
         const uint32_t dropped = esplog_dropped;
         esplog_dropped = 0U;
-        uart_write("ESP> [relay dropped ");
-        uart_write_u32(dropped);
-        uart_line(" bytes]");
+        g_wifi_status_valid = false;
+        g_wifi_wait_for_drain = true;
+        if (g_esplog_enabled) {
+            uart_write("ESP> [relay dropped ");
+            uart_write_u32(dropped);
+            uart_line(" bytes]");
+        } else {
+            uart_line("WARN ESP Wi-Fi receive overflow");
+        }
     }
     for (uint32_t i = 0U; i < ESPLOG_LINES_PER_PUMP; i++) {
         if (!esplog_pump_line()) {
             break;
         }
+    }
+    if (g_wifi_wait_for_drain && esplog_rx_tail == esplog_rx_head &&
+        esplog_line_len == 0U && esplog_esc_state == 0U) {
+        g_wifi_wait_for_drain = false;
     }
 }
 
@@ -570,6 +607,33 @@ static MAYBE_UNUSED void ws_send_two_pixels(uint8_t d8_red, uint8_t d8_green, ui
     ws_send_pixel(d8_red, d8_green, d8_blue);
     ws_send_pixel(d11_red, d11_green, d11_blue);
     ws_latch_reset();
+}
+
+static void wifi_led_update(bool heartbeat_on, bool allow_wifi_updates) {
+    static bool initialized = false;
+    static bool last_heartbeat_on = false;
+    static wifi_led_state_t wifi_led;
+    static uint32_t last_change_cycles = 0U;
+    bool changed = !initialized;
+
+    if (allow_wifi_updates) {
+        const wifi_status_state_t state =
+            wifi_status_is_fresh() ? g_wifi_status.state : WIFI_STATUS_UNKNOWN;
+        if (wifi_led_advance(&wifi_led, state, dwt_ms_since(last_change_cycles))) {
+            last_change_cycles = DWT_CYCCNT_REG;
+            changed = true;
+        }
+    }
+
+    if (changed || heartbeat_on != last_heartbeat_on) {
+        const wifi_led_pattern_t pattern = wifi_led_pattern(wifi_led.state);
+        ws_send_two_pixels(heartbeat_on ? 0x08U : 0U, 0U, 0U,
+                           wifi_led.on ? pattern.red : 0U,
+                           wifi_led.on ? pattern.green : 0U,
+                           wifi_led.on ? pattern.blue : 0U);
+        last_heartbeat_on = heartbeat_on;
+        initialized = true;
+    }
 }
 
 static inline void i2c_half_period(void) {
@@ -928,7 +992,9 @@ static const uint8_t *font5x7(char c) {
     static const uint8_t F_PERCENT[5] = {0x62, 0x64, 0x08, 0x13, 0x23};
     static const uint8_t F_MINUS[5] = {0x08, 0x08, 0x08, 0x08, 0x08};
     static const uint8_t F_A[5] = {0x3F, 0x48, 0x48, 0x48, 0x3F};
+    static const uint8_t F_B[5] = {0x7F, 0x49, 0x49, 0x49, 0x36};
     static const uint8_t F_C[5] = {0x3E, 0x41, 0x41, 0x41, 0x22};
+    static const uint8_t F_D[5] = {0x7F, 0x41, 0x41, 0x22, 0x1C};
     static const uint8_t F_E[5] = {0x7F, 0x49, 0x49, 0x49, 0x41};
     static const uint8_t F_0[5] = {0x3E, 0x45, 0x49, 0x51, 0x3E};
     static const uint8_t F_1[5] = {0x00, 0x21, 0x7F, 0x01, 0x00};
@@ -967,7 +1033,9 @@ static const uint8_t *font5x7(char c) {
     case '%': return F_PERCENT;
     case '-': return F_MINUS;
     case 'A': return F_A;
+    case 'B': return F_B;
     case 'C': return F_C;
+    case 'D': return F_D;
     case 'E': return F_E;
     case 'F': return F_F;
     case 'G': return F_G;
@@ -1718,6 +1786,8 @@ static void u6_set_and_start(control_state_t *ctl, bool has_u6, uint32_t mv, uin
         }
     }
 
+    g_wifi_status_valid = false;
+    g_wifi_wait_for_drain = true;
     out_path_enable(true);
     delay_ms(10U);
     dwt_start();
@@ -2219,6 +2289,7 @@ int main(void) {
     ws_gpio_init();
     u6_flt_gpio_init();
     ws_latch_reset();
+    dwt_start();
 
     uart_line("");
     uart_line("Solar Rev1 AHT20/OLED stage");
@@ -2248,6 +2319,7 @@ int main(void) {
     g_oled_ok = oled_ok;
 
     bool heartbeat_phase = false;
+    bool heartbeat_on = false;
     bool vin_path_on = true;
     bool vin_cutoff_reported = false;
     control_state_t ctl = {
@@ -2419,14 +2491,18 @@ int main(void) {
                 char fault_tags_compact[18];
                 char vout_str[8];
                 char vin_str[8];
+                char wifi_line[15];
                 uint32_t pos = 0U;
 
                 format_mv_decimal(vout_ok ? vout_mv : 0U, vout_str);
                 format_mv_decimal(vin_ok ? vin_mv : 0U, vin_str);
                 format_fault_tags_compact(u6_status, fault_tags_compact, sizeof(fault_tags_compact));
+                wifi_rssi_label(&g_wifi_status,
+                                !ctl.armed && ctl.run_ms_remaining == 0U && wifi_status_is_fresh(),
+                                wifi_line);
 
                 line0[0] = 'S'; line0[1] = '='; line0[2] = u6_status_hex[2]; line0[3] = u6_status_hex[3];
-                line0[4] = ' '; line0[5] = ' ';
+                line0[4] = ' '; line0[5] = ' '; line0[6] = ' ';
                 line0[7] = 'F'; line0[8] = 'L'; line0[9] = 'T'; line0[10] = '=';
                 line0[11] = u6_flt_asserted() ? 'L' : 'H';
                 line0[12] = u6_flt_asserted() ? 'O' : 'I';
@@ -2467,30 +2543,25 @@ int main(void) {
                 (void)oled_write_text_line(1U, line2);
                 (void)oled_write_text_line(2U, line4);
                 (void)oled_write_text_line(3U, line6);
+                if (ctl.inhibit_asserted && !ctl.armed && ctl.run_ms_remaining == 0U) {
+                    if (!oled_write_text_line(4U, wifi_line)) {
+                        uart_line("ERR OLED Wi-Fi status write");
+                    }
+                }
             }
 
-            if (heartbeat_phase) {
-                ws_send_two_pixels(
-                    0x08U, 0x00U, 0x00U, /* D8 red */
-                    0x00U, 0x00U, 0x00U  /* D11 off */
-                );
-            } else {
-                ws_send_two_pixels(
-                    0x00U, 0x00U, 0x00U, /* D8 off */
-                    0x08U, 0x00U, 0x00U  /* D11 red */
-                );
-            }
+            heartbeat_on = heartbeat_phase;
             heartbeat_phase = !heartbeat_phase;
         }
 
         if (!ctl.armed && ctl.run_ms_remaining == 0U) {
-            if (g_esplog_enabled) {
-                esplog_pump();
-            } else {
-                esplog_discard_pending();
-                esplog_dropped = 0U;
-            }
+            esplog_pump();
+        } else {
+            g_wifi_status_valid = false;
+            g_wifi_wait_for_drain = true;
         }
+        wifi_led_update(heartbeat_on, ctl.inhibit_asserted && !ctl.armed &&
+                                      ctl.run_ms_remaining == 0U);
 
         telemetry_tick += LOOP_PERIOD_MS;
         if (telemetry_tick >= TELEMETRY_PERIOD_MS) {

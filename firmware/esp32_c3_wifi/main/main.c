@@ -4,6 +4,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
+#include <strings.h>
 
 #include "esp_event.h"
 #include "esp_http_server.h"
@@ -17,6 +18,9 @@
 #include "driver/usb_serial_jtag.h"
 #include "freertos/FreeRTOS.h"
 #include "freertos/event_groups.h"
+#include "mbedtls/base64.h"
+#include "mbedtls/constant_time.h"
+#include "mbedtls/platform_util.h"
 #include "nvs.h"
 #include "nvs_flash.h"
 
@@ -24,15 +28,20 @@
 #define WIFI_DISC_BIT      BIT1
 #define WIFI_PROV_BIT      BIT2
 #define WIFI_CLEAR_BIT     BIT3
+#define WIFI_SETUP_AUTH_BIT BIT4
 
 #define WIFI_BACKOFF_MIN_MS       1000U
 #define WIFI_BACKOFF_MAX_MS       60000U
 #define WIFI_ATTEMPT_TIMEOUT_MS   30000U
 #define WIFI_AP_FALLBACK_MS       (5U * 60U * 1000U)
 #define SUPERVISOR_POLL_MS        250U
+#define WIFI_STATUS_INTERVAL_MS   1000U
 #define SETUP_BUTTON_GPIO         GPIO_NUM_9
 #define SETUP_BUTTON_HOLD_MS      3000U
 #define SETUP_AP_IDLE_CLOSE_MS    (10U * 60U * 1000U)
+#define SETUP_AP_PASSWORD_LEN     12U
+#define SETUP_HTTP_USER           "setup"
+#define SETUP_HTTP_AUTH_PREFIX    "Basic "
 
 #define WIFI_NAMESPACE     "wifi_cfg"
 #define WIFI_SSID_KEY      "ssid"
@@ -40,6 +49,13 @@
 #define MAX_SSID_LEN       32
 #define MAX_PASS_LEN       63
 #define MAX_FORM_BODY_LEN  192
+
+enum {
+    SETUP_LOGIN_LEN = sizeof(SETUP_HTTP_USER) - 1U + 1U + SETUP_AP_PASSWORD_LEN,
+    SETUP_AUTH_PREFIX_LEN = sizeof(SETUP_HTTP_AUTH_PREFIX) - 1U,
+    SETUP_AUTH_ENCODED_LEN = 4U * ((SETUP_LOGIN_LEN + 2U) / 3U),
+    SETUP_AUTH_HEADER_LEN = SETUP_AUTH_PREFIX_LEN + SETUP_AUTH_ENCODED_LEN,
+};
 
 static const char *TAG = "wifi_prov";
 
@@ -54,8 +70,11 @@ static httpd_handle_t s_httpd_server;
 static wifi_creds_t s_prov_creds;
 static volatile bool s_sta_has_ip;
 static bool s_ap_active;
+static bool s_setup_login_pending;
+static bool s_setup_server_failed;
 static TickType_t s_ap_opened_at;
 static bool s_ap_manual;
+static char s_setup_authorization[SETUP_AUTH_HEADER_LEN + 1U];
 
 static const char *wifi_reason_to_str(uint8_t reason) {
     switch (reason) {
@@ -301,12 +320,83 @@ static esp_err_t load_creds_from_nvs(wifi_creds_t *creds) {
     return ESP_OK;
 }
 
+static esp_err_t prepare_setup_authorization(const char *password) {
+    char credentials[SETUP_LOGIN_LEN + 1U];
+    int written = snprintf(credentials, sizeof(credentials), "%s:%s", SETUP_HTTP_USER, password);
+    if (written < 0 || (size_t)written != SETUP_LOGIN_LEN) {
+        mbedtls_platform_zeroize(credentials, sizeof(credentials));
+        ESP_LOGE(TAG, "Invalid setup password length");
+        return ESP_ERR_INVALID_SIZE;
+    }
+
+    memcpy(s_setup_authorization, SETUP_HTTP_AUTH_PREFIX, SETUP_AUTH_PREFIX_LEN);
+    size_t encoded_len = 0;
+    int result = mbedtls_base64_encode(
+        (unsigned char *)s_setup_authorization + SETUP_AUTH_PREFIX_LEN,
+        sizeof(s_setup_authorization) - SETUP_AUTH_PREFIX_LEN, &encoded_len,
+        (const unsigned char *)credentials, (size_t)written);
+    mbedtls_platform_zeroize(credentials, sizeof(credentials));
+    if (result != 0 || encoded_len != SETUP_AUTH_ENCODED_LEN) {
+        mbedtls_platform_zeroize(s_setup_authorization, sizeof(s_setup_authorization));
+        ESP_LOGE(TAG, "Could not prepare setup authentication: %d", result);
+        return ESP_FAIL;
+    }
+    return ESP_OK;
+}
+
+static bool setup_request_authorized(httpd_req_t *req) {
+    if (s_setup_authorization[0] == '\0' ||
+        httpd_req_get_hdr_value_len(req, "Authorization") != SETUP_AUTH_HEADER_LEN) {
+        return false;
+    }
+
+    char authorization[SETUP_AUTH_HEADER_LEN + 1U];
+    esp_err_t err = httpd_req_get_hdr_value_str(req, "Authorization", authorization,
+                                                sizeof(authorization));
+    if (err != ESP_OK) {
+        mbedtls_platform_zeroize(authorization, sizeof(authorization));
+        ESP_LOGW(TAG, "Could not read setup authorization: %s", esp_err_to_name(err));
+        return false;
+    }
+    bool scheme_ok = strncasecmp(authorization, SETUP_HTTP_AUTH_PREFIX,
+                                 SETUP_AUTH_PREFIX_LEN) == 0;
+    bool credentials_ok = mbedtls_ct_memcmp(
+        authorization + SETUP_AUTH_PREFIX_LEN,
+        s_setup_authorization + SETUP_AUTH_PREFIX_LEN, SETUP_AUTH_ENCODED_LEN) == 0;
+    mbedtls_platform_zeroize(authorization, sizeof(authorization));
+    if (scheme_ok && credentials_ok) {
+        xEventGroupSetBits(s_wifi_event_group, WIFI_SETUP_AUTH_BIT);
+        return true;
+    }
+    return false;
+}
+
+static esp_err_t reject_setup_request(httpd_req_t *req) {
+    esp_err_t err = httpd_resp_set_hdr(req, "WWW-Authenticate", "Basic realm=\"Solar Wi-Fi Setup\"");
+    if (err == ESP_OK) {
+        err = httpd_resp_set_hdr(req, "Connection", "close");
+    }
+    if (err == ESP_OK) {
+        err = httpd_resp_send_err(req, HTTPD_401_UNAUTHORIZED, "Setup authentication required.");
+    }
+    if (err != ESP_OK) {
+        ESP_LOGE(TAG, "Could not send setup authentication challenge: %s", esp_err_to_name(err));
+    }
+    return ESP_FAIL;
+}
+
 static esp_err_t root_get_handler(httpd_req_t *req) {
+    if (!setup_request_authorized(req)) {
+        return reject_setup_request(req);
+    }
     httpd_resp_set_type(req, "text/html");
     return httpd_resp_send(req, k_form_html, HTTPD_RESP_USE_STRLEN);
 }
 
 static esp_err_t save_post_handler(httpd_req_t *req) {
+    if (!setup_request_authorized(req)) {
+        return reject_setup_request(req);
+    }
     if (req->content_len <= 0 || req->content_len > MAX_FORM_BODY_LEN) {
         httpd_resp_set_status(req, "400 Bad Request");
         return httpd_resp_sendstr(req, "Invalid form size.");
@@ -361,6 +451,9 @@ static esp_err_t save_post_handler(httpd_req_t *req) {
 }
 
 static esp_err_t clear_post_handler(httpd_req_t *req) {
+    if (!setup_request_authorized(req)) {
+        return reject_setup_request(req);
+    }
     nvs_handle_t nvs_handle;
     esp_err_t err = nvs_open(WIFI_NAMESPACE, NVS_READWRITE, &nvs_handle);
     if (err != ESP_OK) {
@@ -421,10 +514,22 @@ static esp_err_t start_http_server(void) {
         .user_ctx = NULL
     };
 
-    httpd_register_uri_handler(s_httpd_server, &root_uri);
-    httpd_register_uri_handler(s_httpd_server, &save_uri);
-    httpd_register_uri_handler(s_httpd_server, &clear_uri);
-    return ESP_OK;
+    err = httpd_register_uri_handler(s_httpd_server, &root_uri);
+    if (err == ESP_OK) {
+        err = httpd_register_uri_handler(s_httpd_server, &save_uri);
+    }
+    if (err == ESP_OK) {
+        err = httpd_register_uri_handler(s_httpd_server, &clear_uri);
+    }
+    if (err != ESP_OK) {
+        esp_err_t stop_err = httpd_stop(s_httpd_server);
+        if (stop_err != ESP_OK) {
+            ESP_LOGE(TAG, "Could not stop failed setup server: %s", esp_err_to_name(stop_err));
+            return stop_err;
+        }
+        s_httpd_server = NULL;
+    }
+    return err;
 }
 
 static void stop_http_server(void) {
@@ -470,7 +575,7 @@ static void apply_sta_config(const wifi_creds_t *creds) {
 // published on the console (USB and the STM32 COM relay).
 static const char *setup_ap_password(void) {
     static const char alphabet[] = "ABCDEFGHJKLMNPQRSTUVWXYZabcdefghijkmnopqrstuvwxyz23456789";
-    static char password[13];
+    static char password[SETUP_AP_PASSWORD_LEN + 1U];
     if (password[0] == '\0') {
         for (size_t i = 0; i < sizeof(password) - 1; ++i) {
             password[i] = alphabet[esp_random() % (sizeof(alphabet) - 1)];
@@ -490,6 +595,8 @@ static void open_setup_ap(const char *why) {
     char ap_ssid[33];
     snprintf(ap_ssid, sizeof(ap_ssid), "SolarSetup-%02X%02X%02X", mac[3], mac[4], mac[5]);
     const char *ap_password = setup_ap_password();
+    ESP_ERROR_CHECK(prepare_setup_authorization(ap_password));
+    xEventGroupClearBits(s_wifi_event_group, WIFI_SETUP_AUTH_BIT);
 
     wifi_config_t ap_cfg = {0};
     strlcpy((char *)ap_cfg.ap.ssid, ap_ssid, sizeof(ap_cfg.ap.ssid));
@@ -501,13 +608,17 @@ static void open_setup_ap(const char *why) {
 
     ESP_ERROR_CHECK(esp_wifi_set_mode(WIFI_MODE_APSTA));
     ESP_ERROR_CHECK(esp_wifi_set_config(WIFI_IF_AP, &ap_cfg));
-    if (start_http_server() != ESP_OK) {
-        ESP_LOGE(TAG, "HTTP server start failed");
-    }
+    esp_err_t server_err = start_http_server();
     s_ap_active = true;
+    s_setup_login_pending = (server_err == ESP_OK);
+    s_setup_server_failed = (server_err != ESP_OK);
     s_ap_opened_at = xTaskGetTickCount();
-    ESP_LOGW(TAG, "Setup AP open (%s): SSID=%s password=%s, page http://192.168.4.1/",
-             why, ap_ssid, ap_password);
+    if (server_err == ESP_OK) {
+        ESP_LOGW(TAG, "Setup AP open (%s): SSID=%s password=%s, page http://192.168.4.1/",
+                 why, ap_ssid, ap_password);
+    } else {
+        ESP_LOGE(TAG, "Setup AP open, but HTTP server start failed: %s", esp_err_to_name(server_err));
+    }
 }
 
 static void close_setup_ap(void) {
@@ -517,8 +628,41 @@ static void close_setup_ap(void) {
     stop_http_server();
     ESP_ERROR_CHECK(esp_wifi_set_mode(WIFI_MODE_STA));
     s_ap_active = false;
+    s_setup_login_pending = false;
+    s_setup_server_failed = false;
     s_ap_manual = false;
+    xEventGroupClearBits(s_wifi_event_group, WIFI_SETUP_AUTH_BIT);
     ESP_LOGI(TAG, "Setup AP closed");
+}
+
+static void publish_wifi_status(bool have_creds) {
+    static bool rssi_error_reported;
+    const bool connected = s_sta_has_ip;
+    const char state = s_setup_server_failed ? 'E' :
+                       ((s_setup_login_pending || (s_ap_active && !have_creds)) ? 'A' :
+                        (connected ? 'C' : 'S'));
+    bool rssi_valid = false;
+    int rssi = 0;
+    if (connected) {
+        wifi_ap_record_t ap = {0};
+        const esp_err_t err = esp_wifi_sta_get_ap_info(&ap);
+        if (err == ESP_OK) {
+            rssi = ap.rssi;
+            rssi_valid = true;
+            rssi_error_reported = false;
+        } else if (!rssi_error_reported) {
+            ESP_LOGW(TAG, "Router RSSI unavailable: %s", esp_err_to_name(err));
+            rssi_error_reported = true;
+        }
+    } else {
+        rssi_error_reported = false;
+    }
+
+    int written = rssi_valid ? printf("WIFI_STATUS %c %d\n", state, rssi)
+                             : printf("WIFI_STATUS %c NA\n", state);
+    if (written < 0) {
+        ESP_LOGE(TAG, "Could not write Wi-Fi status");
+    }
 }
 
 static void setup_button_init(void) {
@@ -609,13 +753,19 @@ void app_main(void) {
     TickType_t outage_start = xTaskGetTickCount();
     TickType_t next_attempt = outage_start;
     TickType_t attempt_start = outage_start;
+    TickType_t next_status = outage_start;
     uint32_t button_low_ms = 0;
 
     for (;;) {
         const EventBits_t bits = xEventGroupWaitBits(
-            s_wifi_event_group, WIFI_GOT_IP_BIT | WIFI_DISC_BIT | WIFI_PROV_BIT | WIFI_CLEAR_BIT,
+            s_wifi_event_group,
+            WIFI_GOT_IP_BIT | WIFI_DISC_BIT | WIFI_PROV_BIT | WIFI_CLEAR_BIT | WIFI_SETUP_AUTH_BIT,
             pdTRUE, pdFALSE, pdMS_TO_TICKS(SUPERVISOR_POLL_MS));
         const TickType_t now = xTaskGetTickCount();
+
+        if (bits & WIFI_SETUP_AUTH_BIT) {
+            s_setup_login_pending = false;
+        }
 
         if (bits & WIFI_CLEAR_BIT) {
             have_creds = false;
@@ -692,6 +842,11 @@ void app_main(void) {
             }
         } else {
             button_low_ms = 0;
+        }
+
+        if ((int32_t)(now - next_status) >= 0) {
+            publish_wifi_status(have_creds);
+            next_status = now + pdMS_TO_TICKS(WIFI_STATUS_INTERVAL_MS);
         }
     }
 }
