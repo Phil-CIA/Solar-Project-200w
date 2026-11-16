@@ -1,14 +1,34 @@
 # Rev2 CSA/CSB investigation
 
-Date: 2026-11-09. Tracker: [#19](https://github.com/Phil-CIA/Solar-Project-200w/issues/19). Read-only electrical investigation of the Rev2 copied baseline at `488441a`; no circuit values, placement or routing changed.
+Tracker: [#19](https://github.com/Phil-CIA/Solar-Project-200w/issues/19). The original 2026-11-09 investigation below describes the copied baseline at `488441a`. The 2026-11-16 review below supersedes its statements about the current Rev2 source. No circuit values or PCB geometry were changed by this review.
 
-## Current schematic status (schematic-only)
+## 2026-11-16 component and layout review
 
-The investigation below remains a historical description of the copied PCB baseline. A later schematic-only packet now captures three INA241A3 current channels: output on PA0 across R16/R80 (0.005 Ohm each), PV on PA1 across R76/R77 (0.010 Ohm each) between `PV_FUSED_POS` and `PV_Q4_SOURCE` after F1 and before Q4, and battery on PC4 across R78/R79 (0.001 Ohm each) between `BAT_PACK_POS` and `BAT_BUS_POS`. U10/U11/U12 are entered as INA241A3IDDFR with TSOT-23-8 footprints. These are schematic values and connections, not a released BOM or qualified measurement design.
+**Decision: retain R26/R27 = 10 Ohm and C20 = 180 pF as the initial prototype values, and leave C61 unpopulated.** The 10 Ohm resistors match TI's general recommendation; 180 pF is a reasonable starting point, not yet a calculated or validated final value. Do not populate C61 or change C20 merely to suppress a trip. A better layout is expected to reduce pickup, but Rev1's actual trip mechanism and Rev2 performance remain unmeasured.
 
-The CSA/CSB schematic retains R26/R27 at 10 Ohm and C20 at 180 pF, with DNP C61 provided across the sense nets. R22/R75 are each shown as 0.005 Ohm; the peak-current threshold and filter timing still require calculation and review. R81 pin 1 is on `CHG_OUT_POS`, preserving the existing output-voltage divider input. After the user's graphical cleanup, the PV source-sense connection, U10 REF2, and J3 pin 1 were restored to their intended nets; the latest netlist verifies the current-sensing connections. The PCB remains unchanged, so none of these shunts, sensor routes, or filter provisions is implemented or validated on copper. KiCad 10.0.6 ERC reports 0 errors and 53 warnings. PCB DRC reports two inherited courtyard overlaps (C3/C18 and R72/C18) and 412 inherited unconnected items; schematic parity reports 59 issues, up from 36 before the schematic-only changes. The warnings and parity findings remain open.
+| Item | Review |
+|---|---|
+| R26, R27 | 10 Ohm each, 0805, schematic LCSC `C17414`; appropriate TI-recommended starting resistance. Confirm actual ordering metadata and ratings before release: the schematic's datasheet URL ends in `C17415`, whereas its LCSC field says `C17414`. |
+| C20 | 180 pF, 0805, schematic LCSC `C1794`. Use a stable C0G/NP0 capacitor with suitable tolerance and voltage rating; the Rev1 BOM lists Yageo `CC0805JRNPO9BN181` / `C113826` as a replacement for discontinued `C1794`. Confirm the actual Rev2 part and availability before release; the schematic metadata has not been updated by this review. |
+| C61 | Parallel footprint on the IC-side differential nets, schematic value `DNP` and KiCad DNP attribute set. Leave unpopulated unless a measured and recalculated filter change is needed; choose an actual part only for an intentional experiment. |
+| R22/R75 | Two 5 mOhm shunts in parallel give 2.5 mOhm nominal. The 45/50/55 mV positive peak thresholds imply approximately 17.8/20.0/22.2 A including 1% shunt resistance tolerance, before slope compensation, parasitics and other effects. This is inductor **peak**, not output average, current. Validate operating and fault margins independently. |
 
-## Confirmed source findings
+### Filter calculation and limits
+
+TI's [LM51772-Q1 datasheet](lm51772-datasheet.pdf), section 7.3.10, recommends 10 Ohm for each series resistor and specifies `C_DIFF = t_on,min / (2 * pi * (R_DIFF1 + R_DIFF2) * 10)`, using the minimum on-time in buck or boost operation at the selected operating point. For 10 + 10 Ohm and 180 pF, the ideal differential time constant is 3.6 ns and the corner is approximately 44.2 MHz. Rearranging TI's equation, 180 pF corresponds to a minimum operating on-time of approximately 226 ns. This is **not** a measurement of the actual minimum pulse. Determine that pulse over the intended VIN, VOUT, frequency and operating modes before calling the capacitance compliant; account for component tolerances and parasitics. Do not confuse the RC time constant with TI's stated filter criterion or substitute the device's minimum controllable on-time for the actual operating-point pulse.
+
+The saved Rev2 PCB at `11395a9` contains the two shunt footprints and the placed filter components, and the shunt-side sense traces are on In2.Cu. This is a substantial change from the historical layout below and is consistent with the user's effort to follow the TI EVM layout. It is not yet a completed or verified copy: the saved PCB has **no copper tracks or zones on the IC-side CSA/CSB nets** between R26/R27, C20/C61 and U6. KiCad 10.0.6 DRC reports those pads unconnected, including U6 pins 22/21. The shunt-side CSB trace also has a dangling end and a reported missing connection to NT1. Complete and inspect the copper, Kelvin pickup, net ties, and any ground reference before claiming the filter or protection is functional. The same DRC run reports 222 violations and 382 unconnected items overall; it does not establish a fabrication-ready board.
+
+### Remaining acceptance work
+
+- Calculate the minimum operating pulse and worst-case inductor peaks for the intended envelope, including inductance under bias and slope compensation; check the resulting current limit against component and fault ratings.
+- Complete the paired Kelvin routing and short IC-side filter connections, then review the actual copper and DRC. Confirm C61 is DNP in the assembly output.
+- With suitable differential probing and/or an independent inductor-current measurement, compare the shunt and U6 sense signals; do not attach an earth-grounded scope clip to switching-referenced nodes.
+- Verify startup, regulation and peak-current protection across the intended input/load range, recording VIN, VOUT, current, STATUS_BYTE and temperature. A CSA/CSB short or attenuating resistor is diagnostic only and is not an accepted production solution.
+
+## Historical investigation: copied baseline at `488441a`
+
+### Confirmed source findings
 
 The PCB source contains these connections:
 
@@ -23,7 +43,7 @@ The PCB source contains these connections:
 
 This agrees with the recorded polarity trace; no simple CSA/CSB swap is established. The PCB's L2 value field is only `L`; the component review identifies a provisional 3.3 uH part. Confirm actual inductance and operating-point assumptions before calculating ripple/current limits.
 
-### Routing
+#### Routing
 
 Segment lengths calculated directly from saved PCB coordinates, excluding vertical via length and pad-internal paths:
 
@@ -38,7 +58,7 @@ Each shunt-to-resistor net has two through vias. The two signals follow independ
 
 This is a concrete layout weakness relative to TI's differential-pair guidance. It does not prove induced noise caused the observed current-limit event. Segment totals also include branches; they are not flight-time or impedance measurements.
 
-## Datasheet implications
+### Datasheet implications
 
 Source: `docs/lm51772-datasheet.txt`, sections 7.3.10, 7.3.11 and layout guidance around lines 2447-2497 and 6105-6110.
 
@@ -48,13 +68,13 @@ Source: `docs/lm51772-datasheet.txt`, sections 7.3.10, 7.3.11 and layout guidanc
 - The roughly 12 A output protection target is not identical to inductor peak current, especially in boost operation. Size R22 using the input/output envelope, ripple, efficiency, tolerances, transient needs and inductor/MOSFET limits. Define average output-current limiting separately.
 - TI calls out shunt parasitic inductance and suggests parallel sense elements where appropriate for high currents. A different shunt arrangement is an option to evaluate, not an already selected fix.
 
-## What the bench evidence does and does not establish
+### What the bench evidence does and does not establish
 
 Normal sensing produced an IOUT-dominant stall; shorting or attenuating the signal permitted regulation. Twisted Kelvin wires and added small capacitance did not remove the stall; very heavy capacitance caused noisy operation. These observations keep both actual excessive current and transient/common-mode pickup on the investigation list.
 
 Do not install a permanent CSA/CSB short or attenuating resistor as a fix. Do not select 470 nF or another large capacitor simply because it suppresses a trip. The exact current-sense arrangement during the successful loaded run was not recorded, and the latest ISET bench wiring is not a validated current-limit configuration.
 
-## Next design packet
+### Original next design packet
 
 1. Establish the intended normal converter input range, output/charge range, switching frequency, inductance under bias and average/peak limits. Separate the reported 8-30 V bench range from the intended PV/charging operating envelope.
 2. Calculate nominal and worst-case inductor peaks in buck, boost and transition operation. Select R22 value/package/tolerance and dissipation with sufficient normal-operation margin and an effective protective limit.
@@ -63,6 +83,6 @@ Do not install a permanent CSA/CSB short or attenuating resistor as a fix. Do no
 5. Select C20 using the datasheet's operating-point equation and measured problem. Check that the selected filter preserves current-limit timing; do not trade protection away for regulation.
 6. Validate protection and stable operation across the chosen envelope before fabrication release. If measurements are unavailable, record the proposed layout correction as unverified, not a proven root-cause fix.
 
-## Tool limitation
+### Original tool limitation
 
 The available KiCad 9 Python loader did not load this newer PCB source. Findings above came from read-only parsing of its saved S-expression pads/nets/segments, not a PCB save or an ERC/DRC run. No downgrade or source rewrite was attempted.
