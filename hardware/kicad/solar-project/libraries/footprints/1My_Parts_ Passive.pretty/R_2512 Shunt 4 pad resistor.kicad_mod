@@ -1,0 +1,125 @@
+(footprint "R_2512 Shunt 4 pad resistor"
+	(version 20241229)
+	(generator "pcbnew")
+	(generator_version "9.0")
+	(layer "F.Cu")
+	(property "Reference" "REF**"
+		(at -3.1 -3.008 0)
+		(layer "F.SilkS")
+		(hide yes)
+		(uuid "ebf1bf6a-1b13-4f7d-bd17-faa481693eef")
+		(effects
+			(font
+				(size 0.8 0.8)
+				(thickness 0.15)
+			)
+		)
+	)
+	(property "Value" "R_2512 Shunt 4 pad resistor"
+		(at 3.396 3.792 0)
+		(layer "F.Fab")
+		(uuid "09712636-f2f8-4f59-b37a-6410de661b57")
+		(effects
+			(font
+				(size 0.8 0.8)
+				(thickness 0.15)
+			)
+		)
+	)
+	(property "Datasheet" ""
+		(at 0 0 0)
+		(layer "F.Fab")
+		(hide yes)
+		(uuid "35634dc7-f460-4022-bd6f-dbb23c346775")
+		(effects
+			(font
+				(size 1.27 1.27)
+				(thickness 0.15)
+			)
+		)
+	)
+	(property "Description" ""
+		(at 0 0 0)
+		(layer "F.Fab")
+		(hide yes)
+		(uuid "8d7a0051-8f0d-45cb-b504-aece802851f5")
+		(effects
+			(font
+				(size 1.27 1.27)
+				(thickness 0.15)
+			)
+		)
+	)
+	(attr smd)
+	(fp_line
+		(start -2.277064 -1.77)
+		(end 2.077064 -1.77)
+		(stroke
+			(width 0.12)
+			(type solid)
+		)
+		(layer "F.SilkS")
+		(uuid "4e82cfc2-b77b-4699-a25e-8bf14e587bad")
+	)
+	(fp_line
+		(start -2.277064 1.65)
+		(end 2.077064 1.65)
+		(stroke
+			(width 0.12)
+			(type solid)
+		)
+		(layer "F.SilkS")
+		(uuid "4e0a73cc-deda-4635-9324-0143538a0773")
+	)
+	(fp_rect
+		(start -4.1 -1.99)
+		(end 3.9 1.87)
+		(stroke
+			(width 0.05)
+			(type solid)
+		)
+		(fill no)
+		(layer "F.CrtYd")
+		(uuid "22f4d3d2-adb7-47fd-a880-1409b75410e4")
+	)
+	(fp_rect
+		(start -3.25 -1.66)
+		(end 3.05 1.54)
+		(stroke
+			(width 0.1)
+			(type solid)
+		)
+		(fill no)
+		(layer "F.Fab")
+		(uuid "9644b288-5ae9-4c2e-a944-d352dada7548")
+	)
+	(pad "1" smd roundrect
+		(at -3.16 -0.64)
+		(size 1.4 2.54)
+		(layers "F.Cu" "F.Mask" "F.Paste")
+		(roundrect_rratio 0.178571)
+		(uuid "53b802f7-2a5c-454a-ab74-65d0c5eea55f")
+	)
+	(pad "2" smd roundrect
+		(at -3.19 1.24)
+		(size 1.4 1.143)
+		(layers "F.Cu" "F.Mask" "F.Paste")
+		(roundrect_rratio 0.178571)
+		(uuid "9c1c24ee-1711-4a1e-b921-89b1b6124909")
+	)
+	(pad "3" smd roundrect
+		(at 2.99 1.24)
+		(size 1.4 1.143)
+		(layers "F.Cu" "F.Mask" "F.Paste")
+		(roundrect_rratio 0.178571)
+		(uuid "54a8a59e-b737-400d-a764-4a99e522a157")
+	)
+	(pad "4" smd roundrect
+		(at 3.01 -0.68)
+		(size 1.4 2.54)
+		(layers "F.Cu" "F.Mask" "F.Paste")
+		(roundrect_rratio 0.178571)
+		(uuid "b098a040-1309-4363-9bd5-afd10e23b9c2")
+	)
+	(embedded_fonts no)
+)

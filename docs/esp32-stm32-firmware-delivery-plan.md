@@ -6,7 +6,7 @@ SWD (ST-LINK + OpenOCD) remains the programming and recovery method until every 
 
 ## Starting point
 
-ESP32-C3 Wi-Fi application ([firmware/esp32_c3_wifi](../firmware/esp32_c3_wifi/README.md), DEC-068 in the [decisions log](decisions-log.md)):
+ESP32-C3 Wi-Fi application ([firmware/esp32_c3_wifi](../firmware/esp32_c3_wifi/README.md), DEC-069 in the [decisions log](decisions-log.md)):
 
 - Bench-tested on Rev1:
   - The merged image booted and joined the saved router.
