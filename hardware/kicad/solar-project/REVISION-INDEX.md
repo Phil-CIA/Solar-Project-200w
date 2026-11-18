@@ -26,6 +26,36 @@ Both sets have the same normalized findings: ERC **181 warnings, 0 errors** (133
 
 The schematic netlist confirms D6.2=`CHG_OUT_POS`, D6.1 and U4.2=`CTRL_SUPPLY_IN`, D7.2=`VBUS`, and D7.1=`CTRL_5V`; D4 is absent. The PCB's D7 pad 1 is assigned to `CTRL_5V`, its U4-input net is named `CTRL_SUPPLY_IN`, and KiCad reports zero schematic-parity issues. With KiCad CLI 10.0.5, compared with the saved pre-change report from the same version, DRC findings decreased from 222 to 221 and unconnected items from 382 to 380; no new DRC violation category was introduced. ERC has 314 warnings and zero errors, versus 316 baseline warnings; the additional single-pin `BAT_BUS_POS` label warning follows removal of D4. These CAD checks confirm connectivity and parity only. Battery-only startup through `CHG_OUT_POS`, USB-only voltage after D7's forward drop, USB biasing of the U4/L3 output, both-source interaction, and diode ratings/thermal margin remain unqualified; no powered tests were performed.
 
+### Issue #33 saved PCB recovery (2026-11-17)
+
+Recovered the saved placement/routing from preserved commit
+`f0ccffb47862a661c2661137533926cc4dd4969c`, relative to its parent
+`0ec58b745596dd84ac5a93d619e614df93003ae9`, onto main `80a6a0d`.
+The current schematic remains the electrical source of truth. The only
+three-way conflict was the saved movement of D4 versus its removal in #22;
+D4 remains removed. D6/D7/U4 pad nets retain #22, and the recovered sense-net
+names were normalized to the current schematic, including its existing
+`V_out_SNS_P ` trailing space. No new placement or routing was designed.
+
+KiCad 10.0.6 loads the recovered board. Compared with main under the same
+configuration, DRC reports 62 rather than 81 violations, 347 rather than
+380 unconnected items, and the same four schematic-parity findings: missing
+JP1/JP2 footprints, the feedback-net mismatch and U10's value mismatch.
+These counts do not establish electrical correctness. In particular, the
+saved source already contains a short between NT8 pad 1 (`Net-(J3-Pin_2)`)
+and the `I_BATT_-` track at approximately (146.32, 130.60) mm; recovery
+preserves it for the later PCB effort, not as an accepted connection.
+
+The recovered board's Git blob is
+`97bad31abc292edf088c00e9710441cf21ff1331`. Its 198 footprint placements
+(excluding the deliberately removed D4), 228 track/via geometries and 16
+zone identities were compared with the saved source; #22 pad nets were
+checked separately. Freeze the PCB at this recovery boundary for the
+schematic/footprint-only portion of #33. Do not update it from the edited
+schematic, replace footprints, refill/save zones or continue routing in
+that portion. Expected schematic/PCB differences must be listed for the
+later layout handoff; #33 remains open and this is not a fabrication release.
+
 ## Current production source - Rev 1
 
 Only Rev 0 and Rev 1 have been manufactured. The Rev 1 production release sent to the manufacturer is the source of truth at:
