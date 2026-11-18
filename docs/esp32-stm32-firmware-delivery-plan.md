@@ -154,7 +154,7 @@ The recovered PCB is frozen at Git blob **`97bad31abc292edf088c00e9710441cf21ff1
 
 ### Pin and component map
 
-`ESP_*_TX/RX` names are from the ESP perspective; `_STM` identifies the STM32-side electrical segment. Each buffered output has its own `_BUF` segment before the series resistor.
+`ESP_*_TX/RX` names are from the ESP perspective; `_STM` identifies the STM32-side electrical segment. After moving the interface onto page 1, each buffer output is wired directly to its series resistor; these local nets use KiCad's `Net-(U15-*)` names. Global labels on the receiver sides must match the endpoint names (`ESP_DATA_RX`, `ESP_CONSOLE_RX`, `ESP_DATA_TX_STM`, `ESP_CONSOLE_TX_STM`), without `_BUF`. R96 biases `ESP_CONSOLE_RX`, not ESP GPIO1/data TX.
 
 | Function | Transmitter | Buffer path | Receiver | Endpoint test pads |
 |---|---|---|---|---|
