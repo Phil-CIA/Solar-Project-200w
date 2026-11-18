@@ -32,7 +32,8 @@ datasheets:
     source_url: https://datasheet.lcsc.com/datasheet/pdf/04d28d4ff71d04901718f0483cfeb046.pdf?productCode=C49232871
     sha256: 0FCB9B37C2D89113F983E2EF43EC2573E4D1DC81B4782AFE1CE45596925B4070
     last_verified: "2026-09-17"
-    notes: Covers C3 (100uF output bulk cap, `CP_Radial_D6.3mm_P2.50mm`). Text-extracted cleanly with pypdf `extraction_mode="layout"`. Confirmed exact part row `PH25V100M6X7` (p.3/4) - ESR=30 mOhm @100kHz (CORRECTS the LCSC parametric-page value of 16 mOhm, which does not match the manufacturer's own table for this exact part), Rated Ripple Current=1100 mA @125C/100kHz, Leakage=500uA. Ripple-current-vs-frequency multiplier table (p.2/4) - 120Hz-1kHz: 0.05x, 1kHz-10kHz: 0.3x, 10kHz-100kHz: 0.7x, 100kHz-300kHz: 1.0x; the 1100mA rating is already quoted at the 100kHz (1.0x) reference point, so it should be a reasonable (not datasheet-proven above 300kHz) basis for our approximately 600kHz switching frequency.
+    notes: >-
+      Covers C3 (100uF output bulk cap, `CP_Radial_D6.3mm_P2.50mm`). Text-extracted cleanly with pypdf `extraction_mode="layout"`. Confirmed exact part row `PH25V100M6X7` (p.3/4) - ESR=30 mOhm @100kHz (CORRECTS the LCSC parametric-page value of 16 mOhm, which does not match the manufacturer's own table for this exact part), Rated Ripple Current=1100 mA @125C/100kHz, Leakage=500uA. Ripple-current-vs-frequency multiplier table (p.2/4) - 120Hz-1kHz: 0.05x, 1kHz-10kHz: 0.3x, 10kHz-100kHz: 0.7x, 100kHz-300kHz: 1.0x; the 1100mA rating is already quoted at the 100kHz (1.0x) reference point, so it should be a reasonable (not datasheet-proven above 300kHz) basis for our approximately 600kHz switching frequency.
   - id: hongjiacheng-smbj-series
     vendor: Zhuhai Hongjiacheng Technology
     path: hardware/kicad/solar-project/c19077593-hongjiacheng-smbj60ca.pdf
@@ -40,7 +41,8 @@ datasheets:
     source_url: https://wmsc.lcsc.com/wmsc/upload/file/pdf/v2/lcsc/2312280935_hongjiacheng-SMBJ60CA_C19077593.pdf
     sha256: 3A3B185EE9F21932D5B2C70F5EB21F5F680C3BEF1C2E5D2741A7B849BF1D2E39
     last_verified: "2026-09-17"
-    notes: Covers D2 (installed part). Text-extracted cleanly with pypdf `extraction_mode="layout"`. **DEC-057 correction:** the p.3 family table confirms the installed `SMBJ60CA` (LCSC `C19077593`) row is `Vrwm`=60V, `Vbr` min/max=66.7/73.7V, `VC`(clamp)=96.8V @ `Ipp`=6.20A - this CORRECTS DEC-042's originally-cited numbers (Vrwm=64V, Vbr min=78.6V, VC=103V @ Ipp=5.83A), which actually match the adjacent `SMBJ64A`/`SMBJ64CA` row one line below in this same table - an apparent row-transcription error in the earlier session, not a real part-identity mismatch (the BOM's own LCSC description field, "96.8V 73.7V ... 60V", already matched the correct SMBJ60CA row all along). Also confirms the `SMBJ48A`/`SMBJ48CA` row (DEC-057 replacement candidate): `Vrwm`=48V, `Vbr` min/max=53.3/58.9V, `VC`=77.4V @ `Ipp`=7.75A.
+    notes: >-
+      Covers D2 (installed part). Text-extracted cleanly with pypdf `extraction_mode="layout"`. **DEC-057 correction:** the p.3 family table confirms the installed `SMBJ60CA` (LCSC `C19077593`) row is `Vrwm`=60V, `Vbr` min/max=66.7/73.7V, `VC`(clamp)=96.8V @ `Ipp`=6.20A - this CORRECTS DEC-042's originally-cited numbers (Vrwm=64V, Vbr min=78.6V, VC=103V @ Ipp=5.83A), which actually match the adjacent `SMBJ64A`/`SMBJ64CA` row one line below in this same table - an apparent row-transcription error in the earlier session, not a real part-identity mismatch (the BOM's own LCSC description field, "96.8V 73.7V ... 60V", already matched the correct SMBJ60CA row all along). Also confirms the `SMBJ48A`/`SMBJ48CA` row (DEC-057 replacement candidate): `Vrwm`=48V, `Vbr` min/max=53.3/58.9V, `VC`=77.4V @ `Ipp`=7.75A.
   - id: metallions-mmpc1206-3r3mt
     vendor: MetalLions
     path: hardware/kicad/solar-project/c49308530-metallions-mmpc1206-3r3mt.pdf
@@ -76,11 +78,22 @@ datasheets:
   - id: yezhan-dslr-shunt
     vendor: Shenzhen Yezhan Electronics
     path: hardware/kicad/solar-project/c41382682-yezhan-dslr-shunt.pdf
-    revision: unknown (no revision code found in extracted text; 9-page DSLR-series family datasheet, bilingual CN/EN)
+    revision: "A1.1, 2024-09-02 (per datasheet version history; 9-page DSLR-series family datasheet, bilingual CN/EN)"
     source_url: https://datasheet.lcsc.com/datasheet/pdf/fe6999f98bcef072d9153478eaf1d170.pdf?productCode=C41382682
     sha256: AE45C4CB169BFAEBC0CBFA50C48925F92E6B6F870F9477BA733DCD2BEA8620E6
-    last_verified: "2026-09-17"
-    notes: Covers R16/R22 (0.001 ohm 4-terminal Kelvin shunts, `R_Shunt_Vishay_WSK2512_6332Metric_T2.66mm` footprint - actual manufacturer is Yezhan, "Vishay" in the footprint name is package-family naming only, not the fitted brand). Text-extracted cleanly with pypdf `extraction_mode="layout"`. Confirmed 2512-size, 1mOhm row is the Karma-alloy (`K`) variant (`M` alloy only offers 0.3/0.5mOhm at this size): TCR=+/-100ppm/C, Rthi=10C/W, P70C(rated power at 70C ambient)=5W, tolerance options +/-5/2/1/0.5%. A power-derating-vs-ambient-temperature curve and a pulse-power-vs-time curve both exist (p.4) but are graphical only (no extractable numeric pulse-energy value for our exact `K-3-1F` variant - adjacent curves for `K-3-2F`/`K-3-5F`/`M-3-1F`/`M-3-0.3F` are labeled, ours is not). Used in DEC-044 (R16 output shunt thermal margin).
+    last_verified: "2026-11-17"
+    notes: >-
+      Covers Rev2 R78/R79 and the currently assigned four-pad footprint
+      (`1My_Parts_ Passive:R_2512 Shunt 4 pad resistor`; the `Vishay WSK2512`
+      library name is package-family naming only). LCSC C41382682 identifies the
+      fitted MPN as `DSLR-M-3-1F` (1mOhm, 2512, ±1%, 5W). The manufacturer code
+      table maps M to CuMn, K to Karma, 3 to 2512, 1 to 1mOhm, and F to ±1%;
+      this corrects DEC-044's earlier K-alloy attribution. The local datasheet
+      shows a two-pad recommended solder layout and does not document separate
+      Kelvin terminals; verify the split-pad footprint and NT7/NT8 sense
+      takeoffs against the exact part before routing. Pulse-power curves are
+      graphical and do not provide an extractable exact-part pulse-energy
+      figure; pulse qualification remains open.
   - id: renogy-rsp100dct
     vendor: Renogy
     path: N/A (Amazon product listing, not a PDF - no stable archivable file; source_url is the live citation)
@@ -88,4 +101,21 @@ datasheets:
     source_url: https://www.amazon.com/dp/B0H4Z6ZJ2D
     sha256: N/A
     last_verified: "2026-09-17"
-    notes: Covers the PV panel (model `RSP100DCT`, "Renogy Bifacial Solar Panel 100W N-Type, 16BB 25% High-Efficiency"), 2x in series per the system baseline (DEC-003/DEC-004). Phil supplied a screenshot of the Specifications table (2026-09-17, DEC-049) confirming: P=100W, Vmp=23.6V, Imp=4.24A, **Voc=28.5V**, Isc=4.45A, max system voltage=600VDC, max series fuse=25A, operating temp range -40C to +85C. This CORRECTS an earlier session's wrong figures (Voc=22.79V) which were misattributed to a different/generic "Renogy Amazon listing" without confirming the exact ASIN/model - always cite the exact product page URL and model, not just "Renogy Amazon page." Fetched the live page directly (2026-09-17) and additionally found a temperature coefficient of **-0.29%/C** (labeled as the panel's power tempco) in the marketing bullet text, used in DEC-050 to compute a non-arbitrary cold-Voc estimate. No formal manufacturer PDF datasheet was found/linked from this listing - this is a web-page citation, not an archived PDF; the `path`/`sha256` fields are N/A for that reason, which deviates from the normal SOP `path` requirement and should be revisited if a formal Renogy PDF datasheet for `RSP100DCT` is later located.
+    notes: >-
+      Covers the PV panel (model `RSP100DCT`, "Renogy Bifacial Solar Panel 100W N-Type, 16BB 25% High-Efficiency"), 2x in series per the system baseline (DEC-003/DEC-004). Phil supplied a screenshot of the Specifications table (2026-09-17, DEC-049) confirming: P=100W, Vmp=23.6V, Imp=4.24A, **Voc=28.5V**, Isc=4.45A, max system voltage=600VDC, max series fuse=25A, operating temp range -40C to +85C. This CORRECTS an earlier session's wrong figures (Voc=22.79V) which were misattributed to a different/generic "Renogy Amazon listing" without confirming the exact ASIN/model - always cite the exact product page URL and model, not just "Renogy Amazon page." Fetched the live page directly (2026-09-17) and additionally found a temperature coefficient of **-0.29%/C** (labeled as the panel's power tempco) in the marketing bullet text, used in DEC-050 to compute a non-arbitrary cold-Voc estimate. No formal manufacturer PDF datasheet was found/linked from this listing - this is a web-page citation, not an archived PDF; the `path`/`sha256` fields are N/A for that reason, which deviates from the normal SOP `path` requirement and should be revisited if a formal Renogy PDF datasheet for `RSP100DCT` is later located.
+  - id: ti-ina241x
+    vendor: Texas Instruments
+    path: hardware/kicad/solar-project/ina241a.pdf
+    revision: "SBOSA30D, March 2022, revised December 2024"
+    source_url: https://www.ti.com/lit/ds/symlink/ina241b.pdf
+    sha256: D0F0D3A73C1BC2B4FE42D9CD6A4270C316D1164F8F86DC027F802428950029E8
+    last_verified: "2026-11-17"
+    notes: Covers Rev2 U10/U11/U12, exact orderable MPN `INA241A3IDDFR`, 8-pin SOT-23-THIN/DDF (KiCad `TSOT-23-8`), gain 50V/V, -5V to 110V common-mode operating range. The TI PDF identifies the package; DigiKey's product listing confirmed the orderable part and was showing stock at review time. Inventory is volatile and must be checked before purchase.
+  - id: susumu-krl-series
+    vendor: Susumu
+    path: hardware/kicad/solar-project/susumu-krl-series.pdf
+    revision: "KRL family datasheet; revision not stated in the downloaded copy"
+    source_url: https://www.susumu.co.jp/common/pdf/n_catalog_partition19_en.pdf
+    sha256: F24E82F2D85B27DA1D77342B8D1F0CB17AB273B5889D605C08FFA4104279203F
+    last_verified: "2026-11-17"
+    notes: Covers Rev2 R16/R22/R75/R80 (`KRL2012E-M-R005-F-T5`) and R76/R77 (`KRL2012E-C-R010-F-T5`). KRL2012E is the 2.00 x 1.25mm long-side-terminal 0805 package; the 5mOhm and 10mOhm parts are ±1%, 1W. The corrected `T5` suffix is the 5,000-piece reel code; do not use the prior `T05` typo. DigiKey/Mouser listings for the selected MPNs were found; live inventory is volatile.

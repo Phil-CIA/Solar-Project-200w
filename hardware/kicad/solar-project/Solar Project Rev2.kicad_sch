@@ -35567,10 +35567,7 @@
 		(at 419.1 304.8)
 		(uuid "00b8484b-ba7f-4fda-8cbe-1c1c8691e3a5")
 	)
-	(no_connect
-		(at 243.84 182.88)
-		(uuid "03d3f834-9af1-4a59-8dd1-c0a2b02f2d20")
-	)
+
 	(no_connect
 		(at 182.88 298.45)
 		(uuid "062f718f-a160-4b44-8fc0-8fc8222c0c9c")
@@ -35583,10 +35580,7 @@
 		(at 419.1 289.56)
 		(uuid "0ae34d7a-ba33-4a3b-82e7-bededbfd14e6")
 	)
-	(no_connect
-		(at 243.84 185.42)
-		(uuid "11b561b5-5db1-4e16-a670-67360f80666d")
-	)
+
 	(no_connect
 		(at 433.07 361.95)
 		(uuid "129e5d2b-b5f1-4c18-a0d0-789a388ae244")
@@ -52497,7 +52491,7 @@
 				)
 			)
 		)
-		(property "Value" "INA241A3"
+		(property "Value" "INA241A3IDDFR"
 			(at 366.522 209.804 0)
 			(show_name no)
 			(do_not_autoplace no)
@@ -52529,7 +52523,7 @@
 				)
 			)
 		)
-		(property "Description" "High- and Low-Side, Bidirectional, Zero-Drift, Current-Sense Amplifier With Enhanced PWM Rejection, 50V/V, ±0.01% Gain Accuracy, ±10 μV Offset Voltage, SOIC-8"
+		(property "Description" "-5V to 110V bidirectional current-sense amplifier, 50V/V, SOT-23-THIN 8-pin"
 			(at 364.49 214.63 0)
 			(hide yes)
 			(show_name no)
@@ -52638,6 +52632,16 @@
 					(size 1.27 1.27)
 				)
 			)
+		)
+		(property "Manufacturer" "Texas Instruments"
+			(at 364.49 214.63 0)
+			(hide yes)
+			(effects (font (size 1.27 1.27)))
+		)
+		(property "Part" "INA241A3IDDFR"
+			(at 364.49 214.63 0)
+			(hide yes)
+			(effects (font (size 1.27 1.27)))
 		)
 		(pin "3"
 			(uuid "ada7fa52-32c4-4e1b-b531-c64d74749bfc")
@@ -54825,7 +54829,7 @@
 				(justify left)
 			)
 		)
-		(property "Value" "0.001Ω"
+		(property "Value" "1mΩ"
 			(at 446.532 66.548 0)
 			(show_name no)
 			(do_not_autoplace no)
@@ -54860,7 +54864,7 @@
 				)
 			)
 		)
-		(property "Description" "1 mΩ 5 W four-terminal current shunt resistor"
+		(property "Description" "1mΩ ±1% 5W four-terminal current-sense shunt resistor"
 			(at 436.88 66.04 0)
 			(hide yes)
 			(show_name no)
@@ -55145,6 +55149,36 @@
 					(size 1.27 1.27)
 				)
 			)
+		)
+		(property "Manufacturer" "Shenzhen Yezhan Electronics"
+			(at 436.88 66.04 0)
+			(hide yes)
+			(effects (font (size 1.27 1.27)))
+		)
+		(property "Part" "DSLR-M-3-1F"
+			(at 436.88 66.04 0)
+			(hide yes)
+			(effects (font (size 1.27 1.27)))
+		)
+		(property "Resistance" "1mΩ"
+			(at 436.88 66.04 0)
+			(hide yes)
+			(effects (font (size 1.27 1.27)))
+		)
+		(property "Power(Watts)" "5W"
+			(at 436.88 66.04 0)
+			(hide yes)
+			(effects (font (size 1.27 1.27)))
+		)
+		(property "Tolerance" "±1%"
+			(at 436.88 66.04 0)
+			(hide yes)
+			(effects (font (size 1.27 1.27)))
+		)
+		(property "Temperature Coefficient" "±100ppm/°C"
+			(at 436.88 66.04 0)
+			(hide yes)
+			(effects (font (size 1.27 1.27)))
 		)
 		(pin "1"
 			(uuid "7feec28f-7fc7-4cd3-bad0-573016631c86")
@@ -61168,7 +61202,7 @@
 				)
 			)
 		)
-		(property "Description" "High- and Low-Side, Bidirectional, Zero-Drift, Current-Sense Amplifier With Enhanced PWM Rejection, 50V/V, ±0.01% Gain Accuracy, ±10 μV Offset Voltage, SOIC-8"
+		(property "Description" "-5V to 110V bidirectional current-sense amplifier, 50V/V, SOT-23-THIN 8-pin"
 			(at 359.41 248.92 0)
 			(hide yes)
 			(show_name no)
@@ -61277,6 +61311,16 @@
 					(size 1.27 1.27)
 				)
 			)
+		)
+		(property "Manufacturer" "Texas Instruments"
+			(at 359.41 248.92 0)
+			(hide yes)
+			(effects (font (size 1.27 1.27)))
+		)
+		(property "Part" "INA241A3IDDFR"
+			(at 359.41 248.92 0)
+			(hide yes)
+			(effects (font (size 1.27 1.27)))
 		)
 		(pin "3"
 			(uuid "135ce809-c13c-43fb-b8cb-7945be40a0c1")
@@ -73565,7 +73609,7 @@
 				(justify left)
 			)
 		)
-		(property "Value" "0.001Ω"
+		(property "Value" "1mΩ"
 			(at 433.324 66.548 0)
 			(show_name no)
 			(do_not_autoplace no)
@@ -73600,7 +73644,7 @@
 				)
 			)
 		)
-		(property "Description" "1 mΩ 5 W four-terminal current shunt resistor"
+		(property "Description" "1mΩ ±1% 5W four-terminal current-sense shunt resistor"
 			(at 424.18 66.04 0)
 			(hide yes)
 			(show_name no)
@@ -73885,6 +73929,36 @@
 					(size 1.27 1.27)
 				)
 			)
+		)
+		(property "Manufacturer" "Shenzhen Yezhan Electronics"
+			(at 424.18 66.04 0)
+			(hide yes)
+			(effects (font (size 1.27 1.27)))
+		)
+		(property "Part" "DSLR-M-3-1F"
+			(at 424.18 66.04 0)
+			(hide yes)
+			(effects (font (size 1.27 1.27)))
+		)
+		(property "Resistance" "1mΩ"
+			(at 424.18 66.04 0)
+			(hide yes)
+			(effects (font (size 1.27 1.27)))
+		)
+		(property "Power(Watts)" "5W"
+			(at 424.18 66.04 0)
+			(hide yes)
+			(effects (font (size 1.27 1.27)))
+		)
+		(property "Tolerance" "±1%"
+			(at 424.18 66.04 0)
+			(hide yes)
+			(effects (font (size 1.27 1.27)))
+		)
+		(property "Temperature Coefficient" "±100ppm/°C"
+			(at 424.18 66.04 0)
+			(hide yes)
+			(effects (font (size 1.27 1.27)))
 		)
 		(pin "1"
 			(uuid "a17a3dba-aefb-4b9e-8a3e-89998fd26621")
@@ -76205,7 +76279,7 @@
 				(justify left)
 			)
 		)
-		(property "Value" ".010Ω"
+		(property "Value" "10mΩ"
 			(at 86.614 73.914 0)
 			(show_name no)
 			(do_not_autoplace no)
@@ -76228,7 +76302,7 @@
 				)
 			)
 		)
-		(property "Datasheet" "KRL2012E-C-R010-F-T05"
+		(property "Datasheet" "https://www.susumu.co.jp/common/pdf/n_catalog_partition19_en.pdf"
 			(at 80.01 71.12 0)
 			(hide yes)
 			(show_name no)
@@ -76240,7 +76314,7 @@
 				)
 			)
 		)
-		(property "Description" "10 mΩ current-sense shunt resistor"
+		(property "Description" "10mΩ ±1% 1W Susumu long-side-terminal current-sense resistor"
 			(at 80.01 71.12 0)
 			(hide yes)
 			(show_name no)
@@ -76525,6 +76599,31 @@
 					(size 1.27 1.27)
 				)
 			)
+		)
+		(property "Manufacturer" "Susumu"
+			(at 80.01 71.12 0)
+			(hide yes)
+			(effects (font (size 1.27 1.27)))
+		)
+		(property "Part" "KRL2012E-C-R010-F-T5"
+			(at 80.01 71.12 0)
+			(hide yes)
+			(effects (font (size 1.27 1.27)))
+		)
+		(property "Resistance" "10mΩ"
+			(at 80.01 71.12 0)
+			(hide yes)
+			(effects (font (size 1.27 1.27)))
+		)
+		(property "Power(Watts)" "1W"
+			(at 80.01 71.12 0)
+			(hide yes)
+			(effects (font (size 1.27 1.27)))
+		)
+		(property "Tolerance" "±1%"
+			(at 80.01 71.12 0)
+			(hide yes)
+			(effects (font (size 1.27 1.27)))
 		)
 		(pin "1"
 			(uuid "b4ac2974-b47f-4b09-a1bc-c9b477053c44")
@@ -86785,7 +86884,7 @@
 				(justify left)
 			)
 		)
-		(property "Value" ".010Ω"
+		(property "Value" "10mΩ"
 			(at 86.36 64.77 0)
 			(show_name no)
 			(do_not_autoplace no)
@@ -86808,7 +86907,7 @@
 				)
 			)
 		)
-		(property "Datasheet" "KRL2012E-C-R010-F-T05"
+		(property "Datasheet" "https://www.susumu.co.jp/common/pdf/n_catalog_partition19_en.pdf"
 			(at 80.01 67.31 0)
 			(hide yes)
 			(show_name no)
@@ -86820,7 +86919,7 @@
 				)
 			)
 		)
-		(property "Description" "10 mΩ current-sense shunt resistor"
+		(property "Description" "10mΩ ±1% 1W Susumu long-side-terminal current-sense resistor"
 			(at 80.01 67.31 0)
 			(hide yes)
 			(show_name no)
@@ -87105,6 +87204,31 @@
 					(size 1.27 1.27)
 				)
 			)
+		)
+		(property "Manufacturer" "Susumu"
+			(at 80.01 67.31 0)
+			(hide yes)
+			(effects (font (size 1.27 1.27)))
+		)
+		(property "Part" "KRL2012E-C-R010-F-T5"
+			(at 80.01 67.31 0)
+			(hide yes)
+			(effects (font (size 1.27 1.27)))
+		)
+		(property "Resistance" "10mΩ"
+			(at 80.01 67.31 0)
+			(hide yes)
+			(effects (font (size 1.27 1.27)))
+		)
+		(property "Power(Watts)" "1W"
+			(at 80.01 67.31 0)
+			(hide yes)
+			(effects (font (size 1.27 1.27)))
+		)
+		(property "Tolerance" "±1%"
+			(at 80.01 67.31 0)
+			(hide yes)
+			(effects (font (size 1.27 1.27)))
 		)
 		(pin "1"
 			(uuid "85f95163-790b-4c11-9745-3b9e23688e27")
@@ -97018,7 +97142,7 @@
 				(justify left)
 			)
 		)
-		(property "Value" "2.7kΩ"
+		(property "Value" "12kΩ"
 			(at 344.17 177.8 90)
 			(show_name no)
 			(do_not_autoplace yes)
@@ -97039,7 +97163,7 @@
 				)
 			)
 		)
-		(property "Datasheet" "https://www.lcsc.com/datasheet/lcsc_datasheet_2206010200_UNI-ROYAL-Uniroyal-Elec-0805W8F2701T5E_C17530.pdf"
+		(property "Datasheet" "https://www.lcsc.com/datasheet/C17444.pdf"
 			(at 344.17 177.8 0)
 			(hide yes)
 			(show_name no)
@@ -97050,7 +97174,7 @@
 				)
 			)
 		)
-		(property "Description" "125mW Thick Film Resistors 150V ±100ppm/°C ±1% 2.7kΩ 0805 Chip Resistor - Surface Mount ROHS"
+		(property "Description" "125mW ±1% 12kΩ 0805 thick-film chip resistor"
 			(at 344.17 177.8 0)
 			(hide yes)
 			(show_name no)
@@ -97061,29 +97185,7 @@
 				)
 			)
 		)
-		(property "Stock" "243860"
-			(at 344.17 177.8 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Price" "0.005USD"
-			(at 344.17 177.8 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Process" "SMT"
+						(property "Process" "SMT"
 			(at 344.17 177.8 0)
 			(hide yes)
 			(show_name no)
@@ -97138,7 +97240,7 @@
 				)
 			)
 		)
-		(property "Manufacturer" "UNI-ROYAL(Uniroyal Elec)"
+		(property "Manufacturer" "UNI-ROYAL"
 			(at 344.17 177.8 0)
 			(hide yes)
 			(show_name no)
@@ -97149,7 +97251,7 @@
 				)
 			)
 		)
-		(property "Part" "0805W8F2701T5E"
+		(property "Part" "0805W8F1202T5E"
 			(at 344.17 177.8 0)
 			(hide yes)
 			(show_name no)
@@ -97160,7 +97262,7 @@
 				)
 			)
 		)
-		(property "Resistance" "2.7kΩ"
+		(property "Resistance" "12kΩ"
 			(at 344.17 177.8 0)
 			(hide yes)
 			(show_name no)
@@ -97248,7 +97350,7 @@
 				)
 			)
 		)
-		(property "LCSC" "C17546"
+		(property "LCSC" "C17444"
 			(at 344.17 177.8 0)
 			(hide yes)
 			(show_name no)
@@ -98091,7 +98193,7 @@
 				)
 			)
 		)
-		(property "Description" "High- and Low-Side, Bidirectional, Zero-Drift, Current-Sense Amplifier With Enhanced PWM Rejection, 50V/V, ±0.01% Gain Accuracy, ±10 μV Offset Voltage, SOIC-8"
+		(property "Description" "-5V to 110V bidirectional current-sense amplifier, 50V/V, SOT-23-THIN 8-pin"
 			(at 359.41 271.78 0)
 			(hide yes)
 			(show_name no)
@@ -98200,6 +98302,16 @@
 					(size 1.27 1.27)
 				)
 			)
+		)
+		(property "Manufacturer" "Texas Instruments"
+			(at 359.41 271.78 0)
+			(hide yes)
+			(effects (font (size 1.27 1.27)))
+		)
+		(property "Part" "INA241A3IDDFR"
+			(at 359.41 271.78 0)
+			(hide yes)
+			(effects (font (size 1.27 1.27)))
 		)
 		(pin "3"
 			(uuid "4d156dbb-3f1f-4bef-b8f0-95898e7f0f7f")
@@ -107081,7 +107193,7 @@
 				(justify left)
 			)
 		)
-		(property "Value" ".005"
+		(property "Value" "5mΩ"
 			(at 213.614 77.724 0)
 			(show_name no)
 			(do_not_autoplace no)
@@ -107104,7 +107216,7 @@
 				)
 			)
 		)
-		(property "Datasheet" "https://www.lcsc.com/datasheet/C2073455.pdf"
+		(property "Datasheet" "https://www.susumu.co.jp/common/pdf/n_catalog_partition19_en.pdf"
 			(at 207.01 74.93 0)
 			(hide yes)
 			(show_name no)
@@ -107116,7 +107228,7 @@
 				)
 			)
 		)
-		(property "Description" "Shunt resistor with Kelvin connections"
+		(property "Description" "5mΩ ±1% 1W Susumu long-side-terminal current-sense resistor"
 			(at 207.01 74.93 0)
 			(hide yes)
 			(show_name no)
@@ -107401,6 +107513,31 @@
 					(size 1.27 1.27)
 				)
 			)
+		)
+		(property "Manufacturer" "Susumu"
+			(at 207.01 74.93 0)
+			(hide yes)
+			(effects (font (size 1.27 1.27)))
+		)
+		(property "Part" "KRL2012E-M-R005-F-T5"
+			(at 207.01 74.93 0)
+			(hide yes)
+			(effects (font (size 1.27 1.27)))
+		)
+		(property "Resistance" "5mΩ"
+			(at 207.01 74.93 0)
+			(hide yes)
+			(effects (font (size 1.27 1.27)))
+		)
+		(property "Power(Watts)" "1W"
+			(at 207.01 74.93 0)
+			(hide yes)
+			(effects (font (size 1.27 1.27)))
+		)
+		(property "Tolerance" "±1%"
+			(at 207.01 74.93 0)
+			(hide yes)
+			(effects (font (size 1.27 1.27)))
 		)
 		(pin "1"
 			(uuid "43e63f3d-25b5-40e6-997b-ebeceb50cc8e")
@@ -107706,7 +107843,7 @@
 				(justify left)
 			)
 		)
-		(property "Value" ".005"
+		(property "Value" "5mΩ"
 			(at 326.644 73.914 0)
 			(show_name no)
 			(do_not_autoplace no)
@@ -107729,7 +107866,7 @@
 				)
 			)
 		)
-		(property "Datasheet" "https://www.lcsc.com/datasheet/C2073455.pdf"
+		(property "Datasheet" "https://www.susumu.co.jp/common/pdf/n_catalog_partition19_en.pdf"
 			(at 320.04 71.12 0)
 			(hide yes)
 			(show_name no)
@@ -107741,7 +107878,7 @@
 				)
 			)
 		)
-		(property "Description" "Shunt resistor with Kelvin connections"
+		(property "Description" "5mΩ ±1% 1W Susumu long-side-terminal current-sense resistor"
 			(at 320.04 71.12 0)
 			(hide yes)
 			(show_name no)
@@ -108026,6 +108163,31 @@
 					(size 1.27 1.27)
 				)
 			)
+		)
+		(property "Manufacturer" "Susumu"
+			(at 320.04 71.12 0)
+			(hide yes)
+			(effects (font (size 1.27 1.27)))
+		)
+		(property "Part" "KRL2012E-M-R005-F-T5"
+			(at 320.04 71.12 0)
+			(hide yes)
+			(effects (font (size 1.27 1.27)))
+		)
+		(property "Resistance" "5mΩ"
+			(at 320.04 71.12 0)
+			(hide yes)
+			(effects (font (size 1.27 1.27)))
+		)
+		(property "Power(Watts)" "1W"
+			(at 320.04 71.12 0)
+			(hide yes)
+			(effects (font (size 1.27 1.27)))
+		)
+		(property "Tolerance" "±1%"
+			(at 320.04 71.12 0)
+			(hide yes)
+			(effects (font (size 1.27 1.27)))
 		)
 		(pin "1"
 			(uuid "5da8000d-d0fc-416b-b5e3-0517a24bcae7")
@@ -113584,7 +113746,7 @@
 				(justify left)
 			)
 		)
-		(property "Value" "1kΩ"
+		(property "Value" "10kΩ"
 			(at 344.17 194.31 90)
 			(show_name no)
 			(do_not_autoplace yes)
@@ -113605,7 +113767,7 @@
 				)
 			)
 		)
-		(property "Datasheet" "https://www.lcsc.com/datasheet/lcsc_datasheet_2205311800_UNI-ROYAL-Uniroyal-Elec-0805W8F1001T5E_C17513.pdf"
+		(property "Datasheet" "https://www.lcsc.com/datasheet/C17414.pdf"
 			(at 344.17 194.31 0)
 			(hide yes)
 			(show_name no)
@@ -113616,7 +113778,7 @@
 				)
 			)
 		)
-		(property "Description" "125mW Thick Film Resistors 150V ±100ppm/°C ±1% 1kΩ 0805 Chip Resistor - Surface Mount ROHS"
+		(property "Description" "125mW ±1% 10kΩ 0805 thick-film chip resistor"
 			(at 344.17 194.31 0)
 			(hide yes)
 			(show_name no)
@@ -113627,29 +113789,7 @@
 				)
 			)
 		)
-		(property "Stock" "7431283"
-			(at 344.17 194.31 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Price" "0.005USD"
-			(at 344.17 194.31 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Process" "SMT"
+						(property "Process" "SMT"
 			(at 344.17 194.31 0)
 			(hide yes)
 			(show_name no)
@@ -113704,7 +113844,7 @@
 				)
 			)
 		)
-		(property "Manufacturer" "UNI-ROYAL(Uniroyal Elec)"
+		(property "Manufacturer" "UNI-ROYAL"
 			(at 344.17 194.31 0)
 			(hide yes)
 			(show_name no)
@@ -113715,7 +113855,7 @@
 				)
 			)
 		)
-		(property "Part" "0805W8F1001T5E"
+		(property "Part" "0805W8F1002T5E"
 			(at 344.17 194.31 0)
 			(hide yes)
 			(show_name no)
@@ -113726,7 +113866,7 @@
 				)
 			)
 		)
-		(property "Resistance" "1kΩ"
+		(property "Resistance" "10kΩ"
 			(at 344.17 194.31 0)
 			(hide yes)
 			(show_name no)
@@ -113814,7 +113954,7 @@
 				)
 			)
 		)
-		(property "LCSC" "C17513"
+		(property "LCSC" "C17414"
 			(at 344.17 194.31 0)
 			(hide yes)
 			(show_name no)
@@ -120315,7 +120455,7 @@
 				(justify left)
 			)
 		)
-		(property "Value" ".005"
+		(property "Value" "5mΩ"
 			(at 213.36 68.58 0)
 			(show_name no)
 			(do_not_autoplace no)
@@ -120326,7 +120466,7 @@
 				(justify left)
 			)
 		)
-		(property "Footprint" "Resistor_SMD:R_0508_1220Metric"
+		(property "Footprint" "1My_Parts_ Passive:RES_2012_SUS- wide 0805"
 			(at 207.01 71.12 0)
 			(hide yes)
 			(show_name no)
@@ -120338,7 +120478,7 @@
 				)
 			)
 		)
-		(property "Datasheet" "https://www.lcsc.com/datasheet/C2073455.pdf"
+		(property "Datasheet" "https://www.susumu.co.jp/common/pdf/n_catalog_partition19_en.pdf"
 			(at 207.01 71.12 0)
 			(hide yes)
 			(show_name no)
@@ -120350,7 +120490,7 @@
 				)
 			)
 		)
-		(property "Description" "Shunt resistor with Kelvin connections"
+		(property "Description" "5mΩ ±1% 1W Susumu long-side-terminal current-sense resistor"
 			(at 207.01 71.12 0)
 			(hide yes)
 			(show_name no)
@@ -120635,6 +120775,31 @@
 					(size 1.27 1.27)
 				)
 			)
+		)
+		(property "Manufacturer" "Susumu"
+			(at 207.01 71.12 0)
+			(hide yes)
+			(effects (font (size 1.27 1.27)))
+		)
+		(property "Part" "KRL2012E-M-R005-F-T5"
+			(at 207.01 71.12 0)
+			(hide yes)
+			(effects (font (size 1.27 1.27)))
+		)
+		(property "Resistance" "5mΩ"
+			(at 207.01 71.12 0)
+			(hide yes)
+			(effects (font (size 1.27 1.27)))
+		)
+		(property "Power(Watts)" "1W"
+			(at 207.01 71.12 0)
+			(hide yes)
+			(effects (font (size 1.27 1.27)))
+		)
+		(property "Tolerance" "±1%"
+			(at 207.01 71.12 0)
+			(hide yes)
+			(effects (font (size 1.27 1.27)))
 		)
 		(pin "1"
 			(uuid "5766a4a7-484b-4462-9d9e-411861ec2de1")
@@ -123723,7 +123888,7 @@
 				(justify left)
 			)
 		)
-		(property "Value" "82kΩ"
+		(property "Value" "32.4kΩ"
 			(at 96.52 209.55 90)
 			(show_name no)
 			(do_not_autoplace yes)
@@ -123744,7 +123909,7 @@
 				)
 			)
 		)
-		(property "Datasheet" "https://www.lcsc.com/datasheet/lcsc_datasheet_2205311830_UNI-ROYAL-Uniroyal-Elec-0805W8F8202T5E_C17840.pdf"
+		(property "Datasheet" "https://yageogroup.com/component-documentation/download/specsheet/RC0805FR-0732K4L"
 			(at 96.52 209.55 0)
 			(hide yes)
 			(show_name no)
@@ -123755,7 +123920,7 @@
 				)
 			)
 		)
-		(property "Description" "125mW Thick Film Resistors 150V ±100ppm/°C ±1% 82kΩ 0805 Chip Resistor - Surface Mount ROHS"
+		(property "Description" "150V 125mW ±1% 32.4kΩ 0805 thick-film chip resistor"
 			(at 96.52 209.55 0)
 			(hide yes)
 			(show_name no)
@@ -123766,7 +123931,7 @@
 				)
 			)
 		)
-		(property "LCSC" "C17840"
+		(property "LCSC" ""
 			(at 96.52 209.55 0)
 			(hide yes)
 			(show_name no)
@@ -123777,29 +123942,7 @@
 				)
 			)
 		)
-		(property "Stock" "147954"
-			(at 96.52 209.55 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Price" "0.005USD"
-			(at 96.52 209.55 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Process" "SMT"
+						(property "Process" "SMT"
 			(at 96.52 209.55 0)
 			(hide yes)
 			(show_name no)
@@ -123854,7 +123997,7 @@
 				)
 			)
 		)
-		(property "Manufacturer" "UNI-ROYAL(Uniroyal Elec)"
+		(property "Manufacturer" "YAGEO"
 			(at 96.52 209.55 0)
 			(hide yes)
 			(show_name no)
@@ -123865,7 +124008,7 @@
 				)
 			)
 		)
-		(property "Part" "0805W8F8202T5E"
+		(property "Part" "RC0805FR-0732K4L"
 			(at 96.52 209.55 0)
 			(hide yes)
 			(show_name no)
@@ -123876,7 +124019,7 @@
 				)
 			)
 		)
-		(property "Resistance" "82kΩ"
+		(property "Resistance" "32.4kΩ"
 			(at 96.52 209.55 0)
 			(hide yes)
 			(show_name no)
@@ -128939,7 +129082,7 @@
 				(justify left)
 			)
 		)
-		(property "Value" ".005"
+		(property "Value" "5mΩ"
 			(at 326.39 64.77 0)
 			(show_name no)
 			(do_not_autoplace no)
@@ -128962,7 +129105,7 @@
 				)
 			)
 		)
-		(property "Datasheet" "https://www.lcsc.com/datasheet/C2073455.pdf"
+		(property "Datasheet" "https://www.susumu.co.jp/common/pdf/n_catalog_partition19_en.pdf"
 			(at 320.04 67.31 0)
 			(hide yes)
 			(show_name no)
@@ -128974,7 +129117,7 @@
 				)
 			)
 		)
-		(property "Description" "Shunt resistor with Kelvin connections"
+		(property "Description" "5mΩ ±1% 1W Susumu long-side-terminal current-sense resistor"
 			(at 320.04 67.31 0)
 			(hide yes)
 			(show_name no)
@@ -129259,6 +129402,31 @@
 					(size 1.27 1.27)
 				)
 			)
+		)
+		(property "Manufacturer" "Susumu"
+			(at 320.04 67.31 0)
+			(hide yes)
+			(effects (font (size 1.27 1.27)))
+		)
+		(property "Part" "KRL2012E-M-R005-F-T5"
+			(at 320.04 67.31 0)
+			(hide yes)
+			(effects (font (size 1.27 1.27)))
+		)
+		(property "Resistance" "5mΩ"
+			(at 320.04 67.31 0)
+			(hide yes)
+			(effects (font (size 1.27 1.27)))
+		)
+		(property "Power(Watts)" "1W"
+			(at 320.04 67.31 0)
+			(hide yes)
+			(effects (font (size 1.27 1.27)))
+		)
+		(property "Tolerance" "±1%"
+			(at 320.04 67.31 0)
+			(hide yes)
+			(effects (font (size 1.27 1.27)))
 		)
 		(pin "1"
 			(uuid "cec373d1-92fb-4d40-8323-495a246e477a")
@@ -136568,6 +136736,2136 @@
 		(path "/"
 			(page "1")
 		)
+	)
+	(symbol
+		(lib_id "PCM_JLCPCB-Resistors:0805,180kΩ")
+		(at 464.82 63.5 0)
+		(unit 1)
+		(body_style 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(in_pos_files yes)
+		(dnp no)
+		(fields_autoplaced yes)
+		(uuid "560d7a33-2541-49ae-b335-a7a0518a370f")
+		(property "Reference" "R99"
+			(at 467.36 63.4999 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Value" "56kΩ"
+			(at 464.82 63.5 90)
+			(show_name yes)
+			(do_not_autoplace yes)
+			(effects
+				(font
+					(size 0.8 0.8)
+				)
+			)
+		)
+		(property "Footprint" "PCM_JLCPCB:R_0805"
+			(at 463.042 63.5 90)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Datasheet" "https://www.lcsc.com/datasheet/C17756.pdf"
+			(at 464.82 63.5 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Description" "125mW ±1% 56kΩ 0805 thick-film chip resistor"
+			(at 464.82 63.5 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+						(property "Process" "SMT"
+			(at 464.82 63.5 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Minimum Qty" "20"
+			(at 464.82 63.5 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Attrition Qty" "10"
+			(at 464.82 63.5 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Class" "Preferred Component"
+			(at 464.82 63.5 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Category" "Resistors,Chip Resistor - Surface Mount"
+			(at 464.82 63.5 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Manufacturer" "UNI-ROYAL"
+			(at 464.82 63.5 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Part" "0805W8F5602T5E"
+			(at 464.82 63.5 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Resistance" "56kΩ"
+			(at 464.82 63.5 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Power(Watts)" "125mW"
+			(at 464.82 63.5 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Type" "Thick Film Resistors"
+			(at 464.82 63.5 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Overload Voltage (Max)" "150V"
+			(at 464.82 63.5 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Operating Temperature Range" "-55°C~+155°C"
+			(at 464.82 63.5 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Tolerance" "±1%"
+			(at 464.82 63.5 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Temperature Coefficient" "±100ppm/°C"
+			(at 464.82 63.5 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Average Rectified Current (Io)" ""
+			(at 464.82 63.5 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Diode Configuration" ""
+			(at 464.82 63.5 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Peak forward surge current" ""
+			(at 464.82 63.5 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Part - USA" ""
+			(at 464.82 63.5 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "LCSC" "C17756"
+			(at 464.82 63.5 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Continuous Drain Current (Id)" ""
+			(at 464.82 63.5 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Drain Source On Resistance (RDS(on)@Vgs,Id)" ""
+			(at 464.82 63.5 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Drain Source Voltage (Vdss)" ""
+			(at 464.82 63.5 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Gate Threshold Voltage (Vgs(th)@Id)" ""
+			(at 464.82 63.5 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Input Capacitance (Ciss@Vds)" ""
+			(at 464.82 63.5 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Power Dissipation (Pd)" ""
+			(at 464.82 63.5 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Reverse Transfer Capacitance (Crss@Vds)" ""
+			(at 464.82 63.5 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Sim.Device" ""
+			(at 464.82 63.5 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Sim.Library" ""
+			(at 464.82 63.5 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Sim.Name" ""
+			(at 464.82 63.5 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Sim.Pins" ""
+			(at 464.82 63.5 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Sim.Type" ""
+			(at 464.82 63.5 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Total Gate Charge (Qg@Vgs)" ""
+			(at 464.82 63.5 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Breakdown Voltage" ""
+			(at 464.82 63.5 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Maximum Clamping Voltage" ""
+			(at 464.82 63.5 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Number of Lines" ""
+			(at 464.82 63.5 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Peak Pulse Current (Ipp)" ""
+			(at 464.82 63.5 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Peak Pulse Power Dissipation (Ppp)" ""
+			(at 464.82 63.5 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Reverse Stand-Off Voltage (Vrwm)" ""
+			(at 464.82 63.5 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "polarity" ""
+			(at 464.82 63.5 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(pin "1"
+			(uuid "f97ef1f9-8198-49dd-a21d-98baae0a2e51")
+		)
+		(pin "2"
+			(uuid "3378bd58-f2f0-485f-9b50-cf409504d6a7")
+		)
+		(instances
+			(project "Solar Project Rev2"
+				(path "/28299885-0f47-4c9d-af0f-f2db484b5c54"
+					(reference "R99")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "PCM_JLCPCB-Resistors:0805,10kΩ")
+		(at 464.82 78.74 0)
+		(unit 1)
+		(body_style 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(in_pos_files yes)
+		(dnp no)
+		(fields_autoplaced yes)
+		(uuid "15777a5f-9fa9-4962-9dae-5665def6a2da")
+		(property "Reference" "R100"
+			(at 467.36 78.7399 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Value" "10kΩ"
+			(at 464.82 78.74 90)
+			(show_name no)
+			(do_not_autoplace yes)
+			(effects
+				(font
+					(size 0.8 0.8)
+				)
+			)
+		)
+		(property "Footprint" "PCM_JLCPCB:R_0805"
+			(at 463.042 78.74 90)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Datasheet" "https://www.lcsc.com/datasheet/C17414.pdf"
+			(at 464.82 78.74 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Description" "125mW ±1% 10kΩ 0805 thick-film chip resistor"
+			(at 464.82 78.74 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+						(property "Process" "SMT"
+			(at 464.82 78.74 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Minimum Qty" "20"
+			(at 464.82 78.74 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Attrition Qty" "10"
+			(at 464.82 78.74 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Class" "Basic Component"
+			(at 464.82 78.74 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Category" "Resistors,Chip Resistor - Surface Mount"
+			(at 464.82 78.74 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Manufacturer" "UNI-ROYAL"
+			(at 464.82 78.74 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Part" "0805W8F1002T5E"
+			(at 464.82 78.74 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Resistance" "10kΩ"
+			(at 464.82 78.74 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Power(Watts)" "125mW"
+			(at 464.82 78.74 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Type" "Thick Film Resistors"
+			(at 464.82 78.74 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Overload Voltage (Max)" "150V"
+			(at 464.82 78.74 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Operating Temperature Range" "-55°C~+155°C"
+			(at 464.82 78.74 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Tolerance" "±1%"
+			(at 464.82 78.74 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Temperature Coefficient" "±100ppm/°C"
+			(at 464.82 78.74 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Average Rectified Current (Io)" ""
+			(at 464.82 78.74 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Diode Configuration" ""
+			(at 464.82 78.74 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Peak forward surge current" ""
+			(at 464.82 78.74 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Part - USA" ""
+			(at 464.82 78.74 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "LCSC" "C17414"
+			(at 464.82 78.74 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Continuous Drain Current (Id)" ""
+			(at 464.82 78.74 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Drain Source On Resistance (RDS(on)@Vgs,Id)" ""
+			(at 464.82 78.74 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Drain Source Voltage (Vdss)" ""
+			(at 464.82 78.74 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Gate Threshold Voltage (Vgs(th)@Id)" ""
+			(at 464.82 78.74 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Input Capacitance (Ciss@Vds)" ""
+			(at 464.82 78.74 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Power Dissipation (Pd)" ""
+			(at 464.82 78.74 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Reverse Transfer Capacitance (Crss@Vds)" ""
+			(at 464.82 78.74 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Sim.Device" ""
+			(at 464.82 78.74 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Sim.Library" ""
+			(at 464.82 78.74 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Sim.Name" ""
+			(at 464.82 78.74 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Sim.Pins" ""
+			(at 464.82 78.74 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Sim.Type" ""
+			(at 464.82 78.74 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Total Gate Charge (Qg@Vgs)" ""
+			(at 464.82 78.74 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Breakdown Voltage" ""
+			(at 464.82 78.74 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Maximum Clamping Voltage" ""
+			(at 464.82 78.74 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Number of Lines" ""
+			(at 464.82 78.74 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Peak Pulse Current (Ipp)" ""
+			(at 464.82 78.74 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Peak Pulse Power Dissipation (Ppp)" ""
+			(at 464.82 78.74 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Reverse Stand-Off Voltage (Vrwm)" ""
+			(at 464.82 78.74 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "polarity" ""
+			(at 464.82 78.74 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(pin "1"
+			(uuid "11dfe372-ec94-4c8b-812f-9ff33d1ab6de")
+		)
+		(pin "2"
+			(uuid "59c51f3c-2eb5-4abc-923c-bc95f650b8c8")
+		)
+		(instances
+			(project "Solar Project Rev2"
+				(path "/28299885-0f47-4c9d-af0f-f2db484b5c54"
+					(reference "R100")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "PCM_JLCPCB-Resistors:0805,1kΩ")
+		(at 478.79 71.12 90)
+		(unit 1)
+		(body_style 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(in_pos_files yes)
+		(dnp no)
+		(uuid "cd12bc09-be95-49e6-9024-ed4bb55c3bd5")
+		(property "Reference" "R101"
+			(at 477.52 67.31 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify right)
+			)
+		)
+		(property "Value" "33kΩ"
+			(at 480.06 67.31 0)
+			(show_name no)
+			(do_not_autoplace yes)
+			(effects
+				(font
+					(size 0.8 0.8)
+				)
+			)
+		)
+		(property "Footprint" "PCM_JLCPCB:R_0805"
+			(at 478.79 69.342 90)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Datasheet" "https://www.lcsc.com/datasheet/C17633.pdf"
+			(at 478.79 71.12 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Description" "125mW ±1% 33kΩ 0805 thick-film chip resistor"
+			(at 478.79 71.12 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "LCSC" "C17633"
+			(at 478.79 71.12 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+						(property "Process" "SMT"
+			(at 478.79 71.12 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Minimum Qty" "20"
+			(at 478.79 71.12 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Attrition Qty" "10"
+			(at 478.79 71.12 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Class" "Basic Component"
+			(at 478.79 71.12 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Category" "Resistors,Chip Resistor - Surface Mount"
+			(at 478.79 71.12 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Manufacturer" "UNI-ROYAL"
+			(at 478.79 71.12 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Part" "0805W8F3302T5E"
+			(at 478.79 71.12 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Resistance" "33kΩ"
+			(at 478.79 71.12 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Power(Watts)" "125mW"
+			(at 478.79 71.12 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Type" "Thick Film Resistors"
+			(at 478.79 71.12 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Overload Voltage (Max)" "150V"
+			(at 478.79 71.12 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Operating Temperature Range" "-55°C~+155°C"
+			(at 478.79 71.12 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Tolerance" "±1%"
+			(at 478.79 71.12 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Temperature Coefficient" "±100ppm/°C"
+			(at 478.79 71.12 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Continuous Drain Current (Id)" ""
+			(at 478.79 71.12 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Drain Source On Resistance (RDS(on)@Vgs,Id)" ""
+			(at 478.79 71.12 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Drain Source Voltage (Vdss)" ""
+			(at 478.79 71.12 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Gate Threshold Voltage (Vgs(th)@Id)" ""
+			(at 478.79 71.12 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Input Capacitance (Ciss@Vds)" ""
+			(at 478.79 71.12 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Power Dissipation (Pd)" ""
+			(at 478.79 71.12 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Reverse Transfer Capacitance (Crss@Vds)" ""
+			(at 478.79 71.12 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Sim.Device" ""
+			(at 478.79 71.12 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Sim.Library" ""
+			(at 478.79 71.12 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Sim.Name" ""
+			(at 478.79 71.12 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Sim.Pins" ""
+			(at 478.79 71.12 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Sim.Type" ""
+			(at 478.79 71.12 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Total Gate Charge (Qg@Vgs)" ""
+			(at 478.79 71.12 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Breakdown Voltage" ""
+			(at 478.79 71.12 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Maximum Clamping Voltage" ""
+			(at 478.79 71.12 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Number of Lines" ""
+			(at 478.79 71.12 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Peak Pulse Current (Ipp)" ""
+			(at 478.79 71.12 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Peak Pulse Power Dissipation (Ppp)" ""
+			(at 478.79 71.12 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Reverse Stand-Off Voltage (Vrwm)" ""
+			(at 478.79 71.12 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "polarity" ""
+			(at 478.79 71.12 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(pin "2"
+			(uuid "0566e2c8-79aa-476a-8208-23a7f35ccecd")
+		)
+		(pin "1"
+			(uuid "43ffa23f-21b7-4f5a-92e2-ae0f3c8db6b5")
+		)
+		(instances
+			(project "Solar Project Rev2"
+				(path "/28299885-0f47-4c9d-af0f-f2db484b5c54"
+					(reference "R101")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "PCM_JLCPCB-Capacitors:0805,100nF")
+		(at 487.68 78.74 0)
+		(unit 1)
+		(body_style 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(in_pos_files yes)
+		(dnp no)
+		(uuid "d96f1a0a-eb9a-4696-9cff-96ec0a0cc6f6")
+		(property "Reference" "C64"
+			(at 490.22 80.01 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Value" "100nF"
+			(at 490.22 77.47 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 0.8 0.8)
+				)
+				(justify left)
+			)
+		)
+		(property "Footprint" "PCM_JLCPCB:C_0805"
+			(at 485.902 78.74 90)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Datasheet" "https://www.lcsc.com/datasheet/C28233.pdf"
+			(at 487.68 78.74 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Description" "100V 100nF X7R ±10% 0805 multilayer ceramic capacitor"
+			(at 487.68 78.74 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "LCSC" "C28233"
+			(at 487.68 78.74 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+						(property "Process" "SMT"
+			(at 487.68 78.74 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Minimum Qty" "20"
+			(at 487.68 78.74 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Attrition Qty" "10"
+			(at 487.68 78.74 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Class" "Basic Component"
+			(at 487.68 78.74 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Category" "Capacitors,Multilayer Ceramic Capacitors MLCC - SMD/SMT"
+			(at 487.68 78.74 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Manufacturer" "Samsung Electro-Mechanics"
+			(at 487.68 78.74 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Part" "CL21B104KCFNNNE"
+			(at 487.68 78.74 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Voltage Rated" "100V"
+			(at 489.204 83.82 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 0.8 0.8)
+				)
+				(justify left)
+			)
+		)
+		(property "Tolerance" "±10%"
+			(at 487.68 78.74 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Capacitance" "100nF"
+			(at 487.68 78.74 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Temperature Coefficient" "X7R"
+			(at 487.68 78.74 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Continuous Drain Current (Id)" ""
+			(at 487.68 78.74 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Drain Source On Resistance (RDS(on)@Vgs,Id)" ""
+			(at 487.68 78.74 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Drain Source Voltage (Vdss)" ""
+			(at 487.68 78.74 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Gate Threshold Voltage (Vgs(th)@Id)" ""
+			(at 487.68 78.74 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Input Capacitance (Ciss@Vds)" ""
+			(at 487.68 78.74 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Power Dissipation (Pd)" ""
+			(at 487.68 78.74 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Reverse Transfer Capacitance (Crss@Vds)" ""
+			(at 487.68 78.74 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Sim.Device" ""
+			(at 487.68 78.74 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Sim.Library" ""
+			(at 487.68 78.74 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Sim.Name" ""
+			(at 487.68 78.74 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Sim.Pins" ""
+			(at 487.68 78.74 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Sim.Type" ""
+			(at 487.68 78.74 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Total Gate Charge (Qg@Vgs)" ""
+			(at 487.68 78.74 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Breakdown Voltage" ""
+			(at 487.68 78.74 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Maximum Clamping Voltage" ""
+			(at 487.68 78.74 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Number of Lines" ""
+			(at 487.68 78.74 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Peak Pulse Current (Ipp)" ""
+			(at 487.68 78.74 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Peak Pulse Power Dissipation (Ppp)" ""
+			(at 487.68 78.74 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Reverse Stand-Off Voltage (Vrwm)" ""
+			(at 487.68 78.74 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "polarity" ""
+			(at 487.68 78.74 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(pin "2"
+			(uuid "eaa6c679-c60f-4c54-a9cd-620efe4ad977")
+		)
+		(pin "1"
+			(uuid "b7f62486-3c8f-41ee-a661-96bdb9081bf7")
+		)
+		(instances
+			(project "Solar Project Rev2"
+				(path "/28299885-0f47-4c9d-af0f-f2db484b5c54"
+					(reference "C64")
+					(unit 1)
+				)
+			)
+		)
+	)
+(global_label "V_out_ADC"
+		(shape input)
+		(at 243.84 182.88 180)
+		(fields_autoplaced yes)
+		(effects
+			(font
+				(size 0.635 0.635)
+			)
+			(justify right)
+		)
+		(uuid "3907438c-fd51-4fc7-8749-ed8433c1f383")
+		(property "Intersheetrefs" "${INTERSHEET_REFS}"
+			(at 237.6604 182.88 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify right)
+			)
+		)
+	)
+(global_label "V_BATT_ADC"
+		(shape input)
+		(at 243.84 185.42 180)
+		(fields_autoplaced yes)
+		(effects
+			(font
+				(size 0.635 0.635)
+			)
+			(justify right)
+		)
+		(uuid "0b05811c-ff9e-4fda-8cbc-faaa58d6f4fd")
+		(property "Intersheetrefs" "${INTERSHEET_REFS}"
+			(at 237.6604 185.42 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify right)
+			)
+		)
+	)
+(global_label "V_BATT_ADC"
+		(shape input)
+		(at 487.68 71.12 0)
+		(fields_autoplaced yes)
+		(effects
+			(font
+				(size 0.635 0.635)
+			)
+			(justify left)
+		)
+		(uuid "d5409a8a-a97c-4aa3-bf82-4906ed4087c4")
+		(property "Intersheetrefs" "${INTERSHEET_REFS}"
+			(at 494.0108 71.12 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+	)
+(global_label "BATT_PACK_POS"
+		(shape input)
+		(at 433.07 76.2 90)
+		(fields_autoplaced yes)
+		(effects
+			(font
+				(size 0.635 0.635)
+			)
+			(justify left)
+		)
+		(uuid "ffd87ac8-abc5-46e1-9a29-2b5a6e573305")
+		(property "Intersheetrefs" "${INTERSHEET_REFS}"
+			(at 439.2496 76.2 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+	)
+(global_label "BATT_PACK_POS"
+		(shape input)
+		(at 464.82 59.69 0)
+		(fields_autoplaced yes)
+		(effects
+			(font
+				(size 0.635 0.635)
+			)
+			(justify left)
+		)
+		(uuid "ff80a9b3-9ae1-4ed6-baa1-4b563efd3d60")
+		(property "Intersheetrefs" "${INTERSHEET_REFS}"
+			(at 470.9996 59.69 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+	)
+(global_label "PWR_NEG"
+		(shape input)
+		(at 464.82 86.36 180)
+		(fields_autoplaced yes)
+		(effects
+			(font
+				(size 0.635 0.635)
+			)
+			(justify right)
+		)
+		(uuid "6fcae7f1-0dbb-46be-a925-de624e538fb1")
+		(property "Intersheetrefs" "${INTERSHEET_REFS}"
+			(at 458.9731 86.36 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify right)
+			)
+		)
+	)
+	(wire
+		(pts
+			(xy 464.82 67.31) (xy 464.82 71.12)
+		)
+		(stroke (width 0) (type default))
+		(uuid "5aa943c8-3002-4fc2-ad72-06f87d7e39bb")
+	)
+	(wire
+		(pts
+			(xy 464.82 71.12) (xy 464.82 74.93)
+		)
+		(stroke (width 0) (type default))
+		(uuid "b12c5e96-cadf-4186-a3b2-8a5a6a4d2db3")
+	)
+	(wire
+		(pts
+			(xy 464.82 71.12) (xy 474.98 71.12)
+		)
+		(stroke (width 0) (type default))
+		(uuid "1cd6c719-6265-4f67-b95b-2d7bffcc5b5c")
+	)
+	(wire
+		(pts
+			(xy 482.6 71.12) (xy 487.68 71.12)
+		)
+		(stroke (width 0) (type default))
+		(uuid "99fb4955-7fb8-4e8d-8e76-8bb3e158a2e2")
+	)
+	(wire
+		(pts
+			(xy 487.68 71.12) (xy 487.68 74.93)
+		)
+		(stroke (width 0) (type default))
+		(uuid "5e188927-2463-480a-8fde-eaa0804428dd")
+	)
+	(wire
+		(pts
+			(xy 464.82 82.55) (xy 464.82 86.36)
+		)
+		(stroke (width 0) (type default))
+		(uuid "7a93c8e8-6ef9-45ce-b54a-93f3d939c2d7")
+	)
+	(wire
+		(pts
+			(xy 487.68 82.55) (xy 487.68 86.36)
+		)
+		(stroke (width 0) (type default))
+		(uuid "2444b484-76b6-4c48-bcee-2c7da5fbcfac")
+	)
+	(wire
+		(pts
+			(xy 464.82 86.36) (xy 487.68 86.36)
+		)
+		(stroke (width 0) (type default))
+		(uuid "0b0c4efe-a0dd-409c-bfbf-f42f355e7774")
+	)
+	(junction
+		(at 464.82 71.12)
+		(diameter 0)
+		(color 0 0 0 0)
+		(uuid "e4b85ae7-ab87-40b4-beb7-845ebf08eeba")
+	)
+	(junction
+		(at 487.68 71.12)
+		(diameter 0)
+		(color 0 0 0 0)
+		(uuid "95e61606-1f4f-47a3-843b-d7934583d18d")
+	)
+	(junction
+		(at 487.68 86.36)
+		(diameter 0)
+		(color 0 0 0 0)
+		(uuid "448dc896-990c-457d-8a9a-3ed74a47dbf1")
 	)
 	(embedded_fonts no)
 )
