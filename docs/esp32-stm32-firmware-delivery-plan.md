@@ -163,7 +163,7 @@ The recovered PCB is frozen at Git blob **`97bad31abc292edf088c00e9710441cf21ff1
 | Console to ESP | U1 PB10/pad22, USART3_TX AF7 | U15 A2/3 -> B2Y/12 -> R88 | U2 GPIO20/pad7, U0RXD | TP20 / TP24 |
 | Console to STM32 | U2 GPIO21/pad8, U0TXD | U15 B4/10 -> A4Y/5 -> R90 | U1 PB11/pad24, USART3_RX AF7 | TP22 / TP26 |
 
-SW2 `BTN_DN_N` moves from PB3 to PA11/pad33; SW4 `BTN_LT_N` moves from PB4 to PA12/pad34. USART1 PA9/PA10, SWD PA13/PA14 and all other sensing/control/fault assignments are unchanged. PA0/PA1 are sensing inputs. PA2 is no-connect in the authoritative exported schematic despite issue #33's occupied-pin note; PA2/PA3 are not consumed or advertised as spare. BMS pin allocation remains its separate unresolved design task.
+SW2 `BTN_DN_N` moves from PB3 to PA11/pad33; SW4 `BTN_LT_N` moves from PB4 to PA12/pad34. USART1 PA9/PA10 and SWD PA13/PA14 are unchanged. Rev2 sensing assignments are PA0 output current, PA1 PV current, PA2 output voltage, PA3 battery-terminal voltage, PA4 PV voltage, and PC4 battery current. PA2/PA3 are the accepted assignments for these measurement channels; they are not provisional merely because the separate BMS interface and its MCU pin allocation remain unresolved. Check any future BMS pin proposal for actual conflicts before locking the complete MCU budget.
 
 U1 is explicitly STM32G473CEU6 with all 48 numbered package pins plus exposed VSS pad49 checked. Its existing `Package_DFN_QFN:QFN-48-1EP_7x7mm_P0.5mm_EP5.6x5.6mm` assignment is retained. The corrected MCU, 16-pin SuperMini and TXU0204 symbols live in the separate portable `Rev2_Interfaces` library; existing Rev1 library definitions are not replaced.
 
