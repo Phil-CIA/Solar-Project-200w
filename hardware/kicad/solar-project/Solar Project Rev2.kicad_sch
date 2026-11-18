@@ -54864,7 +54864,7 @@
 				)
 			)
 		)
-		(property "Description" "1mΩ ±1% 5W four-terminal current-sense shunt resistor"
+		(property "Description" "1mΩ ±1% 5W current-sense shunt resistor"
 			(at 436.88 66.04 0)
 			(hide yes)
 			(show_name no)
@@ -73644,7 +73644,7 @@
 				)
 			)
 		)
-		(property "Description" "1mΩ ±1% 5W four-terminal current-sense shunt resistor"
+		(property "Description" "1mΩ ±1% 5W current-sense shunt resistor"
 			(at 424.18 66.04 0)
 			(hide yes)
 			(show_name no)

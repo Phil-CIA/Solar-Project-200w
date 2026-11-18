@@ -83,17 +83,20 @@ datasheets:
     sha256: AE45C4CB169BFAEBC0CBFA50C48925F92E6B6F870F9477BA733DCD2BEA8620E6
     last_verified: "2026-11-17"
     notes: >-
-      Covers Rev2 R78/R79 and the currently assigned four-pad footprint
+      Covers Rev2 R78/R79 and the unchanged existing four-pad footprint
       (`1My_Parts_ Passive:R_2512 Shunt 4 pad resistor`; the `Vishay WSK2512`
-      library name is package-family naming only). LCSC C41382682 identifies the
-      fitted MPN as `DSLR-M-3-1F` (1mOhm, 2512, ±1%, 5W). The manufacturer code
+      library name is package-family naming only). The footprint geometry is
+      carried forward, not verified fit. LCSC C41382682 identifies the selected
+      MPN as `DSLR-M-3-1F` (1mOhm, 2512, ±1%, 5W). The manufacturer code
       table maps M to CuMn, K to Karma, 3 to 2512, 1 to 1mOhm, and F to ±1%;
       this corrects DEC-044's earlier K-alloy attribution. The local datasheet
-      shows a two-pad recommended solder layout and does not document separate
-      Kelvin terminals; verify the split-pad footprint and NT7/NT8 sense
-      takeoffs against the exact part before routing. Pulse-power curves are
-      graphical and do not provide an extractable exact-part pulse-energy
-      figure; pulse qualification remains open.
+      page 2 gives 2512 body dimensions W=6.3±0.2mm and C=3.1±0.3mm and a
+      recommended two-pad reflow layout (a=1.8mm, b=3.4mm); it does not show a
+      four-pad split or specify separate Kelvin terminals. The frozen-board
+      split-pad geometry and NT7/NT8 sense takeoffs are not verified for this
+      part; retain the explicit fit/Kelvin hold before routing. Pulse-power
+      curves are graphical and do not provide an extractable exact-part
+      pulse-energy figure; pulse qualification remains open.
   - id: renogy-rsp100dct
     vendor: Renogy
     path: N/A (Amazon product listing, not a PDF - no stable archivable file; source_url is the live citation)
