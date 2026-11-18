@@ -39,9 +39,11 @@ The architecture planned a hardware UART data channel on `TXD_ESP`/`RXD_ESP` ([w
 
 The usable Rev1 hardware UART is the "flow control" pair, PB10/PB11 = USART3. That pair is currently shared with the ESP UART0 console.
 
-Rev-next action: route the data channel to MCU pins that have USART TX/RX. Confirm the result against the [bring-up checklist](test/bringup-checklist.md) UART step.
+Rev2 now uses a separate USART2 pair, as documented in the [schematic-only handoff below](#rev2-schematic-only-handoff-issue-33). The official ST package/AF data verifies the PA11/PA12 limitation without relying on the earlier secondary DS12288 citation. Rev1 wiring and firmware are unchanged.
 
 ## Proposed architecture
+
+The transport-sharing alternatives below describe the Rev1 constraint, not the selected Rev2 wiring. Rev2 retains UART0/USART3 exclusively for the console and adds UART1/USART2 for data. The installer, protocol and update qualification remain future work.
 
 1. **Transport.** On Rev1, use USART3 (PB10 TX / PB11 RX) to ESP GPIO20/GPIO21 at 115200 baud. The ESP data path then needs its own UART:
    - Either move the ESP console off UART0 (USB-only), losing the COM5 boot-log relay.
@@ -126,21 +128,81 @@ A separate session-local bench image with a weak fixed website-only password was
 
 ## Rev2 PCB recommendations
 
-These are candidates for the Rev2 PCB work tracked in the [Rev2 consolidation register](rev-two-consolidation.md), row "ESP32/STM32 link and firmware delivery" ([#11](https://github.com/Phil-CIA/Solar-Project-200w/issues/11), [#24](https://github.com/Phil-CIA/Solar-Project-200w/issues/24)).
+Tracked in the [Rev2 consolidation register](rev-two-consolidation.md), [#33](https://github.com/Phil-CIA/Solar-Project-200w/issues/33), [#11](https://github.com/Phil-CIA/Solar-Project-200w/issues/11) and [#24](https://github.com/Phil-CIA/Solar-Project-200w/issues/24). The 2026-11-17 decisions below supersede the earlier candidate pin/EN recommendations. Schematic implementation is not PCB or hardware qualification.
 
 Every row needs a schematic and PCB decision before Rev2 freeze. "Evidence" says where each recommendation comes from.
 
 | # | Recommendation | Evidence | Status |
 |---|---|---|---|
-| R1 | Route the ESP data UART to STM32 pins that have USART TX/RX: a spare USART pair other than USART1 PA9/PA10, which carries the PC console. STM32 GPIO may be rearranged to free a pair. Candidates to confirm against DS12288: USART2 on PA2/PA3 or PB3/PB4, UART4 on PC10/PC11, or LPUART1 on PA2/PA3. The ESP side can stay on GPIO0/GPIO1, because ESP UART1 is mapped through its GPIO matrix. Optional RTS/CTS must avoid ESP strapping pins GPIO2, GPIO8 and GPIO9. Use direction-explicit net names, for example `ESP_DATA_TX` / `ESP_DATA_RX`. | Rev1 PA11/PA12 have no USART TX/RX (secondary DS12288 source; plan step 1 confirms). The 2026-11-16 Rev2 KiCad file still routes `RXD_ESP`/`TXD_ESP` to PA11/PA12. That file is not the latest design: the user reports PA0–PA2 are now in use, so pin selection must use the current pin map. | Candidate; tracked in [#33](https://github.com/Phil-CIA/Solar-Project-200w/issues/33) |
-| R2 | Give the ESP UART0 console (GPIO21/GPIO20) its own STM32 UART receive pin or a test header, separate from the data link, so boot logs stay visible across ESP resets. | Rev1 COM5 relay was essential to debug the ESP boot loop and the Wi-Fi retries. | Candidate |
-| R3 | Bring out an accessible ESP setup button (GPIO9/BOOT, or a free GPIO) and ESP EN reset, reachable without opening the enclosure. | A 4 s BOOT hold opened the setup AP and the phone connected on 2026-11-12. | Candidate; enclosure accessibility remains a design decision |
+| R1 | Two-wire data UART only: STM32 USART2 AF7, PB3/pad41 TX and PB4/pad42 RX; ESP GPIO0/pad9 RX and GPIO1/pad10 TX. Move SW2/SW4 to PA11/PA12. No RTS/CTS, PA0-PA3 allocation, analog/safety pin move or PC-console change. | Confirmed G473CEU6 UFQFPN48; official ST package/AF XML, current netlist and user-approved SWD-only decision. | Implemented in schematic; PCB/firmware deferred |
+| R2 | Retain GPIO21 to PB11 RX and GPIO20 to PB10 TX as a separate buffered UART0/USART3 console pair. STM32 console TX must remain high-impedance until firmware intentionally uses it. | Rev1 boot-log relay retained logically; no data frames on the console pair. | Implemented in schematic; PCB/firmware deferred |
+| R3 | Retain the selected SuperMini's onboard RST and GPIO9/BOOT buttons; no EN header pin or extra reset-pad wire. Preserve manual recovery access. | User product photo shows both buttons; user confirmed direct fit in the existing Rev1 footprint. | Manual-only reset selected; enclosure reachability deferred |
 | R4 | Keep the ESP antenna keepout at the board edge, away from the power stage and copper pours; decide on an external-antenna module option if the enclosure is metal. Qualify connectivity with nearby switching loads operating. | Earlier Rev1 bench RSSI was -79 to -86 dBm; on 2026-11-12 it was initially -77 dBm scanning and -75 dBm at association, then -89 dBm scanning during failed reconnect attempts. It reconnected after separate lights were switched off, but interference is not proven. On 2026-11-14 it scanned at -86 dBm and connected after retries; on 2026-11-15 connected reports ranged from -85 to -81 dBm. | Candidate; needs antenna orientation and RSSI at the installed location |
-| R5 | Decide whether the STM32 controls ESP EN (reset) through an open-drain pin, so the STM32 can recover a hung ESP; optionally also control GPIO9 (BOOT), left high-impedance by default. Use any spare STM32 GPIO from the current pin map. The ESP must have no control of STM32 NRST/BOOT0, so it cannot bypass the STM32 installer; give PB8-BOOT0 a defined pull state. | Plan item 3 and the #24 safety constraints; Rev1 recovery required manual ESP resets. | Candidate; decide in plan step 2 |
-| R6 | Keep the SWD header (SWDIO, SWCLK, NRST, GND, 3V3) accessible in the enclosure as the qualified recovery path. | #24 requires SWD recovery until the update flow is qualified. | Candidate |
+| R5 | Manual ESP reset/BOOT only; automatic STM32-controlled EN recovery is explicitly deferred. ESP has no connection to STM32 NRST/BOOT0; retain R86's BOOT0 pull-down. | User superseded the earlier controlled-EN preference after confirming the module has no EN header pin. | Decision complete; no automatic recovery claimed |
+| R6 | Add J9 SWDIO/SWCLK/NRST/GND/VTref access. No full JTAG or SWO: PB3/PB4 are allocated to USART2. | User selected SWD-only; #24 retains SWD recovery. | Schematic/footprint assigned; keyed cable/enclosure fit and PCB deferred; #17 remains open |
 | R7 | Show a way to read the setup-AP password without a console (status LED/OLED message, or a printed label if a fixed per-board password is chosen). Clearly explain the separate browser sign-in and make password entry and reset usable without weakening security. | The password is currently logged only on the console. A phone reported repeated wrong-password attempts with the random password but later joined using the console password; the cause of the earlier failures remains unknown. The browser sign-in prompt was initially mistaken for a page failure. | Candidate; firmware or hardware choice |
-| R8 | Make setup and heartbeat indicators visible in the enclosure and explain the AP timeout and how to reopen it. Make both indicators diagnosable, for example with independent control or test pads at the first LED input and inter-LED link. | On 2026-11-12 the AP closed after 10 minutes before the phone connected. Rev1 chains D8 into D11; D11 flashed green but D8 was reported continuously green. The cause is not yet established. | Candidate; confirm indicator visibility, control and behavior |
-| R9 | Fit series resistors (for example 100 Ω, value to be confirmed) and test pads on each ESP–STM32 signal, and keep each receiver idle-high with pull-ups. This limits current through I/O protection diodes if either side is unpowered or resetting, and avoids spurious frames during ESP boot. | The ESP is powered from `CTRL_5V` through its module regulator, while the STM32 uses `CTRL_3V3`, so the rails may not come up or go down together. Rev1 debugging required probing these nets. | Candidate |
+| R8 | Retain the D8/D11 chain; add TP27 at the first input and TP28 between the LEDs so each stage can be diagnosed separately without another GPIO. | D8's Rev1 steady-green cause remains unknown; test access does not prove timing or LED health. | Schematic implemented; PCB visibility/access and diagnostic firmware deferred |
+| R9 | U15 TXU0204PWR provides power-off-safe buffering for all four wires, with R87-R90 = 100 Ohm at buffer outputs, R91-R98 = 10 kOhm local-domain pull-ups, C62/C63 = 100 nF, and TP19-TP26 at both endpoint sets. Keep module 3V3 separate from CTRL_3V3. | TI SCES936A pinout, Ioff and VCC-isolation specifications. Series resistors alone are not powered-off isolation or proof against false frames. User approved the buffer topology. | Schematic/footprints implemented; PCB and powered qualification deferred |
+
+## Rev2 schematic-only handoff (issue #33)
+
+### Source and boundary
+
+The current schematic on main `80a6a0d` was the electrical authority. Recovery commit `f6ed6fb` selectively ports saved layout from `f0ccffb` onto that lineage, retaining #22: D4 absent, D6.1/U4.2=`CTRL_SUPPLY_IN`, D6.2=`CHG_OUT_POS`, D7.1=`CTRL_5V`, D7.2=`VBUS`. It does not import the saved schematic or revert the control supply.
+
+The recovered PCB is frozen at Git blob **`97bad31abc292edf088c00e9710441cf21ff1331`**. Subsequent work changes only the Rev2 schematic and its footprint/library assignments. No Update PCB from Schematic, placement, routing, keepout edit or board-saving zone refill follows recovery. Rev1 and firmware are unchanged.
+
+### Pin and component map
+
+`ESP_*_TX/RX` names are from the ESP perspective; `_STM` identifies the STM32-side electrical segment. Each buffered output has its own `_BUF` segment before the series resistor.
+
+| Function | Transmitter | Buffer path | Receiver | Endpoint test pads |
+|---|---|---|---|---|
+| Data to ESP | U1 PB3/pad41, USART2_TX AF7 | U15 A1/2 -> B1Y/13 -> R87 | U2 GPIO0/pad9 | TP19 / TP23 |
+| Data to STM32 | U2 GPIO1/pad10 | U15 B3/11 -> A3Y/4 -> R89 | U1 PB4/pad42, USART2_RX AF7 | TP21 / TP25 |
+| Console to ESP | U1 PB10/pad22, USART3_TX AF7 | U15 A2/3 -> B2Y/12 -> R88 | U2 GPIO20/pad7, U0RXD | TP20 / TP24 |
+| Console to STM32 | U2 GPIO21/pad8, U0TXD | U15 B4/10 -> A4Y/5 -> R90 | U1 PB11/pad24, USART3_RX AF7 | TP22 / TP26 |
+
+SW2 `BTN_DN_N` moves from PB3 to PA11/pad33; SW4 `BTN_LT_N` moves from PB4 to PA12/pad34. USART1 PA9/PA10, SWD PA13/PA14 and all other sensing/control/fault assignments are unchanged. PA0/PA1 are sensing inputs. PA2 is no-connect in the authoritative exported schematic despite issue #33's occupied-pin note; PA2/PA3 are not consumed or advertised as spare. BMS pin allocation remains its separate unresolved design task.
+
+U1 is explicitly STM32G473CEU6 with all 48 numbered package pins plus exposed VSS pad49 checked. Its existing `Package_DFN_QFN:QFN-48-1EP_7x7mm_P0.5mm_EP5.6x5.6mm` assignment is retained. The corrected MCU, 16-pin SuperMini and TXU0204 symbols live in the separate portable `Rev2_Interfaces` library; existing Rev1 library definitions are not replaced.
+
+U2 remains the user's 16-pin SuperMini, not the falsely attributed Seeed C6 part. The user supplied [ASIN B0D47G24W3](https://www.amazon.com/dp/B0D47G24W3), a product image, and confirmed direct physical fit in the existing Rev1 footprint without adapters or pin modifications. The retained footprint/pad ordering is therefore used without inventing a new module outline. The image does not establish a regulator schematic or quantified antenna clearance.
+
+J9 uses `Connector_PinHeader_1.27mm:PinHeader_2x05_P1.27mm_Vertical`: 1=VTref/CTRL_3V3, 2=SWDIO, 3/5/9=GND, 4=SWCLK, 10=STM_NRST. Pins 6/7/8 are no-connect (no SWO/key contact/TDI). This generic unshrouded header is not a qualified keyed IDC connector; verify pin-1 orientation, cable keying and enclosure access under #17.
+
+### Rail/reset states and component rationale
+
+U2.16 remains `CTRL_5V`; U2.14 is regulator-output domain `ESP_3V3_U2`, **not** joined to `CTRL_3V3`. U15 VCCA/1 and OE/8 use CTRL_3V3; VCCB/14 uses ESP_3V3_U2; GND/7 uses PWR_NEG; pins6/9 are NC. This is powered-off isolation, not galvanic isolation or control-supply qualification.
+
+| Condition | Intended electrical behavior / remaining qualification |
+|---|---|
+| Both 3V3 domains valid | Four fixed-direction channels enabled. Local pull-ups hold undriven inputs/receivers idle-high; UART0 boot logs remain console traffic. |
+| STM32 rail absent | TI VCC-isolation/Ioff disables outputs; ESP-side bias comes only from ESP_3V3_U2. No pull bridges the supply domains. |
+| ESP regulator output absent | Same isolation; STM32-side bias comes only from CTRL_3V3. Do not bypass U15 with external test wiring. |
+| Rail ramps / USB-only / power-down | TI permits arbitrary supply sequencing; below 100 mV or disconnected on either supply all outputs are high-impedance. The intermediate rail transition is not a valid data interval: firmware must discard partial frames and re-establish a valid link. #22's USB-only power path remains unqualified. |
+| MCU reset / watchdog | PB10 must remain high-impedance until intentionally configured. Hardware pulls make its buffer input idle-high; no automatic ESP reset is implemented. |
+| ESP RST / BOOT | On-module buttons only, existing module strap circuitry retained. Console reboot text cannot be interpreted as a data command. ESP cannot drive STM_NRST or STM32 BOOT0. |
+
+The 100 Ohm resistors are output edge damping, **not** the Ioff mechanism. At a provisional 50 pF total load, their ideal RC contribution is 5 ns (about 11 ns 10-90%), versus 8.68 us per bit at 115200 baud. Actual trace, pad, probe and receiver capacitances plus buffer propagation/edges must be checked after layout. Each 10 kOhm pull draws about 0.33 mA when low at 3.3 V; even 2.5 uA leakage causes only 25 mV drop. Check actual device thresholds, low-level margin and rail tolerances during qualification rather than treating nominal calculations as measurements. C62/C63 provide local 100 nF bypassing.
+
+TP27 observes U1.PB2 -> D8.DIN; TP28 observes D8.DOUT -> D11.DIN. Future diagnostic firmware must send distinct patterns to the two LEDs and compare those two points before attributing a fault to firmware or an LED. The existing Rev1 D8 observation is not explained by this change.
+
+### Evidence and checks
+
+- ST primary package data: [STM32G473C(B-C-E)Ux.xml](https://github.com/STMicroelectronics/STM32_open_pin_data/blob/45c04599e2e0a788c5ed9b6218dc5a28a36041f7/mcu/STM32G473C%28B-C-E%29Ux.xml); AF data: [GPIO-STM32G47x_gpio_v1_0_Modes.xml](https://github.com/STMicroelectronics/STM32_open_pin_data/blob/45c04599e2e0a788c5ed9b6218dc5a28a36041f7/mcu/IP/GPIO-STM32G47x_gpio_v1_0_Modes.xml), both pinned to commit `45c04599`. These verify USART2 PB3/PB4 and USART3 PB10/PB11 AF7. Direct ST PDF retrieval failed; this does not claim verification of the earlier DS12288 reference. G473 search results identify DS12712, so reconcile the document number before later PDF-specific claims.
+- TI `txu0204`, **SCES936A (May 2021, revised September 2021)**: [vendor PDF](https://www.ti.com/lit/ds/symlink/txu0204.pdf), PW pin diagram/pin functions, electrical characteristics, VCC isolation and power-supply recommendations. PDF downloaded and inspected in session storage; not vendored, and the datasheet manifest was not changed. ST XML was also downloaded; no ST PDF was obtained.
+- KiCad **10.0.6**: final exported netlist verifies all four directed channels, 16 exact signal/LED/button nets, local supply/bias endpoints, all 49 MCU pads, unchanged safety nets and added footprint pad coverage. Final ERC: **52 inherited warnings, zero errors**, same category/count distribution as the pre-edit schematic.
+- Read-only PCB DRC remains **62 violations / 347 unconnected items** from recovery. Final schematic parity deliberately rises **4 -> 53**: 28 missing footprints (26 added here plus inherited JP1/JP2), 20 pad-net conflicts, 3 value mismatches and 2 datasheet-field differences. These are not waived fabrication checks. The board still carries legacy U1/U2 metadata.
+
+### Later layout and firmware work; issue remains open
+
+1. Review and apply the schematic-to-PCB update in a separate layout step: add U15, R87-R98, C62/C63, TP19-TP28 and J9; reconcile U1/U2 metadata, button/UART reassignment, ESP regulator-output net, LED-chain labels and STM_NRST. Preserve #22 and the recovered shunt/Kelvin layout.
+2. Resolve inherited JP1/JP2, feedback-net and U10-value parity. Fix the saved-source short between NT8.1 (`Net-(J3-Pin_2)`) and the `I_BATT_-` track, UUID `4dc76fe0-a257-4ab2-b935-738aea01b59e`, near (146.32, 130.60) mm; see [recovery record](../hardware/kicad/solar-project/REVISION-INDEX.md). Do not manufacture the frozen recovery board.
+3. Place bypass capacitors at both U15 supplies; place series parts at buffer outputs and make endpoint pads probeable with a nearby ground. Keep UART/test stubs away from switching and sense loops. Verify UART load/edges before increasing baud.
+4. Provide physical RST/BOOT, SWD and independently identifiable LED access. Reserve antenna clearance at the board edge away from copper, switching loops and metal; **exact all-layer keepout dimensions remain blocked on verified guidance for the fitted module**, not inferred from its product image. Do not silently substitute another SuperMini variant.
+5. Before closing #33: zero schematic/PCB parity issues, zero changed-net unconnected items, no unresolved interface ERC/DRC violations, and review/disposition relevant inherited findings. Antenna/service-access checks need the actual PCB/enclosure, not just schematic labels.
+6. Firmware handoff only: configure USART2 AF7 PB3/PB4 and ESP UART1 GPIO1/GPIO0 at the initial 115200 baud; move button definitions to PA11/PA12; retain separate USART3 console with PB10 high-impedance until intentional use. Validate framing/link recovery and STM32 command authorization after resets before allowing remote requests. No protocol/reset firmware, flashing or powered tests are included here.
 
 ## Open questions
 

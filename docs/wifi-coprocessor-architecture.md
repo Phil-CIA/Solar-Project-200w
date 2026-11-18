@@ -33,6 +33,8 @@ STM32 firmware updates remain through SWD for the initial implementation. ESP32-
 
 ## Hardware Interface
 
+These bullets record the historical Rev1 baseline. Its `RTS_ESP`/`CTS_ESP` labels actually connect ESP UART0 to STM32 USART3, not hardware flow control; the proposed PA11/PA12 data pair has no USART TX/RX capability. Do not implement the original flow-control assumption.
+
 - Power the ESP32 development module through its `5V` pin from `CTRL_5V`.
 - Leave the module's exposed `3.3V` pin unpowered; the module uses its onboard regulator.
 - Use common `PWR_NEG` reference.
@@ -40,6 +42,14 @@ STM32 firmware updates remain through SWD for the initial implementation. ESP32-
 - Keep `RTS_ESP` and `CTS_ESP` routed as optional hardware flow control.
 - Initial UART rate: 115200 baud; raise only after validation.
 - Preserve the module antenna keepout in PCB placement and copper pours.
+
+### Rev2 schematic selection (issue #33)
+
+The [Rev2 handoff](esp32-stm32-firmware-delivery-plan.md#rev2-schematic-only-handoff-issue-33) supersedes the historical transport allocation: two-wire data on STM32 USART2 PB3/PB4 AF7 to ESP GPIO0/GPIO1, with separate UART0 console GPIO20/GPIO21 to USART3 PB10/PB11. No RTS/CTS. PB10 stays high-impedance until firmware intentionally uses it. SW2/SW4 move to PA11/PA12; SWD is retained, full JTAG/SWO is not.
+
+U15 TXU0204 provides power-off-safe buffering for all four wires. The module still receives CTRL_5V, but its regulator output powers only the ESP-side buffer/bias domain; it is not joined to CTRL_3V3. Manual on-module reset/BOOT is the selected recovery method; automatic EN control is deferred. ESP has no connection to STM32 reset/BOOT0 or direct charger-control outputs.
+
+Only the schematic and footprint/library assignments implement this selection. The recovered PCB is frozen pending a later synchronization/layout step; no Rev2 firmware or hardware qualification is implied.
 
 ## UART Protocol Baseline
 
@@ -83,6 +93,5 @@ MQTT is the preferred first remote telemetry transport. Topic naming, payload sc
 - MQTT broker and topic hierarchy
 - Telemetry sampling and publication rates
 - Authentication and certificate provisioning
-- Whether RTS/CTS is enabled after initial UART testing
-- Host-controlled ESP32 reset or boot-mode control
+- Host-controlled ESP32 reset or boot-mode control (explicitly deferred for Rev2; manual buttons retained)
 - STM32 firmware delivery through the ESP32

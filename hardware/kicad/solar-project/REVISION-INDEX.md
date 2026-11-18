@@ -1,6 +1,6 @@
 # Solar Project KiCad Revision Index
 
-Last updated: 2026-11-09
+Last updated: 2026-11-17
 
 ## Rev2 - copied development starting baseline (not qualified)
 
@@ -14,7 +14,7 @@ Copied from the three `Solar Project Rev1.*` repository development files at mer
 
 The initial copy changed project identity, schematic project-instance names, PCB `sheetfile` links, title/revision warnings and the BOM output target. Issue #22 now adds a deliberate control-supply change; the Rev2 BOM target remains the project-local `Solar Project Rev2 - DEVELOPMENT ONLY.csv`, not the inherited external production BOM path. The schematic root/component UUIDs and PCB paths are deliberately preserved as matched links in the copied set. Same-basename project/schematic/PCB files select Rev2; no Rev1 filename references remain in Rev2 source.
 
-Except for the issue #22 control-supply delta, circuit values, connectivity, routing, copper and silkscreen artwork remain the copied Rev1 design. D4 is removed; D6 feeds U4 VIN from `CHG_OUT_POS` through the explicitly named `CTRL_SUPPLY_IN`; D7 feeds `CTRL_5V` directly from USB `VBUS`. The Rev2 title blocks say **copied baseline, NOT QUALIFIED; not for fabrication**. No bench rework was imported. Do not generate manufacturing files from this set until the [open design gates](../../../docs/rev-two-consolidation.md#rev2-change-register) are implemented and reviewed; #19, #21, #15 and the other register entries remain unresolved. #20 remains open because its evidence-based comparison was not performed. No BQ25756 evaluation or purchase is requested.
+The files have since acquired sensing, feedback, BOOT0, #22 control-supply and #33 interface changes; they are no longer an electrically identical Rev1 copy. D4 is removed; D6 feeds U4 VIN from `CHG_OUT_POS` through the explicitly named `CTRL_SUPPLY_IN`; D7 feeds `CTRL_5V` directly from USB `VBUS`. The Rev2 title blocks still warn **NOT QUALIFIED; not for fabrication**. No bench rework was imported. Do not generate manufacturing files from this set until the [open design gates](../../../docs/rev-two-consolidation.md#rev2-change-register) are implemented and reviewed; #19, #21, #15 and the other register entries remain unresolved. #20 remains open because its evidence-based comparison was not performed. No BQ25756 evaluation or purchase is requested.
 
 ### Baseline structural checks (2026-11-09)
 
@@ -55,6 +55,30 @@ schematic/footprint-only portion of #33. Do not update it from the edited
 schematic, replace footprints, refill/save zones or continue routing in
 that portion. Expected schematic/PCB differences must be listed for the
 later layout handoff; #33 remains open and this is not a fabrication release.
+
+### Issue #33 schematic/footprint-only handoff (2026-11-17)
+
+After recovery, the PCB remains byte-identical to the frozen blob above.
+The root schematic now includes `Rev2 ESP32 STM32 UART.kicad_sch` and the
+portable Rev2-only `Rev2_Interfaces` symbol library. The user-confirmed
+STM32G473CEU6 uses USART2 PB3/PB4 AF7 for data, with SW2/SW4 moved to
+PA11/PA12; UART0/USART3 remains a separate console. U15 TXU0204 adds
+power-off-safe buffering, local bias/series parts and test pads. Manual
+ESP RST/BOOT replaces the earlier controlled-EN proposal. J9 is SWD-only,
+without full JTAG/SWO; keyed cable/enclosure fit remains open.
+
+KiCad 10.0.6 exports the hierarchy; netlist checks verify exact endpoints,
+unchanged safety pins, all 49 MCU pads and added footprint pad coverage.
+All 16 existing module pad coordinates/numbers match the frozen board's
+embedded footprint, and Phil confirmed direct physical Rev1 fit. Final ERC
+has 52 warnings and zero errors, the same category/count distribution as
+the current-main schematic. Read-only DRC remains 62 violations and 347
+unconnected items; intentional schematic parity is now 53 rather than 4.
+The [handoff](../../../docs/esp32-stm32-firmware-delivery-plan.md#rev2-schematic-only-handoff-issue-33)
+enumerates the 26 added components, net/metadata changes, inherited
+differences, antenna/service-access gates and firmware pin changes.
+No PCB synchronization, placement/routing, firmware or powered test was
+performed after recovery. #33 remains open.
 
 ## Current production source - Rev 1
 

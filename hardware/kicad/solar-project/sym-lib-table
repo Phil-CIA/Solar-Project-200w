@@ -25,4 +25,5 @@
 	(lib (name "PCM_JLCPCB-Resistors") (type "KiCad") (uri "${KICAD10_3RD_PARTY}/symbols/com_github_CDFER_JLCPCB-Kicad-Library/JLCPCB-Resistors.kicad_sym") (options "") (descr ""))
 	(lib (name "PCM_JLCPCB-Transistor-Packages") (type "KiCad") (uri "${KICAD10_3RD_PARTY}/symbols/com_github_CDFER_JLCPCB-Kicad-Library/JLCPCB-Transistor-Packages.kicad_sym") (options "") (descr ""))
 	(lib (name "PCM_JLCPCB-Transistors") (type "KiCad") (uri "${KICAD10_3RD_PARTY}/symbols/com_github_CDFER_JLCPCB-Kicad-Library/JLCPCB-Transistors.kicad_sym") (options "") (descr ""))
+(lib (name "Rev2_Interfaces") (type "KiCad") (uri "${KIPRJMOD}/libraries/symbols/Rev2_Interfaces.kicad_sym") (options "") (descr "Rev2 verified UART interface; does not replace Rev1 symbols"))
 )
