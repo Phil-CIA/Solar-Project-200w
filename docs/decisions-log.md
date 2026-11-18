@@ -1,6 +1,6 @@
 # Solar Project 200W - Decisions Log
 
-Last updated: 2026-11-16 (DEC-068: Rev2 control-supply topology selected and implemented; DEC-069: ESP32-C3 Wi-Fi application reconciled, renumbered from branch DEC-068)
+Last updated: 2026-11-18 (DEC-074: no TVS population on the current Rev2 board; external-entry protection remains open for reassessment)
 Decision owners: Phil + Copilot
 Decision policy: move fast, log every non-trivial choice, and defer only with a target date.
 
@@ -95,6 +95,7 @@ Decision policy: move fast, log every non-trivial choice, and defer only with a 
 
 | DEC-072 | 2026-11-18 | Output/battery-voltage ADC pin assignments | Assign PA2 to output voltage and PA3 to battery-terminal voltage in the Rev2 sensing schematic. | Decided (schematic assignment; implementation deferred) | This is the accepted assignment for these two measurements. It does not settle the separate BMS interface MCU-pin allocation. No new concrete competing use for PA2/PA3 was identified in the current evidence. | Retain PA2/PA3 for these measurements; check any future BMS pin proposal for actual conflicts before firmware/PCB freeze. | Phil + Copilot | Before firmware/PCB freeze |
 | DEC-073 | 2026-11-18 | R78/R79 Yezhan two-terminal shunt footprint | Assign both schematic symbols the project-local `R_2512_Yezhan_DSLR-M-3-1F_2pad` footprint, with two 1.8x3.4mm pads at x=+/-2.6mm. | Decided in schematic; PCB sync/routing open | Yezhan datasheet A1.1 page 2 recommends a two-pad 2512 reflow pattern with a=1.8mm, b=3.4mm, c=3.4mm, w=7mm. The selected `DSLR-M-3-1F` is not specified as a separate-Kelvin-terminal part. The previous KiCad 4-pad geometry is not the selected land pattern; the generic KiCad nominal 2512 footprint also does not match the recommended pad size. | The schematic footprint now matches the manufacturer pattern. The frozen PCB still has its old four-pad geometry and was not edited; replace it only during authorized PCB synchronization, then verify assembly fit and route separate sense traces from the two pads. | Phil + Copilot | Before PCB routing |
+| DEC-074 | 2026-11-18 | Current Rev2 board TVS population (#16) | Do not add or populate TVS diodes on the current Rev2 board at this time. Limit any future protection review to the externally exposed USB `VBUS` entry feeding `CTRL_5V` through D7 and the cable-exposed `CTRL_3V3` rail at J8; no blanket TVS protection is added to internal 3.3V rails. J8 I2C signal-line ESD remains out of scope. | Decided for current board; issue closed by disposition | User-directed scope decision. The transient waveform/source impedance/energy and J8 remote-sensor/cable conditions are not defined, so no connector TVS can be selected or qualified now. The proposed SMAJ5.0CA does not guarantee protection for the probable U2 RT9193-33GB input: its 6.4V minimum breakdown exceeds that regulator's 6V absolute maximum. This omission is a current-board decision, not a finding that VBUS or J8 is transient-safe. | No TVS schematic, BOM, or PCB changes; issue #16 was closed by decision, not by meeting its acceptance criteria. No transient qualification or bench-validation claim is made. Revisit before a future PCB spin or external-cable/field use with defined exposure conditions. | Phil | Before next PCB spin or external-cable/field use |
 
 ## Open Questions
 
@@ -108,6 +109,7 @@ Decision policy: move fast, log every non-trivial choice, and defer only with a 
 
 ## Change Log
 
+- 2026-11-18: Added DEC-074 to record Phil's decision not to add or populate TVS diodes on the current Rev2 board. Limited future review to USB VBUS and J8's cable-exposed CTRL_3V3 rail; issue #16 was closed by disposition, not by completion of its acceptance criteria, and no transient qualification is claimed.
 - 2026-11-17: Added DEC-071 for the issue #15 schematic-only sensing/protection handoff. Logged the selected nominal ISET/OCP targets with uncertainty, PA2/PA3 voltage assignments, changed-part BOM/footprint reconciliation, the C41382682 MPN correction, and deferred firmware/PCB/powered acceptance.
 - 2026-11-18: Recorded the accepted PA2/PA3 sensing assignments separately from the still-open BMS MCU pin allocation (DEC-072). Updated the R78/R79 schematic symbols to two-terminal shunts and selected a custom two-pad footprint matching the Yezhan land pattern; the frozen PCB remains unchanged and awaits later synchronization (DEC-073).
 - 2026-11-09: Added DEC-067 for Phil's explicit LM51772 Rev2 selection and isolated copied KiCad starting set; preserved the outstanding controller comparison and all unresolved hardware gates.
