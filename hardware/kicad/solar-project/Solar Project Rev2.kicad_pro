@@ -1367,13 +1367,17 @@
         "uuid": "28299885-0f47-4c9d-af0f-f2db484b5c54"
       }
     ],
-    "used_designators": "C3,C8,C21,C30-31,C33-35,M1,F3,TP6-18,R16,R46,R68-82,R86,#FLG8,J6,Q7,H1,U11-12,NT1-8",
+    "used_designators": "C3,C8,C21,C30-31,C33-35,C62-65,M1,F3,TP6-28,R16,R46,R68-82,R86-98,#FLG8,J6,J9,Q7,H1,U11-12,U15-16,NT1-8",
     "variants": []
   },
   "sheets": [
     [
       "28299885-0f47-4c9d-af0f-f2db484b5c54",
       "Solar Project Rev2"
+    ],
+    [
+      "3c73fbcf-4af3-4616-ad4f-d9d9d4188c67",
+      "ESP32 STM32 UART - SCHEMATIC ONLY"
     ]
   ],
   "text_variables": {},

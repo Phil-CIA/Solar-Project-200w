@@ -1,0 +1,85 @@
+(kicad_sch
+	(version 20260306)
+	(generator "eeschema")
+	(generator_version "10.0")
+	(uuid "81db46a9-a79b-4d11-8fc4-214cdbc83618")
+	(paper "A3")
+	(lib_symbols)
+	(text "Keep TP19-TP28 accessible; antenna keepout/access remain later PCB work."
+		(exclude_from_sim no)
+		(at 20.32 255.27 0)
+		(effects
+			(font
+				(size 1.1 1.1)
+			)
+			(justify left)
+		)
+		(uuid "23df12ff-4dcb-4508-9ce8-08318b05cc79")
+	)
+	(text "Place C62/C63 at U15 supplies; place series parts at U15 outputs."
+		(exclude_from_sim no)
+		(at 20.32 247.65 0)
+		(effects
+			(font
+				(size 1.1 1.1)
+			)
+			(justify left)
+		)
+		(uuid "413de84b-c3aa-433e-9e1d-46a499b66c3b")
+	)
+	(text "Rev2 UART interface - schematic only; PCB is frozen after recovery"
+		(exclude_from_sim no)
+		(at 20.32 15.24 0)
+		(effects
+			(font
+				(size 1.1 1.1)
+			)
+			(justify left)
+		)
+		(uuid "782fa94d-7f48-435e-aae7-920139ba270e")
+	)
+	(text "Manual ESP RST/BOOT only. No EN wire or automatic recovery."
+		(exclude_from_sim no)
+		(at 20.32 33.02 0)
+		(effects
+			(font
+				(size 1.1 1.1)
+			)
+			(justify left)
+		)
+		(uuid "afcc65fe-fdea-438b-aaff-d5f2b5728e66")
+	)
+	(text "A = STM32 CTRL_3V3; B = U2 regulator output. Do NOT join these rails."
+		(exclude_from_sim no)
+		(at 20.32 25.4 0)
+		(effects
+			(font
+				(size 1.1 1.1)
+			)
+			(justify left)
+		)
+		(uuid "ed231886-e786-4a8b-83bb-26ed2eed8c86")
+	)
+	(text "SWD only; no full JTAG or SWO. VTref is a reference, not a power input."
+		(exclude_from_sim no)
+		(at 279.4 33.02 0)
+		(effects
+			(font
+				(size 1.1 1.1)
+			)
+			(justify left)
+		)
+		(uuid "ee60fcb8-519e-408a-9769-804fd3189678")
+	)
+	(text "Output series resistors"
+		(exclude_from_sim no)
+		(at 205.74 25.4 0)
+		(effects
+			(font
+				(size 1.1 1.1)
+			)
+			(justify left)
+		)
+		(uuid "f31b7429-1d72-43fd-a4e6-7cf0bf66a2db")
+	)
+)
