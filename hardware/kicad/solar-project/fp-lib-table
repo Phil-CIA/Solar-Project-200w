@@ -6,4 +6,5 @@
 	(lib (name "1My_Parts_ Connectors") (type "KiCad") (uri "${KIPRJMOD}/libraries/footprints/1My_Parts_ Connectors.pretty") (options "") (descr ""))
 	(lib (name "1My_Parts_ MPUs") (type "KiCad") (uri "${KIPRJMOD}/libraries/footprints/1My_Parts_ MPUs.pretty") (options "") (descr ""))
 	(lib (name "1My_Parts_ Passive") (type "KiCad") (uri "${KIPRJMOD}/libraries/footprints/1My_Parts_ Passive.pretty") (options "") (descr ""))
+	(lib (name "Rev2_Debug_Footprints") (type "KiCad") (uri "${KIPRJMOD}/libraries/footprints/Rev2_Debug_Footprints.pretty") (options "") (descr "Issue #17 keyed ARM Cortex SWD connector candidate"))
 )

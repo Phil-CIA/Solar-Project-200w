@@ -35636,10 +35636,7 @@
 		(at 166.37 224.79)
 		(uuid "6cec91e1-63d1-46ee-b4a2-c5d306fca92a")
 	)
-	(no_connect
-		(at 261.62 256.54)
-		(uuid "6da9442e-5d38-40f8-bf35-adedef9f9e7e")
-	)
+
 	(no_connect
 		(at 419.1 300.99)
 		(uuid "7ac15066-28a6-4b9a-b3e9-07a1da7c9f40")
@@ -43414,29 +43411,7 @@
 			)
 		)
 	)
-	(global_label "SWCLK"
-		(shape input)
-		(at 261.62 251.46 180)
-		(fields_autoplaced yes)
-		(effects
-			(font
-				(size 0.635 0.635)
-			)
-			(justify right)
-		)
-		(uuid "6c5c33db-79c5-4eb6-aace-0f94ee24d707")
-		(property "Intersheetrefs" "${INTERSHEET_REFS}"
-			(at 257.0128 251.46 0)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify right)
-			)
-		)
-	)
+
 	(global_label "V_out _on"
 		(shape input)
 		(at 243.84 198.12 180)
@@ -43506,29 +43481,7 @@
 			)
 		)
 	)
-	(global_label "SWDIO"
-		(shape input)
-		(at 261.62 254 180)
-		(fields_autoplaced yes)
-		(effects
-			(font
-				(size 0.635 0.635)
-			)
-			(justify right)
-		)
-		(uuid "713fe871-38bb-4b36-b47b-e65baaf21847")
-		(property "Intersheetrefs" "${INTERSHEET_REFS}"
-			(at 257.1942 254 0)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify right)
-			)
-		)
-	)
+
 	(global_label "V_out_SNS_P "
 		(shape input)
 		(at 177.8 171.45 0)
@@ -46427,29 +46380,7 @@
 			)
 		)
 	)
-	(global_label "PWR_NEG"
-		(shape input)
-		(at 261.62 259.08 180)
-		(fields_autoplaced yes)
-		(effects
-			(font
-				(size 0.635 0.635)
-			)
-			(justify right)
-		)
-		(uuid "ea04387e-7364-4d75-9f62-3c1bf7f1f6c0")
-		(property "Intersheetrefs" "${INTERSHEET_REFS}"
-			(at 255.7731 259.08 0)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify right)
-			)
-		)
-	)
+
 	(global_label "CTRL_3V3"
 		(shape input)
 		(at 119.38 346.71 0)
@@ -69000,7 +68931,7 @@
 				)
 			)
 		)
-		(property "Value" "SWD_ONLY_NO_SWO"
+		(property "Value" "FTSH-105-01-L-DV-007-K"
 			(at 617.22 314.96 0)
 			(show_name no)
 			(do_not_autoplace no)
@@ -69010,7 +68941,7 @@
 				)
 			)
 		)
-		(property "Footprint" "Connector_PinHeader_1.27mm:PinHeader_2x05_P1.27mm_Vertical"
+		(property "Footprint" "Rev2_Debug_Footprints:FTSH-105-01-L-DV-007-K"
 			(at 617.22 344.17 0)
 			(hide yes)
 			(show_name no)
@@ -69021,7 +68952,7 @@
 				)
 			)
 		)
-		(property "Datasheet" "http://infocenter.arm.com/help/topic/com.arm.doc.ddi0314h/DDI0314H_coresight_components_trm.pdf"
+		(property "Datasheet" "https://www.samtec.com/products/ftsh-105-01-l-dv-007-k"
 			(at 617.22 344.17 0)
 			(hide yes)
 			(show_name no)
@@ -69032,13 +68963,35 @@
 				)
 			)
 		)
-		(property "Description" ""
+		(property "Description" "Keyed 1.27 mm ARM Cortex SWD header candidate; pin 7 omitted; verify ST-Link cable mating"
 			(at 617.22 344.17 0)
 			(show_name no)
 			(do_not_autoplace no)
 			(effects
 				(font
 					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Manufacturer" "Samtec"
+			(at 617.22 344.17 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1 1)
+				)
+			)
+		)
+		(property "MPN" "FTSH-105-01-L-DV-007-K"
+			(at 617.22 344.17 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1 1)
 				)
 			)
 		)
@@ -133781,336 +133734,7 @@
 			)
 		)
 	)
-	(symbol
-		(lib_id "Connector_Generic:Conn_01x04")
-		(at 266.7 254 0)
-		(unit 1)
-		(body_style 1)
-		(exclude_from_sim no)
-		(in_bom yes)
-		(on_board yes)
-		(in_pos_files yes)
-		(dnp no)
-		(fields_autoplaced yes)
-		(uuid "f5fd4157-0b37-4c0e-b1bf-8d8641df9502")
-		(property "Reference" "J4"
-			(at 269.24 253.9999 0)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify left)
-			)
-		)
-		(property "Value" "Conn_01x04"
-			(at 269.24 256.5399 0)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify left)
-			)
-		)
-		(property "Footprint" "Connector_PinHeader_2.54mm:PinHeader_1x04_P2.54mm_Vertical_SMD_Pin1Right"
-			(at 266.7 254 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Datasheet" "~https://www.lcsc.com/datasheet/C41417361.pdf?spm=wm.sxq.inf.ggs___wm.fly.bg.1.xh&lcsc_vid=EVEIA1dfFlIMBAdXEgVXUVVVTwRWBgBfE1lbBABSQFMxVlNeQ1hXX1BTQlBXVDsOAxUeFF5JWBYZEEoKFBINSQcJGk4eFQsCAgIaSgADAwAHC0slRlVcX1JSWQkaCgg%3D"
-			(at 266.7 254 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Description" "Generic connector, single row, 01x04, script generated (kicad-library-utils/schlib/autogen/connector/)"
-			(at 266.7 254 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Part - USA" ""
-			(at 266.7 254 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "LCSC" "C41417361"
-			(at 266.7 254 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Continuous Drain Current (Id)" ""
-			(at 266.7 254 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Drain Source On Resistance (RDS(on)@Vgs,Id)" ""
-			(at 266.7 254 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Drain Source Voltage (Vdss)" ""
-			(at 266.7 254 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Gate Threshold Voltage (Vgs(th)@Id)" ""
-			(at 266.7 254 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Input Capacitance (Ciss@Vds)" ""
-			(at 266.7 254 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Power Dissipation (Pd)" ""
-			(at 266.7 254 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Reverse Transfer Capacitance (Crss@Vds)" ""
-			(at 266.7 254 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Sim.Device" ""
-			(at 266.7 254 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Sim.Library" ""
-			(at 266.7 254 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Sim.Name" ""
-			(at 266.7 254 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Sim.Pins" ""
-			(at 266.7 254 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Sim.Type" ""
-			(at 266.7 254 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Total Gate Charge (Qg@Vgs)" ""
-			(at 266.7 254 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Breakdown Voltage" ""
-			(at 266.7 254 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Maximum Clamping Voltage" ""
-			(at 266.7 254 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Number of Lines" ""
-			(at 266.7 254 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Peak Pulse Current (Ipp)" ""
-			(at 266.7 254 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Peak Pulse Power Dissipation (Ppp)" ""
-			(at 266.7 254 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Reverse Stand-Off Voltage (Vrwm)" ""
-			(at 266.7 254 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "polarity" ""
-			(at 266.7 254 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(pin "1"
-			(uuid "28ed8097-dd97-44cc-bf2a-1408e68f4961")
-		)
-		(pin "3"
-			(uuid "4a98de66-7f58-4981-8dbf-5d5c847b0e1f")
-		)
-		(pin "2"
-			(uuid "a1cf6c3e-2d87-407c-a6c1-0bf9e6def051")
-		)
-		(pin "4"
-			(uuid "82d90c98-6582-4bea-b344-9ff90bd30f4e")
-		)
-		(instances
-			(project "Solar Project Rev2"
-				(path "/28299885-0f47-4c9d-af0f-f2db484b5c54"
-					(reference "J4")
-					(unit 1)
-				)
-			)
-		)
-	)
+
 	(symbol
 		(lib_id "PCM_JLCPCB-Resistors:0805,6.8kΩ")
 		(at 495.3 173.99 90)
