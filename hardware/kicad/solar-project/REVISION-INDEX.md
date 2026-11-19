@@ -1,6 +1,6 @@
 # Solar Project KiCad Revision Index
 
-Last updated: 2026-11-17
+Last updated: 2026-11-19
 
 ## Rev2 - copied development starting baseline (not qualified)
 
@@ -58,14 +58,13 @@ later layout handoff; #33 remains open and this is not a fabrication release.
 
 ### Issue #33 schematic/footprint-only handoff (2026-11-17)
 
-After recovery, the PCB remains byte-identical to the frozen blob above.
-The root schematic now includes `Rev2 ESP32 STM32 UART.kicad_sch` and the
-portable Rev2-only `Rev2_Interfaces` symbol library. The user-confirmed
-STM32G473CEU6 uses USART2 PB3/PB4 AF7 for data, with SW2/SW4 moved to
-PA11/PA12; UART0/USART3 remains a separate console. U15 TXU0204 adds
-power-off-safe buffering, local bias/series parts and test pads. Manual
-ESP RST/BOOT replaces the earlier controlled-EN proposal. J9 is SWD-only,
-without full JTAG/SWO; keyed cable/enclosure fit remains open.
+The PCB was frozen at the blob above for the issue #33 schematic handoff.
+The root schematic includes `Rev2 ESP32 STM32 UART.kicad_sch` and the portable Rev2-only
+`Rev2_Interfaces` symbol library. The user-confirmed STM32G473CEU6 uses USART2
+PB3/PB4 AF7 for data, with SW2/SW4 moved to PA11/PA12; UART0/USART3 remains a
+separate console. U15 TXU0204 adds power-off-safe buffering, local bias/series
+parts and test pads. Manual ESP RST/BOOT replaces the earlier controlled-EN
+proposal. The separate issue #17 connector replacement is recorded below.
 
 KiCad 10.0.6 exports the hierarchy; netlist checks verify exact endpoints,
 unchanged safety pins, all 49 MCU pads and added footprint pad coverage.
@@ -78,7 +77,32 @@ The [handoff](../../../docs/esp32-stm32-firmware-delivery-plan.md#rev2-schematic
 enumerates the 26 added components, net/metadata changes, inherited
 differences, antenna/service-access gates and firmware pin changes.
 No PCB synchronization, placement/routing, firmware or powered test was
-performed after recovery. #33 remains open.
+performed within this #33 schematic handoff after recovery. #33 remains open.
+
+### Issue #17 keyed SWD connector replacement (2026-11-19)
+
+This separately authorized update replaces redundant J4 with J9 placement/routing
+in J4's former area and includes the reset-net rename needed to match the
+schematic; unrelated PCB objects remain unchanged. It does not synchronize the
+issue #33 schematic changes to the PCB.
+
+J9 is provisionally placed at `(171.12, 135.70) mm`, rotated 90 degrees, and
+routed for SWD-only operation. J4's Rev2 symbol/footprint are removed. The keyed
+Samtec FTSH-105-01-L-DV-007-K candidate uses the project-local
+`Rev2_Debug_Footprints` library and manufacturer-based land pattern.
+
+KiCad 10.0.6 DRC with zone refill reports 60 violations (14 errors, 46 warnings)
+and 344 unconnected items, versus 62 violations (16 errors, 46 warnings) and
+347 unconnected items before replacement. There are no new physical findings;
+removing J4 eliminates two copper-edge errors. J9 has no physical DRC or
+unconnected-item findings. Schematic parity remains at 86 issues; the only J9
+finding is the intentional missing pad 7 key. Schematic ERC reports 0 errors
+and 55 warnings.
+
+Actual probe/cable mating, any external 2.54 mm adapter mapping, enclosure
+access, and bench attach/program validation remain open. See the
+[connector pinout and release checks](../../../docs/rev2-swd-debug-connector.md).
+Issue #17 remains open; this is not a fabrication or bench acceptance.
 
 ## Current production source - Rev 1
 
