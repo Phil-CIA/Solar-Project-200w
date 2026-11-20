@@ -2,6 +2,26 @@
 
 Planning checkpoint: 2026-11-09; current-sense status updated 2026-11-16; issue #33 interface/recovery status updated 2026-11-17. Proposed work, not authorization to apply every option below. The Rev2 schematic and PCB have since changed; the board is not yet fully routed or qualified.
 
+## PCB-order walkthrough - 2026-11-20
+
+Review the existing implementation before proposing more changes. The statuses below come from merged handoffs and decisions, not a fresh whole-board CAD audit. Issue bodies and closed/open labels can lag those handoffs.
+
+Phil finalized F1 as a non-issue for this Rev2 order. Retain the selected fuse/holder, keep #7 closed by disposition, and remove the cold-Voc mitigation task as an ordering prerequisite (DEC-076). This records a scope decision, not a new voltage-rating or test result.
+
+Work through one row at a time. Record each result here as **complete**, **specific remaining work**, **decision needed**, or **post-build check**, with a short source reference. Do not reopen an accepted choice merely because an older issue still asks for it. Separate fabrication readiness from firmware completion and powered qualification.
+
+| Step | Existing progress to verify | Completion needed for the PCB order |
+|---|---|---|
+| 1. Establish the exact CAD baseline | Merged #33/#15 schematic packets, #22 power topology, and #17 board edits already exist. Earlier schematic-only PCB freezes were stage boundaries, not completed layout. | Confirm the latest saved Rev2 schematic/PCB and any newer work are accounted for before editing. Inventory schematic-to-PCB differences without broadly synchronizing or changing the board in this planning pass. Preserve Rev1. |
+| 2. Close the pin and connector budget | USART2 PB3/PB4, retained USART3 console, TXU0204, manual ESP recovery, PA0/PA1/PC4 current sensing, PA4/PA2/PA3 voltage sensing, and R86 BOOT0 pull-down are documented. SWD-only J9 is provisionally placed/routed. | Verify those choices in current CAD rather than redesigning them. Resolve the still-undocumented BMS interface/model/pins and any update-related hardware choice; BMS communications remains included. Confirm actual SWD mating/adapter mapping and connector/enclosure access. |
+| 3. Close the converter and supply schematic | Internal-feedback JP1/JP2 defaults, R46=32.4kOhm plus R68=1.3kOhm, OCP scaling, R22/R75 shunts/filter starting values, and #22 topology are documented. | Check actual connectivity, startup/configuration straps, D5 polarity, ratings, compensation and power-off/ADC behavior. Decide only genuine remaining design holds. Carry forward the estimated ISET range and the fact that FAULT_OCP only reports to the MCU; do not describe them as a guaranteed 12A shutdown. |
+| 4. Reconcile BOM and footprints | Three INA241A3 channels, Susumu shunts, and the corrected two-pad Yezhan footprint are in the schematic handoff. No new TVS is selected for this board (DEC-074); C24=22nF remains the starting value. | Verify exact parts, footprint/pin mapping, DNP/jumper defaults and availability. Identify only differences still missing from the PCB, including the legacy battery-shunt geometry. |
+| 5. Finish PCB implementation | Some board work is already present; the handoffs explicitly leave other schematic changes unrouted or unsynchronized. | After the review, synchronize the agreed changes deliberately. Complete placement and routing, paired Kelvin pickup, switching/gate loops, returns, antenna keepout, test access and connector clearances. Recheck completed areas instead of replacing them wholesale. |
+| 6. Check and generate the order package | Historical ERC/DRC counts are partial-baseline comparisons, not final acceptance. | Resolve shorts, required unconnected nets, schematic/PCB mismatches and fabrication-relevant findings; review remaining warnings explicitly. Check current/thermal assumptions, board stackup, drill/outline, polarity, assembly/BOM and DFM. Generate and inspect a distinct Rev2 fabrication package from the checked source. |
+| 7. Keep post-build work separate | Calibration, telemetry/update/charging firmware, SWD bench attach, supply sequencing, converter startup/protection and load/thermal qualification are not established by CAD. | Retain these as post-build tasks where they do not change the required hardware. Any unresolved question that can still change topology, component ratings or protection design returns to steps 2-4 before ordering; new-board powered tests are not prerequisites to manufacturing that board. |
+
+Start with step 1, then review step 2 before changing copper. This walkthrough does not itself authorize PCB synchronization or claim the existing board is ready to order.
+
 ## Baseline and scope
 
 - Retain LM51772 (Phil's decision, DEC-067). No BQ25756 evaluation or purchase is required for this plan; the unperformed comparison in issue #20 is not a new blocker to the selected architecture.
@@ -47,7 +67,7 @@ For internal feedback, JP1 must connect FB to VCC2 before U6 startup. The Rev1 b
 
 | Open choice | Proposed handling |
 |---|---|
-| Internal feedback | Recommend internal I2C control to match the successful bench configuration; obtain approval before the schematic edit. |
+| Internal feedback | Already represented by the schematic's JP1 bridged / JP2 open default described in section A. Verify PCB implementation and assembly instructions rather than requesting the same schematic change again. |
 | Measurement hardware | The schematic now captures three current channels and independent PV/output/battery voltage channels with the #15 MCU assignments and reconciled changed-part BOM/footprints. Calibration, input protection/power-off behavior, accuracy targets, board routing, and powered review remain open; do not treat the scoped schematic handoff as issue closure. |
 | Debug interface | SWD-only/no SWO selected under DEC-070. Redundant J4 is removed and keyed 10-position J9 provisionally placed/routed in its former area using the Samtec FTSH candidate. Actual cable/adapter mating and mapping, enclosure reachability and bench SWD remain open under #17. |
 | BMS communications implementation | Included in Rev2 by Phil's explicit direction. Identify the actual BMS model, electrical interface and protocol, then allocate pins and select the connector/transceiver/protection. Do not assume TTL UART, RS485, CAN or SMBus from a connector shape or product family. Define supported messages, timeout behavior and startup/charge-permission policy from actual BMS capabilities. |
@@ -69,7 +89,7 @@ For internal feedback, JP1 must connect FB to VCC2 before U6 startup. The Rev1 b
 
 - Do not order from the copied baseline or with peak-current/average-current protection undefined.
 - Check C18 ripple/overshoot margin, L2 loss/temperature, R16 stress, MOSFET/gate timing and compensation for the selected envelope; old open items are qualification questions, not automatic replacement instructions (#10).
-- Reconcile the existing F1/cold-Voc concern before the intended PV environment is claimed safe. Retain the selected Keystone 3522-2 decision unless new evidence changes it; firmware loading does not increase a fuse-holder voltage rating (#7).
+- F1 is finalized by Phil's 2026-11-20 disposition (DEC-076): retain the selected Keystone 3522-2 and keep #7 closed. Cold-Voc mitigation work is not a Rev2 PCB-order prerequisite. This disposition does not change component ratings or establish new operating/test evidence.
 - Retain remote I2C battery-temperature sensing at J8; do not assume a spare MCU ADC/NTC channel. Confirm sensor/interface implementation and actual battery/BMS limits before charging.
 - Require unambiguous SET/MEAS, fault reporting, default-off/recovery behavior and relevant protection checks before increasing power. A successful low-power run does not establish rated power or outdoor readiness.
 
