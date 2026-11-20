@@ -1,0 +1,7 @@
+build/
+.history/
+__pycache__/
+*-backups/
+*.kicad_prl
+*.lck
+~*
