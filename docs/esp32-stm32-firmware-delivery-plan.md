@@ -154,6 +154,8 @@ The recovered PCB was frozen at Git blob **`97bad31abc292edf088c00e9710441cf21ff
 
 ### Pin and component map
 
+For the current Rev2 PCB, Phil omitted the UART probe pads TP19-TP26. The endpoint pads in the original handoff table below are historical; the four UART signal paths, bias, damping and supply isolation are unchanged. The LED-chain test points TP27/TP28 described in the original handoff are not present in the current CAD and were not part of this change.
+
 `ESP_*_TX/RX` names are from the ESP perspective; `_STM` identifies the STM32-side electrical segment. After moving the interface onto page 1, each buffer output is wired directly to its series resistor; these local nets use KiCad's `Net-(U15-*)` names. Global labels on the receiver sides must match the endpoint names (`ESP_DATA_RX`, `ESP_CONSOLE_RX`, `ESP_DATA_TX_STM`, `ESP_CONSOLE_TX_STM`), without `_BUF`. R96 biases `ESP_CONSOLE_RX`, not ESP GPIO1/data TX.
 
 | Function | Transmitter | Buffer path | Receiver | Endpoint test pads |

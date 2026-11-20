@@ -156,6 +156,11 @@ After placement recovery, KiCad reports 90 physical findings (13 errors,
 77 warnings), 395 unconnected items and the same intentional J9 key-pad
 parity finding. Routing and fabrication checks remain open.
 
+Phil subsequently excluded TP19-TP26 from this Rev2 board. Their schematic
+symbols and standalone stubs and their PCB footprints were removed; the
+UART circuits and other test points are unchanged. The PCB now has 219
+schematic-linked footprints, with no placement or routing changes in this pass.
+
 ## Current production source - Rev 1
 
 Only Rev 0 and Rev 1 have been manufactured. The Rev 1 production release sent to the manufacturer is the source of truth at:

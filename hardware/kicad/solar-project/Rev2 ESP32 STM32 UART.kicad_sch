@@ -5,7 +5,7 @@
 	(uuid "81db46a9-a79b-4d11-8fc4-214cdbc83618")
 	(paper "A3")
 	(lib_symbols)
-	(text "Keep TP19-TP28 accessible; antenna keepout/access remain later PCB work."
+	(text "Confirm antenna keepout and service access before routing."
 		(exclude_from_sim no)
 		(at 20.32 255.27 0)
 		(effects

@@ -35733,16 +35733,6 @@
 	)
 	(wire
 		(pts
-			(xy 417.83 369.57) (xy 408.94 369.57)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "011cf63b-0945-4ddd-ab2c-d04b6e8e7147")
-	)
-	(wire
-		(pts
 			(xy 372.11 67.31) (xy 382.27 67.31)
 		)
 		(stroke
@@ -35770,16 +35760,6 @@
 			(type default)
 		)
 		(uuid "0209ba38-6820-4f60-8b01-60656047a63d")
-	)
-	(wire
-		(pts
-			(xy 417.83 372.11) (xy 410.21 372.11)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "0236dd75-970c-425b-abe3-9ce4f0d1c778")
 	)
 	(wire
 		(pts
@@ -36190,16 +36170,6 @@
 			(type default)
 		)
 		(uuid "1b3a574b-cb7e-4c9c-ab46-4c70b190a2a6")
-	)
-	(wire
-		(pts
-			(xy 417.83 382.27) (xy 410.21 382.27)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "1b8d0657-caa0-495a-a5c9-9d954f54fd28")
 	)
 	(wire
 		(pts
@@ -37224,16 +37194,6 @@
 	)
 	(wire
 		(pts
-			(xy 417.83 379.73) (xy 410.21 379.73)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "50658e81-8ed4-415e-a388-de593c5bc163")
-	)
-	(wire
-		(pts
 			(xy 521.97 170.18) (xy 521.97 173.99)
 		)
 		(stroke
@@ -37614,16 +37574,6 @@
 	)
 	(wire
 		(pts
-			(xy 417.83 374.65) (xy 410.21 374.65)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "61e8ccd3-3a25-4942-9804-9c848548ed98")
-	)
-	(wire
-		(pts
 			(xy 180.34 354.33) (xy 179.07 354.33)
 		)
 		(stroke
@@ -37751,16 +37701,6 @@
 			(type default)
 		)
 		(uuid "669209c9-7bdc-43f7-a572-1bc9982ee315")
-	)
-	(wire
-		(pts
-			(xy 417.83 377.19) (xy 410.21 377.19)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "6743d573-6c2d-41d3-94ad-b78995e5e32f")
 	)
 	(wire
 		(pts
@@ -38213,16 +38153,6 @@
 			(type default)
 		)
 		(uuid "7a3943cc-515a-4921-b3f2-be13b3733922")
-	)
-	(wire
-		(pts
-			(xy 410.21 367.03) (xy 417.83 367.03)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "7a45a334-62fd-4844-af87-ec4366ee56d9")
 	)
 	(wire
 		(pts
@@ -39605,16 +39535,6 @@
 			(type default)
 		)
 		(uuid "b72ee385-3d65-4b65-8adb-12ddd2f27925")
-	)
-	(wire
-		(pts
-			(xy 417.83 384.81) (xy 410.21 384.81)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "b7a2540c-c4f0-4ada-be7e-2a3836cb8c27")
 	)
 	(wire
 		(pts
@@ -41378,29 +41298,6 @@
 			)
 		)
 	)
-	(global_label "ESP_CONSOLE_TX"
-		(shape bidirectional)
-		(at 410.21 374.65 180)
-		(fields_autoplaced yes)
-		(effects
-			(font
-				(size 0.8 0.8)
-			)
-			(justify right)
-		)
-		(uuid "10dc3541-07c8-4e4c-941e-fb3a03735e1d")
-		(property "Intersheetrefs" "${INTERSHEET_REFS}"
-			(at 397.306 374.65 0)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify right)
-			)
-		)
-	)
 	(global_label "BTN_LT_N"
 		(shape tri_state)
 		(at 243.84 208.28 180)
@@ -42481,29 +42378,6 @@
 		(uuid "43bbbfb2-a624-46e2-bba4-6d6566962e4f")
 		(property "Intersheetrefs" "${INTERSHEET_REFS}"
 			(at 192.9382 73.66 0)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify right)
-			)
-		)
-	)
-	(global_label "ESP_DATA_TX_STM"
-		(shape bidirectional)
-		(at 410.21 382.27 180)
-		(fields_autoplaced yes)
-		(effects
-			(font
-				(size 0.8 0.8)
-			)
-			(justify right)
-		)
-		(uuid "44e8dc0b-d6a7-48d6-b447-5266c073e621")
-		(property "Intersheetrefs" "${INTERSHEET_REFS}"
-			(at 397.0775 382.27 0)
 			(show_name no)
 			(do_not_autoplace no)
 			(effects
@@ -43988,29 +43862,6 @@
 			)
 		)
 	)
-	(global_label "ESP_DATA_RX"
-		(shape bidirectional)
-		(at 410.21 377.19 180)
-		(fields_autoplaced yes)
-		(effects
-			(font
-				(size 0.8 0.8)
-			)
-			(justify right)
-		)
-		(uuid "89e10de6-8739-44e8-9f43-ed652e487d5e")
-		(property "Intersheetrefs" "${INTERSHEET_REFS}"
-			(at 399.7822 377.19 0)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify right)
-			)
-		)
-	)
 	(global_label "LO1"
 		(shape output)
 		(at 194.31 201.93 0)
@@ -44077,29 +43928,6 @@
 					(size 1.27 1.27)
 				)
 				(justify left)
-			)
-		)
-	)
-	(global_label "ESP_DATA_TX"
-		(shape bidirectional)
-		(at 410.21 372.11 180)
-		(fields_autoplaced yes)
-		(effects
-			(font
-				(size 0.8 0.8)
-			)
-			(justify right)
-		)
-		(uuid "8de913b6-d4c2-4532-957e-043683fdc08b")
-		(property "Intersheetrefs" "${INTERSHEET_REFS}"
-			(at 399.9727 372.11 0)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify right)
 			)
 		)
 	)
@@ -44701,29 +44529,6 @@
 			)
 		)
 	)
-	(global_label "ESP_DATA_RX_STM"
-		(shape bidirectional)
-		(at 410.21 367.03 180)
-		(fields_autoplaced yes)
-		(effects
-			(font
-				(size 0.8 0.8)
-			)
-			(justify right)
-		)
-		(uuid "a9afc45f-a32c-40f4-964d-d17d3f7ab9c4")
-		(property "Intersheetrefs" "${INTERSHEET_REFS}"
-			(at 396.887 367.03 0)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify right)
-			)
-		)
-	)
 	(global_label "TXD"
 		(shape tri_state)
 		(at 157.48 278.13 90)
@@ -44990,29 +44795,6 @@
 		(uuid "b14f0366-2a7f-4e35-8934-4d311407a01b")
 		(property "Intersheetrefs" "${INTERSHEET_REFS}"
 			(at 67.8131 361.95 0)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify right)
-			)
-		)
-	)
-	(global_label "ESP_CONSOLE_RX_STM"
-		(shape bidirectional)
-		(at 408.94 369.57 180)
-		(fields_autoplaced yes)
-		(effects
-			(font
-				(size 0.8 0.8)
-			)
-			(justify right)
-		)
-		(uuid "b1a71e1c-0500-4422-bc79-57d9c60b6b14")
-		(property "Intersheetrefs" "${INTERSHEET_REFS}"
-			(at 392.9503 369.57 0)
 			(show_name no)
 			(do_not_autoplace no)
 			(effects
@@ -45966,29 +45748,6 @@
 			)
 		)
 	)
-	(global_label "ESP_CONSOLE_TX_STM"
-		(shape bidirectional)
-		(at 410.21 384.81 180)
-		(fields_autoplaced yes)
-		(effects
-			(font
-				(size 0.8 0.8)
-			)
-			(justify right)
-		)
-		(uuid "d7b0623e-4395-42c7-a2ad-4b8362af1ef8")
-		(property "Intersheetrefs" "${INTERSHEET_REFS}"
-			(at 394.4108 384.81 0)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify right)
-			)
-		)
-	)
 	(global_label "PWR_NEG"
 		(shape input)
 		(at 81.28 87.63 180)
@@ -46700,29 +46459,6 @@
 					(size 1.27 1.27)
 				)
 				(justify left)
-			)
-		)
-	)
-	(global_label "ESP_CONSOLE_RX"
-		(shape bidirectional)
-		(at 410.21 379.73 180)
-		(fields_autoplaced yes)
-		(effects
-			(font
-				(size 0.8 0.8)
-			)
-			(justify right)
-		)
-		(uuid "f37bbe64-5596-44f9-b05a-d84d927fd950")
-		(property "Intersheetrefs" "${INTERSHEET_REFS}"
-			(at 397.1155 379.73 0)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify right)
 			)
 		)
 	)
@@ -48673,83 +48409,6 @@
 			(project "Solar Project Rev2"
 				(path "/28299885-0f47-4c9d-af0f-f2db484b5c54"
 					(reference "R96")
-					(unit 1)
-				)
-			)
-		)
-	)
-	(symbol
-		(lib_id "Connector:TestPoint_Small")
-		(at 417.83 379.73 0)
-		(unit 1)
-		(body_style 1)
-		(exclude_from_sim no)
-		(in_bom yes)
-		(on_board yes)
-		(in_pos_files yes)
-		(dnp no)
-		(uuid "06851896-392c-4ecc-8a27-b61beea90c3f")
-		(property "Reference" "TP24"
-			(at 419.1 379.73 0)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1 1)
-				)
-				(justify left)
-			)
-		)
-		(property "Value" "ESP_CONSOLE_RX"
-			(at 420.37 381 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1 1)
-				)
-			)
-		)
-		(property "Footprint" "TestPoint:TestPoint_Pad_D1.5mm"
-			(at 417.83 379.73 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1 1)
-				)
-			)
-		)
-		(property "Datasheet" ""
-			(at 417.83 379.73 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1 1)
-				)
-			)
-		)
-		(property "Description" ""
-			(at 417.83 379.73 0)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(pin "1"
-			(uuid "1e0783c7-7ddf-407b-a985-e0f438337b77")
-		)
-		(instances
-			(project "Solar Project Rev2"
-				(path "/28299885-0f47-4c9d-af0f-f2db484b5c54"
-					(reference "TP24")
 					(unit 1)
 				)
 			)
@@ -65353,83 +65012,6 @@
 		)
 	)
 	(symbol
-		(lib_id "Connector:TestPoint_Small")
-		(at 417.83 374.65 0)
-		(unit 1)
-		(body_style 1)
-		(exclude_from_sim no)
-		(in_bom yes)
-		(on_board yes)
-		(in_pos_files yes)
-		(dnp no)
-		(uuid "3998f558-4447-4f31-b422-b539713ea374")
-		(property "Reference" "TP22"
-			(at 418.846 374.65 0)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1 1)
-				)
-				(justify left)
-			)
-		)
-		(property "Value" "ESP_CONSOLE_TX"
-			(at 420.37 375.92 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1 1)
-				)
-			)
-		)
-		(property "Footprint" "TestPoint:TestPoint_Pad_D1.5mm"
-			(at 417.83 374.65 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1 1)
-				)
-			)
-		)
-		(property "Datasheet" ""
-			(at 417.83 374.65 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1 1)
-				)
-			)
-		)
-		(property "Description" ""
-			(at 417.83 374.65 0)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(pin "1"
-			(uuid "21ad8558-19fe-4181-975d-b0113decf8c9")
-		)
-		(instances
-			(project "Solar Project Rev2"
-				(path "/28299885-0f47-4c9d-af0f-f2db484b5c54"
-					(reference "TP22")
-					(unit 1)
-				)
-			)
-		)
-	)
-	(symbol
 		(lib_id "PCM_JLCPCB-Connectors_Buttons:Tactile Button, 160gf, 12V, 50mA, 5.1mm")
 		(at 50.8 356.87 0)
 		(unit 1)
@@ -71613,83 +71195,6 @@
 			(project "Solar Project Rev2"
 				(path "/28299885-0f47-4c9d-af0f-f2db484b5c54"
 					(reference "C22")
-					(unit 1)
-				)
-			)
-		)
-	)
-	(symbol
-		(lib_id "Connector:TestPoint_Small")
-		(at 417.83 367.03 0)
-		(unit 1)
-		(body_style 1)
-		(exclude_from_sim no)
-		(in_bom yes)
-		(on_board yes)
-		(in_pos_files yes)
-		(dnp no)
-		(uuid "4ca6dbf7-54c2-4bed-9e54-943fc339dad1")
-		(property "Reference" "TP19"
-			(at 419.1 367.03 0)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1 1)
-				)
-				(justify left)
-			)
-		)
-		(property "Value" "ESP_DATA_RX_STM"
-			(at 420.37 368.3 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1 1)
-				)
-			)
-		)
-		(property "Footprint" "TestPoint:TestPoint_Pad_D1.5mm"
-			(at 417.83 367.03 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1 1)
-				)
-			)
-		)
-		(property "Datasheet" ""
-			(at 417.83 367.03 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1 1)
-				)
-			)
-		)
-		(property "Description" ""
-			(at 417.83 367.03 0)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(pin "1"
-			(uuid "e26e97a5-1a06-4550-95eb-1e3ae8cb088b")
-		)
-		(instances
-			(project "Solar Project Rev2"
-				(path "/28299885-0f47-4c9d-af0f-f2db484b5c54"
-					(reference "TP19")
 					(unit 1)
 				)
 			)
@@ -80511,83 +80016,6 @@
 		)
 	)
 	(symbol
-		(lib_id "Connector:TestPoint_Small")
-		(at 417.83 382.27 0)
-		(unit 1)
-		(body_style 1)
-		(exclude_from_sim no)
-		(in_bom yes)
-		(on_board yes)
-		(in_pos_files yes)
-		(dnp no)
-		(uuid "667072f6-997b-4ae9-b64d-2aa03f4d7f5a")
-		(property "Reference" "TP25"
-			(at 419.354 382.27 0)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1 1)
-				)
-				(justify left)
-			)
-		)
-		(property "Value" "ESP_DATA_TX_STM"
-			(at 420.37 383.54 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1 1)
-				)
-			)
-		)
-		(property "Footprint" "TestPoint:TestPoint_Pad_D1.5mm"
-			(at 417.83 382.27 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1 1)
-				)
-			)
-		)
-		(property "Datasheet" ""
-			(at 417.83 382.27 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1 1)
-				)
-			)
-		)
-		(property "Description" ""
-			(at 417.83 382.27 0)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(pin "1"
-			(uuid "b5d902ae-0133-4068-bbb1-8f7fb99aa5eb")
-		)
-		(instances
-			(project "Solar Project Rev2"
-				(path "/28299885-0f47-4c9d-af0f-f2db484b5c54"
-					(reference "TP25")
-					(unit 1)
-				)
-			)
-		)
-	)
-	(symbol
 		(lib_id "PCM_JLCPCB-Resistors:0805,100kΩ")
 		(at 167.64 101.6 0)
 		(unit 1)
@@ -87593,83 +87021,6 @@
 			(project "Solar Project Rev2"
 				(path "/28299885-0f47-4c9d-af0f-f2db484b5c54"
 					(reference "J1")
-					(unit 1)
-				)
-			)
-		)
-	)
-	(symbol
-		(lib_id "Connector:TestPoint_Small")
-		(at 417.83 377.19 0)
-		(unit 1)
-		(body_style 1)
-		(exclude_from_sim no)
-		(in_bom yes)
-		(on_board yes)
-		(in_pos_files yes)
-		(dnp no)
-		(uuid "75db3ea4-b691-4961-839c-c956f86a88d7")
-		(property "Reference" "TP23"
-			(at 418.846 377.19 0)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1 1)
-				)
-				(justify left)
-			)
-		)
-		(property "Value" "ESP_DATA_RX"
-			(at 420.37 378.46 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1 1)
-				)
-			)
-		)
-		(property "Footprint" "TestPoint:TestPoint_Pad_D1.5mm"
-			(at 417.83 377.19 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1 1)
-				)
-			)
-		)
-		(property "Datasheet" ""
-			(at 417.83 377.19 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1 1)
-				)
-			)
-		)
-		(property "Description" ""
-			(at 417.83 377.19 0)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(pin "1"
-			(uuid "f3d1fd6f-b6b6-471e-9b0f-e7df7636c2b0")
-		)
-		(instances
-			(project "Solar Project Rev2"
-				(path "/28299885-0f47-4c9d-af0f-f2db484b5c54"
-					(reference "TP23")
 					(unit 1)
 				)
 			)
@@ -110714,83 +110065,6 @@
 		)
 	)
 	(symbol
-		(lib_id "Connector:TestPoint_Small")
-		(at 417.83 372.11 0)
-		(unit 1)
-		(body_style 1)
-		(exclude_from_sim no)
-		(in_bom yes)
-		(on_board yes)
-		(in_pos_files yes)
-		(dnp no)
-		(uuid "b3f6cbaa-fbe2-4e1e-bd25-067a77e356e6")
-		(property "Reference" "TP21"
-			(at 418.846 372.11 0)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1 1)
-				)
-				(justify left)
-			)
-		)
-		(property "Value" "ESP_DATA_TX"
-			(at 420.37 373.38 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1 1)
-				)
-			)
-		)
-		(property "Footprint" "TestPoint:TestPoint_Pad_D1.5mm"
-			(at 417.83 372.11 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1 1)
-				)
-			)
-		)
-		(property "Datasheet" ""
-			(at 417.83 372.11 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1 1)
-				)
-			)
-		)
-		(property "Description" ""
-			(at 417.83 372.11 0)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(pin "1"
-			(uuid "e854c386-eed3-4d3b-a579-b7c04e59b3d8")
-		)
-		(instances
-			(project "Solar Project Rev2"
-				(path "/28299885-0f47-4c9d-af0f-f2db484b5c54"
-					(reference "TP21")
-					(unit 1)
-				)
-			)
-		)
-	)
-	(symbol
 		(lib_id "PCM_JLCPCB-Resistors:0805,10kΩ")
 		(at 88.9 350.52 0)
 		(unit 1)
@@ -126947,83 +126221,6 @@
 		)
 	)
 	(symbol
-		(lib_id "Connector:TestPoint_Small")
-		(at 417.83 384.81 0)
-		(unit 1)
-		(body_style 1)
-		(exclude_from_sim no)
-		(in_bom yes)
-		(on_board yes)
-		(in_pos_files yes)
-		(dnp no)
-		(uuid "e6cc7b6e-5653-4505-a3ab-ba7e2f7cb9b3")
-		(property "Reference" "TP26"
-			(at 419.354 384.81 0)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1 1)
-				)
-				(justify left)
-			)
-		)
-		(property "Value" "ESP_CONSOLE_TX_STM"
-			(at 420.37 386.08 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1 1)
-				)
-			)
-		)
-		(property "Footprint" "TestPoint:TestPoint_Pad_D1.5mm"
-			(at 417.83 384.81 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1 1)
-				)
-			)
-		)
-		(property "Datasheet" ""
-			(at 417.83 384.81 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1 1)
-				)
-			)
-		)
-		(property "Description" ""
-			(at 417.83 384.81 0)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(pin "1"
-			(uuid "84a71571-72e2-4491-91cf-f8bf19732367")
-		)
-		(instances
-			(project "Solar Project Rev2"
-				(path "/28299885-0f47-4c9d-af0f-f2db484b5c54"
-					(reference "TP26")
-					(unit 1)
-				)
-			)
-		)
-	)
-	(symbol
 		(lib_id "PCM_JLCPCB-Diodes:Schottky,1N5819WS")
 		(at 424.18 208.28 90)
 		(unit 1)
@@ -133652,83 +132849,6 @@
 			(project "Solar Project Rev2"
 				(path "/28299885-0f47-4c9d-af0f-f2db484b5c54"
 					(reference "NT2")
-					(unit 1)
-				)
-			)
-		)
-	)
-	(symbol
-		(lib_id "Connector:TestPoint_Small")
-		(at 417.83 369.57 0)
-		(unit 1)
-		(body_style 1)
-		(exclude_from_sim no)
-		(in_bom yes)
-		(on_board yes)
-		(in_pos_files yes)
-		(dnp no)
-		(uuid "f57bd02b-736a-458d-b552-0b8915f830a4")
-		(property "Reference" "TP20"
-			(at 418.846 369.57 0)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1 1)
-				)
-				(justify left)
-			)
-		)
-		(property "Value" "ESP_CONSOLE_RX_STM"
-			(at 420.37 370.84 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1 1)
-				)
-			)
-		)
-		(property "Footprint" "TestPoint:TestPoint_Pad_D1.5mm"
-			(at 417.83 369.57 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1 1)
-				)
-			)
-		)
-		(property "Datasheet" ""
-			(at 417.83 369.57 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1 1)
-				)
-			)
-		)
-		(property "Description" ""
-			(at 417.83 369.57 0)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(pin "1"
-			(uuid "8ba51905-484d-49ba-81e4-43b559a04ada")
-		)
-		(instances
-			(project "Solar Project Rev2"
-				(path "/28299885-0f47-4c9d-af0f-f2db484b5c54"
-					(reference "TP20")
 					(unit 1)
 				)
 			)
