@@ -102,7 +102,8 @@ and 55 warnings.
 Actual probe/cable mating, any external 2.54 mm adapter mapping, enclosure
 access, and bench attach/program validation remain open. See the
 [connector pinout and release checks](../../../docs/rev2-swd-debug-connector.md).
-Issue #17 remains open; this is not a fabrication or bench acceptance.
+Issue #17 was closed on 2026-11-21 for the header addition. This is not
+fabrication or bench acceptance.
 
 ### Rev2 PCB synchronization and placement handoff (2026-11-20)
 
@@ -160,6 +161,15 @@ Phil subsequently excluded TP19-TP26 from this Rev2 board. Their schematic
 symbols and standalone stubs and their PCB footprints were removed; the
 UART circuits and other test points are unchanged. The PCB now has 219
 schematic-linked footprints, with no placement or routing changes in this pass.
+
+### Rev2 BOOT0 pull-down (#14, 2026-11-21)
+
+R86 is a 10 kOhm pull-down in the Rev2 schematic, PCB and exported BOM.
+Schematic and PCB pad assignments agree: R86.1 to U1.46 (PB8/BOOT0),
+R86.2 to `PWR_NEG`. The component addition is complete; routing both
+pads and clearing the R86 silkscreen overlap remain part of the board's
+DRC and fabrication review. Normal boot and OTA option-byte behavior
+have not been tested. Rev1 manufacturing files are unchanged.
 
 ## Current production source - Rev 1
 
