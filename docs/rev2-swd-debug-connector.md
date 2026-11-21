@@ -87,8 +87,9 @@ shared nets, so these J9 traces do not qualify the whole power/reset network.
 
 The actual ST-Link cable/mate and enclosure opening, access, and cable bend
 clearance remain unverified. No bench attach or programming validation is
-claimed. Keep issue #17 open until cable mating, mechanical access, and SWD
-attach/program acceptance are verified.
+claimed. Issue #17 was closed on 2026-11-21 for adding J9 to Rev2 CAD.
+Cable mating, mechanical access, and SWD attach/program acceptance remain
+separate release or bring-up checks.
 
 References: [Samtec FTSH-105-01-L-DV-007-K product page](https://www.samtec.com/products/ftsh-105-01-l-dv-007-k);
 [recommended PCB land pattern](https://suddendocs.samtec.com/prints/ftsh-1xx-xx-xxx-dv-xxx-footprint.pdf);
