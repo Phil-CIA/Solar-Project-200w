@@ -40,8 +40,8 @@
         "other_text_upright": false,
         "pads": {
           "drill": 0.0,
-          "height": 1.4,
-          "width": 1.02
+          "height": 0.5,
+          "width": 1.325
         },
         "silk_line_width": 0.1,
         "silk_text_italic": false,
@@ -102,7 +102,7 @@
         "hole_to_hole": "warning",
         "holes_co_located": "warning",
         "invalid_outline": "error",
-        "isolated_copper": "warning",
+        "isolated_copper": "ignore",
         "item_on_disabled_layer": "error",
         "items_not_allowed": "error",
         "length_out_of_range": "error",
@@ -575,7 +575,7 @@
       "method": 0,
       "sort_order": 0
     },
-    "bom_export_filename": "Solar Project Rev2 - DEVELOPMENT ONLY.csv",
+    "bom_export_filename": "${PROJECTNAME}.csv",
     "bom_fmt_presets": [],
     "bom_fmt_settings": {
       "field_delimiter": ",",
@@ -630,7 +630,7 @@
           "group_by": true,
           "label": "Footprint",
           "name": "Footprint",
-          "show": true
+          "show": false
         },
         {
           "group_by": false,
@@ -1367,7 +1367,7 @@
         "uuid": "28299885-0f47-4c9d-af0f-f2db484b5c54"
       }
     ],
-    "used_designators": "C3,C8,C21,C30-31,C33-35,C62-65,M1,F3,TP6-28,R16,R46,R68-82,R86-98,#FLG8,J6,J9,Q7,H1,U11-12,U15-16,NT1-8,JP3",
+    "used_designators": "C3,C8,C21,C30-31,C33-35,C62-65,M1,F3,TP6-28,R16,R44-46,R68-82,R86-98,#FLG8,J6,J9,Q7,H1,U11-12,U15-16,NT1-8,JP3",
     "variants": []
   },
   "sheets": [
