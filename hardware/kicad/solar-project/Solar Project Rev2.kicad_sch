@@ -785,6 +785,408 @@
 			)
 			(embedded_fonts no)
 		)
+		(symbol "1My_Connectors:B4B-XH-A"
+			(pin_names
+				(offset 1.016)
+			)
+			(exclude_from_sim no)
+			(in_bom yes)
+			(on_board yes)
+			(in_pos_files yes)
+			(duplicate_pin_numbers_are_jumpers no)
+			(property "Reference" "J14"
+				(at 0.762 8.636 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Value" "I2C bus"
+				(at 0.254 6.858 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Footprint" "1My_Parts_ Connectors:JST_B4B-XH-A"
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(justify bottom)
+				)
+			)
+			(property "Datasheet" ""
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Description" "Generic connector, single row, 01x05, script generated"
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Assembly" ""
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "JCBPCB#" ""
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Sim.Device" ""
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "SNAPEDA_PN" ""
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "PARTREV" "7/4/21"
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(justify bottom)
+				)
+			)
+			(property "STANDARD" "Manufacturer Recommendations"
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(justify bottom)
+				)
+			)
+			(property "MAXIMUM_PACKAGE_HEIGHT" "7.00 mm"
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(justify bottom)
+				)
+			)
+			(property "MANUFACTURER" "JST"
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(justify bottom)
+				)
+			)
+			(property "Current - Rectified" ""
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Diode Configuration" ""
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Reverse Leakage Current (Ir)" ""
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Voltage - DC Reverse(Vr)" ""
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Voltage - Forward(Vf@If)" ""
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(symbol "B4B-XH-A_0_0"
+				(polyline
+					(pts
+						(xy -3.81 3.81) (xy -3.81 -6.35)
+					)
+					(stroke
+						(width 0.254)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(polyline
+					(pts
+						(xy -3.81 3.81) (xy -2.54 5.08)
+					)
+					(stroke
+						(width 0.254)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(polyline
+					(pts
+						(xy -3.81 -6.35) (xy -2.54 -7.62)
+					)
+					(stroke
+						(width 0.254)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(rectangle
+					(start -3.175 2.2225)
+					(end -1.5875 2.8575)
+					(stroke
+						(width 0.1)
+						(type default)
+					)
+					(fill
+						(type outline)
+					)
+				)
+				(rectangle
+					(start -3.175 -0.3175)
+					(end -1.5875 0.3175)
+					(stroke
+						(width 0.1)
+						(type default)
+					)
+					(fill
+						(type outline)
+					)
+				)
+				(rectangle
+					(start -3.175 -2.8575)
+					(end -1.5875 -2.2225)
+					(stroke
+						(width 0.1)
+						(type default)
+					)
+					(fill
+						(type outline)
+					)
+				)
+				(rectangle
+					(start -3.175 -5.3975)
+					(end -1.5875 -4.7625)
+					(stroke
+						(width 0.1)
+						(type default)
+					)
+					(fill
+						(type outline)
+					)
+				)
+				(polyline
+					(pts
+						(xy -2.54 -7.62) (xy 3.81 -7.62)
+					)
+					(stroke
+						(width 0.254)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(polyline
+					(pts
+						(xy 3.81 5.08) (xy -2.54 5.08)
+					)
+					(stroke
+						(width 0.254)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(polyline
+					(pts
+						(xy 3.81 -7.62) (xy 3.81 5.08)
+					)
+					(stroke
+						(width 0.254)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(pin passive line
+					(at -7.62 2.54 0)
+					(length 5.08)
+					(name "1"
+						(effects
+							(font
+								(size 1.016 1.016)
+							)
+						)
+					)
+					(number "1"
+						(effects
+							(font
+								(size 1.016 1.016)
+							)
+						)
+					)
+				)
+				(pin passive line
+					(at -7.62 0 0)
+					(length 5.08)
+					(name "2"
+						(effects
+							(font
+								(size 1.016 1.016)
+							)
+						)
+					)
+					(number "2"
+						(effects
+							(font
+								(size 1.016 1.016)
+							)
+						)
+					)
+				)
+				(pin passive line
+					(at -7.62 -2.54 0)
+					(length 5.08)
+					(name "3"
+						(effects
+							(font
+								(size 1.016 1.016)
+							)
+						)
+					)
+					(number "3"
+						(effects
+							(font
+								(size 1.016 1.016)
+							)
+						)
+					)
+				)
+				(pin passive line
+					(at -7.62 -5.08 0)
+					(length 5.08)
+					(name "4"
+						(effects
+							(font
+								(size 1.016 1.016)
+							)
+						)
+					)
+					(number "4"
+						(effects
+							(font
+								(size 1.016 1.016)
+							)
+						)
+					)
+				)
+			)
+			(embedded_fonts no)
+		)
 		(symbol "1My_Connectors:USB4105-GF-A"
 			(pin_names
 				(offset 1.016)
@@ -15518,222 +15920,6 @@
 			)
 			(embedded_fonts no)
 		)
-		(symbol "Connector_Generic:Conn_01x04"
-			(pin_names
-				(offset 1.016)
-				(hide yes)
-			)
-			(exclude_from_sim no)
-			(in_bom yes)
-			(on_board yes)
-			(in_pos_files yes)
-			(duplicate_pin_numbers_are_jumpers no)
-			(property "Reference" "J"
-				(at 0 5.08 0)
-				(show_name no)
-				(do_not_autoplace no)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-				)
-			)
-			(property "Value" "Conn_01x04"
-				(at 0 -7.62 0)
-				(show_name no)
-				(do_not_autoplace no)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-				)
-			)
-			(property "Footprint" ""
-				(at 0 0 0)
-				(show_name no)
-				(do_not_autoplace no)
-				(hide yes)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-				)
-			)
-			(property "Datasheet" ""
-				(at 0 0 0)
-				(show_name no)
-				(do_not_autoplace no)
-				(hide yes)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-				)
-			)
-			(property "Description" "Generic connector, single row, 01x04, script generated (kicad-library-utils/schlib/autogen/connector/)"
-				(at 0 0 0)
-				(show_name no)
-				(do_not_autoplace no)
-				(hide yes)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-				)
-			)
-			(property "ki_keywords" "connector"
-				(at 0 0 0)
-				(show_name no)
-				(do_not_autoplace no)
-				(hide yes)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-				)
-			)
-			(property "ki_fp_filters" "Connector*:*_1x??_*"
-				(at 0 0 0)
-				(show_name no)
-				(do_not_autoplace no)
-				(hide yes)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-				)
-			)
-			(symbol "Conn_01x04_1_1"
-				(rectangle
-					(start -1.27 3.81)
-					(end 1.27 -6.35)
-					(stroke
-						(width 0.254)
-						(type default)
-					)
-					(fill
-						(type background)
-					)
-				)
-				(rectangle
-					(start -1.27 2.667)
-					(end 0 2.413)
-					(stroke
-						(width 0.1524)
-						(type default)
-					)
-					(fill
-						(type none)
-					)
-				)
-				(rectangle
-					(start -1.27 0.127)
-					(end 0 -0.127)
-					(stroke
-						(width 0.1524)
-						(type default)
-					)
-					(fill
-						(type none)
-					)
-				)
-				(rectangle
-					(start -1.27 -2.413)
-					(end 0 -2.667)
-					(stroke
-						(width 0.1524)
-						(type default)
-					)
-					(fill
-						(type none)
-					)
-				)
-				(rectangle
-					(start -1.27 -4.953)
-					(end 0 -5.207)
-					(stroke
-						(width 0.1524)
-						(type default)
-					)
-					(fill
-						(type none)
-					)
-				)
-				(pin passive line
-					(at -5.08 2.54 0)
-					(length 3.81)
-					(name "Pin_1"
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-					(number "1"
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-				)
-				(pin passive line
-					(at -5.08 0 0)
-					(length 3.81)
-					(name "Pin_2"
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-					(number "2"
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-				)
-				(pin passive line
-					(at -5.08 -2.54 0)
-					(length 3.81)
-					(name "Pin_3"
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-					(number "3"
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-				)
-				(pin passive line
-					(at -5.08 -5.08 0)
-					(length 3.81)
-					(name "Pin_4"
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-					(number "4"
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-				)
-			)
-			(embedded_fonts no)
-		)
 		(symbol "Device:C"
 			(pin_numbers
 				(hide yes)
@@ -20533,7 +20719,7 @@
 						(type none)
 					)
 				)
-				(pin unspecified line
+				(pin passive line
 					(at -5.08 2.54 0)
 					(length 2.54)
 					(name "A"
@@ -20551,7 +20737,7 @@
 						)
 					)
 				)
-				(pin unspecified line
+				(pin passive line
 					(at -5.08 -5.08 0)
 					(length 2.54)
 					(name "B"
@@ -23335,7 +23521,7 @@
 				)
 			)
 			(symbol "Transceiver, USB_0_1"
-				(pin unspecified line
+				(pin passive line
 					(at -22.86 7.62 0)
 					(length 5.08)
 					(name "DCD"
@@ -23353,7 +23539,7 @@
 						)
 					)
 				)
-				(pin unspecified line
+				(pin passive line
 					(at -22.86 5.08 0)
 					(length 5.08)
 					(name "RI"
@@ -23371,7 +23557,7 @@
 						)
 					)
 				)
-				(pin unspecified line
+				(pin passive line
 					(at -22.86 2.54 0)
 					(length 5.08)
 					(name "GND"
@@ -23389,7 +23575,7 @@
 						)
 					)
 				)
-				(pin unspecified line
+				(pin passive line
 					(at -22.86 0 0)
 					(length 5.08)
 					(name "D+"
@@ -23407,7 +23593,7 @@
 						)
 					)
 				)
-				(pin unspecified line
+				(pin passive line
 					(at -22.86 -2.54 0)
 					(length 5.08)
 					(name "D-"
@@ -23425,7 +23611,7 @@
 						)
 					)
 				)
-				(pin unspecified line
+				(pin passive line
 					(at -22.86 -5.08 0)
 					(length 5.08)
 					(name "VDD"
@@ -23443,7 +23629,7 @@
 						)
 					)
 				)
-				(pin unspecified line
+				(pin passive line
 					(at -22.86 -7.62 0)
 					(length 5.08)
 					(name "REGIN"
@@ -23461,7 +23647,7 @@
 						)
 					)
 				)
-				(pin unspecified line
+				(pin passive line
 					(at -7.62 -22.86 90)
 					(length 5.08)
 					(name "VBUS"
@@ -23479,7 +23665,7 @@
 						)
 					)
 				)
-				(pin unspecified line
+				(pin passive line
 					(at -5.08 -22.86 90)
 					(length 5.08)
 					(name "RST#"
@@ -23497,7 +23683,7 @@
 						)
 					)
 				)
-				(pin unspecified line
+				(pin passive line
 					(at -2.54 -22.86 90)
 					(length 5.08)
 					(name "NC"
@@ -23515,7 +23701,7 @@
 						)
 					)
 				)
-				(pin unspecified line
+				(pin passive line
 					(at 0 -22.86 90)
 					(length 5.08)
 					(name "SUSPEND#"
@@ -23533,7 +23719,7 @@
 						)
 					)
 				)
-				(pin unspecified line
+				(pin passive line
 					(at 2.54 -22.86 90)
 					(length 5.08)
 					(name "SUSPEND"
@@ -23551,7 +23737,7 @@
 						)
 					)
 				)
-				(pin unspecified line
+				(pin passive line
 					(at 7.62 -22.86 90)
 					(length 5.08)
 					(name "NC"
@@ -23569,7 +23755,7 @@
 						)
 					)
 				)
-				(pin unspecified line
+				(pin passive line
 					(at 22.86 -7.62 180)
 					(length 5.08)
 					(name "NC"
@@ -23587,7 +23773,7 @@
 						)
 					)
 				)
-				(pin unspecified line
+				(pin passive line
 					(at 22.86 -5.08 180)
 					(length 5.08)
 					(name "NC"
@@ -23605,7 +23791,7 @@
 						)
 					)
 				)
-				(pin unspecified line
+				(pin passive line
 					(at 22.86 -2.54 180)
 					(length 5.08)
 					(name "NC"
@@ -23623,7 +23809,7 @@
 						)
 					)
 				)
-				(pin unspecified line
+				(pin passive line
 					(at 22.86 0 180)
 					(length 5.08)
 					(name "NC"
@@ -23641,7 +23827,7 @@
 						)
 					)
 				)
-				(pin unspecified line
+				(pin passive line
 					(at 22.86 2.54 180)
 					(length 5.08)
 					(name "NC"
@@ -23659,7 +23845,7 @@
 						)
 					)
 				)
-				(pin unspecified line
+				(pin passive line
 					(at 22.86 5.08 180)
 					(length 5.08)
 					(name "NC"
@@ -23677,7 +23863,7 @@
 						)
 					)
 				)
-				(pin unspecified line
+				(pin passive line
 					(at 22.86 7.62 180)
 					(length 5.08)
 					(name "NC"
@@ -23695,7 +23881,7 @@
 						)
 					)
 				)
-				(pin unspecified line
+				(pin passive line
 					(at 7.62 22.86 270)
 					(length 5.08)
 					(name "NC"
@@ -23713,7 +23899,7 @@
 						)
 					)
 				)
-				(pin unspecified line
+				(pin passive line
 					(at 5.08 22.86 270)
 					(length 5.08)
 					(name "CTS"
@@ -23731,7 +23917,7 @@
 						)
 					)
 				)
-				(pin unspecified line
+				(pin passive line
 					(at 2.54 22.86 270)
 					(length 5.08)
 					(name "RTS"
@@ -23749,7 +23935,7 @@
 						)
 					)
 				)
-				(pin unspecified line
+				(pin passive line
 					(at 0 22.86 270)
 					(length 5.08)
 					(name "RXD"
@@ -23767,7 +23953,7 @@
 						)
 					)
 				)
-				(pin unspecified line
+				(pin passive line
 					(at -2.54 22.86 270)
 					(length 5.08)
 					(name "TXD"
@@ -23785,7 +23971,7 @@
 						)
 					)
 				)
-				(pin unspecified line
+				(pin passive line
 					(at -5.08 22.86 270)
 					(length 5.08)
 					(name "DSR"
@@ -23803,7 +23989,7 @@
 						)
 					)
 				)
-				(pin unspecified line
+				(pin passive line
 					(at -7.62 22.86 270)
 					(length 5.08)
 					(name "DTR"
@@ -23821,7 +24007,7 @@
 						)
 					)
 				)
-				(pin unspecified line
+				(pin passive line
 					(at -10.16 22.86 270)
 					(length 5.08)
 					(name "EP"
@@ -23852,7 +24038,7 @@
 						(type background)
 					)
 				)
-				(pin unspecified line
+				(pin passive line
 					(at 5.08 -22.86 90)
 					(length 5.08)
 					(name "NC"
@@ -34988,6 +35174,12 @@
 		(uuid "733854f5-c42b-4d78-b0cf-5a3c87167702")
 	)
 	(junction
+		(at 314.96 167.64)
+		(diameter 0)
+		(color 0 0 0 0)
+		(uuid "7343fd54-e030-4686-b737-d0bc2ee98da4")
+	)
+	(junction
 		(at 167.64 168.91)
 		(diameter 0)
 		(color 0 0 0 0)
@@ -35052,12 +35244,6 @@
 		(diameter 0)
 		(color 0 0 0 0)
 		(uuid "814ae90c-68bd-4b90-992d-453281f0fea2")
-	)
-	(junction
-		(at 311.15 190.5)
-		(diameter 0)
-		(color 0 0 0 0)
-		(uuid "84be3c00-7375-4750-aa14-534d48bb1e4f")
 	)
 	(junction
 		(at 427.99 163.83)
@@ -35306,12 +35492,6 @@
 		(uuid "c0bebeef-e61e-43e2-bfc9-9c20e861a8b5")
 	)
 	(junction
-		(at 387.35 57.15)
-		(diameter 0)
-		(color 0 0 0 0)
-		(uuid "c267aa0d-f915-4cb7-95d1-e5013d5036fe")
-	)
-	(junction
 		(at 59.69 266.7)
 		(diameter 0)
 		(color 0 0 0 0)
@@ -35520,12 +35700,6 @@
 		(diameter 0)
 		(color 0 0 0 0)
 		(uuid "f4d4581c-0352-494b-a60f-2aaf9ccd2b42")
-	)
-	(junction
-		(at 314.96 190.5)
-		(diameter 0)
-		(color 0 0 0 0)
-		(uuid "f5fa2838-8daa-4441-a508-69fbec42310e")
 	)
 	(junction
 		(at 520.7 168.91)
@@ -36341,16 +36515,6 @@
 	)
 	(wire
 		(pts
-			(xy 317.5 177.8) (xy 314.96 177.8)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "244a7823-6252-480d-ba4e-c78b608172f3")
-	)
-	(wire
-		(pts
 			(xy 453.39 322.58) (xy 453.39 323.85)
 		)
 		(stroke
@@ -36388,16 +36552,6 @@
 			(type default)
 		)
 		(uuid "277d18c1-2223-411a-ba09-902a9b7633af")
-	)
-	(wire
-		(pts
-			(xy 381 57.15) (xy 387.35 57.15)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "278be517-eb69-4c35-9750-d6ea4f7f72c1")
 	)
 	(wire
 		(pts
@@ -36981,6 +37135,16 @@
 	)
 	(wire
 		(pts
+			(xy 311.15 167.64) (xy 314.96 167.64)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "40d2030e-16b2-4805-90e7-65be42035550")
+	)
+	(wire
+		(pts
 			(xy 454.66 208.28) (xy 454.66 213.36)
 		)
 		(stroke
@@ -37218,16 +37382,6 @@
 			(type default)
 		)
 		(uuid "4c9d3942-e1c1-4761-8867-f0ff51dacf8c")
-	)
-	(wire
-		(pts
-			(xy 317.5 180.34) (xy 311.15 180.34)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "4e09b1d0-6cf1-44e2-8071-9e5fec4393f7")
 	)
 	(wire
 		(pts
@@ -37558,16 +37712,6 @@
 			(type default)
 		)
 		(uuid "5e7cb594-1a43-4659-946b-baa57dfba3a0")
-	)
-	(wire
-		(pts
-			(xy 166.37 245.11) (xy 173.99 245.11)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "5eecc06c-8186-42ff-becf-21dc050ee134")
 	)
 	(wire
 		(pts
@@ -37941,7 +38085,7 @@
 	)
 	(wire
 		(pts
-			(xy 307.34 190.5) (xy 311.15 190.5)
+			(xy 313.69 190.5) (xy 317.5 190.5)
 		)
 		(stroke
 			(width 0)
@@ -37991,16 +38135,6 @@
 	)
 	(wire
 		(pts
-			(xy 313.69 368.3) (xy 313.49 368.25)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "6d5f5ada-19e3-4a3f-ae8d-330d1f7bc567")
-	)
-	(wire
-		(pts
 			(xy 427.99 208.28) (xy 435.61 208.28)
 		)
 		(stroke
@@ -38018,16 +38152,6 @@
 			(type default)
 		)
 		(uuid "6e6e8028-fa9f-4c17-ba9b-9e046124d9fa")
-	)
-	(wire
-		(pts
-			(xy 314.96 190.5) (xy 317.5 190.5)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "6eb83334-3cc9-49d6-b102-ee8e7803c63b")
 	)
 	(wire
 		(pts
@@ -38521,7 +38645,7 @@
 	)
 	(wire
 		(pts
-			(xy 314.96 177.8) (xy 314.96 182.88)
+			(xy 314.96 177.8) (xy 314.96 175.26)
 		)
 		(stroke
 			(width 0)
@@ -38578,6 +38702,16 @@
 			(type default)
 		)
 		(uuid "86d25573-08ae-4499-bf8b-fd1b98b2f788")
+	)
+	(wire
+		(pts
+			(xy 314.96 167.64) (xy 317.5 167.64)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "885d2cd2-1da1-41da-8675-5f5bcc249e7d")
 	)
 	(wire
 		(pts
@@ -38698,6 +38832,16 @@
 			(type default)
 		)
 		(uuid "8d97f634-b4fd-4a6c-b68c-0d51c76e83e9")
+	)
+	(wire
+		(pts
+			(xy 166.37 245.11) (xy 173.99 245.11)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "8e00449d-85df-4e09-ab87-7335afb45736")
 	)
 	(wire
 		(pts
@@ -39111,7 +39255,7 @@
 	)
 	(wire
 		(pts
-			(xy 289.56 182.88) (xy 307.34 182.88)
+			(xy 289.56 182.88) (xy 313.69 182.88)
 		)
 		(stroke
 			(width 0)
@@ -39171,7 +39315,7 @@
 	)
 	(wire
 		(pts
-			(xy 289.56 180.34) (xy 311.15 180.34)
+			(xy 289.56 180.34) (xy 317.5 180.34)
 		)
 		(stroke
 			(width 0)
@@ -39611,16 +39755,6 @@
 	)
 	(wire
 		(pts
-			(xy 313.69 363.22) (xy 313.49 363.17)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "b5cc38bb-7da6-4003-a45c-124592b69539")
-	)
-	(wire
-		(pts
 			(xy 344.17 162.56) (xy 344.17 163.83)
 		)
 		(stroke
@@ -39661,7 +39795,7 @@
 	)
 	(wire
 		(pts
-			(xy 410.9607 346.71) (xy 408.94 346.71)
+			(xy 411.48 346.71) (xy 408.94 346.71)
 		)
 		(stroke
 			(width 0)
@@ -39721,7 +39855,7 @@
 	)
 	(wire
 		(pts
-			(xy 425.45 346.71) (xy 418.5807 346.71)
+			(xy 425.45 346.71) (xy 419.1 346.71)
 		)
 		(stroke
 			(width 0)
@@ -39758,16 +39892,6 @@
 			(type default)
 		)
 		(uuid "bbf7ce83-650b-4153-b3e6-1acbad051f57")
-	)
-	(wire
-		(pts
-			(xy 313.69 365.76) (xy 313.49 365.71)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "bd0a1abe-594f-4bdf-82fa-699d8ed5756b")
 	)
 	(wire
 		(pts
@@ -39881,16 +40005,6 @@
 	)
 	(wire
 		(pts
-			(xy 313.69 360.68) (xy 313.49 360.63)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "c43f58f2-588a-41c5-8cae-ea0b7d56069d")
-	)
-	(wire
-		(pts
 			(xy 336.55 181.61) (xy 336.55 184.15)
 		)
 		(stroke
@@ -39901,7 +40015,7 @@
 	)
 	(wire
 		(pts
-			(xy 314.96 177.8) (xy 289.56 177.8)
+			(xy 289.56 177.8) (xy 317.5 177.8)
 		)
 		(stroke
 			(width 0)
@@ -39928,16 +40042,6 @@
 			(type default)
 		)
 		(uuid "c5aeb8e6-e1e8-4a23-a78c-e2809cde0ea2")
-	)
-	(wire
-		(pts
-			(xy 311.15 190.5) (xy 314.96 190.5)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "c5fea8a1-6fd1-4d09-8ce4-d12503b87604")
 	)
 	(wire
 		(pts
@@ -40881,6 +40985,16 @@
 	)
 	(wire
 		(pts
+			(xy 335.28 147.32) (xy 336.55 147.32)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "f3767e43-9b5a-4289-a6f5-21c4d198ae72")
+	)
+	(wire
+		(pts
 			(xy 81.28 311.15) (xy 81.28 313.69)
 		)
 		(stroke
@@ -41101,7 +41215,7 @@
 	)
 	(wire
 		(pts
-			(xy 311.15 182.88) (xy 311.15 180.34)
+			(xy 311.15 175.26) (xy 311.15 180.34)
 		)
 		(stroke
 			(width 0)
@@ -41259,7 +41373,7 @@
 	)
 	(global_label "PWR_NEG"
 		(shape input)
-		(at 313.49 363.17 180)
+		(at 311.15 363.22 180)
 		(fields_autoplaced yes)
 		(effects
 			(font
@@ -41269,7 +41383,7 @@
 		)
 		(uuid "09172a31-6e8f-4021-f243-7e8f90123456")
 		(property "Intersheetrefs" "${INTERSHEET_REFS}"
-			(at 306.6231 363.17 0)
+			(at 304.2831 363.22 0)
 			(show_name no)
 			(do_not_autoplace no)
 			(effects
@@ -41742,7 +41856,7 @@
 	)
 	(global_label "I2C CLK"
 		(shape input)
-		(at 313.49 360.63 180)
+		(at 311.15 360.68 180)
 		(fields_autoplaced yes)
 		(effects
 			(font
@@ -41752,7 +41866,7 @@
 		)
 		(uuid "1a283b42-7f90-4132-0354-8f9012345678")
 		(property "Intersheetrefs" "${INTERSHEET_REFS}"
-			(at 306.6231 360.63 0)
+			(at 304.2831 360.68 0)
 			(show_name no)
 			(do_not_autoplace no)
 			(effects
@@ -42087,7 +42201,7 @@
 	)
 	(global_label "I2C DATA"
 		(shape input)
-		(at 313.49 368.25 180)
+		(at 311.15 368.3 180)
 		(fields_autoplaced yes)
 		(effects
 			(font
@@ -42097,7 +42211,7 @@
 		)
 		(uuid "2b394c53-8a01-4243-1465-9012345678ab")
 		(property "Intersheetrefs" "${INTERSHEET_REFS}"
-			(at 306.6231 368.25 0)
+			(at 304.2831 368.3 0)
 			(show_name no)
 			(do_not_autoplace no)
 			(effects
@@ -43971,6 +44085,29 @@
 			)
 		)
 	)
+	(global_label "CTRL_3V3"
+		(shape input)
+		(at 317.5 167.64 0)
+		(fields_autoplaced yes)
+		(effects
+			(font
+				(size 0.635 0.635)
+			)
+			(justify left)
+		)
+		(uuid "85fd73e5-0793-47ac-bf31-bde6526cd4df")
+		(property "Intersheetrefs" "${INTERSHEET_REFS}"
+			(at 324.3469 167.64 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+	)
 	(global_label "CTRL_5V"
 		(shape output)
 		(at 523.24 168.91 0)
@@ -45328,9 +45465,9 @@
 			)
 		)
 	)
-	(global_label "BAT_BUS_POS"
+	(global_label "CHG_OUT_POS"
 		(shape input)
-		(at 336.55 147.32 180)
+		(at 335.28 147.32 180)
 		(fields_autoplaced yes)
 		(effects
 			(font
@@ -45340,7 +45477,7 @@
 		)
 		(uuid "c39a8368-c79e-476b-b64b-8829c247511d")
 		(property "Intersheetrefs" "${INTERSHEET_REFS}"
-			(at 328.6166 147.32 0)
+			(at 327.1653 147.32 0)
 			(show_name no)
 			(do_not_autoplace no)
 			(effects
@@ -46755,7 +46892,7 @@
 	)
 	(global_label "CTRL_3V3"
 		(shape input)
-		(at 313.49 365.71 180)
+		(at 311.15 365.76 180)
 		(fields_autoplaced yes)
 		(effects
 			(font
@@ -46765,7 +46902,7 @@
 		)
 		(uuid "f8061920-5d7e-4f10-e132-6d7e8f901234")
 		(property "Intersheetrefs" "${INTERSHEET_REFS}"
-			(at 306.6231 365.71 0)
+			(at 304.2831 365.76 0)
 			(show_name no)
 			(do_not_autoplace no)
 			(effects
@@ -47378,6 +47515,28 @@
 				)
 			)
 		)
+		(property "LCSC " ""
+			(at 374.65 275.59 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Purchase-URL" ""
+			(at 374.65 275.59 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
 		(pin "2"
 			(uuid "b03d1a7d-5dd1-40a9-8329-739ec8e5ae46")
 		)
@@ -47868,6 +48027,28 @@
 			)
 		)
 		(property "polarity" ""
+			(at 134.62 321.31 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "LCSC " ""
+			(at 134.62 321.31 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Purchase-URL" ""
 			(at 134.62 321.31 0)
 			(hide yes)
 			(show_name no)
@@ -48377,6 +48558,28 @@
 				)
 			)
 		)
+		(property "LCSC " ""
+			(at 500.38 177.8 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Purchase-URL" ""
+			(at 500.38 177.8 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
 		(pin "1"
 			(uuid "ba8b9ce7-2ca9-481e-a87b-c443cdb2853f")
 		)
@@ -48634,6 +48837,28 @@
 			)
 		)
 		(property "Temperature Coefficient" "±100ppm/°C"
+			(at 463.55 303.53 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "LCSC " ""
+			(at 463.55 303.53 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Purchase-URL" ""
 			(at 463.55 303.53 0)
 			(hide yes)
 			(show_name no)
@@ -49132,6 +49357,28 @@
 			)
 		)
 		(property "polarity" ""
+			(at 377.19 154.94 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "LCSC " ""
+			(at 377.19 154.94 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Purchase-URL" ""
 			(at 377.19 154.94 0)
 			(hide yes)
 			(show_name no)
@@ -49674,6 +49921,28 @@
 				)
 			)
 		)
+		(property "LCSC " ""
+			(at 439.42 187.96 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Purchase-URL" ""
+			(at 439.42 187.96 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
 		(pin "1"
 			(uuid "f33199bb-3667-4f07-9ee3-ed1f7628e00e")
 		)
@@ -49975,6 +50244,28 @@
 			)
 		)
 		(property "polarity" ""
+			(at 288.29 355.6 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "LCSC " ""
+			(at 288.29 355.6 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Purchase-URL" ""
 			(at 288.29 355.6 0)
 			(hide yes)
 			(show_name no)
@@ -50302,6 +50593,28 @@
 			)
 		)
 		(property "polarity" ""
+			(at 220.98 247.65 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "LCSC " ""
+			(at 220.98 247.65 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Purchase-URL" ""
 			(at 220.98 247.65 0)
 			(hide yes)
 			(show_name no)
@@ -50805,6 +51118,28 @@
 				)
 			)
 		)
+		(property "LCSC " ""
+			(at 106.68 85.09 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Purchase-URL" ""
+			(at 106.68 85.09 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
 		(pin "2"
 			(uuid "3e4411d3-edf6-4b3b-a9e7-3d15ab8d8245")
 		)
@@ -51108,6 +51443,28 @@
 			)
 		)
 		(property "polarity" ""
+			(at 344.17 78.74 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "LCSC " ""
+			(at 344.17 78.74 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Purchase-URL" ""
 			(at 344.17 78.74 0)
 			(hide yes)
 			(show_name no)
@@ -51573,6 +51930,28 @@
 				)
 			)
 		)
+		(property "LCSC " ""
+			(at 361.95 62.23 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Purchase-URL" ""
+			(at 361.95 62.23 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
 		(pin "2"
 			(uuid "bbd3ce6e-13e9-4ef0-93a8-45e2f5ecbef4")
 		)
@@ -51644,6 +52023,28 @@
 			)
 		)
 		(property "Description" "Generic 16-pin SuperMini, USB-C and onboard regulator; Amazon B0D47G24W3; no EN header pin"
+			(at 436.88 298.45 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "LCSC " ""
+			(at 436.88 298.45 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Purchase-URL" ""
 			(at 436.88 298.45 0)
 			(hide yes)
 			(show_name no)
@@ -52195,6 +52596,28 @@
 				)
 			)
 		)
+		(property "LCSC " ""
+			(at 304.8 80.01 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Purchase-URL" ""
+			(at 304.8 80.01 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
 		(pin "2"
 			(uuid "09907567-d873-4007-9c1d-67fb3ac7380c")
 		)
@@ -52385,6 +52808,28 @@
 			)
 		)
 		(property "Part" "INA241A3IDDFR"
+			(at 364.49 214.63 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "LCSC " ""
+			(at 364.49 214.63 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Purchase-URL" ""
 			(at 364.49 214.63 0)
 			(hide yes)
 			(show_name no)
@@ -52923,6 +53368,28 @@
 				)
 			)
 		)
+		(property "LCSC " ""
+			(at 464.82 78.74 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Purchase-URL" ""
+			(at 464.82 78.74 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
 		(pin "1"
 			(uuid "11dfe372-ec94-4c8b-812f-9ff33d1ab6de")
 		)
@@ -52939,7 +53406,7 @@
 		)
 	)
 	(symbol
-		(lib_id "Device:C")
+		(lib_id "PCM_JLCPCB-Capacitors:0805,100nF")
 		(at 468.63 326.39 0)
 		(unit 1)
 		(body_style 1)
@@ -52960,41 +53427,218 @@
 				(justify left)
 			)
 		)
-		(property "Value" "100n"
-			(at 471.17 327.66 0)
+		(property "Value" "100nF"
+			(at 470.662 326.7682 0)
 			(show_name no)
 			(do_not_autoplace no)
 			(effects
 				(font
-					(size 1 1)
+					(size 0.8 0.8)
 				)
 				(justify left)
 			)
 		)
-		(property "Footprint" "Capacitor_SMD:C_0805_2012Metric"
+		(property "Footprint" "PCM_JLCPCB:C_0805"
+			(at 466.852 326.39 90)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Datasheet" "https://www.lcsc.com/datasheet/lcsc_datasheet_2304140030_Samsung-Electro-Mechanics-CL21B104KCFNNNE_C28233.pdf"
 			(at 468.63 326.39 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
 			(effects
 				(font
-					(size 1 1)
+					(size 1.27 1.27)
 				)
 			)
 		)
-		(property "Datasheet" ""
+		(property "Description" "100V 100nF X7R ±10% 0805 Multilayer Ceramic Capacitors MLCC - SMD/SMT ROHS"
 			(at 468.63 326.39 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
 			(effects
 				(font
-					(size 1 1)
+					(size 1.27 1.27)
 				)
 			)
 		)
-		(property "Description" ""
+		(property "LCSC " ""
 			(at 468.63 326.39 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Purchase-URL" ""
+			(at 468.63 326.39 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "LCSC" "C28233"
+			(at 468.63 326.39 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Stock" "1168020"
+			(at 468.63 326.39 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Price" "0.009USD"
+			(at 468.63 326.39 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Process" "SMT"
+			(at 468.63 326.39 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Minimum Qty" "20"
+			(at 468.63 326.39 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Attrition Qty" "10"
+			(at 468.63 326.39 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Class" "Basic Component"
+			(at 468.63 326.39 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Category" "Capacitors,Multilayer Ceramic Capacitors MLCC - SMD/SMT"
+			(at 468.63 326.39 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Manufacturer" "Samsung Electro-Mechanics"
+			(at 468.63 326.39 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Part" "CL21B104KCFNNNE"
+			(at 468.63 326.39 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Voltage Rated" "100V"
+			(at 470.662 328.4362 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 0.8 0.8)
+				)
+				(justify left)
+			)
+		)
+		(property "Tolerance" "±10%"
+			(at 468.63 326.39 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Capacitance" "100nF"
+			(at 468.63 326.39 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Temperature Coefficient" "X7R"
+			(at 468.63 326.39 0)
+			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
 			(effects
@@ -53534,6 +54178,28 @@
 				)
 			)
 		)
+		(property "LCSC " ""
+			(at 190.5 194.31 90)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Purchase-URL" ""
+			(at 190.5 194.31 90)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
 		(pin "2"
 			(uuid "f94d6916-ec58-47a7-b0ae-c7d237227776")
 		)
@@ -53896,6 +54562,28 @@
 				)
 			)
 		)
+		(property "LCSC " ""
+			(at 152.4 71.12 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Purchase-URL" ""
+			(at 152.4 71.12 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
 		(pin "1"
 			(uuid "705f92ea-f528-4571-8bd8-85462cd4b347")
 		)
@@ -54204,6 +54892,28 @@
 			)
 		)
 		(property "polarity" ""
+			(at 364.49 186.69 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "LCSC " ""
+			(at 364.49 186.69 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Purchase-URL" ""
 			(at 364.49 186.69 0)
 			(hide yes)
 			(show_name no)
@@ -54583,6 +55293,28 @@
 			)
 		)
 		(property "polarity" ""
+			(at 49.53 64.77 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "LCSC " ""
+			(at 49.53 64.77 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Purchase-URL" ""
 			(at 49.53 64.77 0)
 			(hide yes)
 			(show_name no)
@@ -55054,6 +55786,28 @@
 				)
 			)
 		)
+		(property "LCSC " ""
+			(at 157.48 80.01 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Purchase-URL" ""
+			(at 157.48 80.01 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
 		(pin "2"
 			(uuid "dde87e36-b07c-4c2e-9878-ab6a4e27d3cd")
 		)
@@ -55101,7 +55855,7 @@
 				)
 			)
 		)
-		(property "Footprint" "1My_Parts_ Passive:R_2512_Yezhan_DSLR-M-3-1F_2pad"
+		(property "Footprint" "Resistor_SMD:R_2512_6332Metric"
 			(at 436.118 66.04 90)
 			(hide yes)
 			(show_name no)
@@ -55465,6 +56219,28 @@
 			)
 		)
 		(property "Temperature Coefficient" "±100ppm/°C"
+			(at 434.34 66.04 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "LCSC " ""
+			(at 434.34 66.04 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Purchase-URL" ""
 			(at 434.34 66.04 0)
 			(hide yes)
 			(show_name no)
@@ -55996,6 +56772,28 @@
 				)
 			)
 		)
+		(property "LCSC " ""
+			(at 500.38 219.71 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Purchase-URL" ""
+			(at 500.38 219.71 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
 		(pin "1"
 			(uuid "11c3e93f-2c70-4fd5-b81c-7e0a3422680c")
 		)
@@ -56496,6 +57294,28 @@
 				)
 			)
 		)
+		(property "LCSC " ""
+			(at 427.99 176.53 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Purchase-URL" ""
+			(at 427.99 176.53 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
 		(pin "2"
 			(uuid "1e03a7e1-a371-4e24-9f90-00e0bcbfa26c")
 		)
@@ -56898,6 +57718,28 @@
 			)
 		)
 		(property "polarity" ""
+			(at 175.26 105.41 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "LCSC " ""
+			(at 175.26 105.41 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Purchase-URL" ""
 			(at 175.26 105.41 0)
 			(hide yes)
 			(show_name no)
@@ -57398,6 +58240,28 @@
 				)
 			)
 		)
+		(property "LCSC " ""
+			(at 379.73 214.63 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Purchase-URL" ""
+			(at 379.73 214.63 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
 		(pin "2"
 			(uuid "f134f8fd-669e-44c5-828d-545cd1392108")
 		)
@@ -57704,6 +58568,28 @@
 			)
 		)
 		(property "polarity" ""
+			(at 241.3 88.9 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "LCSC " ""
+			(at 241.3 88.9 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Purchase-URL" ""
 			(at 241.3 88.9 0)
 			(hide yes)
 			(show_name no)
@@ -58036,6 +58922,28 @@
 			)
 		)
 		(property "polarity" ""
+			(at 35.56 254 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "LCSC " ""
+			(at 35.56 254 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Purchase-URL" ""
 			(at 35.56 254 0)
 			(hide yes)
 			(show_name no)
@@ -58578,6 +59486,28 @@
 				)
 			)
 		)
+		(property "LCSC " ""
+			(at 154.94 327.66 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Purchase-URL" ""
+			(at 154.94 327.66 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
 		(pin "1"
 			(uuid "22aa919b-d5d4-422f-bd44-dd013246c480")
 		)
@@ -59035,6 +59965,28 @@
 			)
 		)
 		(property "polarity" ""
+			(at 43.18 179.07 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "LCSC " ""
+			(at 43.18 179.07 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Purchase-URL" ""
 			(at 43.18 179.07 0)
 			(hide yes)
 			(show_name no)
@@ -59576,6 +60528,28 @@
 				)
 			)
 		)
+		(property "LCSC " ""
+			(at 92.71 254 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Purchase-URL" ""
+			(at 92.71 254 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
 		(pin "2"
 			(uuid "3abc9eee-f064-49d7-a0b5-65038e08043d")
 		)
@@ -60073,6 +61047,28 @@
 				)
 			)
 		)
+		(property "LCSC " ""
+			(at 504.19 173.99 90)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Purchase-URL" ""
+			(at 504.19 173.99 90)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
 		(pin "1"
 			(uuid "e418e8af-f54a-465b-bf56-27781031d893")
 		)
@@ -60375,6 +61371,28 @@
 			)
 		)
 		(property "polarity" ""
+			(at 170.18 74.93 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "LCSC " ""
+			(at 170.18 74.93 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Purchase-URL" ""
 			(at 170.18 74.93 0)
 			(hide yes)
 			(show_name no)
@@ -60830,6 +61848,28 @@
 			)
 		)
 		(property "polarity" ""
+			(at 450.85 215.9 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "LCSC " ""
+			(at 450.85 215.9 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Purchase-URL" ""
 			(at 450.85 215.9 0)
 			(hide yes)
 			(show_name no)
@@ -61417,6 +62457,28 @@
 				)
 			)
 		)
+		(property "LCSC " ""
+			(at 109.22 356.87 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Purchase-URL" ""
+			(at 109.22 356.87 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
 		(pin "2"
 			(uuid "7662eda2-a43f-4ca2-a6cb-b3baed7690f7")
 		)
@@ -61613,6 +62675,28 @@
 			)
 		)
 		(property "Part" "INA241A3IDDFR"
+			(at 359.41 248.92 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "LCSC " ""
+			(at 359.41 248.92 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Purchase-URL" ""
 			(at 359.41 248.92 0)
 			(hide yes)
 			(show_name no)
@@ -62172,6 +63256,28 @@
 				)
 			)
 		)
+		(property "LCSC " ""
+			(at 88.9 101.6 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Purchase-URL" ""
+			(at 88.9 101.6 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
 		(pin "2"
 			(uuid "59fd065f-a1c3-4b5a-91d8-b4e399391bbe")
 		)
@@ -62182,6 +63288,527 @@
 			(project "Solar Project Rev2"
 				(path "/28299885-0f47-4c9d-af0f-f2db484b5c54"
 					(reference "R41")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "PCM_JLCPCB-Resistors:0805,4.7kΩ")
+		(at 314.96 171.45 0)
+		(unit 1)
+		(body_style 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(in_pos_files yes)
+		(dnp no)
+		(fields_autoplaced yes)
+		(uuid "2c9188ce-30a4-4bc2-af30-098c282a5889")
+		(property "Reference" "R45"
+			(at 317.5 171.4499 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Value" "4.7kΩ"
+			(at 314.96 171.45 90)
+			(show_name no)
+			(do_not_autoplace yes)
+			(effects
+				(font
+					(size 0.8 0.8)
+				)
+			)
+		)
+		(property "Footprint" "PCM_JLCPCB:R_0805"
+			(at 313.182 171.45 90)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Datasheet" "https://www.lcsc.com/datasheet/lcsc_datasheet_2206010200_UNI-ROYAL-Uniroyal-Elec-0805W8F4701T5E_C17673.pdf"
+			(at 314.96 171.45 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Description" "125mW Thick Film Resistors 150V ±100ppm/°C ±1% 4.7kΩ 0805 Chip Resistor - Surface Mount ROHS"
+			(at 314.96 171.45 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Stock" "4733934"
+			(at 314.96 171.45 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Price" "0.005USD"
+			(at 314.96 171.45 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Process" "SMT"
+			(at 314.96 171.45 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Minimum Qty" "20"
+			(at 314.96 171.45 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Attrition Qty" "6"
+			(at 314.96 171.45 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Class" "Basic Component"
+			(at 314.96 171.45 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Category" "Resistors,Chip Resistor - Surface Mount"
+			(at 314.96 171.45 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Manufacturer" "UNI-ROYAL(Uniroyal Elec)"
+			(at 314.96 171.45 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Part" "0805W8F4701T5E"
+			(at 314.96 171.45 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Resistance" "4.7kΩ"
+			(at 314.96 171.45 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Power(Watts)" "125mW"
+			(at 314.96 171.45 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Type" "Thick Film Resistors"
+			(at 314.96 171.45 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Overload Voltage (Max)" "150V"
+			(at 314.96 171.45 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Operating Temperature Range" "-55°C~+155°C"
+			(at 314.96 171.45 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Tolerance" "±1%"
+			(at 314.96 171.45 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Temperature Coefficient" "±100ppm/°C"
+			(at 314.96 171.45 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Part - USA" ""
+			(at 314.96 171.45 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "LCSC" "C17673"
+			(at 314.96 171.45 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Continuous Drain Current (Id)" ""
+			(at 314.96 171.45 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Drain Source On Resistance (RDS(on)@Vgs,Id)" ""
+			(at 314.96 171.45 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Drain Source Voltage (Vdss)" ""
+			(at 314.96 171.45 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Gate Threshold Voltage (Vgs(th)@Id)" ""
+			(at 314.96 171.45 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Input Capacitance (Ciss@Vds)" ""
+			(at 314.96 171.45 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Power Dissipation (Pd)" ""
+			(at 314.96 171.45 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Reverse Transfer Capacitance (Crss@Vds)" ""
+			(at 314.96 171.45 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Sim.Device" ""
+			(at 314.96 171.45 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Sim.Library" ""
+			(at 314.96 171.45 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Sim.Name" ""
+			(at 314.96 171.45 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Sim.Pins" ""
+			(at 314.96 171.45 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Sim.Type" ""
+			(at 314.96 171.45 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Total Gate Charge (Qg@Vgs)" ""
+			(at 314.96 171.45 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Breakdown Voltage" ""
+			(at 314.96 171.45 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Maximum Clamping Voltage" ""
+			(at 314.96 171.45 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Number of Lines" ""
+			(at 314.96 171.45 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Peak Pulse Current (Ipp)" ""
+			(at 314.96 171.45 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Peak Pulse Power Dissipation (Ppp)" ""
+			(at 314.96 171.45 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Reverse Stand-Off Voltage (Vrwm)" ""
+			(at 314.96 171.45 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "polarity" ""
+			(at 314.96 171.45 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "LCSC " ""
+			(at 314.96 171.45 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Purchase-URL" ""
+			(at 314.96 171.45 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(pin "1"
+			(uuid "df2c9c13-e4fa-4717-a428-786d4451745b")
+		)
+		(pin "2"
+			(uuid "f6338d0d-97d8-4bd7-8576-826ee89a69ad")
+		)
+		(instances
+			(project "Solar Project Rev2"
+				(path "/28299885-0f47-4c9d-af0f-f2db484b5c54"
+					(reference "R45")
 					(unit 1)
 				)
 			)
@@ -62670,6 +64297,28 @@
 				)
 			)
 		)
+		(property "LCSC " ""
+			(at 300.99 242.57 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Purchase-URL" ""
+			(at 300.99 242.57 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
 		(pin "2"
 			(uuid "f7baf4c4-b09c-43bc-8839-ff397111e624")
 		)
@@ -63016,6 +64665,28 @@
 			)
 		)
 		(property "polarity" ""
+			(at 101.6 254 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "LCSC " ""
+			(at 101.6 254 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Purchase-URL" ""
 			(at 101.6 254 0)
 			(hide yes)
 			(show_name no)
@@ -63547,6 +65218,28 @@
 			)
 		)
 		(property "polarity" ""
+			(at 190.5 217.17 90)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "LCSC " ""
+			(at 190.5 217.17 90)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Purchase-URL" ""
 			(at 190.5 217.17 90)
 			(hide yes)
 			(show_name no)
@@ -64089,6 +65782,28 @@
 				)
 			)
 		)
+		(property "LCSC " ""
+			(at 407.67 82.55 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Purchase-URL" ""
+			(at 407.67 82.55 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
 		(pin "1"
 			(uuid "f0389b6a-700e-4e91-be84-f023b2bd3875")
 		)
@@ -64401,6 +66116,28 @@
 			)
 		)
 		(property "polarity" ""
+			(at 364.49 160.02 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "LCSC " ""
+			(at 364.49 160.02 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Purchase-URL" ""
 			(at 364.49 160.02 0)
 			(hide yes)
 			(show_name no)
@@ -64927,6 +66664,28 @@
 				)
 			)
 		)
+		(property "LCSC " ""
+			(at 270.51 369.57 90)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Purchase-URL" ""
+			(at 270.51 369.57 90)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
 		(pin "1"
 			(uuid "2ca2c4b5-37ca-4af7-affd-1305d085e7fe")
 		)
@@ -65233,6 +66992,28 @@
 			)
 		)
 		(property "polarity" ""
+			(at 195.58 88.9 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "LCSC " ""
+			(at 195.58 88.9 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Purchase-URL" ""
 			(at 195.58 88.9 0)
 			(hide yes)
 			(show_name no)
@@ -65741,6 +67522,28 @@
 			)
 		)
 		(property "polarity" ""
+			(at 274.32 373.38 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "LCSC " ""
+			(at 274.32 373.38 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Purchase-URL" ""
 			(at 274.32 373.38 0)
 			(hide yes)
 			(show_name no)
@@ -66328,6 +68131,28 @@
 				)
 			)
 		)
+		(property "LCSC " ""
+			(at 50.8 356.87 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Purchase-URL" ""
+			(at 50.8 356.87 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
 		(pin "2"
 			(uuid "5bca4f24-6d0d-4e0e-bee4-61a8eff78992")
 		)
@@ -66714,6 +68539,28 @@
 			)
 		)
 		(property "polarity" ""
+			(at 130.81 80.01 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "LCSC " ""
+			(at 130.81 80.01 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Purchase-URL" ""
 			(at 130.81 80.01 0)
 			(hide yes)
 			(show_name no)
@@ -67255,6 +69102,28 @@
 				)
 			)
 		)
+		(property "LCSC " ""
+			(at 181.61 69.85 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Purchase-URL" ""
+			(at 181.61 69.85 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
 		(pin "1"
 			(uuid "e9cf974a-1f75-4a8d-970d-d50fd2253c00")
 		)
@@ -67741,6 +69610,28 @@
 				)
 			)
 		)
+		(property "LCSC " ""
+			(at 172.72 171.45 90)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Purchase-URL" ""
+			(at 172.72 171.45 90)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
 		(pin "2"
 			(uuid "1c5f9812-49f5-432c-9a1b-8d71bef30800")
 		)
@@ -67998,6 +69889,28 @@
 			)
 		)
 		(property "Temperature Coefficient" "±100ppm/°C"
+			(at 458.47 327.66 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "LCSC " ""
+			(at 458.47 327.66 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Purchase-URL" ""
 			(at 458.47 327.66 0)
 			(hide yes)
 			(show_name no)
@@ -68367,6 +70280,28 @@
 				)
 			)
 		)
+		(property "LCSC " ""
+			(at 440.69 57.15 90)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Purchase-URL" ""
+			(at 440.69 57.15 90)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
 		(pin "1"
 			(uuid "7411b48d-7df9-4d86-b05a-4a6563706f45")
 		)
@@ -68675,6 +70610,28 @@
 			)
 		)
 		(property "polarity" ""
+			(at 115.57 80.01 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "LCSC " ""
+			(at 115.57 80.01 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Purchase-URL" ""
 			(at 115.57 80.01 0)
 			(hide yes)
 			(show_name no)
@@ -69232,6 +71189,28 @@
 				)
 			)
 		)
+		(property "LCSC " ""
+			(at 521.97 177.8 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Purchase-URL" ""
+			(at 521.97 177.8 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
 		(pin "1"
 			(uuid "b0ff077d-16de-49f5-9f7c-1bb0ebbe369c")
 		)
@@ -69329,6 +71308,28 @@
 			(effects
 				(font
 					(size 1 1)
+				)
+			)
+		)
+		(property "LCSC " ""
+			(at 617.22 344.17 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Purchase-URL" ""
+			(at 617.22 344.17 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
 				)
 			)
 		)
@@ -69855,6 +71856,28 @@
 				)
 			)
 		)
+		(property "LCSC " ""
+			(at 60.96 372.11 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Purchase-URL" ""
+			(at 60.96 372.11 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
 		(pin "1"
 			(uuid "456ffecf-95d0-46fe-9a30-577c63393ff4")
 		)
@@ -70167,6 +72190,28 @@
 				)
 			)
 		)
+		(property "LCSC " ""
+			(at 139.7 80.01 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Purchase-URL" ""
+			(at 139.7 80.01 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
 		(pin "2"
 			(uuid "e9fff678-1b8a-4567-b140-c891fdac2ae7")
 		)
@@ -70468,6 +72513,28 @@
 			)
 		)
 		(property "polarity" ""
+			(at 106.68 73.66 90)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "LCSC " ""
+			(at 106.68 73.66 90)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Purchase-URL" ""
 			(at 106.68 73.66 90)
 			(hide yes)
 			(show_name no)
@@ -70943,6 +73010,28 @@
 				)
 			)
 		)
+		(property "LCSC " ""
+			(at 374.65 252.73 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Purchase-URL" ""
+			(at 374.65 252.73 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
 		(pin "2"
 			(uuid "d7524528-82bd-491b-a23b-f68a44d35747")
 		)
@@ -70953,505 +73042,6 @@
 			(project "Solar Project Rev2"
 				(path "/28299885-0f47-4c9d-af0f-f2db484b5c54"
 					(reference "C60")
-					(unit 1)
-				)
-			)
-		)
-	)
-	(symbol
-		(lib_id "PCM_JLCPCB-Resistors:0805,4.7kΩ")
-		(at 314.96 186.69 0)
-		(unit 1)
-		(body_style 1)
-		(exclude_from_sim no)
-		(in_bom yes)
-		(on_board yes)
-		(in_pos_files yes)
-		(dnp no)
-		(fields_autoplaced yes)
-		(uuid "4917f94b-2d0a-4815-b70c-78c3049907e7")
-		(property "Reference" "R45"
-			(at 317.5 186.6899 0)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify left)
-			)
-		)
-		(property "Value" "4.7kΩ"
-			(at 314.96 186.69 90)
-			(show_name no)
-			(do_not_autoplace yes)
-			(effects
-				(font
-					(size 0.8 0.8)
-				)
-			)
-		)
-		(property "Footprint" "PCM_JLCPCB:R_0805"
-			(at 313.182 186.69 90)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Datasheet" "https://www.lcsc.com/datasheet/lcsc_datasheet_2206010200_UNI-ROYAL-Uniroyal-Elec-0805W8F4701T5E_C17673.pdf"
-			(at 314.96 186.69 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Description" "125mW Thick Film Resistors 150V ±100ppm/°C ±1% 4.7kΩ 0805 Chip Resistor - Surface Mount ROHS"
-			(at 314.96 186.69 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Stock" "4733934"
-			(at 314.96 186.69 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Price" "0.005USD"
-			(at 314.96 186.69 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Process" "SMT"
-			(at 314.96 186.69 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Minimum Qty" "20"
-			(at 314.96 186.69 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Attrition Qty" "6"
-			(at 314.96 186.69 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Class" "Basic Component"
-			(at 314.96 186.69 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Category" "Resistors,Chip Resistor - Surface Mount"
-			(at 314.96 186.69 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Manufacturer" "UNI-ROYAL(Uniroyal Elec)"
-			(at 314.96 186.69 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Part" "0805W8F4701T5E"
-			(at 314.96 186.69 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Resistance" "4.7kΩ"
-			(at 314.96 186.69 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Power(Watts)" "125mW"
-			(at 314.96 186.69 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Type" "Thick Film Resistors"
-			(at 314.96 186.69 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Overload Voltage (Max)" "150V"
-			(at 314.96 186.69 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Operating Temperature Range" "-55°C~+155°C"
-			(at 314.96 186.69 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Tolerance" "±1%"
-			(at 314.96 186.69 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Temperature Coefficient" "±100ppm/°C"
-			(at 314.96 186.69 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Part - USA" ""
-			(at 314.96 186.69 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "LCSC" "C17673"
-			(at 314.96 186.69 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Continuous Drain Current (Id)" ""
-			(at 314.96 186.69 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Drain Source On Resistance (RDS(on)@Vgs,Id)" ""
-			(at 314.96 186.69 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Drain Source Voltage (Vdss)" ""
-			(at 314.96 186.69 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Gate Threshold Voltage (Vgs(th)@Id)" ""
-			(at 314.96 186.69 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Input Capacitance (Ciss@Vds)" ""
-			(at 314.96 186.69 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Power Dissipation (Pd)" ""
-			(at 314.96 186.69 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Reverse Transfer Capacitance (Crss@Vds)" ""
-			(at 314.96 186.69 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Sim.Device" ""
-			(at 314.96 186.69 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Sim.Library" ""
-			(at 314.96 186.69 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Sim.Name" ""
-			(at 314.96 186.69 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Sim.Pins" ""
-			(at 314.96 186.69 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Sim.Type" ""
-			(at 314.96 186.69 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Total Gate Charge (Qg@Vgs)" ""
-			(at 314.96 186.69 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Breakdown Voltage" ""
-			(at 314.96 186.69 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Maximum Clamping Voltage" ""
-			(at 314.96 186.69 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Number of Lines" ""
-			(at 314.96 186.69 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Peak Pulse Current (Ipp)" ""
-			(at 314.96 186.69 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Peak Pulse Power Dissipation (Ppp)" ""
-			(at 314.96 186.69 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Reverse Stand-Off Voltage (Vrwm)" ""
-			(at 314.96 186.69 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "polarity" ""
-			(at 314.96 186.69 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(pin "1"
-			(uuid "a8ffff8b-a334-4763-baf5-11b6b9f851e5")
-		)
-		(pin "2"
-			(uuid "f59278cd-24bf-4443-ab6f-900b63605793")
-		)
-		(instances
-			(project "Solar Project Rev2"
-				(path "/28299885-0f47-4c9d-af0f-f2db484b5c54"
-					(reference "R45")
 					(unit 1)
 				)
 			)
@@ -71940,6 +73530,28 @@
 				)
 			)
 		)
+		(property "LCSC " ""
+			(at 171.45 199.39 90)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Purchase-URL" ""
+			(at 171.45 199.39 90)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
 		(pin "1"
 			(uuid "02af3185-77e8-44b4-bf49-94bdaa1a37c1")
 		)
@@ -72207,6 +73819,28 @@
 				)
 			)
 		)
+		(property "LCSC " ""
+			(at 458.47 303.53 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Purchase-URL" ""
+			(at 458.47 303.53 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
 		(pin "1"
 			(uuid "d3369cf9-746e-47cc-a97e-fa25f8108979")
 		)
@@ -72279,6 +73913,28 @@
 			)
 		)
 		(property "Description" "Net tie, 2 pins"
+			(at 320.04 73.66 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "LCSC " ""
+			(at 320.04 73.66 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Purchase-URL" ""
 			(at 320.04 73.66 0)
 			(hide yes)
 			(show_name no)
@@ -72756,6 +74412,28 @@
 				)
 			)
 		)
+		(property "LCSC " ""
+			(at 69.85 180.34 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Purchase-URL" ""
+			(at 69.85 180.34 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
 		(pin "2"
 			(uuid "b940ef6c-8d47-4440-873b-19f44946879b")
 		)
@@ -73222,6 +74900,28 @@
 			)
 		)
 		(property "polarity" ""
+			(at 105.41 298.45 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "LCSC " ""
+			(at 105.41 298.45 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Purchase-URL" ""
 			(at 105.41 298.45 0)
 			(hide yes)
 			(show_name no)
@@ -73741,6 +75441,28 @@
 				)
 			)
 		)
+		(property "LCSC " ""
+			(at 478.79 168.91 90)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Purchase-URL" ""
+			(at 478.79 168.91 90)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
 		(pin "1"
 			(uuid "0d83fabc-833b-4e1d-889f-ceb19c966240")
 		)
@@ -73788,7 +75510,7 @@
 				)
 			)
 		)
-		(property "Footprint" "1My_Parts_ Passive:R_2512_Yezhan_DSLR-M-3-1F_2pad"
+		(property "Footprint" "Resistor_SMD:R_2512_6332Metric"
 			(at 423.418 66.04 90)
 			(hide yes)
 			(show_name no)
@@ -74152,6 +75874,28 @@
 			)
 		)
 		(property "Temperature Coefficient" "±100ppm/°C"
+			(at 421.64 66.04 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "LCSC " ""
+			(at 421.64 66.04 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Purchase-URL" ""
 			(at 421.64 66.04 0)
 			(hide yes)
 			(show_name no)
@@ -74640,6 +76384,28 @@
 			)
 		)
 		(property "polarity" ""
+			(at 397.51 82.55 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "LCSC " ""
+			(at 397.51 82.55 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Purchase-URL" ""
 			(at 397.51 82.55 0)
 			(hide yes)
 			(show_name no)
@@ -75160,6 +76926,28 @@
 				)
 			)
 		)
+		(property "LCSC " ""
+			(at 464.82 63.5 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Purchase-URL" ""
+			(at 464.82 63.5 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
 		(pin "1"
 			(uuid "f97ef1f9-8198-49dd-a21d-98baae0a2e51")
 		)
@@ -75659,6 +77447,28 @@
 				)
 			)
 		)
+		(property "LCSC " ""
+			(at 344.17 167.64 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Purchase-URL" ""
+			(at 344.17 167.64 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
 		(pin "2"
 			(uuid "ec198fd0-eafa-497c-b571-70d9aae0e44c")
 		)
@@ -76071,6 +77881,28 @@
 				)
 			)
 		)
+		(property "LCSC " ""
+			(at 93.98 97.79 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Purchase-URL" ""
+			(at 93.98 97.79 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
 		(pin "1"
 			(uuid "4a4495c7-fc0d-4864-9792-6523f5f77048")
 		)
@@ -76091,7 +77923,7 @@
 	)
 	(symbol
 		(lib_id "PCM_JLCPCB-Resistors:0805,10kΩ")
-		(at 307.34 186.69 0)
+		(at 313.69 186.69 0)
 		(unit 1)
 		(body_style 1)
 		(exclude_from_sim no)
@@ -76101,7 +77933,7 @@
 		(dnp no)
 		(uuid "57d98fe3-d415-4a9a-a0f2-ecd3c0427037")
 		(property "Reference" "R86"
-			(at 305.308 192.024 0)
+			(at 311.658 192.024 0)
 			(show_name no)
 			(do_not_autoplace no)
 			(effects
@@ -76112,7 +77944,7 @@
 			)
 		)
 		(property "Value" "10kΩ"
-			(at 307.34 186.69 90)
+			(at 313.69 186.69 90)
 			(show_name no)
 			(do_not_autoplace yes)
 			(effects
@@ -76122,7 +77954,7 @@
 			)
 		)
 		(property "Footprint" "PCM_JLCPCB:R_0805"
-			(at 305.562 186.69 90)
+			(at 311.912 186.69 90)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -76133,7 +77965,7 @@
 			)
 		)
 		(property "Datasheet" "https://www.lcsc.com/datasheet/lcsc_datasheet_2411221126_UNI-ROYAL-Uniroyal-Elec-0805W8F1002T5E_C17414.pdf"
-			(at 307.34 186.69 0)
+			(at 313.69 186.69 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -76144,7 +77976,7 @@
 			)
 		)
 		(property "Description" "125mW Thick Film Resistors 150V ±100ppm/°C ±1% 10kΩ 0805 Chip Resistor - Surface Mount ROHS"
-			(at 307.34 186.69 0)
+			(at 313.69 186.69 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -76155,7 +77987,7 @@
 			)
 		)
 		(property "Stock" "12301172"
-			(at 307.34 186.69 0)
+			(at 313.69 186.69 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -76166,7 +77998,7 @@
 			)
 		)
 		(property "Price" "0.005USD"
-			(at 307.34 186.69 0)
+			(at 313.69 186.69 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -76177,7 +78009,7 @@
 			)
 		)
 		(property "Process" "SMT"
-			(at 307.34 186.69 0)
+			(at 313.69 186.69 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -76188,7 +78020,7 @@
 			)
 		)
 		(property "Minimum Qty" "20"
-			(at 307.34 186.69 0)
+			(at 313.69 186.69 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -76199,7 +78031,7 @@
 			)
 		)
 		(property "Attrition Qty" "10"
-			(at 307.34 186.69 0)
+			(at 313.69 186.69 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -76210,7 +78042,7 @@
 			)
 		)
 		(property "Class" "Basic Component"
-			(at 307.34 186.69 0)
+			(at 313.69 186.69 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -76221,7 +78053,7 @@
 			)
 		)
 		(property "Category" "Resistors,Chip Resistor - Surface Mount"
-			(at 307.34 186.69 0)
+			(at 313.69 186.69 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -76232,7 +78064,7 @@
 			)
 		)
 		(property "Manufacturer" "UNI-ROYAL(Uniroyal Elec)"
-			(at 307.34 186.69 0)
+			(at 313.69 186.69 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -76243,7 +78075,7 @@
 			)
 		)
 		(property "Part" "0805W8F1002T5E"
-			(at 307.34 186.69 0)
+			(at 313.69 186.69 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -76254,7 +78086,7 @@
 			)
 		)
 		(property "Resistance" "10kΩ"
-			(at 307.34 186.69 0)
+			(at 313.69 186.69 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -76265,7 +78097,7 @@
 			)
 		)
 		(property "Power(Watts)" "125mW"
-			(at 307.34 186.69 0)
+			(at 313.69 186.69 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -76276,7 +78108,7 @@
 			)
 		)
 		(property "Type" "Thick Film Resistors"
-			(at 307.34 186.69 0)
+			(at 313.69 186.69 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -76287,7 +78119,7 @@
 			)
 		)
 		(property "Overload Voltage (Max)" "150V"
-			(at 307.34 186.69 0)
+			(at 313.69 186.69 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -76298,7 +78130,7 @@
 			)
 		)
 		(property "Operating Temperature Range" "-55°C~+155°C"
-			(at 307.34 186.69 0)
+			(at 313.69 186.69 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -76309,7 +78141,7 @@
 			)
 		)
 		(property "Tolerance" "±1%"
-			(at 307.34 186.69 0)
+			(at 313.69 186.69 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -76320,7 +78152,7 @@
 			)
 		)
 		(property "Temperature Coefficient" "±100ppm/°C"
-			(at 307.34 186.69 0)
+			(at 313.69 186.69 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -76331,7 +78163,7 @@
 			)
 		)
 		(property "Part - USA" ""
-			(at 307.34 186.69 0)
+			(at 313.69 186.69 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -76342,7 +78174,7 @@
 			)
 		)
 		(property "LCSC" "C17415"
-			(at 307.34 186.69 0)
+			(at 313.69 186.69 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -76353,7 +78185,7 @@
 			)
 		)
 		(property "Continuous Drain Current (Id)" ""
-			(at 307.34 186.69 0)
+			(at 313.69 186.69 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -76364,7 +78196,7 @@
 			)
 		)
 		(property "Drain Source On Resistance (RDS(on)@Vgs,Id)" ""
-			(at 307.34 186.69 0)
+			(at 313.69 186.69 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -76375,7 +78207,7 @@
 			)
 		)
 		(property "Drain Source Voltage (Vdss)" ""
-			(at 307.34 186.69 0)
+			(at 313.69 186.69 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -76386,7 +78218,7 @@
 			)
 		)
 		(property "Gate Threshold Voltage (Vgs(th)@Id)" ""
-			(at 307.34 186.69 0)
+			(at 313.69 186.69 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -76397,7 +78229,7 @@
 			)
 		)
 		(property "Input Capacitance (Ciss@Vds)" ""
-			(at 307.34 186.69 0)
+			(at 313.69 186.69 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -76408,7 +78240,7 @@
 			)
 		)
 		(property "Power Dissipation (Pd)" ""
-			(at 307.34 186.69 0)
+			(at 313.69 186.69 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -76419,7 +78251,7 @@
 			)
 		)
 		(property "Reverse Transfer Capacitance (Crss@Vds)" ""
-			(at 307.34 186.69 0)
+			(at 313.69 186.69 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -76430,7 +78262,7 @@
 			)
 		)
 		(property "Sim.Device" ""
-			(at 307.34 186.69 0)
+			(at 313.69 186.69 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -76441,7 +78273,7 @@
 			)
 		)
 		(property "Sim.Library" ""
-			(at 307.34 186.69 0)
+			(at 313.69 186.69 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -76452,7 +78284,7 @@
 			)
 		)
 		(property "Sim.Name" ""
-			(at 307.34 186.69 0)
+			(at 313.69 186.69 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -76463,7 +78295,7 @@
 			)
 		)
 		(property "Sim.Pins" ""
-			(at 307.34 186.69 0)
+			(at 313.69 186.69 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -76474,7 +78306,7 @@
 			)
 		)
 		(property "Sim.Type" ""
-			(at 307.34 186.69 0)
+			(at 313.69 186.69 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -76485,7 +78317,7 @@
 			)
 		)
 		(property "Total Gate Charge (Qg@Vgs)" ""
-			(at 307.34 186.69 0)
+			(at 313.69 186.69 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -76496,7 +78328,7 @@
 			)
 		)
 		(property "Breakdown Voltage" ""
-			(at 307.34 186.69 0)
+			(at 313.69 186.69 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -76507,7 +78339,7 @@
 			)
 		)
 		(property "Maximum Clamping Voltage" ""
-			(at 307.34 186.69 0)
+			(at 313.69 186.69 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -76518,7 +78350,7 @@
 			)
 		)
 		(property "Number of Lines" ""
-			(at 307.34 186.69 0)
+			(at 313.69 186.69 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -76529,7 +78361,7 @@
 			)
 		)
 		(property "Peak Pulse Current (Ipp)" ""
-			(at 307.34 186.69 0)
+			(at 313.69 186.69 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -76540,7 +78372,7 @@
 			)
 		)
 		(property "Peak Pulse Power Dissipation (Ppp)" ""
-			(at 307.34 186.69 0)
+			(at 313.69 186.69 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -76551,7 +78383,7 @@
 			)
 		)
 		(property "Reverse Stand-Off Voltage (Vrwm)" ""
-			(at 307.34 186.69 0)
+			(at 313.69 186.69 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -76562,7 +78394,29 @@
 			)
 		)
 		(property "polarity" ""
-			(at 307.34 186.69 0)
+			(at 313.69 186.69 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "LCSC " ""
+			(at 313.69 186.69 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Purchase-URL" ""
+			(at 313.69 186.69 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -76927,6 +78781,28 @@
 				)
 			)
 		)
+		(property "LCSC " ""
+			(at 462.28 176.53 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Purchase-URL" ""
+			(at 462.28 176.53 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
 		(pin "3"
 			(uuid "7f51e164-1606-4242-b822-46a4c1a40af1")
 		)
@@ -76985,7 +78861,7 @@
 				(justify left)
 			)
 		)
-		(property "Value" "10mΩ"
+		(property "Value" "KRL2012E-M-R005-F-T5"
 			(at 86.614 73.914 0)
 			(show_name no)
 			(do_not_autoplace no)
@@ -77008,7 +78884,7 @@
 				)
 			)
 		)
-		(property "Datasheet" "https://www.susumu.co.jp/common/pdf/n_catalog_partition19_en.pdf"
+		(property "Datasheet" "KRL2012E-M-R005-F-T5"
 			(at 80.01 71.12 0)
 			(hide yes)
 			(show_name no)
@@ -77351,6 +79227,28 @@
 			)
 		)
 		(property "Tolerance" "±1%"
+			(at 80.01 71.12 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "LCSC " ""
+			(at 80.01 71.12 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Purchase-URL" ""
 			(at 80.01 71.12 0)
 			(hide yes)
 			(show_name no)
@@ -77913,6 +79811,28 @@
 				)
 			)
 		)
+		(property "LCSC " ""
+			(at 382.27 72.39 90)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Purchase-URL" ""
+			(at 382.27 72.39 90)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
 		(pin "1"
 			(uuid "7146d0b5-5474-424e-84f7-1124be9b7bc3")
 		)
@@ -78274,6 +80194,28 @@
 			)
 		)
 		(property "polarity" ""
+			(at 60.96 295.91 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "LCSC " ""
+			(at 60.96 295.91 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Purchase-URL" ""
 			(at 60.96 295.91 0)
 			(hide yes)
 			(show_name no)
@@ -78680,6 +80622,28 @@
 				)
 			)
 		)
+		(property "LCSC " ""
+			(at 172.72 214.63 90)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Purchase-URL" ""
+			(at 172.72 214.63 90)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
 		(pin "1"
 			(uuid "74702418-387a-411d-8669-2f6d49a358a5")
 		)
@@ -78983,6 +80947,28 @@
 			)
 		)
 		(property "polarity" ""
+			(at 351.79 76.2 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "LCSC " ""
+			(at 351.79 76.2 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Purchase-URL" ""
 			(at 351.79 76.2 0)
 			(hide yes)
 			(show_name no)
@@ -79326,6 +81312,28 @@
 				)
 			)
 		)
+		(property "LCSC " ""
+			(at 382.27 59.69 90)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Purchase-URL" ""
+			(at 382.27 59.69 90)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
 		(pin "3"
 			(uuid "bde12537-9b94-44d0-a54d-8db3034bc54a")
 		)
@@ -79659,6 +81667,28 @@
 				)
 			)
 		)
+		(property "LCSC " ""
+			(at 217.17 367.03 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Purchase-URL" ""
+			(at 217.17 367.03 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
 		(pin "7"
 			(uuid "f7f964cb-13a3-4115-a1b7-a5a58e8a3cdb")
 		)
@@ -79982,6 +82012,28 @@
 			)
 		)
 		(property "polarity" ""
+			(at 195.58 67.31 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "LCSC " ""
+			(at 195.58 67.31 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Purchase-URL" ""
 			(at 195.58 67.31 0)
 			(hide yes)
 			(show_name no)
@@ -80499,6 +82551,28 @@
 				)
 			)
 		)
+		(property "LCSC " ""
+			(at 62.23 177.8 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Purchase-URL" ""
+			(at 62.23 177.8 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
 		(pin "1"
 			(uuid "6649687f-453e-4313-b620-e5fcb60ef6b0")
 		)
@@ -80757,6 +82831,28 @@
 		)
 		(property "Temperature Coefficient" "±100ppm/°C"
 			(at 464.82 341.63 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "LCSC " ""
+			(at 464.82 341.63 90)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Purchase-URL" ""
+			(at 464.82 341.63 90)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -81255,6 +83351,28 @@
 			)
 		)
 		(property "polarity" ""
+			(at 90.17 200.66 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "LCSC " ""
+			(at 90.17 200.66 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Purchase-URL" ""
 			(at 90.17 200.66 0)
 			(hide yes)
 			(show_name no)
@@ -81843,6 +83961,28 @@
 				)
 			)
 		)
+		(property "LCSC " ""
+			(at 167.64 101.6 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Purchase-URL" ""
+			(at 167.64 101.6 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
 		(pin "1"
 			(uuid "e6d000f2-3303-4a64-9733-3481bd5937f0")
 		)
@@ -82195,6 +84335,28 @@
 			)
 		)
 		(property "polarity" ""
+			(at 149.86 93.98 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "LCSC " ""
+			(at 149.86 93.98 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Purchase-URL" ""
 			(at 149.86 93.98 0)
 			(hide yes)
 			(show_name no)
@@ -82777,6 +84939,28 @@
 				)
 			)
 		)
+		(property "LCSC " ""
+			(at 500.38 212.09 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Purchase-URL" ""
+			(at 500.38 212.09 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
 		(pin "1"
 			(uuid "38cd3d93-55cf-42da-ab02-f27b41f2803d")
 		)
@@ -83091,6 +85275,28 @@
 				)
 			)
 		)
+		(property "LCSC " ""
+			(at 353.06 59.69 90)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Purchase-URL" ""
+			(at 353.06 59.69 90)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
 		(pin "3"
 			(uuid "5686f6f6-a4a0-4438-b51f-bd797ef0b16d")
 		)
@@ -83248,6 +85454,28 @@
 			)
 		)
 		(property "Description" "STM32G473CEU6; UFQFPN48 plus exposed VSS pad; pin map verified against ST pin data"
+			(at 266.7 203.2 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "LCSC " ""
+			(at 266.7 203.2 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Purchase-URL" ""
 			(at 266.7 203.2 0)
 			(hide yes)
 			(show_name no)
@@ -83898,6 +86126,28 @@
 				)
 			)
 		)
+		(property "LCSC " ""
+			(at 119.38 350.52 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Purchase-URL" ""
+			(at 119.38 350.52 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
 		(pin "1"
 			(uuid "8e69f9a1-ef6b-44d6-a2b5-31660e079bda")
 		)
@@ -84475,6 +86725,28 @@
 				)
 			)
 		)
+		(property "LCSC " ""
+			(at 78.74 356.87 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Purchase-URL" ""
+			(at 78.74 356.87 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
 		(pin "2"
 			(uuid "4991f66c-e661-48fc-95b1-d4103a0abcc4")
 		)
@@ -85012,6 +87284,28 @@
 				)
 			)
 		)
+		(property "LCSC " ""
+			(at 190.5 208.28 90)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Purchase-URL" ""
+			(at 190.5 208.28 90)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
 		(pin "2"
 			(uuid "9f358b37-5cb7-4bfe-ba28-6e558975c962")
 		)
@@ -85533,6 +87827,28 @@
 			)
 		)
 		(property "polarity" ""
+			(at 190.5 201.93 90)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "LCSC " ""
+			(at 190.5 201.93 90)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Purchase-URL" ""
 			(at 190.5 201.93 90)
 			(hide yes)
 			(show_name no)
@@ -86075,6 +88391,28 @@
 				)
 			)
 		)
+		(property "LCSC " ""
+			(at 72.39 90.17 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Purchase-URL" ""
+			(at 72.39 90.17 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
 		(pin "1"
 			(uuid "5307b69f-b614-4c2d-aae5-0d62853e7afb")
 		)
@@ -86564,6 +88902,28 @@
 			)
 		)
 		(property "polarity" ""
+			(at 336.55 177.8 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "LCSC " ""
+			(at 336.55 177.8 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Purchase-URL" ""
 			(at 336.55 177.8 0)
 			(hide yes)
 			(show_name no)
@@ -87152,6 +89512,28 @@
 				)
 			)
 		)
+		(property "LCSC " ""
+			(at 96.52 83.82 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Purchase-URL" ""
+			(at 96.52 83.82 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
 		(pin "1"
 			(uuid "1a74dd07-4a95-42da-86d8-fc9435fffb61")
 		)
@@ -87506,6 +89888,28 @@
 				)
 			)
 		)
+		(property "LCSC " ""
+			(at 487.68 173.99 90)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Purchase-URL" ""
+			(at 487.68 173.99 90)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
 		(pin "2"
 			(uuid "6f88948e-b028-4df0-825c-36c919124422")
 		)
@@ -87543,7 +89947,7 @@
 				(justify left)
 			)
 		)
-		(property "Value" "10mΩ"
+		(property "Value" "KRL2012E-M-R005-F-T5"
 			(at 86.36 64.77 0)
 			(show_name no)
 			(do_not_autoplace no)
@@ -87566,7 +89970,7 @@
 				)
 			)
 		)
-		(property "Datasheet" "https://www.susumu.co.jp/common/pdf/n_catalog_partition19_en.pdf"
+		(property "Datasheet" "KRL2012E-M-R005-F-T5"
 			(at 80.01 67.31 0)
 			(hide yes)
 			(show_name no)
@@ -87909,6 +90313,28 @@
 			)
 		)
 		(property "Tolerance" "±1%"
+			(at 80.01 67.31 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "LCSC " ""
+			(at 80.01 67.31 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Purchase-URL" ""
 			(at 80.01 67.31 0)
 			(hide yes)
 			(show_name no)
@@ -88276,6 +90702,28 @@
 				)
 			)
 		)
+		(property "LCSC " ""
+			(at 44.45 90.17 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Purchase-URL" ""
+			(at 44.45 90.17 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
 		(pin "2"
 			(uuid "a8035691-b36e-455c-b42b-764c0acaed3e")
 		)
@@ -88592,6 +91040,28 @@
 				)
 			)
 		)
+		(property "LCSC " ""
+			(at 240.03 67.31 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Purchase-URL" ""
+			(at 240.03 67.31 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
 		(pin "3"
 			(uuid "e2c1db49-b8fb-47b1-92a0-1d6e0f2df7f6")
 		)
@@ -88870,6 +91340,28 @@
 			)
 		)
 		(property "polarity" ""
+			(at 148.59 80.01 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "LCSC " ""
+			(at 148.59 80.01 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Purchase-URL" ""
 			(at 148.59 80.01 0)
 			(hide yes)
 			(show_name no)
@@ -89378,6 +91870,28 @@
 				)
 			)
 		)
+		(property "LCSC " ""
+			(at 52.07 179.07 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Purchase-URL" ""
+			(at 52.07 179.07 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
 		(pin "1"
 			(uuid "fab8ad7e-e7ec-46d0-8b99-fe053f125943")
 		)
@@ -89724,6 +92238,28 @@
 			)
 		)
 		(property "polarity" ""
+			(at 279.4 80.01 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "LCSC " ""
+			(at 279.4 80.01 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Purchase-URL" ""
 			(at 279.4 80.01 0)
 			(hide yes)
 			(show_name no)
@@ -90265,6 +92801,28 @@
 				)
 			)
 		)
+		(property "LCSC " ""
+			(at 167.64 109.22 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Purchase-URL" ""
+			(at 167.64 109.22 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
 		(pin "2"
 			(uuid "3f42c33c-9104-4683-aac3-c9ff17fd2944")
 		)
@@ -90609,6 +93167,28 @@
 			)
 		)
 		(property "polarity" ""
+			(at 72.39 254 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "LCSC " ""
+			(at 72.39 254 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Purchase-URL" ""
 			(at 72.39 254 0)
 			(hide yes)
 			(show_name no)
@@ -91150,6 +93730,28 @@
 				)
 			)
 		)
+		(property "LCSC " ""
+			(at 190.5 189.23 90)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Purchase-URL" ""
+			(at 190.5 189.23 90)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
 		(pin "2"
 			(uuid "2bafac66-fe24-44a6-b121-fdcca0ed85c4")
 		)
@@ -91681,6 +94283,28 @@
 				)
 			)
 		)
+		(property "LCSC " ""
+			(at 190.5 181.61 90)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Purchase-URL" ""
+			(at 190.5 181.61 90)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
 		(pin "2"
 			(uuid "2de3631e-fae6-4c70-be4d-e30b7841ca8f")
 		)
@@ -91832,6 +94456,28 @@
 		)
 		(property "Description" "Net tie, 2 pins"
 			(at 219.71 77.47 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "LCSC " ""
+			(at 219.71 77.47 90)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Purchase-URL" ""
+			(at 219.71 77.47 90)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -92329,6 +94975,28 @@
 				)
 			)
 		)
+		(property "LCSC " ""
+			(at 397.51 90.17 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Purchase-URL" ""
+			(at 397.51 90.17 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
 		(pin "2"
 			(uuid "6a38571c-ab58-4ed6-b611-160ab328a728")
 		)
@@ -92586,6 +95254,28 @@
 			)
 		)
 		(property "Temperature Coefficient" "±100ppm/°C"
+			(at 367.03 295.91 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "LCSC " ""
+			(at 367.03 295.91 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Purchase-URL" ""
 			(at 367.03 295.91 0)
 			(hide yes)
 			(show_name no)
@@ -93128,6 +95818,28 @@
 				)
 			)
 		)
+		(property "LCSC " ""
+			(at 439.42 180.34 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Purchase-URL" ""
+			(at 439.42 180.34 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
 		(pin "2"
 			(uuid "78c89db4-a40e-4086-b595-a46c3e0dadbd")
 		)
@@ -93210,6 +95922,28 @@
 				)
 			)
 		)
+		(property "LCSC " ""
+			(at 80.01 73.66 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Purchase-URL" ""
+			(at 80.01 73.66 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
 		(pin "2"
 			(uuid "652fded2-d2e5-4066-9f19-223b868926fb")
 		)
@@ -93227,7 +95961,7 @@
 	)
 	(symbol
 		(lib_id "PCM_JLCPCB-Resistors:0805,100Ω")
-		(at 414.7707 346.71 90)
+		(at 415.29 346.71 90)
 		(unit 1)
 		(body_style 1)
 		(exclude_from_sim no)
@@ -93237,7 +95971,7 @@
 		(dnp no)
 		(uuid "8457af51-c552-47fa-91ee-9d80ab2a8427")
 		(property "Reference" "R89"
-			(at 416.306 344.932 90)
+			(at 416.8253 344.932 90)
 			(show_name no)
 			(do_not_autoplace no)
 			(effects
@@ -93248,7 +95982,7 @@
 			)
 		)
 		(property "Value" "100Ω"
-			(at 414.7707 346.71 90)
+			(at 415.29 346.71 90)
 			(show_name no)
 			(do_not_autoplace yes)
 			(effects
@@ -93258,7 +95992,7 @@
 			)
 		)
 		(property "Footprint" "PCM_JLCPCB:R_0805"
-			(at 414.7707 348.488 90)
+			(at 415.29 348.488 90)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -93269,7 +96003,7 @@
 			)
 		)
 		(property "Datasheet" "https://www.lcsc.com/datasheet/lcsc_datasheet_2411221126_UNI-ROYAL-Uniroyal-Elec-0805W8F1000T5E_C17408.pdf"
-			(at 414.7707 346.71 0)
+			(at 415.29 346.71 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -93280,7 +96014,7 @@
 			)
 		)
 		(property "Description" "125mW Thick Film Resistors 150V ±100ppm/°C ±1% 100Ω 0805 Chip Resistor - Surface Mount ROHS"
-			(at 414.7707 346.71 0)
+			(at 415.29 346.71 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -93291,7 +96025,7 @@
 			)
 		)
 		(property "LCSC" "C17408"
-			(at 414.7707 346.71 0)
+			(at 415.29 346.71 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -93302,7 +96036,7 @@
 			)
 		)
 		(property "Stock" "3356429"
-			(at 414.7707 346.71 0)
+			(at 415.29 346.71 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -93313,7 +96047,7 @@
 			)
 		)
 		(property "Price" "0.005USD"
-			(at 414.7707 346.71 0)
+			(at 415.29 346.71 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -93324,7 +96058,7 @@
 			)
 		)
 		(property "Process" "SMT"
-			(at 414.7707 346.71 0)
+			(at 415.29 346.71 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -93335,7 +96069,7 @@
 			)
 		)
 		(property "Minimum Qty" "20"
-			(at 414.7707 346.71 0)
+			(at 415.29 346.71 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -93346,7 +96080,7 @@
 			)
 		)
 		(property "Attrition Qty" "10"
-			(at 414.7707 346.71 0)
+			(at 415.29 346.71 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -93357,7 +96091,7 @@
 			)
 		)
 		(property "Class" "Basic Component"
-			(at 414.7707 346.71 0)
+			(at 415.29 346.71 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -93368,7 +96102,7 @@
 			)
 		)
 		(property "Category" "Resistors,Chip Resistor - Surface Mount"
-			(at 414.7707 346.71 0)
+			(at 415.29 346.71 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -93379,7 +96113,7 @@
 			)
 		)
 		(property "Manufacturer" "UNI-ROYAL(Uniroyal Elec)"
-			(at 414.7707 346.71 0)
+			(at 415.29 346.71 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -93390,7 +96124,7 @@
 			)
 		)
 		(property "Part" "0805W8F1000T5E"
-			(at 414.7707 346.71 0)
+			(at 415.29 346.71 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -93401,7 +96135,7 @@
 			)
 		)
 		(property "Resistance" "100Ω"
-			(at 414.7707 346.71 0)
+			(at 415.29 346.71 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -93412,7 +96146,7 @@
 			)
 		)
 		(property "Power(Watts)" "125mW"
-			(at 414.7707 346.71 0)
+			(at 415.29 346.71 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -93423,7 +96157,7 @@
 			)
 		)
 		(property "Type" "Thick Film Resistors"
-			(at 414.7707 346.71 0)
+			(at 415.29 346.71 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -93434,7 +96168,7 @@
 			)
 		)
 		(property "Overload Voltage (Max)" "150V"
-			(at 414.7707 346.71 0)
+			(at 415.29 346.71 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -93445,7 +96179,7 @@
 			)
 		)
 		(property "Operating Temperature Range" "-55°C~+155°C"
-			(at 414.7707 346.71 0)
+			(at 415.29 346.71 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -93456,7 +96190,7 @@
 			)
 		)
 		(property "Tolerance" "±1%"
-			(at 414.7707 346.71 0)
+			(at 415.29 346.71 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -93467,7 +96201,29 @@
 			)
 		)
 		(property "Temperature Coefficient" "±100ppm/°C"
-			(at 414.7707 346.71 0)
+			(at 415.29 346.71 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "LCSC " ""
+			(at 415.29 346.71 90)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Purchase-URL" ""
+			(at 415.29 346.71 90)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -93934,6 +96690,28 @@
 			)
 		)
 		(property "polarity" ""
+			(at 386.08 167.64 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "LCSC " ""
+			(at 386.08 167.64 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Purchase-URL" ""
 			(at 386.08 167.64 0)
 			(hide yes)
 			(show_name no)
@@ -94465,6 +97243,28 @@
 				)
 			)
 		)
+		(property "LCSC " ""
+			(at 514.35 180.34 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Purchase-URL" ""
+			(at 514.35 180.34 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
 		(pin "1"
 			(uuid "4da23750-b57e-415d-9fed-a98c9ef9ec48")
 		)
@@ -94821,6 +97621,28 @@
 				)
 			)
 		)
+		(property "LCSC " ""
+			(at 83.82 254 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Purchase-URL" ""
+			(at 83.82 254 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
 		(pin "1"
 			(uuid "7fbd9a2c-686e-4aef-9695-ab184487f33c")
 		)
@@ -95165,6 +97987,28 @@
 			)
 		)
 		(property "polarity" ""
+			(at 59.69 254 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "LCSC " ""
+			(at 59.69 254 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Purchase-URL" ""
 			(at 59.69 254 0)
 			(hide yes)
 			(show_name no)
@@ -95641,6 +98485,28 @@
 				)
 			)
 		)
+		(property "LCSC " ""
+			(at 457.2 285.75 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Purchase-URL" ""
+			(at 457.2 285.75 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
 		(pin "1"
 			(uuid "25b29b3c-164f-464c-9e1d-d109b4967a59")
 		)
@@ -95985,6 +98851,28 @@
 			)
 		)
 		(property "polarity" ""
+			(at 226.06 74.93 90)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "LCSC " ""
+			(at 226.06 74.93 90)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Purchase-URL" ""
 			(at 226.06 74.93 90)
 			(hide yes)
 			(show_name no)
@@ -96596,6 +99484,28 @@
 				)
 			)
 		)
+		(property "LCSC " ""
+			(at 302.26 251.46 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Purchase-URL" ""
+			(at 302.26 251.46 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
 		(pin "1"
 			(uuid "ae97d14c-93d6-4f47-aacc-31e8a46021a7")
 		)
@@ -96854,6 +99764,28 @@
 		)
 		(property "Temperature Coefficient" "±100ppm/°C"
 			(at 415.29 351.79 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "LCSC " ""
+			(at 415.29 351.79 90)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Purchase-URL" ""
+			(at 415.29 351.79 90)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -97207,6 +100139,28 @@
 			)
 		)
 		(property "polarity" ""
+			(at 179.07 185.42 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "LCSC " ""
+			(at 179.07 185.42 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Purchase-URL" ""
 			(at 179.07 185.42 0)
 			(hide yes)
 			(show_name no)
@@ -97716,6 +100670,28 @@
 				)
 			)
 		)
+		(property "LCSC " ""
+			(at 88.9 372.11 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Purchase-URL" ""
+			(at 88.9 372.11 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
 		(pin "1"
 			(uuid "f381b328-a3ae-498d-955c-f01cfb39c271")
 		)
@@ -98183,6 +101159,28 @@
 			)
 		)
 		(property "polarity" ""
+			(at 344.17 177.8 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "LCSC " ""
+			(at 344.17 177.8 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Purchase-URL" ""
 			(at 344.17 177.8 0)
 			(hide yes)
 			(show_name no)
@@ -98736,6 +101734,28 @@
 				)
 			)
 		)
+		(property "LCSC " ""
+			(at 96.52 279.4 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Purchase-URL" ""
+			(at 96.52 279.4 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
 		(pin "1"
 			(uuid "708caa2e-aa2e-43fe-af29-692c28a9121b")
 		)
@@ -98927,6 +101947,28 @@
 			)
 		)
 		(property "Part" "INA241A3IDDFR"
+			(at 359.41 271.78 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "LCSC " ""
+			(at 359.41 271.78 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Purchase-URL" ""
 			(at 359.41 271.78 0)
 			(hide yes)
 			(show_name no)
@@ -99454,6 +102496,28 @@
 				)
 			)
 		)
+		(property "LCSC " ""
+			(at 160.02 300.99 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Purchase-URL" ""
+			(at 160.02 300.99 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
 		(pin "8"
 			(uuid "bec48a07-3f70-478e-8144-bd0b8a43dd83")
 		)
@@ -99849,6 +102913,28 @@
 			)
 		)
 		(property "polarity" ""
+			(at 339.09 57.15 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "LCSC " ""
+			(at 339.09 57.15 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Purchase-URL" ""
 			(at 339.09 57.15 0)
 			(hide yes)
 			(show_name no)
@@ -100323,6 +103409,28 @@
 				)
 			)
 		)
+		(property "LCSC " ""
+			(at 297.18 252.73 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Purchase-URL" ""
+			(at 297.18 252.73 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
 		(pin "2"
 			(uuid "7b862bbb-1519-4201-a58e-cb04fc1c58fa")
 		)
@@ -100636,6 +103744,28 @@
 			)
 		)
 		(property "polarity" ""
+			(at 336.55 151.13 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "LCSC " ""
+			(at 336.55 151.13 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Purchase-URL" ""
 			(at 336.55 151.13 0)
 			(hide yes)
 			(show_name no)
@@ -101103,6 +104233,28 @@
 			)
 		)
 		(property "polarity" ""
+			(at 179.07 359.41 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "LCSC " ""
+			(at 179.07 359.41 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Purchase-URL" ""
 			(at 179.07 359.41 0)
 			(hide yes)
 			(show_name no)
@@ -101611,6 +104763,28 @@
 				)
 			)
 		)
+		(property "LCSC " ""
+			(at 514.35 172.72 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Purchase-URL" ""
+			(at 514.35 172.72 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
 		(pin "1"
 			(uuid "1f0b507a-f9fd-498c-94c8-cfe67c0ec388")
 		)
@@ -102101,6 +105275,28 @@
 			)
 		)
 		(property "polarity" ""
+			(at 127 309.88 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "LCSC " ""
+			(at 127 309.88 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Purchase-URL" ""
 			(at 127 309.88 0)
 			(hide yes)
 			(show_name no)
@@ -102688,6 +105884,28 @@
 				)
 			)
 		)
+		(property "LCSC " ""
+			(at 50.8 378.46 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Purchase-URL" ""
+			(at 50.8 378.46 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
 		(pin "2"
 			(uuid "e5b50af7-ea54-40f9-9438-f687dfa9abb4")
 		)
@@ -102961,6 +106179,28 @@
 				)
 			)
 		)
+		(property "LCSC " ""
+			(at 420.37 327.66 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Purchase-URL" ""
+			(at 420.37 327.66 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
 		(pin "1"
 			(uuid "b32b4a34-dcf5-4bee-b52d-1aeaca1392c8")
 		)
@@ -102971,6 +106211,526 @@
 			(project "Solar Project Rev2"
 				(path "/28299885-0f47-4c9d-af0f-f2db484b5c54"
 					(reference "R91")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "PCM_JLCPCB-Resistors:0805,4.7kΩ")
+		(at 311.15 171.45 0)
+		(unit 1)
+		(body_style 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(in_pos_files yes)
+		(dnp no)
+		(uuid "9a497782-44a1-49dd-b572-7fdbf842f741")
+		(property "Reference" "R44"
+			(at 306.578 170.688 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Value" "4.7kΩ"
+			(at 311.15 171.45 90)
+			(show_name no)
+			(do_not_autoplace yes)
+			(effects
+				(font
+					(size 0.8 0.8)
+				)
+			)
+		)
+		(property "Footprint" "PCM_JLCPCB:R_0805"
+			(at 309.372 171.45 90)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Datasheet" "https://www.lcsc.com/datasheet/lcsc_datasheet_2206010200_UNI-ROYAL-Uniroyal-Elec-0805W8F4701T5E_C17673.pdf"
+			(at 311.15 171.45 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Description" "125mW Thick Film Resistors 150V ±100ppm/°C ±1% 4.7kΩ 0805 Chip Resistor - Surface Mount ROHS"
+			(at 311.15 171.45 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Stock" "4733934"
+			(at 311.15 171.45 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Price" "0.005USD"
+			(at 311.15 171.45 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Process" "SMT"
+			(at 311.15 171.45 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Minimum Qty" "20"
+			(at 311.15 171.45 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Attrition Qty" "6"
+			(at 311.15 171.45 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Class" "Basic Component"
+			(at 311.15 171.45 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Category" "Resistors,Chip Resistor - Surface Mount"
+			(at 311.15 171.45 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Manufacturer" "UNI-ROYAL(Uniroyal Elec)"
+			(at 311.15 171.45 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Part" "0805W8F4701T5E"
+			(at 311.15 171.45 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Resistance" "4.7kΩ"
+			(at 311.15 171.45 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Power(Watts)" "125mW"
+			(at 311.15 171.45 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Type" "Thick Film Resistors"
+			(at 311.15 171.45 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Overload Voltage (Max)" "150V"
+			(at 311.15 171.45 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Operating Temperature Range" "-55°C~+155°C"
+			(at 311.15 171.45 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Tolerance" "±1%"
+			(at 311.15 171.45 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Temperature Coefficient" "±100ppm/°C"
+			(at 311.15 171.45 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Part - USA" ""
+			(at 311.15 171.45 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "LCSC" "C17673"
+			(at 311.15 171.45 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Continuous Drain Current (Id)" ""
+			(at 311.15 171.45 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Drain Source On Resistance (RDS(on)@Vgs,Id)" ""
+			(at 311.15 171.45 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Drain Source Voltage (Vdss)" ""
+			(at 311.15 171.45 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Gate Threshold Voltage (Vgs(th)@Id)" ""
+			(at 311.15 171.45 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Input Capacitance (Ciss@Vds)" ""
+			(at 311.15 171.45 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Power Dissipation (Pd)" ""
+			(at 311.15 171.45 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Reverse Transfer Capacitance (Crss@Vds)" ""
+			(at 311.15 171.45 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Sim.Device" ""
+			(at 311.15 171.45 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Sim.Library" ""
+			(at 311.15 171.45 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Sim.Name" ""
+			(at 311.15 171.45 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Sim.Pins" ""
+			(at 311.15 171.45 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Sim.Type" ""
+			(at 311.15 171.45 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Total Gate Charge (Qg@Vgs)" ""
+			(at 311.15 171.45 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Breakdown Voltage" ""
+			(at 311.15 171.45 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Maximum Clamping Voltage" ""
+			(at 311.15 171.45 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Number of Lines" ""
+			(at 311.15 171.45 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Peak Pulse Current (Ipp)" ""
+			(at 311.15 171.45 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Peak Pulse Power Dissipation (Ppp)" ""
+			(at 311.15 171.45 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Reverse Stand-Off Voltage (Vrwm)" ""
+			(at 311.15 171.45 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "polarity" ""
+			(at 311.15 171.45 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "LCSC " ""
+			(at 311.15 171.45 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Purchase-URL" ""
+			(at 311.15 171.45 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(pin "1"
+			(uuid "0c8c65f1-c6bc-43c6-8aa9-1e133da3829f")
+		)
+		(pin "2"
+			(uuid "f5c632f9-a55d-468b-bd96-36487b73345d")
+		)
+		(instances
+			(project "Solar Project Rev2"
+				(path "/28299885-0f47-4c9d-af0f-f2db484b5c54"
+					(reference "R44")
 					(unit 1)
 				)
 			)
@@ -103448,6 +107208,28 @@
 				)
 			)
 		)
+		(property "LCSC " ""
+			(at 370.84 271.78 90)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Purchase-URL" ""
+			(at 370.84 271.78 90)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
 		(pin "2"
 			(uuid "1714f1c7-aa79-4aba-9b43-8428d25795aa")
 		)
@@ -103792,6 +107574,28 @@
 			)
 		)
 		(property "polarity" ""
+			(at 46.99 254 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "LCSC " ""
+			(at 46.99 254 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Purchase-URL" ""
 			(at 46.99 254 0)
 			(hide yes)
 			(show_name no)
@@ -104379,6 +108183,28 @@
 				)
 			)
 		)
+		(property "LCSC " ""
+			(at 60.96 350.52 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Purchase-URL" ""
+			(at 60.96 350.52 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
 		(pin "1"
 			(uuid "6341f0c6-f819-4318-b6ce-3f0c656415b6")
 		)
@@ -104843,6 +108669,28 @@
 				)
 			)
 		)
+		(property "LCSC " ""
+			(at 297.18 222.25 90)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Purchase-URL" ""
+			(at 297.18 222.25 90)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
 		(pin "1"
 			(uuid "075e748c-9123-4551-8573-c05782f071ee")
 		)
@@ -104859,7 +108707,7 @@
 		)
 	)
 	(symbol
-		(lib_id "Connector_Generic:Conn_01x04")
+		(lib_id "1My_Connectors:B4B-XH-A")
 		(at 318.77 363.22 0)
 		(unit 1)
 		(body_style 1)
@@ -104871,7 +108719,7 @@
 		(fields_autoplaced yes)
 		(uuid "a3b1c4d5-0e2f-4a6b-9c8d-1e2f3a4b5c6d")
 		(property "Reference" "J8"
-			(at 321.31 363.2199 0)
+			(at 323.85 363.2199 0)
 			(show_name no)
 			(do_not_autoplace no)
 			(effects
@@ -104881,8 +108729,8 @@
 				(justify left)
 			)
 		)
-		(property "Value" "Conn_01x04"
-			(at 321.31 365.7599 0)
+		(property "Value" "I2C bus"
+			(at 323.85 365.7599 0)
 			(show_name no)
 			(do_not_autoplace no)
 			(effects
@@ -104892,7 +108740,7 @@
 				(justify left)
 			)
 		)
-		(property "Footprint" "Connector_PinHeader_2.54mm:PinHeader_1x04_P2.54mm_Vertical"
+		(property "Footprint" "1My_Parts_ Connectors:JST_B4B-XH-A"
 			(at 318.77 363.22 0)
 			(hide yes)
 			(show_name no)
@@ -104901,6 +108749,7 @@
 				(font
 					(size 1.27 1.27)
 				)
+				(justify bottom)
 			)
 		)
 		(property "Datasheet" ""
@@ -104914,7 +108763,176 @@
 				)
 			)
 		)
-		(property "Description" "DEC-061: remote battery-pack NTC/temperature-sensor probe header (I2C bus tap: CTRL_3V3/PWR_NEG/I2C CLK/I2C DATA) - exact remote sensor part and connector mate not yet selected"
+		(property "Description" "Generic connector, single row, 01x05, script generated"
+			(at 318.77 363.22 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "LCSC " ""
+			(at 318.77 363.22 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Purchase-URL" ""
+			(at 318.77 363.22 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Assembly" ""
+			(at 318.77 363.22 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "JCBPCB#" ""
+			(at 318.77 363.22 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Sim.Device" ""
+			(at 318.77 363.22 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "SNAPEDA_PN" ""
+			(at 318.77 363.22 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "PARTREV" "7/4/21"
+			(at 318.77 363.22 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify bottom)
+			)
+		)
+		(property "STANDARD" "Manufacturer Recommendations"
+			(at 318.77 363.22 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify bottom)
+			)
+		)
+		(property "MAXIMUM_PACKAGE_HEIGHT" "7.00 mm"
+			(at 318.77 363.22 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify bottom)
+			)
+		)
+		(property "MANUFACTURER" "JST"
+			(at 318.77 363.22 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify bottom)
+			)
+		)
+		(property "Current - Rectified" ""
+			(at 318.77 363.22 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Diode Configuration" ""
+			(at 318.77 363.22 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Reverse Leakage Current (Ir)" ""
+			(at 318.77 363.22 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Voltage - DC Reverse(Vr)" ""
+			(at 318.77 363.22 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Voltage - Forward(Vf@If)" ""
 			(at 318.77 363.22 0)
 			(hide yes)
 			(show_name no)
@@ -105244,6 +109262,28 @@
 			)
 		)
 		(property "polarity" ""
+			(at 344.17 151.13 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "LCSC " ""
+			(at 344.17 151.13 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Purchase-URL" ""
 			(at 344.17 151.13 0)
 			(hide yes)
 			(show_name no)
@@ -105610,6 +109650,28 @@
 				)
 			)
 		)
+		(property "LCSC " ""
+			(at 46.99 262.89 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Purchase-URL" ""
+			(at 46.99 262.89 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
 		(pin "1"
 			(uuid "117e9796-aec0-4c18-abff-8567914251a4")
 		)
@@ -105680,6 +109742,28 @@
 		)
 		(property "Description" ""
 			(at 438.15 344.17 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "LCSC " ""
+			(at 438.15 344.17 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Purchase-URL" ""
+			(at 438.15 344.17 0)
+			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
 			(effects
@@ -106270,6 +110354,28 @@
 				)
 			)
 		)
+		(property "LCSC " ""
+			(at 483.87 214.63 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Purchase-URL" ""
+			(at 483.87 214.63 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
 		(pin "1"
 			(uuid "9ed09ba0-d375-4d19-bd08-68c8ae3756e0")
 		)
@@ -106286,7 +110392,7 @@
 		)
 	)
 	(symbol
-		(lib_id "Device:C")
+		(lib_id "PCM_JLCPCB-Capacitors:0805,100nF")
 		(at 405.13 326.39 0)
 		(unit 1)
 		(body_style 1)
@@ -106307,41 +110413,218 @@
 				(justify left)
 			)
 		)
-		(property "Value" "100n"
-			(at 407.67 327.66 0)
+		(property "Value" "100nF"
+			(at 407.162 326.7682 0)
 			(show_name no)
 			(do_not_autoplace no)
 			(effects
 				(font
-					(size 1 1)
+					(size 0.8 0.8)
 				)
 				(justify left)
 			)
 		)
-		(property "Footprint" "Capacitor_SMD:C_0805_2012Metric"
+		(property "Footprint" "PCM_JLCPCB:C_0805"
+			(at 403.352 326.39 90)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Datasheet" "https://www.lcsc.com/datasheet/lcsc_datasheet_2304140030_Samsung-Electro-Mechanics-CL21B104KCFNNNE_C28233.pdf"
 			(at 405.13 326.39 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
 			(effects
 				(font
-					(size 1 1)
+					(size 1.27 1.27)
 				)
 			)
 		)
-		(property "Datasheet" ""
+		(property "Description" "100V 100nF X7R ±10% 0805 Multilayer Ceramic Capacitors MLCC - SMD/SMT ROHS"
 			(at 405.13 326.39 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
 			(effects
 				(font
-					(size 1 1)
+					(size 1.27 1.27)
 				)
 			)
 		)
-		(property "Description" ""
+		(property "LCSC " ""
 			(at 405.13 326.39 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Purchase-URL" ""
+			(at 405.13 326.39 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "LCSC" "C28233"
+			(at 405.13 326.39 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Stock" "1168020"
+			(at 405.13 326.39 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Price" "0.009USD"
+			(at 405.13 326.39 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Process" "SMT"
+			(at 405.13 326.39 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Minimum Qty" "20"
+			(at 405.13 326.39 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Attrition Qty" "10"
+			(at 405.13 326.39 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Class" "Basic Component"
+			(at 405.13 326.39 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Category" "Capacitors,Multilayer Ceramic Capacitors MLCC - SMD/SMT"
+			(at 405.13 326.39 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Manufacturer" "Samsung Electro-Mechanics"
+			(at 405.13 326.39 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Part" "CL21B104KCFNNNE"
+			(at 405.13 326.39 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Voltage Rated" "100V"
+			(at 407.162 328.4362 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 0.8 0.8)
+				)
+				(justify left)
+			)
+		)
+		(property "Tolerance" "±10%"
+			(at 405.13 326.39 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Capacitance" "100nF"
+			(at 405.13 326.39 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Temperature Coefficient" "X7R"
+			(at 405.13 326.39 0)
+			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
 			(effects
@@ -106795,6 +111078,28 @@
 			)
 		)
 		(property "polarity" ""
+			(at 387.35 220.98 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "LCSC " ""
+			(at 387.35 220.98 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Purchase-URL" ""
 			(at 387.35 220.98 0)
 			(hide yes)
 			(show_name no)
@@ -107382,6 +111687,28 @@
 				)
 			)
 		)
+		(property "LCSC " ""
+			(at 78.74 378.46 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Purchase-URL" ""
+			(at 78.74 378.46 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
 		(pin "2"
 			(uuid "7fcea675-5556-4787-abeb-8d7112f1f818")
 		)
@@ -107459,6 +111786,28 @@
 		)
 		(property "Description" "Solder Jumper, 2-pole, open"
 			(at 172.72 173.99 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "LCSC " ""
+			(at 172.72 168.91 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Purchase-URL" ""
+			(at 172.72 168.91 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -107780,6 +112129,28 @@
 				)
 			)
 		)
+		(property "LCSC " ""
+			(at 288.29 80.01 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Purchase-URL" ""
+			(at 288.29 80.01 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
 		(pin "2"
 			(uuid "163a47a0-091d-4a5c-80be-913a650de5f6")
 		)
@@ -107840,7 +112211,7 @@
 				)
 			)
 		)
-		(property "Datasheet" "https://www.susumu.co.jp/common/pdf/n_catalog_partition19_en.pdf"
+		(property "Datasheet" "KRL2012E-M-R005-F-T5"
 			(at 207.01 74.93 0)
 			(hide yes)
 			(show_name no)
@@ -108183,6 +112554,28 @@
 			)
 		)
 		(property "Tolerance" "±1%"
+			(at 207.01 74.93 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "LCSC " ""
+			(at 207.01 74.93 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Purchase-URL" ""
 			(at 207.01 74.93 0)
 			(hide yes)
 			(show_name no)
@@ -108460,6 +112853,28 @@
 				)
 			)
 		)
+		(property "LCSC " ""
+			(at 464.82 336.55 90)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Purchase-URL" ""
+			(at 464.82 336.55 90)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
 		(pin "1"
 			(uuid "d7d976da-939e-4cd5-b7c7-973d7bd27d72")
 		)
@@ -108520,7 +112935,7 @@
 				)
 			)
 		)
-		(property "Datasheet" "https://www.susumu.co.jp/common/pdf/n_catalog_partition19_en.pdf"
+		(property "Datasheet" "KRL2012E-M-R005-F-T5"
 			(at 320.04 71.12 0)
 			(hide yes)
 			(show_name no)
@@ -108863,6 +113278,28 @@
 			)
 		)
 		(property "Tolerance" "±1%"
+			(at 320.04 71.12 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "LCSC " ""
+			(at 320.04 71.12 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Purchase-URL" ""
 			(at 320.04 71.12 0)
 			(hide yes)
 			(show_name no)
@@ -109405,6 +113842,28 @@
 				)
 			)
 		)
+		(property "LCSC " ""
+			(at 449.58 185.42 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Purchase-URL" ""
+			(at 449.58 185.42 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
 		(pin "1"
 			(uuid "b74bedc8-3ed1-4a0f-bd14-a58194d16435")
 		)
@@ -109903,6 +114362,28 @@
 				)
 			)
 		)
+		(property "LCSC " ""
+			(at 181.61 88.9 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Purchase-URL" ""
+			(at 181.61 88.9 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
 		(pin "2"
 			(uuid "79231c0a-b0dd-4991-9175-b717c419b96c")
 		)
@@ -110260,6 +114741,28 @@
 				)
 			)
 		)
+		(property "LCSC " ""
+			(at 438.15 78.74 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Purchase-URL" ""
+			(at 438.15 78.74 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
 		(pin "2"
 			(uuid "10426219-8d14-4d9b-b755-f0a349db43f5")
 		)
@@ -110574,6 +115077,28 @@
 			)
 		)
 		(property "polarity" ""
+			(at 154.94 401.32 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "LCSC " ""
+			(at 154.94 401.32 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Purchase-URL" ""
 			(at 154.94 401.32 0)
 			(hide yes)
 			(show_name no)
@@ -110990,6 +115515,28 @@
 				)
 			)
 		)
+		(property "LCSC " ""
+			(at 280.67 369.57 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Purchase-URL" ""
+			(at 280.67 369.57 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
 		(pin "1"
 			(uuid "a602bf97-b0af-4c11-b7f2-d6d2decd5399")
 		)
@@ -111304,6 +115851,28 @@
 			)
 		)
 		(property "polarity" ""
+			(at 104.14 209.55 90)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "LCSC " ""
+			(at 104.14 209.55 90)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Purchase-URL" ""
 			(at 104.14 209.55 90)
 			(hide yes)
 			(show_name no)
@@ -111813,6 +116382,28 @@
 				)
 			)
 		)
+		(property "LCSC " ""
+			(at 88.9 350.52 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Purchase-URL" ""
+			(at 88.9 350.52 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
 		(pin "1"
 			(uuid "81d433a2-6cc5-4bf9-a632-28eb35642f1e")
 		)
@@ -112137,6 +116728,28 @@
 				)
 			)
 		)
+		(property "LCSC " ""
+			(at 220.98 226.06 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Purchase-URL" ""
+			(at 220.98 226.06 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
 		(pin "3"
 			(uuid "b134e35b-66a0-4a04-a82f-d03ddd2db5e2")
 		)
@@ -112400,6 +117013,28 @@
 			)
 		)
 		(property "Temperature Coefficient" "±100ppm/°C"
+			(at 350.52 295.91 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "LCSC " ""
+			(at 350.52 295.91 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Purchase-URL" ""
 			(at 350.52 295.91 0)
 			(hide yes)
 			(show_name no)
@@ -112942,6 +117577,28 @@
 				)
 			)
 		)
+		(property "LCSC " ""
+			(at 72.39 76.2 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Purchase-URL" ""
+			(at 72.39 76.2 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
 		(pin "1"
 			(uuid "c424d7d9-2249-4a62-ba2d-943fdb725995")
 		)
@@ -113418,6 +118075,28 @@
 			)
 		)
 		(property "polarity" ""
+			(at 172.72 179.07 90)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "LCSC " ""
+			(at 172.72 179.07 90)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Purchase-URL" ""
 			(at 172.72 179.07 90)
 			(hide yes)
 			(show_name no)
@@ -113959,6 +118638,28 @@
 				)
 			)
 		)
+		(property "LCSC " ""
+			(at 481.33 187.96 90)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Purchase-URL" ""
+			(at 481.33 187.96 90)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
 		(pin "1"
 			(uuid "6a9c9adf-8d21-4ccc-95bc-5b39f50d848e")
 		)
@@ -114305,6 +119006,28 @@
 			)
 		)
 		(property "polarity" ""
+			(at 170.18 88.9 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "LCSC " ""
+			(at 170.18 88.9 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Purchase-URL" ""
 			(at 170.18 88.9 0)
 			(hide yes)
 			(show_name no)
@@ -114782,6 +119505,28 @@
 			)
 		)
 		(property "polarity" ""
+			(at 344.17 194.31 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "LCSC " ""
+			(at 344.17 194.31 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Purchase-URL" ""
 			(at 344.17 194.31 0)
 			(hide yes)
 			(show_name no)
@@ -115323,6 +120068,28 @@
 				)
 			)
 		)
+		(property "LCSC " ""
+			(at 102.87 186.69 90)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Purchase-URL" ""
+			(at 102.87 186.69 90)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
 		(pin "1"
 			(uuid "3ef039bb-ecc7-451a-ac6f-596c2c757beb")
 		)
@@ -115787,6 +120554,28 @@
 				)
 			)
 		)
+		(property "LCSC " ""
+			(at 297.18 232.41 90)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Purchase-URL" ""
+			(at 297.18 232.41 90)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
 		(pin "1"
 			(uuid "4e9f41d7-780e-4fc3-9741-323470535a7a")
 		)
@@ -115869,6 +120658,28 @@
 				)
 			)
 		)
+		(property "LCSC " ""
+			(at 332.74 73.66 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Purchase-URL" ""
+			(at 332.74 73.66 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
 		(pin "2"
 			(uuid "bb272764-1a64-4cf4-9aac-199488f92a17")
 		)
@@ -115879,504 +120690,6 @@
 			(project "Solar Project Rev2"
 				(path "/28299885-0f47-4c9d-af0f-f2db484b5c54"
 					(reference "NT6")
-					(unit 1)
-				)
-			)
-		)
-	)
-	(symbol
-		(lib_id "PCM_JLCPCB-Resistors:0805,4.7kΩ")
-		(at 311.15 186.69 0)
-		(unit 1)
-		(body_style 1)
-		(exclude_from_sim no)
-		(in_bom yes)
-		(on_board yes)
-		(in_pos_files yes)
-		(dnp no)
-		(uuid "c958dc51-529c-4457-b61e-60e7799a681d")
-		(property "Reference" "R44"
-			(at 309.88 192.024 0)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify left)
-			)
-		)
-		(property "Value" "4.7kΩ"
-			(at 311.15 186.69 90)
-			(show_name no)
-			(do_not_autoplace yes)
-			(effects
-				(font
-					(size 0.8 0.8)
-				)
-			)
-		)
-		(property "Footprint" "PCM_JLCPCB:R_0805"
-			(at 309.372 186.69 90)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Datasheet" "https://www.lcsc.com/datasheet/lcsc_datasheet_2206010200_UNI-ROYAL-Uniroyal-Elec-0805W8F4701T5E_C17673.pdf"
-			(at 311.15 186.69 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Description" "125mW Thick Film Resistors 150V ±100ppm/°C ±1% 4.7kΩ 0805 Chip Resistor - Surface Mount ROHS"
-			(at 311.15 186.69 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Stock" "4733934"
-			(at 311.15 186.69 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Price" "0.005USD"
-			(at 311.15 186.69 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Process" "SMT"
-			(at 311.15 186.69 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Minimum Qty" "20"
-			(at 311.15 186.69 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Attrition Qty" "6"
-			(at 311.15 186.69 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Class" "Basic Component"
-			(at 311.15 186.69 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Category" "Resistors,Chip Resistor - Surface Mount"
-			(at 311.15 186.69 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Manufacturer" "UNI-ROYAL(Uniroyal Elec)"
-			(at 311.15 186.69 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Part" "0805W8F4701T5E"
-			(at 311.15 186.69 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Resistance" "4.7kΩ"
-			(at 311.15 186.69 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Power(Watts)" "125mW"
-			(at 311.15 186.69 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Type" "Thick Film Resistors"
-			(at 311.15 186.69 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Overload Voltage (Max)" "150V"
-			(at 311.15 186.69 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Operating Temperature Range" "-55°C~+155°C"
-			(at 311.15 186.69 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Tolerance" "±1%"
-			(at 311.15 186.69 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Temperature Coefficient" "±100ppm/°C"
-			(at 311.15 186.69 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Part - USA" ""
-			(at 311.15 186.69 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "LCSC" "C17673"
-			(at 311.15 186.69 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Continuous Drain Current (Id)" ""
-			(at 311.15 186.69 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Drain Source On Resistance (RDS(on)@Vgs,Id)" ""
-			(at 311.15 186.69 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Drain Source Voltage (Vdss)" ""
-			(at 311.15 186.69 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Gate Threshold Voltage (Vgs(th)@Id)" ""
-			(at 311.15 186.69 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Input Capacitance (Ciss@Vds)" ""
-			(at 311.15 186.69 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Power Dissipation (Pd)" ""
-			(at 311.15 186.69 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Reverse Transfer Capacitance (Crss@Vds)" ""
-			(at 311.15 186.69 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Sim.Device" ""
-			(at 311.15 186.69 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Sim.Library" ""
-			(at 311.15 186.69 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Sim.Name" ""
-			(at 311.15 186.69 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Sim.Pins" ""
-			(at 311.15 186.69 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Sim.Type" ""
-			(at 311.15 186.69 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Total Gate Charge (Qg@Vgs)" ""
-			(at 311.15 186.69 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Breakdown Voltage" ""
-			(at 311.15 186.69 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Maximum Clamping Voltage" ""
-			(at 311.15 186.69 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Number of Lines" ""
-			(at 311.15 186.69 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Peak Pulse Current (Ipp)" ""
-			(at 311.15 186.69 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Peak Pulse Power Dissipation (Ppp)" ""
-			(at 311.15 186.69 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Reverse Stand-Off Voltage (Vrwm)" ""
-			(at 311.15 186.69 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "polarity" ""
-			(at 311.15 186.69 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(pin "1"
-			(uuid "66f44fca-ca65-48db-870f-20978d17938b")
-		)
-		(pin "2"
-			(uuid "20f355ac-691f-422b-979c-639c50b9f40d")
-		)
-		(instances
-			(project "Solar Project Rev2"
-				(path "/28299885-0f47-4c9d-af0f-f2db484b5c54"
-					(reference "R44")
 					(unit 1)
 				)
 			)
@@ -116822,6 +121135,28 @@
 				)
 			)
 		)
+		(property "LCSC " ""
+			(at 170.18 185.42 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Purchase-URL" ""
+			(at 170.18 185.42 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
 		(pin "2"
 			(uuid "589f55ed-b225-4c65-9e0e-c8f475e3f070")
 		)
@@ -116894,6 +121229,28 @@
 			)
 		)
 		(property "Description" "Net tie, 2 pins"
+			(at 425.45 76.2 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "LCSC " ""
+			(at 425.45 76.2 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Purchase-URL" ""
 			(at 425.45 76.2 0)
 			(hide yes)
 			(show_name no)
@@ -117349,6 +121706,28 @@
 			)
 		)
 		(property "polarity" ""
+			(at 102.87 78.74 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "LCSC " ""
+			(at 102.87 78.74 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Purchase-URL" ""
 			(at 102.87 78.74 0)
 			(hide yes)
 			(show_name no)
@@ -117901,6 +122280,28 @@
 				)
 			)
 		)
+		(property "LCSC " ""
+			(at 478.79 71.12 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Purchase-URL" ""
+			(at 478.79 71.12 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
 		(pin "2"
 			(uuid "0566e2c8-79aa-476a-8208-23a7f35ccecd")
 		)
@@ -118378,6 +122779,28 @@
 			)
 		)
 		(property "polarity" ""
+			(at 345.44 90.17 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "LCSC " ""
+			(at 345.44 90.17 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Purchase-URL" ""
 			(at 345.44 90.17 0)
 			(hide yes)
 			(show_name no)
@@ -118919,6 +123342,28 @@
 				)
 			)
 		)
+		(property "LCSC " ""
+			(at 499.11 187.96 90)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Purchase-URL" ""
+			(at 499.11 187.96 90)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
 		(pin "2"
 			(uuid "82773466-5923-4523-b07e-ea68d50a75da")
 		)
@@ -118990,6 +123435,28 @@
 		)
 		(property "Description" "Solder Jumper, 2-pole, closed/bridged"
 			(at 172.72 170.18 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "LCSC " ""
+			(at 172.72 165.1 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Purchase-URL" ""
+			(at 172.72 165.1 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -119256,6 +123723,28 @@
 			)
 		)
 		(property "Temperature Coefficient" "±100ppm/°C"
+			(at 453.39 327.66 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "LCSC " ""
+			(at 453.39 327.66 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Purchase-URL" ""
 			(at 453.39 327.66 0)
 			(hide yes)
 			(show_name no)
@@ -119613,6 +124102,28 @@
 			)
 		)
 		(property "polarity" ""
+			(at 110.49 158.75 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "LCSC " ""
+			(at 110.49 158.75 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Purchase-URL" ""
 			(at 110.49 158.75 0)
 			(hide yes)
 			(show_name no)
@@ -120271,6 +124782,28 @@
 				)
 			)
 		)
+		(property "LCSC " ""
+			(at 491.49 187.96 90)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Purchase-URL" ""
+			(at 491.49 187.96 90)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
 		(pin "2"
 			(uuid "71f32c96-de28-4a47-a93a-53d161d3e1fb")
 		)
@@ -120573,6 +125106,28 @@
 			)
 		)
 		(property "polarity" ""
+			(at 121.92 80.01 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "LCSC " ""
+			(at 121.92 80.01 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Purchase-URL" ""
 			(at 121.92 80.01 0)
 			(hide yes)
 			(show_name no)
@@ -120945,6 +125500,28 @@
 				)
 			)
 		)
+		(property "LCSC " ""
+			(at 495.3 208.28 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Purchase-URL" ""
+			(at 495.3 208.28 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
 		(pin "1"
 			(uuid "19639a03-cc7d-4b83-8836-0ffdf10c5535")
 		)
@@ -121014,6 +125591,28 @@
 			)
 		)
 		(property "Description" "Net tie, 2 pins"
+			(at 440.69 60.96 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "LCSC " ""
+			(at 440.69 60.96 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Purchase-URL" ""
 			(at 440.69 60.96 0)
 			(hide yes)
 			(show_name no)
@@ -121490,6 +126089,28 @@
 				)
 			)
 		)
+		(property "LCSC " ""
+			(at 491.49 214.63 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Purchase-URL" ""
+			(at 491.49 214.63 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
 		(pin "1"
 			(uuid "ede4b3b1-94ba-4afe-87a6-9a473319063b")
 		)
@@ -121550,7 +126171,7 @@
 				)
 			)
 		)
-		(property "Datasheet" "https://www.susumu.co.jp/common/pdf/n_catalog_partition19_en.pdf"
+		(property "Datasheet" "KRL2012E-M-R005-F-T5"
 			(at 207.01 71.12 0)
 			(hide yes)
 			(show_name no)
@@ -121893,6 +126514,28 @@
 			)
 		)
 		(property "Tolerance" "±1%"
+			(at 207.01 71.12 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "LCSC " ""
+			(at 207.01 71.12 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Purchase-URL" ""
 			(at 207.01 71.12 0)
 			(hide yes)
 			(show_name no)
@@ -122370,6 +127013,28 @@
 				)
 			)
 		)
+		(property "LCSC " ""
+			(at 361.95 203.2 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Purchase-URL" ""
+			(at 361.95 203.2 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
 		(pin "1"
 			(uuid "ef99a56c-bbc3-4be4-ae88-97e2415c358b")
 		)
@@ -122715,6 +127380,28 @@
 			)
 		)
 		(property "polarity" ""
+			(at 490.22 168.91 90)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "LCSC " ""
+			(at 490.22 168.91 90)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Purchase-URL" ""
 			(at 490.22 168.91 90)
 			(hide yes)
 			(show_name no)
@@ -123211,6 +127898,28 @@
 				)
 			)
 		)
+		(property "LCSC " ""
+			(at 424.18 163.83 90)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Purchase-URL" ""
+			(at 424.18 163.83 90)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
 		(pin "1"
 			(uuid "d6c1d2e3-f4a5-6789-bcde-f01234567890")
 		)
@@ -123688,6 +128397,28 @@
 			)
 		)
 		(property "polarity" ""
+			(at 511.81 158.75 90)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "LCSC " ""
+			(at 511.81 158.75 90)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Purchase-URL" ""
 			(at 511.81 158.75 90)
 			(hide yes)
 			(show_name no)
@@ -124197,6 +128928,28 @@
 				)
 			)
 		)
+		(property "LCSC " ""
+			(at 336.55 167.64 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Purchase-URL" ""
+			(at 336.55 167.64 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
 		(pin "2"
 			(uuid "65e91c4f-1b6d-4d62-b08d-0f50c884d563")
 		)
@@ -124456,6 +129209,28 @@
 			)
 		)
 		(property "polarity" ""
+			(at 60.96 80.01 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "LCSC " ""
+			(at 60.96 80.01 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Purchase-URL" ""
 			(at 60.96 80.01 0)
 			(hide yes)
 			(show_name no)
@@ -124889,6 +129664,28 @@
 			)
 		)
 		(property "polarity" ""
+			(at 487.68 78.74 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "LCSC " ""
+			(at 487.68 78.74 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Purchase-URL" ""
 			(at 487.68 78.74 0)
 			(hide yes)
 			(show_name no)
@@ -125386,6 +130183,28 @@
 				)
 			)
 		)
+		(property "LCSC " ""
+			(at 370.84 248.92 90)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Purchase-URL" ""
+			(at 370.84 248.92 90)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
 		(pin "2"
 			(uuid "a607b1cc-6ac4-4acd-8ed0-4a1fe245d77d")
 		)
@@ -125841,6 +130660,28 @@
 			)
 		)
 		(property "polarity" ""
+			(at 96.52 209.55 90)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "LCSC " ""
+			(at 96.52 209.55 90)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Purchase-URL" ""
 			(at 96.52 209.55 90)
 			(hide yes)
 			(show_name no)
@@ -126351,6 +131192,28 @@
 				)
 			)
 		)
+		(property "LCSC " ""
+			(at 127 321.31 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Purchase-URL" ""
+			(at 127 321.31 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
 		(pin "1"
 			(uuid "108631f4-0bb2-48ef-ad03-01c23bfde1f8")
 		)
@@ -126423,6 +131286,28 @@
 			)
 		)
 		(property "Description" "Net tie, 2 pins"
+			(at 93.98 73.66 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "LCSC " ""
+			(at 93.98 73.66 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Purchase-URL" ""
 			(at 93.98 73.66 0)
 			(hide yes)
 			(show_name no)
@@ -127011,6 +131896,28 @@
 				)
 			)
 		)
+		(property "LCSC " ""
+			(at 88.9 91.44 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Purchase-URL" ""
+			(at 88.9 91.44 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
 		(pin "1"
 			(uuid "2adb4bad-9eb0-4c6e-a319-3dfbd0512bd8")
 		)
@@ -127499,6 +132406,28 @@
 			)
 		)
 		(property "polarity" ""
+			(at 181.61 81.28 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "LCSC " ""
+			(at 181.61 81.28 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Purchase-URL" ""
 			(at 181.61 81.28 0)
 			(hide yes)
 			(show_name no)
@@ -128009,6 +132938,28 @@
 				)
 			)
 		)
+		(property "LCSC " ""
+			(at 297.18 80.01 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Purchase-URL" ""
+			(at 297.18 80.01 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
 		(pin "2"
 			(uuid "3d1b8cb5-8785-4830-a03b-c7b2c3a5ae4a")
 		)
@@ -128361,6 +133312,28 @@
 			)
 		)
 		(property "polarity" ""
+			(at 516.89 168.91 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "LCSC " ""
+			(at 516.89 168.91 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Purchase-URL" ""
 			(at 516.89 168.91 0)
 			(hide yes)
 			(show_name no)
@@ -128845,6 +133818,28 @@
 			)
 		)
 		(property "polarity" ""
+			(at 424.18 208.28 90)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "LCSC " ""
+			(at 424.18 208.28 90)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Purchase-URL" ""
 			(at 424.18 208.28 90)
 			(hide yes)
 			(show_name no)
@@ -129358,6 +134353,28 @@
 			)
 		)
 		(property "polarity" ""
+			(at 293.37 227.33 90)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "LCSC " ""
+			(at 293.37 227.33 90)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Purchase-URL" ""
 			(at 293.37 227.33 90)
 			(hide yes)
 			(show_name no)
@@ -129910,6 +134927,28 @@
 				)
 			)
 		)
+		(property "LCSC " ""
+			(at 93.98 279.4 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Purchase-URL" ""
+			(at 93.98 279.4 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
 		(pin "1"
 			(uuid "a3bde30b-36bf-4152-8242-6e67776480d1")
 		)
@@ -130221,6 +135260,28 @@
 				)
 			)
 		)
+		(property "LCSC " ""
+			(at 464.82 210.82 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Purchase-URL" ""
+			(at 464.82 210.82 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
 		(pin "2"
 			(uuid "ec231f17-72aa-49e3-a057-898dc0b34090")
 		)
@@ -130503,6 +135564,28 @@
 				)
 			)
 		)
+		(property "LCSC " ""
+			(at 414.02 327.66 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Purchase-URL" ""
+			(at 414.02 327.66 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
 		(pin "1"
 			(uuid "4eb461c5-8260-473d-b679-5165bd5b3931")
 		)
@@ -130563,7 +135646,7 @@
 				)
 			)
 		)
-		(property "Datasheet" "https://www.susumu.co.jp/common/pdf/n_catalog_partition19_en.pdf"
+		(property "Datasheet" "KRL2012E-M-R005-F-T5"
 			(at 320.04 67.31 0)
 			(hide yes)
 			(show_name no)
@@ -130906,6 +135989,28 @@
 			)
 		)
 		(property "Tolerance" "±1%"
+			(at 320.04 67.31 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "LCSC " ""
+			(at 320.04 67.31 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Purchase-URL" ""
 			(at 320.04 67.31 0)
 			(hide yes)
 			(show_name no)
@@ -131372,6 +136477,28 @@
 				)
 			)
 		)
+		(property "LCSC " ""
+			(at 477.52 214.63 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Purchase-URL" ""
+			(at 477.52 214.63 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
 		(pin "1"
 			(uuid "2ec33698-29eb-4981-81a9-e6aca37b87d6")
 		)
@@ -131686,6 +136813,28 @@
 			)
 		)
 		(property "polarity" ""
+			(at 154.94 392.43 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "LCSC " ""
+			(at 154.94 392.43 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Purchase-URL" ""
 			(at 154.94 392.43 0)
 			(hide yes)
 			(show_name no)
@@ -132178,6 +137327,28 @@
 				)
 			)
 		)
+		(property "LCSC " ""
+			(at 397.51 74.93 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Purchase-URL" ""
+			(at 397.51 74.93 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
 		(pin "1"
 			(uuid "2635b40d-5bb9-44b0-8e4a-5647583db5fa")
 		)
@@ -132635,6 +137806,28 @@
 			)
 		)
 		(property "polarity" ""
+			(at 156.21 359.41 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "LCSC " ""
+			(at 156.21 359.41 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Purchase-URL" ""
 			(at 156.21 359.41 0)
 			(hide yes)
 			(show_name no)
@@ -133144,6 +138337,28 @@
 				)
 			)
 		)
+		(property "LCSC " ""
+			(at 372.11 62.23 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Purchase-URL" ""
+			(at 372.11 62.23 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
 		(pin "1"
 			(uuid "3c323e5b-d9ec-4702-8209-3f57d2dfd774")
 		)
@@ -133611,6 +138826,28 @@
 				)
 			)
 		)
+		(property "LCSC " ""
+			(at 83.82 180.34 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Purchase-URL" ""
+			(at 83.82 180.34 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
 		(pin "2"
 			(uuid "f1fb3a5e-8710-4c80-a559-1d4516ea372c")
 		)
@@ -133913,6 +139150,28 @@
 			)
 		)
 		(property "polarity" ""
+			(at 265.43 74.93 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "LCSC " ""
+			(at 265.43 74.93 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Purchase-URL" ""
 			(at 265.43 74.93 0)
 			(hide yes)
 			(show_name no)
@@ -134422,6 +139681,28 @@
 				)
 			)
 		)
+		(property "LCSC " ""
+			(at 312.42 80.01 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Purchase-URL" ""
+			(at 312.42 80.01 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
 		(pin "2"
 			(uuid "c21dc388-c37f-4c90-9394-eb9626353e07")
 		)
@@ -134920,6 +140201,28 @@
 				)
 			)
 		)
+		(property "LCSC " ""
+			(at 377.19 181.61 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Purchase-URL" ""
+			(at 377.19 181.61 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
 		(pin "2"
 			(uuid "70c7b93b-efa2-42fc-9f69-1af6f61d1672")
 		)
@@ -134947,7 +140250,7 @@
 		(dnp no)
 		(uuid "f56c2f2d-144b-4330-b303-e256b71eb5d4")
 		(property "Reference" "NT2"
-			(at 207.518 77.216 90)
+			(at 202.438 77.978 90)
 			(show_name no)
 			(do_not_autoplace no)
 			(effects
@@ -134993,6 +140296,28 @@
 		)
 		(property "Description" "Net tie, 2 pins"
 			(at 207.01 77.47 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "LCSC " ""
+			(at 207.01 77.47 90)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Purchase-URL" ""
+			(at 207.01 77.47 90)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -135523,6 +140848,28 @@
 			)
 		)
 		(property "polarity" ""
+			(at 495.3 173.99 90)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "LCSC " ""
+			(at 495.3 173.99 90)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Purchase-URL" ""
 			(at 495.3 173.99 90)
 			(hide yes)
 			(show_name no)
@@ -136065,6 +141412,28 @@
 				)
 			)
 		)
+		(property "LCSC " ""
+			(at 407.67 63.5 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Purchase-URL" ""
+			(at 407.67 63.5 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
 		(pin "1"
 			(uuid "1cd1f20b-a439-43d8-8d64-d4544e63faba")
 		)
@@ -136597,6 +141966,28 @@
 				)
 			)
 		)
+		(property "LCSC " ""
+			(at 439.42 172.72 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Purchase-URL" ""
+			(at 439.42 172.72 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
 		(pin "2"
 			(uuid "094b272c-8d4d-49bb-80f1-6d070122fa09")
 		)
@@ -136911,6 +142302,28 @@
 			)
 		)
 		(property "polarity" ""
+			(at 392.43 166.37 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "LCSC " ""
+			(at 392.43 166.37 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Purchase-URL" ""
 			(at 392.43 166.37 0)
 			(hide yes)
 			(show_name no)
@@ -137244,6 +142657,28 @@
 			)
 		)
 		(property "polarity" ""
+			(at 265.43 86.36 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "LCSC " ""
+			(at 265.43 86.36 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Purchase-URL" ""
 			(at 265.43 86.36 0)
 			(hide yes)
 			(show_name no)
@@ -137743,6 +143178,28 @@
 			)
 		)
 		(property "polarity" ""
+			(at 336.55 194.31 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "LCSC " ""
+			(at 336.55 194.31 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Purchase-URL" ""
 			(at 336.55 194.31 0)
 			(hide yes)
 			(show_name no)
