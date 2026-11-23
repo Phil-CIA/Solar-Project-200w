@@ -47537,6 +47537,28 @@
 				)
 			)
 		)
+		(property "Assembly" ""
+			(at 374.65 275.59 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "JCBPCB#" ""
+			(at 374.65 275.59 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
 		(pin "2"
 			(uuid "b03d1a7d-5dd1-40a9-8329-739ec8e5ae46")
 		)
@@ -48049,6 +48071,28 @@
 			)
 		)
 		(property "Purchase-URL" ""
+			(at 134.62 321.31 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Assembly" ""
+			(at 134.62 321.31 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "JCBPCB#" ""
 			(at 134.62 321.31 0)
 			(hide yes)
 			(show_name no)
@@ -48580,6 +48624,28 @@
 				)
 			)
 		)
+		(property "Assembly" ""
+			(at 500.38 177.8 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "JCBPCB#" ""
+			(at 500.38 177.8 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
 		(pin "1"
 			(uuid "ba8b9ce7-2ca9-481e-a87b-c443cdb2853f")
 		)
@@ -48869,6 +48935,28 @@
 				)
 			)
 		)
+		(property "Assembly" ""
+			(at 463.55 303.53 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "JCBPCB#" ""
+			(at 463.55 303.53 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
 		(pin "1"
 			(uuid "d837a7db-5985-4238-b861-b5b67d9d9ab4")
 		)
@@ -49136,7 +49224,7 @@
 				)
 			)
 		)
-		(property "LCSC" "C17415"
+		(property "LCSC" "C17414"
 			(at 377.19 154.94 0)
 			(hide yes)
 			(show_name no)
@@ -49379,6 +49467,28 @@
 			)
 		)
 		(property "Purchase-URL" ""
+			(at 377.19 154.94 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Assembly" ""
+			(at 377.19 154.94 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "JCBPCB#" ""
 			(at 377.19 154.94 0)
 			(hide yes)
 			(show_name no)
@@ -49943,6 +50053,28 @@
 				)
 			)
 		)
+		(property "Assembly" ""
+			(at 439.42 187.96 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "JCBPCB#" ""
+			(at 439.42 187.96 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
 		(pin "1"
 			(uuid "f33199bb-3667-4f07-9ee3-ed1f7628e00e")
 		)
@@ -50266,6 +50398,28 @@
 			)
 		)
 		(property "Purchase-URL" ""
+			(at 288.29 355.6 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Assembly" ""
+			(at 288.29 355.6 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "JCBPCB#" ""
 			(at 288.29 355.6 0)
 			(hide yes)
 			(show_name no)
@@ -50615,6 +50769,28 @@
 			)
 		)
 		(property "Purchase-URL" ""
+			(at 220.98 247.65 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Assembly" ""
+			(at 220.98 247.65 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "JCBPCB#" ""
 			(at 220.98 247.65 0)
 			(hide yes)
 			(show_name no)
@@ -51140,6 +51316,28 @@
 				)
 			)
 		)
+		(property "Assembly" ""
+			(at 106.68 85.09 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "JCBPCB#" ""
+			(at 106.68 85.09 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
 		(pin "2"
 			(uuid "3e4411d3-edf6-4b3b-a9e7-3d15ab8d8245")
 		)
@@ -51465,6 +51663,28 @@
 			)
 		)
 		(property "Purchase-URL" ""
+			(at 344.17 78.74 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Assembly" ""
+			(at 344.17 78.74 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "JCBPCB#" ""
 			(at 344.17 78.74 0)
 			(hide yes)
 			(show_name no)
@@ -51952,6 +52172,28 @@
 				)
 			)
 		)
+		(property "Assembly" ""
+			(at 361.95 62.23 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "JCBPCB#" ""
+			(at 361.95 62.23 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
 		(pin "2"
 			(uuid "bbd3ce6e-13e9-4ef0-93a8-45e2f5ecbef4")
 		)
@@ -52045,6 +52287,28 @@
 			)
 		)
 		(property "Purchase-URL" ""
+			(at 436.88 298.45 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Assembly" ""
+			(at 436.88 298.45 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "JCBPCB#" ""
 			(at 436.88 298.45 0)
 			(hide yes)
 			(show_name no)
@@ -52618,6 +52882,28 @@
 				)
 			)
 		)
+		(property "Assembly" ""
+			(at 304.8 80.01 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "JCBPCB#" ""
+			(at 304.8 80.01 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
 		(pin "2"
 			(uuid "09907567-d873-4007-9c1d-67fb3ac7380c")
 		)
@@ -52830,6 +53116,28 @@
 			)
 		)
 		(property "Purchase-URL" ""
+			(at 364.49 214.63 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Assembly" ""
+			(at 364.49 214.63 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "JCBPCB#" ""
 			(at 364.49 214.63 0)
 			(hide yes)
 			(show_name no)
@@ -53390,6 +53698,28 @@
 				)
 			)
 		)
+		(property "Assembly" ""
+			(at 464.82 78.74 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "JCBPCB#" ""
+			(at 464.82 78.74 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
 		(pin "1"
 			(uuid "11dfe372-ec94-4c8b-812f-9ff33d1ab6de")
 		)
@@ -53637,6 +53967,28 @@
 			)
 		)
 		(property "Temperature Coefficient" "X7R"
+			(at 468.63 326.39 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Assembly" ""
+			(at 468.63 326.39 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "JCBPCB#" ""
 			(at 468.63 326.39 0)
 			(hide yes)
 			(show_name no)
@@ -54200,6 +54552,28 @@
 				)
 			)
 		)
+		(property "Assembly" ""
+			(at 190.5 194.31 90)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "JCBPCB#" ""
+			(at 190.5 194.31 90)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
 		(pin "2"
 			(uuid "f94d6916-ec58-47a7-b0ae-c7d237227776")
 		)
@@ -54260,7 +54634,7 @@
 				(justify bottom)
 			)
 		)
-		(property "Datasheet" ""
+		(property "Datasheet" "https://www.lcsc.com/datasheet/C5199798.pdf"
 			(at 152.4 71.12 0)
 			(hide yes)
 			(show_name no)
@@ -54271,7 +54645,7 @@
 				)
 			)
 		)
-		(property "Description" ""
+		(property "Description" "TESTPOINT, COMPACT, SURFACE MOUNT"
 			(at 152.4 71.12 0)
 			(hide yes)
 			(show_name no)
@@ -54574,6 +54948,39 @@
 			)
 		)
 		(property "Purchase-URL" ""
+			(at 152.4 71.12 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Assembly" ""
+			(at 152.4 71.12 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "JCBPCB#" ""
+			(at 152.4 71.12 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "LCSC" "C5199798"
 			(at 152.4 71.12 0)
 			(hide yes)
 			(show_name no)
@@ -54924,6 +55331,28 @@
 				)
 			)
 		)
+		(property "Assembly" ""
+			(at 364.49 186.69 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "JCBPCB#" ""
+			(at 364.49 186.69 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
 		(pin "4"
 			(uuid "37b4c9be-f4e8-4249-97ca-ffe4beb1b64e")
 		)
@@ -55072,7 +55501,7 @@
 				)
 			)
 		)
-		(property "LCSC" ""
+		(property "LCSC" "C3204137"
 			(at 49.53 64.77 0)
 			(hide yes)
 			(show_name no)
@@ -55315,6 +55744,28 @@
 			)
 		)
 		(property "Purchase-URL" ""
+			(at 49.53 64.77 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Assembly" ""
+			(at 49.53 64.77 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "JCBPCB#" ""
 			(at 49.53 64.77 0)
 			(hide yes)
 			(show_name no)
@@ -55808,6 +56259,28 @@
 				)
 			)
 		)
+		(property "Assembly" ""
+			(at 157.48 80.01 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "JCBPCB#" ""
+			(at 157.48 80.01 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
 		(pin "2"
 			(uuid "dde87e36-b07c-4c2e-9878-ab6a4e27d3cd")
 		)
@@ -56241,6 +56714,28 @@
 			)
 		)
 		(property "Purchase-URL" ""
+			(at 434.34 66.04 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Assembly" ""
+			(at 434.34 66.04 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "JCBPCB#" ""
 			(at 434.34 66.04 0)
 			(hide yes)
 			(show_name no)
@@ -56794,6 +57289,28 @@
 				)
 			)
 		)
+		(property "Assembly" ""
+			(at 500.38 219.71 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "JCBPCB#" ""
+			(at 500.38 219.71 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
 		(pin "1"
 			(uuid "11c3e93f-2c70-4fd5-b81c-7e0a3422680c")
 		)
@@ -57316,6 +57833,28 @@
 				)
 			)
 		)
+		(property "Assembly" ""
+			(at 427.99 176.53 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "JCBPCB#" ""
+			(at 427.99 176.53 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
 		(pin "2"
 			(uuid "1e03a7e1-a371-4e24-9f90-00e0bcbfa26c")
 		)
@@ -57740,6 +58279,28 @@
 			)
 		)
 		(property "Purchase-URL" ""
+			(at 175.26 105.41 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Assembly" ""
+			(at 175.26 105.41 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "JCBPCB#" ""
 			(at 175.26 105.41 0)
 			(hide yes)
 			(show_name no)
@@ -58262,6 +58823,28 @@
 				)
 			)
 		)
+		(property "Assembly" ""
+			(at 379.73 214.63 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "JCBPCB#" ""
+			(at 379.73 214.63 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
 		(pin "2"
 			(uuid "f134f8fd-669e-44c5-828d-545cd1392108")
 		)
@@ -58590,6 +59173,28 @@
 			)
 		)
 		(property "Purchase-URL" ""
+			(at 241.3 88.9 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Assembly" ""
+			(at 241.3 88.9 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "JCBPCB#" ""
 			(at 241.3 88.9 0)
 			(hide yes)
 			(show_name no)
@@ -58944,6 +59549,28 @@
 			)
 		)
 		(property "Purchase-URL" ""
+			(at 35.56 254 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Assembly" ""
+			(at 35.56 254 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "JCBPCB#" ""
 			(at 35.56 254 0)
 			(hide yes)
 			(show_name no)
@@ -59508,6 +60135,28 @@
 				)
 			)
 		)
+		(property "Assembly" ""
+			(at 154.94 327.66 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "JCBPCB#" ""
+			(at 154.94 327.66 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
 		(pin "1"
 			(uuid "22aa919b-d5d4-422f-bd44-dd013246c480")
 		)
@@ -59987,6 +60636,28 @@
 			)
 		)
 		(property "Purchase-URL" ""
+			(at 43.18 179.07 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Assembly" ""
+			(at 43.18 179.07 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "JCBPCB#" ""
 			(at 43.18 179.07 0)
 			(hide yes)
 			(show_name no)
@@ -60550,6 +61221,28 @@
 				)
 			)
 		)
+		(property "Assembly" ""
+			(at 92.71 254 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "JCBPCB#" ""
+			(at 92.71 254 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
 		(pin "2"
 			(uuid "3abc9eee-f064-49d7-a0b5-65038e08043d")
 		)
@@ -61069,6 +61762,28 @@
 				)
 			)
 		)
+		(property "Assembly" ""
+			(at 504.19 173.99 90)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "JCBPCB#" ""
+			(at 504.19 173.99 90)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
 		(pin "1"
 			(uuid "e418e8af-f54a-465b-bf56-27781031d893")
 		)
@@ -61393,6 +62108,28 @@
 			)
 		)
 		(property "Purchase-URL" ""
+			(at 170.18 74.93 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Assembly" ""
+			(at 170.18 74.93 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "JCBPCB#" ""
 			(at 170.18 74.93 0)
 			(hide yes)
 			(show_name no)
@@ -61870,6 +62607,28 @@
 			)
 		)
 		(property "Purchase-URL" ""
+			(at 450.85 215.9 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Assembly" ""
+			(at 450.85 215.9 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "JCBPCB#" ""
 			(at 450.85 215.9 0)
 			(hide yes)
 			(show_name no)
@@ -62479,6 +63238,28 @@
 				)
 			)
 		)
+		(property "Assembly" ""
+			(at 109.22 356.87 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "JCBPCB#" ""
+			(at 109.22 356.87 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
 		(pin "2"
 			(uuid "7662eda2-a43f-4ca2-a6cb-b3baed7690f7")
 		)
@@ -62697,6 +63478,28 @@
 			)
 		)
 		(property "Purchase-URL" ""
+			(at 359.41 248.92 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Assembly" ""
+			(at 359.41 248.92 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "JCBPCB#" ""
 			(at 359.41 248.92 0)
 			(hide yes)
 			(show_name no)
@@ -63278,6 +64081,28 @@
 				)
 			)
 		)
+		(property "Assembly" ""
+			(at 88.9 101.6 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "JCBPCB#" ""
+			(at 88.9 101.6 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
 		(pin "2"
 			(uuid "59fd065f-a1c3-4b5a-91d8-b4e399391bbe")
 		)
@@ -63799,6 +64624,28 @@
 				)
 			)
 		)
+		(property "Assembly" ""
+			(at 314.96 171.45 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "JCBPCB#" ""
+			(at 314.96 171.45 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
 		(pin "1"
 			(uuid "df2c9c13-e4fa-4717-a428-786d4451745b")
 		)
@@ -64066,7 +64913,7 @@
 				)
 			)
 		)
-		(property "LCSC" "C17415"
+		(property "LCSC" "C17414"
 			(at 300.99 242.57 0)
 			(hide yes)
 			(show_name no)
@@ -64309,6 +65156,28 @@
 			)
 		)
 		(property "Purchase-URL" ""
+			(at 300.99 242.57 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Assembly" ""
+			(at 300.99 242.57 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "JCBPCB#" ""
 			(at 300.99 242.57 0)
 			(hide yes)
 			(show_name no)
@@ -64687,6 +65556,28 @@
 			)
 		)
 		(property "Purchase-URL" ""
+			(at 101.6 254 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Assembly" ""
+			(at 101.6 254 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "JCBPCB#" ""
 			(at 101.6 254 0)
 			(hide yes)
 			(show_name no)
@@ -65250,6 +66141,28 @@
 				)
 			)
 		)
+		(property "Assembly" ""
+			(at 190.5 217.17 90)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "JCBPCB#" ""
+			(at 190.5 217.17 90)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
 		(pin "2"
 			(uuid "dafcc5d4-848c-4dde-9dcc-2ed09d9e8099")
 		)
@@ -65551,7 +66464,7 @@
 				)
 			)
 		)
-		(property "LCSC" "C17415"
+		(property "LCSC" "C17414"
 			(at 407.67 82.55 0)
 			(hide yes)
 			(show_name no)
@@ -65794,6 +66707,28 @@
 			)
 		)
 		(property "Purchase-URL" ""
+			(at 407.67 82.55 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Assembly" ""
+			(at 407.67 82.55 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "JCBPCB#" ""
 			(at 407.67 82.55 0)
 			(hide yes)
 			(show_name no)
@@ -66138,6 +67073,28 @@
 			)
 		)
 		(property "Purchase-URL" ""
+			(at 364.49 160.02 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Assembly" ""
+			(at 364.49 160.02 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "JCBPCB#" ""
 			(at 364.49 160.02 0)
 			(hide yes)
 			(show_name no)
@@ -66686,6 +67643,28 @@
 				)
 			)
 		)
+		(property "Assembly" ""
+			(at 270.51 369.57 90)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "JCBPCB#" ""
+			(at 270.51 369.57 90)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
 		(pin "1"
 			(uuid "2ca2c4b5-37ca-4af7-affd-1305d085e7fe")
 		)
@@ -67014,6 +67993,28 @@
 			)
 		)
 		(property "Purchase-URL" ""
+			(at 195.58 88.9 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Assembly" ""
+			(at 195.58 88.9 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "JCBPCB#" ""
 			(at 195.58 88.9 0)
 			(hide yes)
 			(show_name no)
@@ -67544,6 +68545,28 @@
 			)
 		)
 		(property "Purchase-URL" ""
+			(at 274.32 373.38 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Assembly" ""
+			(at 274.32 373.38 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "JCBPCB#" ""
 			(at 274.32 373.38 0)
 			(hide yes)
 			(show_name no)
@@ -68153,6 +69176,28 @@
 				)
 			)
 		)
+		(property "Assembly" ""
+			(at 50.8 356.87 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "JCBPCB#" ""
+			(at 50.8 356.87 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
 		(pin "2"
 			(uuid "5bca4f24-6d0d-4e0e-bee4-61a8eff78992")
 		)
@@ -68561,6 +69606,28 @@
 			)
 		)
 		(property "Purchase-URL" ""
+			(at 130.81 80.01 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Assembly" ""
+			(at 130.81 80.01 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "JCBPCB#" ""
 			(at 130.81 80.01 0)
 			(hide yes)
 			(show_name no)
@@ -69124,6 +70191,28 @@
 				)
 			)
 		)
+		(property "Assembly" ""
+			(at 181.61 69.85 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "JCBPCB#" ""
+			(at 181.61 69.85 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
 		(pin "1"
 			(uuid "e9cf974a-1f75-4a8d-970d-d50fd2253c00")
 		)
@@ -69632,6 +70721,28 @@
 				)
 			)
 		)
+		(property "Assembly" ""
+			(at 172.72 171.45 90)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "JCBPCB#" ""
+			(at 172.72 171.45 90)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
 		(pin "2"
 			(uuid "1c5f9812-49f5-432c-9a1b-8d71bef30800")
 		)
@@ -69921,6 +71032,28 @@
 				)
 			)
 		)
+		(property "Assembly" ""
+			(at 458.47 327.66 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "JCBPCB#" ""
+			(at 458.47 327.66 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
 		(pin "1"
 			(uuid "090c575e-3625-46ea-aaf7-818aad688737")
 		)
@@ -70049,7 +71182,7 @@
 				)
 			)
 		)
-		(property "LCSC" ""
+		(property "LCSC" "C3204137"
 			(at 440.69 57.15 0)
 			(hide yes)
 			(show_name no)
@@ -70292,6 +71425,28 @@
 			)
 		)
 		(property "Purchase-URL" ""
+			(at 440.69 57.15 90)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Assembly" ""
+			(at 440.69 57.15 90)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "JCBPCB#" ""
 			(at 440.69 57.15 90)
 			(hide yes)
 			(show_name no)
@@ -70632,6 +71787,28 @@
 			)
 		)
 		(property "Purchase-URL" ""
+			(at 115.57 80.01 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Assembly" ""
+			(at 115.57 80.01 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "JCBPCB#" ""
 			(at 115.57 80.01 0)
 			(hide yes)
 			(show_name no)
@@ -71211,6 +72388,28 @@
 				)
 			)
 		)
+		(property "Assembly" ""
+			(at 521.97 177.8 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "JCBPCB#" ""
+			(at 521.97 177.8 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
 		(pin "1"
 			(uuid "b0ff077d-16de-49f5-9f7c-1bb0ebbe369c")
 		)
@@ -71323,6 +72522,39 @@
 			)
 		)
 		(property "Purchase-URL" ""
+			(at 617.22 344.17 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Assembly" ""
+			(at 617.22 344.17 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "JCBPCB#" ""
+			(at 617.22 344.17 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "LCSC" "C5160761"
 			(at 617.22 344.17 0)
 			(hide yes)
 			(show_name no)
@@ -71625,7 +72857,7 @@
 				)
 			)
 		)
-		(property "LCSC" "C17415"
+		(property "LCSC" "C17414"
 			(at 60.96 372.11 0)
 			(hide yes)
 			(show_name no)
@@ -71868,6 +73100,28 @@
 			)
 		)
 		(property "Purchase-URL" ""
+			(at 60.96 372.11 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Assembly" ""
+			(at 60.96 372.11 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "JCBPCB#" ""
 			(at 60.96 372.11 0)
 			(hide yes)
 			(show_name no)
@@ -72212,6 +73466,28 @@
 				)
 			)
 		)
+		(property "Assembly" ""
+			(at 139.7 80.01 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "JCBPCB#" ""
+			(at 139.7 80.01 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
 		(pin "2"
 			(uuid "e9fff678-1b8a-4567-b140-c891fdac2ae7")
 		)
@@ -72535,6 +73811,28 @@
 			)
 		)
 		(property "Purchase-URL" ""
+			(at 106.68 73.66 90)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Assembly" ""
+			(at 106.68 73.66 90)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "JCBPCB#" ""
 			(at 106.68 73.66 90)
 			(hide yes)
 			(show_name no)
@@ -73022,6 +74320,28 @@
 			)
 		)
 		(property "Purchase-URL" ""
+			(at 374.65 252.73 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Assembly" ""
+			(at 374.65 252.73 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "JCBPCB#" ""
 			(at 374.65 252.73 0)
 			(hide yes)
 			(show_name no)
@@ -73552,6 +74872,28 @@
 				)
 			)
 		)
+		(property "Assembly" ""
+			(at 171.45 199.39 90)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "JCBPCB#" ""
+			(at 171.45 199.39 90)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
 		(pin "1"
 			(uuid "02af3185-77e8-44b4-bf49-94bdaa1a37c1")
 		)
@@ -73841,6 +75183,28 @@
 				)
 			)
 		)
+		(property "Assembly" ""
+			(at 458.47 303.53 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "JCBPCB#" ""
+			(at 458.47 303.53 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
 		(pin "1"
 			(uuid "d3369cf9-746e-47cc-a97e-fa25f8108979")
 		)
@@ -73935,6 +75299,28 @@
 			)
 		)
 		(property "Purchase-URL" ""
+			(at 320.04 73.66 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Assembly" ""
+			(at 320.04 73.66 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "JCBPCB#" ""
 			(at 320.04 73.66 0)
 			(hide yes)
 			(show_name no)
@@ -74434,6 +75820,28 @@
 				)
 			)
 		)
+		(property "Assembly" ""
+			(at 69.85 180.34 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "JCBPCB#" ""
+			(at 69.85 180.34 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
 		(pin "2"
 			(uuid "b940ef6c-8d47-4440-873b-19f44946879b")
 		)
@@ -74922,6 +76330,28 @@
 			)
 		)
 		(property "Purchase-URL" ""
+			(at 105.41 298.45 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Assembly" ""
+			(at 105.41 298.45 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "JCBPCB#" ""
 			(at 105.41 298.45 0)
 			(hide yes)
 			(show_name no)
@@ -75463,6 +76893,28 @@
 				)
 			)
 		)
+		(property "Assembly" ""
+			(at 478.79 168.91 90)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "JCBPCB#" ""
+			(at 478.79 168.91 90)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
 		(pin "1"
 			(uuid "0d83fabc-833b-4e1d-889f-ceb19c966240")
 		)
@@ -75896,6 +77348,28 @@
 			)
 		)
 		(property "Purchase-URL" ""
+			(at 421.64 66.04 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Assembly" ""
+			(at 421.64 66.04 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "JCBPCB#" ""
 			(at 421.64 66.04 0)
 			(hide yes)
 			(show_name no)
@@ -76406,6 +77880,28 @@
 			)
 		)
 		(property "Purchase-URL" ""
+			(at 397.51 82.55 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Assembly" ""
+			(at 397.51 82.55 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "JCBPCB#" ""
 			(at 397.51 82.55 0)
 			(hide yes)
 			(show_name no)
@@ -76948,6 +78444,28 @@
 				)
 			)
 		)
+		(property "Assembly" ""
+			(at 464.82 63.5 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "JCBPCB#" ""
+			(at 464.82 63.5 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
 		(pin "1"
 			(uuid "f97ef1f9-8198-49dd-a21d-98baae0a2e51")
 		)
@@ -77216,7 +78734,7 @@
 				)
 			)
 		)
-		(property "LCSC" "C17415"
+		(property "LCSC" "C17414"
 			(at 344.17 167.64 0)
 			(hide yes)
 			(show_name no)
@@ -77459,6 +78977,28 @@
 			)
 		)
 		(property "Purchase-URL" ""
+			(at 344.17 167.64 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Assembly" ""
+			(at 344.17 167.64 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "JCBPCB#" ""
 			(at 344.17 167.64 0)
 			(hide yes)
 			(show_name no)
@@ -77903,6 +79443,28 @@
 				)
 			)
 		)
+		(property "Assembly" ""
+			(at 93.98 97.79 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "JCBPCB#" ""
+			(at 93.98 97.79 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
 		(pin "1"
 			(uuid "4a4495c7-fc0d-4864-9792-6523f5f77048")
 		)
@@ -78173,7 +79735,7 @@
 				)
 			)
 		)
-		(property "LCSC" "C17415"
+		(property "LCSC" "C17414"
 			(at 313.69 186.69 0)
 			(hide yes)
 			(show_name no)
@@ -78416,6 +79978,28 @@
 			)
 		)
 		(property "Purchase-URL" ""
+			(at 313.69 186.69 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Assembly" ""
+			(at 313.69 186.69 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "JCBPCB#" ""
 			(at 313.69 186.69 0)
 			(hide yes)
 			(show_name no)
@@ -78803,6 +80387,28 @@
 				)
 			)
 		)
+		(property "Assembly" ""
+			(at 462.28 176.53 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "JCBPCB#" ""
+			(at 462.28 176.53 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
 		(pin "3"
 			(uuid "7f51e164-1606-4242-b822-46a4c1a40af1")
 		)
@@ -78896,7 +80502,7 @@
 				)
 			)
 		)
-		(property "Description" "10mΩ ±1% 1W Susumu long-side-terminal current-sense resistor"
+		(property "Description" "RES 5mΩ ±1% 1W 2012"
 			(at 80.01 71.12 0)
 			(hide yes)
 			(show_name no)
@@ -78951,7 +80557,7 @@
 				)
 			)
 		)
-		(property "LCSC" ""
+		(property "LCSC" "C2073455"
 			(at 80.01 71.12 90)
 			(hide yes)
 			(show_name no)
@@ -79249,6 +80855,28 @@
 			)
 		)
 		(property "Purchase-URL" ""
+			(at 80.01 71.12 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Assembly" ""
+			(at 80.01 71.12 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "JCBPCB#" ""
 			(at 80.01 71.12 0)
 			(hide yes)
 			(show_name no)
@@ -79833,6 +81461,28 @@
 				)
 			)
 		)
+		(property "Assembly" ""
+			(at 382.27 72.39 90)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "JCBPCB#" ""
+			(at 382.27 72.39 90)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
 		(pin "1"
 			(uuid "7146d0b5-5474-424e-84f7-1124be9b7bc3")
 		)
@@ -80216,6 +81866,28 @@
 			)
 		)
 		(property "Purchase-URL" ""
+			(at 60.96 295.91 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Assembly" ""
+			(at 60.96 295.91 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "JCBPCB#" ""
 			(at 60.96 295.91 0)
 			(hide yes)
 			(show_name no)
@@ -80644,6 +82316,28 @@
 				)
 			)
 		)
+		(property "Assembly" ""
+			(at 172.72 214.63 90)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "JCBPCB#" ""
+			(at 172.72 214.63 90)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
 		(pin "1"
 			(uuid "74702418-387a-411d-8669-2f6d49a358a5")
 		)
@@ -80969,6 +82663,28 @@
 			)
 		)
 		(property "Purchase-URL" ""
+			(at 351.79 76.2 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Assembly" ""
+			(at 351.79 76.2 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "JCBPCB#" ""
 			(at 351.79 76.2 0)
 			(hide yes)
 			(show_name no)
@@ -81334,6 +83050,28 @@
 				)
 			)
 		)
+		(property "Assembly" ""
+			(at 382.27 59.69 90)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "JCBPCB#" ""
+			(at 382.27 59.69 90)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
 		(pin "3"
 			(uuid "bde12537-9b94-44d0-a54d-8db3034bc54a")
 		)
@@ -81689,6 +83427,28 @@
 				)
 			)
 		)
+		(property "Assembly" ""
+			(at 217.17 367.03 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "JCBPCB#" ""
+			(at 217.17 367.03 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
 		(pin "7"
 			(uuid "f7f964cb-13a3-4115-a1b7-a5a58e8a3cdb")
 		)
@@ -82034,6 +83794,28 @@
 			)
 		)
 		(property "Purchase-URL" ""
+			(at 195.58 67.31 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Assembly" ""
+			(at 195.58 67.31 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "JCBPCB#" ""
 			(at 195.58 67.31 0)
 			(hide yes)
 			(show_name no)
@@ -82573,6 +84355,28 @@
 				)
 			)
 		)
+		(property "Assembly" ""
+			(at 62.23 177.8 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "JCBPCB#" ""
+			(at 62.23 177.8 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
 		(pin "1"
 			(uuid "6649687f-453e-4313-b620-e5fcb60ef6b0")
 		)
@@ -82862,6 +84666,28 @@
 				)
 			)
 		)
+		(property "Assembly" ""
+			(at 464.82 341.63 90)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "JCBPCB#" ""
+			(at 464.82 341.63 90)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
 		(pin "1"
 			(uuid "347d36bc-0990-48c3-a7bf-14af0f13dd9f")
 		)
@@ -83130,7 +84956,7 @@
 				)
 			)
 		)
-		(property "LCSC" "C17415"
+		(property "LCSC" "C17414"
 			(at 90.17 200.66 0)
 			(hide yes)
 			(show_name no)
@@ -83373,6 +85199,28 @@
 			)
 		)
 		(property "Purchase-URL" ""
+			(at 90.17 200.66 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Assembly" ""
+			(at 90.17 200.66 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "JCBPCB#" ""
 			(at 90.17 200.66 0)
 			(hide yes)
 			(show_name no)
@@ -83983,6 +85831,28 @@
 				)
 			)
 		)
+		(property "Assembly" ""
+			(at 167.64 101.6 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "JCBPCB#" ""
+			(at 167.64 101.6 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
 		(pin "1"
 			(uuid "e6d000f2-3303-4a64-9733-3481bd5937f0")
 		)
@@ -84043,7 +85913,7 @@
 				(justify bottom)
 			)
 		)
-		(property "Datasheet" ""
+		(property "Datasheet" "https://www.lcsc.com/datasheet/C5199798.pdf"
 			(at 149.86 93.98 0)
 			(hide yes)
 			(show_name no)
@@ -84054,7 +85924,7 @@
 				)
 			)
 		)
-		(property "Description" ""
+		(property "Description" "TESTPOINT, COMPACT, SURFACE MOUNT"
 			(at 149.86 93.98 0)
 			(hide yes)
 			(show_name no)
@@ -84357,6 +86227,39 @@
 			)
 		)
 		(property "Purchase-URL" ""
+			(at 149.86 93.98 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Assembly" ""
+			(at 149.86 93.98 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "JCBPCB#" ""
+			(at 149.86 93.98 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "LCSC" "C5199798"
 			(at 149.86 93.98 0)
 			(hide yes)
 			(show_name no)
@@ -84961,6 +86864,28 @@
 				)
 			)
 		)
+		(property "Assembly" ""
+			(at 500.38 212.09 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "JCBPCB#" ""
+			(at 500.38 212.09 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
 		(pin "1"
 			(uuid "38cd3d93-55cf-42da-ab02-f27b41f2803d")
 		)
@@ -85297,6 +87222,28 @@
 				)
 			)
 		)
+		(property "Assembly" ""
+			(at 353.06 59.69 90)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "JCBPCB#" ""
+			(at 353.06 59.69 90)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
 		(pin "3"
 			(uuid "5686f6f6-a4a0-4438-b51f-bd797ef0b16d")
 		)
@@ -85476,6 +87423,39 @@
 			)
 		)
 		(property "Purchase-URL" ""
+			(at 266.7 203.2 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "LCSC" "C1342773"
+			(at 266.7 203.2 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Assembly" ""
+			(at 266.7 203.2 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "JCBPCB#" ""
 			(at 266.7 203.2 0)
 			(hide yes)
 			(show_name no)
@@ -85895,7 +87875,7 @@
 				)
 			)
 		)
-		(property "LCSC" "C17415"
+		(property "LCSC" "C17414"
 			(at 119.38 350.52 0)
 			(hide yes)
 			(show_name no)
@@ -86138,6 +88118,28 @@
 			)
 		)
 		(property "Purchase-URL" ""
+			(at 119.38 350.52 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Assembly" ""
+			(at 119.38 350.52 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "JCBPCB#" ""
 			(at 119.38 350.52 0)
 			(hide yes)
 			(show_name no)
@@ -86747,6 +88749,28 @@
 				)
 			)
 		)
+		(property "Assembly" ""
+			(at 78.74 356.87 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "JCBPCB#" ""
+			(at 78.74 356.87 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
 		(pin "2"
 			(uuid "4991f66c-e661-48fc-95b1-d4103a0abcc4")
 		)
@@ -87296,6 +89320,28 @@
 			)
 		)
 		(property "Purchase-URL" ""
+			(at 190.5 208.28 90)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Assembly" ""
+			(at 190.5 208.28 90)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "JCBPCB#" ""
 			(at 190.5 208.28 90)
 			(hide yes)
 			(show_name no)
@@ -87859,6 +89905,28 @@
 				)
 			)
 		)
+		(property "Assembly" ""
+			(at 190.5 201.93 90)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "JCBPCB#" ""
+			(at 190.5 201.93 90)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
 		(pin "2"
 			(uuid "8b097409-7aed-45a9-820e-a03aeebe1e03")
 		)
@@ -88160,7 +90228,7 @@
 				)
 			)
 		)
-		(property "LCSC" "C17415"
+		(property "LCSC" "C17414"
 			(at 72.39 90.17 0)
 			(hide yes)
 			(show_name no)
@@ -88403,6 +90471,28 @@
 			)
 		)
 		(property "Purchase-URL" ""
+			(at 72.39 90.17 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Assembly" ""
+			(at 72.39 90.17 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "JCBPCB#" ""
 			(at 72.39 90.17 0)
 			(hide yes)
 			(show_name no)
@@ -88924,6 +91014,28 @@
 			)
 		)
 		(property "Purchase-URL" ""
+			(at 336.55 177.8 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Assembly" ""
+			(at 336.55 177.8 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "JCBPCB#" ""
 			(at 336.55 177.8 0)
 			(hide yes)
 			(show_name no)
@@ -89534,6 +91646,28 @@
 				)
 			)
 		)
+		(property "Assembly" ""
+			(at 96.52 83.82 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "JCBPCB#" ""
+			(at 96.52 83.82 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
 		(pin "1"
 			(uuid "1a74dd07-4a95-42da-86d8-fc9435fffb61")
 		)
@@ -89910,6 +92044,28 @@
 				)
 			)
 		)
+		(property "Assembly" ""
+			(at 487.68 173.99 90)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "JCBPCB#" ""
+			(at 487.68 173.99 90)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
 		(pin "2"
 			(uuid "6f88948e-b028-4df0-825c-36c919124422")
 		)
@@ -89982,7 +92138,7 @@
 				)
 			)
 		)
-		(property "Description" "10mΩ ±1% 1W Susumu long-side-terminal current-sense resistor"
+		(property "Description" "RES 5mΩ ±1% 1W 2012"
 			(at 80.01 67.31 0)
 			(hide yes)
 			(show_name no)
@@ -90037,7 +92193,7 @@
 				)
 			)
 		)
-		(property "LCSC" ""
+		(property "LCSC" "C2073455"
 			(at 80.01 67.31 90)
 			(hide yes)
 			(show_name no)
@@ -90335,6 +92491,28 @@
 			)
 		)
 		(property "Purchase-URL" ""
+			(at 80.01 67.31 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Assembly" ""
+			(at 80.01 67.31 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "JCBPCB#" ""
 			(at 80.01 67.31 0)
 			(hide yes)
 			(show_name no)
@@ -90724,6 +92902,28 @@
 				)
 			)
 		)
+		(property "Assembly" ""
+			(at 44.45 90.17 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "JCBPCB#" ""
+			(at 44.45 90.17 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
 		(pin "2"
 			(uuid "a8035691-b36e-455c-b42b-764c0acaed3e")
 		)
@@ -91062,6 +93262,28 @@
 				)
 			)
 		)
+		(property "Assembly" ""
+			(at 240.03 67.31 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "JCBPCB#" ""
+			(at 240.03 67.31 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
 		(pin "3"
 			(uuid "e2c1db49-b8fb-47b1-92a0-1d6e0f2df7f6")
 		)
@@ -91362,6 +93584,28 @@
 			)
 		)
 		(property "Purchase-URL" ""
+			(at 148.59 80.01 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Assembly" ""
+			(at 148.59 80.01 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "JCBPCB#" ""
 			(at 148.59 80.01 0)
 			(hide yes)
 			(show_name no)
@@ -91892,6 +94136,28 @@
 				)
 			)
 		)
+		(property "Assembly" ""
+			(at 52.07 179.07 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "JCBPCB#" ""
+			(at 52.07 179.07 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
 		(pin "1"
 			(uuid "fab8ad7e-e7ec-46d0-8b99-fe053f125943")
 		)
@@ -92260,6 +94526,28 @@
 			)
 		)
 		(property "Purchase-URL" ""
+			(at 279.4 80.01 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Assembly" ""
+			(at 279.4 80.01 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "JCBPCB#" ""
 			(at 279.4 80.01 0)
 			(hide yes)
 			(show_name no)
@@ -92823,6 +95111,28 @@
 				)
 			)
 		)
+		(property "Assembly" ""
+			(at 167.64 109.22 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "JCBPCB#" ""
+			(at 167.64 109.22 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
 		(pin "2"
 			(uuid "3f42c33c-9104-4683-aac3-c9ff17fd2944")
 		)
@@ -93189,6 +95499,28 @@
 			)
 		)
 		(property "Purchase-URL" ""
+			(at 72.39 254 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Assembly" ""
+			(at 72.39 254 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "JCBPCB#" ""
 			(at 72.39 254 0)
 			(hide yes)
 			(show_name no)
@@ -93752,6 +96084,28 @@
 				)
 			)
 		)
+		(property "Assembly" ""
+			(at 190.5 189.23 90)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "JCBPCB#" ""
+			(at 190.5 189.23 90)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
 		(pin "2"
 			(uuid "2bafac66-fe24-44a6-b121-fdcca0ed85c4")
 		)
@@ -94305,6 +96659,28 @@
 				)
 			)
 		)
+		(property "Assembly" ""
+			(at 190.5 181.61 90)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "JCBPCB#" ""
+			(at 190.5 181.61 90)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
 		(pin "2"
 			(uuid "2de3631e-fae6-4c70-be4d-e30b7841ca8f")
 		)
@@ -94477,6 +96853,28 @@
 			)
 		)
 		(property "Purchase-URL" ""
+			(at 219.71 77.47 90)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Assembly" ""
+			(at 219.71 77.47 90)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "JCBPCB#" ""
 			(at 219.71 77.47 90)
 			(hide yes)
 			(show_name no)
@@ -94997,6 +97395,28 @@
 				)
 			)
 		)
+		(property "Assembly" ""
+			(at 397.51 90.17 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "JCBPCB#" ""
+			(at 397.51 90.17 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
 		(pin "2"
 			(uuid "6a38571c-ab58-4ed6-b611-160ab328a728")
 		)
@@ -95276,6 +97696,28 @@
 			)
 		)
 		(property "Purchase-URL" ""
+			(at 367.03 295.91 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Assembly" ""
+			(at 367.03 295.91 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "JCBPCB#" ""
 			(at 367.03 295.91 0)
 			(hide yes)
 			(show_name no)
@@ -95840,6 +98282,28 @@
 				)
 			)
 		)
+		(property "Assembly" ""
+			(at 439.42 180.34 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "JCBPCB#" ""
+			(at 439.42 180.34 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
 		(pin "2"
 			(uuid "78c89db4-a40e-4086-b595-a46c3e0dadbd")
 		)
@@ -95934,6 +98398,28 @@
 			)
 		)
 		(property "Purchase-URL" ""
+			(at 80.01 73.66 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Assembly" ""
+			(at 80.01 73.66 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "JCBPCB#" ""
 			(at 80.01 73.66 0)
 			(hide yes)
 			(show_name no)
@@ -96223,6 +98709,28 @@
 			)
 		)
 		(property "Purchase-URL" ""
+			(at 415.29 346.71 90)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Assembly" ""
+			(at 415.29 346.71 90)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "JCBPCB#" ""
 			(at 415.29 346.71 90)
 			(hide yes)
 			(show_name no)
@@ -96712,6 +99220,28 @@
 			)
 		)
 		(property "Purchase-URL" ""
+			(at 386.08 167.64 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Assembly" ""
+			(at 386.08 167.64 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "JCBPCB#" ""
 			(at 386.08 167.64 0)
 			(hide yes)
 			(show_name no)
@@ -97265,6 +99795,28 @@
 				)
 			)
 		)
+		(property "Assembly" ""
+			(at 514.35 180.34 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "JCBPCB#" ""
+			(at 514.35 180.34 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
 		(pin "1"
 			(uuid "4da23750-b57e-415d-9fed-a98c9ef9ec48")
 		)
@@ -97643,6 +100195,28 @@
 				)
 			)
 		)
+		(property "Assembly" ""
+			(at 83.82 254 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "JCBPCB#" ""
+			(at 83.82 254 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
 		(pin "1"
 			(uuid "7fbd9a2c-686e-4aef-9695-ab184487f33c")
 		)
@@ -98009,6 +100583,28 @@
 			)
 		)
 		(property "Purchase-URL" ""
+			(at 59.69 254 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Assembly" ""
+			(at 59.69 254 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "JCBPCB#" ""
 			(at 59.69 254 0)
 			(hide yes)
 			(show_name no)
@@ -98507,6 +101103,28 @@
 				)
 			)
 		)
+		(property "Assembly" ""
+			(at 457.2 285.75 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "JCBPCB#" ""
+			(at 457.2 285.75 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
 		(pin "1"
 			(uuid "25b29b3c-164f-464c-9e1d-d109b4967a59")
 		)
@@ -98873,6 +101491,28 @@
 			)
 		)
 		(property "Purchase-URL" ""
+			(at 226.06 74.93 90)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Assembly" ""
+			(at 226.06 74.93 90)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "JCBPCB#" ""
 			(at 226.06 74.93 90)
 			(hide yes)
 			(show_name no)
@@ -99506,6 +102146,28 @@
 				)
 			)
 		)
+		(property "Assembly" ""
+			(at 302.26 251.46 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "JCBPCB#" ""
+			(at 302.26 251.46 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
 		(pin "1"
 			(uuid "ae97d14c-93d6-4f47-aacc-31e8a46021a7")
 		)
@@ -99785,6 +102447,28 @@
 			)
 		)
 		(property "Purchase-URL" ""
+			(at 415.29 351.79 90)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Assembly" ""
+			(at 415.29 351.79 90)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "JCBPCB#" ""
 			(at 415.29 351.79 90)
 			(hide yes)
 			(show_name no)
@@ -100171,6 +102855,28 @@
 				)
 			)
 		)
+		(property "Assembly" ""
+			(at 179.07 185.42 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "JCBPCB#" ""
+			(at 179.07 185.42 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
 		(pin "1"
 			(uuid "27b5f2e9-ef4f-42ef-b152-c86714c8ae3c")
 		)
@@ -100439,7 +103145,7 @@
 				)
 			)
 		)
-		(property "LCSC" "C17415"
+		(property "LCSC" "C17414"
 			(at 88.9 372.11 0)
 			(hide yes)
 			(show_name no)
@@ -100682,6 +103388,28 @@
 			)
 		)
 		(property "Purchase-URL" ""
+			(at 88.9 372.11 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Assembly" ""
+			(at 88.9 372.11 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "JCBPCB#" ""
 			(at 88.9 372.11 0)
 			(hide yes)
 			(show_name no)
@@ -101181,6 +103909,28 @@
 			)
 		)
 		(property "Purchase-URL" ""
+			(at 344.17 177.8 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Assembly" ""
+			(at 344.17 177.8 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "JCBPCB#" ""
 			(at 344.17 177.8 0)
 			(hide yes)
 			(show_name no)
@@ -101756,6 +104506,28 @@
 				)
 			)
 		)
+		(property "Assembly" ""
+			(at 96.52 279.4 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "JCBPCB#" ""
+			(at 96.52 279.4 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
 		(pin "1"
 			(uuid "708caa2e-aa2e-43fe-af29-692c28a9121b")
 		)
@@ -101969,6 +104741,28 @@
 			)
 		)
 		(property "Purchase-URL" ""
+			(at 359.41 271.78 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Assembly" ""
+			(at 359.41 271.78 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "JCBPCB#" ""
 			(at 359.41 271.78 0)
 			(hide yes)
 			(show_name no)
@@ -102518,6 +105312,28 @@
 				)
 			)
 		)
+		(property "Assembly" ""
+			(at 160.02 300.99 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "JCBPCB#" ""
+			(at 160.02 300.99 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
 		(pin "8"
 			(uuid "bec48a07-3f70-478e-8144-bd0b8a43dd83")
 		)
@@ -102935,6 +105751,28 @@
 			)
 		)
 		(property "Purchase-URL" ""
+			(at 339.09 57.15 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Assembly" ""
+			(at 339.09 57.15 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "JCBPCB#" ""
 			(at 339.09 57.15 0)
 			(hide yes)
 			(show_name no)
@@ -103431,6 +106269,28 @@
 				)
 			)
 		)
+		(property "Assembly" ""
+			(at 297.18 252.73 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "JCBPCB#" ""
+			(at 297.18 252.73 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
 		(pin "2"
 			(uuid "7b862bbb-1519-4201-a58e-cb04fc1c58fa")
 		)
@@ -103766,6 +106626,28 @@
 			)
 		)
 		(property "Purchase-URL" ""
+			(at 336.55 151.13 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Assembly" ""
+			(at 336.55 151.13 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "JCBPCB#" ""
 			(at 336.55 151.13 0)
 			(hide yes)
 			(show_name no)
@@ -104255,6 +107137,28 @@
 			)
 		)
 		(property "Purchase-URL" ""
+			(at 179.07 359.41 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Assembly" ""
+			(at 179.07 359.41 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "JCBPCB#" ""
 			(at 179.07 359.41 0)
 			(hide yes)
 			(show_name no)
@@ -104785,6 +107689,28 @@
 				)
 			)
 		)
+		(property "Assembly" ""
+			(at 514.35 172.72 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "JCBPCB#" ""
+			(at 514.35 172.72 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
 		(pin "1"
 			(uuid "1f0b507a-f9fd-498c-94c8-cfe67c0ec388")
 		)
@@ -105297,6 +108223,28 @@
 			)
 		)
 		(property "Purchase-URL" ""
+			(at 127 309.88 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Assembly" ""
+			(at 127 309.88 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "JCBPCB#" ""
 			(at 127 309.88 0)
 			(hide yes)
 			(show_name no)
@@ -105906,6 +108854,28 @@
 				)
 			)
 		)
+		(property "Assembly" ""
+			(at 50.8 378.46 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "JCBPCB#" ""
+			(at 50.8 378.46 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
 		(pin "2"
 			(uuid "e5b50af7-ea54-40f9-9438-f687dfa9abb4")
 		)
@@ -106191,6 +109161,28 @@
 			)
 		)
 		(property "Purchase-URL" ""
+			(at 420.37 327.66 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Assembly" ""
+			(at 420.37 327.66 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "JCBPCB#" ""
 			(at 420.37 327.66 0)
 			(hide yes)
 			(show_name no)
@@ -106721,6 +109713,28 @@
 				)
 			)
 		)
+		(property "Assembly" ""
+			(at 311.15 171.45 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "JCBPCB#" ""
+			(at 311.15 171.45 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
 		(pin "1"
 			(uuid "0c8c65f1-c6bc-43c6-8aa9-1e133da3829f")
 		)
@@ -107230,6 +110244,28 @@
 				)
 			)
 		)
+		(property "Assembly" ""
+			(at 370.84 271.78 90)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "JCBPCB#" ""
+			(at 370.84 271.78 90)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
 		(pin "2"
 			(uuid "1714f1c7-aa79-4aba-9b43-8428d25795aa")
 		)
@@ -107606,6 +110642,28 @@
 				)
 			)
 		)
+		(property "Assembly" ""
+			(at 46.99 254 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "JCBPCB#" ""
+			(at 46.99 254 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
 		(pin "1"
 			(uuid "84afa02f-f9b6-45d3-86a2-de50e8dc81f4")
 		)
@@ -107952,7 +111010,7 @@
 				)
 			)
 		)
-		(property "LCSC" "C17415"
+		(property "LCSC" "C17414"
 			(at 60.96 350.52 0)
 			(hide yes)
 			(show_name no)
@@ -108195,6 +111253,28 @@
 			)
 		)
 		(property "Purchase-URL" ""
+			(at 60.96 350.52 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Assembly" ""
+			(at 60.96 350.52 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "JCBPCB#" ""
 			(at 60.96 350.52 0)
 			(hide yes)
 			(show_name no)
@@ -108691,6 +111771,28 @@
 				)
 			)
 		)
+		(property "Assembly" ""
+			(at 297.18 222.25 90)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "JCBPCB#" ""
+			(at 297.18 222.25 90)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
 		(pin "1"
 			(uuid "075e748c-9123-4551-8573-c05782f071ee")
 		)
@@ -108752,7 +111854,7 @@
 				(justify bottom)
 			)
 		)
-		(property "Datasheet" ""
+		(property "Datasheet" "https://www.lcsc.com/datasheet/C594232.pdf"
 			(at 318.77 363.22 0)
 			(hide yes)
 			(show_name no)
@@ -108763,7 +111865,7 @@
 				)
 			)
 		)
-		(property "Description" "Generic connector, single row, 01x05, script generated"
+		(property "Description" "CONN HEADER TH 4POS 2.5mm"
 			(at 318.77 363.22 0)
 			(hide yes)
 			(show_name no)
@@ -108774,18 +111876,7 @@
 				)
 			)
 		)
-		(property "LCSC " ""
-			(at 318.77 363.22 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Purchase-URL" ""
+		(property "LCSC " "C594232"
 			(at 318.77 363.22 0)
 			(hide yes)
 			(show_name no)
@@ -108818,121 +111909,7 @@
 				)
 			)
 		)
-		(property "Sim.Device" ""
-			(at 318.77 363.22 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "SNAPEDA_PN" ""
-			(at 318.77 363.22 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "PARTREV" "7/4/21"
-			(at 318.77 363.22 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify bottom)
-			)
-		)
-		(property "STANDARD" "Manufacturer Recommendations"
-			(at 318.77 363.22 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify bottom)
-			)
-		)
-		(property "MAXIMUM_PACKAGE_HEIGHT" "7.00 mm"
-			(at 318.77 363.22 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify bottom)
-			)
-		)
-		(property "MANUFACTURER" "JST"
-			(at 318.77 363.22 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify bottom)
-			)
-		)
-		(property "Current - Rectified" ""
-			(at 318.77 363.22 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Diode Configuration" ""
-			(at 318.77 363.22 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Reverse Leakage Current (Ir)" ""
-			(at 318.77 363.22 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Voltage - DC Reverse(Vr)" ""
-			(at 318.77 363.22 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Voltage - Forward(Vf@If)" ""
+		(property "LCSC" "C594232"
 			(at 318.77 363.22 0)
 			(hide yes)
 			(show_name no)
@@ -109284,6 +112261,28 @@
 			)
 		)
 		(property "Purchase-URL" ""
+			(at 344.17 151.13 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Assembly" ""
+			(at 344.17 151.13 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "JCBPCB#" ""
 			(at 344.17 151.13 0)
 			(hide yes)
 			(show_name no)
@@ -109672,6 +112671,28 @@
 				)
 			)
 		)
+		(property "Assembly" ""
+			(at 46.99 262.89 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "JCBPCB#" ""
+			(at 46.99 262.89 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
 		(pin "1"
 			(uuid "117e9796-aec0-4c18-abff-8567914251a4")
 		)
@@ -109762,6 +112783,39 @@
 			)
 		)
 		(property "Purchase-URL" ""
+			(at 438.15 344.17 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Assembly" ""
+			(at 438.15 344.17 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "JCBPCB#" ""
+			(at 438.15 344.17 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "LCSC" "C4363888"
 			(at 438.15 344.17 0)
 			(hide yes)
 			(show_name no)
@@ -110376,6 +113430,28 @@
 				)
 			)
 		)
+		(property "Assembly" ""
+			(at 483.87 214.63 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "JCBPCB#" ""
+			(at 483.87 214.63 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
 		(pin "1"
 			(uuid "9ed09ba0-d375-4d19-bd08-68c8ae3756e0")
 		)
@@ -110623,6 +113699,28 @@
 			)
 		)
 		(property "Temperature Coefficient" "X7R"
+			(at 405.13 326.39 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Assembly" ""
+			(at 405.13 326.39 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "JCBPCB#" ""
 			(at 405.13 326.39 0)
 			(hide yes)
 			(show_name no)
@@ -111100,6 +114198,28 @@
 			)
 		)
 		(property "Purchase-URL" ""
+			(at 387.35 220.98 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Assembly" ""
+			(at 387.35 220.98 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "JCBPCB#" ""
 			(at 387.35 220.98 0)
 			(hide yes)
 			(show_name no)
@@ -111709,6 +114829,28 @@
 				)
 			)
 		)
+		(property "Assembly" ""
+			(at 78.74 378.46 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "JCBPCB#" ""
+			(at 78.74 378.46 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
 		(pin "2"
 			(uuid "7fcea675-5556-4787-abeb-8d7112f1f818")
 		)
@@ -111807,6 +114949,28 @@
 			)
 		)
 		(property "Purchase-URL" ""
+			(at 172.72 168.91 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Assembly" ""
+			(at 172.72 168.91 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "JCBPCB#" ""
 			(at 172.72 168.91 0)
 			(hide yes)
 			(show_name no)
@@ -112141,6 +115305,28 @@
 			)
 		)
 		(property "Purchase-URL" ""
+			(at 288.29 80.01 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Assembly" ""
+			(at 288.29 80.01 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "JCBPCB#" ""
 			(at 288.29 80.01 0)
 			(hide yes)
 			(show_name no)
@@ -112586,6 +115772,28 @@
 				)
 			)
 		)
+		(property "Assembly" ""
+			(at 207.01 74.93 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "JCBPCB#" ""
+			(at 207.01 74.93 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
 		(pin "1"
 			(uuid "43e63f3d-25b5-40e6-997b-ebeceb50cc8e")
 		)
@@ -112865,6 +116073,28 @@
 			)
 		)
 		(property "Purchase-URL" ""
+			(at 464.82 336.55 90)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Assembly" ""
+			(at 464.82 336.55 90)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "JCBPCB#" ""
 			(at 464.82 336.55 90)
 			(hide yes)
 			(show_name no)
@@ -113300,6 +116530,28 @@
 			)
 		)
 		(property "Purchase-URL" ""
+			(at 320.04 71.12 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Assembly" ""
+			(at 320.04 71.12 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "JCBPCB#" ""
 			(at 320.04 71.12 0)
 			(hide yes)
 			(show_name no)
@@ -113864,6 +117116,28 @@
 				)
 			)
 		)
+		(property "Assembly" ""
+			(at 449.58 185.42 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "JCBPCB#" ""
+			(at 449.58 185.42 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
 		(pin "1"
 			(uuid "b74bedc8-3ed1-4a0f-bd14-a58194d16435")
 		)
@@ -114384,6 +117658,28 @@
 				)
 			)
 		)
+		(property "Assembly" ""
+			(at 181.61 88.9 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "JCBPCB#" ""
+			(at 181.61 88.9 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
 		(pin "2"
 			(uuid "79231c0a-b0dd-4991-9175-b717c419b96c")
 		)
@@ -114763,6 +118059,28 @@
 				)
 			)
 		)
+		(property "Assembly" ""
+			(at 438.15 78.74 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "JCBPCB#" ""
+			(at 438.15 78.74 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
 		(pin "2"
 			(uuid "10426219-8d14-4d9b-b755-f0a349db43f5")
 		)
@@ -115099,6 +118417,28 @@
 			)
 		)
 		(property "Purchase-URL" ""
+			(at 154.94 401.32 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Assembly" ""
+			(at 154.94 401.32 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "JCBPCB#" ""
 			(at 154.94 401.32 0)
 			(hide yes)
 			(show_name no)
@@ -115537,6 +118877,28 @@
 				)
 			)
 		)
+		(property "Assembly" ""
+			(at 280.67 369.57 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "JCBPCB#" ""
+			(at 280.67 369.57 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
 		(pin "1"
 			(uuid "a602bf97-b0af-4c11-b7f2-d6d2decd5399")
 		)
@@ -115883,6 +119245,28 @@
 				)
 			)
 		)
+		(property "Assembly" ""
+			(at 104.14 209.55 90)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "JCBPCB#" ""
+			(at 104.14 209.55 90)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
 		(pin "2"
 			(uuid "ad8dc394-b77f-401d-92c7-5ab7ae2d7422")
 		)
@@ -116151,7 +119535,7 @@
 				)
 			)
 		)
-		(property "LCSC" "C17415"
+		(property "LCSC" "C17414"
 			(at 88.9 350.52 0)
 			(hide yes)
 			(show_name no)
@@ -116394,6 +119778,28 @@
 			)
 		)
 		(property "Purchase-URL" ""
+			(at 88.9 350.52 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Assembly" ""
+			(at 88.9 350.52 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "JCBPCB#" ""
 			(at 88.9 350.52 0)
 			(hide yes)
 			(show_name no)
@@ -116750,6 +120156,28 @@
 				)
 			)
 		)
+		(property "Assembly" ""
+			(at 220.98 226.06 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "JCBPCB#" ""
+			(at 220.98 226.06 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
 		(pin "3"
 			(uuid "b134e35b-66a0-4a04-a82f-d03ddd2db5e2")
 		)
@@ -117035,6 +120463,28 @@
 			)
 		)
 		(property "Purchase-URL" ""
+			(at 350.52 295.91 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Assembly" ""
+			(at 350.52 295.91 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "JCBPCB#" ""
 			(at 350.52 295.91 0)
 			(hide yes)
 			(show_name no)
@@ -117599,6 +121049,28 @@
 				)
 			)
 		)
+		(property "Assembly" ""
+			(at 72.39 76.2 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "JCBPCB#" ""
+			(at 72.39 76.2 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
 		(pin "1"
 			(uuid "c424d7d9-2249-4a62-ba2d-943fdb725995")
 		)
@@ -118107,6 +121579,28 @@
 				)
 			)
 		)
+		(property "Assembly" ""
+			(at 172.72 179.07 90)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "JCBPCB#" ""
+			(at 172.72 179.07 90)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
 		(pin "2"
 			(uuid "59e96b21-9677-423e-9ec3-a67ecdba32c5")
 		)
@@ -118407,7 +121901,7 @@
 				)
 			)
 		)
-		(property "LCSC" "C17415"
+		(property "LCSC" "C17414"
 			(at 481.33 187.96 90)
 			(hide yes)
 			(show_name no)
@@ -118650,6 +122144,28 @@
 			)
 		)
 		(property "Purchase-URL" ""
+			(at 481.33 187.96 90)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Assembly" ""
+			(at 481.33 187.96 90)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "JCBPCB#" ""
 			(at 481.33 187.96 90)
 			(hide yes)
 			(show_name no)
@@ -119028,6 +122544,28 @@
 			)
 		)
 		(property "Purchase-URL" ""
+			(at 170.18 88.9 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Assembly" ""
+			(at 170.18 88.9 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "JCBPCB#" ""
 			(at 170.18 88.9 0)
 			(hide yes)
 			(show_name no)
@@ -119527,6 +123065,28 @@
 			)
 		)
 		(property "Purchase-URL" ""
+			(at 344.17 194.31 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Assembly" ""
+			(at 344.17 194.31 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "JCBPCB#" ""
 			(at 344.17 194.31 0)
 			(hide yes)
 			(show_name no)
@@ -120090,6 +123650,28 @@
 				)
 			)
 		)
+		(property "Assembly" ""
+			(at 102.87 186.69 90)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "JCBPCB#" ""
+			(at 102.87 186.69 90)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
 		(pin "1"
 			(uuid "3ef039bb-ecc7-451a-ac6f-596c2c757beb")
 		)
@@ -120576,6 +124158,28 @@
 				)
 			)
 		)
+		(property "Assembly" ""
+			(at 297.18 232.41 90)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "JCBPCB#" ""
+			(at 297.18 232.41 90)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
 		(pin "1"
 			(uuid "4e9f41d7-780e-4fc3-9741-323470535a7a")
 		)
@@ -120670,6 +124274,28 @@
 			)
 		)
 		(property "Purchase-URL" ""
+			(at 332.74 73.66 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Assembly" ""
+			(at 332.74 73.66 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "JCBPCB#" ""
 			(at 332.74 73.66 0)
 			(hide yes)
 			(show_name no)
@@ -121157,6 +124783,28 @@
 				)
 			)
 		)
+		(property "Assembly" ""
+			(at 170.18 185.42 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "JCBPCB#" ""
+			(at 170.18 185.42 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
 		(pin "2"
 			(uuid "589f55ed-b225-4c65-9e0e-c8f475e3f070")
 		)
@@ -121251,6 +124899,28 @@
 			)
 		)
 		(property "Purchase-URL" ""
+			(at 425.45 76.2 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Assembly" ""
+			(at 425.45 76.2 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "JCBPCB#" ""
 			(at 425.45 76.2 0)
 			(hide yes)
 			(show_name no)
@@ -121728,6 +125398,28 @@
 			)
 		)
 		(property "Purchase-URL" ""
+			(at 102.87 78.74 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Assembly" ""
+			(at 102.87 78.74 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "JCBPCB#" ""
 			(at 102.87 78.74 0)
 			(hide yes)
 			(show_name no)
@@ -122302,6 +125994,28 @@
 				)
 			)
 		)
+		(property "Assembly" ""
+			(at 478.79 71.12 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "JCBPCB#" ""
+			(at 478.79 71.12 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
 		(pin "2"
 			(uuid "0566e2c8-79aa-476a-8208-23a7f35ccecd")
 		)
@@ -122801,6 +126515,28 @@
 			)
 		)
 		(property "Purchase-URL" ""
+			(at 345.44 90.17 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Assembly" ""
+			(at 345.44 90.17 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "JCBPCB#" ""
 			(at 345.44 90.17 0)
 			(hide yes)
 			(show_name no)
@@ -123364,6 +127100,28 @@
 				)
 			)
 		)
+		(property "Assembly" ""
+			(at 499.11 187.96 90)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "JCBPCB#" ""
+			(at 499.11 187.96 90)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
 		(pin "2"
 			(uuid "82773466-5923-4523-b07e-ea68d50a75da")
 		)
@@ -123456,6 +127214,28 @@
 			)
 		)
 		(property "Purchase-URL" ""
+			(at 172.72 165.1 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Assembly" ""
+			(at 172.72 165.1 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "JCBPCB#" ""
 			(at 172.72 165.1 0)
 			(hide yes)
 			(show_name no)
@@ -123745,6 +127525,28 @@
 			)
 		)
 		(property "Purchase-URL" ""
+			(at 453.39 327.66 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Assembly" ""
+			(at 453.39 327.66 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "JCBPCB#" ""
 			(at 453.39 327.66 0)
 			(hide yes)
 			(show_name no)
@@ -124124,6 +127926,28 @@
 			)
 		)
 		(property "Purchase-URL" ""
+			(at 110.49 158.75 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Assembly" ""
+			(at 110.49 158.75 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "JCBPCB#" ""
 			(at 110.49 158.75 0)
 			(hide yes)
 			(show_name no)
@@ -124804,6 +128628,28 @@
 				)
 			)
 		)
+		(property "Assembly" ""
+			(at 491.49 187.96 90)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "JCBPCB#" ""
+			(at 491.49 187.96 90)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
 		(pin "2"
 			(uuid "71f32c96-de28-4a47-a93a-53d161d3e1fb")
 		)
@@ -125138,6 +128984,28 @@
 				)
 			)
 		)
+		(property "Assembly" ""
+			(at 121.92 80.01 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "JCBPCB#" ""
+			(at 121.92 80.01 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
 		(pin "2"
 			(uuid "29635203-4126-4f6f-a539-1e9fc788a83c")
 		)
@@ -125198,7 +129066,7 @@
 				(justify bottom)
 			)
 		)
-		(property "Datasheet" ""
+		(property "Datasheet" "https://www.lcsc.com/datasheet/C5199798.pdf"
 			(at 495.3 208.28 0)
 			(hide yes)
 			(show_name no)
@@ -125209,7 +129077,7 @@
 				)
 			)
 		)
-		(property "Description" ""
+		(property "Description" "TESTPOINT, COMPACT, SURFACE MOUNT"
 			(at 495.3 208.28 0)
 			(hide yes)
 			(show_name no)
@@ -125522,6 +129390,39 @@
 				)
 			)
 		)
+		(property "Assembly" ""
+			(at 495.3 208.28 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "JCBPCB#" ""
+			(at 495.3 208.28 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "LCSC" "C5199798"
+			(at 495.3 208.28 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
 		(pin "1"
 			(uuid "19639a03-cc7d-4b83-8836-0ffdf10c5535")
 		)
@@ -125613,6 +129514,28 @@
 			)
 		)
 		(property "Purchase-URL" ""
+			(at 440.69 60.96 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Assembly" ""
+			(at 440.69 60.96 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "JCBPCB#" ""
 			(at 440.69 60.96 0)
 			(hide yes)
 			(show_name no)
@@ -126111,6 +130034,28 @@
 				)
 			)
 		)
+		(property "Assembly" ""
+			(at 491.49 214.63 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "JCBPCB#" ""
+			(at 491.49 214.63 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
 		(pin "1"
 			(uuid "ede4b3b1-94ba-4afe-87a6-9a473319063b")
 		)
@@ -126536,6 +130481,28 @@
 			)
 		)
 		(property "Purchase-URL" ""
+			(at 207.01 71.12 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Assembly" ""
+			(at 207.01 71.12 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "JCBPCB#" ""
 			(at 207.01 71.12 0)
 			(hide yes)
 			(show_name no)
@@ -127035,6 +131002,28 @@
 				)
 			)
 		)
+		(property "Assembly" ""
+			(at 361.95 203.2 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "JCBPCB#" ""
+			(at 361.95 203.2 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
 		(pin "1"
 			(uuid "ef99a56c-bbc3-4be4-ae88-97e2415c358b")
 		)
@@ -127402,6 +131391,28 @@
 			)
 		)
 		(property "Purchase-URL" ""
+			(at 490.22 168.91 90)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Assembly" ""
+			(at 490.22 168.91 90)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "JCBPCB#" ""
 			(at 490.22 168.91 90)
 			(hide yes)
 			(show_name no)
@@ -127910,6 +131921,28 @@
 			)
 		)
 		(property "Purchase-URL" ""
+			(at 424.18 163.83 90)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Assembly" ""
+			(at 424.18 163.83 90)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "JCBPCB#" ""
 			(at 424.18 163.83 90)
 			(hide yes)
 			(show_name no)
@@ -128429,6 +132462,28 @@
 				)
 			)
 		)
+		(property "Assembly" ""
+			(at 511.81 158.75 90)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "JCBPCB#" ""
+			(at 511.81 158.75 90)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
 		(pin "1"
 			(uuid "e8f51236-d3e5-4ba4-8d4f-2f01ad8e89cd")
 		)
@@ -128697,7 +132752,7 @@
 				)
 			)
 		)
-		(property "LCSC" "C17415"
+		(property "LCSC" "C17414"
 			(at 336.55 167.64 0)
 			(hide yes)
 			(show_name no)
@@ -128940,6 +132995,28 @@
 			)
 		)
 		(property "Purchase-URL" ""
+			(at 336.55 167.64 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Assembly" ""
+			(at 336.55 167.64 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "JCBPCB#" ""
 			(at 336.55 167.64 0)
 			(hide yes)
 			(show_name no)
@@ -129231,6 +133308,28 @@
 			)
 		)
 		(property "Purchase-URL" ""
+			(at 60.96 80.01 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Assembly" ""
+			(at 60.96 80.01 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "JCBPCB#" ""
 			(at 60.96 80.01 0)
 			(hide yes)
 			(show_name no)
@@ -129686,6 +133785,28 @@
 			)
 		)
 		(property "Purchase-URL" ""
+			(at 487.68 78.74 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Assembly" ""
+			(at 487.68 78.74 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "JCBPCB#" ""
 			(at 487.68 78.74 0)
 			(hide yes)
 			(show_name no)
@@ -130205,6 +134326,28 @@
 				)
 			)
 		)
+		(property "Assembly" ""
+			(at 370.84 248.92 90)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "JCBPCB#" ""
+			(at 370.84 248.92 90)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
 		(pin "2"
 			(uuid "a607b1cc-6ac4-4acd-8ed0-4a1fe245d77d")
 		)
@@ -130274,7 +134417,7 @@
 				)
 			)
 		)
-		(property "Description" "150V 125mW ±1% 32.4kΩ 0805 thick-film chip resistor"
+		(property "Description" "RES 32.4kΩ ±1% 125mW 0805"
 			(at 96.52 209.55 0)
 			(hide yes)
 			(show_name no)
@@ -130285,7 +134428,7 @@
 				)
 			)
 		)
-		(property "LCSC" ""
+		(property "LCSC" "C2930193"
 			(at 96.52 209.55 0)
 			(hide yes)
 			(show_name no)
@@ -130682,6 +134825,28 @@
 			)
 		)
 		(property "Purchase-URL" ""
+			(at 96.52 209.55 90)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Assembly" ""
+			(at 96.52 209.55 90)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "JCBPCB#" ""
 			(at 96.52 209.55 90)
 			(hide yes)
 			(show_name no)
@@ -131214,6 +135379,28 @@
 				)
 			)
 		)
+		(property "Assembly" ""
+			(at 127 321.31 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "JCBPCB#" ""
+			(at 127 321.31 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
 		(pin "1"
 			(uuid "108631f4-0bb2-48ef-ad03-01c23bfde1f8")
 		)
@@ -131308,6 +135495,28 @@
 			)
 		)
 		(property "Purchase-URL" ""
+			(at 93.98 73.66 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Assembly" ""
+			(at 93.98 73.66 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "JCBPCB#" ""
 			(at 93.98 73.66 0)
 			(hide yes)
 			(show_name no)
@@ -131918,6 +136127,28 @@
 				)
 			)
 		)
+		(property "Assembly" ""
+			(at 88.9 91.44 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "JCBPCB#" ""
+			(at 88.9 91.44 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
 		(pin "1"
 			(uuid "2adb4bad-9eb0-4c6e-a319-3dfbd0512bd8")
 		)
@@ -132428,6 +136659,28 @@
 			)
 		)
 		(property "Purchase-URL" ""
+			(at 181.61 81.28 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Assembly" ""
+			(at 181.61 81.28 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "JCBPCB#" ""
 			(at 181.61 81.28 0)
 			(hide yes)
 			(show_name no)
@@ -132960,6 +137213,28 @@
 				)
 			)
 		)
+		(property "Assembly" ""
+			(at 297.18 80.01 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "JCBPCB#" ""
+			(at 297.18 80.01 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
 		(pin "2"
 			(uuid "3d1b8cb5-8785-4830-a03b-c7b2c3a5ae4a")
 		)
@@ -133020,7 +137295,7 @@
 				(justify bottom)
 			)
 		)
-		(property "Datasheet" ""
+		(property "Datasheet" "https://www.lcsc.com/datasheet/C5199798.pdf"
 			(at 516.89 168.91 0)
 			(hide yes)
 			(show_name no)
@@ -133031,7 +137306,7 @@
 				)
 			)
 		)
-		(property "Description" ""
+		(property "Description" "TESTPOINT, COMPACT, SURFACE MOUNT"
 			(at 516.89 168.91 0)
 			(hide yes)
 			(show_name no)
@@ -133334,6 +137609,39 @@
 			)
 		)
 		(property "Purchase-URL" ""
+			(at 516.89 168.91 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Assembly" ""
+			(at 516.89 168.91 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "JCBPCB#" ""
+			(at 516.89 168.91 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "LCSC" "C5199798"
 			(at 516.89 168.91 0)
 			(hide yes)
 			(show_name no)
@@ -133840,6 +138148,28 @@
 			)
 		)
 		(property "Purchase-URL" ""
+			(at 424.18 208.28 90)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Assembly" ""
+			(at 424.18 208.28 90)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "JCBPCB#" ""
 			(at 424.18 208.28 90)
 			(hide yes)
 			(show_name no)
@@ -134375,6 +138705,28 @@
 			)
 		)
 		(property "Purchase-URL" ""
+			(at 293.37 227.33 90)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Assembly" ""
+			(at 293.37 227.33 90)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "JCBPCB#" ""
 			(at 293.37 227.33 90)
 			(hide yes)
 			(show_name no)
@@ -134949,6 +139301,28 @@
 				)
 			)
 		)
+		(property "Assembly" ""
+			(at 93.98 279.4 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "JCBPCB#" ""
+			(at 93.98 279.4 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
 		(pin "1"
 			(uuid "a3bde30b-36bf-4152-8242-6e67776480d1")
 		)
@@ -135282,6 +139656,28 @@
 				)
 			)
 		)
+		(property "Assembly" ""
+			(at 464.82 210.82 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "JCBPCB#" ""
+			(at 464.82 210.82 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
 		(pin "2"
 			(uuid "ec231f17-72aa-49e3-a057-898dc0b34090")
 		)
@@ -135576,6 +139972,28 @@
 			)
 		)
 		(property "Purchase-URL" ""
+			(at 414.02 327.66 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Assembly" ""
+			(at 414.02 327.66 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "JCBPCB#" ""
 			(at 414.02 327.66 0)
 			(hide yes)
 			(show_name no)
@@ -136011,6 +140429,28 @@
 			)
 		)
 		(property "Purchase-URL" ""
+			(at 320.04 67.31 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Assembly" ""
+			(at 320.04 67.31 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "JCBPCB#" ""
 			(at 320.04 67.31 0)
 			(hide yes)
 			(show_name no)
@@ -136499,6 +140939,28 @@
 				)
 			)
 		)
+		(property "Assembly" ""
+			(at 477.52 214.63 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "JCBPCB#" ""
+			(at 477.52 214.63 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
 		(pin "1"
 			(uuid "2ec33698-29eb-4981-81a9-e6aca37b87d6")
 		)
@@ -136835,6 +141297,28 @@
 			)
 		)
 		(property "Purchase-URL" ""
+			(at 154.94 392.43 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Assembly" ""
+			(at 154.94 392.43 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "JCBPCB#" ""
 			(at 154.94 392.43 0)
 			(hide yes)
 			(show_name no)
@@ -137349,6 +141833,28 @@
 				)
 			)
 		)
+		(property "Assembly" ""
+			(at 397.51 74.93 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "JCBPCB#" ""
+			(at 397.51 74.93 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
 		(pin "1"
 			(uuid "2635b40d-5bb9-44b0-8e4a-5647583db5fa")
 		)
@@ -137828,6 +142334,28 @@
 			)
 		)
 		(property "Purchase-URL" ""
+			(at 156.21 359.41 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Assembly" ""
+			(at 156.21 359.41 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "JCBPCB#" ""
 			(at 156.21 359.41 0)
 			(hide yes)
 			(show_name no)
@@ -138359,6 +142887,28 @@
 				)
 			)
 		)
+		(property "Assembly" ""
+			(at 372.11 62.23 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "JCBPCB#" ""
+			(at 372.11 62.23 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
 		(pin "1"
 			(uuid "3c323e5b-d9ec-4702-8209-3f57d2dfd774")
 		)
@@ -138848,6 +143398,28 @@
 				)
 			)
 		)
+		(property "Assembly" ""
+			(at 83.82 180.34 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "JCBPCB#" ""
+			(at 83.82 180.34 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
 		(pin "2"
 			(uuid "f1fb3a5e-8710-4c80-a559-1d4516ea372c")
 		)
@@ -139172,6 +143744,28 @@
 			)
 		)
 		(property "Purchase-URL" ""
+			(at 265.43 74.93 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Assembly" ""
+			(at 265.43 74.93 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "JCBPCB#" ""
 			(at 265.43 74.93 0)
 			(hide yes)
 			(show_name no)
@@ -139703,6 +144297,28 @@
 				)
 			)
 		)
+		(property "Assembly" ""
+			(at 312.42 80.01 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "JCBPCB#" ""
+			(at 312.42 80.01 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
 		(pin "2"
 			(uuid "c21dc388-c37f-4c90-9394-eb9626353e07")
 		)
@@ -139970,7 +144586,7 @@
 				)
 			)
 		)
-		(property "LCSC" "C17415"
+		(property "LCSC" "C17414"
 			(at 377.19 181.61 0)
 			(hide yes)
 			(show_name no)
@@ -140223,6 +144839,28 @@
 				)
 			)
 		)
+		(property "Assembly" ""
+			(at 377.19 181.61 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "JCBPCB#" ""
+			(at 377.19 181.61 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
 		(pin "2"
 			(uuid "70c7b93b-efa2-42fc-9f69-1af6f61d1672")
 		)
@@ -140317,6 +144955,28 @@
 			)
 		)
 		(property "Purchase-URL" ""
+			(at 207.01 77.47 90)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Assembly" ""
+			(at 207.01 77.47 90)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "JCBPCB#" ""
 			(at 207.01 77.47 90)
 			(hide yes)
 			(show_name no)
@@ -140870,6 +145530,28 @@
 			)
 		)
 		(property "Purchase-URL" ""
+			(at 495.3 173.99 90)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Assembly" ""
+			(at 495.3 173.99 90)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "JCBPCB#" ""
 			(at 495.3 173.99 90)
 			(hide yes)
 			(show_name no)
@@ -141434,6 +146116,28 @@
 				)
 			)
 		)
+		(property "Assembly" ""
+			(at 407.67 63.5 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "JCBPCB#" ""
+			(at 407.67 63.5 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
 		(pin "1"
 			(uuid "1cd1f20b-a439-43d8-8d64-d4544e63faba")
 		)
@@ -141988,6 +146692,28 @@
 				)
 			)
 		)
+		(property "Assembly" ""
+			(at 439.42 172.72 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "JCBPCB#" ""
+			(at 439.42 172.72 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
 		(pin "2"
 			(uuid "094b272c-8d4d-49bb-80f1-6d070122fa09")
 		)
@@ -142324,6 +147050,28 @@
 			)
 		)
 		(property "Purchase-URL" ""
+			(at 392.43 166.37 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Assembly" ""
+			(at 392.43 166.37 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "JCBPCB#" ""
 			(at 392.43 166.37 0)
 			(hide yes)
 			(show_name no)
@@ -142679,6 +147427,28 @@
 			)
 		)
 		(property "Purchase-URL" ""
+			(at 265.43 86.36 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Assembly" ""
+			(at 265.43 86.36 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "JCBPCB#" ""
 			(at 265.43 86.36 0)
 			(hide yes)
 			(show_name no)
@@ -143200,6 +147970,28 @@
 			)
 		)
 		(property "Purchase-URL" ""
+			(at 336.55 194.31 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Assembly" ""
+			(at 336.55 194.31 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "JCBPCB#" ""
 			(at 336.55 194.31 0)
 			(hide yes)
 			(show_name no)

@@ -1309,6 +1309,18 @@
           "label": "PN",
           "name": "PN",
           "show": false
+        },
+        {
+          "group_by": false,
+          "label": "Assembly",
+          "name": "Assembly",
+          "show": false
+        },
+        {
+          "group_by": false,
+          "label": "JCBPCB#",
+          "name": "JCBPCB#",
+          "show": false
         }
       ],
       "filter_string": "",
