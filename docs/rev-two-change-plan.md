@@ -18,13 +18,25 @@ is disabled in the saved project; enabling it on a separate copy reports
 14 isolated-copper warnings. Zero unconnected items does not establish
 current capacity, signal integrity, or correct physical routing.
 
+**C62/C63/J8 reconciliation:** Phil chose to retain J8's existing 2.54 mm
+four-pin header rather than change the routed footprint to the 2.5 mm JST
+XH. The schematic now selects the existing footprints and matching values
+for J8 and the 100 nF C62/C63 capacitors. The obsolete JST sourcing and
+datasheet fields on J8 were cleared; select a compatible 2.54 mm header and
+matching cable for the BOM before ordering. The schematic's embedded J8
+symbol is still named `B4B-XH-A`, but its footprint and sourcing fields no
+longer specify that connector; its four pin assignments are unchanged.
+Review J8's mechanical fit and the capacitor land patterns against the
+actual selected parts. The three empty `LCSC ` fields were removed; the
+other sourcing-field warnings remain a separate BOM task. No PCB routing
+was altered in this reconciliation.
+
 Work through these steps before preparing an order:
 
-1. **Reconcile CAD and BOM.** Review C62, C63 and J8: their PCB values
-   and footprints differ from their schematic assignments. Verify the
-   intended parts, pinouts and physical land patterns before changing
-   either view; in particular, confirm J8's intended connector and BMS
-   pin mapping. Among 199 field-parity warnings, 179 concern a missing
+1. **Reconcile CAD and BOM.** Confirm the selected C62/C63 parts fit the
+   retained footprints and select J8's exact 2.54 mm header and mating
+   connector. Verify J8's existing BMS pin mapping before use. At the
+   checkpoint, among 199 field-parity warnings, 179 concerned a missing
    `LCSC ` field, and 20 concern differing `LCSC` fields: R6, R19, R34,
    R36, R47, R48, R53-R59, R82 and R86 have PCB `C17415` versus
    schematic `C17414`; R46, R76, R77, F1 and F2 have a schematic LCSC
