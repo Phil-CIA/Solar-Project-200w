@@ -1,6 +1,79 @@
 # Rev2 change plan
 
-Planning checkpoint: 2026-11-09; current-sense status updated 2026-11-16; issue #33 interface/recovery status updated 2026-11-17. Proposed work, not authorization to apply every option below. The Rev2 schematic and PCB have since changed; the board is not yet fully routed or qualified.
+Planning checkpoint: 2026-11-09; current-sense status updated 2026-11-16; issue #33 interface/recovery status updated 2026-11-17. Proposed work, not authorization to apply every option below. The Rev2 schematic and PCB have since changed; routing is under review and the board is not qualified.
+
+## Prototype order-readiness review - 2026-11-23
+
+**Status: not ready to order.** This review uses the saved CAD checkpoint
+`a16ab6b`, merged to main as `206b7c9`. It is an automated CAD and
+document review, not a complete visual, electrical, thermal, BOM or DFM
+approval. The earlier placement and pre-route handoffs below are historical
+and their counts and unrouted statements do not describe this checkpoint.
+
+The board is now routed as far as KiCad connectivity is concerned: KiCad
+10.0.6, with zones refilled for the check but not saved, reports **zero
+unconnected items** and five physical warnings. There are also 206
+schematic-parity warnings and 246 ERC warnings. Isolated-copper reporting
+is disabled in the saved project; enabling it on a separate copy reports
+14 isolated-copper warnings. Zero unconnected items does not establish
+current capacity, signal integrity, or correct physical routing.
+
+Work through these steps before preparing an order:
+
+1. **Reconcile CAD and BOM.** Review C62, C63 and J8: their PCB values
+   and footprints differ from their schematic assignments. Verify the
+   intended parts, pinouts and physical land patterns before changing
+   either view; in particular, confirm J8's intended connector and BMS
+   pin mapping. Among 199 field-parity warnings, 179 concern a missing
+   `LCSC ` field, and 20 concern differing `LCSC` fields: R6, R19, R34,
+   R36, R47, R48, R53-R59, R82 and R86 have PCB `C17415` versus
+   schematic `C17414`; R46, R76, R77, F1 and F2 have a schematic LCSC
+   number but none on the PCB. Reconcile sourcing against actual part
+   specifications rather than copying numbers blindly. The remaining
+   parity warning is J9's intentionally omitted key pad 7.
+2. **Review zone islands and power paths.** Enable isolated-copper
+   reporting for the review, refill, and inspect each island on its actual
+   layer; connect it to the correct net where needed or remove it where
+   unused. Nine of the 14 warnings are in zone `BATT +_1`, which is
+   assigned to `PWR_NEG`; confirm that assignment and rename the zone if
+   the misleading name is unintended. Inspect the remaining `PWR_NEG`,
+   `PV_IN_POS`, `SW_2` and U4 switching-net islands. Do not blanket-connect
+   switching-node copper or remove copper without reviewing its purpose.
+   Check power-zone continuity, necks, pad/thermal connections, layer
+   transitions and via current capacity against the intended current and
+   copper weight. The saved PCB has 0.15-0.20 mm tracks on `PV_IN_POS`
+   and 0.20 mm tracks on `V_out`; those tracks alone do not establish the
+   current path or its capacity, since zones may also carry current.
+3. **Review critical routing and hardware.** Inspect LM51772 input/output
+   high-current loops, switch-node area, gate-drive and return paths, and
+   independent Kelvin pickups to R22/R75 and R78/R79. Check D5 polarity
+   and connections, feedback-jumper defaults, startup/configuration
+   straps, ADC power-off injection/backfeed, and the selected component
+   voltage/current/thermal ratings. The nominal ISET limit is not a
+   guaranteed 12 A shutdown and `FAULT_OCP` is an MCU signal. Verify any
+   unresolved design question capable of changing the board before order;
+   powered protection and compensation qualification remain bring-up work.
+4. **Resolve remaining CAD and mechanical findings.** Review the five
+   physical warnings: U2/U8 differ from their library footprints, U5 has a
+   silkscreen overlap, and U6 silkscreen is clipped at pad 1. ERC reports
+   213 field-name whitespace warnings (`LCSC `), 32 pin-type warnings and
+   one symbol-library mismatch; clean up or explicitly review them. Check
+   INA241 local 0.15 mm clearance overrides against the selected fab's
+   capabilities; also inspect C3/C18 placement, connector mating and
+   access, ESP antenna clearance, test/rework access and component polarity.
+5. **Finalize the prototype order package.** Verify manufacturer parts,
+   footprints, sourcing, DNPs, jumper defaults and assembly instructions;
+   confirm board outline, four-layer stackup, copper weight, thickness,
+   drills and fab capabilities with the chosen manufacturer. Rerun
+   ERC/DRC/parity with deliberate settings and review all remaining
+   warnings. Generate fresh Rev2 fabrication outputs and inspect the
+   Gerbers, drills and assembly/BOM against the checked CAD before ordering.
+
+After assembly, independently verify SWD/programming, rail sequencing,
+converter startup and protection, buck/boost transients, calibration and
+thermal behavior before rated-power use. F1 remains accepted by Phil's
+disposition (DEC-076); an exact BMS model is not a prototype-order blocker
+(DEC-077). Neither decision claims powered or field qualification.
 
 ## PCB-order walkthrough - 2026-11-20
 
