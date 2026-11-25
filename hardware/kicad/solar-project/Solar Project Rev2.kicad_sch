@@ -814,7 +814,7 @@
 					)
 				)
 			)
-			(property "Footprint" "1My_Parts_ Connectors:JST_B4B-XH-A"
+			(property "Footprint" "Connector_PinHeader_2.54mm:PinHeader_1x04_P2.54mm_Vertical"
 				(at 0 0 0)
 				(show_name no)
 				(do_not_autoplace no)
@@ -53768,7 +53768,7 @@
 				(justify left)
 			)
 		)
-		(property "Footprint" "PCM_JLCPCB:C_0805"
+		(property "Footprint" "Capacitor_SMD:C_0805_2012Metric"
 			(at 466.852 326.39 90)
 			(hide yes)
 			(show_name no)
@@ -111842,7 +111842,7 @@
 				(justify left)
 			)
 		)
-		(property "Footprint" "1My_Parts_ Connectors:JST_B4B-XH-A"
+		(property "Footprint" "Connector_PinHeader_2.54mm:PinHeader_1x04_P2.54mm_Vertical"
 			(at 318.77 363.22 0)
 			(hide yes)
 			(show_name no)
@@ -111854,7 +111854,7 @@
 				(justify bottom)
 			)
 		)
-		(property "Datasheet" "https://www.lcsc.com/datasheet/C594232.pdf"
+		(property "Datasheet" ""
 			(at 318.77 363.22 0)
 			(hide yes)
 			(show_name no)
@@ -111865,7 +111865,7 @@
 				)
 			)
 		)
-		(property "Description" "CONN HEADER TH 4POS 2.5mm"
+		(property "Description" "Generic 1x4 vertical through-hole pin header, 2.54mm pitch"
 			(at 318.77 363.22 0)
 			(hide yes)
 			(show_name no)
@@ -111876,7 +111876,7 @@
 				)
 			)
 		)
-		(property "LCSC " "C594232"
+		(property "LCSC " ""
 			(at 318.77 363.22 0)
 			(hide yes)
 			(show_name no)
@@ -111909,7 +111909,7 @@
 				)
 			)
 		)
-		(property "LCSC" "C594232"
+		(property "LCSC" ""
 			(at 318.77 363.22 0)
 			(hide yes)
 			(show_name no)
@@ -113500,7 +113500,7 @@
 				(justify left)
 			)
 		)
-		(property "Footprint" "PCM_JLCPCB:C_0805"
+		(property "Footprint" "Capacitor_SMD:C_0805_2012Metric"
 			(at 403.352 326.39 90)
 			(hide yes)
 			(show_name no)

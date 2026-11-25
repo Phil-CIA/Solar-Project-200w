@@ -10,6 +10,29 @@ document review, not a complete visual, electrical, thermal, BOM or DFM
 approval. The earlier placement and pre-route handoffs below are historical
 and their counts and unrouted statements do not describe this checkpoint.
 
+**2026-11-24 BOM follow-up:** Phil selected a generic 1x4 vertical
+through-hole header at 2.54 mm pitch for J8 (DEC-078). The schematic and
+PCB footprint/value now agree, retaining DEC-077's pin order. The exact
+header MPN/SKU, mating cable and inventory remain open. Phil also selected
+standard 100 nF 0805 capacitors for C62/C63 (DEC-079); their schematic and
+PCB now use the same standard footprint, value and existing Samsung
+CL21B104KCFNNNE / LCSC C28233 sourcing. Current availability, pricing and
+inventory remain open.
+A one-board inventory/purchase tracker is in
+[`Rev2_Inventory_Purchase_Working.csv`](../hardware/kicad/solar-project/bom/Rev2_Inventory_Purchase_Working.csv);
+it groups by schematic value and part number, combines references and sums
+per-board/gross quantities. LCSC is used as the grouping key when the MPN is
+blank; rows with neither remain separate. On-hand stock remains uncounted.
+Phil entered purchase quantities for selected lines and uploaded the
+[`Rev2_LCSC_Pricing_Upload_Draft.csv`](../hardware/kicad/solar-project/bom/Rev2_LCSC_Pricing_Upload_Draft.csv),
+which contains 24 LCSC part numbers and 97 units, including J1/J3 at quantity 2.
+On 2026-11-25 Phil reported that everything was ordered; no order confirmation,
+final matched list, prices or delivery information are recorded here. The
+[`Rev2_Inventory_Purchase_Working.xlsx`](../hardware/kicad/solar-project/bom/Rev2_Inventory_Purchase_Working.xlsx)
+is a snapshot with inventory and current-needs tabs, not automatically synced
+to the CSV. F1/F2, J9, R46, R76/R77 and U15 still have CAD or sourcing flags
+to review; ordering does not constitute a board release or resolve those flags.
+
 The board is now routed as far as KiCad connectivity is concerned: KiCad
 10.0.6, with zones refilled for the check but not saved, reports **zero
 unconnected items** and five physical warnings. There are also 206
@@ -20,12 +43,13 @@ current capacity, signal integrity, or correct physical routing.
 
 Work through these steps before preparing an order:
 
-1. **Reconcile CAD and BOM.** Review C62, C63 and J8: their PCB values
-   and footprints differ from their schematic assignments. Verify the
-   intended parts, pinouts and physical land patterns before changing
-   either view; in particular, confirm J8's intended connector and BMS
-   pin mapping. Among 199 field-parity warnings, 179 concern a missing
-   `LCSC ` field, and 20 concern differing `LCSC` fields: R6, R19, R34,
+1. **Reconcile CAD and BOM.** C62/C63 are reconciled to standard 100 nF
+   0805 parts (DEC-079), and J8's generic 1x4, 2.54 mm format and pin order
+   are selected (DEC-078/DEC-077). Verify remaining sourcing and physical
+   fit before ordering, including J8's mating cable and BMS compatibility.
+   The 2026-11-23 saved-checkpoint review found 199 field-parity warnings,
+   179 for a missing `LCSC ` field and 20 for differing `LCSC` fields:
+   R6, R19, R34,
    R36, R47, R48, R53-R59, R82 and R86 have PCB `C17415` versus
    schematic `C17414`; R46, R76, R77, F1 and F2 have a schematic LCSC
    number but none on the PCB. Reconcile sourcing against actual part
