@@ -55,10 +55,10 @@ datasheets:
     vendor: hs-semi
     path: hardware/kicad/solar-project/c53244070-hssemi-hsba0119.pdf
     revision: "Ver3.0 (footer marking)"
-    source_url: https://www.lcsc.com/datasheet/C53244070.pdf
-    sha256: F8912929E0F0C0CFDCDB07981B39A327E6F366993F1B01843A031A6F2D59D3CD
-    last_verified: "2026-09-17"
-    notes: Covers Q4 (PV-side ideal-diode/input-enable PMOS switch, `PRPAK-8(5x6)`). Text-extracted cleanly via `fetch_webpage`. Confirmed VDS=-100V, VGS=+/-20V, ID@Tc=25C=-33A, ID@Tc=100C=-22A, IDM(pulsed)=-135A, EAS(single-pulse avalanche, 100% guaranteed)=78mJ, PD@Tc=25C=68W, RthJC=1.8C/W, RDS(on)typ=23mOhm. Used in DEC-041 (Q4/D1 PV ideal-diode switch margin review).
+    source_url: https://datasheet.lcsc.com/datasheet/pdf/d642059b715bb852e2033c2c65b6a522.pdf?productCode=C53244070
+    sha256: 296F7A4E248F6767C1CCEE8DB729BE328CF115C7413D3BF129579D2EC6CA59F8
+    last_verified: "2026-11-24"
+    notes: Covers Q4 (PV-side ideal-diode/input-enable PMOS switch, `PRPAK-8(5x6)`). Replaced an HTML product page previously stored with a .pdf extension using the actual Ver3.0 PDF. Confirms VDS=-100V, VGS=+/-20V, ID@Tc=25C=-33A, ID@Tc=100C=-22A, IDM(pulsed)=-135A, EAS(single-pulse avalanche, 100% guaranteed)=678mJ, PD@Tc=25C=68W, RthJC=1.8C/W, RDS(on)=23mOhm typ/28mOhm max at VGS=-10V and 25C (32mOhm max at -4.5V). No junction-to-ambient thermal resistance is given; do not infer board thermal capacity from PD or RthJC. Used in DEC-041 and the Rev2 power-path thermal review.
   - id: infineon-bsc040n10ns5
     vendor: Infineon
     path: hardware/kicad/solar-project/c534334-infineon-bsc040n10ns5.pdf
