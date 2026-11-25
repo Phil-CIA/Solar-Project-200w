@@ -171,6 +171,30 @@ pads and clearing the R86 silkscreen overlap remain part of the board's
 DRC and fabrication review. Normal boot and OTA option-byte behavior
 have not been tested. Rev1 manufacturing files are unchanged.
 
+### Rev2 BOM follow-up (2026-11-24)
+
+Phil selected a generic 1x4 vertical through-hole header at 2.54 mm pitch
+for J8, retaining the DEC-077 pin assignment. The schematic and PCB now
+agree on the footprint and value; the exact orderable MPN/SKU and mating
+cable remain open. `bom/Rev2_Inventory_Purchase_Working.csv` is a
+one-board inventory/purchase working sheet grouped by schematic value and
+part number, with combined references and quantities. On-hand stock is
+uncounted; purchase decisions are entered for selected lines. The uploaded
+`bom/Rev2_LCSC_Pricing_Upload_Draft.csv` contains 24 LCSC part numbers and
+97 units, including J1/J3 at quantity 2. On 2026-11-25 Phil reported that
+everything was ordered; final matched parts, prices and order confirmation
+are not recorded here. `bom/Rev2_Inventory_Purchase_Working.xlsx` is a
+snapshot and does not automatically sync with the CSV. Several selected rows
+still need CAD/sourcing review, so this is not a released BOM.
+These purchase files predate the latest CAD merge: notably, the pricing
+draft lists R76/R77 under 5 mOhm C2073455, but current CAD specifies 10 mOhm
+KRL2012E-M-R010-F-T5 / C5342352. Check the actual order before assembly.
+L2's value and the R78/R79 and U10/U11/U12 footprints also changed in CAD
+after the purchase snapshot.
+C62/C63 now use the standard 100 nF 0805 footprint and matching
+Samsung CL21B104KCFNNNE / LCSC C28233 fields in schematic, PCB and tracker.
+Current availability, pricing and on-hand inventory remain unverified.
+
 ## Current production source - Rev 1
 
 Only Rev 0 and Rev 1 have been manufactured. The Rev 1 production release sent to the manufacturer is the source of truth at:

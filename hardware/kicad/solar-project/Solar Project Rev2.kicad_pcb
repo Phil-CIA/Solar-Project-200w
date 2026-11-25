@@ -86513,7 +86513,7 @@
 				)
 			)
 		)
-		(property "Value" "100n"
+		(property "Value" "100nF"
 			(at 0 1.68 0)
 			(layer "F.Fab")
 			(hide yes)
@@ -86525,7 +86525,7 @@
 				)
 			)
 		)
-		(property "Datasheet" ""
+		(property "Datasheet" "https://www.lcsc.com/datasheet/lcsc_datasheet_2304140030_Samsung-Electro-Mechanics-CL21B104KCFNNNE_C28233.pdf"
 			(at 0 0 0)
 			(layer "F.Fab")
 			(hide yes)
@@ -86536,7 +86536,7 @@
 				)
 			)
 		)
-		(property "Description" ""
+		(property "Description" "100V 100nF X7R ±10% 0805 Multilayer Ceramic Capacitors MLCC - SMD/SMT ROHS"
 			(at 0 0 0)
 			(layer "F.Fab")
 			(hide yes)
@@ -86546,6 +86546,30 @@
 					(size 1.27 1.27)
 				)
 			)
+		)
+		(property "LCSC" "C28233"
+			(at 0 0 0)
+			(unlocked yes)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "4a127b6f-0224-46c4-b4fe-121b3a23fe6d")
+			(effects (font (size 1 1) (thickness 0.15)))
+		)
+		(property "Manufacturer" "Samsung Electro-Mechanics"
+			(at 0 0 0)
+			(unlocked yes)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "a24bb20f-f649-4882-9523-83f2fa43e9a4")
+			(effects (font (size 1 1) (thickness 0.15)))
+		)
+		(property "Part" "CL21B104KCFNNNE"
+			(at 0 0 0)
+			(unlocked yes)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "7ce76930-62fc-4bfc-9ef3-81393ac77947")
+			(effects (font (size 1 1) (thickness 0.15)))
 		)
 		(property ki_fp_filters "C_*")
 		(path "/16f0a83f-965f-47a8-b725-dce6b7258466")
@@ -88634,7 +88658,7 @@
 				)
 			)
 		)
-		(property "Value" "100n"
+		(property "Value" "100nF"
 			(at 0 1.68 0)
 			(layer "F.Fab")
 			(hide yes)
@@ -88646,7 +88670,7 @@
 				)
 			)
 		)
-		(property "Datasheet" ""
+		(property "Datasheet" "https://www.lcsc.com/datasheet/lcsc_datasheet_2304140030_Samsung-Electro-Mechanics-CL21B104KCFNNNE_C28233.pdf"
 			(at 0 0 0)
 			(layer "F.Fab")
 			(hide yes)
@@ -88657,7 +88681,7 @@
 				)
 			)
 		)
-		(property "Description" ""
+		(property "Description" "100V 100nF X7R ±10% 0805 Multilayer Ceramic Capacitors MLCC - SMD/SMT ROHS"
 			(at 0 0 0)
 			(layer "F.Fab")
 			(hide yes)
@@ -88667,6 +88691,30 @@
 					(size 1.27 1.27)
 				)
 			)
+		)
+		(property "LCSC" "C28233"
+			(at 0 0 0)
+			(unlocked yes)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "c300dbd1-8d3a-422e-a8ed-683344003fa0")
+			(effects (font (size 1 1) (thickness 0.15)))
+		)
+		(property "Manufacturer" "Samsung Electro-Mechanics"
+			(at 0 0 0)
+			(unlocked yes)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "e0497ce8-2016-4a07-9a39-091c7764c281")
+			(effects (font (size 1 1) (thickness 0.15)))
+		)
+		(property "Part" "CL21B104KCFNNNE"
+			(at 0 0 0)
+			(unlocked yes)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "3a36953c-6eb0-43c9-99d1-bf7cb3daaf78")
+			(effects (font (size 1 1) (thickness 0.15)))
 		)
 		(property ki_fp_filters "C_*")
 		(path "/a8c7cd5a-e992-4217-b0fe-b21549d74244")
@@ -101398,7 +101446,7 @@
 				)
 			)
 		)
-		(property "Description" "DEC-061: remote battery-pack NTC/temperature-sensor probe header (I2C bus tap: CTRL_3V3/PWR_NEG/I2C CLK/I2C DATA) - exact remote sensor part and connector mate not yet selected"
+		(property "Description" "DEC-061/DEC-077: 2.54mm 1x4 header for shared I2C temperature-sensor/BMS bus; pin 1 SCL, pin 2 PWR_NEG, pin 3 CTRL_3V3, pin 4 SDA; mating cable/connector TBD"
 			(at 0 0 0)
 			(layer "F.Fab")
 			(hide yes)

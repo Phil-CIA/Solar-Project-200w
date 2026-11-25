@@ -814,7 +814,7 @@
 					)
 				)
 			)
-			(property "Footprint" "1My_Parts_ Connectors:JST_B4B-XH-A"
+			(property "Footprint" "Connector_PinHeader_2.54mm:PinHeader_1x04_P2.54mm_Vertical"
 				(at 0 0 0)
 				(show_name no)
 				(do_not_autoplace no)
@@ -53592,7 +53592,7 @@
 				(justify left)
 			)
 		)
-		(property "Value" "100n"
+		(property "Value" "100nF"
 			(at 470.662 326.7682 0)
 			(show_name no)
 			(do_not_autoplace no)
@@ -110336,7 +110336,7 @@
 				)
 			)
 		)
-		(property "Description" "4-pin 2.54mm vertical pin header for I2C bus"
+		(property "Description" "Generic 1x4 vertical through-hole pin header, 2.54mm pitch"
 			(at 318.77 363.22 0)
 			(hide yes)
 			(show_name no)
@@ -111905,7 +111905,7 @@
 				(justify left)
 			)
 		)
-		(property "Value" "100n"
+		(property "Value" "100nF"
 			(at 407.162 326.7682 0)
 			(show_name no)
 			(do_not_autoplace no)
