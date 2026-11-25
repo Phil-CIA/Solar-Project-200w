@@ -32,12 +32,12 @@ Control and telemetry overview:
 ### 3.1 PV Input Stage
 
 Responsibilities:
-- Accept the existing 2x100W series PV source while permitting the charger to limit harvested power to 150W.
+- Accept the selected 2x100W parallel (2P) PV source while permitting the charger to limit harvested power to 150W.
 - Provide reverse polarity and transient protection at boundary.
 
 Boundary assumptions:
-- Final panel wiring strategy (series vs parallel) is deferred (DEC-004).
-- Input voltage/current envelope will be finalized when panel model is locked.
+- Panel wiring is 2P per DEC-051; the Renogy RSP100DCT baseline is 23.6V Vmp, 8.48A Imp and 8.90A Isc.
+- The sizing range is 20V minimum / 34V maximum; verify the actual low-light/hot-panel operating floor and cold-Voc assumptions.
 
 Requirement mapping:
 - REQ-PV-001, REQ-PV-002, REQ-SAF-004.
@@ -47,13 +47,14 @@ Requirement mapping:
 Responsibilities:
 - Convert PV input to battery charging profile with MPPT behavior.
 - Provide 125W continuous output and limit PV operating power to 150W.
-- Target 8A to 10A nominal battery charge current with an approximately 12A hardware protection ceiling.
+- Target 8A to 10A nominal battery charge current; external-ISET is approximately 11.9A nominal with an estimated 9.1A-15.2A range, not a guaranteed 12A ceiling (REQ-CHG-002).
 - Use one LM51772 conversion stage with battery-qualified, source-aware startup.
 - Coordinate soft-start, input-voltage regulation, and hardware UVLO so demand is reduced before source collapse.
 - Use only the output capacitance justified by stability and transient validation.
 
 Boundary assumptions:
-- Retain the LM51772 four-switch power stage and rerate it for the Rev 1 envelope (DEC-003, DEC-023, DEC-024).
+- Retain the LM51772 four-switch power stage and qualify it against the Rev2 2P envelope (DEC-051, DEC-052, DEC-067).
+- The selected 125W thermal point is 12.8V output at 40C ambient; first-article testing is required before rated-power use (DEC-078).
 - Retain the STM32 as charger supervisor and telemetry owner while U6 owns the fast electrical regulation loops (DEC-005, DEC-024, DEC-028, DEC-029).
 - Battery-first sequencing and startup control are governed by DEC-025 through DEC-029.
 

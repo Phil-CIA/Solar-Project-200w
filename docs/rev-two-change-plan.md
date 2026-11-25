@@ -1,12 +1,12 @@
 # Rev2 change plan
 
-Planning checkpoint: 2026-11-09; current-sense status updated 2026-11-16; issue #33 interface/recovery status updated 2026-11-17. Proposed work, not authorization to apply every option below. The Rev2 schematic and PCB have since changed; routing is under review and the board is not qualified.
+Planning checkpoint: 2026-11-09; current-sense status updated 2026-11-16; issue #33 interface/recovery status updated 2026-11-17; BOM/sourcing, protection, and power-path thermal review updated 2026-11-24. Proposed work, not authorization to apply every option below. The Rev2 schematic and PCB have since changed; routing is under review and the board is not qualified.
 
 ## Copy-only routing, stitching and shunt review
 
 - **Existing vias retained.** Phil confirmed Rev1 used 0.60 mm diameter / 0.30 mm drill vias with 2 oz copper and was accepted. This is useful precedent, not a guarantee of Rev2 acceptance; resolve any order-specific DFM feedback. Do not enlarge or remove vias solely on the basis of the ambiguous annular-ring guidance.
 - **2 oz routing trial:** on a copy of the current board, 132 outer-layer tracks below 0.16 mm were widened to 0.18 mm, with local moves of the STM_NRST, RXD and CTRL_3V3 vias and one CTRL_5V corner. A refill and DRC using 0.20 mm minimum clearance and 0.16 mm minimum track width reported no clearance or width findings and zero unconnected items. The ten remaining findings are seven pre-existing physical/library findings plus three trial INA footprint-library mismatches. This is not a full electrical or manufacturing approval.
-- **INA241 trial:** U10/U11/U12 use 1.05 x 0.45 mm pads at 0.65 mm pitch and 2.60 mm row-center spacing, with 0.05 mm corner radius, as in TI's DDF land and 0.125 mm stencil examples. Existing track endpoints remain inside the moved pads, and the trial copper, mask and paste exports reflect the trial pad geometry. The 0.20 mm pad gap is exactly JLCPCB's published 2 oz mask-bridge minimum, with no nominal margin. JLCPCB generates its own SMT stencil data; confirm final apertures and stencil thickness with the assembler. Review all three device body/courtyard alignments and local connections before acceptance. The trial still uses the original library ID and produces three mismatch warnings; any approved implementation needs a maintained project-local footprint and matching schematic references. Existing 0.15 mm footprint/pad local clearance overrides were not changed; decide their disposition explicitly rather than silently changing the project rules.
+- **INA241 DDF footprint adopted:** U10/U11/U12 now reference a maintained project-local footprint and the schematic's cached symbol and placed instances use the same library ID. The pads are 1.05 x 0.45 mm, at 0.65 mm pitch and 2.60 mm row-center spacing, with 0.05 mm corner radius, matching the selected TI DDF trial. Placement, orientation, pin/net mapping, body/silkscreen/courtyard geometry, routing, and existing 0.15 mm footprint/pad local-clearance overrides were preserved. Fresh KiCad 10.0.6 DRC on the updated board, with an in-memory zone refill, reports zero unconnected items, zero width/clearance findings, and no INA241 library mismatch. Five physical warnings remain (two other footprint mismatches and three silkscreen warnings), along with 200 schematic-parity findings. The DRC refill was not saved to the board. The resulting 0.20 mm pad gap is exactly JLCPCB's published 2 oz mask-bridge minimum, with no nominal margin. JLCPCB generates its own SMT stencil data; confirm final apertures and stencil thickness with the assembler.
 - **Ground stitching:** removing two vias from the five-via PWR_NEG row near (163.10, 138.33) and (164.85, 138.33) mm on a separate copy did not introduce DRC findings or change the measured zone areas/outline counts. A CTRL_5V track on In2 is approximately 2.44 mm from the row center. Neither observation establishes equivalent high-frequency return current or EMI. Keep the row for now and assess other stitching by function; do not treat proximity-based inventory counts as redundant vias or thin switching/power arrays for price alone. The observed hole density is below the published surcharge threshold, subject to JLCPCB's actual quote and counting rules.
 - **Battery shunt land pattern:** R78/R79 now use the project-local `R_2512_Yezhan_DSLR-M-3-1F_2pad` footprint in the schematic and PCB, matching the manufacturer's 1.8 x 3.4 mm pad example. The prior generic 2512 pads were 1.225 x 3.35 mm with a 4.7 mm inner gap, versus the example's 3.4 mm gap. This difference alone did not prove an assembly defect. The older current-sense review's description of a frozen four-pad PCB is historical, not the current board. Assembly fit and Kelvin pickups still require review.
 - **Power capacity remains open:** the shunts, FETs, connector and fuse contacts, copper necks, layer transitions, current sharing and thermal conditions need review as a complete path. For example, two ideal 10 mOhm R76/R77 shunts sharing 12 A equally dissipate 0.36 W each; this hypothetical input-path calculation assumes equal sharing and is not an output-current rating or a thermal qualification. Check part derating, actual input current, unequal sharing and heat spreading. Zero unconnected items and high via counts do not prove capacity.
@@ -49,15 +49,52 @@ L2's schematic and PCB value fields now say `3.3uH`, correcting the former gener
 
 **Additional copper and sourcing check:** in the refilled copy, sampled vertical sections of the `CHG_OUT_POS` pour between Q6 and F2 around x=148-149 mm show approximately 7 mm of zone fill on each outer layer, before accounting for drill holes and local current crowding. This is not a minimum cross-section, a complete path model or an ampacity result; the FET terminals, fuse contacts, other sections and real current sharing still matter. No vias were removed.
 
-R76/R77 remain specified as the 175 C `KRL2012E-C-R010-F-T5`; no LCSC code has been assigned to that exact part. LCSC lists a related 155 C [KRL2012E-M-R010-F-T5, C5342352](https://www.lcsc.com/product-detail/C5342352.html), also 10 mOhm, 1 W and 1% in 0508. It is a **candidate**, not an automatic substitute: confirm actual assembly availability, temperature derating and suitability before changing the BOM. The exact C variant is also listed by other distributors; choose sourcing based on the assembly plan.
+Phil approved the 155 C `KRL2012E-M-R010-F-T5` for R76/R77. Both schematic and PCB now specify that 10 mOhm, 1 W, 1% 0508 part and LCSC `C5342352`; the BOM export confirms both references. The selected part's operating temperature is accepted for this prototype; power sharing and thermal performance still require validation under the intended load.
 
-**Ordering metadata corrected:** R6, R19, R34, R36, R47, R48, R53-R59, R82 and R86 are 10 kOhm resistors; their schematic correctly identifies LCSC `C17414` (10 kOhm), but the PCB fields incorrectly identified `C17415` (10 Ohm). Updated those 15 PCB sourcing fields to match the schematic and the component values; no routing changed. KiCad's remaining parity count stays at 200 because the 15 resolved mismatches are replaced by pre-existing missing `LCSC ` field warnings on those footprints. The whitespace-suffixed field is separate from the corrected `LCSC` field and needs separate reconciliation, not a component substitution.
+**Ordering metadata corrected:** R6, R19, R34, R36, R47, R48, R53-R59, R82 and R86 are 10 kOhm resistors; their schematic correctly identifies LCSC `C17414` (10 kOhm), but the PCB fields incorrectly identified `C17415` (10 Ohm). Updated those 15 PCB sourcing fields to match the schematic and the component values; no routing changed. KiCad's parity count remains at 200 after those corrections and the removal of empty whitespace-suffixed `LCSC ` fields, because other symbol/footprint properties are still missing or mismatched; see the latest BOM review below.
 
 **Gate-drive geometry:** the four U6 driver-output nets to R69/R70/R71/R72 have approximately 22.3/37.4/24.6/31.2 mm total track length respectively, each with two vias and most of the length on In2. The corresponding resistor-to-FET gate nets add approximately 3.8/3.5/3.2/1.9 mm on F.Cu. These are total net lengths, not measured loop areas. Bootstrap capacitors C22/C23 connect to HB1/HB2 through F.Cu tracks without vias; their HB pad centers are approximately 3.8/5.1 mm from the U6 pins. VCC2 capacitors C29/C45 are about 7.6/8.4 mm from the U6 VCC2 pin by straight-line pad-center distance. TI recommends minimizing each complete gate/return and decoupling loop; these dimensions alone do not establish a pass or failure. Phil has visually reviewed the routing; switching behavior and heating still need prototype verification.
 
-## Prototype order-readiness review - 2026-11-23
+### Power-path current and thermal review - 2026-11-24
 
-**Status: not ready to order.** This review uses the saved CAD checkpoint
+**User-selected acceptance point:** 125 W continuous output at 12.8 V nominal (9.77 A), 40 C maximum ambient. U7's board-temperature rise target is 25 C, with 30 C as the maximum acceptable rise; at 40 C ambient these correspond to 65 C target and 70 C stop limit. The first-article soak will happen after the PCB is fabricated and before rated-power use. Enclosure/forced-air conditions are not specified; the initial test assumption is open-air natural convection, and enclosed operation is not qualified.
+
+The current 2P sizing workbook uses VIN=20/23.6/34 V, VOUT=14.6 V, 12 A, and 600 kHz. The 20 V lower input point is a sizing assumption, not a measured minimum panel operating voltage. With 2P array Isc=8.90 A and Imp=8.48 A, 150 W at 20 V is 7.50 A input. At 93% assumed efficiency, 125 W output requires 134.4 W input (6.72 A at 20 V); 150 W input could yield 139.5 W output, or 10.90 A at 12.8 V, unless firmware imposes a 125 W output cap. Test the 150 W input point separately and record actual output power/current.
+
+**Current-limit mismatch:** R46/R68's external-ISET setting is approximately 11.9 A nominal, with an estimated 9.1-15.2 A corner range. At 12.8 V, 9.1 A provides only 116.5 W, so the current design does not guarantee the selected 125 W point across the estimated low corner. Conversely, 15.2 A is the current-path sizing bound until the first article's actual limit is measured. Do not raise R46 alone to improve the low corner; that also raises the high-current corner. Record the measured limit and resolve it through controller configuration or a reviewed hardware change before claiming rated output.
+
+**Non-blocking follow-up (2026-11-25):** Phil requested that current-limit corner analysis and the optional firmware I2t thermal observer be tracked in [#44](https://github.com/Phil-CIA/Solar-Project-200w/issues/44), without blocking other work. Do not change R46/R68 solely from this estimated range; measure the installed limit and review the full tolerance range before selecting new values. This disposition does not waive first-article current and thermal checks before rated-power use.
+
+Calculated resistive losses are screening values, not a thermal pass:
+
+- At 9.77 A, L2's 7.1 mOhm maximum DCR gives about 0.68 W winding loss at 25 C. At the 15.2 A upper current corner it is about 1.64 W before hot-resistance increase and core loss. The 17 A RMS and 35 A saturation ratings are typical only; core loss at 600 kHz is not available from the text-extracted datasheet.
+- At 15.2 A, each Q5/Q6 BSC040N10NS5 dissipates about 0.92 W using its 4.0 mOhm maximum at 10 V/25 C; actual VGS, hot RDS(on), PCB heat spreading and thermal interaction are not established. R16/R80's hotter resistor dissipates about 0.57 W under a 70/30 sharing example, versus 1 W rated per part. R78/R79's combined loss is about 0.12 W.
+- At the 7.50 A, 150 W/20 V input point, R76/R77 dissipate about 0.14 W each with equal sharing. Q4's verified datasheet gives 28 mOhm maximum RDS(on) at 10 V/25 C, implying about 1.58 W at 7.50 A; at the 8.90 A array Isc it would be about 2.22 W if sustained. Its 22 A current rating at 100 C does not establish board-level thermal capacity; the datasheet gives junction-to-case, not junction-to-ambient, thermal resistance.
+- The TI workbook's efficiency analyzer is populated with ISZ034N06LM5ATMA1, not the selected CSD18540Q5B M1-M4. Its switch-loss output is therefore not valid for this board. The saved PCB stackup specifies 70 um outer copper and 17.5 um inner copper; confirm finished copper/plating with the fabricator before using it in a path model. Existing zone-width samples are not a full-path minimum cross-section.
+
+U7 is approximately 71 mm from L2 and cannot stand in for a power-component hotspot. During the first-article soak, log U7 plus direct temperatures at L2, Q4, M1-M4, Q5/Q6, R16/R80, F2 and the power terminals. The 3522-2 F2 entry identifies only the holder; install and record the actual fuse element before powered testing.
+
+**Disposition:** the desk review found no proven need for a PCB copper/footprint rework at the selected 125 W point, but it does not establish thermal qualification or guaranteed current-limit performance. A single PCB may be ordered as a validation prototype under the user's post-fabrication test decision; do not treat it as rated or production-qualified until it sustains 125 W at 12.8 V at 40 C ambient, meets the U7 rise limit, stays within all component limits, and its actual current-limit behavior is documented. If the measured limit is below 9.77 A or a hotspot exceeds its limit, stop and correct the current-control or power path before rated use.
+
+### BOM, sourcing and protection review - 2026-11-24
+
+A fresh KiCad 10.0.6 DRC reports **zero unconnected pads**, five physical warnings, and 200 schematic-parity findings; ERC reports 33 findings. The five physical warnings are two library-footprint mismatches (U2/U8), one U5 silkscreen overlap, and two U6 silkscreen-clipping warnings. The current BOM export has 208 rows, including DNP C61, R3, R25 and R50. These CAD checks do not qualify assembly, electrical behavior or thermal capacity.
+
+**Sourcing reconciliation:** R50 is a DNP 10 kOhm resistor, MPN `0805W8F1002T5E`. Its datasheet URL already identified LCSC `C17414` (10 kOhm), but its schematic and PCB `LCSC` fields incorrectly said `C17415` (10 Ohm); both fields now say `C17414`, and R50 remains DNP. This corrects the DNP BOM entry without changing the design. R46 retains the specified YAGEO `RC0805FR-0732K4L`; its mismatching LCSC code was cleared rather than substituting another manufacturer. J9 retains Samtec `FTSH-105-01-L-DV-007-K`; its unrelated generic-header code was cleared. The absent physical pad 7 on J9 is intentional for the keyed connector, not an electrical open.
+
+F1/F2's `C3204137` identifies the Keystone 3522-2 fuse holders, not fuse elements; F1's prototype disposition remains unchanged. Removed all 218 empty whitespace-suffixed `LCSC ` properties from the Rev2 schematic; populated sourcing fields were preserved. DRC still reports 200 field-parity findings because other symbol/footprint differences remain, now mostly missing `Purchase-URL` fields and an `Assembly` field. These are not 200 sourcing errors, and the `LCSC ` whitespace issue is no longer present.
+
+Order/assembly details still need resolution against the intended build method: J8 is a generic 2.54 mm four-pin header with no selected mating header/cable. Phil confirms an ESP32-C3 SuperMini is installed on Rev1, and Rev1/Rev2 use the same custom U2 footprint, giving Rev2 a prototype-fit precedent; record the exact procurement variant/source for repeat ordering. R76/R77 now have the approved `KRL2012E-M-R010-F-T5` / `C5342352` sourcing. J1/J3's generic prototype terminal selection remains accepted, but confirm the actual connector and wire ratings. Obtain assembler DFM/land/stencil confirmation for the selected parts, especially the shared M1-M4/Q5-Q6 footprint.
+
+**Current-limit read-through:** R46 (32.4 kOhm) and R68 (1.3 kOhm) form the 33.7 kOhm ISET resistor to AGND. The U6 ISNSP/ISNSN inputs sense the R16/R80 output-shunt pair through R64/R63; the two nominal 5 mOhm shunts in parallel are 2.5 mOhm. Using TI's typical 1 V ISET threshold and 1 mS transconductance gives about 29.7 mV across the shunts, or 11.9 A nominal output current. This is a calculated setpoint, not a guaranteed trip value; include IC/shunt tolerances, sense-path drops and temperature in verification. Separately, R22/R75 are the 5 mOhm parallel inductor peak-current shunts on CSA/CSB. TI's 45-55 mV peak threshold corresponds to roughly 18-22 A ideal inductor peak current (20 A typical), not the average output-current limit.
+
+INA241A3's 50 V/V output also feeds the LMV393 OCP comparator and the MCU ADC. R51/R52 set a nominal 1.5 V comparator reference (12 kOhm from 3.3 V, 10 kOhm to ground), corresponding to about 12 A with ideal 2.5 mOhm output shunts. `FAULT_OCP` and U6 `nFLT` route to the MCU; the comparator output is not wired directly to Q7/EN/UVLO, so it is reporting rather than an independent hardware shutdown. Verify firmware response and fault recovery separately from U6's analog current regulation.
+
+**Fail-safe-off selected:** R23=75 kOhm from PV input and R61+R60=21.5 kOhm to ground set a divider-only EN/UVLO crossing near 5.6 V, before the IC's specified hysteresis current and component tolerances. Q7 pulls EN/UVLO low when its gate is driven high. R74 is a 100 kOhm pull-up from the Q7 gate to `CTRL_3V3`, so the hardware default with the MCU pin high-impedance is inhibit asserted; when `CTRL_3V3` is absent, U6's `nRST` is also low and the datasheet specifies low-power shutdown. In the Rev1 bring-up firmware, `u6_ctrl_gpio_init()` previously changed PB12 to output before writing the inhibit-high state, allowing a brief low from the reset output latch; it now preloads the high output latch before enabling output mode. The deliberate `U6_TEST` release remains explicit, with fault/timeout paths reasserting inhibit. Verify reset, rail-loss, fault and recovery behavior on hardware before release.
+
+## Prototype order-readiness review - 2026-11-23 (historical checkpoint)
+
+**Status at this checkpoint: not ready to order.** This review uses the saved CAD checkpoint
 `a16ab6b`, merged to main as `206b7c9`. It is an automated CAD and
 document review, not a complete visual, electrical, thermal, BOM or DFM
 approval. The earlier placement and pre-route handoffs below are historical
@@ -384,25 +421,36 @@ finished board thickness or dielectric stack. Confirm the exact order
 stackup, finished copper and via plating, and reevaluate current/thermal
 capacity for the selected copper.
 JLCPCB's [copper-weight guide](https://jlcpcb.com/help/article/jlcpcb-copper-weight)
-currently specifies a 0.16 mm minimum trace width and spacing for 2 oz
-FR4; confirm the capabilities for the actual order. A scratch DRC using
-0.16 mm board-wide minimums reported 132 outer-layer track segments below
-that width and 12 different-net 0.15 mm pad-gap violations on U10/U11/U12.
-These scratch rules are not saved to the project; resolve these potential
-manufacturing violations against the confirmed order specifications.
+states a 0.16 mm minimum trace width and spacing for 2 oz FR4. However,
+JLCPCB's current [capabilities table](https://jlcpcb.com/capabilities/Capabilities)
+lists 0.16/0.16 mm for 2-layer 2 oz boards and 0.15/0.15 mm for multilayer
+2 oz boards. Rev2 is four-layer, so the latter is the more applicable
+published baseline; confirm it for the actual order.
 
-A separate scratch trial widened those 132 tracks to 0.18 mm. It created
-four violations of the existing 0.20 mm clearance rule that need local
-rerouting if that widening were used; it did not alter the workspace
-board and is not an approved prototype change. On another copy, reducing
-the three INA241 footprints' pad widths from 0.50 to 0.45 mm cleared the
-12 pad-gap violations. The [INA241A datasheet](https://www.ti.com/lit/ds/symlink/ina241a.pdf)
-DDF land-pattern example uses 0.45 mm-wide pads at 0.65 mm pitch, but the
-trial retains the existing pad lengths and centers and is not the complete
-TI pattern. It also produces three library-mismatch warnings. Review land
-geometry, solder mask, paste and JLCPCB assembly requirements, and use a
-maintained footprint rather than silently overriding the library. Neither
-trial has been applied.
+**Current narrow-track check (2026-11-25):** the 132 outer-layer segments below
+0.16 mm originally comprised 130 at exactly 0.15 mm and two below
+JLCPCB's published four-layer 2 oz minimum. Those two short segments were
+locally widened to 0.18 mm without changing endpoints, layer, or net:
+`CTRL_3V3` from (179.3278, 86.7072) to (179.3278, 88.0158) mm, and
+`CTRL_EN_CHG` from (172.0762, 90.735) to (172.1469, 90.735) mm. The
+remaining 130 tracks (124 F.Cu and six B.Cu) are exactly at the published
+0.15 mm minimum and have no nominal process margin; confirm them against
+the actual order.
+The fresh KiCad 10.0.6 DRC on the updated board reports no width or clearance
+findings and zero unconnected items.
+
+A separate scratch trial widened all 132 tracks to 0.18 mm and produced
+four existing-rule clearance findings elsewhere. A later combined trial
+resolved those by changing other local routes; those route/via edits were
+not adopted. The targeted width changes above match the two corresponding
+trial widths and preserve their original routing. A scratch DRC with a
+0.16 mm board-wide minimum also reported 12 different-net 0.15 mm pad-gap
+violations on U10/U11/U12; these were separate from track-width findings.
+The adopted project-local INA241 DDF footprint now uses TI's selected
+1.05 x 0.45 mm pad geometry, 0.65 mm pitch, 2.60 mm row-center spacing,
+and 0.05 mm corner radius. Its 0.20 mm pad gap is exactly the published
+2 oz mask-bridge minimum, with no nominal margin; confirm final solder-mask
+and stencil acceptance with JLCPCB.
 
 **Further 2 oz trials:** On a fresh copy of the current board, combining
 the 0.18 mm track widening with local moves of three vias and one track
@@ -557,16 +605,13 @@ tracks. Compare the gate/return and local capacitor loops against TI's
 guidance; these observations alone do not establish switching performance.
 
 **PV shunt ordering correction:** R76/R77 were intended as two 10 mOhm
-`KRL2012E-C-R010-F-T5` parts, but their schematic value, datasheet,
-description and LCSC `C2073455` selected a 5 mOhm part; their PCB value
-and datasheet fields also named that 5 mOhm part. Aligned the schematic and PCB metadata
-with the existing 10 mOhm `Part` and `Resistance` fields and cleared the
-incorrect schematic LCSC code. Embedded symbol and footprint tags retain
-historical 5 mOhm library names as provenance; do not use those names as
-the order part number. No verified JLCPCB code has yet been selected for
-the intended 10 mOhm parts. If two 5 mOhm parts are fitted instead, the
-effective nominal shunt is 2.5 mOhm rather than 5 mOhm, changing PV-current
-calibration by a factor of two.
+parts, but the earlier schematic and PCB metadata identified a 5 mOhm part
+and LCSC `C2073455`. Phil approved the 155 C Susumu
+`KRL2012E-M-R010-F-T5`; both schematic and PCB now identify that exact
+10 mOhm, 1 W, 1% part and LCSC `C5342352`. Embedded symbol and footprint
+tags retain historical library names as provenance; use the `Part` and
+`LCSC` fields for ordering. Power sharing and thermal suitability still
+need validation at the intended current.
 
 Work through these steps before preparing an order:
 
@@ -578,10 +623,13 @@ Work through these steps before preparing an order:
    R36, R47, R48, R53-R59, R82 and R86 have PCB `C17415` versus
    schematic `C17414`; at that checkpoint R46, R76, R77, F1 and F2 had a
    schematic LCSC number but none on the PCB. R76/R77 have since been
-   corrected as described above; re-run parity after the latest edits.
+   corrected as described above. The latest DRC recheck still reports 200
+   field-parity findings, now mostly missing `Purchase-URL` fields after
+   removal of the empty whitespace-suffixed LCSC properties; see the review
+   above for the current result.
    Reconcile sourcing against actual part specifications rather than
-   copying numbers blindly. The remaining checkpoint parity warning is
-   J9's intentionally omitted key pad 7.
+   copying numbers blindly. At that checkpoint, the remaining parity
+   warning was J9's intentionally omitted key pad 7.
 2. **Review zone islands and power paths.** Enable isolated-copper
    reporting for the review, refill, and inspect each island on its actual
    layer; connect it to the correct net where needed or remove it where
@@ -729,7 +777,7 @@ For internal feedback, JP1 must connect FB to VCC2 before U6 startup. The Rev1 b
 
 ## Fabrication and operating gates
 
-- Do not order from the copied baseline or with peak-current/average-current protection undefined.
+- Before first powered converter operation, confirm the analog average/peak limits against the intended operating envelope and verify default enable, fault/recovery behavior and powered protection. The estimated ISET corner/firmware-derating follow-up in #44 does not block ordering or other work.
 - Check C18 ripple/overshoot margin, L2 loss/temperature, R16 stress, MOSFET/gate timing and compensation for the selected envelope; old open items are qualification questions, not automatic replacement instructions (#10).
 - F1 is finalized by Phil's 2026-11-20 disposition (DEC-076): retain the selected Keystone 3522-2 and keep #7 closed. Cold-Voc mitigation work is not a Rev2 PCB-order prerequisite. This disposition does not change component ratings or establish new operating/test evidence.
 - Retain remote I2C battery-temperature sensing at J8; do not assume a spare MCU ADC/NTC channel. Confirm sensor/interface implementation and actual battery/BMS limits before charging.

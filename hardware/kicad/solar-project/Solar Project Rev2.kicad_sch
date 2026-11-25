@@ -14482,7 +14482,7 @@
 					(justify left)
 				)
 			)
-			(property "Footprint" "Package_SO:SOIC-8_3.9x4.9mm_P1.27mm"
+			(property "Footprint" "1My_Parts_ ICs:INA241A_DDF0008A_TI"
 				(at 0 -16.51 0)
 				(show_name no)
 				(do_not_autoplace no)
@@ -14504,7 +14504,7 @@
 					)
 				)
 			)
-			(property "Description" "High- and Low-Side, Bidirectional, Zero-Drift, Current-Sense Amplifier With Enhanced PWM Rejection, 50V/V, ±0.01% Gain Accuracy, ±10 μV Offset Voltage, SOIC-8"
+			(property "Description" "High- and Low-Side, Bidirectional, Zero-Drift, Current-Sense Amplifier With Enhanced PWM Rejection, 50V/V, ±0.01% Gain Accuracy, ±10 μV Offset Voltage, DDF0008A (SOT-23-THIN-8)"
 				(at 0 0 0)
 				(show_name no)
 				(do_not_autoplace no)
@@ -14526,7 +14526,7 @@
 					)
 				)
 			)
-			(property "ki_fp_filters" "SOIC*3.9x4.9mm*P1.27mm*"
+			(property "ki_fp_filters" "INA241A_DDF0008A_TI"
 				(at 0 0 0)
 				(show_name no)
 				(do_not_autoplace no)
@@ -47515,17 +47515,6 @@
 				)
 			)
 		)
-		(property "LCSC " ""
-			(at 374.65 275.59 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
 		(property "Purchase-URL" ""
 			(at 374.65 275.59 0)
 			(hide yes)
@@ -48049,17 +48038,6 @@
 			)
 		)
 		(property "polarity" ""
-			(at 134.62 321.31 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "LCSC " ""
 			(at 134.62 321.31 0)
 			(hide yes)
 			(show_name no)
@@ -48602,17 +48580,6 @@
 				)
 			)
 		)
-		(property "LCSC " ""
-			(at 500.38 177.8 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
 		(property "Purchase-URL" ""
 			(at 500.38 177.8 0)
 			(hide yes)
@@ -48903,17 +48870,6 @@
 			)
 		)
 		(property "Temperature Coefficient" "±100ppm/°C"
-			(at 463.55 303.53 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "LCSC " ""
 			(at 463.55 303.53 0)
 			(hide yes)
 			(show_name no)
@@ -49445,17 +49401,6 @@
 			)
 		)
 		(property "polarity" ""
-			(at 377.19 154.94 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "LCSC " ""
 			(at 377.19 154.94 0)
 			(hide yes)
 			(show_name no)
@@ -50031,17 +49976,6 @@
 				)
 			)
 		)
-		(property "LCSC " ""
-			(at 439.42 187.96 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
 		(property "Purchase-URL" ""
 			(at 439.42 187.96 0)
 			(hide yes)
@@ -50376,17 +50310,6 @@
 			)
 		)
 		(property "polarity" ""
-			(at 288.29 355.6 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "LCSC " ""
 			(at 288.29 355.6 0)
 			(hide yes)
 			(show_name no)
@@ -50747,17 +50670,6 @@
 			)
 		)
 		(property "polarity" ""
-			(at 220.98 247.65 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "LCSC " ""
 			(at 220.98 247.65 0)
 			(hide yes)
 			(show_name no)
@@ -51294,17 +51206,6 @@
 				)
 			)
 		)
-		(property "LCSC " ""
-			(at 106.68 85.09 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
 		(property "Purchase-URL" ""
 			(at 106.68 85.09 0)
 			(hide yes)
@@ -51641,17 +51542,6 @@
 			)
 		)
 		(property "polarity" ""
-			(at 344.17 78.74 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "LCSC " ""
 			(at 344.17 78.74 0)
 			(hide yes)
 			(show_name no)
@@ -52150,17 +52040,6 @@
 				)
 			)
 		)
-		(property "LCSC " ""
-			(at 361.95 62.23 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
 		(property "Purchase-URL" ""
 			(at 361.95 62.23 0)
 			(hide yes)
@@ -52265,17 +52144,6 @@
 			)
 		)
 		(property "Description" "Generic 16-pin SuperMini, USB-C and onboard regulator; Amazon B0D47G24W3; no EN header pin"
-			(at 436.88 298.45 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "LCSC " ""
 			(at 436.88 298.45 0)
 			(hide yes)
 			(show_name no)
@@ -52860,17 +52728,6 @@
 				)
 			)
 		)
-		(property "LCSC " ""
-			(at 304.8 80.01 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
 		(property "Purchase-URL" ""
 			(at 304.8 80.01 0)
 			(hide yes)
@@ -52950,7 +52807,7 @@
 				)
 			)
 		)
-		(property "Footprint" "Package_TO_SOT_SMD:TSOT-23-8"
+		(property "Footprint" "1My_Parts_ ICs:INA241A_DDF0008A_TI"
 			(at 364.49 231.14 0)
 			(hide yes)
 			(show_name no)
@@ -53094,17 +52951,6 @@
 			)
 		)
 		(property "Part" "INA241A3IDDFR"
-			(at 364.49 214.63 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "LCSC " ""
 			(at 364.49 214.63 0)
 			(hide yes)
 			(show_name no)
@@ -53666,17 +53512,6 @@
 			)
 		)
 		(property "polarity" ""
-			(at 464.82 78.74 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "LCSC " ""
 			(at 464.82 78.74 0)
 			(hide yes)
 			(show_name no)
@@ -54519,17 +54354,6 @@
 				)
 			)
 		)
-		(property "LCSC " ""
-			(at 190.5 194.31 90)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
 		(property "Purchase-URL" ""
 			(at 190.5 194.31 90)
 			(hide yes)
@@ -54925,17 +54749,6 @@
 				)
 			)
 		)
-		(property "LCSC " ""
-			(at 152.4 71.12 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
 		(property "Purchase-URL" ""
 			(at 152.4 71.12 0)
 			(hide yes)
@@ -55298,17 +55111,6 @@
 				)
 			)
 		)
-		(property "LCSC " ""
-			(at 364.49 186.69 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
 		(property "Purchase-URL" ""
 			(at 364.49 186.69 0)
 			(hide yes)
@@ -55479,7 +55281,7 @@
 				)
 			)
 		)
-		(property "Part - USA" "Keystone 3522-2, sourced via Digikey/Mouser (LCSC does not stock; PN confirmation pending)"
+		(property "Part - USA" "Keystone 3522-2 fuse holder; C3204137 identifies the holder only"
 			(at 49.53 64.77 0)
 			(hide yes)
 			(show_name no)
@@ -55711,17 +55513,6 @@
 			)
 		)
 		(property "polarity" ""
-			(at 49.53 64.77 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "LCSC " ""
 			(at 49.53 64.77 0)
 			(hide yes)
 			(show_name no)
@@ -56226,17 +56017,6 @@
 				)
 			)
 		)
-		(property "LCSC " ""
-			(at 157.48 80.01 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
 		(property "Purchase-URL" ""
 			(at 157.48 80.01 0)
 			(hide yes)
@@ -56681,17 +56461,6 @@
 			)
 		)
 		(property "Temperature Coefficient" "±100ppm/°C"
-			(at 434.34 66.04 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "LCSC " ""
 			(at 434.34 66.04 0)
 			(hide yes)
 			(show_name no)
@@ -57256,17 +57025,6 @@
 				)
 			)
 		)
-		(property "LCSC " ""
-			(at 500.38 219.71 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
 		(property "Purchase-URL" ""
 			(at 500.38 219.71 0)
 			(hide yes)
@@ -57800,17 +57558,6 @@
 				)
 			)
 		)
-		(property "LCSC " ""
-			(at 427.99 176.53 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
 		(property "Purchase-URL" ""
 			(at 427.99 176.53 0)
 			(hide yes)
@@ -58246,17 +57993,6 @@
 			)
 		)
 		(property "polarity" ""
-			(at 175.26 105.41 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "LCSC " ""
 			(at 175.26 105.41 0)
 			(hide yes)
 			(show_name no)
@@ -58790,17 +58526,6 @@
 				)
 			)
 		)
-		(property "LCSC " ""
-			(at 379.73 214.63 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
 		(property "Purchase-URL" ""
 			(at 379.73 214.63 0)
 			(hide yes)
@@ -59140,17 +58865,6 @@
 			)
 		)
 		(property "polarity" ""
-			(at 241.3 88.9 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "LCSC " ""
 			(at 241.3 88.9 0)
 			(hide yes)
 			(show_name no)
@@ -59516,17 +59230,6 @@
 			)
 		)
 		(property "polarity" ""
-			(at 35.56 254 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "LCSC " ""
 			(at 35.56 254 0)
 			(hide yes)
 			(show_name no)
@@ -60102,17 +59805,6 @@
 				)
 			)
 		)
-		(property "LCSC " ""
-			(at 154.94 327.66 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
 		(property "Purchase-URL" ""
 			(at 154.94 327.66 0)
 			(hide yes)
@@ -60603,17 +60295,6 @@
 			)
 		)
 		(property "polarity" ""
-			(at 43.18 179.07 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "LCSC " ""
 			(at 43.18 179.07 0)
 			(hide yes)
 			(show_name no)
@@ -61188,17 +60869,6 @@
 				)
 			)
 		)
-		(property "LCSC " ""
-			(at 92.71 254 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
 		(property "Purchase-URL" ""
 			(at 92.71 254 0)
 			(hide yes)
@@ -61729,17 +61399,6 @@
 				)
 			)
 		)
-		(property "LCSC " ""
-			(at 504.19 173.99 90)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
 		(property "Purchase-URL" ""
 			(at 504.19 173.99 90)
 			(hide yes)
@@ -62075,17 +61734,6 @@
 			)
 		)
 		(property "polarity" ""
-			(at 170.18 74.93 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "LCSC " ""
 			(at 170.18 74.93 0)
 			(hide yes)
 			(show_name no)
@@ -62574,17 +62222,6 @@
 			)
 		)
 		(property "polarity" ""
-			(at 450.85 215.9 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "LCSC " ""
 			(at 450.85 215.9 0)
 			(hide yes)
 			(show_name no)
@@ -63205,17 +62842,6 @@
 				)
 			)
 		)
-		(property "LCSC " ""
-			(at 109.22 356.87 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
 		(property "Purchase-URL" ""
 			(at 109.22 356.87 0)
 			(hide yes)
@@ -63301,7 +62927,7 @@
 				)
 			)
 		)
-		(property "Footprint" "Package_TO_SOT_SMD:TSOT-23-8"
+		(property "Footprint" "1My_Parts_ ICs:INA241A_DDF0008A_TI"
 			(at 359.41 265.43 0)
 			(hide yes)
 			(show_name no)
@@ -63445,17 +63071,6 @@
 			)
 		)
 		(property "Part" "INA241A3IDDFR"
-			(at 359.41 248.92 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "LCSC " ""
 			(at 359.41 248.92 0)
 			(hide yes)
 			(show_name no)
@@ -64048,17 +63663,6 @@
 				)
 			)
 		)
-		(property "LCSC " ""
-			(at 88.9 101.6 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
 		(property "Purchase-URL" ""
 			(at 88.9 101.6 0)
 			(hide yes)
@@ -64581,17 +64185,6 @@
 			)
 		)
 		(property "polarity" ""
-			(at 314.96 171.45 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "LCSC " ""
 			(at 314.96 171.45 0)
 			(hide yes)
 			(show_name no)
@@ -65133,17 +64726,6 @@
 				)
 			)
 		)
-		(property "LCSC " ""
-			(at 300.99 242.57 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
 		(property "Purchase-URL" ""
 			(at 300.99 242.57 0)
 			(hide yes)
@@ -65523,17 +65105,6 @@
 			)
 		)
 		(property "polarity" ""
-			(at 101.6 254 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "LCSC " ""
 			(at 101.6 254 0)
 			(hide yes)
 			(show_name no)
@@ -66098,17 +65669,6 @@
 			)
 		)
 		(property "polarity" ""
-			(at 190.5 217.17 90)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "LCSC " ""
 			(at 190.5 217.17 90)
 			(hide yes)
 			(show_name no)
@@ -66684,17 +66244,6 @@
 				)
 			)
 		)
-		(property "LCSC " ""
-			(at 407.67 82.55 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
 		(property "Purchase-URL" ""
 			(at 407.67 82.55 0)
 			(hide yes)
@@ -67040,17 +66589,6 @@
 			)
 		)
 		(property "polarity" ""
-			(at 364.49 160.02 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "LCSC " ""
 			(at 364.49 160.02 0)
 			(hide yes)
 			(show_name no)
@@ -67610,17 +67148,6 @@
 				)
 			)
 		)
-		(property "LCSC " ""
-			(at 270.51 369.57 90)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
 		(property "Purchase-URL" ""
 			(at 270.51 369.57 90)
 			(hide yes)
@@ -67960,17 +67487,6 @@
 			)
 		)
 		(property "polarity" ""
-			(at 195.58 88.9 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "LCSC " ""
 			(at 195.58 88.9 0)
 			(hide yes)
 			(show_name no)
@@ -68512,17 +68028,6 @@
 			)
 		)
 		(property "polarity" ""
-			(at 274.32 373.38 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "LCSC " ""
 			(at 274.32 373.38 0)
 			(hide yes)
 			(show_name no)
@@ -69143,17 +68648,6 @@
 				)
 			)
 		)
-		(property "LCSC " ""
-			(at 50.8 356.87 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
 		(property "Purchase-URL" ""
 			(at 50.8 356.87 0)
 			(hide yes)
@@ -69573,17 +69067,6 @@
 			)
 		)
 		(property "polarity" ""
-			(at 130.81 80.01 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "LCSC " ""
 			(at 130.81 80.01 0)
 			(hide yes)
 			(show_name no)
@@ -70158,17 +69641,6 @@
 				)
 			)
 		)
-		(property "LCSC " ""
-			(at 181.61 69.85 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
 		(property "Purchase-URL" ""
 			(at 181.61 69.85 0)
 			(hide yes)
@@ -70688,17 +70160,6 @@
 				)
 			)
 		)
-		(property "LCSC " ""
-			(at 172.72 171.45 90)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
 		(property "Purchase-URL" ""
 			(at 172.72 171.45 90)
 			(hide yes)
@@ -70999,17 +70460,6 @@
 				)
 			)
 		)
-		(property "LCSC " ""
-			(at 458.47 327.66 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
 		(property "Purchase-URL" ""
 			(at 458.47 327.66 0)
 			(hide yes)
@@ -71160,7 +70610,7 @@
 				)
 			)
 		)
-		(property "Part - USA" "Keystone 3522-2, sourced via Digikey/Mouser (LCSC does not stock; PN confirmation pending)"
+		(property "Part - USA" "Keystone 3522-2 fuse holder; C3204137 identifies the holder only"
 			(at 440.69 57.15 0)
 			(hide yes)
 			(show_name no)
@@ -71392,17 +70842,6 @@
 			)
 		)
 		(property "polarity" ""
-			(at 440.69 57.15 90)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "LCSC " ""
 			(at 440.69 57.15 90)
 			(hide yes)
 			(show_name no)
@@ -71754,17 +71193,6 @@
 			)
 		)
 		(property "polarity" ""
-			(at 115.57 80.01 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "LCSC " ""
 			(at 115.57 80.01 0)
 			(hide yes)
 			(show_name no)
@@ -72355,17 +71783,6 @@
 				)
 			)
 		)
-		(property "LCSC " ""
-			(at 521.97 177.8 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
 		(property "Purchase-URL" ""
 			(at 521.97 177.8 0)
 			(hide yes)
@@ -72499,17 +71916,6 @@
 				)
 			)
 		)
-		(property "LCSC " ""
-			(at 617.22 344.17 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
 		(property "Purchase-URL" ""
 			(at 617.22 344.17 0)
 			(hide yes)
@@ -72543,7 +71949,7 @@
 				)
 			)
 		)
-		(property "LCSC" "C5160761"
+		(property "LCSC" ""
 			(at 617.22 344.17 0)
 			(hide yes)
 			(show_name no)
@@ -73077,17 +72483,6 @@
 				)
 			)
 		)
-		(property "LCSC " ""
-			(at 60.96 372.11 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
 		(property "Purchase-URL" ""
 			(at 60.96 372.11 0)
 			(hide yes)
@@ -73433,17 +72828,6 @@
 				)
 			)
 		)
-		(property "LCSC " ""
-			(at 139.7 80.01 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
 		(property "Purchase-URL" ""
 			(at 139.7 80.01 0)
 			(hide yes)
@@ -73778,17 +73162,6 @@
 			)
 		)
 		(property "polarity" ""
-			(at 106.68 73.66 90)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "LCSC " ""
 			(at 106.68 73.66 90)
 			(hide yes)
 			(show_name no)
@@ -74287,17 +73660,6 @@
 			)
 		)
 		(property "polarity" ""
-			(at 374.65 252.73 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "LCSC " ""
 			(at 374.65 252.73 0)
 			(hide yes)
 			(show_name no)
@@ -74839,17 +74201,6 @@
 				)
 			)
 		)
-		(property "LCSC " ""
-			(at 171.45 199.39 90)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
 		(property "Purchase-URL" ""
 			(at 171.45 199.39 90)
 			(hide yes)
@@ -75150,17 +74501,6 @@
 				)
 			)
 		)
-		(property "LCSC " ""
-			(at 458.47 303.53 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
 		(property "Purchase-URL" ""
 			(at 458.47 303.53 0)
 			(hide yes)
@@ -75266,17 +74606,6 @@
 			)
 		)
 		(property "Description" "Net tie, 2 pins"
-			(at 320.04 73.66 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "LCSC " ""
 			(at 320.04 73.66 0)
 			(hide yes)
 			(show_name no)
@@ -75787,17 +75116,6 @@
 				)
 			)
 		)
-		(property "LCSC " ""
-			(at 69.85 180.34 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
 		(property "Purchase-URL" ""
 			(at 69.85 180.34 0)
 			(hide yes)
@@ -76297,17 +75615,6 @@
 			)
 		)
 		(property "polarity" ""
-			(at 105.41 298.45 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "LCSC " ""
 			(at 105.41 298.45 0)
 			(hide yes)
 			(show_name no)
@@ -76860,17 +76167,6 @@
 				)
 			)
 		)
-		(property "LCSC " ""
-			(at 478.79 168.91 90)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
 		(property "Purchase-URL" ""
 			(at 478.79 168.91 90)
 			(hide yes)
@@ -77315,17 +76611,6 @@
 			)
 		)
 		(property "Temperature Coefficient" "±100ppm/°C"
-			(at 421.64 66.04 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "LCSC " ""
 			(at 421.64 66.04 0)
 			(hide yes)
 			(show_name no)
@@ -77847,17 +77132,6 @@
 			)
 		)
 		(property "polarity" ""
-			(at 397.51 82.55 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "LCSC " ""
 			(at 397.51 82.55 0)
 			(hide yes)
 			(show_name no)
@@ -78411,17 +77685,6 @@
 				)
 			)
 		)
-		(property "LCSC " ""
-			(at 464.82 63.5 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
 		(property "Purchase-URL" ""
 			(at 464.82 63.5 0)
 			(hide yes)
@@ -78954,17 +78217,6 @@
 				)
 			)
 		)
-		(property "LCSC " ""
-			(at 344.17 167.64 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
 		(property "Purchase-URL" ""
 			(at 344.17 167.64 0)
 			(hide yes)
@@ -79400,17 +78652,6 @@
 			)
 		)
 		(property "polarity" ""
-			(at 93.98 97.79 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "LCSC " ""
 			(at 93.98 97.79 0)
 			(hide yes)
 			(show_name no)
@@ -79955,17 +79196,6 @@
 				)
 			)
 		)
-		(property "LCSC " ""
-			(at 313.69 186.69 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
 		(property "Purchase-URL" ""
 			(at 313.69 186.69 0)
 			(hide yes)
@@ -80354,17 +79584,6 @@
 				)
 			)
 		)
-		(property "LCSC " ""
-			(at 462.28 176.53 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
 		(property "Purchase-URL" ""
 			(at 462.28 176.53 0)
 			(hide yes)
@@ -80456,7 +79675,7 @@
 				(justify left)
 			)
 		)
-		(property "Value" "KRL2012E-C-R010-F-T5"
+		(property "Value" "KRL2012E-M-R010-F-T5"
 			(at 86.614 73.914 0)
 			(show_name no)
 			(do_not_autoplace no)
@@ -80546,7 +79765,7 @@
 				)
 			)
 		)
-		(property "LCSC" ""
+		(property "LCSC" "C5342352"
 			(at 80.01 71.12 90)
 			(hide yes)
 			(show_name no)
@@ -80788,7 +80007,7 @@
 				)
 			)
 		)
-		(property "Part" "KRL2012E-C-R010-F-T5"
+		(property "Part" "KRL2012E-M-R010-F-T5"
 			(at 80.01 71.12 0)
 			(hide yes)
 			(show_name no)
@@ -80822,17 +80041,6 @@
 			)
 		)
 		(property "Tolerance" "±1%"
-			(at 80.01 71.12 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "LCSC " ""
 			(at 80.01 71.12 0)
 			(hide yes)
 			(show_name no)
@@ -81428,17 +80636,6 @@
 				)
 			)
 		)
-		(property "LCSC " ""
-			(at 382.27 72.39 90)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
 		(property "Purchase-URL" ""
 			(at 382.27 72.39 90)
 			(hide yes)
@@ -81833,17 +81030,6 @@
 			)
 		)
 		(property "polarity" ""
-			(at 60.96 295.91 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "LCSC " ""
 			(at 60.96 295.91 0)
 			(hide yes)
 			(show_name no)
@@ -82283,17 +81469,6 @@
 				)
 			)
 		)
-		(property "LCSC " ""
-			(at 172.72 214.63 90)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
 		(property "Purchase-URL" ""
 			(at 172.72 214.63 90)
 			(hide yes)
@@ -82630,17 +81805,6 @@
 			)
 		)
 		(property "polarity" ""
-			(at 351.79 76.2 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "LCSC " ""
 			(at 351.79 76.2 0)
 			(hide yes)
 			(show_name no)
@@ -83017,17 +82181,6 @@
 				)
 			)
 		)
-		(property "LCSC " ""
-			(at 382.27 59.69 90)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
 		(property "Purchase-URL" ""
 			(at 382.27 59.69 90)
 			(hide yes)
@@ -83394,17 +82547,6 @@
 				)
 			)
 		)
-		(property "LCSC " ""
-			(at 217.17 367.03 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
 		(property "Purchase-URL" ""
 			(at 217.17 367.03 0)
 			(hide yes)
@@ -83761,17 +82903,6 @@
 			)
 		)
 		(property "polarity" ""
-			(at 195.58 67.31 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "LCSC " ""
 			(at 195.58 67.31 0)
 			(hide yes)
 			(show_name no)
@@ -84322,17 +83453,6 @@
 				)
 			)
 		)
-		(property "LCSC " ""
-			(at 62.23 177.8 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
 		(property "Purchase-URL" ""
 			(at 62.23 177.8 0)
 			(hide yes)
@@ -84624,17 +83744,6 @@
 		)
 		(property "Temperature Coefficient" "±100ppm/°C"
 			(at 464.82 341.63 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "LCSC " ""
-			(at 464.82 341.63 90)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -85166,17 +84275,6 @@
 			)
 		)
 		(property "polarity" ""
-			(at 90.17 200.66 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "LCSC " ""
 			(at 90.17 200.66 0)
 			(hide yes)
 			(show_name no)
@@ -85798,17 +84896,6 @@
 				)
 			)
 		)
-		(property "LCSC " ""
-			(at 167.64 101.6 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
 		(property "Purchase-URL" ""
 			(at 167.64 101.6 0)
 			(hide yes)
@@ -86194,17 +85281,6 @@
 			)
 		)
 		(property "polarity" ""
-			(at 149.86 93.98 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "LCSC " ""
 			(at 149.86 93.98 0)
 			(hide yes)
 			(show_name no)
@@ -86831,17 +85907,6 @@
 				)
 			)
 		)
-		(property "LCSC " ""
-			(at 500.38 212.09 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
 		(property "Purchase-URL" ""
 			(at 500.38 212.09 0)
 			(hide yes)
@@ -87189,17 +86254,6 @@
 				)
 			)
 		)
-		(property "LCSC " ""
-			(at 353.06 59.69 90)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
 		(property "Purchase-URL" ""
 			(at 353.06 59.69 90)
 			(hide yes)
@@ -87390,17 +86444,6 @@
 			)
 		)
 		(property "Description" "STM32G473CEU6; UFQFPN48 plus exposed VSS pad; pin map verified against ST pin data"
-			(at 266.7 203.2 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "LCSC " ""
 			(at 266.7 203.2 0)
 			(hide yes)
 			(show_name no)
@@ -88095,17 +87138,6 @@
 				)
 			)
 		)
-		(property "LCSC " ""
-			(at 119.38 350.52 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
 		(property "Purchase-URL" ""
 			(at 119.38 350.52 0)
 			(hide yes)
@@ -88716,17 +87748,6 @@
 				)
 			)
 		)
-		(property "LCSC " ""
-			(at 78.74 356.87 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
 		(property "Purchase-URL" ""
 			(at 78.74 356.87 0)
 			(hide yes)
@@ -89297,17 +88318,6 @@
 				)
 			)
 		)
-		(property "LCSC " ""
-			(at 190.5 208.28 90)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
 		(property "Purchase-URL" ""
 			(at 190.5 208.28 90)
 			(hide yes)
@@ -89862,17 +88872,6 @@
 			)
 		)
 		(property "polarity" ""
-			(at 190.5 201.93 90)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "LCSC " ""
 			(at 190.5 201.93 90)
 			(hide yes)
 			(show_name no)
@@ -90448,17 +89447,6 @@
 				)
 			)
 		)
-		(property "LCSC " ""
-			(at 72.39 90.17 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
 		(property "Purchase-URL" ""
 			(at 72.39 90.17 0)
 			(hide yes)
@@ -90981,17 +89969,6 @@
 			)
 		)
 		(property "polarity" ""
-			(at 336.55 177.8 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "LCSC " ""
 			(at 336.55 177.8 0)
 			(hide yes)
 			(show_name no)
@@ -91613,17 +90590,6 @@
 				)
 			)
 		)
-		(property "LCSC " ""
-			(at 96.52 83.82 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
 		(property "Purchase-URL" ""
 			(at 96.52 83.82 0)
 			(hide yes)
@@ -92011,17 +90977,6 @@
 				)
 			)
 		)
-		(property "LCSC " ""
-			(at 487.68 173.99 90)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
 		(property "Purchase-URL" ""
 			(at 487.68 173.99 90)
 			(hide yes)
@@ -92092,7 +91047,7 @@
 				(justify left)
 			)
 		)
-		(property "Value" "KRL2012E-C-R010-F-T5"
+		(property "Value" "KRL2012E-M-R010-F-T5"
 			(at 86.36 64.77 0)
 			(show_name no)
 			(do_not_autoplace no)
@@ -92182,7 +91137,7 @@
 				)
 			)
 		)
-		(property "LCSC" ""
+		(property "LCSC" "C5342352"
 			(at 80.01 67.31 90)
 			(hide yes)
 			(show_name no)
@@ -92424,7 +91379,7 @@
 				)
 			)
 		)
-		(property "Part" "KRL2012E-C-R010-F-T5"
+		(property "Part" "KRL2012E-M-R010-F-T5"
 			(at 80.01 67.31 0)
 			(hide yes)
 			(show_name no)
@@ -92458,17 +91413,6 @@
 			)
 		)
 		(property "Tolerance" "±1%"
-			(at 80.01 67.31 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "LCSC " ""
 			(at 80.01 67.31 0)
 			(hide yes)
 			(show_name no)
@@ -92869,17 +91813,6 @@
 				)
 			)
 		)
-		(property "LCSC " ""
-			(at 44.45 90.17 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
 		(property "Purchase-URL" ""
 			(at 44.45 90.17 0)
 			(hide yes)
@@ -93229,17 +92162,6 @@
 				)
 			)
 		)
-		(property "LCSC " ""
-			(at 240.03 67.31 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
 		(property "Purchase-URL" ""
 			(at 240.03 67.31 0)
 			(hide yes)
@@ -93551,17 +92473,6 @@
 			)
 		)
 		(property "polarity" ""
-			(at 148.59 80.01 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "LCSC " ""
 			(at 148.59 80.01 0)
 			(hide yes)
 			(show_name no)
@@ -94103,17 +93014,6 @@
 				)
 			)
 		)
-		(property "LCSC " ""
-			(at 52.07 179.07 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
 		(property "Purchase-URL" ""
 			(at 52.07 179.07 0)
 			(hide yes)
@@ -94493,17 +93393,6 @@
 			)
 		)
 		(property "polarity" ""
-			(at 279.4 80.01 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "LCSC " ""
 			(at 279.4 80.01 0)
 			(hide yes)
 			(show_name no)
@@ -95078,17 +93967,6 @@
 				)
 			)
 		)
-		(property "LCSC " ""
-			(at 167.64 109.22 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
 		(property "Purchase-URL" ""
 			(at 167.64 109.22 0)
 			(hide yes)
@@ -95466,17 +94344,6 @@
 			)
 		)
 		(property "polarity" ""
-			(at 72.39 254 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "LCSC " ""
 			(at 72.39 254 0)
 			(hide yes)
 			(show_name no)
@@ -96051,17 +94918,6 @@
 				)
 			)
 		)
-		(property "LCSC " ""
-			(at 190.5 189.23 90)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
 		(property "Purchase-URL" ""
 			(at 190.5 189.23 90)
 			(hide yes)
@@ -96626,17 +95482,6 @@
 				)
 			)
 		)
-		(property "LCSC " ""
-			(at 190.5 181.61 90)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
 		(property "Purchase-URL" ""
 			(at 190.5 181.61 90)
 			(hide yes)
@@ -96821,17 +95666,6 @@
 		)
 		(property "Description" "Net tie, 2 pins"
 			(at 219.71 77.47 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "LCSC " ""
-			(at 219.71 77.47 90)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -97362,17 +96196,6 @@
 				)
 			)
 		)
-		(property "LCSC " ""
-			(at 397.51 90.17 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
 		(property "Purchase-URL" ""
 			(at 397.51 90.17 0)
 			(hide yes)
@@ -97663,17 +96486,6 @@
 			)
 		)
 		(property "Temperature Coefficient" "±100ppm/°C"
-			(at 367.03 295.91 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "LCSC " ""
 			(at 367.03 295.91 0)
 			(hide yes)
 			(show_name no)
@@ -98249,17 +97061,6 @@
 				)
 			)
 		)
-		(property "LCSC " ""
-			(at 439.42 180.34 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
 		(property "Purchase-URL" ""
 			(at 439.42 180.34 0)
 			(hide yes)
@@ -98365,17 +97166,6 @@
 			)
 		)
 		(property "Description" "Net tie, 2 pins"
-			(at 80.01 73.66 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "LCSC " ""
 			(at 80.01 73.66 0)
 			(hide yes)
 			(show_name no)
@@ -98677,17 +97467,6 @@
 		)
 		(property "Temperature Coefficient" "±100ppm/°C"
 			(at 415.29 346.71 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "LCSC " ""
-			(at 415.29 346.71 90)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -99187,17 +97966,6 @@
 			)
 		)
 		(property "polarity" ""
-			(at 386.08 167.64 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "LCSC " ""
 			(at 386.08 167.64 0)
 			(hide yes)
 			(show_name no)
@@ -99762,17 +98530,6 @@
 				)
 			)
 		)
-		(property "LCSC " ""
-			(at 514.35 180.34 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
 		(property "Purchase-URL" ""
 			(at 514.35 180.34 0)
 			(hide yes)
@@ -100162,17 +98919,6 @@
 				)
 			)
 		)
-		(property "LCSC " ""
-			(at 83.82 254 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
 		(property "Purchase-URL" ""
 			(at 83.82 254 0)
 			(hide yes)
@@ -100550,17 +99296,6 @@
 			)
 		)
 		(property "polarity" ""
-			(at 59.69 254 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "LCSC " ""
 			(at 59.69 254 0)
 			(hide yes)
 			(show_name no)
@@ -101070,17 +99805,6 @@
 				)
 			)
 		)
-		(property "LCSC " ""
-			(at 457.2 285.75 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
 		(property "Purchase-URL" ""
 			(at 457.2 285.75 0)
 			(hide yes)
@@ -101458,17 +100182,6 @@
 			)
 		)
 		(property "polarity" ""
-			(at 226.06 74.93 90)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "LCSC " ""
 			(at 226.06 74.93 90)
 			(hide yes)
 			(show_name no)
@@ -102113,17 +100826,6 @@
 				)
 			)
 		)
-		(property "LCSC " ""
-			(at 302.26 251.46 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
 		(property "Purchase-URL" ""
 			(at 302.26 251.46 0)
 			(hide yes)
@@ -102415,17 +101117,6 @@
 		)
 		(property "Temperature Coefficient" "±100ppm/°C"
 			(at 415.29 351.79 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "LCSC " ""
-			(at 415.29 351.79 90)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -102812,17 +101503,6 @@
 			)
 		)
 		(property "polarity" ""
-			(at 179.07 185.42 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "LCSC " ""
 			(at 179.07 185.42 0)
 			(hide yes)
 			(show_name no)
@@ -103365,17 +102045,6 @@
 				)
 			)
 		)
-		(property "LCSC " ""
-			(at 88.9 372.11 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
 		(property "Purchase-URL" ""
 			(at 88.9 372.11 0)
 			(hide yes)
@@ -103876,17 +102545,6 @@
 			)
 		)
 		(property "polarity" ""
-			(at 344.17 177.8 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "LCSC " ""
 			(at 344.17 177.8 0)
 			(hide yes)
 			(show_name no)
@@ -104473,17 +103131,6 @@
 				)
 			)
 		)
-		(property "LCSC " ""
-			(at 96.52 279.4 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
 		(property "Purchase-URL" ""
 			(at 96.52 279.4 0)
 			(hide yes)
@@ -104564,7 +103211,7 @@
 				)
 			)
 		)
-		(property "Footprint" "Package_TO_SOT_SMD:TSOT-23-8"
+		(property "Footprint" "1My_Parts_ ICs:INA241A_DDF0008A_TI"
 			(at 359.41 288.29 0)
 			(hide yes)
 			(show_name no)
@@ -104708,17 +103355,6 @@
 			)
 		)
 		(property "Part" "INA241A3IDDFR"
-			(at 359.41 271.78 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "LCSC " ""
 			(at 359.41 271.78 0)
 			(hide yes)
 			(show_name no)
@@ -105279,17 +103915,6 @@
 				)
 			)
 		)
-		(property "LCSC " ""
-			(at 160.02 300.99 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
 		(property "Purchase-URL" ""
 			(at 160.02 300.99 0)
 			(hide yes)
@@ -105718,17 +104343,6 @@
 			)
 		)
 		(property "polarity" ""
-			(at 339.09 57.15 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "LCSC " ""
 			(at 339.09 57.15 0)
 			(hide yes)
 			(show_name no)
@@ -106236,17 +104850,6 @@
 				)
 			)
 		)
-		(property "LCSC " ""
-			(at 297.18 252.73 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
 		(property "Purchase-URL" ""
 			(at 297.18 252.73 0)
 			(hide yes)
@@ -106593,17 +105196,6 @@
 			)
 		)
 		(property "polarity" ""
-			(at 336.55 151.13 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "LCSC " ""
 			(at 336.55 151.13 0)
 			(hide yes)
 			(show_name no)
@@ -107104,17 +105696,6 @@
 			)
 		)
 		(property "polarity" ""
-			(at 179.07 359.41 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "LCSC " ""
 			(at 179.07 359.41 0)
 			(hide yes)
 			(show_name no)
@@ -107656,17 +106237,6 @@
 				)
 			)
 		)
-		(property "LCSC " ""
-			(at 514.35 172.72 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
 		(property "Purchase-URL" ""
 			(at 514.35 172.72 0)
 			(hide yes)
@@ -108190,17 +106760,6 @@
 			)
 		)
 		(property "polarity" ""
-			(at 127 309.88 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "LCSC " ""
 			(at 127 309.88 0)
 			(hide yes)
 			(show_name no)
@@ -108821,17 +107380,6 @@
 				)
 			)
 		)
-		(property "LCSC " ""
-			(at 50.8 378.46 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
 		(property "Purchase-URL" ""
 			(at 50.8 378.46 0)
 			(hide yes)
@@ -109128,17 +107676,6 @@
 			)
 		)
 		(property "Temperature Coefficient" "±100ppm/°C"
-			(at 420.37 327.66 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "LCSC " ""
 			(at 420.37 327.66 0)
 			(hide yes)
 			(show_name no)
@@ -109680,17 +108217,6 @@
 				)
 			)
 		)
-		(property "LCSC " ""
-			(at 311.15 171.45 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
 		(property "Purchase-URL" ""
 			(at 311.15 171.45 0)
 			(hide yes)
@@ -110211,17 +108737,6 @@
 				)
 			)
 		)
-		(property "LCSC " ""
-			(at 370.84 271.78 90)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
 		(property "Purchase-URL" ""
 			(at 370.84 271.78 90)
 			(hide yes)
@@ -110599,17 +109114,6 @@
 			)
 		)
 		(property "polarity" ""
-			(at 46.99 254 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "LCSC " ""
 			(at 46.99 254 0)
 			(hide yes)
 			(show_name no)
@@ -111230,17 +109734,6 @@
 				)
 			)
 		)
-		(property "LCSC " ""
-			(at 60.96 350.52 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
 		(property "Purchase-URL" ""
 			(at 60.96 350.52 0)
 			(hide yes)
@@ -111738,17 +110231,6 @@
 				)
 			)
 		)
-		(property "LCSC " ""
-			(at 297.18 222.25 90)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
 		(property "Purchase-URL" ""
 			(at 297.18 222.25 90)
 			(hide yes)
@@ -112227,17 +110709,6 @@
 				)
 			)
 		)
-		(property "LCSC " ""
-			(at 344.17 151.13 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
 		(property "Purchase-URL" ""
 			(at 344.17 151.13 0)
 			(hide yes)
@@ -112627,17 +111098,6 @@
 				)
 			)
 		)
-		(property "LCSC " ""
-			(at 46.99 262.89 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
 		(property "Purchase-URL" ""
 			(at 46.99 262.89 0)
 			(hide yes)
@@ -112741,17 +111201,6 @@
 		)
 		(property "Description" ""
 			(at 438.15 344.17 0)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "LCSC " ""
-			(at 438.15 344.17 0)
-			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
 			(effects
@@ -113376,17 +111825,6 @@
 			)
 		)
 		(property "polarity" ""
-			(at 483.87 214.63 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "LCSC " ""
 			(at 483.87 214.63 0)
 			(hide yes)
 			(show_name no)
@@ -114153,17 +112591,6 @@
 				)
 			)
 		)
-		(property "LCSC " ""
-			(at 387.35 220.98 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
 		(property "Purchase-URL" ""
 			(at 387.35 220.98 0)
 			(hide yes)
@@ -114774,17 +113201,6 @@
 				)
 			)
 		)
-		(property "LCSC " ""
-			(at 78.74 378.46 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
 		(property "Purchase-URL" ""
 			(at 78.74 378.46 0)
 			(hide yes)
@@ -114895,17 +113311,6 @@
 		)
 		(property "Description" "Solder Jumper, 2-pole, open"
 			(at 172.72 173.99 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "LCSC " ""
-			(at 172.72 168.91 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -115250,17 +113655,6 @@
 			)
 		)
 		(property "polarity" ""
-			(at 288.29 80.01 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "LCSC " ""
 			(at 288.29 80.01 0)
 			(hide yes)
 			(show_name no)
@@ -115717,17 +114111,6 @@
 				)
 			)
 		)
-		(property "LCSC " ""
-			(at 207.01 74.93 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
 		(property "Purchase-URL" ""
 			(at 207.01 74.93 0)
 			(hide yes)
@@ -116019,17 +114402,6 @@
 		)
 		(property "Temperature Coefficient" "±100ppm/°C"
 			(at 464.82 336.55 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "LCSC " ""
-			(at 464.82 336.55 90)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -116475,17 +114847,6 @@
 			)
 		)
 		(property "Tolerance" "±1%"
-			(at 320.04 71.12 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "LCSC " ""
 			(at 320.04 71.12 0)
 			(hide yes)
 			(show_name no)
@@ -117061,17 +115422,6 @@
 				)
 			)
 		)
-		(property "LCSC " ""
-			(at 449.58 185.42 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
 		(property "Purchase-URL" ""
 			(at 449.58 185.42 0)
 			(hide yes)
@@ -117603,17 +115953,6 @@
 				)
 			)
 		)
-		(property "LCSC " ""
-			(at 181.61 88.9 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
 		(property "Purchase-URL" ""
 			(at 181.61 88.9 0)
 			(hide yes)
@@ -118004,17 +116343,6 @@
 				)
 			)
 		)
-		(property "LCSC " ""
-			(at 438.15 78.74 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
 		(property "Purchase-URL" ""
 			(at 438.15 78.74 0)
 			(hide yes)
@@ -118362,17 +116690,6 @@
 			)
 		)
 		(property "polarity" ""
-			(at 154.94 401.32 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "LCSC " ""
 			(at 154.94 401.32 0)
 			(hide yes)
 			(show_name no)
@@ -118822,17 +117139,6 @@
 				)
 			)
 		)
-		(property "LCSC " ""
-			(at 280.67 369.57 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
 		(property "Purchase-URL" ""
 			(at 280.67 369.57 0)
 			(hide yes)
@@ -119180,17 +117486,6 @@
 			)
 		)
 		(property "polarity" ""
-			(at 104.14 209.55 90)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "LCSC " ""
 			(at 104.14 209.55 90)
 			(hide yes)
 			(show_name no)
@@ -119733,17 +118028,6 @@
 				)
 			)
 		)
-		(property "LCSC " ""
-			(at 88.9 350.52 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
 		(property "Purchase-URL" ""
 			(at 88.9 350.52 0)
 			(hide yes)
@@ -120101,17 +118385,6 @@
 				)
 			)
 		)
-		(property "LCSC " ""
-			(at 220.98 226.06 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
 		(property "Purchase-URL" ""
 			(at 220.98 226.06 0)
 			(hide yes)
@@ -120408,17 +118681,6 @@
 			)
 		)
 		(property "Temperature Coefficient" "±100ppm/°C"
-			(at 350.52 295.91 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "LCSC " ""
 			(at 350.52 295.91 0)
 			(hide yes)
 			(show_name no)
@@ -120994,17 +119256,6 @@
 				)
 			)
 		)
-		(property "LCSC " ""
-			(at 72.39 76.2 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
 		(property "Purchase-URL" ""
 			(at 72.39 76.2 0)
 			(hide yes)
@@ -121514,17 +119765,6 @@
 			)
 		)
 		(property "polarity" ""
-			(at 172.72 179.07 90)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "LCSC " ""
 			(at 172.72 179.07 90)
 			(hide yes)
 			(show_name no)
@@ -122099,17 +120339,6 @@
 				)
 			)
 		)
-		(property "LCSC " ""
-			(at 481.33 187.96 90)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
 		(property "Purchase-URL" ""
 			(at 481.33 187.96 90)
 			(hide yes)
@@ -122489,17 +120718,6 @@
 			)
 		)
 		(property "polarity" ""
-			(at 170.18 88.9 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "LCSC " ""
 			(at 170.18 88.9 0)
 			(hide yes)
 			(show_name no)
@@ -123010,17 +121228,6 @@
 			)
 		)
 		(property "polarity" ""
-			(at 344.17 194.31 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "LCSC " ""
 			(at 344.17 194.31 0)
 			(hide yes)
 			(show_name no)
@@ -123595,17 +121802,6 @@
 				)
 			)
 		)
-		(property "LCSC " ""
-			(at 102.87 186.69 90)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
 		(property "Purchase-URL" ""
 			(at 102.87 186.69 90)
 			(hide yes)
@@ -124103,17 +122299,6 @@
 				)
 			)
 		)
-		(property "LCSC " ""
-			(at 297.18 232.41 90)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
 		(property "Purchase-URL" ""
 			(at 297.18 232.41 90)
 			(hide yes)
@@ -124219,17 +122404,6 @@
 			)
 		)
 		(property "Description" "Net tie, 2 pins"
-			(at 332.74 73.66 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "LCSC " ""
 			(at 332.74 73.66 0)
 			(hide yes)
 			(show_name no)
@@ -124728,17 +122902,6 @@
 				)
 			)
 		)
-		(property "LCSC " ""
-			(at 170.18 185.42 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
 		(property "Purchase-URL" ""
 			(at 170.18 185.42 0)
 			(hide yes)
@@ -124844,17 +123007,6 @@
 			)
 		)
 		(property "Description" "Net tie, 2 pins"
-			(at 425.45 76.2 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "LCSC " ""
 			(at 425.45 76.2 0)
 			(hide yes)
 			(show_name no)
@@ -125343,17 +123495,6 @@
 			)
 		)
 		(property "polarity" ""
-			(at 102.87 78.74 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "LCSC " ""
 			(at 102.87 78.74 0)
 			(hide yes)
 			(show_name no)
@@ -125939,17 +124080,6 @@
 				)
 			)
 		)
-		(property "LCSC " ""
-			(at 478.79 71.12 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
 		(property "Purchase-URL" ""
 			(at 478.79 71.12 0)
 			(hide yes)
@@ -126460,17 +124590,6 @@
 			)
 		)
 		(property "polarity" ""
-			(at 345.44 90.17 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "LCSC " ""
 			(at 345.44 90.17 0)
 			(hide yes)
 			(show_name no)
@@ -127045,17 +125164,6 @@
 				)
 			)
 		)
-		(property "LCSC " ""
-			(at 499.11 187.96 90)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
 		(property "Purchase-URL" ""
 			(at 499.11 187.96 90)
 			(hide yes)
@@ -127160,17 +125268,6 @@
 		)
 		(property "Description" "Solder Jumper, 2-pole, closed/bridged"
 			(at 172.72 170.18 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "LCSC " ""
-			(at 172.72 165.1 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -127470,17 +125567,6 @@
 			)
 		)
 		(property "Temperature Coefficient" "±100ppm/°C"
-			(at 453.39 327.66 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "LCSC " ""
 			(at 453.39 327.66 0)
 			(hide yes)
 			(show_name no)
@@ -127871,17 +125957,6 @@
 			)
 		)
 		(property "polarity" ""
-			(at 110.49 158.75 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "LCSC " ""
 			(at 110.49 158.75 0)
 			(hide yes)
 			(show_name no)
@@ -128573,17 +126648,6 @@
 				)
 			)
 		)
-		(property "LCSC " ""
-			(at 491.49 187.96 90)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
 		(property "Purchase-URL" ""
 			(at 491.49 187.96 90)
 			(hide yes)
@@ -128919,17 +126983,6 @@
 			)
 		)
 		(property "polarity" ""
-			(at 121.92 80.01 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "LCSC " ""
 			(at 121.92 80.01 0)
 			(hide yes)
 			(show_name no)
@@ -129335,17 +127388,6 @@
 				)
 			)
 		)
-		(property "LCSC " ""
-			(at 495.3 208.28 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
 		(property "Purchase-URL" ""
 			(at 495.3 208.28 0)
 			(hide yes)
@@ -129459,17 +127501,6 @@
 			)
 		)
 		(property "Description" "Net tie, 2 pins"
-			(at 440.69 60.96 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "LCSC " ""
 			(at 440.69 60.96 0)
 			(hide yes)
 			(show_name no)
@@ -129979,17 +128010,6 @@
 				)
 			)
 		)
-		(property "LCSC " ""
-			(at 491.49 214.63 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
 		(property "Purchase-URL" ""
 			(at 491.49 214.63 0)
 			(hide yes)
@@ -130426,17 +128446,6 @@
 			)
 		)
 		(property "Tolerance" "±1%"
-			(at 207.01 71.12 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "LCSC " ""
 			(at 207.01 71.12 0)
 			(hide yes)
 			(show_name no)
@@ -130947,17 +128956,6 @@
 				)
 			)
 		)
-		(property "LCSC " ""
-			(at 361.95 203.2 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
 		(property "Purchase-URL" ""
 			(at 361.95 203.2 0)
 			(hide yes)
@@ -131336,17 +129334,6 @@
 			)
 		)
 		(property "polarity" ""
-			(at 490.22 168.91 90)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "LCSC " ""
 			(at 490.22 168.91 90)
 			(hide yes)
 			(show_name no)
@@ -131876,17 +129863,6 @@
 				)
 			)
 		)
-		(property "LCSC " ""
-			(at 424.18 163.83 90)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
 		(property "Purchase-URL" ""
 			(at 424.18 163.83 90)
 			(hide yes)
@@ -132397,17 +130373,6 @@
 			)
 		)
 		(property "polarity" ""
-			(at 511.81 158.75 90)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "LCSC " ""
 			(at 511.81 158.75 90)
 			(hide yes)
 			(show_name no)
@@ -132950,17 +130915,6 @@
 				)
 			)
 		)
-		(property "LCSC " ""
-			(at 336.55 167.64 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
 		(property "Purchase-URL" ""
 			(at 336.55 167.64 0)
 			(hide yes)
@@ -133253,17 +131207,6 @@
 			)
 		)
 		(property "polarity" ""
-			(at 60.96 80.01 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "LCSC " ""
 			(at 60.96 80.01 0)
 			(hide yes)
 			(show_name no)
@@ -133730,17 +131673,6 @@
 			)
 		)
 		(property "polarity" ""
-			(at 487.68 78.74 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "LCSC " ""
 			(at 487.68 78.74 0)
 			(hide yes)
 			(show_name no)
@@ -134271,17 +132203,6 @@
 				)
 			)
 		)
-		(property "LCSC " ""
-			(at 370.84 248.92 90)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
 		(property "Purchase-URL" ""
 			(at 370.84 248.92 90)
 			(hide yes)
@@ -134395,7 +132316,7 @@
 				)
 			)
 		)
-		(property "LCSC" "C2930193"
+		(property "LCSC" ""
 			(at 96.52 209.55 0)
 			(hide yes)
 			(show_name no)
@@ -134770,17 +132691,6 @@
 			)
 		)
 		(property "polarity" ""
-			(at 96.52 209.55 90)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "LCSC " ""
 			(at 96.52 209.55 90)
 			(hide yes)
 			(show_name no)
@@ -135324,17 +133234,6 @@
 				)
 			)
 		)
-		(property "LCSC " ""
-			(at 127 321.31 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
 		(property "Purchase-URL" ""
 			(at 127 321.31 0)
 			(hide yes)
@@ -135440,17 +133339,6 @@
 			)
 		)
 		(property "Description" "Net tie, 2 pins"
-			(at 93.98 73.66 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "LCSC " ""
 			(at 93.98 73.66 0)
 			(hide yes)
 			(show_name no)
@@ -136072,17 +133960,6 @@
 				)
 			)
 		)
-		(property "LCSC " ""
-			(at 88.9 91.44 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
 		(property "Purchase-URL" ""
 			(at 88.9 91.44 0)
 			(hide yes)
@@ -136604,17 +134481,6 @@
 			)
 		)
 		(property "polarity" ""
-			(at 181.61 81.28 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "LCSC " ""
 			(at 181.61 81.28 0)
 			(hide yes)
 			(show_name no)
@@ -137158,17 +135024,6 @@
 				)
 			)
 		)
-		(property "LCSC " ""
-			(at 297.18 80.01 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
 		(property "Purchase-URL" ""
 			(at 297.18 80.01 0)
 			(hide yes)
@@ -137554,17 +135409,6 @@
 			)
 		)
 		(property "polarity" ""
-			(at 516.89 168.91 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "LCSC " ""
 			(at 516.89 168.91 0)
 			(hide yes)
 			(show_name no)
@@ -138093,17 +135937,6 @@
 			)
 		)
 		(property "polarity" ""
-			(at 424.18 208.28 90)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "LCSC " ""
 			(at 424.18 208.28 90)
 			(hide yes)
 			(show_name no)
@@ -138650,17 +136483,6 @@
 			)
 		)
 		(property "polarity" ""
-			(at 293.37 227.33 90)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "LCSC " ""
 			(at 293.37 227.33 90)
 			(hide yes)
 			(show_name no)
@@ -139246,17 +137068,6 @@
 				)
 			)
 		)
-		(property "LCSC " ""
-			(at 93.98 279.4 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
 		(property "Purchase-URL" ""
 			(at 93.98 279.4 0)
 			(hide yes)
@@ -139601,17 +137412,6 @@
 				)
 			)
 		)
-		(property "LCSC " ""
-			(at 464.82 210.82 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
 		(property "Purchase-URL" ""
 			(at 464.82 210.82 0)
 			(hide yes)
@@ -139917,17 +137717,6 @@
 			)
 		)
 		(property "Temperature Coefficient" "±100ppm/°C"
-			(at 414.02 327.66 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "LCSC " ""
 			(at 414.02 327.66 0)
 			(hide yes)
 			(show_name no)
@@ -140374,17 +138163,6 @@
 			)
 		)
 		(property "Tolerance" "±1%"
-			(at 320.04 67.31 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "LCSC " ""
 			(at 320.04 67.31 0)
 			(hide yes)
 			(show_name no)
@@ -140884,17 +138662,6 @@
 				)
 			)
 		)
-		(property "LCSC " ""
-			(at 477.52 214.63 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
 		(property "Purchase-URL" ""
 			(at 477.52 214.63 0)
 			(hide yes)
@@ -141242,17 +139009,6 @@
 			)
 		)
 		(property "polarity" ""
-			(at 154.94 392.43 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "LCSC " ""
 			(at 154.94 392.43 0)
 			(hide yes)
 			(show_name no)
@@ -141778,17 +139534,6 @@
 				)
 			)
 		)
-		(property "LCSC " ""
-			(at 397.51 74.93 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
 		(property "Purchase-URL" ""
 			(at 397.51 74.93 0)
 			(hide yes)
@@ -142279,17 +140024,6 @@
 			)
 		)
 		(property "polarity" ""
-			(at 156.21 359.41 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "LCSC " ""
 			(at 156.21 359.41 0)
 			(hide yes)
 			(show_name no)
@@ -142832,17 +140566,6 @@
 				)
 			)
 		)
-		(property "LCSC " ""
-			(at 372.11 62.23 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
 		(property "Purchase-URL" ""
 			(at 372.11 62.23 0)
 			(hide yes)
@@ -143343,17 +141066,6 @@
 				)
 			)
 		)
-		(property "LCSC " ""
-			(at 83.82 180.34 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
 		(property "Purchase-URL" ""
 			(at 83.82 180.34 0)
 			(hide yes)
@@ -143689,17 +141401,6 @@
 			)
 		)
 		(property "polarity" ""
-			(at 265.43 74.93 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "LCSC " ""
 			(at 265.43 74.93 0)
 			(hide yes)
 			(show_name no)
@@ -144242,17 +141943,6 @@
 				)
 			)
 		)
-		(property "LCSC " ""
-			(at 312.42 80.01 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
 		(property "Purchase-URL" ""
 			(at 312.42 80.01 0)
 			(hide yes)
@@ -144784,17 +142474,6 @@
 				)
 			)
 		)
-		(property "LCSC " ""
-			(at 377.19 181.61 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
 		(property "Purchase-URL" ""
 			(at 377.19 181.61 0)
 			(hide yes)
@@ -144901,17 +142580,6 @@
 		)
 		(property "Description" "Net tie, 2 pins"
 			(at 207.01 77.47 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "LCSC " ""
-			(at 207.01 77.47 90)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -145475,17 +143143,6 @@
 			)
 		)
 		(property "polarity" ""
-			(at 495.3 173.99 90)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "LCSC " ""
 			(at 495.3 173.99 90)
 			(hide yes)
 			(show_name no)
@@ -146061,17 +143718,6 @@
 				)
 			)
 		)
-		(property "LCSC " ""
-			(at 407.67 63.5 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
 		(property "Purchase-URL" ""
 			(at 407.67 63.5 0)
 			(hide yes)
@@ -146637,17 +144283,6 @@
 				)
 			)
 		)
-		(property "LCSC " ""
-			(at 439.42 172.72 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
 		(property "Purchase-URL" ""
 			(at 439.42 172.72 0)
 			(hide yes)
@@ -146995,17 +144630,6 @@
 			)
 		)
 		(property "polarity" ""
-			(at 392.43 166.37 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "LCSC " ""
 			(at 392.43 166.37 0)
 			(hide yes)
 			(show_name no)
@@ -147382,17 +145006,6 @@
 				)
 			)
 		)
-		(property "LCSC " ""
-			(at 265.43 86.36 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
 		(property "Purchase-URL" ""
 			(at 265.43 86.36 0)
 			(hide yes)
@@ -147694,7 +145307,7 @@
 				)
 			)
 		)
-		(property "LCSC" "C17415"
+		(property "LCSC" "C17414"
 			(at 336.55 194.31 0)
 			(hide yes)
 			(show_name no)
@@ -147915,17 +145528,6 @@
 			)
 		)
 		(property "polarity" ""
-			(at 336.55 194.31 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "LCSC " ""
 			(at 336.55 194.31 0)
 			(hide yes)
 			(show_name no)

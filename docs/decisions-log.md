@@ -1,6 +1,6 @@
 # Solar Project 200W - Decisions Log
 
-Last updated: 2026-11-20 (DEC-077: future BMS uses existing J8 I2C; exact model TBD does not block the prototype)
+Last updated: 2026-11-24 (DEC-078: Rev2 rated thermal/current acceptance point and first-article gate)
 Decision owners: Phil + Copilot
 Decision policy: move fast, log every non-trivial choice, and defer only with a target date.
 
@@ -102,6 +102,8 @@ Decision policy: move fast, log every non-trivial choice, and defer only with a 
 
 | DEC-077 | 2026-11-20 | Intended Rev2 BMS connection through existing J8 I2C | Phil confirmed the BMS is still TBD but will use I2C through J8, and that model selection should not block the Rev2 prototype PCB. Retain J8 pin 1 SCL/PB7, 2 PWR_NEG, 3 CTRL_3V3, 4 SDA/PB6 on the existing shared bus; do not allocate another peripheral or add a speculative UART/CAN/RS485 transceiver. | Interface direction decided; exact BMS and protocol TBD | Preserves the included BMS scope without making an unidentified device a PCB-prototype ordering prerequisite. Existing J8 also remains the remote battery-temperature I2C tap. | This is not a compatibility or powered-validation claim. Before attaching the actual BMS, verify voltage levels, ground/isolation, connector mapping, addresses, pull-ups/bus loading and cable behavior. Implement protocol, stale-data/fault handling and charging policy only against the selected device. | Phil | Prototype order not blocked; verify compatibility before connection |
 
+| DEC-078 | 2026-11-24 | Rev2 rated thermal/current acceptance point and first-article gate | Phil selected 125W continuous at 12.8V nominal (9.77A), 40C maximum ambient, with a 25C U7 board-temperature-rise target and 30C maximum. Thermal soak is to occur after PCB fabrication and before rated-power use. | Decided for the validation prototype; not a thermal qualification result | Use U7 plus direct power-component temperature measurements; U7 is about 71mm from L2 and cannot represent that hotspot. The current external-ISET estimate of 9.1-15.2A does not guarantee either the 125W low-current requirement or a 12A maximum; document actual first-article behavior. | No full-power or production release until the first article passes the selected thermal/current criteria. Enclosure and forced-air use remain outside this open-air prototype test assumption. | Phil | First-article thermal soak and current-limit measurement |
+
 ## Open Questions
 
 | ID | Date | Question | Why It Matters | Owner | Target Date |
@@ -114,6 +116,7 @@ Decision policy: move fast, log every non-trivial choice, and defer only with a 
 
 ## Change Log
 
+- 2026-11-24: Added DEC-078 for the Rev2 rated thermal/current point and first-article acceptance gate; aligned the PV baseline documentation with the selected 2P array.
 - 2026-11-20: Added DEC-077 for Phil's intended BMS connection through existing J8 I2C. Model/protocol remain TBD without blocking this prototype order; no extra transceiver or MCU pin allocation is selected.
 - 2026-11-20: Added DEC-076 to finalize the selected F1 fuse/holder by Phil's disposition, keep #7 closed, and remove its stale Rev2 ordering prerequisite. Added an implementation-first PCB-order walkthrough to the existing Rev2 change plan; no CAD or powered validation is claimed.
 - 2026-11-19: Added DEC-075 for issue #17's keyed 10-pin ARM Cortex SWD-only connector. Removed redundant J4 and relocated/rerouted J9 into its former board area at Phil's request. Documented external 2.54 mm pitch adaptation; actual cable/adapter mating and mapping, enclosure access and bench validation remain open.
