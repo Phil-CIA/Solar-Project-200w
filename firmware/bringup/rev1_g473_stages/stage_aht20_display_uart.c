@@ -433,10 +433,10 @@ static void u6_ctrl_gpio_init(void) {
     RCC_AHB2ENR |= GPIOB_EN_BIT;
     (void)RCC_AHB2ENR;
 
+    GPIO_OTYPER(GPIOB_BASE) &= ~PB12_BIT;
+    GPIO_BSRR(GPIOB_BASE) = PB12_BIT; /* preload inhibit before enabling output */
     GPIO_MODER(GPIOB_BASE) = (GPIO_MODER(GPIOB_BASE) & ~(3UL << (12U * 2U))) |
                              (1UL << (12U * 2U));
-    GPIO_OTYPER(GPIOB_BASE) &= ~PB12_BIT;
-    GPIO_BSRR(GPIOB_BASE) = PB12_BIT; /* default inhibit asserted */
 }
 
 static void u6_set_inhibit(bool inhibit) {

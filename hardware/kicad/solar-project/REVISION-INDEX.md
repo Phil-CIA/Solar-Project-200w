@@ -186,6 +186,11 @@ everything was ordered; final matched parts, prices and order confirmation
 are not recorded here. `bom/Rev2_Inventory_Purchase_Working.xlsx` is a
 snapshot and does not automatically sync with the CSV. Several selected rows
 still need CAD/sourcing review, so this is not a released BOM.
+These purchase files predate the latest CAD merge: notably, the pricing
+draft lists R76/R77 under 5 mOhm C2073455, but current CAD specifies 10 mOhm
+KRL2012E-M-R010-F-T5 / C5342352. Check the actual order before assembly.
+L2's value and the R78/R79 and U10/U11/U12 footprints also changed in CAD
+after the purchase snapshot.
 C62/C63 now use the standard 100 nF 0805 footprint and matching
 Samsung CL21B104KCFNNNE / LCSC C28233 fields in schematic, PCB and tracker.
 Current availability, pricing and on-hand inventory remain unverified.

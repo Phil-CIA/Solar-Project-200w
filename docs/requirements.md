@@ -1,7 +1,7 @@
 # Solar Project 200W - Requirements
 
-Last updated: 2026-09-09
-Scope: Rev 1 planning baseline for a 125W continuous / 150W maximum PV charger.
+Last updated: 2026-11-24
+Scope: Project-level planning baseline for a 125W continuous / 150W maximum PV charger; Rev2-specific implementation and qualification are tracked in `rev-two-change-plan.md`.
 Traceability: Link each requirement to architecture sections and decisions in [decisions-log.md](decisions-log.md).
 
 ## 1. Requirement Method
@@ -14,10 +14,10 @@ Each requirement includes:
 
 ## 2. System Baseline
 
-- PV input compatibility: existing 2x100W series array, with harvested power limited by the charger.
+- PV input compatibility: selected 2x100W parallel (2P) array, with harvested power limited by the charger (DEC-051).
 - Battery class: 12.8V LiFePO4 (4S), 40Ah nominal.
 - Charger output rating: 125W continuous, 150W maximum operating power.
-- Charge-current target: 8A to 10A nominal, with an approximately 12A hardware protection ceiling.
+- Charge-current target: 8A to 10A nominal; the external-ISET limit is approximately 11.9A nominal with an estimated 9.1A-15.2A range, not a guaranteed 12A ceiling (DEC-071).
 - Battery/BMS charge-current capability: at least 20A.
 - Inverter envelope: 300W pure sine target.
 
@@ -25,10 +25,10 @@ Each requirement includes:
 
 | ID | Requirement | Target / Limit | Verification Method | Source |
 |---|---|---|---|---|
-| REQ-PV-001 | Charger input hardware shall tolerate the connected PV array while control limits harvested power. | Support the existing 2x100W series array `Voc`/`Isc` envelope; limit maximum PV operating power to 150W. | Panel cold-`Voc`/`Isc` review + protection derating + power-limit test. | DEC-023, DEC-024, DEC-028 |
-| REQ-PV-002 | PV operating window shall include module maximum power region during normal conditions. | PV MPP tracking region shall be documented and covered by charger input range. | Architecture and charger input-range review against selected panel datasheets. | Concept + DEC-003/DEC-004 |
-| REQ-CHG-001 | Charger shall deliver 125W continuously at the defined thermal design point. | 125W continuous output without thermal or protection shutdown. | Rated-power thermal soak and component derating review. | DEC-023, DEC-024 |
-| REQ-CHG-002 | Charger shall limit maximum operating power and charge current. | 150W maximum PV operating power; 8A to 10A nominal charge target; approximately 12A hardware protection ceiling pending tolerance analysis. | Power/current limit tests across battery voltage range + protection tolerance analysis. | DEC-023, DEC-027, DEC-028 |
+| REQ-PV-001 | Charger input hardware shall tolerate the selected PV array while control limits harvested power. | Support the selected 2P `RSP100DCT` array: 28.5V STC Voc, approximately 33.9V estimated cold Voc, 8.90A Isc; limit maximum PV operating power to 150W. | Panel cold-`Voc`/`Isc` review + protection derating + power-limit test. | DEC-049 through DEC-052 |
+| REQ-PV-002 | PV operating window shall include the selected module maximum-power region during normal conditions. | 2P baseline is approximately 23.6V Vmp and 8.48A Imp; verify the input range against this point and the actual low-light/hot-panel floor. | Architecture and charger input-range review against selected panel data, then source testing. | DEC-049 through DEC-051 |
+| REQ-CHG-001 | Charger shall deliver 125W continuously at the defined thermal design point. | 125W at 12.8V nominal (9.77A), 40C maximum ambient. U7 board-temperature rise target is 25C and maximum is 30C; component hotspots must remain within derated datasheet limits. | First-article rated-power thermal soak after PCB fabrication, before rated-power use; record U7 and direct power-component temperatures. | DEC-078 |
+| REQ-CHG-002 | Charger shall limit maximum operating power and charge current. | 150W maximum PV operating power; 8A to 10A nominal charge target. External-ISET is approximately 11.9A nominal with an estimated 9.1A-15.2A range, not a guaranteed 12A ceiling. | Power/current tests across battery voltage range + measured current-limit and protection verification. | DEC-023, DEC-027, DEC-028, DEC-071, DEC-078 |
 | REQ-CHG-003 | Expected charge current shall be documented across the battery range. | At 150W input and 93% assumed efficiency: approximately 9.6A at 14.6V and 10.9A at 12.8V; commanded current remains within configured limits. | Calculation plus bench comparison using measured efficiency. | DEC-023, DEC-028 |
 | REQ-CHG-004 | Charger startup shall be battery-qualified and source-aware. | Validate battery and PV before enable; begin at low current; reduce demand before PV reaches hardware UVLO; weak-source retry shall not produce sustained UVLO packet bursts. | Startup captures with PV voltage, `EN_UVLO`, `SS_ATRK`, output voltage, and current under strong and weak source cases. | DEC-025 through DEC-029 |
 | REQ-CHG-005 | Rev 1 output capacitance shall be justified by converter stability and transient requirements. | Do not carry the Rev 0 approximately 1.1mF to 1.2mF bank forward without analysis and measurement. | Loop/stability analysis + startup and load-transient tests using fitted capacitance and ESR. | DEC-024, DEC-025 |
